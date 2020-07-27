@@ -1,0 +1,52 @@
+--------------------Configuration: print_phon_feature - Win32 Release--------------------
+Begining build with project "C:\LINXRES\Projects\projectMS\print_phon_feature\print_phon_feature.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/print_phon_feature.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x410 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"print_phon_feature.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"print_phon_feature.pdb" /machine:I386 /out:"print_phon_feature.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\TEMP\RSP20A.tmp" with contents </nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/print_phon_feature.pch" /YX /Fo"..\object/" /Fd"..\object/" /FD /c 
+"C:\LINXRES\Source\ioclass\labelcl.cpp"
+"C:\LINXRES\Source\baseclas\polimorf.cpp"
+"C:\LINXRES\Source\features\print_ph_feat.cpp"
+"C:\LINXRES\Source\resconf\resconf.cpp"
+"C:\LINXRES\Source\ioclass\soundfil.cpp"
+"C:\LINXRES\Source\ioclass\soundlab.cpp"
+"C:\LINXRES\Source\baseclas\textclas.cpp"
+"C:\LINXRES\Source\vetclas\vetclas.cpp"
+>
+Creating command line "cl.exe @C:\TEMP\RSP20A.tmp" 
+Creating temp file "C:\TEMP\RSP20B.tmp" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"print_phon_feature.pdb" /machine:I386 /out:"print_phon_feature.exe" 
+\LINXRES\Projects\projectMS\object\arraycla.obj
+\LINXRES\Projects\projectMS\object\diagclas.obj
+\LINXRES\Projects\projectMS\object\diagnost.obj
+\LINXRES\Projects\projectMS\object\dspproc.obj
+\LINXRES\Projects\projectMS\object\feature.obj
+\LINXRES\Projects\projectMS\object\labelcl.obj
+\LINXRES\Projects\projectMS\object\polimorf.obj
+\LINXRES\Projects\projectMS\object\print_ph_feat.obj
+\LINXRES\Projects\projectMS\object\resconf.obj
+\LINXRES\Projects\projectMS\object\soundfil.obj
+\LINXRES\Projects\projectMS\object\soundlab.obj
+\LINXRES\Projects\projectMS\object\textclas.obj
+\LINXRES\Projects\projectMS\object\vetclas.obj>
+Creating command line "link.exe @C:\TEMP\RSP20B.tmp" 
+Compiling...
+labelcl.cpp
+polimorf.cpp
+print_ph_feat.cpp
+resconf.cpp
+soundfil.cpp
+soundlab.cpp
+textclas.cpp
+vetclas.cpp
+Linking...
+
+
+
+print_phon_feature.exe - 0 error(s), 0 warning(s)

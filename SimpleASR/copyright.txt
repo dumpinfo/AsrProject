@@ -1,0 +1,44 @@
+_______________________________________________________________________________________________
+
+COPYRIGHT INFORMATION AND DISCLAIMER
+_______________________________________________________________________________________________
+
+The RES 6.0 software contained on this disc accompanies the publication Speech Recognition -
+Theory and C++ Implementation copyright © 1999 John Wiley & Sons, Ltd., Baffins Lane,
+Chichester, West Sussex, UK PO19 1UD.  All rights reserved.
+
+All material contained within RES 6.0 is protected by copyright, whether or not a copyright
+notice appears on the particular screen where the material is displayed.
+
+RES 6.0 is an original software distributed as part of the above publication and should not be
+sold or re-sold separately. In purchasing the publication, the purchaser acquires a
+non-exclusive, non-transferable licence for personal and non-commercial use of the RES
+software.  The purchaser may modify the RES software provided that he/she does not alter the
+original copyright notice and provides a note on any modifications made to the original
+version.  The RES software may be copied and printed out but may not be transmitted to another
+or networked without the written permission of the Publisher.  Requests for permission to
+distribute the RES software on a network or to exploit it for any purpose other than personal,
+non-commercial use should be addressed in the first instance to Customer Services at the
+following e-mail address: <cs-books@wiley.co.uk>.
+
+RES 6.0 includes sound files in the directory Sndfiles in which the copyright is held by the
+Linguistic Data Consortium, University of Pennsylvania, 3615 Market Street, Suite 200
+Philadelphia, PA 19104-2608, USA. Wherever possible, third party copyright holders are
+identified in the text files accompanying the utility or programme and requests for permission
+to exploit such materials should be addressed to the appropriate copyright holder.
+
+Since RES is licensed free of charge, apart from the cost of the book, there is no warranty for
+the programs contained in the disk. The software is supplied "as it is" without warranty of any
+kind, either expressed or implied. The entire risk as to the quality and performance of the
+software is with the purchaser. The purchaser assumes the cost of all-necessary servicing,
+repair or correction in case the programs prove to be defective.
+
+Neither the authors nor John Wiley & Sons, Ltd. accept any responsibility or liability for loss
+or damage occasioned to any person or property through using the materials, instructions,
+methods or ideas contained herein, or acting or refraining from acting as a result of such use.
+The authors and Publisher expressly claim all implied warranties, including merchantability or
+fitness for any particular purpose.  There will be no duty on the authors or Publisher to
+correct any errors or defects in the software.
+
+It is hoped that the software will prove useful to purchasers and the author Claudio Becchetti
+may be contacted by e-mail at <Cbecc@flashnet.it>.

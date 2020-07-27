@@ -1,0 +1,78 @@
+Tue Aug  4 15:21:02 1998:**  Program Starts: disabled Check/Assert   **
+Tue Aug  4 15:21:02 1998:** Ver. 4.0 of 16/9/97 File:../../../source/baseclas/diagnost.cpp Aug  4 1998
+Tue Aug  4 15:21:16 1998:Warn.: ../../../source/baseclas/polimorf.cpp Line:159: test polimorphism passed
+Version 4.0 of 21/2/98 ../../../source/baseclas/polimorf.cpp compiled Aug  4 1998
+
+Tue Aug  4 15:21:29 1998:--  Program Ends --
+Tue Nov 17 18:17:15 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 18:17:15 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:170: Compatibilty file Version: Ver. 6.0 of 19/11/98 ../../../source/baseclas/diagnost.cpp c.Nov 17 1998
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:171: def opt      file Version: 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:172: Diagnostic Sistem Version: 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:174: Testing Diagnostic System 
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:179: warning message of numbers:2123
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:183: Diagnostic System OK
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:94: Base class        Version 6.0 of 19/11/98 ../../../source/baseclas/baseclas.cppc. Nov 17 1998
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:97: testing base class allocating 200666 elems of class test
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:100: checking inizialization of 200666 elems of class test
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:111: checking access for 200666 elems of class test
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:123: check operator =
+Tue Nov 17 18:17:15 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:134: check complete
+Tue Nov 17 18:17:16 1998:Warn.: ../../../source/baseclas/textclas.cpp Line:542: Text class  Version: V. 6.0 of 19/11/98 ../../../source/baseclas/textclas.cpp c.Nov 17 1998
+Tue Nov 17 18:17:16 1998:Warn.: ../../../source/baseclas/textclas.cpp Line:544: testing Text Classes
+Tue Nov 17 18:17:19 1998:Warn.: ../../../source/baseclas/textclas.cpp Line:622: Text Classes OK
+Tue Nov 17 18:17:19 1998:--  Program Ends --
+Tue Nov 17 18:54:16 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 18:54:16 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 18:54:16 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:170: Compatibilty file Version: Ver. 6.0 of 19/11/98 ../../../source/baseclas/diagnost.cpp c.Nov 17 1998
+Tue Nov 17 18:54:16 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:171: def opt      file Version: 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 18:54:16 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:172: Diagnostic Sistem Version: 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 18:54:16 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:174: Testing Diagnostic System 
+Tue Nov 17 18:54:16 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:179: warning message of numbers:2123
+Tue Nov 17 18:54:16 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:183: Diagnostic System OK
+Tue Nov 17 18:54:16 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:94: Base class        Version 6.0 of 19/11/98 ../../../source/baseclas/baseclas.cppc. Nov 17 1998
+Tue Nov 17 18:54:16 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:97: testing base class allocating 200666 elems of class test
+Tue Nov 17 18:54:17 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:100: checking inizialization of 200666 elems of class test
+Tue Nov 17 18:54:17 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:111: checking access for 200666 elems of class test
+Tue Nov 17 18:54:17 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:123: check operator =
+Tue Nov 17 18:54:17 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:134: check complete
+Tue Nov 17 18:54:17 1998:Warn.: ../../../source/baseclas/textclas.cpp Line:542: Text class  Version: V. 6.0 of 19/11/98 ../../../source/baseclas/textclas.cpp c.Nov 17 1998
+Tue Nov 17 18:54:17 1998:Warn.: ../../../source/baseclas/textclas.cpp Line:544: testing Text Classes
+Tue Nov 17 18:54:35 1998:Warn.: ../../../source/baseclas/textclas.cpp Line:622: Text Classes OK
+Tue Nov 17 18:54:35 1998:--  Program Ends --
+Tue Nov 17 19:19:17 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 19:19:17 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 19:19:21 1998:Warn.: ../../../source/baseclas/polimorf.cpp Line:172: test polimorphism passed
+Version 6.0 of 19/11/98 ../../../source/baseclas/polimorf.cpp compiled Nov 17 1998
+
+Tue Nov 17 19:19:25 1998:--  Program Ends --
+Tue Nov 17 19:29:22 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 19:29:22 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 19:29:27 1998:Warn.: ../../../source/baseclas/polimorf.cpp Line:172: test polimorphism passed
+Version 6.0 of 19/11/98 ../../../source/baseclas/polimorf.cpp compiled Nov 17 1998
+
+Tue Nov 17 19:29:31 1998:--  Program Ends --
+Thu Nov 19 13:01:54 1998:**  Program Starts: disabled Check/Assert   **
+Thu Nov 19 13:01:54 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Thu Nov 19 13:01:54 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:170: Compatibilty file Version: Ver. 6.0 of 19/11/98 ../../../source/baseclas/diagnost.cpp c.Nov 17 1998
+Thu Nov 19 13:01:54 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:171: def opt      file Version: 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Thu Nov 19 13:01:54 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:172: Diagnostic Sistem Version: 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Thu Nov 19 13:01:54 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:174: Testing Diagnostic System 
+Thu Nov 19 13:01:55 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:179: warning message of numbers:2123
+Thu Nov 19 13:01:55 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:183: Diagnostic System OK
+Thu Nov 19 13:01:55 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:94: Base class        Version 6.0 of 19/11/98 ../../../source/baseclas/baseclas.cppc. Nov 17 1998
+Thu Nov 19 13:01:55 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:97: testing base class allocating 200666 elems of class test
+Thu Nov 19 13:01:55 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:100: checking inizialization of 200666 elems of class test
+Thu Nov 19 13:01:55 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:111: checking access for 200666 elems of class test
+Thu Nov 19 13:01:55 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:123: check operator =
+Thu Nov 19 13:01:55 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:134: check complete
+Thu Nov 19 13:01:55 1998:Warn.: ../../../source/baseclas/textclas.cpp Line:542: Text class  Version: V. 6.0 of 19/11/98 ../../../source/baseclas/textclas.cpp c.Nov 17 1998
+Thu Nov 19 13:01:55 1998:Warn.: ../../../source/baseclas/textclas.cpp Line:544: testing Text Classes
+Thu Nov 19 13:01:58 1998:Warn.: ../../../source/baseclas/textclas.cpp Line:622: Text Classes OK
+Thu Nov 19 13:01:58 1998:--  Program Ends --
+Thu Nov 19 13:02:37 1998:**  Program Starts: disabled Check/Assert   **
+Thu Nov 19 13:02:37 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Thu Nov 19 13:02:42 1998:Warn.: ../../../source/baseclas/polimorf.cpp Line:172: test polimorphism passed
+Version 6.0 of 19/11/98 ../../../source/baseclas/polimorf.cpp compiled Nov 17 1998
+
+Thu Nov 19 13:02:46 1998:--  Program Ends --

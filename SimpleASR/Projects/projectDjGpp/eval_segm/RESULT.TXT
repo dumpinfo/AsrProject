@@ -1,0 +1,7 @@
+	Segmentation report file
+
+			<= 5 ms 	: 14.6341%
+			<= 10 ms 	: 23.1707%
+			<= 20 ms 	: 31.7073%
+			oltre 20 ms 	: 17.0732%
+			fonemi errati 	: 53.6585%

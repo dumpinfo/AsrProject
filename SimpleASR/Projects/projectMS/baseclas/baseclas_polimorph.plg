@@ -1,0 +1,38 @@
+--------------------Configuration: baseclas_polimorph - Win32 Release--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\baseclas\baseclas_polimorph.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"..\objects/baseclas_polimorph.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x410 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"baseclas_polimorph.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"baseclas_polimorph.pdb" /machine:I386 /out:"baseclas_polimorph.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSP7062.TMP" with contents </nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"..\objects/baseclas_polimorph.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\baseclas\baseclas.cpp"
+"C:\newcd\cd\Source\baseclas\diagnost.cpp"
+"C:\newcd\cd\Source\baseclas\Polimorf.cpp"
+"C:\newcd\cd\Source\baseclas\Politest.cpp"
+"C:\newcd\cd\Source\baseclas\textclas.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP7062.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSP7063.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"baseclas_polimorph.pdb" /machine:I386 /out:"baseclas_polimorph.exe" 
+\newcd\cd\Projects\projectMS\objects\baseclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\Politest.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP7063.TMP" 
+Compiling...
+baseclas.cpp
+diagnost.cpp
+Polimorf.cpp
+Politest.cpp
+textclas.cpp
+Linking...
+
+
+
+baseclas_polimorph.exe - 0 error(s), 0 warning(s)

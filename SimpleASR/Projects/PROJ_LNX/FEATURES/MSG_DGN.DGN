@@ -1,0 +1,36 @@
+Tue Nov 17 20:02:58 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 20:02:58 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 20:02:58 1998:Warn.: ../../../source/ioclass/soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Tue Nov 17 20:03:02 1998:--  Program Ends --
+Wed Nov 18 16:35:33 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:35:33 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:170: Compatibilty file Version: Ver. 6.0 of 19/11/98 ../../../source/baseclas/diagnost.cpp c.Nov 18 1998
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:171: def opt      file Version: 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:172: Diagnostic Sistem Version: 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:174: Testing Diagnostic System 
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:179: warning message of numbers:2123
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/diagnost.cpp Line:183: Diagnostic System OK
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:94: Base class        Version 6.0 of 19/11/98 ../../../source/baseclas/baseclas.cppc. Nov 18 1998
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:97: testing base class allocating 2666 elems of class test
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:100: checking inizialization of 2666 elems of class test
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:111: checking access for 2666 elems of class test
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:123: check operator =
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/baseclas/baseclas.cpp Line:134: check complete
+Wed Nov 18 16:35:33 1998:Warn.: ../../../source/ioclass/soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Wed Nov 18 16:35:41 1998:--  Program Ends --
+Wed Nov 18 16:36:30 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:36:30 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:36:30 1998:Warn.: ../../../source/ioclass/soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Wed Nov 18 16:36:37 1998:--  Program Ends --
+Wed Nov 18 16:38:30 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:38:30 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:38:30 1998:Warn.: ../../../source/ioclass/soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Wed Nov 18 16:38:34 1998:--  Program Ends --
+Wed Nov 18 16:38:43 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:38:43 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:38:43 1998:Warn.: ../../../source/ioclass/soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Wed Nov 18 16:38:47 1998:--  Program Ends --
+Wed Nov 18 16:41:41 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:41:41 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:41:41 1998:Warn.: ../../../source/ioclass/soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Wed Nov 18 16:41:45 1998:--  Program Ends --

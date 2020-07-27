@@ -1,0 +1,51 @@
+Tue Nov 17 19:50:01 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 19:50:01 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 19:50:01 1998:Warn.: ../../../source/eval_s~1/main_e~1.cpp Line:40: No configure file name specified, using "res.ini"
+
+Tue Nov 17 19:50:01 1998:--  Program Ends --
+Tue Nov 17 21:20:46 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 21:20:46 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 21:20:46 1998:Warn.: ../../../source/eval_s~1/main_e~1.cpp Line:40: No configure file name specified, using "res.ini"
+
+Tue Nov 17 21:20:48 1998:ERR.: ../../../source/eval_s~1/eval.cpp Line:140: Cannot open file: ..\..\..\sndfile\SI1039.sgm
+Tue Nov 17 21:20:48 1998:--  Program Ends --
+Tue Nov 17 21:21:36 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 21:21:36 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 21:21:36 1998:Warn.: ../../../source/eval_s~1/main_e~1.cpp Line:40: No configure file name specified, using "res.ini"
+
+Tue Nov 17 21:21:38 1998:ERR.: ../../../source/eval_s~1/eval.cpp Line:140: Cannot open file: ..\..\..\sndfile\si1039.sgm
+Tue Nov 17 21:21:38 1998:--  Program Ends --
+Wed Nov 18 16:17:54 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:17:54 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:17:54 1998:Warn.: ../../../source/eval_s~1/main_e~1.cpp Line:40: No configure file name specified, using "res.ini"
+
+Wed Nov 18 16:17:57 1998:ERR.: ../../../source/eval_s~1/eval.cpp Line:140: Cannot open file: ../../../sndfile/.sgm
+Wed Nov 18 16:17:57 1998:--  Program Ends --
+Wed Nov 18 16:18:37 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:18:37 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:18:37 1998:Warn.: ../../../source/eval_s~1/main_e~1.cpp Line:40: No configure file name specified, using "res.ini"
+
+Wed Nov 18 16:18:39 1998:ERR.: ../../../source/eval_s~1/eval.cpp Line:140: Cannot open file: ../../../sndfile/.sgm
+Wed Nov 18 16:18:39 1998:--  Program Ends --
+Wed Nov 18 16:19:31 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:19:31 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:19:31 1998:Warn.: ../../../source/eval_s~1/main_e~1.cpp Line:40: No configure file name specified, using "res.ini"
+
+Wed Nov 18 16:19:32 1998:ERR.: ../../../source/eval_s~1/eval.cpp Line:140: Cannot open file: ../../../sndfile/.sgm
+Wed Nov 18 16:19:32 1998:--  Program Ends --
+Wed Nov 18 16:24:54 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:24:54 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:24:54 1998:Warn.: ../../../source/eval_s~1/main_e~1.cpp Line:40: No configure file name specified, using "res.ini"
+
+Wed Nov 18 16:24:56 1998:ERR.: ../../../source/eval_s~1/eval.cpp Line:140: Cannot open file: ../../../sndfile/.sgm
+Wed Nov 18 16:24:56 1998:--  Program Ends --
+Wed Nov 18 16:32:38 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:32:38 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:32:38 1998:Warn.: ../../../source/eval_s~1/main_e~1.cpp Line:40: No configure file name specified, using "res.ini"
+
+Wed Nov 18 16:32:39 1998:--  Program Ends --
+Wed Nov 18 16:33:25 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:33:25 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:33:25 1998:Warn.: ../../../source/eval_s~1/main_e~1.cpp Line:40: No configure file name specified, using "res.ini"
+
+Wed Nov 18 16:33:25 1998:--  Program Ends --

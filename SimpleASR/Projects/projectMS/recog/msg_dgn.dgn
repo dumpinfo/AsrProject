@@ -1,0 +1,10 @@
+Tue Nov 17 17:12:58 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 17:12:59 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 17 1998
+Tue Nov 17 17:12:59 1998:Warn.: C:\newcd\cd\Source\recog\recog.cpp Line:67: No config file name specified, using "res.ini"
+
+Tue Nov 17 17:13:02 1998:Warn.: C:\newcd\cd\Source\ioclass\Soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Tue Nov 17 17:13:46 1998:Warn.: C:\newcd\cd\Source\recog\recog.cpp Line:82: Start of recognition
+
+Tue Nov 17 17:15:55 1998:Warn.: C:\newcd\cd\Source\recog\recog.cpp Line:159: End of recognition
+
+Tue Nov 17 17:15:55 1998:--  Program Ends --

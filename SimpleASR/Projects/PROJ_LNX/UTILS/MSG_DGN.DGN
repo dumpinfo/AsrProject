@@ -1,0 +1,8 @@
+
+Wed Nov 18 12:59:50 1998:**  Program Starts: disabled Check/Assert   **
+Wed Nov 18 12:59:50 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Wed Nov 18 12:59:50 1998:Warn.: ../../../source/utils/multifop.cpp Line:466: No config file name specified, using "util.ini"
+
+Wed Nov 18 12:59:50 1998:Warn.: ../../../source/utils/multifop.cpp Line:342: The character ascii10 is counted 48 times
+Wed Nov 18 12:59:50 1998:Warn.: ../../../source/utils/multifop.cpp Line:306: Number of slash substituted: 0 times
+Wed Nov 18 12:59:50 1998:--  Program Ends --

@@ -1,0 +1,23 @@
+[MultipleFileProcedure]
+FileNameofListOfFilesToBeProcessed=File_Name ::
+; syntax is <Label_Of_Blocks>_<block number>_
+Label_Of_Blocks = String
+Number_Of_Blocks =  [1<100] :: 6
+
+[LoadFile]
+Type_Of_Block = LoadFile
+
+[ModifySlashForUnix]
+Type_Of_Block = ModifySlashForUnix
+
+[CountStrings]
+Type_Of_Block = CountStrings
+
+[SaveFileWithoutCR]
+Type_Of_Block = SaveFileWithoutCR
+
+[SaveSimplyFile]
+Type_Of_Block = SaveFileWithoutCR
+
+[InsertHeaderFileatBeginning]
+Type_Of_Block = insertheaderfileatbeginning
