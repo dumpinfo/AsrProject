@@ -1,0 +1,160 @@
+Tue Nov 17 17:09:48 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 17:09:48 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 17 1998
+Tue Nov 17 17:09:49 1998:Warn.: C:\newcd\cd\Source\ioclass\Soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 0 copied: only 3 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 1 copied: only 9 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 2 copied: only 5 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 3 copied: only 1 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 4 copied: only 5 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 5 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 6 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 7 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 8 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 9 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 10 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 11 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 12 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 13 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 14 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 15 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 16 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 17 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 18 copied: only 1 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 19 copied: only 5 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 20 copied: only 1 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 21 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 22 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 23 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 24 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 25 copied: only 4 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 26 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 27 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 28 copied: only 1 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 29 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 30 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 31 copied: only 2 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 32 copied: only 4 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 33 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 34 copied: only 4 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 35 copied: only 0 examples
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:38 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 36 copied: only 6 examples
+Tue Nov 17 17:12:39 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:833: Insufficient training examples for model.
+Tue Nov 17 17:12:39 1998:Warn.: C:\newcd\cd\Source\embedded\emb_b&w.cpp Line:834: Model 38 copied: only 2 examples
+Tue Nov 17 17:13:42 1998:--  Program Ends --
+Wed Nov 18 11:00:58 1998:**  Program Starts: disabled Check/Assert   **
+Wed Nov 18 11:00:58 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 18 1998
+Wed Nov 18 11:00:59 1998:Warn.: C:\newcd\cd\Source\ioclass\Soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 0 copied: only 3 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 1 copied: only 9 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 2 copied: only 5 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 3 copied: only 1 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 4 copied: only 5 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 5 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 6 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 7 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 8 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 9 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 10 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 11 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 12 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 13 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 14 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 15 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 16 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 17 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 18 copied: only 1 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 19 copied: only 5 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 20 copied: only 1 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 21 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 22 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 23 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 24 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 25 copied: only 4 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 26 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 27 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 28 copied: only 1 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 29 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 30 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 31 copied: only 2 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 32 copied: only 4 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 33 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 34 copied: only 4 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 35 copied: only 0 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 36 copied: only 6 examples
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:833: Insufficient training examples for model.
+Wed Nov 18 11:03:19 1998:Warn.: C:\newcd\cd\Source\embedded\Emb_b_w.cpp Line:834: Model 38 copied: only 2 examples
+Wed Nov 18 11:03:56 1998:--  Program Ends --

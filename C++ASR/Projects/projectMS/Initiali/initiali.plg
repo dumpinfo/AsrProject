@@ -1,0 +1,36 @@
+--------------------Configuration: initiali - Win32 Release--------------------
+Begining build with project "C:\LINXRES\Projects\projectMS\initiali\initiali.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/initiali.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x410 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Release/initiali.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/initiali.pdb" /machine:I386 /out:"Release/initiali.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\TEMP\RSP1FE.tmp" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/initiali.pdb" /machine:I386 /out:"Release/initiali.exe" 
+\LINXRES\Projects\projectMS\object\arraycla.obj
+\LINXRES\Projects\projectMS\object\diagclas.obj
+\LINXRES\Projects\projectMS\object\diagnost.obj
+\LINXRES\Projects\projectMS\object\dspproc.obj
+\LINXRES\Projects\projectMS\object\feature.obj
+\LINXRES\Projects\projectMS\object\iniopt.obj
+\LINXRES\Projects\projectMS\object\initiali.obj
+\LINXRES\Projects\projectMS\object\labelcl.obj
+\LINXRES\Projects\projectMS\object\polimorf.obj
+\LINXRES\Projects\projectMS\object\proiniti.obj
+\LINXRES\Projects\projectMS\object\resconf.obj
+\LINXRES\Projects\projectMS\object\soundfil.obj
+\LINXRES\Projects\projectMS\object\soundlab.obj
+\LINXRES\Projects\projectMS\object\textclas.obj
+\LINXRES\Projects\projectMS\object\tspecbas.obj
+\LINXRES\Projects\projectMS\object\vetclas.obj>
+Creating command line "link.exe @C:\TEMP\RSP1FE.tmp" 
+Linking...
+LINK : warning LNK4098: defaultlib "LIBC" conflicts with use of other libs; use /NODEFAULTLIB:library
+
+
+
+initiali.exe - 0 error(s), 1 warning(s)

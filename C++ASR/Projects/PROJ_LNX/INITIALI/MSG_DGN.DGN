@@ -1,0 +1,12 @@
+Tue Nov 17 20:05:06 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 20:05:06 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 20:05:07 1998:Warn.: ../../../source/ioclass/soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Tue Nov 17 20:05:08 1998:--  Program Ends --
+Wed Nov 18 16:42:56 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:42:56 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:42:59 1998:ERR.: ../../../source/ioclass/soundfil.cpp Line:651: Could not open file: ..\..\..\sndfile\SI1039
+Wed Nov 18 16:42:59 1998:--  Program Ends --
+Wed Nov 18 16:43:27 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:43:27 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:43:27 1998:Warn.: ../../../source/ioclass/soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Wed Nov 18 16:43:29 1998:--  Program Ends --

@@ -1,0 +1,8 @@
+Wed Nov 18 12:36:31 1998:**  Program Starts: disabled Check/Assert   **
+Wed Nov 18 12:36:31 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Wed Nov 18 12:36:31 1998:Warn.: ../../../source/resconf/resconf.cpp Line:475: testing config class Version:V. 6.0 of 19/11/98 ../../../source/resconf/resconf.cpp c.Nov 18 1998
+Wed Nov 18 12:36:34 1998:--  Program Ends --
+Wed Nov 18 17:08:50 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 17:08:50 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 17:08:50 1998:Warn.: ../../../source/resconf/resconf.cpp Line:475: testing config class Version:V. 6.0 of 19/11/98 ../../../source/resconf/resconf.cpp c.Nov 18 1998
+Wed Nov 18 17:08:53 1998:--  Program Ends --

@@ -1,0 +1,28 @@
+Tue Nov 17 17:10:36 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 17:10:36 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 17 1998
+Tue Nov 17 17:10:37 1998:Warn.: C:\newcd\cd\Source\ioclass\Soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Tue Nov 17 17:10:46 1998:--  Program Ends --
+Tue Nov 17 17:10:51 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 17:10:51 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 17 1998
+Tue Nov 17 17:10:51 1998:Warn.: C:\newcd\cd\Source\baseclas\diagnost.cpp Line:170: Compatibilty file Version: Ver. 6.0 of 19/11/98 C:\newcd\cd\Source\baseclas\diagnost.cpp c.Nov 17 1998
+Tue Nov 17 17:10:51 1998:Warn.: C:\newcd\cd\Source\baseclas\diagnost.cpp Line:171: def opt      file Version: 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 17 1998
+Tue Nov 17 17:10:51 1998:Warn.: C:\newcd\cd\Source\baseclas\diagnost.cpp Line:172: Diagnostic Sistem Version: 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 17 1998
+Tue Nov 17 17:10:51 1998:Warn.: C:\newcd\cd\Source\baseclas\diagnost.cpp Line:174: Testing Diagnostic System 
+Tue Nov 17 17:10:51 1998:Warn.: C:\newcd\cd\Source\baseclas\diagnost.cpp Line:179: warning message of numbers:2123
+Tue Nov 17 17:10:51 1998:Warn.: C:\newcd\cd\Source\baseclas\diagnost.cpp Line:183: Diagnostic System OK
+Tue Nov 17 17:10:52 1998:Warn.: C:\newcd\cd\Source\baseclas\baseclas.cpp Line:94: Base class        Version 6.0 of 19/11/98 C:\newcd\cd\Source\baseclas\baseclas.cppc. Nov 17 1998
+Tue Nov 17 17:10:52 1998:Warn.: C:\newcd\cd\Source\baseclas\baseclas.cpp Line:97: testing base class allocating 2666 elems of class test
+Tue Nov 17 17:10:52 1998:Warn.: C:\newcd\cd\Source\baseclas\baseclas.cpp Line:100: checking inizialization of 2666 elems of class test
+Tue Nov 17 17:10:52 1998:Warn.: C:\newcd\cd\Source\baseclas\baseclas.cpp Line:111: checking access for 2666 elems of class test
+Tue Nov 17 17:10:52 1998:Warn.: C:\newcd\cd\Source\baseclas\baseclas.cpp Line:123: check operator =
+Tue Nov 17 17:10:52 1998:Warn.: C:\newcd\cd\Source\baseclas\baseclas.cpp Line:134: check complete
+Tue Nov 17 17:10:53 1998:Warn.: C:\newcd\cd\Source\ioclass\Soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Tue Nov 17 17:10:56 1998:--  Program Ends --
+Tue Nov 17 17:10:58 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 17:10:59 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 17 1998
+Tue Nov 17 17:11:00 1998:Warn.: C:\newcd\cd\Source\ioclass\Soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Tue Nov 17 17:11:08 1998:--  Program Ends --
+Tue Nov 17 17:11:11 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 17:11:11 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 17 1998
+Tue Nov 17 17:11:12 1998:Warn.: C:\newcd\cd\Source\ioclass\Soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Tue Nov 17 17:11:38 1998:--  Program Ends --

@@ -1,0 +1,463 @@
+[DBaseOptions]
+
+SoundFileType = NTimit & Atis & FeaturesFile:: NTimit
+LabelFileType = NTimitLabel & NTimitReducedLabel & NTimit39Label & AtisLabels & AtisReducedLabel :: NTimitReducedLabel
+LabelFileExtension = String
+WindowLenght  = [0<512] :: 512
+WindowOverlap = [0<384] :: 384
+ListOfSoundFNames = File_Name ::
+DbaseAccessType = FILTERED & SEQUENTIAL & RANDOM ::
+Buffer_Size_K =   Boolean :: no
+
+[FeatureExtraction]
+; syntax is <Label_Of_Blocks>_<block number>_
+Label_Of_Blocks = String
+Number_Of_Blocks =  [1<100] :: 6
+
+[Preemphasis_And_Hamming_Window]
+Type_Of_Block = Preemphasis_And_Hamming_Window
+; 0 value no preephasis
+Preemphasis =[0<1] :: .95
+
+[MFCC_With_Energy]
+;energy is not comprised in num of features
+Type_Of_Block = MFCC_With_Energy
+num_features       = [9<12] :: 9
+Compute_Energy =  Boolean :: yes
+Compute_Log_Of_Energy =  Boolean :: yes
+
+[FFT_With_Energy]
+Type_Of_Block = FFT_With_Energy
+num_features  = [9<12] :: 9
+Compute_Energy =  Boolean :: yes
+Compute_Log_Of_Energy =  Boolean :: yes
+Compute_Log_Of_FFT = Boolean :: yes
+
+[Subtract_Mean]
+Type_Of_Block = Subtract_Mean
+File_of_mean_value = File_Name ::timit_train_maschile.int
+
+[Null_Block]
+; Null_Block perform no operation
+Type_Of_Block = Null_Block
+Feature_Dim = [12<39] :: 39
+
+[Add_Derivatives]
+; Null_Block perform no operation
+
+Type_Of_Block = Add_Derivatives
+; 0 = no derivatives
+Number_Of_Derivatives = [0<4] :: 2
+Feature_Dim = [0<40] ::
+; always set yes below when energy is computed
+; because this allows backward compatibility
+; features are set as MEL DMEL DDMEL En DEn DDEn instead of
+;MEL En DMEL DEn DDMEL DDEn
+Shuffle_Output = yes
+
+[Add_Derivatives_DeMori]
+; Null_Block perform no operation
+
+Type_Of_Block = Add_Derivatives_DeMori
+; 0 = no derivatives
+Number_Of_Derivatives = [0<4] :: 2
+Feature_Dim = [12<39] :: 39
+
+; always set yes below when energy is computed
+; because this allows backward compatibility
+; features are set as MEL DMEL DDMEL En DEn DDEn instead of
+;MEL En DMEL DEn DDMEL DDEn
+Shuffle_Output = yes
+
+
+[Initialization]
+ModelType     = Model_0 & Model_1 & Model_2 & Model_3 :: Model_0
+LoadOneMixture = Boolean ::yes
+UniformSectionate = Boolean :: yes
+ModelsFileInput = File_Name :: phonemes.tra
+InitializedModelsFName = File_Name :: phonemes.int
+FileOfSymbolModels     = File_Name :: models.ini
+
+SymbolRange = All & Partial :: All 		
+			
+SymbolList      = [0 < 45] :: 12,15-17
+DbaseAccessType = Filtered & Sequential :: Filtered
+
+Full_Covariance = Boolean :: no
+
+[SingleUnitBaumWelch]
+
+ModelsFileName    = File_Name :: phonemes.int
+CheckLogFName     = File_Name :: phonemes.sta
+
+ConvergenceThreshold = [0 < 10] :: 10E-1
+MaxNumIteration      = [1 < 20] :: 5
+
+Reestimate_Transition = Boolean :: yes
+
+SymbolRange = All & Partial :: All 		
+SymbolList  = [0 < 45]
+
+[ModelsSimultaneousTraining]
+
+ModelsFileName = File_Name :: phonemes.int
+CheckLogFName  = File_Name :: phonemes.sta
+
+MaxNumIteration = [0 < 20] :: 5
+
+GlobalCovariance = Boolean :: no
+
+ReestimateMeans       = Boolean :: yes;
+ReestimateVariances   = Boolean :: yes;
+ReestimateWeights    = Boolean :: yes;
+ReestimateTransitions = Boolean :: yes;
+
+MinIstanceNumber               = [5 < 1000] :: 10
+PruningThreshold               = [0 < 10e30] :: 0.8e2
+MinimunVarianceValueIfDiagonal = [0 < 10000]    :: 0.0001
+ConstToAddMinVar               = [0 < 10] :: 0.002
+
+LoadAccumulators  = Boolean :: no;
+StoreAccumulators = Boolean :: no;
+AccsList = File_Name :: accs.lst
+AccsFile = File_Name :: accs.emb
+
+[Lexicon]
+
+Database = atis2 & timit & atis3 :: atis0 
+
+Testrecog = Boolean :: yes
+
+TestrecogfileList = File_Name :: atis.lst
+
+AtisPhonFile = File_Name :: atis1w.pcd
+
+TrainingLM = Boolean :: yes
+
+Perplexity = Boolean :: yes
+
+TrainPhonGr = Boolean :: yes
+
+PhonPerlexity = Boolean :: yes 
+
+FileTrainList = File_Name :: atistrai.lst;
+
+FilePerplexList = File_Name :: testfiles.lst;
+
+GrammarType = unigram & bigram & trigram :: bigram 
+
+Smoothing = nosmoothing & nonlinear & linear & turing :: nonlinear
+
+FileUnigram = File_Name :: wordunig.tra
+
+FileBigram = File_Name :: wordbigr.tra
+
+FileTrigram = File_Name :: wordtrig.tra
+
+ClassType = noclass & hand & autom :: noclass
+
+FileHandClass = File_Name :: hwrdclass.lst
+
+FileAutomClass = File_Name :: awrdclass.lst
+MaxNumClas = [0 < 2000] :: 23
+
+FilePerplex = File_Name :: perplex.dat
+
+FileOfVocabulary = File_Name :: vocabula.dat
+
+[Recognition]
+AlgorithmType = WindowSearch & BeamSearch :: WindowSearch
+
+WindowWidth = [0 < 100] :: 40
+TreeVolume  = [10 < 40000] :: 2000
+
+BeamCoefficientInitial = [10e-40 < 10e2] :: 10E-12
+BeamCoefficientInternal = [10e-40 < 10e2] :: 10E-12
+
+GrammarProbPenalty = [1.0 < 10.0] :: 1.0
+SilenceProbPenalty = [1.0 < 10.0] :: 1.0
+
+FileOfSolutions = File_Name :: recog.sol
+FileOfResults   = File_Name :: recog.res
+
+StaticGrammar = WordGrammar & PhonGrammar :: PhonGrammar
+GrammarType   = NoGrammar & Bigram :: NoGrammar
+
+FileOfAcousticModels = File_Name :: phonemes.tra
+
+FileOfPhonemeGrammar        = File_Name :: phontran.sta
+FileOfBigramPhonemeGrammar  = File_Name :: phnbigram.tra
+
+FileOfVocabulary         = File_Name :: vocabula.dat
+FileOfBigramWordGrammar  = File_Name :: wordbigram.tra
+FileOfTrigramWordGrammar = File_Name :: wordtrigram.tra
+
+WordClass     = NoClassif & YesClassif :: YesClassif
+FileOfClasses      = File_Name :: atwrdcls.lst
+FileOfClassGrammar = File_Name :: matrixcl120.tra
+
+[Evaluate]
+
+SymbolType = phonemes & words :: phonemes
+
+SymbolFileName = File_Name :: phoneme.dat
+
+SolutionFileName = File_Name :: pr.sol
+ResultFileName = File_Name :: pr.rsl
+ReportFileName = File_Name :: pr.txt
+ReportEachSentenceFileName = File_Name :: pr_fr.txt
+ReportConfMatrixFileName = File_Name :: matr.txt
+
+ReportEachSentence = Boolean :: yes
+ReportEachSymbol = Boolean :: yes
+ReportConfMatrix = Boolean :: yes
+
+
+[Segment]
+
+AlgorithmType = WindowSearch & BeamSearch :: WindowSearch
+OutputStyle = RES & ARES :: RES
+
+WindowWidth = :: 40
+TreeVolume  = [2000 < 3000] :: 2000
+
+BeamCoefficient = [0 < 1] :: 10E-12
+
+FileOfListOfSoundFiles = File_Name :: dbfiles.lst 
+FileOfAcousticModels   = File_Name :: phonemes.tra
+
+[SymbolModels]
+
+; Timit reduced alphabet
+symb_AlphabetName = NTimitReduced;
+symb_AlphabetCardinality= 46;  
+
+;SYMB 0: /iy/
+num_sections_symb_0 = [1<5] :: 3;
+mix_order_symb_0    = [1<20] :: 3;
+max_frame_section_symb_0 = [1<50] :: 30;
+
+;SYMB 1: /ih/
+num_sections_symb_1 =[1<5] :: 3;
+mix_order_symb_1 =[1<20] :: 3;
+max_frame_section_symb_1 = [1<50] :: 30;
+
+;SYMB 2: /eh/
+num_sections_symb_2 =[1<5] :: 3;
+mix_order_symb_2 =[1<20] :: 3;
+max_frame_section_symb_2 = [1<50] :: 30;
+
+;SYMB 3: /ae/
+num_sections_symb_3 =[1<5] :: 3;
+mix_order_symb_3 =[1<20] :: 3;
+max_frame_section_symb_3 = [1<50] :: 30;
+
+;SYMB 4: /ix/
+num_sections_symb_4 =[1<5] :: 3;	
+mix_order_symb_4 =[1<20] :: 3;
+max_frame_section_symb_4 = [1<50] :: 30;
+
+;SYMB 5: /ax/
+num_sections_symb_5 =[1<5] :: 3;	
+mix_order_symb_5 =[1<20] :: 3;
+max_frame_section_symb_5 = [1<50] :: 30;
+
+;SYMB 6: /ah/
+num_sections_symb_6 =[1<5] :: 3;
+mix_order_symb_6 =[1<20] :: 3;
+max_frame_section_symb_6 = [1<50] :: 30;
+
+;SYMB 7: /uw/
+num_sections_symb_7 =[1<5] :: 3;
+mix_order_symb_7 =[1<20] :: 3;
+max_frame_section_symb_7 = [1<50] :: 30;
+
+;SYMB 8: /uh/
+num_sections_symb_8 =[1<5] :: 3;
+mix_order_symb_8 =[1<20] :: 3;
+max_frame_section_symb_8 = [1<50] :: 30;
+
+;SYMB 9: /ao/
+num_sections_symb_9 =[1<5] :: 3;
+mix_order_symb_9 =[1<20] :: 3;
+max_frame_section_symb_9 = [1<50] :: 30;
+
+;SYMB 10: /aa/
+num_sections_symb_10 =[1<5] :: 3;
+mix_order_symb_10 =[1<20] :: 3;
+max_frame_section_symb_10 = [1<50] :: 30;
+
+;SYMB 11: /ey/
+num_sections_symb_11 =[1<5] :: 3;
+mix_order_symb_11 =[1<20] :: 3;
+max_frame_section_symb_11 = [1<50] :: 30;
+
+;SYMB 12: /ay/
+num_sections_symb_12 =[1<5] :: 3;
+mix_order_symb_12 =[1<20] :: 3;
+max_frame_section_symb_12 = [1<50] :: 30;
+
+;SYMB 13: /oy/
+num_sections_symb_13 =[1<5] :: 3;    4  ;high aver.num of frames
+mix_order_symb_13 =[1<20] :: 3;   		;1    ;low num of istances
+max_frame_section_symb_13 = [1<50] :: 30;
+
+;SYMB 14: /aw/
+num_sections_symb_14 =[1<5] :: 3;
+mix_order_symb_14 =[1<20] :: 3;
+max_frame_section_symb_14 = [1<50] :: 30;
+
+;SYMB 15: /ow/
+num_sections_symb_15 =[1<5] :: 3;
+mix_order_symb_15 =[1<20] :: 3;
+max_frame_section_symb_15 = [1<50] :: 30;
+
+;SYMB 16: /l/
+num_sections_symb_16 =[1<5] :: 3;;2;
+mix_order_symb_16 =[1<20] :: 3;
+max_frame_section_symb_16 = [1<50] :: 30;
+
+;SYMB 17: /r/
+num_sections_symb_17 =[1<5] :: 3;
+mix_order_symb_17 =[1<20] :: 3;
+max_frame_section_symb_17 = [1<50] :: 30;
+
+;SYMB 18: /y/
+num_sections_symb_18 =[1<5] :: 3;
+mix_order_symb_18 =[1<20] :: 3;
+max_frame_section_symb_18 = [1<50] :: 30;
+
+;SYMB 19: /w/
+num_sections_symb_19 =[1<5] :: 3;
+mix_order_symb_19 =[1<20] :: 3;
+max_frame_section_symb_19 = [1<50] :: 30;
+
+;SYMB 20: /er/
+num_sections_symb_20 =[1<5] :: 3;
+mix_order_symb_20 =[1<20] :: 3;
+max_frame_section_symb_20 = [1<50] :: 30;
+
+;SYMB 21: /m/
+num_sections_symb_21 =[1<5] :: 3;
+mix_order_symb_21 =[1<20] :: 3;
+max_frame_section_symb_21 = [1<50] :: 30;
+
+;SYMB 22: /n/
+num_sections_symb_22 =[1<5] :: 3;
+mix_order_symb_22 =[1<20] :: 3;
+max_frame_section_symb_22 = [1<50] :: 30;
+
+;SYMB 23: /ng/
+num_sections_symb_23 =[1<5] :: 3;
+mix_order_symb_23 =[1<20] :: 3;
+max_frame_section_symb_23 = [1<50] :: 30;
+
+;SYMB 24: /ch/
+num_sections_symb_24 =[1<5] :: 3;
+mix_order_symb_24 =[1<20] :: 3;
+max_frame_section_symb_24 = [1<50] :: 30;
+
+;SYMB 25: /jh/
+num_sections_symb_25 =[1<5] :: 3;
+mix_order_symb_25 =[1<20] :: 3;
+max_frame_section_symb_25 = [1<50] :: 30;
+
+;SYMB 26: /dh/
+num_sections_symb_26 =[1<5] :: 3;
+mix_order_symb_26 =[1<20] :: 3;
+max_frame_section_symb_26 = [1<50] :: 30;
+
+;SYMB 27: /b/
+num_sections_symb_27 =[1<5] :: 3;
+mix_order_symb_27 = [1<20] :: 3;
+max_frame_section_symb_27 = [1<50] :: 30;
+
+;SYMB 28: /d/
+num_sections_symb_28 =[1<5] :: 3;
+mix_order_symb_28 =[1<20] :: 3;
+max_frame_section_symb_28 = [1<50] :: 30;
+
+;SYMB 29: /g/
+num_sections_symb_29 =[1<5] :: 3;
+mix_order_symb_29 =[1<20] :: 3;
+max_frame_section_symb_29 = [1<50] :: 30;
+
+;SYMB 30: /p/
+num_sections_symb_30  =[1<5] :: 3;
+mix_order_symb_30 = [1<20] :: 3;
+max_frame_section_symb_30 = [1<50] :: 30;
+
+;SYMB 31: /t/
+num_sections_symb_31 =[1<5] :: 3;
+mix_order_symb_31 =[1<20] :: 3;
+max_frame_section_symb_31 = [1<50] :: 30;
+
+;SYMB 32: /k/
+num_sections_symb_32 =[1<5] :: 3;
+mix_order_symb_32 =[1<20] :: 3;
+max_frame_section_symb_32 = [1<50] :: 30;
+
+;SYMB 33: /z/
+num_sections_symb_33 =[1<5] :: 3;
+mix_order_symb_33 =[1<20] :: 3;
+max_frame_section_symb_33 = [1<50] :: 30;
+
+;SYMB 34: /zh/
+num_sections_symb_34 =[1<5] :: 3;
+mix_order_symb_34 =[1<20] :: 3;
+max_frame_section_symb_34 = [1<50] :: 30;
+
+;SYMB 35: /v/
+num_sections_symb_35 =[1<5] :: 3;
+mix_order_symb_35 =[1<20] :: 3;
+max_frame_section_symb_35 = [1<50] :: 30;
+
+;SYMB 36: /f/
+num_sections_symb_36=[1<5] :: 3;
+mix_order_symb_36 =[1<20] :: 3;
+max_frame_section_symb_36 = [1<50] :: 30;
+
+;SYMB 37: /th/
+num_sections_symb_37 =[1<5] :: 3;
+mix_order_symb_37 =[1<20] :: 3;
+max_frame_section_symb_37 = [1<50] :: 30;
+
+;SYMB 38: /s/
+num_sections_symb_38 =[1<5] :: 3;
+mix_order_symb_38 =[1<20] :: 3;
+max_frame_section_symb_38 = [1<50] :: 30;
+
+;SYMB 39: /sh/
+num_sections_symb_39 =[1<5] :: 3;
+mix_order_symb_39 =[1<20] :: 3;
+max_frame_section_symb_39 = [1<50] :: 30;
+
+;SYMB 40: /hh/
+num_sections_symb_40 =[1<5] :: 3;
+mix_order_symb_40 =[1<20] :: 3;
+max_frame_section_symb_40 = [1<50] :: 30;
+
+;SYMB 41: /cl/
+num_sections_symb_41 =[1<5] :: 3;
+mix_order_symb_41 =[1<20] :: 3;
+max_frame_section_symb_41 = [1<50] :: 30;
+
+;SYMB 42: /vcl/
+num_sections_symb_42 =[1<5] :: 3;
+mix_order_symb_42 =[1<20] :: 3;
+max_frame_section_symb_42 = [1<50] :: 30;
+
+;SYMB 43: /epi/
+num_sections_symb_43 =[1<5] :: 3;
+mix_order_symb_43 =[1<20] :: 3;
+max_frame_section_symb_43 = [1<50] :: 30;
+
+;SYMB 44: /sil/
+num_sections_symb_44 =[1<5] :: 3;
+mix_order_symb_44 =[1<20] :: 3;
+max_frame_section_symb_44 = [1<50] :: 30;
+
+;SYMB 45: /dx/
+num_sections_symb_45 =[1<5] :: 3;
+mix_order_symb_45 =[1<20] :: 3;
+max_frame_section_symb_45 = [1<50] :: 30;

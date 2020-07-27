@@ -1,0 +1,32 @@
+--------------------Configuration: vetclas - Win32 Release--------------------
+Begining build with project "C:\LINXRES\Projects\projectMS\vetclas\vetclas.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/vetclas.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x410 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"vetclas.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"vetclas.pdb" /machine:I386 /out:"vetclas.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\TEMP\RSP21A.tmp" with contents </nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/vetclas.pch" /YX /Fo"..\object/" /Fd"..\object/" /FD /c 
+"C:\LINXRES\Source\vetclas\testvet.cpp"
+>
+Creating command line "cl.exe @C:\TEMP\RSP21A.tmp" 
+Creating temp file "C:\TEMP\RSP21B.tmp" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"vetclas.pdb" /machine:I386 /out:"vetclas.exe" 
+\LINXRES\Projects\projectMS\object\arraycla.obj
+\LINXRES\Projects\projectMS\object\baseclas.obj
+\LINXRES\Projects\projectMS\object\diagclas.obj
+\LINXRES\Projects\projectMS\object\diagnost.obj
+\LINXRES\Projects\projectMS\object\testvet.obj
+\LINXRES\Projects\projectMS\object\textclas.obj
+\LINXRES\Projects\projectMS\object\vetclas.obj>
+Creating command line "link.exe @C:\TEMP\RSP21B.tmp" 
+Compiling...
+testvet.cpp
+Linking...
+
+
+
+vetclas.exe - 0 error(s), 0 warning(s)

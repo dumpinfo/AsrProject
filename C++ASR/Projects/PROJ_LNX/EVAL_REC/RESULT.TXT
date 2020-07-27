@@ -1,0 +1,7 @@
+
+ Number of sentences: 1
+
+ Insertion: 1 Substitution: 1 Omission: 1
+ Number of symbols in the solution: 7
+ Number of symbols in the result: 7
+ Percent correct: 71.43%	 Accuracy: 57.14%

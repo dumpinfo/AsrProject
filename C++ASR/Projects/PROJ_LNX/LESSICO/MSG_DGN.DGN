@@ -1,0 +1,22 @@
+Tue Nov 17 20:11:24 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 20:11:24 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 20:11:24 1998:Warn.: ../../../source/lessico/main_l~1.cpp Line:48: No configure file name specified, using "res.ini"
+
+Tue Nov 17 20:11:25 1998:--  Program Ends --
+Wed Nov 18 16:45:14 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:45:14 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:45:14 1998:Warn.: ../../../source/lessico/main_l~1.cpp Line:48: No configure file name specified, using "res.ini"
+
+Wed Nov 18 16:45:21 1998:ERR.: ../../../source/lessico/lessico.cpp Line:1906: Cannot open input file : ..\..\..\sndfile\4y0011sx.lsn
+Wed Nov 18 16:45:21 1998:--  Program Ends --
+Wed Nov 18 16:45:47 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:45:47 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:45:47 1998:Warn.: ../../../source/lessico/main_l~1.cpp Line:48: No configure file name specified, using "res.ini"
+
+Wed Nov 18 16:45:53 1998:ERR.: ../../../source/lessico/lessico.cpp Line:1906: Cannot open input file : ../../../sndfile/.lsn
+Wed Nov 18 16:45:53 1998:--  Program Ends --
+Wed Nov 18 16:47:51 1998:**  Program Starts: ENABLED Check/Assert   **
+Wed Nov 18 16:47:51 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 18 1998
+Wed Nov 18 16:47:51 1998:Warn.: ../../../source/lessico/main_l~1.cpp Line:48: No configure file name specified, using "res.ini"
+
+Wed Nov 18 16:47:51 1998:--  Program Ends --

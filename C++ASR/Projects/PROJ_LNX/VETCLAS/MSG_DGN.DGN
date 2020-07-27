@@ -1,0 +1,50 @@
+Mon Aug  3 12:04:45 1998:**  Program Starts: ENABLED Check/Assert   **
+Mon Aug  3 12:04:45 1998:** Ver. 4.0 of 16/9/97 File:../../../source/baseclas/diagnost.cpp Aug  3 1998
+Mon Aug  3 12:04:45 1998:Warn.: ../../../source/vetclas/arraycla.cpp Line:42: Array class Version:V. 4.0 of 23/9/97 ../../../source/vetclas/arraycla.cpp c.Aug  3 1998
+Mon Aug  3 12:04:45 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:30: Test array ok ! 
+Mon Aug  3 12:04:45 1998:Warn.: ../../../source/vetclas/vetclas.cpp Line:83: vetclass version4.0 of 10/01/98 ../../../source/vetclas/vetclas.cppc. Aug  3 1998
+Mon Aug  3 12:04:46 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:33: The test vector ok ! 
+Mon Aug  3 12:04:46 1998:Warn.: ../../../source/vetclas/diagclas.cpp Line:35: diagclas versionV. 4.0 of 27/4/98 ../../../source/vetclas/diagclas.cpp c.Aug  3 1998
+Mon Aug  3 12:04:46 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:36: 
+Test diagonal matrix is ok ! 
+Mon Aug  3 12:04:50 1998:--  Program Ends --
+Mon Aug  3 16:36:35 1998:**  Program Starts: ENABLED Check/Assert   **
+Mon Aug  3 16:36:35 1998:** Ver. 4.0 of 16/9/97 File:../../../source/baseclas/diagnost.cpp Aug  3 1998
+Mon Aug  3 16:36:35 1998:Warn.: ../../../source/vetclas/arraycla.cpp Line:42: Array class Version:V. 4.0 of 23/9/97 ../../../source/vetclas/arraycla.cpp c.Aug  3 1998
+Mon Aug  3 16:36:35 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:30: Test array ok ! 
+Mon Aug  3 16:36:35 1998:Warn.: ../../../source/vetclas/vetclas.cpp Line:83: vetclass version4.0 of 10/01/98 ../../../source/vetclas/vetclas.cppc. Aug  3 1998
+Mon Aug  3 16:36:36 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:33: The test vector ok ! 
+Mon Aug  3 16:36:36 1998:Warn.: ../../../source/vetclas/diagclas.cpp Line:35: diagclas versionV. 4.0 of 27/4/98 ../../../source/vetclas/diagclas.cpp c.Aug  3 1998
+Mon Aug  3 16:36:36 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:36: 
+Test diagonal matrix is ok ! 
+Mon Aug  3 16:36:40 1998:--  Program Ends --
+Tue Aug  4 15:26:42 1998:**  Program Starts: disabled Check/Assert   **
+Tue Aug  4 15:26:42 1998:** Ver. 4.0 of 16/9/97 File:../../../source/baseclas/diagnost.cpp Aug  4 1998
+Tue Aug  4 15:26:42 1998:Warn.: ../../../source/vetclas/arraycla.cpp Line:42: Array class Version:V. 4.0 of 23/9/97 ../../../source/vetclas/arraycla.cpp c.Aug  4 1998
+Tue Aug  4 15:26:42 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:30: Test array ok ! 
+Tue Aug  4 15:26:42 1998:Warn.: ../../../source/vetclas/vetclas.cpp Line:83: vetclass version4.0 of 10/01/98 ../../../source/vetclas/vetclas.cppc. Aug  4 1998
+Tue Aug  4 15:26:42 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:33: The test vector ok ! 
+Tue Aug  4 15:26:42 1998:Warn.: ../../../source/vetclas/diagclas.cpp Line:35: diagclas versionV. 4.0 of 27/4/98 ../../../source/vetclas/diagclas.cpp c.Aug  4 1998
+Tue Aug  4 15:26:42 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:36: 
+Test diagonal matrix is ok ! 
+Tue Aug  4 15:26:44 1998:--  Program Ends --
+Tue Nov 17 20:30:00 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 20:30:00 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 20:30:00 1998:Warn.: ../../../source/vetclas/arraycla.cpp Line:55: Array class Version:V. 6.0 of 19/11/98 ../../../source/vetclas/arraycla.cpp c.Nov 17 1998
+Tue Nov 17 20:30:00 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:43: Test array ok ! 
+Tue Nov 17 20:30:00 1998:Warn.: ../../../source/vetclas/vetclas.cpp Line:96: vetclass version6.0 of 19/11/98 ../../../source/vetclas/vetclas.cppc. Nov 17 1998
+Tue Nov 17 20:30:00 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:46: The test vector ok ! 
+Tue Nov 17 20:30:00 1998:Warn.: ../../../source/vetclas/diagclas.cpp Line:48: diagclas versionV. 6.0 of 19/11/98 ../../../source/vetclas/diagclas.cpp c.Nov 17 1998
+Tue Nov 17 20:30:00 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:49: 
+Test diagonal matrix is ok ! 
+Tue Nov 17 20:30:03 1998:--  Program Ends --
+Wed Nov 18 12:52:37 1998:**  Program Starts: disabled Check/Assert   **
+Wed Nov 18 12:52:37 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Wed Nov 18 12:52:37 1998:Warn.: ../../../source/vetclas/arraycla.cpp Line:55: Array class Version:V. 6.0 of 19/11/98 ../../../source/vetclas/arraycla.cpp c.Nov 17 1998
+Wed Nov 18 12:52:37 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:43: Test array ok ! 
+Wed Nov 18 12:52:37 1998:Warn.: ../../../source/vetclas/vetclas.cpp Line:96: vetclass version6.0 of 19/11/98 ../../../source/vetclas/vetclas.cppc. Nov 18 1998
+Wed Nov 18 12:52:37 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:46: The test vector ok ! 
+Wed Nov 18 12:52:37 1998:Warn.: ../../../source/vetclas/diagclas.cpp Line:48: diagclas versionV. 6.0 of 19/11/98 ../../../source/vetclas/diagclas.cpp c.Nov 17 1998
+Wed Nov 18 12:52:37 1998:Warn.: ../../../source/vetclas/testvet.cpp Line:49: 
+Test diagonal matrix is ok ! 
+Wed Nov 18 12:52:44 1998:--  Program Ends --

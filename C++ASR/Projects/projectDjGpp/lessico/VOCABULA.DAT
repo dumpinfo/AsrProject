@@ -1,0 +1,20 @@
+Corpus_dimension: 24
+Vocabulary_cardinality: 14
+
+Phonetic_transcriptions_of_words:
+word  #pronounces  #phonemes prob_pronounce phonemes
+airlines	1	6	0	/eh/r/l/ay/n/z/
+boston	1	6	0	/b/ao/s/t/ax/n/
+cheapest	1	6	0	/ch/iy/p/ax/s/t/
+denver	1	6	0	/d/eh/n/v/ax/r/
+depart	1	6	0	/d/ih/p/aa/r/t/
+fare	1	3	0	/f/eh/r/
+find	1	4	0	/f/ay/n/d/
+from	1	4	0	/f/r/ax/m/
+one	1	3	0	/w/ax/n/
+silence	1	1	0	/sil/
+the	1	2	0	/dh/ax/
+to	1	2	0	/t/uw/
+way	1	2	0	/w/ey/
+which	1	3	0	/w/ih/ch/
+

@@ -1,0 +1,37 @@
+Thu Nov 19 11:52:27 1998:**  Program Starts: disabled Check/Assert   **
+Thu Nov 19 11:52:27 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 18 1998
+Thu Nov 19 11:52:27 1998:Warn.: C:\newcd\cd\Source\recog\recog.cpp Line:67: No config file name specified, using "res.ini"
+
+Thu Nov 19 11:52:34 1998:ERR.: C:\newcd\cd\Source\ioclass\Soundlab.cpp Line:374: Could not open file list files:atis_lx.lst
+Thu Nov 19 11:52:34 1998:--  Program Ends --
+Thu Nov 19 11:52:34 1998:**  Program Starts: disabled Check/Assert   **
+Thu Nov 19 11:52:34 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 18 1998
+Thu Nov 19 11:52:34 1998:Warn.: C:\newcd\cd\Source\eval_rec\eval_rec.cpp Line:49: No configure file name specified, using "res.ini"
+
+Thu Nov 19 11:52:36 1998:--  Program Ends --
+Thu Nov 19 11:52:54 1998:**  Program Starts: disabled Check/Assert   **
+Thu Nov 19 11:52:54 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 18 1998
+Thu Nov 19 11:52:54 1998:Warn.: C:\newcd\cd\Source\recog\recog.cpp Line:67: No config file name specified, using "res.ini"
+
+Thu Nov 19 11:53:11 1998:ERR.: C:\newcd\cd\Source\ioclass\Soundfil.cpp Line:530: Could not open file: ../../sndfile/4y0021sx.fts
+Thu Nov 19 11:53:11 1998:--  Program Ends --
+Thu Nov 19 11:53:11 1998:**  Program Starts: disabled Check/Assert   **
+Thu Nov 19 11:53:11 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 18 1998
+Thu Nov 19 11:53:11 1998:Warn.: C:\newcd\cd\Source\eval_rec\eval_rec.cpp Line:49: No configure file name specified, using "res.ini"
+
+Thu Nov 19 11:53:13 1998:--  Program Ends --
+Thu Nov 19 11:55:40 1998:**  Program Starts: disabled Check/Assert   **
+Thu Nov 19 11:55:40 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 18 1998
+Thu Nov 19 11:55:40 1998:Warn.: C:\newcd\cd\Source\recog\recog.cpp Line:67: No config file name specified, using "res.ini"
+
+Thu Nov 19 11:55:40 1998:Warn.: C:\newcd\cd\Source\ioclass\Soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::0
+Thu Nov 19 11:57:49 1998:Warn.: C:\newcd\cd\Source\recog\recog.cpp Line:82: Start of recognition
+
+Thu Nov 19 12:04:07 1998:Warn.: C:\newcd\cd\Source\recog\recog.cpp Line:159: End of recognition
+
+Thu Nov 19 12:04:08 1998:--  Program Ends --
+Thu Nov 19 12:04:08 1998:**  Program Starts: disabled Check/Assert   **
+Thu Nov 19 12:04:08 1998:** Ver. 6.0 of 19/11/98 File:C:\newcd\cd\Source\baseclas\diagnost.cpp Nov 18 1998
+Thu Nov 19 12:04:08 1998:Warn.: C:\newcd\cd\Source\eval_rec\eval_rec.cpp Line:49: No configure file name specified, using "res.ini"
+
+Thu Nov 19 12:04:10 1998:--  Program Ends --

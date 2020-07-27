@@ -1,0 +1,10 @@
+Tue Aug  4 15:25:10 1998:**  Program Starts: disabled Check/Assert   **
+Tue Aug  4 15:25:10 1998:** Ver. 4.0 of 16/9/97 File:../../../source/baseclas/diagnost.cpp Aug  4 1998
+Tue Aug  4 15:25:10 1998:Warn.: ../../../source/segment/segment.cpp Line:53: No configfile name specified, using: res.ini
+Tue Aug  4 15:25:11 1998:Warn.: ../../../source/ioclass/soundlab.cpp Line:458: Total Time: hh::mm::ss = 0::0::5
+Tue Aug  4 15:25:29 1998:--  Program Ends --
+Tue Nov 17 20:16:18 1998:**  Program Starts: disabled Check/Assert   **
+Tue Nov 17 20:16:18 1998:** Ver. 6.0 of 19/11/98 File:../../../source/baseclas/diagnost.cpp Nov 17 1998
+Tue Nov 17 20:16:18 1998:Warn.: ../../../source/segment/segment.cpp Line:66: No configfile name specified, using: res.ini
+Tue Nov 17 20:16:19 1998:Warn.: ../../../source/ioclass/soundlab.cpp Line:475: Total Time: hh::mm::ss = 0::0::6
+Tue Nov 17 20:17:20 1998:--  Program Ends --

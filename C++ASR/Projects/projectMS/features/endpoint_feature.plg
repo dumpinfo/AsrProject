@@ -1,0 +1,40 @@
+--------------------Configuration: endpoint_feature - Win32 Release--------------------
+Begining build with project "C:\LINXRES\Projects\projectMS\endpoint_feature\endpoint_feature.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/endpoint_feature.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x410 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"endpoint_feature.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"endpoint_feature.pdb" /machine:I386 /out:"endpoint_feature.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\TEMP\RSP1F7.tmp" with contents </nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/endpoint_feature.pch" /YX /Fo"..\object/" /Fd"..\object/" /FD /c 
+"C:\LINXRES\Source\features\endpoint.cpp"
+>
+Creating command line "cl.exe @C:\TEMP\RSP1F7.tmp" 
+Creating temp file "C:\TEMP\RSP1F8.tmp" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"endpoint_feature.pdb" /machine:I386 /out:"endpoint_feature.exe" 
+\LINXRES\Projects\projectMS\object\arraycla.obj
+\LINXRES\Projects\projectMS\object\diagclas.obj
+\LINXRES\Projects\projectMS\object\diagnost.obj
+\LINXRES\Projects\projectMS\object\dspproc.obj
+\LINXRES\Projects\projectMS\object\endpoint.obj
+\LINXRES\Projects\projectMS\object\feature.obj
+\LINXRES\Projects\projectMS\object\labelcl.obj
+\LINXRES\Projects\projectMS\object\polimorf.obj
+\LINXRES\Projects\projectMS\object\resconf.obj
+\LINXRES\Projects\projectMS\object\soundfil.obj
+\LINXRES\Projects\projectMS\object\soundlab.obj
+\LINXRES\Projects\projectMS\object\textclas.obj
+\LINXRES\Projects\projectMS\object\tspecbas.obj
+\LINXRES\Projects\projectMS\object\vetclas.obj>
+Creating command line "link.exe @C:\TEMP\RSP1F8.tmp" 
+Compiling...
+endpoint.cpp
+Linking...
+LINK : warning LNK4098: defaultlib "LIBC" conflicts with use of other libs; use /NODEFAULTLIB:library
+
+
+
+endpoint_feature.exe - 0 error(s), 1 warning(s)

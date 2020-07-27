@@ -1,0 +1,704 @@
+--------------------Configuration: baseclas_polimorph - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\baseclas\baseclas_polimorph.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/baseclas_polimorph.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"baseclas_polimorph.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"baseclas_polimorph.pdb" /debug /machine:I386 /out:"baseclas_polimorph.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPA263.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/baseclas_polimorph.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\baseclas\baseclas.cpp"
+"C:\newcd\cd\Source\baseclas\diagnost.cpp"
+"C:\newcd\cd\Source\baseclas\Polimorf.cpp"
+"C:\newcd\cd\Source\baseclas\Politest.cpp"
+"C:\newcd\cd\Source\baseclas\textclas.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA263.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPA264.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"baseclas_polimorph.pdb" /debug /machine:I386 /out:"baseclas_polimorph.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\baseclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\Politest.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPA264.TMP" 
+Compiling...
+baseclas.cpp
+diagnost.cpp
+Polimorf.cpp
+Politest.cpp
+textclas.cpp
+Linking...
+
+
+
+baseclas_polimorph.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: baseclas_testbase - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\baseclas\baseclas_testbase.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/baseclas_testbase.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"baseclas_testbase.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"baseclas_testbase.pdb" /debug /machine:I386 /out:"baseclas_testbase.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPB011.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/baseclas_testbase.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\baseclas\Testbase.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPB011.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPB012.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"baseclas_testbase.pdb" /debug /machine:I386 /out:"baseclas_testbase.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\baseclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\Testbase.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPB012.TMP" 
+Compiling...
+Testbase.cpp
+Linking...
+
+
+
+baseclas_testbase.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: embedded - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\embedded\embedded.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/embedded.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"embedded.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"embedded.pdb" /debug /machine:I386 /out:"embedded.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPB091.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/embedded.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\vetclas\arraycla.cpp"
+"C:\newcd\cd\Source\vetclas\diagclas.cpp"
+"C:\newcd\cd\Source\features\Dspproc.cpp"
+"C:\newcd\cd\Source\embedded\Emb_b_w.cpp"
+"C:\newcd\cd\Source\embedded\emb_train.cpp"
+"C:\newcd\cd\Source\features\Feature.cpp"
+"C:\newcd\cd\Source\ioclass\labelcl.cpp"
+"C:\newcd\cd\Source\resconf\resconf.cpp"
+"C:\newcd\cd\Source\ioclass\Soundfil.cpp"
+"C:\newcd\cd\Source\ioclass\Soundlab.cpp"
+"C:\newcd\cd\Source\tspecmod\Tspecbas.cpp"
+"C:\newcd\cd\Source\vetclas\vetclas.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPB091.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPB092.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"embedded.pdb" /debug /machine:I386 /out:"embedded.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\dspproc.obj
+\newcd\cd\Projects\projectMS\objects\Emb_b_w.obj
+\newcd\cd\Projects\projectMS\objects\emb_train.obj
+\newcd\cd\Projects\projectMS\objects\feature.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\soundfil.obj
+\newcd\cd\Projects\projectMS\objects\soundlab.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\tspecbas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPB092.TMP" 
+Compiling...
+arraycla.cpp
+diagclas.cpp
+Dspproc.cpp
+Emb_b_w.cpp
+emb_train.cpp
+Feature.cpp
+labelcl.cpp
+resconf.cpp
+Soundfil.cpp
+Soundlab.cpp
+Tspecbas.cpp
+vetclas.cpp
+Linking...
+
+
+
+embedded.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: endpoint_feature - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\features\endpoint_feature.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/endpoint_feature.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"endpoint_feature.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"endpoint_feature.pdb" /debug /machine:I386 /out:"endpoint_feature.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPC004.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/endpoint_feature.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\features\endpoint.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC004.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPC005.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"endpoint_feature.pdb" /debug /machine:I386 /out:"endpoint_feature.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\dspproc.obj
+\newcd\cd\Projects\projectMS\objects\endpoint.obj
+\newcd\cd\Projects\projectMS\objects\feature.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\soundfil.obj
+\newcd\cd\Projects\projectMS\objects\soundlab.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\tspecbas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPC005.TMP" 
+Compiling...
+endpoint.cpp
+Linking...
+
+
+
+endpoint_feature.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: eval_rec - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\eval_rec\eval_rec.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/eval_rec.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"eval_rec.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"eval_rec.pdb" /debug /machine:I386 /out:"eval_rec.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPC0C1.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/eval_rec.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\eval_rec\eval_rec.cpp"
+"C:\newcd\cd\Source\eval_rec\evalopt.cpp"
+"C:\newcd\cd\Source\eval_rec\Evaluate.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC0C1.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPC0C2.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"eval_rec.pdb" /debug /machine:I386 /out:"eval_rec.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\eval_rec.obj
+\newcd\cd\Projects\projectMS\objects\evalopt.obj
+\newcd\cd\Projects\projectMS\objects\Evaluate.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPC0C2.TMP" 
+Compiling...
+eval_rec.cpp
+evalopt.cpp
+Evaluate.cpp
+Linking...
+
+
+
+eval_rec.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: eval_segm - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\eval_segm\eval_segm.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/eval_segm.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"eval_segm.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"eval_segm.pdb" /debug /machine:I386 /out:"eval_segm.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPC1D2.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/eval_segm.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\eval_segm\eval.cpp"
+"C:\newcd\cd\Source\eval_segm\main_eval.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC1D2.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPC1D3.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"eval_segm.pdb" /debug /machine:I386 /out:"eval_segm.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\eval.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\main_eval.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPC1D3.TMP" 
+Compiling...
+eval.cpp
+main_eval.cpp
+Linking...
+
+
+
+eval_segm.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: feature - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\features\feature.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/feature.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"feature.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"feature.pdb" /debug /machine:I386 /out:"feature.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPC2C0.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/feature.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\features\test_feature.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC2C0.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPC2C1.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"feature.pdb" /debug /machine:I386 /out:"feature.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\baseclas.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\dspproc.obj
+\newcd\cd\Projects\projectMS\objects\feature.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\soundfil.obj
+\newcd\cd\Projects\projectMS\objects\soundlab.obj
+\newcd\cd\Projects\projectMS\objects\test_feature.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPC2C1.TMP" 
+Compiling...
+test_feature.cpp
+Linking...
+
+
+
+feature.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: initiali - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\initiali\initiali.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/initiali.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"initiali.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"initiali.pdb" /debug /machine:I386 /out:"initiali.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPC353.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/initiali.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\Initiali\iniopt.cpp"
+"C:\newcd\cd\Source\Initiali\initiali.cpp"
+"C:\newcd\cd\Source\Initiali\proiniti.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC353.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPC354.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"initiali.pdb" /debug /machine:I386 /out:"initiali.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\dspproc.obj
+\newcd\cd\Projects\projectMS\objects\feature.obj
+\newcd\cd\Projects\projectMS\objects\iniopt.obj
+\newcd\cd\Projects\projectMS\objects\initiali.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\proiniti.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\soundfil.obj
+\newcd\cd\Projects\projectMS\objects\soundlab.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\tspecbas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPC354.TMP" 
+Compiling...
+iniopt.cpp
+initiali.cpp
+proiniti.cpp
+Linking...
+
+
+
+initiali.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: ioclass - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\ioclass\ioclass.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/ioclass.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"ioclass.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"ioclass.pdb" /debug /machine:I386 /out:"ioclass.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPD142.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/ioclass.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\ioclass\testione.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPD142.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPD143.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"ioclass.pdb" /debug /machine:I386 /out:"ioclass.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\baseclas.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\soundfil.obj
+\newcd\cd\Projects\projectMS\objects\soundlab.obj
+\newcd\cd\Projects\projectMS\objects\testione.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPD143.TMP" 
+Compiling...
+testione.cpp
+Linking...
+
+
+
+ioclass.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: lessico - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\lessico\lessico.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/lessico.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"lessico.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"lessico.pdb" /debug /machine:I386 /out:"lessico.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPD1D5.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/lessico.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\lessico\lessico.cpp"
+"C:\newcd\cd\Source\lessico\lexopt.cpp"
+"C:\newcd\cd\Source\lessico\main_lessico.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPD1D5.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPD1E0.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"lessico.pdb" /debug /machine:I386 /out:"lessico.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\lessico.obj
+\newcd\cd\Projects\projectMS\objects\lexopt.obj
+\newcd\cd\Projects\projectMS\objects\main_lessico.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPD1E0.TMP" 
+Compiling...
+lessico.cpp
+lexopt.cpp
+main_lessico.cpp
+Linking...
+
+
+
+lessico.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: print_feature - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\features\print_feature.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/print_feature.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x410 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"print_feature.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"print_feature.pdb" /debug /machine:I386 /out:"print_feature.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPD335.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/print_feature.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\features\print_file_feat.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPD335.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPD336.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"print_feature.pdb" /debug /machine:I386 /out:"print_feature.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\dspproc.obj
+\newcd\cd\Projects\projectMS\objects\feature.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\print_file_feat.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\soundfil.obj
+\newcd\cd\Projects\projectMS\objects\soundlab.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPD336.TMP" 
+Compiling...
+print_file_feat.cpp
+Linking...
+
+
+
+print_feature.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: print_phon_feature - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\features\print_phon_feature.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/print_phon_feature.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x410 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"print_phon_feature.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"print_phon_feature.pdb" /debug /machine:I386 /out:"print_phon_feature.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPE031.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/print_phon_feature.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\features\print_ph_feat.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPE031.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPE033.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"print_phon_feature.pdb" /debug /machine:I386 /out:"print_phon_feature.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\dspproc.obj
+\newcd\cd\Projects\projectMS\objects\feature.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\print_ph_feat.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\soundfil.obj
+\newcd\cd\Projects\projectMS\objects\soundlab.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPE033.TMP" 
+Compiling...
+print_ph_feat.cpp
+Linking...
+
+
+
+print_phon_feature.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: recog - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\recog\recog.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/recog.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"recog.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"recog.pdb" /debug /machine:I386 /out:"recog.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPE0F1.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/recog.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\recog\hypolist.cpp"
+"C:\newcd\cd\Source\recog\recog.cpp"
+"C:\newcd\cd\Source\recog\recopt.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPE0F1.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPE0F2.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"recog.pdb" /debug /machine:I386 /out:"recog.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\dspproc.obj
+\newcd\cd\Projects\projectMS\objects\feature.obj
+\newcd\cd\Projects\projectMS\objects\hypolist.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\lessico.obj
+\newcd\cd\Projects\projectMS\objects\lexopt.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\recog.obj
+\newcd\cd\Projects\projectMS\objects\recopt.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\soundfil.obj
+\newcd\cd\Projects\projectMS\objects\soundlab.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\tspecbas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPE0F2.TMP" 
+Compiling...
+hypolist.cpp
+recog.cpp
+recopt.cpp
+Linking...
+
+
+
+recog.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: resconf - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\resconf\resconf.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/resconf.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"resconf.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"resconf.pdb" /debug /machine:I386 /out:"resconf.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPE280.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/resconf.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\resconf\Testconf.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPE280.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPE281.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"resconf.pdb" /debug /machine:I386 /out:"resconf.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\baseclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\Testconf.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPE281.TMP" 
+Compiling...
+Testconf.cpp
+Linking...
+
+
+
+resconf.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: segment - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\segment\segment.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/segment.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"segment.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"segment.pdb" /debug /machine:I386 /out:"segment.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPE312.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/segment.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\segment\hypolistseg.cpp"
+"C:\newcd\cd\Source\segment\segment.cpp"
+"C:\newcd\cd\Source\segment\segopt.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPE312.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPE313.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"segment.pdb" /debug /machine:I386 /out:"segment.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\dspproc.obj
+\newcd\cd\Projects\projectMS\objects\feature.obj
+\newcd\cd\Projects\projectMS\objects\hypolistseg.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\segment.obj
+\newcd\cd\Projects\projectMS\objects\segopt.obj
+\newcd\cd\Projects\projectMS\objects\soundfil.obj
+\newcd\cd\Projects\projectMS\objects\soundlab.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\tspecbas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPE313.TMP" 
+Compiling...
+hypolistseg.cpp
+segment.cpp
+segopt.cpp
+Linking...
+
+
+
+segment.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: training - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\training\training.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/training.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"training.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"training.pdb" /debug /machine:I386 /out:"training.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPF0B5.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/training.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\training\Baumwelc.cpp"
+"C:\newcd\cd\Source\training\Protrain.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPF0B5.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPF0C0.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"training.pdb" /debug /machine:I386 /out:"training.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\Baumwelc.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\dspproc.obj
+\newcd\cd\Projects\projectMS\objects\feature.obj
+\newcd\cd\Projects\projectMS\objects\labelcl.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\Protrain.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\soundfil.obj
+\newcd\cd\Projects\projectMS\objects\soundlab.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\tspecbas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPF0C0.TMP" 
+Compiling...
+Baumwelc.cpp
+Protrain.cpp
+Linking...
+
+
+
+training.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: utils - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\utils\utils.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/utils.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"utils.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"utils.pdb" /debug /machine:I386 /out:"utils.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPF1C0.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/utils.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\utils\multifop.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPF1C0.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPF1C1.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:console /incremental:no /pdb:"utils.pdb" /debug /machine:I386 /out:"utils.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\baseclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\multifop.obj
+\newcd\cd\Projects\projectMS\objects\Polimorf.obj
+\newcd\cd\Projects\projectMS\objects\resconf.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPF1C1.TMP" 
+Compiling...
+multifop.cpp
+Linking...
+
+
+
+utils.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: vetclas - Win32 Debug--------------------
+Begining build with project "C:\newcd\cd\Projects\projectMS\vetclas\vetclas.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/vetclas.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"vetclas.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"vetclas.pdb" /debug /machine:I386 /out:"vetclas.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPF274.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"..\objects/" /Fp"..\objects/vetclas.pch" /YX /Fo"..\objects/" /Fd"..\objects/" /FD /c 
+"C:\newcd\cd\Source\vetclas\testvet.cpp"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPF274.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPF275.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"vetclas.pdb" /debug /machine:I386 /out:"vetclas.exe" /pdbtype:sept 
+\newcd\cd\Projects\projectMS\objects\arraycla.obj
+\newcd\cd\Projects\projectMS\objects\baseclas.obj
+\newcd\cd\Projects\projectMS\objects\diagclas.obj
+\newcd\cd\Projects\projectMS\objects\Diagnost.obj
+\newcd\cd\Projects\projectMS\objects\testvet.obj
+\newcd\cd\Projects\projectMS\objects\Textclas.obj
+\newcd\cd\Projects\projectMS\objects\vetclas.obj>
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPF275.TMP" 
+Compiling...
+testvet.cpp
+Linking...
+
+
+
+vetclas.exe - 0 error(s), 0 warning(s)
