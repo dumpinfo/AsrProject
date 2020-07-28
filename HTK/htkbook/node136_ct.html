@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Mutiple Stream Systems</TITLE>
+<META NAME="description" CONTENT="Contents of Mutiple Stream Systems">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node135_mn.html">
+<LINK REL="up" HREF="node126_mn.html">
+<LINK REL="next" HREF="node137_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03617000000000000000">&#160;</A><A NAME="s:streamadapt">&#160;</A>
+<BR>
+Mutiple Stream Systems
+</H2>
+
+The specification of the base-class components are given in terms
+of the Gaussian component. In HTK this is specified for a particular
+stream of the HMM state. When multiple streams are used there are two 
+situations to consider<A NAME="tex2html42" HREF="footnode_mn.html#foot16425" TARGET="footer"><SUP><SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A>.
+
+<P>
+First, if the streams have the same number of components, then transforms
+may be shared between different streams. For example it may be decided that
+the same linear transform is to be used by the static stream, the delta
+stream and the delta-delta stream.
+
+<P>
+Second, if the streams have different dimensions associated with them. For
+this case the root node is a special node for which a transform cannot be 
+generated. It is required to partition the Gaussian components so that 
+all subsequent nodes have the same dimensionality associated with them.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

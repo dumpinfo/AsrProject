@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node315_mn.html">
+<LINK REL="previous" HREF="node313_mn.html">
+<LINK REL="up" HREF="node312_mn.html">
+<LINK REL="next" HREF="node315_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051102000000000000000">&#160;</A><A NAME="s:HList-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HList is invoked by typing the command line
+<PRE>
+   HList [options] file ...
+</PRE>
+This causes the contents of each <TT>file</TT> to be listed to the
+standard output.  If no files are given and the source format
+is <TT>HAUDIO</TT>, then the audio source is listed.  The source
+form of the data can be converted and listed in a variety of target forms by
+appropriate settings of the configuration variables, in particular
+<TT>TARGETKIND</TT><A NAME="tex2html83" HREF="footnode_mn.html#foot28348" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">8</SPAN></SUP></A>.
+
+<P>
+The allowable options to HL<SMALL>IST</SMALL> are
+
+<P>
+
+<DL COMPACT>
+<DT><TT>-d</TT>
+<DD>Force each observation to be listed as discrete VQ symbols.
+    For this to be possible the source must be either <TT>DISCRETE</TT>
+    or have an associated VQ table specified via the <TT>VQTABLE</TT>
+    configuration variable.
+
+<P>
+<DT><TT>-e N</TT>
+<DD>End listing samples at sample index N. 
+
+<P>
+<DT><TT>-h</TT>
+<DD>Print the source header information.
+
+<P>
+<DT><TT>-i N</TT>
+<DD>Print N items on each line.
+
+<P>
+<DT><TT>-n N</TT>
+<DD>Display the data split into N independent data streams.
+
+<P>
+<DT><TT>-o</TT>
+<DD>Show the observation structure.  This identifies the r&#244;le
+      of each item in each sample vector.
+
+<P>
+<DT><TT>-p</TT>
+<DD>Playback the audio.  When sourcing from an audio device,
+     this option enables the playback buffer so that after displaying the
+     sampled data, the captured audio is replayed.
+
+<P>
+<DT><TT>-r</TT>
+<DD>Print the raw data only.  This is useful for exporting a file
+     into a program which can only accept simple character format data.
+
+<P>
+<DT><TT>-s N</TT>
+<DD>Start listing samples from sample index N.  The first sample
+index is 0.
+
+<P>
+<DT><TT>-t</TT>
+<DD>Print the target header information.
+
+<P>
+
+  <DT><TT>-F fmt</TT>
+<DD>Set the source data format to <TT>fmt</TT>.
+
+<P>
+</DD>
+</DL>
+
+HL<SMALL>IST</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

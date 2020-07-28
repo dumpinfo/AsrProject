@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Language Modelling Reference</TITLE>
+<META NAME="description" CONTENT="Contents of Language Modelling Reference">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node192_mn.html">
+<LINK REL="up" HREF="node175_mn.html">
+<LINK REL="next" HREF="node207_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04300000000000000000">&#160;</A><A NAME="c:hlmfiles">&#160;</A>
+<BR>
+Language Modelling Reference
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:LTool">&#160;</A><IMG
+ WIDTH="547" HEIGHT="297" ALIGN="MIDDLE" BORDER="0"
+ SRC="img610.png"
+ ALT="$\textstyle \parbox{120mm}{ \begin{center}\setlength{\epsfxsize}{120mm}
+\epsfbox{HTKFigs//LTool.eps}
+\end{center} }$">
+</DIV>
+
+<P>
+As noted in the introduction, building a language model with the HTK tools is a two stage process. In the first stage, the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram data is
+accumulated and in the second stage, language models are estimated
+from this data.  The <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram data consists of a set of gram files and
+their associated word map.  Each gram file contains a list of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams
+and their counts.  Each <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram is represented by a sequence of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>
+integer word indices and the word map relates each of these indices to
+the actual orthographic word form.  As a special case, a word map
+containing just words and no indices acts as a simple <SPAN  CLASS="textit">word
+list</SPAN>. 
+
+<P>
+In many cases, a class map is also required.  Class maps give a name
+to a subset of words and associate an index with that name.  Once
+defined, a class name can be used like a regular word and, in
+particular, it can be listed in a word map.  In their most general
+form, class maps are used to build class-based language models.
+However, they are also needed for most word-based language models
+because they allow a class to be defined for <SPAN  CLASS="textit">unknown</SPAN> words.
+
+<P>
+This chapter includes descriptions of three basic types of data file: gram
+file, word map file, and class map file.  As shown in the figure, each
+file type is supported by a specific HTK module which provides the
+required input and output and the other related operations.
+
+<P>
+Also described in this chapter is a fourth type of data file called a
+<SPAN  CLASS="textit">frequency-of-frequency</SPAN> or <SPAN  CLASS="textit">FoF</SPAN> file.  A FoF file
+contains a count of the number of times an <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram occurred just once,
+twice, three times, etc.  It is used with Turing-Good discounting
+(although LB<SMALL>UILD</SMALL> can generate FoF counts on the fly) but it
+can also be used to estimate the number of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams which will be
+included in the final language models.
+
+<P>
+The various language model formats, for both word and class-based
+models, are also described in detail.
+
+<P>
+Trace levels for each language modelling library
+modules are also described - see the tool documentation for details
+of tool level tracing options.  Finally, run-time and compile-time
+settings are documented.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html4168" HREF="node207_mn.html" TARGET="main"><SMALL>Words and Classes</SMALL></A>
+<LI><A NAME="tex2html4169" HREF="node208_mn.html" TARGET="main"><SMALL>Data File Headers</SMALL></A>
+<LI><A NAME="tex2html4170" HREF="node209_mn.html" TARGET="main"><SMALL>Word Map Files</SMALL></A>
+<LI><A NAME="tex2html4171" HREF="node210_mn.html" TARGET="main"><SMALL>Class Map Files</SMALL></A>
+<LI><A NAME="tex2html4172" HREF="node211_mn.html" TARGET="main"><SMALL>Gram Files</SMALL></A>
+<LI><A NAME="tex2html4173" HREF="node212_mn.html" TARGET="main"><SMALL>Frequency-of-frequency (FoF) Files</SMALL></A>
+<LI><A NAME="tex2html4174" HREF="node213_mn.html" TARGET="main"><SMALL>Word LM file formats</SMALL></A>
+<UL>
+<LI><A NAME="tex2html4175" HREF="node214_mn.html" TARGET="main"><SMALL>The ARPA-MIT LM format</SMALL></A>
+<LI><A NAME="tex2html4176" HREF="node215_mn.html" TARGET="main"><SMALL>The modified ARPA-MIT format</SMALL></A>
+<LI><A NAME="tex2html4177" HREF="node216_mn.html" TARGET="main"><SMALL>The binary LM format</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html4178" HREF="node217_mn.html" TARGET="main"><SMALL>Class LM file formats</SMALL></A>
+<UL>
+<LI><A NAME="tex2html4179" HREF="node218_mn.html" TARGET="main"><SMALL>Class counts format</SMALL></A>
+<LI><A NAME="tex2html4180" HREF="node219_mn.html" TARGET="main"><SMALL>The class probabilities format</SMALL></A>
+<LI><A NAME="tex2html4181" HREF="node220_mn.html" TARGET="main"><SMALL>The class LM three file format</SMALL></A>
+<LI><A NAME="tex2html4182" HREF="node221_mn.html" TARGET="main"><SMALL>The class LM single file format</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html4183" HREF="node222_mn.html" TARGET="main"><SMALL>Language modelling tracing</SMALL></A>
+<UL>
+<LI><A NAME="tex2html4184" HREF="node223_mn.html" TARGET="main"><SMALL>LCMap</SMALL></A>
+<LI><A NAME="tex2html4185" HREF="node224_mn.html" TARGET="main"><SMALL>LGBase</SMALL></A>
+<LI><A NAME="tex2html4186" HREF="node225_mn.html" TARGET="main"><SMALL>LModel</SMALL></A>
+<LI><A NAME="tex2html4187" HREF="node226_mn.html" TARGET="main"><SMALL>LPCalc</SMALL></A>
+<LI><A NAME="tex2html4188" HREF="node227_mn.html" TARGET="main"><SMALL>LPMerge</SMALL></A>
+<LI><A NAME="tex2html4189" HREF="node228_mn.html" TARGET="main"><SMALL>LUtil</SMALL></A>
+<LI><A NAME="tex2html4190" HREF="node229_mn.html" TARGET="main"><SMALL>LWMap</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html4191" HREF="node230_mn.html" TARGET="main"><SMALL>Run-time configuration parameters</SMALL></A>
+<UL>
+<LI><A NAME="tex2html4192" HREF="node231_mn.html" TARGET="main"><SMALL>USEINTID</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html4193" HREF="node232_mn.html" TARGET="main"><SMALL>Compile-time configuration
+parameters</SMALL></A>
+<UL>
+<LI><A NAME="tex2html4194" HREF="node233_mn.html" TARGET="main"><SMALL>LM_ID_SHORT</SMALL></A>
+<LI><A NAME="tex2html4195" HREF="node234_mn.html" TARGET="main"><SMALL>LM_COMPACT</SMALL></A>
+<LI><A NAME="tex2html4196" HREF="node235_mn.html" TARGET="main"><SMALL>LMPROB_SHORT</SMALL></A>
+<LI><A NAME="tex2html4197" HREF="node236_mn.html" TARGET="main"><SMALL>INTERPOLATE_MAX</SMALL></A>
+<LI><A NAME="tex2html4198" HREF="node237_mn.html" TARGET="main"><SMALL>SANITY</SMALL></A>
+<LI><A NAME="tex2html4199" HREF="node238_mn.html" TARGET="main"><SMALL>INTEGRITY_CHECK</SMALL></A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

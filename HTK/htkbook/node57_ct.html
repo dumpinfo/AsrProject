@@ -1,0 +1,286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Speech Signal Processing</TITLE>
+<META NAME="description" CONTENT="Contents of Speech Signal Processing">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node58_mn.html">
+<LINK REL="previous" HREF="node56_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node58_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03220000000000000000">&#160;</A><A NAME="s:sigproc">&#160;</A>
+<BR>
+Speech Signal Processing
+</H1>
+
+<P>
+In this section, the basic mechanisms involved in transforming a
+speech waveform into a sequence of parameter vectors will be
+described.  Throughout this section, it is assumed that the
+<TT>SOURCEKIND</TT> is <TT>WAVEFORM</TT> and that data is being read from
+a HTK format file via HW<SMALL>AVE</SMALL>.  Reading from different format
+files is described below in section&nbsp;<A HREF="node68_ct.html#s:waveform">5.11</A>.
+Much of the
+material in this section also applies to data read direct from an audio 
+device, the
+additional features needed to deal with this latter case are
+described later in section&nbsp;<A HREF="node80_ct.html#s:audioio">5.12</A>.
+<BR>
+<A NAME="5542">&#160;</A>
+
+<P>
+The overall process is illustrated in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>
+which shows the sampled waveform being converted into a 
+sequence of parameter blocks.  In general, HTK regards
+both waveform files and parameter files as being just
+sample sequences, the only difference being that in the former
+case the samples are 2-byte integers and in the latter they
+are multi-component vectors.  The sample rate of the input
+waveform will normally be determined from the input file
+itself.  However, it can be set explicitly using the
+configuration parameter <TT>SOURCERATE</TT>.  The period
+between each parameter vector determines the output sample
+rate and it is set using the configuration parameter 
+<TT>TARGETRATE</TT>.  The segment of waveform used to determine
+each parameter vector is usually referred to as a window
+and its size is set by the
+configuration parameter <TT>WINDOWSIZE</TT>.  Notice that the
+window size and frame rate are independent.  Normally,
+the window size will be larger than the frame rate so that
+successive windows overlap as illustrated in 
+Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.
+<A NAME="6609">&#160;</A>
+<A NAME="6610">&#160;</A>
+<A NAME="6611">&#160;</A>
+
+<P>
+For example, a waveform sampled
+at 16kHz 
+would be converted into 100 parameter vectors per
+second using a 25 msec window by setting the following
+configuration parameters.
+<PRE>
+    SOURCERATE = 625
+    TARGETRATE = 100000
+    WINDOWSIZE = 250000
+</PRE>
+Remember that all durations are specified in 100 nsec units<A NAME="tex2html17" HREF="footnode_mn.html#foot6612" TARGET="footer"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:Blocking">&#160;</A><IMG
+ WIDTH="231" HEIGHT="384" ALIGN="MIDDLE" BORDER="0"
+ SRC="img127.png"
+ ALT="% latex2html id marker 48951
+$\textstyle \parbox{50mm}{ \begin{center}\setlength...
+...hapter.\arabic{figctr}  Speech Encoding Process}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+Independent of what parameter kind is required, there are some simple
+pre-processing operations that can be applied prior to performing the actual
+signal analysis.<A NAME="5562">&#160;</A> 
+Firstly, the DC mean can be removed from the source waveform by setting the
+Boolean configuration parameter
+<TT>ZMEANSOURCE</TT><A NAME="6613">&#160;</A> to true 
+(i.e. <TT>T</TT>). This is useful when<A NAME="5566">&#160;</A>
+the original analogue-digital conversion has added a DC offset to the
+signal. It is applied to each window individually so that it can be
+used both when reading from a file and when using direct audio
+input<A NAME="tex2html18" HREF="footnode_mn.html#foot6614" TARGET="footer"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A>.
+
+<P>
+Secondly,  it is common practice to pre-emphasise
+the signal by applying the first order difference equation
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:preemp">&#160;</A><!-- MATH
+ \begin{equation}
+{s^{\prime}}_n  = s_n - k\,s_{n-1}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="125" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img128.png"
+ ALT="$\displaystyle {s^{\prime}}_n = s_n - k s_{n-1}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+to the samples<A NAME="5571">&#160;</A>
+<!-- MATH
+ $\{s_n, n=1,N \}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="104" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img129.png"
+ ALT="$ \{s_n, n=1,N \}$"></SPAN> in each window.  Here <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img130.png"
+ ALT="$ k$"></SPAN> is the
+pre-emphasis<A NAME="5572">&#160;</A> coefficient which should be in the range
+<!-- MATH
+ $0 \leq k < 1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="71" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img131.png"
+ ALT="$ 0 \leq k &lt; 1$"></SPAN>.  It is specified using the configuration
+parameter <TT>PREEMCOEF</TT><A NAME="6616">&#160;</A>.
+Finally,
+it is usually beneficial to taper the
+samples in each window so that discontinuities at the window
+edges are attenuated.  This is done by setting the
+Boolean configuration 
+parameter <TT>USEHAMMING</TT><A NAME="6617">&#160;</A>
+to true.
+This applies the following transformation to the samples
+<!-- MATH
+ $\{s_n, n=1,N\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="104" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img129.png"
+ ALT="$ \{s_n, n=1,N \}$"></SPAN> in the window
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:ham">&#160;</A><!-- MATH
+ \begin{equation}
+{s^{\prime}}_n = \left\{ 0.54 - 0.46 \cos \left( \frac{2 \pi (n-1)}{N-1}
+         \right) \right\} s_n
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="285" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img132.png"
+ ALT="$\displaystyle {s^{\prime}}_n = \left\{ 0.54 - 0.46 \cos \left( \frac{2 \pi (n-1)}{N-1} \right) \right\} s_n$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+When both pre-emphasis and Hamming windowing are enabled,
+pre-emphasis is performed 
+first.<A NAME="5581">&#160;</A> <A NAME="5582">&#160;</A>
+
+<P>
+In practice, all three of the above are usually applied.
+Hence, a configuration file will typically contain the 
+following
+<PRE>
+    ZMEANSOURCE = T
+    USEHAMMING = T
+    PREEMCOEF = 0.97
+</PRE>
+Certain types of artificially generated waveform data can cause numerical
+overflows with some coding schemes. In such cases adding a small amount of
+random noise to the waveform data solves the problem. The noise is added
+to the samples using
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:dither">&#160;</A><!-- MATH
+ \begin{equation}
+{s^{\prime}}_n = s_n + q RND()
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="142" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img133.png"
+ ALT="$\displaystyle {s^{\prime}}_n = s_n + q RND()$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img134.png"
+ ALT="$ RND()$"></SPAN> is a uniformly distributed random value over the interval
+<!-- MATH
+ $[-1.0, +1.0)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="87" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img135.png"
+ ALT="$ [-1.0, +1.0)$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img136.png"
+ ALT="$ q$"></SPAN> is the scaling factor. The amount of noise added 
+to the data (<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img136.png"
+ ALT="$ q$"></SPAN>) is set with the configuration parameter
+<A NAME="6620">&#160;</A><TT>ADDDITHER</TT> (default value <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img137.png"
+ ALT="$ 0.0$"></SPAN>). 
+A positive value causes the noise signal added to be the same every time
+(ensuring that the same file always gives exactly the same results). With a
+negative value the noise is random and the same file may produce slightly
+different results in different trials.
+
+<P>
+One problem that can arise when processing speech waveform files obtained from
+external sources, such as databases on CD-ROM, is that the
+byte-order<A NAME="5589">&#160;</A> may be different to that used by the machine on
+which HTK is running. To deal with this problem, HW<SMALL>AVE</SMALL> can perform
+automatic byte-swapping in order to preserve proper byte order. HTK assumes
+by default that speech waveform data is encoded as a sequence of 2-byte
+integers as is the case for most current speech databases<A NAME="tex2html19" HREF="footnode_mn.html#foot5591" TARGET="footer"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A>. 
+If the source format is known, then HW<SMALL>AVE</SMALL> will also make an assumption
+about the byte order used to create speech files in that format. It then checks
+the byte order of the machine that it is running on and automatically performs
+byte-swapping if the order is different. For unknown formats, proper byte order
+can be ensured by setting the configuration parameter
+<TT>BYTEORDER</TT><A NAME="6621">&#160;</A> to <TT>VAX</TT> if the
+speech data was created on a little-endian machine such as a VAX or an IBM PC,
+and to anything else (e.g. <TT>NONVAX</TT>) if the speech data was created on a
+big-endian machine such as a SUN, HP or Macintosh machine. <A NAME="5597">&#160;</A> 
+
+<P>
+The reading/writing of HTK format waveform files can be further controlled
+via the configuration parameters <TT>NATURALREADORDER</TT> and 
+<TT>NATURALWRITEORDER</TT>. The effect and default settings of these parameters
+are described in section&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.
+<A NAME="5601">&#160;</A>
+Note that <TT>BYTEORDER</TT> should not be used when <TT>NATURALREADORDER</TT>
+is set to true.  Finally, note that HTK can also byte-swap parameterised
+files in a similar way provided that only the byte-order of each 4 byte float
+requires inversion.  
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,518 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Forward/Backward Probabilities</TITLE>
+<META NAME="description" CONTENT="Contents of Forward/Backward Probabilities">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node123_mn.html">
+<LINK REL="previous" HREF="node121_mn.html">
+<LINK REL="up" HREF="node120_mn.html">
+<LINK REL="next" HREF="node123_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03582000000000000000">
+Forward/Backward Probabilities</A>
+</H2>
+
+<P>
+<A NAME="13958">&#160;</A>
+Baum-Welch training is similar to the Viterbi training described
+in the previous section except that the <SPAN  CLASS="textit">hard</SPAN> boundary implied
+by the <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img281.png"
+ ALT="$ \psi$"></SPAN> function is replaced by a <SPAN  CLASS="textit">soft</SPAN> boundary
+function <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img161.png"
+ ALT="$ L$"></SPAN> which represents the probability of an observation being
+associated any given Gaussian mixture component.  
+This <SPAN  CLASS="textit">occupation</SPAN> probability is computed from the <SPAN  CLASS="textit">forward</SPAN>
+and <SPAN  CLASS="textit">backward</SPAN> probabilities.
+
+<P>
+For the isolated-unit style of training, the forward 
+probability <!-- MATH
+ $\alpha_j(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ \alpha_j(t)$"></SPAN> for <SPAN CLASS="MATH"><IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.png"
+ ALT="$ 1&lt;j&lt;N$"></SPAN> and
+<!-- MATH
+ $1<t \leq T$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="72" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img282.png"
+ ALT="$ 1&lt;t \leq T$"></SPAN> is calculated by the forward recursion
+<!-- MATH
+ \begin{displaymath}
+\alpha_j(t) = \left[ \sum_{i=2}^{N-1} \alpha_i(t-1) a_{ij} \right]
+                     b_j({\mbox{\boldmath$o$}}_t)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="233" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img283.png"
+ ALT="$\displaystyle \alpha_j(t) = \left[ \sum_{i=2}^{N-1} \alpha_i(t-1) a_{ij} \right]
+b_j({\mbox{\boldmath$o$}}_t)
+$">
+</DIV><P></P>
+with initial conditions given by 
+<!-- MATH
+ \begin{displaymath}
+\alpha_1(1) = 1
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="71" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.png"
+ ALT="$\displaystyle \alpha_1(1) = 1$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\alpha_j(1) = a_{1j} b_j({\mbox{\boldmath$o$}}_1)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="126" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$\displaystyle \alpha_j(1) = a_{1j} b_j({\mbox{\boldmath$o$}}_1)$">
+</DIV><P></P>
+for <SPAN CLASS="MATH"><IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.png"
+ ALT="$ 1&lt;j&lt;N$"></SPAN> and final condition given by
+<!-- MATH
+ \begin{displaymath}
+\alpha_N(T) = \sum_{i=2}^{N-1} \alpha_i(T) a_{iN}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="166" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img284.png"
+ ALT="$\displaystyle \alpha_N(T) = \sum_{i=2}^{N-1} \alpha_i(T) a_{iN}
+$">
+</DIV><P></P>
+
+<P>
+The backward probability <!-- MATH
+ $\beta_i(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img285.png"
+ ALT="$ \beta_i(t)$"></SPAN> for <SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ 1&lt;i&lt;N$"></SPAN> and <!-- MATH
+ $T>t \geq 1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="72" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img286.png"
+ ALT="$ T&gt;t \geq 1$"></SPAN> is 
+calculated by the backward recursion
+<!-- MATH
+ \begin{displaymath}
+\beta_i(t) = \sum_{j=2}^{N-1} a_{ij} b_j({\mbox{\boldmath$o$}}_{t+1}) \beta_j(t+1)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="226" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img74.png"
+ ALT="$\displaystyle \beta_i(t) = \sum_{j=2}^{N-1} a_{ij} b_j({\mbox{\boldmath$o$}}_{t+1}) \beta_j(t+1)$">
+</DIV><P></P>
+with initial conditions given by
+<!-- MATH
+ \begin{displaymath}
+\beta_i(T) = a_{iN}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="89" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$\displaystyle \beta_i(T) = a_{iN}$">
+</DIV><P></P>
+for <SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ 1&lt;i&lt;N$"></SPAN> and final condition given by
+<!-- MATH
+ \begin{displaymath}
+\beta_1(1) = \sum_{j=2}^{N-1} a_{1j} b_j({\mbox{\boldmath$o$}}_1) \beta_j(1)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="192" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img287.png"
+ ALT="$\displaystyle \beta_1(1) = \sum_{j=2}^{N-1} a_{1j} b_j({\mbox{\boldmath$o$}}_1) \beta_j(1)
+$">
+</DIV><P></P>
+
+<P>
+In the case of embedded training where the HMM spanning the observations
+is a composite constructed by concatenating <SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img263.png"
+ ALT="$ Q$"></SPAN> subword models, it is
+assumed that at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>, the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img288.png"
+ ALT="$ \beta$"></SPAN>
+values corresponding to the entry state and exit states of a HMM
+represent the forward and backward probabilities at time <!-- MATH
+ $t-\Delta t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img289.png"
+ ALT="$ t-\Delta t$"></SPAN>
+and <!-- MATH
+ $t+\Delta t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img290.png"
+ ALT="$ t+\Delta t$"></SPAN>, respectively, where <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img291.png"
+ ALT="$ \Delta t$"></SPAN> is small.  The equations
+for calculating <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img288.png"
+ ALT="$ \beta$"></SPAN> are then as follows.
+
+<P>
+For the forward probability, the initial conditions are established at
+time <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img292.png"
+ ALT="$ t=1$"></SPAN> as follows
+<!-- MATH
+ \begin{displaymath}
+\alpha^{(q)}_{1}(1) =
+        \left\{ \begin{array}{cl}
+                              1 & \mbox{if $q=1$} \\
+                   \alpha^{(q-1)}_1(1)  a^{(q-1)}_{1N_{q-1}} & \mbox{otherwise}
+                \end{array}
+        \right.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="295" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img293.png"
+ ALT="$\displaystyle \alpha^{(q)}_{1}(1) =
+\left\{ \begin{array}{cl}
+1 &amp; \mbox{if $q=...
+...\alpha^{(q-1)}_1(1) a^{(q-1)}_{1N_{q-1}} &amp; \mbox{otherwise}
+\end{array}\right.
+$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\alpha^{(q)}_{j}(1) = a^{(q)}_{1j} b^{(q)}_j({\mbox{\boldmath$o$}}_1)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="151" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img294.png"
+ ALT="$\displaystyle \alpha^{(q)}_{j}(1) = a^{(q)}_{1j} b^{(q)}_j({\mbox{\boldmath$o$}}_1)
+$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\alpha^{(q)}_{N_q}(1) =
+        \sum_{i=2}^{N_q-1} \alpha^{(q)}_{i}(1) a^{(q)}_{iN_q}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="186" HEIGHT="69" ALIGN="MIDDLE" BORDER="0"
+ SRC="img295.png"
+ ALT="$\displaystyle \alpha^{(q)}_{N_q}(1) =
+\sum_{i=2}^{N_q-1} \alpha^{(q)}_{i}(1) a^{(q)}_{iN_q}
+$">
+</DIV><P></P>
+where the superscript in parentheses refers to the index of the model in 
+the sequence of concatenated models.  All unspecified values of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN>
+are zero.  For time <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img296.png"
+ ALT="$ t &gt; 1$"></SPAN>, 
+<!-- MATH
+ \begin{displaymath}
+\alpha^{(q)}_{1}(t) =
+        \left\{ \begin{array}{cl}
+                              0 & \mbox{if $q=1$} \\
+                   \alpha^{(q-1)}_{N_{q-1}}(t-1) + 
+                   \alpha^{(q-1)}_1(t)  a^{(q-1)}_{1N_{q-1}}& \mbox{otherwise}
+                \end{array}
+        \right.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="399" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img297.png"
+ ALT="$\displaystyle \alpha^{(q)}_{1}(t) =
+\left\{ \begin{array}{cl}
+0 &amp; \mbox{if $q=...
+...
+\alpha^{(q-1)}_1(t) a^{(q-1)}_{1N_{q-1}}&amp; \mbox{otherwise}
+\end{array}\right.
+$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\alpha^{(q)}_j(t) =
+          \left[ 
+               \alpha^{(q)}_1(t) a^{(q)}_{1j} + 
+                \sum_{i=2}^{N_q-1} \alpha^{(q)}_{i}(t-1) a^{(q)}_{ij}
+          \right]
+          b^{(q)}_j({\mbox{\boldmath$o$}}_t)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="369" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img298.png"
+ ALT="$\displaystyle \alpha^{(q)}_j(t) =
+\left[
+\alpha^{(q)}_1(t) a^{(q)}_{1j} +
+\s...
+... \alpha^{(q)}_{i}(t-1) a^{(q)}_{ij}
+\right]
+b^{(q)}_j({\mbox{\boldmath$o$}}_t)
+$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\alpha^{(q)}_{N_q}(t) =
+        \sum_{i=2}^{N_q-1} \alpha^{(q)}_{i}(t) a^{(q)}_{iN_q}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="182" HEIGHT="69" ALIGN="MIDDLE" BORDER="0"
+ SRC="img299.png"
+ ALT="$\displaystyle \alpha^{(q)}_{N_q}(t) =
+\sum_{i=2}^{N_q-1} \alpha^{(q)}_{i}(t) a^{(q)}_{iN_q}
+$">
+</DIV><P></P>
+For the backward probability, the initial conditions are set at time
+<SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img300.png"
+ ALT="$ t=T$"></SPAN> as follows
+<!-- MATH
+ \begin{displaymath}
+\beta^{(q)}_{N_q}(T) =
+        \left\{ \begin{array}{cl}
+                              1 & \mbox{if $q=Q$} \\
+                   \beta^{(q+1)}_{N_{q+1}}(T) a^{(q+1)}_{1N_{q+1}} & \mbox{otherwise}
+                \end{array}
+        \right.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="301" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img301.png"
+ ALT="$\displaystyle \beta^{(q)}_{N_q}(T) =
+\left\{ \begin{array}{cl}
+1 &amp; \mbox{if $q...
+...(q+1)}_{N_{q+1}}(T) a^{(q+1)}_{1N_{q+1}} &amp; \mbox{otherwise}
+\end{array}\right.
+$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\beta^{(q)}_i(T) = a^{(q)}_{iN_q} \beta^{(q)}_{N_q}(T)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="157" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img302.png"
+ ALT="$\displaystyle \beta^{(q)}_i(T) = a^{(q)}_{iN_q} \beta^{(q)}_{N_q}(T)
+$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\beta^{(q)}_1(T) = \sum^{N_q - 1}_{j=2}
+                  a^{(q)}_{1j} b^{(q)}_j({\mbox{\boldmath$o$}}_T) \beta^{(q)}_j(T)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="243" HEIGHT="69" ALIGN="MIDDLE" BORDER="0"
+ SRC="img303.png"
+ ALT="$\displaystyle \beta^{(q)}_1(T) = \sum^{N_q - 1}_{j=2}
+a^{(q)}_{1j} b^{(q)}_j({\mbox{\boldmath$o$}}_T) \beta^{(q)}_j(T)
+$">
+</DIV><P></P>
+where once again, all unspecified <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img288.png"
+ ALT="$ \beta$"></SPAN> values are zero.  For
+time <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img304.png"
+ ALT="$ t&lt;T$"></SPAN>,
+<!-- MATH
+ \begin{displaymath}
+\beta^{(q)}_{N_q}(t) =
+        \left\{ \begin{array}{cl}
+                              0 & \mbox{if $q=Q$} \\
+                   \beta^{(q+1)}_1(t+1)+ \beta^{(q+1)}_{N_{q+1}} (t) 
+                               a^{(q+1)}_{1N_{q+1}} & \mbox{otherwise}
+                \end{array}
+        \right.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="397" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img305.png"
+ ALT="$\displaystyle \beta^{(q)}_{N_q}(t) =
+\left\{ \begin{array}{cl}
+0 &amp; \mbox{if $q...
+...+1)}_{N_{q+1}} (t)
+a^{(q+1)}_{1N_{q+1}} &amp; \mbox{otherwise}
+\end{array}\right.
+$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\beta^{(q)}_i(t) =
+                a^{(q)}_{iN_q} \beta^{(q)}_{N_q}(t) +
+               \sum_{j=2}^{N_q-1} a^{(q)}_{ij} 
+                      b^{(q)}_j({\mbox{\boldmath$o$}}_{t+1}) \beta^{(q)}_{j}(t+1) 
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="365" HEIGHT="69" ALIGN="MIDDLE" BORDER="0"
+ SRC="img306.png"
+ ALT="$\displaystyle \beta^{(q)}_i(t) =
+a^{(q)}_{iN_q} \beta^{(q)}_{N_q}(t) +
+\sum_{j...
+...-1} a^{(q)}_{ij}
+b^{(q)}_j({\mbox{\boldmath$o$}}_{t+1}) \beta^{(q)}_{j}(t+1)
+$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\beta^{(q)}_{1}(t) =
+        \sum_{j=2}^{N_q-1} a^{(q)}_{1j} b^{(q)}_j({\mbox{\boldmath$o$}}_t) 
+                          \beta^{(q)}_{j}(t) 
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="227" HEIGHT="69" ALIGN="MIDDLE" BORDER="0"
+ SRC="img307.png"
+ ALT="$\displaystyle \beta^{(q)}_{1}(t) =
+\sum_{j=2}^{N_q-1} a^{(q)}_{1j} b^{(q)}_j({\mbox{\boldmath$o$}}_t)
+\beta^{(q)}_{j}(t)
+$">
+</DIV><P></P>
+
+<P>
+The total probability <!-- MATH
+ $P = \mbox{prob}({\mbox{\boldmath $O$}} | \lambda)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img308.png"
+ ALT="$ P =$">&nbsp; &nbsp;prob<IMG
+ WIDTH="44" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img309.png"
+ ALT="$ ({\mbox{\boldmath $O$}} \vert \lambda)$"></SPAN> can be computed
+from either the forward or backward probabilities
+<!-- MATH
+ \begin{displaymath}
+P = \alpha_N(T) = \beta_1(1)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="142" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img310.png"
+ ALT="$\displaystyle P = \alpha_N(T) = \beta_1(1)
+$">
+</DIV><P></P>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

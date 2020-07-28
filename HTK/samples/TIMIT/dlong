@@ -1,0 +1,60 @@
+WARNING: no script file ../../Dict/BeebDict/beep/myHTKdict.sort.ded
+
+Dictionary Usage Statistics
+---------------------------
+  Dictionary    TotalWords WordsUsed  TotalProns PronsUsed
+myHTKdict.so    237721     237721     257043     257043
+  Timit.dict    237721     237721     257043     257043
+
+237721 words required, 0 missing
+
+New Phone Usage Counts
+---------------------
+  1. sil   :     5
+  2. ah    : 30918
+  3. sp    : 257039
+  4. ax    : 147930
+  5. ey    : 34314
+  6. z     : 92946
+  7. b     : 43838
+  8. oh    : 31877
+  9. m     : 60607
+ 10. l     : 111035
+ 11. eh    : 55551
+ 12. v     : 22350
+ 13. ih    : 165973
+ 14. s     : 123226
+ 15. iy    : 46394
+ 16. d     : 74308
+ 17. jh    : 13561
+ 18. y     : 14094
+ 19. n     : 143899
+ 20. r     : 109827
+ 21. p     : 53491
+ 22. t     : 131642
+ 23. f     : 30294
+ 24. aa    : 17390
+ 25. k     : 87973
+ 26. hh    : 15314
+ 27. uw    : 15425
+ 28. ae    : 52418
+ 29. ay    : 30521
+ 30. ow    : 27315
+ 31. ng    : 27422
+ 32. sh    : 20423
+ 33. w     : 16972
+ 34. ea    :  3607
+ 35. ia    : 10271
+ 36. g     : 23107
+ 37. th    :  5339
+ 38. ao    : 18027
+ 39. ua    :  2785
+ 40. aw    :  6622
+ 41. zh    :   991
+ 42. er    : 13273
+ 43. ch    :  8538
+ 44. uh    :  7571
+ 45. oy    :  2179
+ 46. dh    :  1716
+
+Dictionary Timit.dict created

@@ -1,0 +1,4 @@
+AuthUserFile /udrive/faculty/vkepuska/public_html/ece5526/HTK/.htpasswd
+AuthName EnterPassword
+AuthType Basic
+require user HTK  

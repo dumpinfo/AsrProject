@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Tree-Based Clustering</TITLE>
+<META NAME="description" CONTENT="Contents of Tree-Based Clustering">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node149_mn.html">
+<LINK REL="previous" HREF="node147_mn.html">
+<LINK REL="up" HREF="node143_mn.html">
+<LINK REL="next" HREF="node149_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03750000000000000000">&#160;</A><A NAME="s:tbclust">&#160;</A>
+<BR>
+Tree-Based Clustering
+</H1>
+
+<P>
+<A NAME="18607">&#160;</A>
+One limitation of the data-driven clustering procedure described above is
+that it does not deal with triphones for which there are no examples in the
+training data.  When building word-internal triphone systems,  this 
+problem can often
+be avoided by careful design of the training database but when building large
+vocabulary cross-word triphone systems <SPAN  CLASS="textit">unseen</SPAN> triphones are unavoidable.
+<A NAME="18609">&#160;</A>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:qstree">&#160;</A><IMG
+ WIDTH="457" HEIGHT="580" ALIGN="MIDDLE" BORDER="0"
+ SRC="img445.png"
+ ALT="% latex2html id marker 51142
+$\textstyle \parbox{100mm}{ \begin{center}\setlengt...
+...arabic{figctr}  Decision tree-based state tying}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+HHE<SMALL>D</SMALL> provides an alternative decision 
+tree based clustering<A NAME="18614">&#160;</A> mechanism
+which provides a similar quality of clustering but offers a solution 
+to the unseen triphone problem.  Decision tree-based clustering is invoked
+by the command <TT>TB</TT> which is analogous to the <TT>TC</TT> command
+described above and has an identical form, that is
+<PRE>
+    TB thresh macroname itemlist
+</PRE>
+Apart from the clustering mechanism, there are some other differences between
+<TT>TC</TT> and <TT>TB</TT>.  Firstly, <TT>TC</TT> uses a distance metric between
+states whereas <TT>TB</TT> uses a log likelihood criterion.  Thus, the threshold
+values are not directly comparable.  Furthermore, <TT>TC</TT> supports any type
+of output distribution whereas <TT>TB</TT> only supports single-Gaussian
+continuous density output distributions.
+Secondly, although the following describes only state clustering, 
+the <TT>TB</TT> command<A NAME="18757">&#160;</A> can also be used to cluster whole
+models.
+
+<P>
+A phonetic decision tree is a binary tree in which a yes/no phonetic 
+question<A NAME="18627">&#160;</A>
+is attached to each node.  
+Initially all states in a given item list (typically a specific phone state position)
+are placed at the
+root node of a tree. Depending on each answer, the pool of states is
+successively split and this continues until the states have trickled
+down to leaf-nodes.  All states in the same leaf node are then tied. 
+For example, Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A> illustrates the case of tying the centre
+states of all triphones of the phone /aw/ (as in ``out'').  All of the states trickle
+down the tree and depending on the answer to the questions, they end up
+at one of the shaded terminal nodes.   For example, in the illustrated
+case, the centre state of <TT>s-aw+n</TT> would join the second leaf
+node from the right since its right context is a central consonant,
+and its right
+context is a nasal  but its left context is not a central stop.
+
+<P>
+The question at each node is chosen to (locally) maximise the likelihood
+of the training data given the final set of state tyings. 
+Before any tree building can take place, all of the possible phonetic
+questions must be loaded into HHE<SMALL>D</SMALL> using <TT>QS</TT> 
+commands<A NAME="18758">&#160;</A>.  Each
+question takes the form ``Is the left or right context in the set P?'' where the
+context is the model context as defined by its logical name.  The 
+set P is
+represented by an item list and
+for convenience every question is given a name.  As an example, the
+following command 
+<PRE>
+    QS "L_Nasal" { ng-*,n-*,m-* }
+</PRE>
+defines the question ``Is the left context a nasal?''.
+
+<P>
+It is possible to calculate the log likelihood of the training
+data given any pool of states (or models).  Furthermore, this 
+can be done without reference to the
+training data itself since for single Gaussian distributions the means, variances
+and state occupation counts (input via a stats file) form sufficient statistics.
+Splitting any pool into two will increase the log likelihood since it provides twice
+as many parameters to model the same amount of data.  The increase obtained when
+each possible question is used can thus be calculated and the question selected
+which gives the biggest improvement.  
+
+<P>
+Trees are therefore built using a top-down sequential optimisation process.
+Initially all states (or models) are placed in a single cluster at the root
+of the tree.  The question is then found which gives the best split of the root
+node.  This process is repeated until the increase in log likelihood falls
+below the threshold specified in the <TT>TB</TT> command.
+As a final stage, the decrease in log likelihood is calculated for merging
+terminal nodes with differing parents.  Any pair of nodes for which this
+decrease is less than the threshold used to stop splitting are then merged.
+<A NAME="18636">&#160;</A>
+
+<P>
+As with the <TT>TC</TT> command, it is useful to prevent the creation of
+clusters with very little associated training data.  The <TT>RO</TT> command
+can therefore be used in tree clustering as well as in data-driven clustering.
+When used with trees, any split which would result in a total occupation count
+falling below the value specified is prohibited.  Note that the <TT>RO</TT>
+command can also be used to load the required stats file.  Alternatively,
+the stats file can be loaded using the <TT>LS</TT> command<A NAME="18759">&#160;</A>.
+
+<P>
+As with data-driven clustering, using the trace facilities provided by
+HHE<SMALL>D</SMALL> is recommended for monitoring and setting the appropriate thresholds.
+Basic tracing provides the following summary data for each tree
+<PRE>
+    TB 350.00 aw_s3 {}
+     Tree based clustering
+      Start  aw[3] : 28  have  LogL=-86.899 occ=864.2
+      Via    aw[3] : 5   gives LogL=-84.421 occ=864.2
+      End    aw[3] : 5   gives LogL=-84.421 occ=864.2
+    TB: Stats 28-&gt;5 [17.9%]  { 4537-&gt;285 [6.3%] total }
+</PRE>
+This example corresponds to the case illustrated in Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.
+The <TT>TB</TT>
+command has been invoked with a  threshold of 350.0 to cluster
+the centre states of the triphones of the phone <SPAN  CLASS="textit">aw</SPAN>.
+At the start of clustering with all 28 states in a single pool, the average
+log likelihood per unit of occupation is -86.9 and on completion with
+5 clusters this has increased to -84.4.  The middle line labelled ``via'' gives
+the position after the tree has been built but before terminal nodes have been
+merged (none were merged in this case).  The last line summarises the overall
+position.  After building this tree, a total of 4537 states were reduced
+to 285 clusters.<A NAME="18648">&#160;</A>
+
+<P>
+As noted at the start of this section, an important advantage of tree-based clustering
+is that it allows triphone models which have no training data to be synthesised.
+This is done in HHE<SMALL>D</SMALL> using the <TT>AU</TT> command<A NAME="18760">&#160;</A> which has the form
+<PRE>
+    AU hmmlist
+</PRE>
+Its effect is to scan the given <TT>hmmlist</TT> and any physical models listed
+which are not in the currently loaded set are synthesised.  This is done 
+by descending the previously constructed trees for that phone and answering the
+questions at each node based on the new unseen context.  When each leaf node is
+reached, the state representing that cluster is used for the corresponding state
+in the unseen triphone<A NAME="18655">&#160;</A>.
+
+<P>
+The <TT>AU</TT> command can be used within the same edit script as the tree building
+commands.  However, it will often be the case that a new set of triphones is needed
+at a later date, perhaps as a result of vocabulary changes.  To make this possible,
+a complete set of trees can be saved using the <TT>ST</TT> 
+command<A NAME="18761">&#160;</A> and then later
+reloaded using the <TT>LT</TT> command<A NAME="18762">&#160;</A>.
+<A NAME="18661">&#160;</A>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

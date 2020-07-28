@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node387_mn.html">
+<LINK REL="previous" HREF="node385_mn.html">
+<LINK REL="up" HREF="node384_mn.html">
+<LINK REL="next" HREF="node387_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051272000000000000000">&#160;</A><A NAME="s:LGPrep-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+LGP<SMALL>REP</SMALL> is invoked by typing the command line
+<PRE>
+   LGPrep [options] wordmap [textfile ...]
+</PRE>
+Each text file is processed in turn and treated as a continuous stream
+of words.  If no text files are specified standard input is used and
+this is the more usual case since it allows the input text source to
+be filtered before input to
+LGP<SMALL>REP</SMALL>, for example, using LC<SMALL>OND.PL</SMALL> (in <TT>LMTutorial/extras/</TT>).
+
+<P>
+Each <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram in the input stream is stored in a buffer.  When the buffer
+is full it is sorted and multiple occurrences of the same <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram are
+merged and the count set accordingly.  When this process ceases to
+yield sufficient buffer space, the contents are written to an output
+gram file.
+
+<P>
+The word map file defines the mapping of source words to the numeric
+ids used within HLM tools.  Any words not in the map are allocated
+new ids and added to the map.  On completion, a new map with the same
+name (unless specified otherwise with the <TT>-w</TT> option) is
+output to the same directory as the output gram files.  To initialise
+the first invocation of this updating process, a word map file should
+be created with a text editor containing the following:
+<PRE>
+    Name=xxxx
+    SeqNo=0
+    Language=yyyy
+    Entries=0
+    Fields=ID
+    \Words\
+</PRE>
+where <TT>xxxx</TT> is an arbitrarily chosen name for the word map and
+<TT>yyyy</TT> is the language. Fields specifying the escaping mode to use
+(<TT>HTK</TT> or <TT>RAW</TT>) and changing <TT>Fields</TT> to include
+frequency counts in the output (i.e. <TT>FIELDS = ID,WFC</TT>) can
+also be given.  Alternatively, they can be added to the output using
+command line options.
+
+<P>
+The allowable options to LGP<SMALL>REP</SMALL> are as follows
+
+<P>
+
+<DL COMPACT>
+<DT><TT>-a n</TT>
+<DD>Allow upto <TT>n</TT> new words in input texts
+  (default 100000).
+
+<P>
+<DT><TT>-b n</TT>
+<DD>Set the internal gram buffer size to n (default
+  2000000). LGP<SMALL>REP</SMALL> stores incoming <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams in this buffer.
+  When the buffer is full, the contents are sorted and written to an
+  output gram file.  Thus, the buffer size determines the amount of
+  process memory that LGP<SMALL>REP</SMALL> will use and the size of the
+  individual output gram files.
+
+<P>
+<DT><TT>-c</TT>
+<DD>Add word counts to the output word map.  This overrides
+       the setting in the input word map (default off).
+
+<P>
+<DT><TT>-d</TT>
+<DD>Directory in which to store the output gram files
+             (default current directory).
+
+<P>
+<DT><TT>-e n</TT>
+<DD>Set the internal edited gram buffer size to <TT>n</TT>
+  (default 100000).
+
+<P>
+<DT><TT>-f s</TT>
+<DD>Fix (i.e. edit) the text source using the rules in
+	<TT>s</TT>.
+
+<P>
+<DT><TT>-h</TT>
+<DD>Do not use HTK escaping in the output word map (default
+              on).
+
+<P>
+<DT><TT>-i n</TT>
+<DD>Set the index of the first gram file output 
+             to be <TT>n</TT> (default 0).
+
+<P>
+<DT><TT>-n n</TT>
+<DD>Set the output <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram size to <TT>n</TT> (default 3).
+
+<P>
+<DT><TT>-q</TT>
+<DD>Tag words at sentence start with underscore (_).
+
+<P>
+<DT><TT>-r s</TT>
+<DD>Set the root name of the output gram files to
+       <TT>s</TT> (default ``gram'').
+
+<P>
+<DT><TT>-s s</TT>
+<DD>Write the string <TT>s</TT> into the source field of
+       the output gram files.  This string should be a comment
+       describing the text source.
+
+<P>
+<DT><TT>-w s</TT>
+<DD>Write the output map file to <TT>s</TT> (default same
+      as input map name stored in the output gram directory).
+
+<P>
+<DT><TT>-z</TT>
+<DD>Suppress gram file output. This option allows
+      LGP<SMALL>REP</SMALL> to be used just to compute a word frequency map.
+      It is also normally applied when applying edit rules to the
+      input.
+
+<P>
+
+  <DT><TT>-Q</TT>
+<DD>Print a summary of all commands supported by this tool.
+
+</DD>
+</DL>
+
+LGP<SMALL>REP</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of General Principles of MLFs</TITLE>
+<META NAME="description" CONTENT="Contents of General Principles of MLFs">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node96_mn.html">
+<LINK REL="previous" HREF="node94_mn.html">
+<LINK REL="up" HREF="node94_mn.html">
+<LINK REL="next" HREF="node96_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03331000000000000000">
+General Principles of MLFs</A>
+</H2>
+
+<P>
+<A NAME="7954">&#160;</A>
+Logically, the organisation of data and label files is very simple.
+Every data file has a label file of the same name (but
+different extension) which is either stored in the same directory as
+the data file or in some other specified directory.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:labegs">&#160;</A><IMG
+ WIDTH="276" HEIGHT="582" ALIGN="MIDDLE" BORDER="0"
+ SRC="img209.png"
+ ALT="% latex2html id marker 49525
+$\textstyle \parbox{60mm}{ \begin{center}\setlength...
+...chapter.\arabic{figctr}  Example Transcriptions}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+This scheme is sufficient for most needs and commendably simple.
+However, there are many cases where either it makes unnecessarily
+inefficient use of the operating system or it seriously inconveniences
+the user.  For example, to use a training tool with
+isolated word data may require the generation of hundreds or thousands of
+label files each having just one label entry.  Even where individual
+label files are appropriate (as in the phonetically transcribed TIMIT
+database), each label file must be
+stored in the same directory as the data file it transcribes, or all label files
+must be stored in the same directory.  One cannot, for example, have a
+different directory of label files for each TIMIT dialect region and
+then run the HTK training tool HER<SMALL>EST</SMALL> on the whole database.
+
+<P>
+All of these problems can be solved by the use of Master Label Files
+(MLFs).  Every HTK tool which uses label files has a 
+<TT>-I</TT><A NAME="8229">&#160;</A> option
+which can be used to specify the name of an MLF file.  When an MLF has been
+loaded, the normal rules for locating a label file apply except that
+the MLF is searched first.  If the required label file <TT>f</TT> is found via
+the MLF then that is loaded, otherwise the file <TT>f</TT> is opened as normal.
+If <TT>f</TT> does not exist, then an error is reported.
+The <TT>-I</TT> option may be repeated on the command line to open
+several MLF files simultaneously.  In this case, each is searched in turn
+before trying to open the required file.
+
+<P>
+MLFs can do two things.  Firstly, they can contain 
+embedded label definitions<A NAME="7967">&#160;</A> 
+so that many or all of the needed label definitions can be
+stored in the same file.  Secondly, they can contain the names of
+sub-directories to search for label files.  In effect, they allow
+multiple search paths<A NAME="7968">&#160;</A> 
+to be defined.  Both of these two types of
+definition can be mixed in a single MLF.
+
+<P>
+MLFs are quite complex to understand and use.  However, they add
+considerable power and flexibility to HTK which combined with the
+<TT>-S</TT><A NAME="8230">&#160;</A> and 
+<TT>-L</TT><A NAME="8231">&#160;</A> 
+options mean that virtually any organisation of
+data and label files can be accommodated. 
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,2267 @@
+\batchmode
+
+
+\documentclass[a4paper,oneside]{book}
+\RequirePackage{ifthen}
+
+
+
+
+\usepackage[dvips]{epsfig}
+\usepackage{html}
+\usepackage{color}
+\usepackage{supertabular}
+
+%
+\providecommand{\iftex}[1]{    }%% Dont do tex%
+\providecommand{\ifhtml}[1]{ #1 }%% Do HTML
+
+\pagecolor{white}
+%
+\providecommand{\ifoddpage}[3]{ 
+  \ifthenelse{\isodd{\pageref{f:#1}} } {#2} {#3} 
+}%
+\providecommand{\ifevenpage}[3]{ 
+  \ifthenelse{\isodd{\pageref{f:#1}} } {#3} {#2} 
+}
+%
+\providecommand{\htmlparbox}[2]{
+    \parbox{#1} {#2}  
+}
+%
+\providecommand{\figDir}{HTKFigs/}
+%
+\providecommand{\href}[1]{\ref{#}}
+%
+\providecommand{\hequation}[2]{
+\begin{equation} #1 \label{e:#2}
+\end{equation}
+}
+\newcounter{tabctr}[chapter]\newcounter{figctr}[chapter]
+%
+\providecommand{\mychaptitle}{}%
+\providecommand{\mysecttitle}{}
+%
+\providecommand{\mychap}[2]{
+  \newpage
+  \chapter{#1}\label{c:#2}
+      
+}
+%
+\providecommand{\mysect}[2]{
+  \section{#1}\label{s:#2}
+      
+}
+%
+\providecommand{\mysubsect}[2]{
+  \subsection{#1}\label{s:#2}
+}
+%
+\providecommand{\htool}[1]{\textsc{#1}}%
+\providecommand{\ttitem}[1]{\item[{\tt #1}]}%
+\providecommand{\fwitem}[2]{\item[{\makebox[#1][l]{\tt #2}}]}%
+\providecommand{\mathitem}[1]{\item[$ #1 $]}%
+\providecommand{\incop}{\mbox{$ \:+\!\!=\; $}}%
+\providecommand{\bm}[1]{{\mbox{\boldmath $#1$}}}
+%
+\newenvironment{optlist}{
+  \begin{list}{??}{
+  }
+}{
+  \end{list}
+}
+%
+\newenvironment{varlist}{
+  \begin{list}{??}{
+  }
+}{
+  \end{list}
+}
+%
+\newenvironment{program}{
+  \ttfamily
+  \begin{tabbing}
+    +++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= \kill
+}{
+  \end{tabbing}
+}
+%
+\providecommand{\tabcap}[2]{
+  \refstepcounter{tabctr}
+  \label{t:#1}
+  \mbox{ \rule{0cm}{0.6cm} 
+           \textbf{ Table. \thechapter.\arabic{tabctr}\ \ #2} }
+}
+%
+\providecommand{\dofig}[4]{
+
+
+\begin{center}\parbox{#2mm} { \begin{center}
+      \setlength{\epsfxsize}{#2mm}
+      \epsfbox{HTKFigs//#1.eps}  %%  DIRECTORY OPTION
+      
+\refstepcounter{figctr}
+      \begin{center}
+        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  #3}   
+      \end{center}     \label{f:#1} \end{center} } \end{center}
+
+
+}
+%
+\providecommand{\putfig}[3]{
+   
+
+ 
+\begin{center}\parbox{#2mm} { \begin{center}
+      \setlength{\epsfxsize}{#2mm}
+      \epsfbox{HTKFigs//#1.eps}  \refstepcounter{figctr}
+      \begin{center}
+        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  #3}   
+      \end{center}     \label{f:#1} \end{center} } \end{center}
+
+ 
+
+}
+%
+\providecommand{\centrefig}[3]{
+   
+
+ 
+\begin{center}\parbox{#2mm} { \begin{center}
+      \setlength{\epsfxsize}{#2mm}
+      \epsfbox{HTKFigs//#1.eps}  \refstepcounter{figctr}
+      \begin{center}
+        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  #3}   
+      \end{center}     \label{f:#1} \end{center} } \end{center}
+
+ 
+
+}
+%
+\providecommand{\sidefig}[5]{
+  
+
+ 
+\begin{center}\parbox{#2mm} { \begin{center}
+      \setlength{\epsfxsize}{#2mm}
+      \epsfbox{HTKFigs//#1.eps}  \refstepcounter{figctr}
+      \begin{center}
+        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  #3}   
+      \end{center}     \label{f:#1} \end{center} } \end{center}
+
+ 
+
+  #5
+}
+%
+\providecommand{\sidepic}[3]{
+
+
+\begin{center}\parbox{#2mm} { \begin{center}
+    \setlength{\epsfxsize}{#2mm}
+    \epsfbox{HTKFigs//#1.eps}  %%  DIRECTORY OPTION 
+    
+\label{f:#1} \end{center} }\end{center}
+
+
+{#3}
+}
+%
+\providecommand{\doprog}[4]{
+
+
+\begin{center} \parbox{#2mm} {\noindent
+    \fbox{ \parbox{#2mm}{ \hspace{#2mm}
+       
+  \ttfamily
+  \begin{tabbing}
+    +++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= \kill 
+#4
+  \end{tabbing}
+    } }
+
+
+\refstepcounter{figctr}
+    \label{f:#1}
+
+
+\begin{center}
+      \textbf{ Fig. \thechapter.\arabic{figctr}\ \ #3}   
+    \end{center}   
+    } \end{center} 
+
+
+}
+%
+\providecommand{\sideprog}[5]{
+  
+
+ 
+\begin{center} \parbox{#2mm} {\noindent
+    \fbox{ \parbox{#2mm}{ \hspace{#2mm}
+       \begin{program}#4\end{program}
+    } }
+
+ 
+\refstepcounter{figctr}
+    \label{f:#1}
+
+ 
+\begin{center}
+      \textbf{ Fig. \thechapter.\arabic{figctr}\ \ #3}   
+    \end{center}   
+    } \end{center} 
+
+ 
+ 
+   #5
+}
+%
+\providecommand{\progbyprog}[7]{
+  
+
+ 
+\begin{center} \parbox{#1mm} {\noindent
+    \fbox{ \parbox{#1mm}{ \hspace{#1mm}
+       \begin{program}#6\end{program}
+    } }
+
+ 
+\refstepcounter{figctr}
+    \label{f:#2}
+
+ 
+\begin{center}
+      \textbf{ Fig. \thechapter.\arabic{figctr}\ \ #4}   
+    \end{center}   
+    } \end{center} 
+
+ 
+
+  
+
+ 
+\begin{center} \parbox{#1mm} {\noindent
+    \fbox{ \parbox{#1mm}{ \hspace{#1mm}
+       \begin{program}#7\end{program}
+    } }
+
+ 
+\refstepcounter{figctr}
+    \label{f:#3}
+
+ 
+\begin{center}
+      \textbf{ Fig. \thechapter.\arabic{figctr}\ \ #5}   
+    \end{center}   
+    } \end{center} 
+
+ 
+
+  \vspace{0.3cm}
+}
+%
+\providecommand{\putprog}[4]{
+
+
+\begin{center} \begin{figure}
+    \vspace{5mm}
+    \begin{center}
+      \framebox[#2mm]{
+      \begin{minipage}{#2mm}
+           
+  \ttfamily
+  \begin{tabbing}
+    +++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= ++ \= \kill 
+#4
+  \end{tabbing}
+       \end{minipage} }
+
+
+\refstepcounter{figctr}
+       \label{f:#1}
+       \vspace{0.4cm}
+         \mbox{ \textbf{ Fig. \thechapter.\arabic{figctr}\ \ #3} }
+    \end{center}
+  \end{figure} \end{center}
+
+
+}
+%
+\providecommand{\HTK}{HTK}%
+\providecommand{\version}{3.3}%
+\providecommand{\inthisversion}{In HTK\ 3.3,\ }%
+\providecommand{\HTKFF}{HTK}%
+\providecommand{\HTKBook}{\textit{HTK Book}}%
+\providecommand{\ESPSwaves}{\textit{ESPS/waves+}}%
+\providecommand{\erno}[1]{\item[{\makebox[2.0cm][l]{\tt \ \ \ $#1$}}]}%
+\providecommand{\module}[1]{\item[#1]{\ ~}}%
+\providecommand{\refpart}{Reference Section}
+%
+\providecommand{\hmkw}[1]{\mbox{$<$\textsf{#1}$>$}}
+%
+\providecommand{\hmmc}[2]{\mbox{$\sim$\textsf{#1 ``#2''}}}
+%
+\providecommand{\hmmt}[1]{\mbox{$\sim$\textsf{#1}}}
+%
+\providecommand{\HAPI}{{HAPI}}%
+\providecommand{\NULL}{{\tt NULL}}%
+\providecommand{\findex}[1]{\index{#1@{\bf #1}}}%
+\providecommand{\pindex}[1]{\index{configuration parameters!#1}}%
+\providecommand{\java}{{\sc Java}}%
+\providecommand{\jhapi}{{\sc Jhapi}}
+%
+\providecommand{\grapHvite}{\textbf{\textit {grapHvite}}}%
+\providecommand{\GNB}{\textbf{\textit {grapHvite}}\ Netbuilder}%
+\providecommand{\grapHviteOverview}{{\it \textbf{\textit {grapHvite}}\ Overview}}%
+\providecommand{\seeSec}[1]{see section {\bf \ref{s:#1}}}%
+\providecommand{\seeSub}[1]{see {section \bf \ref{s:#1}}}%
+\providecommand{\seeFig}[1]{see Fig {\bf \ref{#}}}%
+\providecommand{\fig}   [1]{figure {\ref{#}}}%
+\providecommand{\seeApp}[1]{see Appendix {\bf \ref{c:#1}}}%
+\providecommand{\app}[1]{Appendix {\bf \ref{c:#1}}}%
+\providecommand{\sub}[1]{section {\bf \ref{s:#1}}}%
+\providecommand{\sect}[1]{section {\bf \ref{s:#1}}}
+%
+\providecommand{\facility}[1]{{\it #1}}%
+\providecommand{\key}[1]{{\sl #1}}%
+\providecommand{\ul}[1]{\underline{#1}}%
+\providecommand{\gTerm}[1]{{\bf #1}}%
+\providecommand{\network}[1]{{\it #1}}%
+\providecommand{\config}[1]{{\it #1}}%
+\providecommand{\bb}[1]{{\bf #1}}
+%
+\providecommand{\button}[1]{\colorbox[gray]{0.83}{{\small{\textsf{#1}}}}}%
+\providecommand{\menu}[1]{\colorbox[gray]{0.83}{{\small \textbf{#1}}}}%
+\providecommand{\menuItem}[1]{\colorbox[gray]{0.83}{{\small{ #1}}}}%
+\providecommand{\gLabel}[1]{{\colorbox[gray] {0.83} {\small{\textsf {#1}}}}}
+%
+\providecommand{\moptitem}[1]{ \optitem{\colorbox[gray]{0.83}{{\small{ #1}}}}}%
+\newenvironment{mylist}[1]{
+  \begin{list}{}{
+     \settowidth{\labelwidth} {#1} 
+     \setlength{\leftmargin}{\labelwidth}
+     \addtolength{\leftmargin}{\labelsep}
+     \setlength{\parsep}{0.5ex plus0.2ex minus 0.2ex} 
+     \setlength{\itemsep}{0.3ex}
+     \renewcommand{\makelabel}[1]{##1\hfill}
+} } {
+ \end{list}
+}
+%
+\newenvironment{widelist}{
+   \begin{list}{??}{
+       \setlength{\itemindent}{0cm}
+       \setlength{\rightmargin}{0.5cm}
+       \setlength{\leftmargin}{2.5cm}
+       \setlength{\listparindent}{0cm}
+       \setlength{\labelwidth}{\textwidth}
+       \setlength{\labelsep}{0.5cm} }
+}{
+   \end{list}
+}
+%
+\providecommand{\doMenu}[1]{
+  \setlength{\epsfysize} {5cm}
+  \raisebox{-5cm}
+  {\epsfbox{#1menu.eps}}  %%  DIRECTORY OPTION
+}
+%
+\providecommand{\mysubsub}[2]{
+   \subsubsection{#1}\label{s:#2}
+}
+%
+\providecommand{\HLM}{HLM}
+\usepackage{makeidx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeindex
+
+\pagestyle{empty}
+
+
+\usepackage[latin1]{inputenc}
+
+
+
+\makeatletter
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/htkbook.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/fundaments.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/htkoview.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/exampsys.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/openviron.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/speechio.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/labels.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/models.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/train.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/adapt.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/refine.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/discmods.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/netdict.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/decode.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/hlmfund.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/hlmtutorial.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/hlmfiles.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/tools.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/Cluster.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HBuild.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HCompV.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HCopy.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HDMan.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HERest.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HHEd.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HInit.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLEd.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HList.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLMCopy.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLRescore.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLStats.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HParse.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HQuant.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HRest.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HResults.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSGen.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSLab.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSmooth.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HVite.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LAdapt.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LBuild.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LFoF.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGCopy.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGList.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGPrep.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LLink.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LMerge.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LNewMap.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LNorm.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LPlex.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LSubset.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/config.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/errors.aux
+\makeatother
+}
+\AtBeginDocument{\makeatletter
+\input /home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/htkslf.aux
+\makeatother
+}
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{349pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\newcommand\lthtmlhboxmathA{\adjustnormalsize\setbox\sizebox=\hbox\bgroup\kern.05em }%
+\newcommand\lthtmlhboxmathB{\adjustnormalsize\setbox\sizebox=\hbox to\hsize\bgroup\hfill }%
+\newcommand\lthtmlvboxmathA{\adjustnormalsize\setbox\sizebox=\vbox\bgroup %
+ \let\ifinner=\iffalse \let\)\liih@math }%
+\newcommand\lthtmlboxmathZ{\@next\next\@currlist{}{\def\next{\voidb@x}}%
+ \expandafter\box\next\egroup}%
+\newcommand\lthtmlmathtype[1]{\gdef\lthtmlmathenv{#1}}%
+\newcommand\lthtmllogmath{\lthtmltypeout{l2hSize %
+:\lthtmlmathenv:\the\ht\sizebox::\the\dp\sizebox::\the\wd\sizebox.\preveqno}}%
+\newcommand\lthtmlfigureA[1]{\let\@savefreelist\@freelist
+       \lthtmlmathtype{#1}\lthtmlvboxmathA}%
+\newcommand\lthtmlpictureA{\bgroup\catcode`\_=8 \lthtmlpictureB}%
+\newcommand\lthtmlpictureB[1]{\lthtmlmathtype{#1}\egroup
+       \let\@savefreelist\@freelist \lthtmlhboxmathB}%
+\newcommand\lthtmlpictureZ[1]{\hfill\lthtmlfigureZ}%
+\newcommand\lthtmlfigureZ{\lthtmlboxmathZ\lthtmllogmath\copy\sizebox
+       \global\let\@freelist\@savefreelist}%
+\newcommand\lthtmldisplayA{\bgroup\catcode`\_=8 \lthtmldisplayAi}%
+\newcommand\lthtmldisplayAi[1]{\lthtmlmathtype{#1}\egroup\lthtmlvboxmathA}%
+\newcommand\lthtmldisplayB[1]{\edef\preveqno{(\theequation)}%
+  \lthtmldisplayA{#1}\let\@eqnnum\relax}%
+\newcommand\lthtmldisplayZ{\lthtmlboxmathZ\lthtmllogmath\lthtmlsetmath}%
+\newcommand\lthtmlinlinemathA{\bgroup\catcode`\_=8 \lthtmlinlinemathB}
+\newcommand\lthtmlinlinemathB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA
+  \vrule height1.5ex width0pt }%
+\newcommand\lthtmlinlineA{\bgroup\catcode`\_=8 \lthtmlinlineB}%
+\newcommand\lthtmlinlineB[1]{\lthtmlmathtype{#1}\egroup\lthtmlhboxmathA}%
+\newcommand\lthtmlinlineZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetinline}
+\newcommand\lthtmlinlinemathZ{\egroup\expandafter\ifdim\dp\sizebox>0pt %
+  \expandafter\centerinlinemath\fi\lthtmllogmath\lthtmlsetmath}
+\newcommand\lthtmlindisplaymathZ{\egroup %
+  \centerinlinemath\lthtmllogmath\lthtmlsetmath}
+\def\lthtmlsetinline{\hbox{\vrule width.1em \vtop{\vbox{%
+  \kern.1em\copy\sizebox}\ifdim\dp\sizebox>0pt\kern.1em\else\kern.3pt\fi
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\lthtmlsetmath{\hbox{\vrule width.1em\kern-.05em\vtop{\vbox{%
+  \kern.1em\kern0.8 pt\hbox{\hglue.17em\copy\sizebox\hglue0.8 pt}}\kern.3pt%
+  \ifdim\dp\sizebox>0pt\kern.1em\fi \kern0.8 pt%
+  \ifdim\hsize>\wd\sizebox \hrule depth1pt\fi}}}
+\def\centerinlinemath{%
+  \dimen1=\ifdim\ht\sizebox<\dp\sizebox \dp\sizebox\else\ht\sizebox\fi
+  \advance\dimen1by.5pt \vrule width0pt height\dimen1 depth\dimen1 
+ \dp\sizebox=\dimen1\ht\sizebox=\dimen1\relax}
+
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+\providecommand{\Eta}{\textrm{H}}
+\providecommand{\Mu}{\textrm{M}}
+\providecommand{\Alpha}{\textrm{A}}
+\providecommand{\Iota}{\textrm{J}}
+\providecommand{\Nu}{\textrm{N}}
+\providecommand{\Omicron}{\textrm{O}}
+\providecommand{\omicron}{\textrm{o}}
+\providecommand{\Chi}{\textrm{X}}
+\providecommand{\Beta}{\textrm{B}}
+\providecommand{\Kappa}{\textrm{K}}
+\providecommand{\Tau}{\textrm{T}}
+\providecommand{\Epsilon}{\textrm{E}}
+\providecommand{\Zeta}{\textrm{Z}}
+\providecommand{\Rho}{\textrm{R}}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+
+\newlength{\saveindent}%
+
+
+\setlength{\saveindent}{\parindent}%
+
+\setlength{\saveindent}{\parindent}
+\stepcounter{part}
+\stepcounter{chapter}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48336}%
+% latex2html id marker 48336
+$\textstyle \parbox{50mm}{ \begin{center}      \setlength{\epsfxsize}{50mm}
+      \epsfbox{HTKFigs//messencode.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Message Encoding/Decoding}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48364}%
+% latex2html id marker 48364
+$\textstyle \parbox{50mm}{ \begin{center}      \setlength{\epsfxsize}{50mm}
+      \epsfbox{HTKFigs//isoprob.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Isolated Word Problem}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48399}%
+% latex2html id marker 48399
+$\textstyle \parbox{85mm}{ \begin{center}      \setlength{\epsfxsize}{85mm}
+      \epsfbox{HTKFigs//markovgen.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  The Markov Generation Model}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48424}%
+% latex2html id marker 48424
+$\textstyle \parbox{84mm}{ \begin{center}      \setlength{\epsfxsize}{84mm}
+      \epsfbox{HTKFigs//useforiso.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Using HMMs for Isolated Word Recognition}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48463}%
+% latex2html id marker 48463
+$\textstyle \parbox{60mm}{ \begin{center}      \setlength{\epsfxsize}{60mm}
+      \epsfbox{HTKFigs//subsmixrep.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Representing a Mixture}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48634}%
+% latex2html id marker 48634
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//vtrellis.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  The Viterbi Algorithm for Isolated
+Word Recognition}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48668}%
+% latex2html id marker 48668
+$\textstyle \parbox{65mm}{ \begin{center}      \setlength{\epsfxsize}{65mm}
+      \epsfbox{HTKFigs//netforcsr.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Recognition Network for Continuously
+Spoken Word Recognition}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48669}%
+% latex2html id marker 48669
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//wlroper.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Recording Word Boundary Decisions}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48674}%
+% latex2html id marker 48674
+$\textstyle \parbox{75mm}{ \begin{center}      \setlength{\epsfxsize}{75mm}
+      \epsfbox{HTKFigs//softarch.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Software Architecture}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48679}%
+% latex2html id marker 48679
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//sysoview.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  HTK\ Processing Stages}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48680}%
+% latex2html id marker 48680
+$\textstyle \parbox{90mm}{ \begin{center}      \setlength{\epsfxsize}{90mm}
+      \epsfbox{HTKFigs//tsubword.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Training Sub-word HMMs}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48696}%
+% latex2html id marker 48696
+$\textstyle \parbox{110mm}{ \begin{center}      \setlength{\epsfxsize}{110mm}
+      \epsfbox{HTKFigs//dialnet.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Grammar for Voice Dialling}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48697}%
+% latex2html id marker 48697
+$\textstyle \parbox{25mm}{ \begin{center}      \setlength{\epsfxsize}{25mm}
+      \epsfbox{HTKFigs//step1.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 1}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48701}%
+% latex2html id marker 48701
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//step2.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 2}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48704}%
+% latex2html id marker 48704
+$\textstyle \parbox{50mm}{ \begin{center}      \setlength{\epsfxsize}{50mm}
+      \epsfbox{HTKFigs//step3.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 3}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48705}%
+% latex2html id marker 48705
+$\textstyle \parbox{60mm}{ \begin{center}      \setlength{\epsfxsize}{60mm}
+      \epsfbox{HTKFigs//step4.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 4}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48713}%
+% latex2html id marker 48713
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//step5.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 5}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48716}%
+% latex2html id marker 48716
+$\textstyle \parbox{85mm}{ \begin{center}      \setlength{\epsfxsize}{85mm}
+      \epsfbox{HTKFigs//MMFeg.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Form of Master Macro Files}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48717}%
+% latex2html id marker 48717
+$\textstyle \parbox{85mm}{ \begin{center}      \setlength{\epsfxsize}{85mm}
+      \epsfbox{HTKFigs//step6.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 6}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48719}%
+% latex2html id marker 48719
+$\textstyle \parbox{55mm}{ \begin{center}      \setlength{\epsfxsize}{55mm}
+      \epsfbox{HTKFigs//egsils.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Silence Models}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48720}%
+% latex2html id marker 48720
+$\textstyle \parbox{110mm}{ \begin{center}      \setlength{\epsfxsize}{110mm}
+      \epsfbox{HTKFigs//step7.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 7}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48722}%
+% latex2html id marker 48722
+$\textstyle \parbox{85mm}{ \begin{center}      \setlength{\epsfxsize}{85mm}
+      \epsfbox{HTKFigs//step8.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 8}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48725}%
+% latex2html id marker 48725
+$\textstyle \parbox{80mm}{ \begin{center}      \setlength{\epsfxsize}{80mm}
+      \epsfbox{HTKFigs//egtranstie.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Tying Transition Matrices}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48726}%
+% latex2html id marker 48726
+$\textstyle \parbox{55mm}{ \begin{center}      \setlength{\epsfxsize}{55mm}
+      \epsfbox{HTKFigs//step9.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 9}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48728}%
+% latex2html id marker 48728
+$\textstyle \parbox{50mm}{ \begin{center}      \setlength{\epsfxsize}{50mm}
+      \epsfbox{HTKFigs//step10.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 10}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48737}%
+% latex2html id marker 48737
+$\textstyle \parbox{120mm}{ \begin{center}      \setlength{\epsfxsize}{120mm}
+      \epsfbox{HTKFigs//step11.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Step 11}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{part}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48750}%
+% latex2html id marker 48750
+$\textstyle \parbox{60mm}{ \begin{center}      \setlength{\epsfxsize}{60mm}
+      \epsfbox{HTKFigs//Config.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Defining a Configuration}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsubsection}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\refstepcounter{tabctr}
+\refstepcounter{tabctr}
+\refstepcounter{tabctr}
+\stepcounter{chapter}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48943}%
+% latex2html id marker 48943
+$\textstyle \parbox{62mm}{ \begin{center}      \setlength{\epsfxsize}{62mm}
+      \epsfbox{HTKFigs//Spmods.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Speech Input Subsystem}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline48951}%
+% latex2html id marker 48951
+$\textstyle \parbox{50mm}{ \begin{center}      \setlength{\epsfxsize}{50mm}
+      \epsfbox{HTKFigs//Blocking.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Speech Encoding Process}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49046}%
+% latex2html id marker 49046
+$\textstyle \parbox{110mm}{ \begin{center}      \setlength{\epsfxsize}{110mm}
+      \epsfbox{HTKFigs//melfbank.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Mel-Scale Filter Bank}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49054}%
+% latex2html id marker 49054
+$\textstyle \parbox{60mm}{ \begin{center}      \setlength{\epsfxsize}{60mm}
+      \epsfbox{HTKFigs//vtlnpiecewise.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Frequency Warping}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49121}%
+% latex2html id marker 49121
+$\textstyle \parbox{130mm}{ \begin{center}      \setlength{\epsfxsize}{130mm}
+      \epsfbox{HTKFigs//HTKFormat.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Parameter Vector Layout in HTK\ Format Files}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49211}%
+% latex2html id marker 49211
+$\textstyle \parbox{120mm}{ \begin{center}      \setlength{\epsfxsize}{120mm}
+      \epsfbox{HTKFigs//endpointer.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Endpointer Parameters}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49217}%
+% latex2html id marker 49217
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//streams.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Example Stream Construction}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49219}%
+% latex2html id marker 49219
+$\textstyle \parbox{65mm}{ \begin{center}      \setlength{\epsfxsize}{65mm}
+      \epsfbox{HTKFigs//VQUse.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Using Vector Quantisation}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49224}%
+% latex2html id marker 49224
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//coercions.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Valid Parameter Kind Conversions}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\refstepcounter{tabctr}
+\refstepcounter{tabctr}
+\refstepcounter{tabctr}
+\refstepcounter{tabctr}
+\refstepcounter{tabctr}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49525}%
+% latex2html id marker 49525
+$\textstyle \parbox{60mm}{ \begin{center}      \setlength{\epsfxsize}{60mm}
+      \epsfbox{HTKFigs//labegs.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Example Transcriptions}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49535}%
+% latex2html id marker 49535
+$\textstyle \parbox{80mm}{ \begin{center}      \setlength{\epsfxsize}{80mm}
+      \epsfbox{HTKFigs//dbhier.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Database Hierarchy: Data [Left]; Labels [Right].}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\refstepcounter{tabctr}
+\stepcounter{chapter}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49599}%
+% latex2html id marker 49599
+$\textstyle \parbox{70mm}{ \begin{center}      \setlength{\epsfxsize}{70mm}
+      \epsfbox{HTKFigs//hmm1.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Simple Left-Right HMM}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49653}%
+% latex2html id marker 49653
+$\textstyle \parbox{60mm}{\noindent
+    \fbox{ \parbox{60mm}{ \hspace{60mm}
+       \begin{program}
+\mbox{$\sim$\textsf{h ``hmm1''}} \\
+\mbox{$<$\textsf{BeginHMM}$>$} \\
+\> \mbox{$<$\textsf{VecSize}$>$} 4 \mbox{$<$\textsf{MFCC}$>$}  \\
+\> \mbox{$<$\textsf{NumStates}$>$} 5  \\
+\> \mbox{$<$\textsf{State}$>$} 2 \\
+\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>       0.2 0.1 0.1 0.9  \\
+\>\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>\>       1.0 1.0 1.0 1.0  \\
+\> \mbox{$<$\textsf{State}$>$} 3 \\
+\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>       0.4 0.9 0.2 0.1  \\
+\>\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>\>       1.0 2.0 2.0 0.5  \\
+\> \mbox{$<$\textsf{State}$>$} 4 \\
+\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>       1.2 3.1 0.5 0.9  \\
+\>\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>\>       5.0 5.0 5.0 5.0  \\
+\> \mbox{$<$\textsf{TransP}$>$} 5 \\
+\>\>   0.0 0.5 0.5 0.0 0.0 \\
+\>\>   0.0 0.4 0.4 0.2 0.0 \\
+\>\>   0.0 0.0 0.6 0.4 0.0 \\
+\>\>   0.0 0.0 0.0 0.7 0.3 \\
+\>\>   0.0 0.0 0.0 0.0 0.0  \\
+\mbox{$<$\textsf{EndHMM}$>$}
+\end{program}
+    } }
+\par 
+\refstepcounter{figctr}
+\par 
+\begin{center}      \textbf{ Fig. \thechapter.\arabic{figctr}\ \ Definition for Simple L-R HMM}   
+    \end{center}   
+    }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49752}%
+% latex2html id marker 49752
+$\textstyle \parbox{60mm}{\noindent
+    \fbox{ \parbox{60mm}{ \hspace{60mm}
+       \begin{program}
+\mbox{$\sim$\textsf{h ``hmm2''}} \\
+\mbox{$<$\textsf{BeginHMM}$>$} \\
+\>\mbox{$<$\textsf{VecSize}$>$} 4 \mbox{$<$\textsf{MFCC}$>$} \\
+\>\mbox{$<$\textsf{NumStates}$>$} 4  \\
+\>\mbox{$<$\textsf{State}$>$} 2 \mbox{$<$\textsf{NumMixes}$>$} 2 \\
+\>\>   \mbox{$<$\textsf{Mixture}$>$} 1 0.4 \\
+\>\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>\>       0.3 0.2 0.2 1.0  \\
+\>\>\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>\>\>       1.0 1.0 1.0 1.0  \\
+\>\>    \mbox{$<$\textsf{Mixture}$>$} 2 0.6 \\
+\>\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>\>       0.1 0.0 0.0 0.8  \\
+\>\>\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>\>\>       1.0 1.0 1.0 1.0  \\
+\>\mbox{$<$\textsf{State}$>$} 3 \mbox{$<$\textsf{NumMixes}$>$} 2  \\
+\>\>    \mbox{$<$\textsf{Mixture}$>$} 1 0.7 \\
+\>\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>\>       0.1 0.2 0.6 1.4 \\
+\>\>\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>\>\>       1.0 1.0 1.0 1.0 \\
+\>\>    \mbox{$<$\textsf{Mixture}$>$} 2 0.3 \\
+\>\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>\>       2.1 0.0 1.0 1.8  \\
+\>\>\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>\>\>       1.0 1.0 1.0 1.0 \\
+\> \mbox{$<$\textsf{TransP}$>$} 4 \\
+\>\>   0.0 1.0 0.0 0.0 \\
+\>\>   0.0 0.5 0.5 0.0 \\
+\>\>   0.0 0.0 0.6 0.4 \\
+\>\>   0.0 0.0 0.0 0.0 \\
+\mbox{$<$\textsf{EndHMM}$>$} 
+\end{program}
+    } }
+\par 
+\refstepcounter{figctr}
+\par 
+\begin{center}      \textbf{ Fig. \thechapter.\arabic{figctr}\ \ Simple Mixture Gaussian HMM}   
+    \end{center}   
+    }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\refstepcounter{figctr}
+\refstepcounter{figctr}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49818}%
+% latex2html id marker 49818
+$\textstyle \parbox{50mm}{\noindent
+    \fbox{ \parbox{50mm}{ \hspace{50mm}
+       \begin{program}
+\mbox{$\sim$\textsf{o}} \mbox{$<$\textsf{VecSize}$>$} 4 \mbox{$<$\textsf{MFCC}$>$} \\
+\\
+\mbox{$\sim$\textsf{v ``var''}} \\
+\> \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>    1.0 1.0 1.0 1.0  \\
+\end{program}
+    } }
+\par 
+\refstepcounter{figctr}
+\par 
+\begin{center}      \textbf{ Fig. \thechapter.\arabic{figctr}\ \ Simple Macro Definitions}   
+    \end{center}   
+    }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49825}%
+% latex2html id marker 49825
+$\textstyle \parbox{60mm}{\noindent
+    \fbox{ \parbox{60mm}{ \hspace{60mm}
+       \begin{program}
+\par
+\mbox{$\sim$\textsf{h ``hmm5''}} \\
+\mbox{$<$\textsf{BeginHMM}$>$} \\
+\> \mbox{$<$\textsf{NumStates}$>$} 4  \\
+\> \mbox{$<$\textsf{State}$>$} 2 \mbox{$<$\textsf{NumMixes}$>$} 2 \\
+\>\>   \mbox{$<$\textsf{Mixture}$>$} 1 0.4 \\
+\>\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>\>       0.3 0.2 0.2 1.0  \\
+\>\>\>    \mbox{$\sim$\textsf{v ``var''}} \\
+\>\>   \mbox{$<$\textsf{Mixture}$>$} 2 0.6 \\
+\>\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>\>      0.1 0.0 0.0 0.8  \\
+\>\>\>    \mbox{$\sim$\textsf{v ``var''}} \\
+\> \mbox{$<$\textsf{State}$>$} 3 \mbox{$<$\textsf{NumMixes}$>$} 2 \\
+\>\>   \mbox{$<$\textsf{Mixture}$>$} 1 0.7 \\
+\>\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>\>       0.1 0.2 0.6 1.4  \\
+\>\>\>    \mbox{$\sim$\textsf{v ``var''}} \\
+\>\>   \mbox{$<$\textsf{Mixture}$>$} 2 0.3 \\
+\>\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>\>       2.1 0.0 1.0 1.8  \\
+\>\>\>    \mbox{$\sim$\textsf{v ``var''}} \\
+\> \mbox{$<$\textsf{TransP}$>$} 4 \\
+\>\>   0.0 1.0 0.0 0.0 \\
+\>\>   0.0 0.5 0.5 0.0 \\
+\>\>  0.0 0.0 0.6 0.4 \\
+\>\>   0.0 0.0 0.0 0.0 \\
+\mbox{$<$\textsf{EndHMM}$>$} 
+\par
+\end{program}
+    } }
+\par 
+\refstepcounter{figctr}
+\par 
+\begin{center}      \textbf{ Fig. \thechapter.\arabic{figctr}\ \ A Definition Using Macros}   
+    \end{center}   
+    }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49850}%
+% latex2html id marker 49850
+$\textstyle \parbox{120mm}{ \begin{center}      \setlength{\epsfxsize}{120mm}
+      \epsfbox{HTKFigs//hierarch.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  HMM Hierarchy and Potential Tie Points}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\refstepcounter{figctr}
+\refstepcounter{figctr}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49886}%
+% latex2html id marker 49886
+$\textstyle \parbox{120mm}{ \begin{center}      \setlength{\epsfxsize}{120mm}
+      \epsfbox{HTKFigs//hsetdef.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Defining a Model Set}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49887}%
+% latex2html id marker 49887
+$\textstyle \parbox{70mm}{\noindent
+    \fbox{ \parbox{70mm}{ \hspace{70mm}
+       \begin{program}
+two  \>\>tuw \\
+too \>\> tuw \\
+to  \>\> tuw \\
+one \\
+won \>\> one \\
+three \\
+four  
+\end{program}
+    } }
+\par 
+\refstepcounter{figctr}
+\par 
+\begin{center}      \textbf{ Fig. \thechapter.\arabic{figctr}\ \ HMM List with Tying}   
+    \end{center}   
+    }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline49899}%
+% latex2html id marker 49899
+$\textstyle \parbox{60mm}{ \begin{center}      \setlength{\epsfxsize}{60mm}
+      \epsfbox{HTKFigs//tmixeg.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Tied Mixture System}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\refstepcounter{figctr}
+\stepcounter{section}
+\refstepcounter{figctr}
+\stepcounter{section}
+\refstepcounter{figctr}
+\stepcounter{section}
+\refstepcounter{figctr}
+\stepcounter{section}
+\refstepcounter{figctr}
+\refstepcounter{figctr}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline50436}%
+% latex2html id marker 50436
+$\textstyle \parbox{62mm}{ \begin{center}      \setlength{\epsfxsize}{62mm}
+      \epsfbox{HTKFigs//isoword.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Isolated Word Training}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline50437}%
+% latex2html id marker 50437
+$\textstyle \parbox{90mm}{ \begin{center}      \setlength{\epsfxsize}{90mm}
+      \epsfbox{HTKFigs//subword.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Training Subword HMMs}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline50439}%
+% latex2html id marker 50439
+$\textstyle \parbox{60mm}{ \begin{center}      \setlength{\epsfxsize}{60mm}
+      \epsfbox{HTKFigs//vitloop.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  \textsc{HInit} Operation}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline50440}%
+% latex2html id marker 50440
+$\textstyle \parbox{90mm}{ \begin{center}      \setlength{\epsfxsize}{90mm}
+      \epsfbox{HTKFigs//hinitdp.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  File Processing in \textsc{HInit}}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline50442}%
+% latex2html id marker 50442
+$\textstyle \parbox{90mm}{ \begin{center}      \setlength{\epsfxsize}{90mm}
+      \epsfbox{HTKFigs//flatst.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Flat Start Initialisation}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline50444}%
+% latex2html id marker 50444
+$\textstyle \parbox{60mm}{ \begin{center}      \setlength{\epsfxsize}{60mm}
+      \epsfbox{HTKFigs//restloop.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  \textsc{HRest} Operation}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline50446}%
+% latex2html id marker 50446
+$\textstyle \parbox{90mm}{ \begin{center}      \setlength{\epsfxsize}{90mm}
+      \epsfbox{HTKFigs//herestdp.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  File Processing in \textsc{HERest}}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline50465}%
+% latex2html id marker 50465
+$\textstyle \parbox{90mm}{ \begin{center}      \setlength{\epsfxsize}{90mm}
+      \epsfbox{HTKFigs//parher.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  \textsc{HERest} Parallel Operation}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+
+%
+\providecommand{\vitsum}[2]{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r} #1 \psi^r_{js#2}(t)
+}%
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+
+%
+\providecommand{\albe}[1]{
+                  \sum_{r=1}^R \frac{1}{P_r}
+                  \sum_{t=1}^{T_r}
+                  \alpha^r_#1(t)\beta^r_#1(t)
+}%
+
+
+%
+\providecommand{\liksum}[1]{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r} L^r_{#1}(t)
+}%
+
+\stepcounter{subsection}
+
+%
+\providecommand{\albeq}[1]{
+                  \sum_{r=1}^R \frac{1}{P_r}
+                  \sum_{t=1}^{T_r}
+                  \alpha^{(q)r}_#1(t)\beta^{(q)r}_#1(t)
+}%
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline50839}%
+% latex2html id marker 50839
+$\textstyle \parbox{55mm}{ \begin{center}      \setlength{\epsfxsize}{55mm}
+      \epsfbox{HTKFigs//regtree1.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  A binary regression tree}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+
+%
+\providecommand{\satliksum}[1]{
+                  \sum_{i=1}^I\sum_{r=1}^{R^i}  \sum_{t=1}^{T_r} L^r_{#1}(t)
+}%
+
+\stepcounter{section}
+\stepcounter{section}
+
+%
+\providecommand{\like}{L_{m_r}(t)}%
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51126}%
+% latex2html id marker 51126
+$\textstyle \parbox{62mm}{ \begin{center}      \setlength{\epsfxsize}{62mm}
+      \epsfbox{HTKFigs//itemtree.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Item List Construction}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51138}%
+% latex2html id marker 51138
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//tiedstate.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Data-driven state tying}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51142}%
+% latex2html id marker 51142
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//qstree.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Decision tree-based state tying}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51162}%
+% latex2html id marker 51162
+$\textstyle \parbox{55mm}{ \begin{center}      \setlength{\epsfxsize}{55mm}
+      \epsfbox{HTKFigs//vqtohmm.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  VQ Processing}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51198}%
+% latex2html id marker 51198
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//recsys.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Overview of the Recognition Process}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51202}%
+% latex2html id marker 51202
+$\textstyle \parbox{80mm}{ \begin{center}      \setlength{\epsfxsize}{80mm}
+      \epsfbox{HTKFigs//wdnet.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  A Simple Word Network}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51203}%
+% latex2html id marker 51203
+$\textstyle \parbox{80mm}{ \begin{center}      \setlength{\epsfxsize}{80mm}
+      \epsfbox{HTKFigs//wdnet1.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  A Word Network Using Null Nodes}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51210}%
+% latex2html id marker 51210
+$\textstyle \parbox{120mm}{ \begin{center}      \setlength{\epsfxsize}{120mm}
+      \epsfbox{HTKFigs//digitnets.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Example Digit Recognition Networks}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51235}%
+% latex2html id marker 51235
+$\textstyle \parbox{62mm}{ \begin{center}      \setlength{\epsfxsize}{62mm}
+      \epsfbox{HTKFigs//decinet.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Decimal Syntax}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51236}%
+% latex2html id marker 51236
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//bobig.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Back-off Bigram Word-Loop Network}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51243}%
+% latex2html id marker 51243
+$\textstyle \parbox{110mm}{ \begin{center}      \setlength{\epsfxsize}{110mm}
+      \epsfbox{HTKFigs//dmaker.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Dictionary Construction using \textsc{HDMan}}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51245}%
+% latex2html id marker 51245
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//mononet.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Monophone Expansion of Bit-But Network}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51246}%
+% latex2html id marker 51246
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//wintnet.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Word Internal Triphone Expansion of Bit-But Network}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51247}%
+% latex2html id marker 51247
+$\textstyle \parbox{100mm}{ \begin{center}      \setlength{\epsfxsize}{100mm}
+      \epsfbox{HTKFigs//xwrdnet.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Cross-Word Triphone Expansion of Bit-But Network}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51252}%
+% latex2html id marker 51252
+$\textstyle \parbox{62mm}{ \begin{center}      \setlength{\epsfxsize}{62mm}
+      \epsfbox{HTKFigs//recnetlev.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Recognition Network Levels}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51266}%
+% latex2html id marker 51266
+$\textstyle \parbox{62mm}{ \begin{center}      \setlength{\epsfxsize}{62mm}
+      \epsfbox{HTKFigs//decflow.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Recognition Processing}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51312}%
+% latex2html id marker 51312
+$\textstyle \parbox{55mm}{ \begin{center}      \setlength{\epsfxsize}{55mm}
+      \epsfbox{HTKFigs//hvalign.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  Forced Alignment}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{part}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{section}
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51809}%
+% latex2html id marker 51809
+$\textstyle \parbox{65mm}{ \begin{center}      \setlength{\epsfxsize}{65mm}
+      \epsfbox{HTKFigs//WordLM.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  The main stages in building an $n$-gram language
+model}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline51817}%
+% latex2html id marker 51817
+$\textstyle \parbox{110mm}{ \begin{center}      \setlength{\epsfxsize}{110mm}
+      \epsfbox{HTKFigs//ClassLM.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  The main stages in building a 
+class-based language model}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\refstepcounter{tabctr}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{part}
+\stepcounter{chapter}
+
+%
+\providecommand{\stdopts}[1]{
+\textsc{#1} also supports the standard options \texttt{-A},
+\texttt{-C},  \texttt{-D}, \texttt{-S}, \texttt{-T}, and \texttt{-V} as described
+in section~\ref{s:stdopts}.
+}%
+
+
+%
+\providecommand{\stdoptB}{
+  \item[{\tt -B}] Output HMM definition files in binary format.
+}%
+
+
+%
+\providecommand{\stdoptE}{
+  \item[{\tt -E dir [ext]}] Parent transform directory and optional extension
+	for parent transforms. The default option is that no parent
+	transform is used.
+}%
+
+
+%
+\providecommand{\stdoptF}{
+  \item[{\tt -F fmt}] Set the source data format to {\tt fmt}.
+}%
+
+
+%
+\providecommand{\stdoptG}{
+  \item[{\tt -G fmt}] Set the label file format to {\tt fmt}.
+}%
+
+
+%
+\providecommand{\stdoptH}{
+  \item[{\tt -H mmf}] Load HMM macro model file {\tt mmf}.  This option
+     may be repeated to load multiple MMFs.
+}%
+
+
+%
+\providecommand{\stdoptI}{
+  \item[{\tt -I mlf}] This loads the master label file {\tt mlf}.  This option
+     may be repeated to load several MLFs.
+}%
+
+
+%
+\providecommand{\stdoptJ}{
+  \item[{\tt -J dir [ext]}] Add directory to the list of possible input
+	transform directories. Only one of the options can specify the
+	extrension to use for the input transforms.
+}%
+
+
+%
+\providecommand{\stdoptK}{
+  \item[{\tt -K dir [ext]}] Output transform directory and optional extension
+	for output transforms. The default option is that there is no
+	output extension and the current transform directoryis used.
+}%
+
+
+%
+\providecommand{\stdoptL}{
+  \item[{\tt -L dir}] Search directory \texttt{dir} for label files (default
+     is to search current directory).
+}%
+
+
+%
+\providecommand{\stdoptM}{
+  \item[{\tt -M dir}] Store output HMM macro model files in the directory \texttt{dir}.  
+     If this option is not given, the new HMM definition will overwrite
+     the existing one.
+}%
+
+
+%
+\providecommand{\stdoptO}{
+  \item[{\tt -O fmt}] Set the target data format to {\tt fmt}.
+}%
+
+
+%
+\providecommand{\stdoptP}{
+  \item[{\tt -P fmt}] Set the target label format to {\tt fmt}.
+}%
+
+
+%
+\providecommand{\stdoptQ}{
+  \item[{\tt -Q}] Print a summary of all commands supported by this tool.
+}%
+
+
+%
+\providecommand{\stdoptX}{
+  \item[{\tt -X ext}] Set label file extension to {\tt ext} 
+  (default is \texttt{lab}).
+}%
+
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\refstepcounter{tabctr}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsubsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+
+%
+\providecommand{\hbut}[1]{\texttt{#1}}%
+
+
+%
+\providecommand{\hbbut}[1]{\fbox{\texttt{#1}}}%
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline53351}%
+% latex2html id marker 53351
+$\textstyle \parbox{120mm}{ \begin{center}      \setlength{\epsfxsize}{120mm}
+      \epsfbox{HTKFigs//hslab.eps}  \refstepcounter{figctr}
+      \begin{center}        \textbf{ Fig. \thechapter.\arabic{figctr}\ \  HSLab display window}   
+      \end{center}
+\end{center} }$%
+\lthtmlinlinemathZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
+
+\end{document}

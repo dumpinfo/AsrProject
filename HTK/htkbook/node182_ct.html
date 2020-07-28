@@ -1,0 +1,488 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Word exchange algorithm</TITLE>
+<META NAME="description" CONTENT="Contents of Word exchange algorithm">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node181_mn.html">
+<LINK REL="up" HREF="node181_mn.html">
+<LINK REL="next" HREF="node183_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION04121000000000000000">&#160;</A><A NAME="s:HLMexchangealg">&#160;</A><A NAME="KN-clustering">&#160;</A>
+<BR>
+Word exchange algorithm
+</H2>
+[Kneser and Ney 1993]<A NAME="tex2html60" HREF="footnode_mn.html#foot21710" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">7</SPAN></SUP></A> describes an
+algorithm to build a class map by starting from some initial guess at
+a solution and then iteratively searching for changes to improve the
+existing class map.  This is repeated until some minimum change
+threshold has been reached or a chosen number of iterations have been
+performed. The initial guess at a class map is typically chosen by a
+simple method such as randomly distributing words amongst classes or
+placing all words in the first class except for the most frequent
+words which are put into singleton classes. Potential moves are then
+evaluated and those which increase the likelihood of the training text
+most are applied to the class map. The algorithm is described in
+detail below, and is implemented in the HTK tool C<SMALL>LUSTER</SMALL>.
+
+<P>
+Let <!-- MATH
+ $\mathcal{W}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img521.png"
+ ALT="$ \mathcal{W}$"></SPAN> be the training text list of words <!-- MATH
+ $(w_1, w_2, w_3,
+\ldots)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="112" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img522.png"
+ ALT="$ (w_1, w_2, w_3,
+\ldots)$"></SPAN> and let <!-- MATH
+ $\mathbb{W}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img496.png"
+ ALT="$ \mathbb{W}$"></SPAN> be the set of all words in
+<!-- MATH
+ $\mathcal{W}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img521.png"
+ ALT="$ \mathcal{W}$"></SPAN>.
+From equation
+<A HREF="node177_ct.html#cond_prob_model">14.1</A> it follows that:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="classnorm_totprob">&#160;</A><!-- MATH
+ \begin{equation}
+P_\mathrm{class}(\mathcal{W}) \;=\; \prod_{x, y \in \mathbb{W}}
+P_\mathrm{class}(x \;|\; y)^{C(x,y)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="259" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img523.png"
+ ALT="$\displaystyle P_\mathrm{class}(\mathcal{W}) \;=\; \prod_{x, y \in \mathbb{W}} P_\mathrm{class}(x \;\vert\; y)^{C(x,y)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">9</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img524.png"
+ ALT="$ (x, y)$"></SPAN> is some word pair `<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img191.png"
+ ALT="$ x$"></SPAN>' preceded by `<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img525.png"
+ ALT="$ y$"></SPAN>' and <SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img526.png"
+ ALT="$ C(x, y)$"></SPAN>
+is the number of times that the word pair `<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img525.png"
+ ALT="$ y$"></SPAN> <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img191.png"
+ ALT="$ x$"></SPAN>' occurs in the list
+<!-- MATH
+ $\mathcal{W}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img521.png"
+ ALT="$ \mathcal{W}$"></SPAN>.
+
+<P>
+In general evaluating equation <A HREF="node182_ct.html#classnorm_totprob">14.9</A> will lead to
+problematically small values, so logarithms can be used:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="classnorm_logprob">&#160;</A><!-- MATH
+ \begin{equation}
+\log P_\mathrm{class}(\mathcal{W}) \;=\; \sum_{x, y \in \mathbb{W}}
+C(x, y) . \log P_\mathrm{class}(x \;|\; y)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="323" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img527.png"
+ ALT="$\displaystyle \log P_\mathrm{class}(\mathcal{W}) \;=\; \sum_{x, y \in \mathbb{W}} C(x, y) . \log P_\mathrm{class}(x \;\vert\; y)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">10</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Given the definition of a class <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram model in equation
+<A HREF="node180_ct.html#normclass">14.8</A>, the maximum likelihood bigram
+probability estimate of a word is:
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="classnorm_breakdown">&#160;</A><!-- MATH
+ \begin{eqnarray}
+P_\mathrm{class}(w_i \;|\; w_{i-1}) & = &
+ \frac{C(w_i)}{C(G(w_i))}
+  \times
+  \frac{C\left(G(w_i), G(w_{i-1})\right)}
+       {C(G(w_{i-1}))}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="116" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img528.png"
+ ALT="$\displaystyle P_\mathrm{class}(w_i \;\vert\; w_{i-1})$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="232" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img529.png"
+ ALT="$\displaystyle \frac{C(w_i)}{C(G(w_i))}
+\times
+\frac{C\left(G(w_i), G(w_{i-1})\right)}
+{C(G(w_{i-1}))}$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">11</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img530.png"
+ ALT="$ C(w)$"></SPAN> is the number of times that the word `<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img337.png"
+ ALT="$ w$"></SPAN>' occurs in the
+list <!-- MATH
+ $\mathcal{W}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img521.png"
+ ALT="$ \mathcal{W}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="66" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img531.png"
+ ALT="$ C(G(w))$"></SPAN> is the number of times that the class
+<SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img532.png"
+ ALT="$ G(w)$"></SPAN> occurs in the list resulting from applying <SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img510.png"
+ ALT="$ G(.)$"></SPAN> to each entry
+of <!-- MATH
+ $\mathcal{W}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img521.png"
+ ALT="$ \mathcal{W}$"></SPAN>;<A NAME="tex2html61" HREF="footnode_mn.html#foot21715" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">8</SPAN></SUP></A>  similarly <!-- MATH
+ $C(G(w_x), G(w_y))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="124" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img534.png"
+ ALT="$ C(G(w_x), G(w_y))$"></SPAN> is the count of the
+class pair `<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img535.png"
+ ALT="$ G(w_y)$"></SPAN> <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img536.png"
+ ALT="$ G(w_x)$"></SPAN>' in that resultant list.
+
+<P>
+Substituting equation <A HREF="node182_ct.html#classnorm_breakdown">14.11</A> into equation <A HREF="node182_ct.html#classnorm_logprob">14.10</A>
+and then rearranging gives:
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="classnorm_ml">&#160;</A><!-- MATH
+ \begin{eqnarray}
+\log P_\mathrm{class}(\mathcal{W}) & \;=\; &
+\sum_{x,y \in \mathbb{W}} C(x,y) . \log\left(
+  \frac{C(x)}{C(G(x))} \times \frac{C(G(x),G(y))}{C(G(y))}
+  \right) \nonumber
+\\
+&\;=\;& \sum_{x,y \in \mathbb{W}} C(x,y) . \log
+  \left(\frac{C(x)}{C(G(x))}\right)
+ \;+\; \sum_{x,y \in \mathbb{W}} C(x,y)
+  . \log\left(\frac{C(G(x),G(y))}{C(G(y))}\right) \nonumber
+\\
+&\;=\;& \sum_{x \in \mathbb{W}} C(x) . \log \left(\frac{C(x)}{C(G(x))}\right)
+ \;+\; \sum_{g,h \in \mathbb{G}} C(g,h) . \log\left(\frac{C(g,h)}{C(h)}\right)
+  \nonumber
+\\
+&\;=\;& \sum_{x \in \mathbb{W}} C(x) . \log C(x)
+ \;-\; \sum_{x \in \mathbb{W}} C(x) . \log C(G(x))\nonumber\\
+&&\;+\; \sum_{g,h \in \mathbb{G}} C(g,h) . \log C(g,h)
+ \;-\; \sum_{g \in \mathbb{G}} C(g) . \log C(g) \nonumber
+\\
+&\;=\;& \sum_{x \in \mathbb{W}} C(x) . \log C(x)
+ \;+\; \sum_{g,h \in \mathbb{G}} C(g,h) . \log C(g,h)\nonumber\\
+&&\;-\; 2 \sum_{g \in \mathbb{G}} C(g) . \log C(g)
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="93" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img537.png"
+ ALT="$\displaystyle \log P_\mathrm{class}(\mathcal{W})$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img538.png"
+ ALT="$\displaystyle \;=\;$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="333" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img539.png"
+ ALT="$\displaystyle \sum_{x,y \in \mathbb{W}} C(x,y) . \log\left(
+\frac{C(x)}{C(G(x))} \times \frac{C(G(x),G(y))}{C(G(y))}
+\right)$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img538.png"
+ ALT="$\displaystyle \;=\;$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="485" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img540.png"
+ ALT="$\displaystyle \sum_{x,y \in \mathbb{W}} C(x,y) . \log
+\left(\frac{C(x)}{C(G(x))...
+...sum_{x,y \in \mathbb{W}} C(x,y)
+. \log\left(\frac{C(G(x),G(y))}{C(G(y))}\right)$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img538.png"
+ ALT="$\displaystyle \;=\;$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="406" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img541.png"
+ ALT="$\displaystyle \sum_{x \in \mathbb{W}} C(x) . \log \left(\frac{C(x)}{C(G(x))}\right)
+\;+\; \sum_{g,h \in \mathbb{G}} C(g,h) . \log\left(\frac{C(g,h)}{C(h)}\right)$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img538.png"
+ ALT="$\displaystyle \;=\;$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="313" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img542.png"
+ ALT="$\displaystyle \sum_{x \in \mathbb{W}} C(x) . \log C(x)
+\;-\; \sum_{x \in \mathbb{W}} C(x) . \log C(G(x))$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="346" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img543.png"
+ ALT="$\displaystyle \;+\; \sum_{g,h \in \mathbb{G}} C(g,h) . \log C(g,h)
+\;-\; \sum_{g \in \mathbb{G}} C(g) . \log C(g)$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img538.png"
+ ALT="$\displaystyle \;=\;$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="327" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img544.png"
+ ALT="$\displaystyle \sum_{x \in \mathbb{W}} C(x) . \log C(x)
+\;+\; \sum_{g,h \in \mathbb{G}} C(g,h) . \log C(g,h)$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="159" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img545.png"
+ ALT="$\displaystyle \;-\; 2 \sum_{g \in \mathbb{G}} C(g) . \log C(g)$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">12</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img546.png"
+ ALT="$ (g,h)$"></SPAN> is some class sequence `<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img547.png"
+ ALT="$ h$"></SPAN> <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img548.png"
+ ALT="$ g$"></SPAN>'.
+
+<P>
+Note that the first of these three terms in the final stage of equation
+<A HREF="node182_ct.html#classnorm_ml">14.12</A>, ``<!-- MATH
+ $\sum_{x \in \mathbb{W}} C(x)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="85" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img549.png"
+ ALT="$ \sum_{x \in \mathbb{W}} C(x)$"></SPAN> <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img550.png"
+ ALT="$ .$"></SPAN> <!-- MATH
+ $\log(C(x))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="71" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img551.png"
+ ALT="$ \log(C(x))$"></SPAN>'', is
+independent of the class map function <SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img510.png"
+ ALT="$ G(.)$"></SPAN>, therefore it is not
+necessary to consider it when optimising <SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img510.png"
+ ALT="$ G(.)$"></SPAN>.  The value a class
+map must seek to maximise, <!-- MATH
+ $F_{\mathrm{M}_\mathrm{C}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img552.png"
+ ALT="$ F_{\mathrm{M}_\mathrm{C}}$"></SPAN>, can now be defined:
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="classnorm_Fml">&#160;</A><!-- MATH
+ \begin{eqnarray}
+F_{\mathrm{M}_\mathrm{C}}
+&\;=\;&
+ \sum_{g,h \in \mathbb{G}} C(g,h) . \log C(g,h)
+\;-\; 2 \sum_{g \in \mathbb{G}} C(g) . \log C(g)
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="35" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img553.png"
+ ALT="$\displaystyle F_{\mathrm{M}_\mathrm{C}}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img538.png"
+ ALT="$\displaystyle \;=\;$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="333" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img554.png"
+ ALT="$\displaystyle \sum_{g,h \in \mathbb{G}} C(g,h) . \log C(g,h)
+\;-\; 2 \sum_{g \in \mathbb{G}} C(g) . \log C(g)$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">13</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+A fixed number of classes must be decided before running the
+algorithm, which can now be formally defined:
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="Cstepone">&#160;</A><A NAME="Csteptwo">&#160;</A><!-- MATH
+ $\framebox[13.5cm]{\parbox{12cm}{\vspace{0.5cm}
+\begin{enumerate}
+\item {\bfseries Initialise}:$\forall w \in\mathbb{W}:\; G(w) = 1$\\
+Set up the class map so that all words are in the first class and all
+other classes are empty ({\it or} initialise using some other scheme)
+\par
+\item{\bfseries Iterate}: $\forall i \in \{1\ldots n\} \; \wedge \; \neg s$\\
+For a given number of iterations $1 \ldots n$\  or until some stop
+criterion $s$\  is fulfilled
+\begin{enumerate}
+\item {\bfseries Iterate}: $\forall w \in\mathbb{W}$\\
+For each word $w$\  in the vocabulary
+\begin{enumerate}\item {\bfseries Iterate}: $\forall c\in\mathbb{G}$\\
+For each class $c$
+\begin{enumerate}
+\item {\bfseries Move} word $w$\  to class $c$, remembering its previous class
+\item {\bfseries Calculate} the change in $F_{\mathrm{M}_\mathrm{C}}$\  for this move
+\item {\bfseries Move} word $w$\  back to its previous class
+\end{enumerate}
+\item {\bfseries Move} word $w$\  to the class which increased $F_{\mathrm{M}_\mathrm{C}}$\  by the
+most, or do not move it if no move increased $F_{\mathrm{M}_\mathrm{C}}$
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\vspace{0.5cm}}}$
+ -->
+<SPAN CLASS="MATH"><A NAME="Csteptwo">&#160;</A><A NAME="Cstepone">&#160;</A><IMG
+ WIDTH="614" HEIGHT="432" ALIGN="MIDDLE" BORDER="0"
+ SRC="img555.png"
+ ALT="\framebox[13.5cm]{\parbox{12cm}{\vspace{0.5cm}
+\begin{enumerate}
+\item {\bfserie...
+...hrm{M}_\mathrm{C}}$\end{enumerate}\end{enumerate}\end{enumerate}\vspace{0.5cm}}}"></SPAN>
+</DIV>
+
+<P>
+The initialisation scheme given here in step <A HREF="node182_ct.html#Cstepone">1</A> represents
+a word unigram language model, making no assumptions about which words
+should belong in which class.<A NAME="tex2html62" HREF="footnode_mn.html#foot21764" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">9</SPAN></SUP></A>  The algorithm is greedy and so can get stuck in a local
+maximum and is therefore not guaranteed to find the optimal class map
+for the training text.  The algorithm is rarely run until total
+convergence, however, and it is found in practice that an extra
+iteration can compensate for even a deliberately poor choice of
+initialisation.
+
+<P>
+The above algorithm requires the number of classes to be fixed before
+running. It should be noted that as the number of classes utilised
+increases so the overall likelihood of the training text will tend
+tend towards that of the word model.<A NAME="tex2html63" HREF="footnode_mn.html#foot21495" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">10</SPAN></SUP></A>  This is why the algorithm does
+not itself modify the number of classes, otherwise it would
+na&#239;vely converge on <!-- MATH
+ $|\mathbb{W}|$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img557.png"
+ ALT="$ \vert\mathbb{W}\vert$"></SPAN> classes.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

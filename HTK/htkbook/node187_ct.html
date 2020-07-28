@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Smoothing probabilities</TITLE>
+<META NAME="description" CONTENT="Contents of Smoothing probabilities">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node184_mn.html">
+<LINK REL="up" HREF="node183_mn.html">
+<LINK REL="next" HREF="node188_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION04132000000000000000">&#160;</A><A NAME="s:HLMsmoothingprobs">&#160;</A><A NAME="smoothing_probs">&#160;</A>
+<BR>
+Smoothing probabilities
+</H2>
+The above discounting schemes present various methods of
+redistributing probability mass from observed events to unseen
+events. Additionally, if events are infrequently observed then they
+can be smoothed with less precise but more frequently observed events.
+
+<P>
+In [Katz 1987] a <I>back off</I> scheme is proposed and used alongside
+Good-Turing discounting. In this method probabilities are
+redistributed via the recursive utilisation of lower level conditional
+distributions. Given the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram case, if the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-tuple is not observed
+frequently enough in the training text then a probability based on the
+occurrence count of a shorter-context <SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img583.png"
+ ALT="$ (n-1)$"></SPAN>-tuple is used
+instead - using the shorter context estimate is referred to as
+<I>backing off</I>.
+In practice probabilities are typically considered
+badly-estimated if their corresponding word sequences are not
+explicitly stored in the language model, either because they did not
+occur in the training text or they have been discarded using some
+pruning mechanism.
+
+<P>
+Katz defines a function <!-- MATH
+ $\hat{\beta}(w_{i-n+1},
+\ldots w_{i-1})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="138" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img584.png"
+ ALT="$ \hat{\beta}(w_{i-n+1},
+\ldots w_{i-1})$"></SPAN> which represents the total
+probability of all the unseen events in a particular context. The probability mass <!-- MATH
+ $\hat{\beta}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img585.png"
+ ALT="$ \hat{\beta}$"></SPAN> is then distributed amongst all the
+unseen <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ w_i$"></SPAN> and the language model probability estimate becomes:<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\hat{P}(w_i \;|\; w_{i-n+1},\ldots,w_{i-1}) =\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\nonumber
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="193" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img586.png"
+ ALT="$\displaystyle \hat{P}(w_i \;\vert\; w_{i-n+1},\ldots,w_{i-1}) =\qquad{}\qquad{}...
+...qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\left\{ \begin{array}{l@{\quad:\quad}l}
+\alpha(w_{i-n+1}, \ldots, w_{i-1}) \,.\, \hat{P}(w_i | w_{i-n+2}, \ldots, w_{i-1}) &
+c(w_{i-n+1}, \ldots, w_i) = 0\\
+d_{c(w_{i-n+1}, \ldots, w_i)} \,.\, \frac{c(w_{i-n+1}, \ldots, w_i)}{c(w_{i-n+1},
+\ldots, w_{i-1})} & 1 \le c(w_{i-n+1}, \ldots, w_i) \le k\\
+\frac{c(w_{i-n+1}, \ldots, w_i)}{c(w_{i-n+1},
+\ldots, w_{i-1})} & c(w_{i-n+1}, \ldots, w_i) > k\\
+\end{array}\right.
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="558" HEIGHT="86" ALIGN="MIDDLE" BORDER="0"
+ SRC="img587.png"
+ ALT="$\displaystyle \left\{ \begin{array}{l@{\quad:\quad}l} \alpha(w_{i-n+1}, \ldots,...
+...{i-n+1}, \ldots, w_{i-1})} &amp; c(w_{i-n+1}, \ldots, w_i) &gt; k \end{array}\right.$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">18</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="28" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img588.png"
+ ALT="$ c(.)$"></SPAN> is the count of an event and:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\alpha(w_{i-n+1}, \ldots, w_{i-1}) = \frac{\hat{\beta}(w_{i-n+1},
+\ldots, w_{i-1})} {\sum_{w_i: c(w_{i-n+1}, \ldots, w_i)=0}\hat{P}(w_i
+| w_{i-n+2}, \ldots, w_{i-1})}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="482" HEIGHT="59" ALIGN="MIDDLE" BORDER="0"
+ SRC="img589.png"
+ ALT="$\displaystyle \alpha(w_{i-n+1}, \ldots, w_{i-1}) = \frac{\hat{\beta}(w_{i-n+1},...
+...w_i: c(w_{i-n+1}, \ldots, w_i)=0}\hat{P}(w_i \vert w_{i-n+2}, \ldots, w_{i-1})}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">19</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+A back off scheme such as this can be implemented efficiently because
+all the back off weights <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN> can be computed once and then stored
+as part of the language model, and through its recursive nature it is
+straightforward to incorporate within a language model.  Through the
+use of pruning methods, contexts which occur `too infrequently' are not
+stored in the model so in practice the test <!-- MATH
+ $c(w_1,\ldots,w_{i})=0$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="123" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img590.png"
+ ALT="$ c(w_1,\ldots,w_{i})=0$"></SPAN> is
+implemented as referring to whether or not the context is in the model.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html3893" HREF="node188_mn.html" TARGET="main"><SMALL>Cut-offs</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

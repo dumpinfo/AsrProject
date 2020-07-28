@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Step 3 - Recording the Data</TITLE>
+<META NAME="description" CONTENT="Contents of Step 3 - Recording the Data">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node29_mn.html">
+<LINK REL="previous" HREF="node27_mn.html">
+<LINK REL="up" HREF="node25_mn.html">
+<LINK REL="next" HREF="node29_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02313000000000000000">
+Step 3 - Recording the Data</A>
+</H2>
+
+<P>
+The<A NAME="3512">&#160;</A> training and test data will be recorded using the
+HTK tool HSL<SMALL>AB</SMALL><A NAME="3997">&#160;</A>. This is a combined 
+waveform recording and labelling tool. In this example HSL<SMALL>AB</SMALL> will be
+used just for recording, as labels already exist. However, if you do not have
+pre-existing training sentences (such as those from the TIMIT database) you can
+create them either from pre-existing text (as described above) or by labelling
+your training utterances using HSL<SMALL>AB</SMALL>. HSL<SMALL>AB</SMALL> is invoked by typing
+<PRE>
+    HSLab noname
+</PRE>
+This will cause a window to appear with a waveform display area in the upper
+half and a row of buttons, including a record button in the lower half.  When
+the name of a normal file is given as argument, HSL<SMALL>AB</SMALL> displays its
+contents.  Here, the special file name <TT>noname</TT> indicates that new data
+is to be recorded. HSL<SMALL>AB</SMALL> makes no special provision for prompting the
+user.  However, each time the record button is pressed, it writes the
+subsequent recording alternately to a file called <code>noname_0.</code> and to a
+file called <code>noname_1.</code>.  Thus, it is simple to write a shell script
+which for each successive line of a prompt file, outputs the prompt, waits for
+either <code>noname_0.</code> or <code>noname_1.</code> to appear, and then renames
+the file to the name prepending the prompt (see Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>).
+<A NAME="3998">&#160;</A>
+
+<P>
+While the prompts for training sentences already were provided for above, the
+prompts for test sentences need to be generated before recording them. 
+The tool<A NAME="3525">&#160;</A><A NAME="3999">&#160;</A>
+HSG<SMALL>EN</SMALL> can be used to do this by randomly traversing a word network and 
+outputting each word encountered. For example, typing
+<PRE>
+    HSGen -l -n 200 wdnet dict &gt; testprompts
+</PRE>
+would generate 200 numbered test utterances, the first few of which would look something like:
+<PRE>
+    1.  PHONE YOUNG  
+    2.  DIAL OH SIX SEVEN SEVEN OH ZERO
+    3.  DIAL SEVEN NINE OH OH EIGHT SEVEN NINE NINE
+    4.  DIAL SIX NINE SIX TWO NINE FOUR ZERO NINE EIGHT  
+    5.  CALL JULIAN ODELL
+    ... etc
+</PRE>
+These can be piped to construct the prompt file <TT>testprompts</TT> for
+the required test data.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

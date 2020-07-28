@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Version 1.5 Compatibility</TITLE>
+<META NAME="description" CONTENT="Contents of Version 1.5 Compatibility">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node86_mn.html">
+<LINK REL="previous" HREF="node84_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node86_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION032170000000000000000">&#160;</A><A NAME="s:v1spcompat">&#160;</A>
+<BR>
+Version 1.5 Compatibility
+</H1>
+
+<P>
+The redesign of the HTK front-end in version 2 has introduced
+a number of differences in parameter encoding.  The main
+changes are
+
+<OL>
+<LI>Source waveform zero mean processing is now performed on a frame-by-frame
+   basis.
+</LI>
+<LI>Delta coefficients use a modified form of regression rather than
+   simple differences at the start and end of the utterance.
+</LI>
+<LI>Energy scaling is no longer applied to the zero'th MFCC coefficient.
+</LI>
+</OL>
+If a parameter encoding is required which is as close as possible
+to the version 1.5 encoding, then the compatibility configuration
+variable <TT>V1COMPAT</TT> should be set to true.
+
+<P>
+Note also in this context that the default values for the various
+configuration values have been chosen to be consistent with the
+defaults or recommended practice for version 1.5.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

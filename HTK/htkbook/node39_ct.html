@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Step 11 - Recognising the Test Data</TITLE>
+<META NAME="description" CONTENT="Contents of Step 11 - Recognising the Test Data">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node38_mn.html">
+<LINK REL="up" HREF="node38_mn.html">
+<LINK REL="next" HREF="node40_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02341000000000000000">
+Step 11 - Recognising the Test Data</A>
+</H2>
+
+<P>
+Assuming that <TT>test.scp</TT> holds a list of the coded test files,
+then each test file will be recognised and its transcription output to
+an MLF called <TT>recout.mlf</TT> by executing the following
+<PRE>
+    HVite -H hmm15/macros -H hmm15/hmmdefs -S test.scp \
+          -l '*' -i recout.mlf -w wdnet \
+          -p 0.0 -s 5.0 dict tiedlist
+</PRE>
+The options <TT>-p</TT> and <TT>-s</TT> set the <SPAN  CLASS="textit">word insertion penalty</SPAN>
+<A NAME="3932">&#160;</A>
+and the <SPAN  CLASS="textit">grammar scale factor</SPAN>, <A NAME="3934">&#160;</A>
+respectively.  The word insertion penalty
+is a fixed value added to each token when it transits from the end of one word
+to the start of the next.  The grammar scale factor is the amount by which
+the language model probability is scaled before being 
+added to each token  as it transits from the end of one word
+to the start of the next.  These parameters can have a significant effect
+on recognition performance and hence, some tuning on development test data
+is well worthwhile.
+
+<P>
+The dictionary contains monophone transcriptions whereas the supplied HMM list
+contains word internal triphones.  HV<SMALL>ITE</SMALL><A NAME="4027">&#160;</A> 
+will make the necessary 
+conversions when loading the word network <TT>wdnet</TT>.  However, 
+if the HMM list contained both monophones and context-dependent phones
+then HV<SMALL>ITE</SMALL> would become confused.  The required form of 
+word-internal network<A NAME="3939">&#160;</A> 
+expansion can be forced by setting the configuration variable
+<TT>FORCECXTEXP</TT><A NAME="4028">&#160;</A> to true and 
+<TT>ALLOWXWRDEXP</TT><A NAME="4029">&#160;</A> to 
+false (see chapter&nbsp;<A HREF="node157_ct.html#c:netdict">12</A> for details).<A NAME="3945">&#160;</A>
+
+<P>
+Assuming that the MLF <TT>testref.mlf</TT> contains word level transcriptions
+for each test file<A NAME="tex2html13" HREF="footnode_mn.html#foot4030" TARGET="footer"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A>, the actual
+performance can be determined by running 
+HR<SMALL>ESULTS</SMALL> as follows
+<PRE>
+    HResults -I testref.mlf tiedlist recout.mlf
+</PRE>
+the result would be a print-out of the form
+<PRE>
+    ====================== HTK Results Analysis ==============
+      Date: Sun Oct 22 16:14:45 1995
+      Ref : testrefs.mlf
+      Rec : recout.mlf
+    ------------------------ Overall Results -----------------
+    SENT: %Correct=98.50 [H=197, S=3, N=200]
+    WORD: %Corr=99.77, Acc=99.65 [H=853, D=1, S=1, I=1, N=855]
+    ==========================================================
+</PRE>
+The line starting with <TT>SENT:</TT> indicates that of the 200 test utterances,
+197  (98.50%) were correctly recognised.  The following line starting with <TT>WORD:</TT> 
+gives the word level statistics and indicates that of the 855 words in total,
+853 (99.77%) were recognised correctly.  There was 1 deletion error (<TT>D</TT>), 
+1 substitution<A NAME="3958">&#160;</A>
+error (<TT>S</TT>) and 1 insertion error (<TT>I</TT>).  The accuracy figure (<TT>Acc</TT>)
+of 99.65% is lower than the percentage correct (<TT>Cor</TT>) because it takes
+account of the insertion errors which the latter ignores.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:step11">&#160;</A><IMG
+ WIDTH="547" HEIGHT="233" ALIGN="MIDDLE" BORDER="0"
+ SRC="img120.png"
+ ALT="% latex2html id marker 48737
+$\textstyle \parbox{120mm}{ \begin{center}\setlengt...
+...xtbf{ Fig. \thechapter.\arabic{figctr}  Step 11}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

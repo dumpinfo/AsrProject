@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Standard Options</TITLE>
+<META NAME="description" CONTENT="Contents of Standard Options">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node48_mn.html">
+<LINK REL="previous" HREF="node46_mn.html">
+<LINK REL="up" HREF="node43_mn.html">
+<LINK REL="next" HREF="node48_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03140000000000000000">&#160;</A><A NAME="s:stdopts">&#160;</A>
+<BR>
+Standard Options
+</H1>
+
+<P>
+<A NAME="4864">&#160;</A> As noted in section&nbsp;<A HREF="node44_ct.html#s:cmdline">4.1</A>, options
+consisting of a capital letter are common across all tools.  Many are
+specific to particular file types and they will be introduced as they
+arise.  However, there are six options that are standard across all
+tools.  Three of these have been mentioned already.  The
+option <TT>-C</TT><A NAME="5130">&#160;</A> is used to
+specify a configuration file name and the option
+<TT>-S</TT><A NAME="5131">&#160;</A> is used to
+specify a script file name, whilst the option
+<TT>-D</TT><A NAME="5132">&#160;</A> is used to
+display configuration settings.
+
+<P>
+The two remaining standard options provided directly by 
+HS<SMALL>HELL</SMALL> are <TT>-A</TT><A NAME="5133">&#160;</A>
+and <TT>-V</TT>. 
+The option <TT>-A</TT> causes the current command line arguments to 
+be printed. When running experiments via
+scripts, it is a good idea to use this option to record in a log file the
+precise settings used for each tool.
+The option <TT>-V</TT><A NAME="5134">&#160;</A>
+causes version information for the tool and each module used by that
+tool to be listed.  These should always be quoted when making bug reports.
+
+<P>
+Finally, all tools implement the trace 
+option <TT>-T</TT><A NAME="5135">&#160;</A>.
+Trace values are typically bit strings and the meaning of each bit
+is described in the reference section for each tool.  Setting a trace<A NAME="4881">&#160;</A>
+option via the command line overrides any setting for that same trace
+option in a configuration file.  This is a general rule, command line
+options always override defaults set in configuration files.
+
+<P>
+All of the standard options are listed in the final summary section of
+this chapter. As a general rule, you should consider passing at least
+-A -D -V -T 1 to all tools, which will guarantee that sufficient
+information is available in the tool output.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

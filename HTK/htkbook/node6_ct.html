@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Output Probability Specification</TITLE>
+<META NAME="description" CONTENT="Contents of Output Probability Specification">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node7_mn.html">
+<LINK REL="previous" HREF="node5_mn.html">
+<LINK REL="up" HREF="node3_mn.html">
+<LINK REL="next" HREF="node7_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION02130000000000000000">&#160;</A><A NAME="s:outprobspec">&#160;</A>
+<BR>
+Output Probability Specification
+</H1>
+
+<P>
+Before<A NAME="1110">&#160;</A> the problem of parameter estimation can be discussed in more
+detail, the form of the output distributions <!-- MATH
+ $\{b_{j}({\mbox{\boldmath $o$}}_t)\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="61" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$ \{b_{j}({\mbox{\boldmath $o$}}_t)\}$"></SPAN>
+needs to be made explicit. HTK is designed primarily for modelling
+continuous parameters using continuous density multivariate output
+distributions.  It can also handle observation sequences
+consisting of discrete symbols in which case, the output distributions
+are discrete probabilities.  For simplicity, however, the presentation 
+in this chapter will assume that continuous density 
+distributions are being used. The minor differences that the use
+of discrete probabilities entail are noted in chapter&nbsp;<A HREF="node101_ct.html#c:HMMDefs">7</A>
+and discussed in more detail in chapter&nbsp;<A HREF="node152_ct.html#c:discmods">11</A>.
+
+<P>
+In common with most other<A NAME="1115">&#160;</A><A NAME="1116">&#160;</A><A NAME="1117">&#160;</A>
+continuous density HMM systems, HTK represents output distributions
+by Gaussian Mixture Densities.  
+In HTK, however, a further
+generalisation is made.  HTK allows each observation vector at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>
+to be split into a number of <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img36.png"
+ ALT="$ S$"></SPAN> independent data streams <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.png"
+ ALT="$ o_{st}$"></SPAN>.  The
+formula for computing <!-- MATH
+ $b_{j}({\mbox{\boldmath $o$}}_t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="45" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.png"
+ ALT="$ b_{j}({\mbox{\boldmath $o$}}_t)$"></SPAN> is then
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:8">&#160;</A><!-- MATH
+ \begin{equation}
+b_{j}({\mbox{\boldmath$o$}}_t) = \prod_{s=1}^S \left[
+     \sum_{m=1}^{M_s} c_{jsm} {\cal N}({\mbox{\boldmath$o$}}_{st};
+                    {\mbox{\boldmath$\mu$}}_{jsm}, {\mbox{\boldmath$\Sigma$}}_{jsm})
+  \right]^{\gamma_s}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="319" HEIGHT="68" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$\displaystyle b_{j}({\mbox{\boldmath$o$}}_t) = \prod_{s=1}^S \left[ \sum_{m=1}^...
+...ox{\boldmath$\mu$}}_{jsm}, {\mbox{\boldmath$\Sigma$}}_{jsm}) \right]^{\gamma_s}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">8</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ M_s$"></SPAN> is the number of mixture components in stream <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img41.png"
+ ALT="$ s$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$ c_{jsm}$"></SPAN>
+is the weight of the <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ m$"></SPAN>'th component and 
+<!-- MATH
+ ${\cal N}(\cdot; {\mbox{\boldmath $\mu$}}, {\mbox{\boldmath $\Sigma$}})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.png"
+ ALT="$ {\cal N}(\cdot; {\mbox{\boldmath $\mu$}}, {\mbox{\boldmath $\Sigma$}})$"></SPAN> is a multivariate Gaussian with
+mean vector <!-- MATH
+ ${\mbox{\boldmath $\mu$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.png"
+ ALT="$ {\mbox{\boldmath $\mu$}}$"></SPAN> and covariance matrix <!-- MATH
+ ${\mbox{\boldmath $\Sigma$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img46.png"
+ ALT="$ {\mbox{\boldmath $\Sigma$}}$"></SPAN>,
+that is<A NAME="1144">&#160;</A><A NAME="1145">&#160;</A>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+{\cal N}({\mbox{\boldmath$o$}}; {\mbox{\boldmath$\mu$}}, {\mbox{\boldmath$\Sigma$}}) =
+       \frac{1}{\sqrt{(2 \pi)^n | {\mbox{\boldmath$\Sigma$}} |}}
+       e^{- \frac{1}{2}({\mbox{\boldmath$o$}}-{\mbox{\boldmath$\mu$}})' {\mbox{\boldmath$\Sigma$}}^{-1}({\mbox{\boldmath$o$}}-{\mbox{\boldmath$\mu$}})}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="322" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.png"
+ ALT="$\displaystyle {\cal N}({\mbox{\boldmath$o$}}; {\mbox{\boldmath$\mu$}}, {\mbox{\...
+...{\mbox{\boldmath$\Sigma$}}^{-1}({\mbox{\boldmath$o$}}-{\mbox{\boldmath$\mu$}})}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">9</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN> is the dimensionality of <!-- MATH
+ ${\mbox{\boldmath $o$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img48.png"
+ ALT="$ {\mbox{\boldmath $o$}}$"></SPAN>.
+
+<P>
+The exponent <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img49.png"
+ ALT="$ \gamma_s$"></SPAN> is a stream weight<A NAME="tex2html1" HREF="footnode_mn.html#foot1163" TARGET="footer"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>.  It 
+can be used to give a particular stream more emphasis, however,
+it can only be set manually.  No current HTK training tools 
+can estimate values for it. 
+
+<P>
+Multiple data streams are used to
+enable separate modelling of multiple information sources.  In
+HTK, the processing of streams is completely general.  However,
+the speech input modules assume that the 
+source data is split into at most 4 streams.  Chapter&nbsp;<A HREF="node55_ct.html#c:speechio">5</A>
+discusses this in more detail but for now it is sufficient to
+remark that the default streams are the
+basic parameter vector, first (delta) and second (acceleration)
+difference coefficients and log energy.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

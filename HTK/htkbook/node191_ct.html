@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Class-Based Language Models</TITLE>
+<META NAME="description" CONTENT="Contents of Class-Based Language Models">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node190_mn.html">
+<LINK REL="up" HREF="node176_mn.html">
+<LINK REL="next" HREF="node192_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04160000000000000000">&#160;</A><A NAME="s:cllmoview">&#160;</A>
+<BR>
+Class-Based Language Models
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:ClassLM">&#160;</A><IMG
+ WIDTH="502" HEIGHT="607" ALIGN="MIDDLE" BORDER="0"
+ SRC="img605.png"
+ ALT="% latex2html id marker 51817
+$\textstyle \parbox{110mm}{ \begin{center}\setlengt...
+... stages in building a
+class-based language model}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+As described in section <A HREF="node180_ct.html#s:HLMclassngram">14.1.3</A>, a class-base language
+model consists of two separate components.  The first is an <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram
+which models the sequence of classes (i.e. <!-- MATH
+ $p(c_i, | c_{i-n+1},
+\ldots, c_{n-1})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="161" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img606.png"
+ ALT="$ p(c_i, \vert c_{i-n+1},
+\ldots, c_{n-1})$"></SPAN>) and the second is a class map with associated word
+counts or probabilities within classes allowing the word-given-class
+probability bigram <!-- MATH
+ $p(w_k|c_k)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="63" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img607.png"
+ ALT="$ p(w_k\vert c_k)$"></SPAN> to be evaluated.  These files may
+then either be linked into a single composite file or a third `linking'
+file is create to point to these two separate files - both of these
+operations can be performed using the LL<SMALL>INK</SMALL> tool.
+
+<P>
+Given a set of word classes defined in a class map file and a set of
+word level gram files, building a class-based model with the HTK tools requires only a few simple modifications to the basic procedure
+described above for building a word <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram:
+
+<UL>
+<LI>C<SMALL>LUSTER</SMALL> is used with the word map and word level gram
+  files derived from the source text to construct a class map which
+  defines which class each word is in.  The same tool is then used to
+  generate the word-classes component file referred to above.
+  Note that C<SMALL>LUSTER</SMALL> can also be used to generate this file
+  from an existing or manually-generated class map.
+
+<P>
+</LI>
+<LI>LGC<SMALL>OPY</SMALL> is used with the class map to convert the word level 
+  gram files derived from the source text into class gram files.  
+  LB<SMALL>UILD</SMALL> can then be used directly with the class level gram
+  files to build the class sequence <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram language model
+  referred to above.
+
+<P>
+</LI>
+<LI>LL<SMALL>INK</SMALL> is then run to create either a language model
+  script pointing to the two separate language model files or a single
+  composite file.  The resulting language model
+  is then ready for use.
+</LI>
+</UL>
+The main steps of this procedure are illustrated in
+Figure&nbsp;<A HREF="node191_ct.html#f:ClassLM">14.2</A>.
+
+<P>
+The next chapter provides a more thorough introduction to the tools as
+well as a tutorial to work through explaining how to use them in
+practice.
+
+<P>
+
+  
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

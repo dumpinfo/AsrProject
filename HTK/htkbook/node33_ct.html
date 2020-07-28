@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Step 7 - Fixing the Silence Models</TITLE>
+<META NAME="description" CONTENT="Contents of Step 7 - Fixing the Silence Models">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node34_mn.html">
+<LINK REL="previous" HREF="node32_mn.html">
+<LINK REL="up" HREF="node31_mn.html">
+<LINK REL="next" HREF="node34_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02322000000000000000">
+Step 7 - Fixing the Silence Models</A>
+</H2>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:egsils">&#160;</A><IMG
+ WIDTH="253" HEIGHT="322" ALIGN="MIDDLE" BORDER="0"
+ SRC="img114.png"
+ ALT="% latex2html id marker 48719
+$\textstyle \parbox{55mm}{ \begin{center}\setlength...
+...ig. \thechapter.\arabic{figctr}  Silence Models}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+The previous step has generated a 3 state left-to-right HMM for each
+phone and also a HMM for the silence model<A NAME="4222">&#160;</A> <TT>sil</TT>.  The 
+next step is to add extra transitions from states 2 to 4 and from
+states 4 to 2<A NAME="4224">&#160;</A>
+in the silence model.  The idea here is to make the model more robust
+by allowing individual states to absorb the various
+impulsive noises in the training data.  The backward skip allows this to happen
+without committing the model to transit to the following word.
+
+<P>
+Also, at this point, a 1 state
+short pause<A NAME="4225">&#160;</A> <TT>sp</TT> model should be created.  
+This should be a so-called <SPAN  CLASS="textit">tee-model</SPAN><A NAME="4228">&#160;</A>
+which has a direct transition from entry to exit node.
+This <TT>sp</TT> has its emitting state tied to the centre state of the silence model.
+The required topology of the two silence models is shown in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.
+
+<P>
+These silence models can be created in two stages
+
+<UL>
+<LI>Use a text editor on the file <TT>hmm3/hmmdefs</TT> to copy the centre state of
+the <TT>sil</TT> model to
+make a new <TT>sp</TT> model and store the resulting MMF <TT>hmmdefs</TT>, which 
+includes the new <TT>sp</TT> model, in the new directory <TT>hmm4</TT>. 
+
+<P>
+</LI>
+<LI>Run the HMM editor HHE<SMALL>D</SMALL><A NAME="4008">&#160;</A> to add 
+the extra transitions required
+and tie the <TT>sp</TT> state to the centre <TT>sil</TT> state
+</LI>
+</UL>
+
+<P>
+HHE<SMALL>D</SMALL> works in a similar way to HLE<SMALL>D</SMALL>.  It applies a set of commands in
+a script to modify a set of HMMs.  In this case, it is executed as follows
+<PRE>
+    HHEd -H hmm4/macros -H hmm4/hmmdefs -M hmm5 sil.hed monophones1
+</PRE>
+where <TT>sil.hed</TT> contains the following commands
+<PRE>
+    AT 2 4 0.2 {sil.transP}
+    AT 4 2 0.2 {sil.transP}
+    AT 1 3 0.3 {sp.transP}
+    TI silst {sil.state[3],sp.state[2]}
+</PRE>
+The <TT>AT</TT><A NAME="4009">&#160;</A> commands add transitions to the
+given transition matrices and the final <TT>TI</TT><A NAME="4010">&#160;</A> command creates a tied-state called <TT>silst</TT>.  The parameters of
+this tied-state are stored in the <TT>hmmdefs</TT> file and within each silence
+model, the original state parameters are replaced by the name of this
+macro<A NAME="3720">&#160;</A>.  Macros are described in more detail below. For now it is
+sufficient to regard them simply as the mechanism by which
+HTK implements parameter sharing. 
+Note that the phone list used here has been changed, because the original list
+<TT>monophones0</TT> has been extended by the new <TT>sp</TT> model. The new 
+file is called <TT>monophones1</TT> and has been used in the above HHE<SMALL>D</SMALL>
+command.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:step7">&#160;</A><IMG
+ WIDTH="502" HEIGHT="278" ALIGN="MIDDLE" BORDER="0"
+ SRC="img115.png"
+ ALT="% latex2html id marker 48720
+$\textstyle \parbox{110mm}{ \begin{center}\setlengt...
+...extbf{ Fig. \thechapter.\arabic{figctr}  Step 7}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+Finally, another two passes of HER<SMALL>EST</SMALL> are applied using the phone
+transcriptions with <TT>sp</TT> models between words.  This leaves the
+set of monophone HMMs created so far in the directory <TT>hmm7</TT>.
+This step is illustrated in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node244_mn.html">
+<LINK REL="previous" HREF="node242_mn.html">
+<LINK REL="up" HREF="node241_mn.html">
+<LINK REL="next" HREF="node244_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05112000000000000000">&#160;</A><A NAME="s:Cluster-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+C<SMALL>LUSTER</SMALL> is invoked by the command line
+<PRE>
+   Cluster [options] mapfile [mult] gramfile [[mult] gramfile ...]
+</PRE>
+The given word map is loaded and then each of the specified gram files
+is imported.  The list of input gram files can be interspersed with
+multipliers. These are floating-point format numbers which must begin
+with a plus or minus character (e.g. <TT>+1.0</TT>, <TT>-0.5</TT>,
+etc.). The effect of a multiplier <TT>mult</TT> is to scale the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram
+counts in the following gram files by the factor <TT>mult</TT>. The
+resulting scaled counts are rounded to the nearest integer when
+actually used in the clustering algorithm. A multiplier stays in
+effect until it is redefined.
+
+<P>
+The allowable options to C<SMALL>LUSTER</SMALL> are as follows
+
+<DL COMPACT>
+<DT><TT>-c n</TT>
+<DD>Use <TT>n</TT> classes. This specifies the number of
+        classes that should be in the resultant class map.
+
+<P>
+<DT><TT>-i n</TT>
+<DD>Perform <TT>n</TT> iterations. This is the number of
+        iterations of the clustering algorithm that should be
+        performed. (If you are using the <TT>-x</TT> option then
+        completing the current iteration does not count towards
+        the total number, so use <TT>-i 0</TT> to complete it and
+        then finish)
+
+<P>
+<DT><TT>-k</TT>
+<DD>Keep the special unknown word token in its own
+        singleton class.  If not passed it can be moved to or from
+        any class.
+
+<P>
+<DT><TT>-l fn</TT>
+<DD>Load the classmap <TT>fn</TT> at start up and when
+        performing any further iterations do so from this starting
+        point.
+
+<P>
+<DT><TT>-m</TT>
+<DD>Record the running value of the maximum likelihood
+        function used by the clusterer to optimised the training
+        text likelihood in the log file.  This option is principally
+        provided for debugging purposes.
+
+<P>
+<DT><TT>-n</TT>
+<DD>Do not write any log file during execution of an
+        iteration.
+
+<P>
+<DT><TT>-o fn</TT>
+<DD>Specify the prefix of all output files.  All output
+        class map, logfile and recovery files share the same filename
+        prefix, and this is specified via the <TT>-o</TT> switch.  The
+        default is <TT>cluster</TT>.
+
+<P>
+<DT><TT>-p fn</TT>
+<DD>Write a word-given-class probabilities file. Either
+        this or the <TT>-q</TT> switch are required to actually build a
+        class-based language model. The HTK language model library,
+        LM<SMALL>ODEL</SMALL>, supports both probability and count-based
+        class files.  There is no difference in use, although each
+        allows different types of manual manipulation of the file.
+        Note that if you do not pass <TT>-p</TT> or <TT>-q</TT> you may
+        run C<SMALL>LUSTER</SMALL> at a later date using the <TT>-l</TT> and
+        <TT>-i 0</TT> options to just produce a language model file.
+
+<P>
+<DT><TT>-q fn</TT>
+<DD>Write a word-given-class counts file. See the
+        documentation for <TT>-p</TT>.
+
+<P>
+<DT><TT>-r n</TT>
+<DD>Write recovery files after moving <TT>n</TT> words
+        since the previous recovery file was written or an iteration
+        began.  Pass <TT>-r n</TT> to disable writing of recovery files.
+
+<P>
+<DT><TT>-s tkn</TT>
+<DD>Specify the sentence start token.
+
+<P>
+<DT><TT>-t tkn</TT>
+<DD>Specify the sentence end token.
+
+<P>
+<DT><TT>-u tkn</TT>
+<DD>Specify the unknown word token.
+
+<P>
+<DT><TT>-v</TT>
+<DD>Use verbose log file format.
+
+<P>
+<DT><TT>-w [WMAP/FREQ]</TT>
+<DD>Specify the order in which word moves are
+        considered. Default is <TT>WMAP</TT> in which words are
+        considered in the order they are encountered in the word map.
+        Specifying <TT>FREQ</TT> will consider the most frequent word
+        first and then the remainder in decreasing order of frequency.
+
+<P>
+<DT><TT>-x fn</TT>
+<DD>Continue execution from recovery file <TT>fn</TT>.
+
+<P>
+</DD>
+</DL>
+
+C<SMALL>LUSTER</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node303_mn.html">
+<LINK REL="previous" HREF="node266_mn.html">
+<LINK REL="up" HREF="node265_mn.html">
+<LINK REL="next" HREF="node303_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05172000000000000000">
+Use</A>
+</H2>
+
+<P>
+HHE<SMALL>D</SMALL> is invoked by typing the command line
+<PRE>
+   HHEd [options] edCmdFile hmmList
+</PRE>
+where <TT>edCmdFile</TT> is a text file containing a sequence of edit commands
+as described above and <TT>hmmList</TT> defines the set of HMMs to be edited
+(see HM<SMALL>ODEL</SMALL> for the format of HMM list). 
+If the models are to be kept in separate files rather than being stored in an
+MMF, the configuration variable <TT>KEEPDISTINCT</TT> should be set to true.
+The available options for HHE<SMALL>D</SMALL> are
+
+<P>
+
+<DL COMPACT>
+<DT><TT>-d dir</TT>
+<DD>This option tells HHE<SMALL>D</SMALL> to look in
+      the directory <TT>dir</TT> to find the model definitions.
+
+<P>
+<DT><TT>-o ext</TT>
+<DD>This causes the file name extensions of the
+      original models (if any) to be replaced by <TT>ext</TT>.
+
+<P>
+<DT><TT>-w mmf</TT>
+<DD>Save all the macros and model definitions in a
+        single master macro file <TT>mmf</TT>.
+
+<P>
+<DT><TT>-x s</TT>
+<DD>Set the extension for the edited output files to be <TT>s</TT> 
+      (default is to to use the original names unchanged).
+
+<P>
+<DT><TT>-z</TT>
+<DD>Setting this option causes all aliases in the loaded
+      HMM set to be deleted (zapped) immediately before 
+      loading the definitions.  The result is that all logical names
+      are ignored and the actual HMM list
+      consists of just the physically distinct HMMs.
+
+  <DT><TT>-B</TT>
+<DD>Output HMM definition files in binary format.
+
+  <DT><TT>-H mmf</TT>
+<DD>Load HMM macro model file <TT>mmf</TT>.  This option
+     may be repeated to load multiple MMFs.
+
+  <DT><TT>-M dir</TT>
+<DD>Store output HMM macro model files in the directory <TT>dir</TT>.  
+     If this option is not given, the new HMM definition will overwrite
+     the existing one.
+
+  <DT><TT>-Q</TT>
+<DD>Print a summary of all commands supported by this tool.
+
+<P>
+</DD>
+</DL>
+
+HHE<SMALL>D</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Overview of -Gram Construction Process</TITLE>
+<META NAME="description" CONTENT="Contents of Overview of -Gram Construction Process">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node191_mn.html">
+<LINK REL="previous" HREF="node189_mn.html">
+<LINK REL="up" HREF="node176_mn.html">
+<LINK REL="next" HREF="node191_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04150000000000000000">&#160;</A><A NAME="s:mkngoview">&#160;</A>
+<BR>
+Overview of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-Gram Construction Process
+</H1>
+
+This section describes the overall process of building an <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram
+language model using the HTK tools.  As noted in the introduction,
+it is a three stage process.  Firstly, the training text is scanned
+and the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams counts are stored in a set of <SPAN  CLASS="textit">gram</SPAN> files.
+Secondly, and optionally, the counts in the gram files are modified to
+perform vocabulary and class mapping.  Finally the resulting gram
+files are used to build the LM. This separation into stages adds some
+complexity to the overall process but it makes it much more efficient
+to handle very large quantities of data since the gram files only need
+to be constructed once but they can be augmented, processed and used
+for constructing LMs many times.
+
+<P>
+The overall process involved in building an <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram language model
+using the HTK tools is illustrated in Figure&nbsp;<A HREF="node190_ct.html#f:WordLM">14.1</A>.  The
+procedure begins with some training text, which first of all should be
+conditioned into a suitable format by performing operations such as
+converting numbers to a citation form, expanding common abbreviations
+and so on.  The precise format of the training text depends on your
+requirements, however, and can vary enormously - therefore
+conditioning tools are not supplied with HTK.<A NAME="tex2html70" HREF="footnode_mn.html#foot21758" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">17</SPAN></SUP></A>
+<P>
+Given some input text, the tool LGP<SMALL>REP</SMALL> scans the input word
+sequence and counts <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams.<A NAME="tex2html71" HREF="footnode_mn.html#foot21759" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">18</SPAN></SUP></A>  These <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram counts
+are stored in a buffer which fills as each new <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram is
+encountered.  When this buffer becomes full, the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams within it
+are sorted and stored in a <SPAN  CLASS="textit">gram</SPAN> file.
+All words (and symbols generally) are represented within HTK by a
+unique integer id.  The mapping from words to ids is recorded in a
+word map.  On startup, LGP<SMALL>REP</SMALL> loads in an existing word map,
+then each new word encountered in the input text is allocated a new id
+and added to the map.  On completion, LGP<SMALL>REP</SMALL> outputs the new
+updated word map.  If more text is input, this process is repeated and
+hence the word map will expand as more and more data is processed.
+
+<P>
+Although each of the gram files output by LGP<SMALL>REP</SMALL> is sorted,
+the range of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams within individual files will overlap.  To build
+a language model, all <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram counts must be input in sort order so
+that words with equivalent histories can be grouped. To accommodate
+this, all HTK language modelling tools can read multiple gram files
+and sort them on-the-fly.  This can be inefficient, however, and it is
+therefore useful to first copy a newly generated set of gram files
+using the HLM tool LGC<SMALL>OPY</SMALL>.  This yields a set of gram files
+which are <SPAN  CLASS="textit">sequenced</SPAN>, i.e. the ranges of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams within each
+gram file do not overlap and can therefore be read in a single stream.
+Furthermore, the sequenced files will take less disc space since the
+counts for identical <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram in different files will have been
+merged.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:WordLM">&#160;</A><IMG
+ WIDTH="298" HEIGHT="493" ALIGN="MIDDLE" BORDER="0"
+ SRC="img604.png"
+ ALT="% latex2html id marker 51809
+$\textstyle \parbox{65mm}{ \begin{center}\setlength...
+...ain stages in building an $n$-gram language
+model}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+The set of (possibly sequenced) gram files and their associated word
+map provide the raw data for building an <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram LM.  The next stage
+in the construction process is to define the vocabulary of the LM and
+convert all <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams which contain OOV (out of vocabulary) words so
+that each OOV word is replaced by a single symbol representing the
+<SPAN  CLASS="textit">unknown</SPAN> class.  For example, the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram <TT>AN OLEAGINOUS
+AFFAIR</TT> would be converted to <TT>AN !!UNK AFFAIR</TT> if the word
+``oleaginous'' was not in the selected vocabulary and <TT>!!UNK</TT>
+is the name chosen for the unknown class.
+
+<P>
+This assignment of OOV words to a class of unknown words is a specific
+example of a more general mechanism.  In HTK, any word can be
+associated with a named class by listing it in a <SPAN  CLASS="textit">class map</SPAN>
+file.  Classes can be defined either by listing the class members or
+by listing all non-members.  For defining the unknown class the latter
+is used, so a plain text list of all in-vocabulary words is supplied
+and all other words are mapped to the OOV class.  The tool
+LGC<SMALL>OPY</SMALL> can use a class map to make a copy of a set of gram
+files in which all words listed in the class map are replaced by the
+class name, and also output a word map which contains only the
+required vocabulary words and their ids plus any classes and their
+ids.
+
+<P>
+As shown in Figure&nbsp;<A HREF="node190_ct.html#f:WordLM">14.1</A>, the LM itself is built using the
+tool LB<SMALL>UILD</SMALL>.  This takes as input the gram files and the word
+map and generates the required LM.  The language model
+can be built in steps (first a unigram, then a bigram, then a trigram,
+etc.) or in a single pass if required.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Byte-swapping of HTK data files</TITLE>
+<META NAME="description" CONTENT="Contents of Byte-swapping of HTK data files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node54_mn.html">
+<LINK REL="previous" HREF="node52_mn.html">
+<LINK REL="up" HREF="node43_mn.html">
+<LINK REL="next" HREF="node54_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03190000000000000000">&#160;</A><A NAME="s:byteswap">&#160;</A>
+<BR>
+Byte-swapping of HTK data files
+</H1>
+
+<P>
+<A NAME="5139">&#160;</A>
+<A NAME="5140">&#160;</A>
+<A NAME="4979">&#160;</A>
+Virtually all HTK tools can read and write data to and from binary files. The
+use of binary format as opposed to text can speed up the performance of the
+tools and at the same time reduce the file size when manipulating large
+quantities of data.  Typical binary files used by the HTK tools are speech
+waveform/parameter files, binary master model files (MMF), binary accumulator
+files used in HMM parameter estimation and binary lattice files. However, the
+use of binary data format often introduces incompatibilities between different
+machine architectures due to the different byte ordering conventions used to
+represent numerical quantities. In such cases, byte swapping of the data is
+required. To avoid incompatibilities across different machine architectures,
+all HTK binary data files are written out using big-endian (<TT>NONVAX</TT>)
+representation of numerical values. Similarly, during loading HTK binary
+format files are assumed to be in <TT>NONVAX</TT> byte order. The default
+behavior can be altered using the configuration parameters
+<TT>NATURALREADORDER</TT> and
+<TT>NATURALWRITEORDER</TT>. Setting <TT>NATURALREADORDER</TT> to true will
+instruct the HTK tools to interpret the binary input data in the machine's
+natural byte order (byte swapping will never take place). Similarly, setting
+<TT>NATURALWRITEORDER</TT> to true will instruct the tools to write out data
+using the machine's natural byte order. The default value of these two
+configuration variables is false which is the appropriate setting when using
+HTK in a multiple machine architecture environment. In an environment
+comprising entirely of machines with <TT>VAX</TT> byte order both configuration
+parameters can be set true which will disable the byte swapping procedure
+during reading and writing of data.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

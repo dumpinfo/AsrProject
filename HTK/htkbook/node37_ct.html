@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Step 10 - Making Tied-State Triphones</TITLE>
+<META NAME="description" CONTENT="Contents of Step 10 - Making Tied-State Triphones">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node36_mn.html">
+<LINK REL="up" HREF="node35_mn.html">
+<LINK REL="next" HREF="node38_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02332000000000000000">
+Step 10 - Making Tied-State Triphones</A>
+</H2>
+
+<P>
+The outcome of the previous stage is a set of triphone HMMs with all triphones
+in a phone set sharing the same transition matrix.  When estimating these
+models, many of the variances in the output distributions
+will have been floored since there will be<A NAME="3840">&#160;</A><A NAME="3841">&#160;</A>
+<A NAME="3842">&#160;</A><A NAME="3843">&#160;</A>
+insufficient data associated with many of the states.  The last step in
+the model building process is to tie states within triphone sets
+in order to share data and thus be able to make robust parameter estimates.
+
+<P>
+In the previous step, the <TT>TI</TT> command was used to
+explicitly tie all members of a set of transition matrices together. 
+However,
+the choice of which states to tie requires a bit more  subtlety since
+the performance of the recogniser depends crucially on how accurate
+the state output distributions capture the statistics of the speech data.
+
+<P>
+HHE<SMALL>D</SMALL> provides two mechanisms which allow states to be clustered 
+and<A NAME="3846">&#160;</A>
+then each cluster tied.  The first is data-driven and uses a similarity
+measure between states.  The second uses decision trees<A NAME="3847">&#160;</A>
+and is based on asking questions about the left and right contexts of each
+triphone.  The decision tree attempts to find those contexts which make the largest
+difference to the acoustics and which should therefore distinguish clusters.
+
+<P>
+Decision tree state tying is performed by running HHE<SMALL>D</SMALL> 
+in the normal way, i.e.
+<PRE>
+   HHEd -B -H hmm12/macros -H hmm12/hmmdefs -M hmm13 \
+        tree.hed triphones1 &gt; log
+</PRE>
+Notice that the output is saved in a log file.  This is important since
+some tuning of thresholds is usually needed.
+
+<P>
+The edit script <TT>tree.hed</TT>, which contains the instructions regarding
+which contexts to examine for possible clustering, can be rather long and
+complex. A script for automatically generating this file, <TT>mkclscript</TT>,
+is found in the RM Demo. A version of the <TT>tree.hed</TT> script, which can
+be used with this tutorial, is included in the <TT>HTKTutorial</TT> directory.
+Note that this script is only capable of creating the TB commands (decision 
+tree clustering of states).  The questions (QS) still need defining by
+the user.  There is, however, an example list of questions which may be 
+suitable to some tasks (or at least useful as an example) supplied with the 
+RM demo (lib/quests.hed).  The entire script appropriate for clustering 
+English phone models is too long to show here in the text, however, its main 
+components are given by the following fragments:
+
+<P>
+<PRE>
+    RO 100.0 stats
+    TR 0
+    QS "L_Class-Stop" {p-*,b-*,t-*,d-*,k-*,g-*} 
+    QS "R_Class-Stop" {*+p,*+b,*+t,*+d,*+k,*+g} 
+    QS "L_Nasal" {m-*,n-*,ng-*} 
+    QS "R_Nasal" {*+m,*+n,*+ng}
+    QS "L_Glide" {y-*,w-*} 
+    QS "R_Glide" {*+y,*+w}
+    ....
+    QS "L_w" {w-*} 
+    QS "R_w" {*+w} 
+    QS "L_y" {y-*} 
+    QS "R_y" {*+y} 
+    QS "L_z" {z-*} 
+    QS "R_z" {*+z} 
+ 
+    TR 2
+
+    TB 350.0 "aa_s2" {(aa, *-aa, *-aa+*, aa+*).state[2]}
+    TB 350.0 "ae_s2" {(ae, *-ae, *-ae+*, ae+*).state[2]}
+    TB 350.0 "ah_s2" {(ah, *-ah, *-ah+*, ah+*).state[2]}
+    TB 350.0 "uh_s2" {(uh, *-uh, *-uh+*, uh+*).state[2]}
+    ....
+    TB 350.0 "y_s4" {(y, *-y, *-y+*, y+*).state[4]}
+    TB 350.0 "z_s4" {(z, *-z, *-z+*, z+*).state[4]}
+    TB 350.0 "zh_s4" {(zh, *-zh, *-zh+*, zh+*).state[4]}
+
+    TR 1
+    
+    AU "fulllist"
+    CO "tiedlist"
+
+    ST "trees"
+</PRE>
+Firstly, the <TT>RO</TT><A NAME="4017">&#160;</A> command is used to set
+the outlier threshold<A NAME="3859">&#160;</A> to 100.0 and load the statistics
+file<A NAME="3860">&#160;</A> generated at the end of the previous step.  The
+outlier threshold determines the minimum occupancy<A NAME="3861">&#160;</A> of
+any cluster and prevents a single outlier state forming a singleton cluster
+just because it is acoustically very different to all the other states.  The
+<TT>TR</TT><A NAME="4018">&#160;</A> command sets the trace level to zero
+in preparation for loading in the questions.  Each
+<TT>QS</TT><A NAME="4019">&#160;</A> command loads a single question and
+each question is defined by a set of contexts.  For example, the first
+<TT>QS</TT> command defines a question called <TT>L_Class-Stop</TT> which is
+true if the left context is either of the stops <TT>p</TT>,
+<TT>b</TT>, <TT>t</TT>, <TT>d</TT>, <TT>k</TT> or <TT>g</TT>.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:step10">&#160;</A><IMG
+ WIDTH="231" HEIGHT="441" ALIGN="MIDDLE" BORDER="0"
+ SRC="img119.png"
+ ALT="% latex2html id marker 48728
+$\textstyle \parbox{50mm}{ \begin{center}\setlength...
+...xtbf{ Fig. \thechapter.\arabic{figctr}  Step 10}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+Notice that for a triphone system, it is necessary to include questions
+referring to both the right and left contexts of a phone. The questions should
+progress from wide, general classifications (such as consonant, vowel, nasal,
+diphthong, etc.) to specific instances of each phone.
+Ideally, the full set of questions loaded using the <TT>QS</TT> command would
+include every possible context which can influence the acoustic realisation of
+a phone, and can include any linguistic or phonetic classification which may be
+relevant. There is no harm in creating extra unnecessary questions, because
+those which are determined to be irrelevant to the data will be ignored.
+
+<P>
+The second <TT>TR</TT> command enables intermediate level progress reporting so
+that each of the following <TT>TB</TT> commands<A NAME="4020">&#160;</A>
+can<A NAME="3883">&#160;</A> be monitored.  Each of these <TT>TB</TT> commands
+clusters one specific set of states.  For example, the first <TT>TB</TT>
+command applies to the first emitting state of all context-dependent models for
+the phone <TT>aa</TT>.
+
+<P>
+Each <TT>TB</TT> command works as follows.  Firstly, each set of states defined
+by the final argument is pooled to form a single cluster.  Each question in the
+question set loaded by the <TT>QS</TT> commands is used to split the pool into
+two sets.  The use of two sets rather than one, allows the log likelihood of
+the training data to be increased and the question which maximises this
+increase is selected for the first branch of the tree. The process is then
+repeated until the increase in log likelihood achievable by any question at any
+node is less than the threshold specified by the first argument (350.0 in this
+case).
+
+<P>
+Note that the values given in the <TT>RO</TT> and <TT>TB</TT> commands affect
+the degree of tying and therefore the number of states output in the clustered
+system.  The values should be varied according to the amount of training data
+available.
+As a final step to the clustering, any pair of clusters which can be merged
+<A NAME="3891">&#160;</A> such that the decrease in log likelihood is below
+the threshold is merged.  On completion, the states in each cluster <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN> are
+tied to form a single shared state with macro name <TT>xxx_i</TT> where
+<TT>xxx</TT> is the name given by the second argument of the <TT>TB</TT>
+command.
+
+<P>
+The set of triphones used so far only includes those needed to cover the
+training data. The <TT>AU</TT> command takes as its argument a new list of
+triphones expanded to include all those needed for recognition.  This list can
+be generated, for example, by using HDM<SMALL>AN</SMALL> on the entire dictionary (not
+just the training dictionary), converting it to triphones using the command
+<TT>TC</TT> and outputting a list of the distinct triphones to a file using the
+option <TT>-n</TT> 
+
+<P>
+<PRE>
+    HDMan -b sp -n fulllist -g global.ded -l flog beep-tri beep
+</PRE>
+
+<P>
+The -b sp option specifies that the sp phone is used as a word boundary, and so 
+is excluded from triphones.  The effect of the <TT>AU</TT> command is to use the 
+decision trees to synthesise all of the new previously unseen triphones in the new 
+list.
+<A NAME="4021">&#160;</A>
+
+<P>
+Once all state-tying has been completed and new models synthesised, 
+some models may  share exactly
+the same 3 states and transition matrices and are thus identical.
+The <TT>CO</TT> command<A NAME="4022">&#160;</A><A NAME="3905">&#160;</A> is used
+to compact the model set by finding all identical models and tying them
+together<A NAME="tex2html12" HREF="footnode_mn.html#foot4023" TARGET="footer"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A>, producing a new list of models
+called <TT>tiedlist</TT>.
+
+<P>
+One of the advantages of using decision tree clustering is that it allows
+previously<A NAME="3908">&#160;</A>
+unseen triphones to be synthesised.  To do this, the trees must
+be saved and this is done by the <TT>ST</TT> command<A NAME="4024">&#160;</A>.
+Later if new previously unseen triphones are required, for example in the
+pronunciation of a new vocabulary item, the existing model set can be
+reloaded into HHE<SMALL>D</SMALL>, the trees reloaded using 
+the <TT>LT</TT> command<A NAME="4025">&#160;</A>
+and then a new extended list of triphones created using 
+the <TT>AU</TT> command.<A NAME="4026">&#160;</A>
+
+<P>
+After HHE<SMALL>D</SMALL> has completed,  the effect of tying can be studied and
+the thresholds adjusted if necessary.  The log file will
+include summary statistics which give the total number of physical
+states remaining and the number of models after compacting.
+
+<P>
+Finally, and for the last time, the models are re-estimated twice using
+HER<SMALL>EST</SMALL>.  Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A> illustrates this last step in the HMM
+build process.  The trained models are then contained in the file
+<TT>hmm15/hmmdefs</TT>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

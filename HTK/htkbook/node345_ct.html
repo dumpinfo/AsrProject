@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node346_mn.html">
+<LINK REL="previous" HREF="node344_mn.html">
+<LINK REL="up" HREF="node344_mn.html">
+<LINK REL="next" HREF="node346_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051171000000000000000">&#160;</A><A NAME="s:HResults-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="30320">&#160;</A>
+HR<SMALL>ESULTS</SMALL> is the HTK performance analysis tool.
+It reads in a set of label files (typically output
+from a recognition tool such as HV<SMALL>ITE</SMALL>) and compares them
+with the corresponding reference transcription files.  
+For the analysis of speech recognition output, the comparison
+is based on a Dynamic Programming-based string alignment procedure.
+For the analysis of word-spotting output, the comparison
+uses the standard US NIST FOM metric.
+
+<P>
+When used to calculate the sentence accuracy using DP the basic 
+output is recognition statistics for the whole file set in the format
+<PRE>
+   --------------------------- Overall Results -------------------
+   SENT:  %Correct=13.00 [H=13, S=87, N=100]
+   WORD:  %Corr=53.36, Acc=44.90 [H=460,D=49,S=353,I=73,N=862]
+   ===============================================================
+</PRE>
+The first line gives the sentence-level accuracy based on the 
+total number of label files which are identical to the transcription
+files.  The second line is the word accuracy based on the DP matches
+between the label files and the transcriptions <A NAME="tex2html89" HREF="footnode_mn.html#foot30321" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">14</SPAN></SUP></A>.
+In this second line,
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img593.png"
+ ALT="$ H$"></SPAN> is the number of correct labels, <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img463.png"
+ ALT="$ D$"></SPAN> is the number of deletions,
+<SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img36.png"
+ ALT="$ S$"></SPAN> is the number of substitutions, <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img202.png"
+ ALT="$ I$"></SPAN> is the number of insertions and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> is the total number of labels in the defining transcription files.
+The percentage number of labels correctly recognised is given by
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\mbox{\%Correct} = \frac{H}{N} \times 100\%
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH">%Correct<IMG
+ WIDTH="96" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img665.png"
+ ALT="$\displaystyle = \frac{H}{N} \times 100\%$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">4</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and the accuracy is computed by
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\mbox{Accuracy} = \frac{H-I}{N} \times 100\%
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH">Accuracy<IMG
+ WIDTH="123" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img666.png"
+ ALT="$\displaystyle = \frac{H-I}{N} \times 100\%$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">5</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+In addition to the standard HTK output format, 
+HR<SMALL>ESULTS</SMALL> provides an alternative similar to that used
+in the US NIST scoring package, i.e. <PRE>
+    |=============================================================|
+    |           # Snt |  Corr    Sub    Del    Ins    Err  S. Err |
+    |-------------------------------------------------------------|
+    | Sum/Avg |   87  |  53.36  40.95   5.68   8.47  55.10  87.00 |
+    `-------------------------------------------------------------'
+</PRE>
+
+<P>
+When HR<SMALL>ESULTS</SMALL> is used to generate a confusion matrix, the
+values are as follows:
+<DL>
+<DT><STRONG>%c</STRONG></DT>
+<DD>The percentage correct in the row; that is, how many times a phone
+     instance was correctly labelled.
+</DD>
+<DT><STRONG>%e</STRONG></DT>
+<DD>The percentage of incorrectly labeled phones in the row as
+     a percentage of the total number of labels in the set.
+</DD>
+</DL>
+An example from the HTKDemo routines:
+<PRE>
+====================== HTK Results Analysis =======================
+  Date: Thu Jan 10 19:00:03 2002
+  Ref : labels/bcplabs/mon
+  Rec : test/te1.rec
+      : test/te2.rec
+      : test/te3.rec
+------------------------ Overall Results --------------------------
+SENT: %Correct=0.00 [H=0, S=3, N=3]
+WORD: %Corr=63.91, Acc=59.40 [H=85, D=35, S=13, I=6, N=133]
+------------------------ Confusion Matrix -------------------------
+       S   C   V   N   L  Del [ %c / %e]
+   S   6   1   0   1   0    0 [75.0/1.5]
+   C   2  35   3   1   0   18 [85.4/4.5]
+   V   0   1  28   0   1   12 [93.3/1.5]
+   N   0   1   0   7   0    1 [87.5/0.8]
+   L   0   1   1   0   9    4 [81.8/1.5]
+Ins    2   2   0   2   0
+===================================================================
+</PRE>
+Reading across the rows, %c indicates the number of correct instances
+divided by the total number of instances in the row.  %e is the
+number of incorrect instances in the row divided by the total number
+of instances (N).
+
+<P>
+Optional extra outputs available from HR<SMALL>ESULTS</SMALL> are
+
+<UL>
+<LI>recognition statistics on a per file basis
+</LI>
+<LI>recognition statistics on a per speaker basis
+</LI>
+<LI>recognition statistics from best of N alternatives
+</LI>
+<LI>time-aligned transcriptions
+</LI>
+<LI>confusion matrices
+</LI>
+</UL>
+For comparison purposes, it is also possible to assign two
+labels to the same equivalence class (see <TT>-e option</TT>).  
+Also, the <EM>null</EM> label <TT>???</TT> is defined so that making any
+label equivalent to the null label means that it will be
+ignored in the matching process.  Note that the order of equivalence
+labels is important, to ensure that label <TT>X</TT> is ignored, the
+command line option <code>-e ??? X</code> would be used.
+Label files containing triphone labels of the form <TT>A-B+C</TT> can be 
+optionally stripped down to just the class name <TT>B</TT> via the <TT>-s</TT> 
+switch.
+
+<P>
+The word spotting mode of scoring can be used to calculate hits,
+false alarms and the associated figure of merit for each of a
+set of keywords.
+Optionally it can also calculate ROC information over a range of
+false alarm rates.  A typical output is as follows
+<PRE>
+------------------------ Figures of Merit -------------------------
+      KeyWord:    #Hits     #FAs  #Actual      FOM
+            A:        8        1       14    30.54
+            B:        4        2       14    15.27
+      Overall:       12        3       28    22.91
+-------------------------------------------------------------------
+</PRE>
+which shows the number of hits and false alarms (FA) for two keywords
+<TT>A</TT> and <TT>B</TT>.  A label in the test file with start time <SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img667.png"
+ ALT="$ t_s$"></SPAN>
+and end time <SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img668.png"
+ ALT="$ t_e$"></SPAN> constitutes a hit if there is a corresponding label
+in the reference file such that <!-- MATH
+ $t_s < t_m < t_e$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="90" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img669.png"
+ ALT="$ t_s &lt; t_m &lt; t_e$"></SPAN> where <SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img670.png"
+ ALT="$ t_m$"></SPAN> is the
+mid-point of the reference label.
+
+<P>
+Note that for keyword scoring, the test
+transcriptions must include a score with each labelled word spot
+and all transcriptions must include boundary time information.
+
+<P>
+The FOM gives the % of hits
+averaged over the range 1 to 10 FA's per hour.  This is calculated
+by first ordering all spots for a particular keyword according to
+the match score.  Then for each FA rate <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img645.png"
+ ALT="$ f$"></SPAN>, the number of hits are counted
+starting from the top of the ordered list and stopping when 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img645.png"
+ ALT="$ f$"></SPAN> have been encountered.  This corresponds to <SPAN  CLASS="textit">a posteriori</SPAN>
+setting of the keyword detection threshold and effectively gives an
+upper bound on keyword spotting performance.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

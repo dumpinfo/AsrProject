@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Mean Transformation Matrix (MLLRMEAN)</TITLE>
+<META NAME="description" CONTENT="Contents of Mean Transformation Matrix (MLLRMEAN)">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node141_mn.html">
+<LINK REL="previous" HREF="node139_mn.html">
+<LINK REL="up" HREF="node139_mn.html">
+<LINK REL="next" HREF="node141_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03641000000000000000">&#160;</A><A NAME="s:mtransest">&#160;</A>
+<BR>
+Mean Transformation Matrix (<TT>MLLRMEAN</TT>)
+</H2>
+
+Substituting the for expressions for MLLR mean adaptation 
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+\hat{{\mbox{\boldmath$\mu$}}}_{m_r} = {\mbox{\boldmath$W$}}_r{\mbox{\boldmath$\xi$}}_{m_r}, \:\:\:\:
+\hat{{\mbox{\boldmath$\Sigma$}}}_{m_r} = {{\mbox{\boldmath$\Sigma$}}}_{m_r}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="215" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img393.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\mu$}}}_{m_r} = {\mbox{\boldmath$W$}}_r{\mb...
+...:\:
+\hat{{\mbox{\boldmath$\Sigma$}}}_{m_r} = {{\mbox{\boldmath$\Sigma$}}}_{m_r}$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">8</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+into the auxiliary function, and using the fact that the covariance
+matrices are diagonal, yields
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+{\cal Q}({\cal M},{\hat{\cal M}}) = K
+- \frac{1}{2}
+\sum_{r=1}^R
+\sum_{j=1}^d{
+\left({{\mbox{\boldmath$w$}}}_{rj}{\bf G}^{(j)}_r{{\mbox{\boldmath$w$}}}^T_{rj} -2 {{\mbox{\boldmath$w$}}}_{rj}{\bf k}^{(j)T}_r
+\right)} \nonumber
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="389" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img394.png"
+ ALT="$\displaystyle {\cal Q}({\cal M},{\hat{\cal M}}) = K
+- \frac{1}{2}
+\sum_{r=1}^R
+...
+...\boldmath$w$}}}^T_{rj} -2 {{\mbox{\boldmath$w$}}}_{rj}{\bf k}^{(j)T}_r
+\right)}$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ ${{\mbox{\boldmath $w$}}}_{rj}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img395.png"
+ ALT="$ {{\mbox{\boldmath $w$}}}_{rj}$"></SPAN> is the <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img396.png"
+ ALT="$ j^{th}$"></SPAN> <EM>row</EM> of <!-- MATH
+ ${\mbox{\boldmath $W$}}_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img397.png"
+ ALT="$ {\mbox{\boldmath $W$}}_r$"></SPAN>,
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="eq:gi_mllr">&#160;</A><!-- MATH
+ \begin{eqnarray}
+{\bf G}^{(i)}_r=\sum_{m_r=1}^{M_r}
+\frac{1}{\sigma_{m_ri}^{2}}{{\mbox{\boldmath$\xi$}}}_{m_r}{{\mbox{\boldmath$\xi$}}}^{T}_{m_r}
+\sum_{t=1}^TL_{m_r}(t)
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="257" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img398.png"
+ ALT="$\displaystyle {\bf G}^{(i)}_r=\sum_{m_r=1}^{M_r}
+\frac{1}{\sigma_{m_ri}^{2}}{{\...
+...oldmath$\xi$}}}_{m_r}{{\mbox{\boldmath$\xi$}}}^{T}_{m_r}
+\sum_{t=1}^TL_{m_r}(t)$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">9</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+{\bf k}^{(i)}_{r} =  \sum_{m_r=1}^{M_r}\sum\limits_{t=1}^T
+L_{m_r}(t)\frac{1}{\sigma^{2}_{m_ri}}
+o_i(t){{\mbox{\boldmath$\xi$}}}^{T}_{m_r}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="254" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img399.png"
+ ALT="$\displaystyle {\bf k}^{(i)}_{r} = \sum_{m_r=1}^{M_r}\sum\limits_{t=1}^T
+L_{m_r}(t)\frac{1}{\sigma^{2}_{m_ri}}
+o_i(t){{\mbox{\boldmath$\xi$}}}^{T}_{m_r}$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">10</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Differentiating the auxiliary function with respect to the transform
+<!-- MATH
+ ${{\mbox{\boldmath $W$}}}_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img400.png"
+ ALT="$ {{\mbox{\boldmath $W$}}}_r$"></SPAN> , and then maximising it with respect to the transformed mean
+yields the following update
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="eq:mllrmeansol">&#160;</A><!-- MATH
+ \begin{eqnarray}
+{{{\mbox{\boldmath$w$}}}}_{ri} = {\bf k}_r^{(i)}{\bf G}_r^{(i)-1}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="121" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img401.png"
+ ALT="$\displaystyle {{{\mbox{\boldmath$w$}}}}_{ri} = {\bf k}_r^{(i)}{\bf G}_r^{(i)-1}$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">11</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The above expressions assume that each base regression class <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img314.png"
+ ALT="$ r$"></SPAN> has a
+separate transform. If regression class trees are used then the shared
+transform parameters may be simply estimated by combining the
+statistics of the base regression classes.  The regression class tree
+is used to generate the classes dynamically, so it is not known
+a-priori which regression classes will be used to estimate the
+transform. This does not present a problem, since <!-- MATH
+ ${\mbox{\boldmath $G$}}^{(i)}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img402.png"
+ ALT="$ {\mbox{\boldmath $G$}}^{(i)}$"></SPAN> and
+<!-- MATH
+ ${\mbox{\boldmath $k$}}^{(i)}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="20" ALIGN="BOTTOM" BORDER="0"
+ SRC="img403.png"
+ ALT="$ {\mbox{\boldmath $k$}}^{(i)}$"></SPAN> for the chosen regression class may be obtained from its
+child classes (as defined by the tree). If the parent node <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img404.png"
+ ALT="$ R$"></SPAN> has
+children <!-- MATH
+ $\left\{R_1,\dots,R_C\right\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="97" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img405.png"
+ ALT="$ \left\{R_1,\dots,R_C\right\}$"></SPAN> then
+<!-- MATH
+ \begin{displaymath}
+{\bf k}^{(i)} = \sum_{c=1}^{C} {\bf k}^{(i)}_{R_c}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="102" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img406.png"
+ ALT="$\displaystyle {\bf k}^{(i)} = \sum_{c=1}^{C} {\bf k}^{(i)}_{R_c}
+$">
+</DIV><P></P>
+and
+<!-- MATH
+ \begin{displaymath}
+{\bf G}^{(i)} = \sum_{c=1}^{C} {\bf G}^{(i)}_{R_c}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="111" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img407.png"
+ ALT="$\displaystyle {\bf G}^{(i)} = \sum_{c=1}^{C} {\bf G}^{(i)}_{R_c}
+$">
+</DIV><P></P>
+The same approach of combining statistics from multiple children can
+be applied to all the estimation formulae in this section.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

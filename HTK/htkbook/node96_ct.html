@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Syntax and Semantics</TITLE>
+<META NAME="description" CONTENT="Contents of Syntax and Semantics">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node97_mn.html">
+<LINK REL="previous" HREF="node95_mn.html">
+<LINK REL="up" HREF="node94_mn.html">
+<LINK REL="next" HREF="node97_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03332000000000000000">
+Syntax and Semantics</A>
+</H2>
+
+<P>
+An MLF consists of one or more individual definitions.  Blank lines in
+an MLF are ignored but otherwise the line structure is significant.
+The first line must contain just <TT>#!MLF!#</TT> to identify it as an MLF file.
+This is not necessary for use with the <TT>-I</TT> option but some 
+HTK tools need to be able to distinguish an MLF from a normal label file.
+The following syntax<A NAME="7976">&#160;</A> of MLF files is described using an 
+extended BNF notation in which
+alternatives are separated by a vertical bar <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN>, parentheses ( ) denote
+factoring, brackets [ ] denote options, and braces { } denote zero or more
+repetitions. 
+
+<P>
+<PRE><TT>
+		    MLF  = 		 ``#!MLF!#'' 
+<BR>
+MLFDef { MLFDef }
+</TT></PRE>
+
+<P>
+Each definition is either a transcription for immediate loading or a
+subdirectory to search.
+
+<P>
+<PRE><TT>
+		    MLFDef  = 		 ImmediateTranscription <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> SubDirDef
+</TT></PRE>
+
+<P>
+An immediate transcription consists of a pattern on a line
+by itself immediately followed
+by a transcription which as far as the MLF is concerned is arbitrary
+text.  It is read using whatever label file ``driver'' routines are
+installed in HL<SMALL>ABEL</SMALL>.  It is terminated by a period written on a line
+of its own.
+
+<P>
+<PRE><TT>
+		   ImmediateTranscription = 
+<BR>
+Pattern 
+<BR>
+Transcription 
+<BR>
+SPMgt;``.'' 
+</TT></PRE>
+A subdirectory definition  simply gives the name of a subdirectory
+to search.  If the required label file is found in that subdirectory
+then the label file is loaded, otherwise the next matching subdirectory
+definition is checked.
+
+<P>
+<PRE><TT>
+		   SubDirDef = 		 Pattern SearchMode String 
+<BR>
+SearchMode = 		 ``<code>-&gt;</code>'' <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> ``<code>=&gt;</code>''
+</TT></PRE>
+
+The two types of search mode are described below. A pattern is just a 
+string
+<PRE><TT>
+		    Pattern = 		 String
+</TT></PRE>
+
+except that the characters `<TT>?</TT>' and `<TT>*</TT>' embedded in the string act
+as wildcards<A NAME="7990">&#160;</A> such that `<TT>?</TT>' matches any single character and
+`<TT>*</TT>' matches 0 or more characters.
+A string is any sequence of characters enclosed in double quotes.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

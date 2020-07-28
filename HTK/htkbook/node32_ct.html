@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Step 6 - Creating Flat Start Monophones</TITLE>
+<META NAME="description" CONTENT="Contents of Step 6 - Creating Flat Start Monophones">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node33_mn.html">
+<LINK REL="previous" HREF="node31_mn.html">
+<LINK REL="up" HREF="node31_mn.html">
+<LINK REL="next" HREF="node33_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02321000000000000000">
+Step 6 - Creating Flat Start Monophones</A>
+</H2>
+
+<P>
+The first step in HMM training is to define a prototype model.  The
+parameters of this model are not important, its purpose is to
+define the model topology.  For phone-based systems,  a good
+topology to use is 3-state left-right with no skips such as the following
+<PRE>
+    ~o &lt;VecSize&gt; 39 &lt;MFCC_0_D_A&gt;
+    ~h "proto"
+    &lt;BeginHMM&gt;
+     &lt;NumStates&gt; 5
+     &lt;State&gt; 2
+        &lt;Mean&gt; 39
+          0.0 0.0 0.0 ...
+        &lt;Variance&gt; 39
+          1.0 1.0 1.0 ...
+     &lt;State&gt; 3
+        &lt;Mean&gt; 39
+          0.0 0.0 0.0 ...
+        &lt;Variance&gt; 39
+          1.0 1.0 1.0 ...
+     &lt;State&gt; 4
+        &lt;Mean&gt; 39
+          0.0 0.0 0.0 ...
+        &lt;Variance&gt; 39
+          1.0 1.0 1.0 ...
+     &lt;TransP&gt; 5
+      0.0 1.0 0.0 0.0 0.0
+      0.0 0.6 0.4 0.0 0.0
+      0.0 0.0 0.6 0.4 0.0
+      0.0 0.0 0.0 0.7 0.3
+      0.0 0.0 0.0 0.0 0.0
+    &lt;EndHMM&gt;
+</PRE>
+where each ellipsed vector is of length 39.  This number, 39, is computed from
+the length of the parameterised static vector (<TT>MFCC_0</TT> = 13) plus
+the delta coefficients (+13) plus the acceleration coefficients (+13).
+
+<P>
+The HTK tool HC<SMALL>OMP</SMALL>V<A NAME="4005">&#160;</A> will scan a set of data files, compute
+the global mean and variance and set all of the Gaussians in a given HMM
+to have the same mean and variance.<A NAME="3621">&#160;</A>
+Hence, assuming that a list of all the training files is stored in
+<TT>train.scp</TT>, the command
+<PRE>
+    HCompV -C config -f 0.01 -m -S train.scp -M hmm0 proto
+</PRE>
+will create a new version of <TT>proto</TT> in the directory <TT>hmm0</TT>
+in which the zero means and unit variances above have been replaced
+by the global speech means and variances.
+Note that the prototype HMM defines the parameter kind as <TT>MFCC_0_D_A</TT> (Note: 'zero' not 'oh').
+This means that delta and acceleration coefficients are to be computed and
+appended to the static MFCC coefficients computed and stored during the
+coding process described above.  To ensure that these are computed during loading,
+the configuration file <TT>config</TT> should be modified
+to change the target kind, i.e. the configuration file entry for
+<TT>TARGETKIND</TT> should be changed to
+<PRE>
+   TARGETKIND = MFCC_0_D_A
+</PRE>
+HC<SMALL>OMP</SMALL>V has a number of options specified for it.  The 
+<TT>-f</TT> option causes a variance floor 
+macro<A NAME="3634">&#160;</A> (called <TT>vFloors</TT>) to be generated which
+is equal to 0.01 times the global variance.  This is a vector
+of values which will be used to set a floor on the variances estimated
+in the subsequent steps.  The <TT>-m</TT> option asks for means to be computed
+as well as variances.  Given this
+new prototype model stored in the directory
+<TT>hmm0</TT>, a <SPAN  CLASS="textit">Master Macro File</SPAN><A NAME="3639">&#160;</A> 
+(MMF) called <TT>hmmdefs</TT> <A NAME="3641">&#160;</A>
+containing a copy for each of the required monophone HMMs is constructed 
+by manually copying the prototype and relabeling it for each required 
+monophone (including ``sil'').  
+The format of an MMF is similar to that
+of an MLF and it serves a similar purpose in that it avoids having
+a large number of individual HMM definition files<A NAME="3642">&#160;</A> 
+(see Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>).
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:MMFeg">&#160;</A><IMG
+ WIDTH="389" HEIGHT="297" ALIGN="MIDDLE" BORDER="0"
+ SRC="img112.png"
+ ALT="% latex2html id marker 48716
+$\textstyle \parbox{85mm}{ \begin{center}\setlength...
+...ter.\arabic{figctr}  Form of Master Macro Files}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+The flat start monophones stored in the directory <TT>hmm0</TT> are
+re-estimated using the embedded re-estimation<A NAME="3648">&#160;</A> 
+tool HER<SMALL>EST</SMALL><A NAME="4006">&#160;</A>
+invoked as follows
+<PRE>
+   HERest -C config -I phones0.mlf -t 250.0 150.0 1000.0 \
+    -S train.scp -H hmm0/macros -H hmm0/hmmdefs -M hmm1 monophones0
+</PRE>
+The effect of this is to load all the models in <TT>hmm0</TT> which are
+listed in
+the model list <TT>monophones0</TT> (<TT>monophones1</TT> less the short 
+pause (<TT>sp</TT>) model). These are then re-estimated them using the data
+listed in <TT>train.scp</TT> and the new model set is stored in the
+directory <TT>hmm1</TT>.
+Most of the files used in this invocation of HER<SMALL>EST</SMALL> have 
+already been described.  The exception is the file <TT>macros</TT>.
+This should contain a so-called <SPAN  CLASS="textit">global options</SPAN> macro and
+the variance floor macro <TT>vFloors</TT> generated earlier.  The global options macro
+simply defines the HMM parameter kind and the vector size i.e.
+<PRE>
+   ~o &lt;MFCC_0_D_A&gt; &lt;VecSize&gt; 39
+</PRE>
+See Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>. This can be combined with <TT>vFloors</TT> into a text file
+called <TT>macros</TT>.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:step6">&#160;</A><IMG
+ WIDTH="389" HEIGHT="393" ALIGN="MIDDLE" BORDER="0"
+ SRC="img113.png"
+ ALT="% latex2html id marker 48717
+$\textstyle \parbox{85mm}{ \begin{center}\setlength...
+...extbf{ Fig. \thechapter.\arabic{figctr}  Step 6}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+The <TT>-t</TT> option sets the pruning<A NAME="3672">&#160;</A> thresholds to be used during
+training.  Pruning limits the range of state alignments that the
+forward-backward algorithm includes in its summation and it
+can reduce the amount of computation required by an
+order of magnitude.  For most training files, a very tight pruning threshold
+can be set, however, some training files will provide poorer acoustic
+matching and in consequence a wider pruning beam is needed.  HER<SMALL>EST</SMALL>
+deals with this by having an auto-incrementing pruning threshold.  In the
+above example, pruning is normally 250.0.  If re-estimation fails on any
+particular file, the threshold is increased by 150.0 and the file is
+reprocessed.  This is repeated until either the file is successfully
+processed or the pruning limit of 1000.0 is exceeded.  At this point it 
+is safe to assume that there
+is a serious problem with the training file and hence the fault should be fixed
+(typically it will be an incorrect transcription) or the training file should be discarded.
+The process leading to the initial set of monophones in the directory
+<TT>hmm0</TT> is illustrated in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.
+
+<P>
+Each time HER<SMALL>EST</SMALL> is run it performs a single re-estimation.  Each new
+HMM set is stored in a new directory.  Execution of HER<SMALL>EST</SMALL> should be
+repeated twice more, changing the name of the input and output directories (set
+with the options <TT>-H</TT> and <TT>-M</TT>) each time, until the directory
+<TT>hmm3</TT> contains the final set of initialised monophone HMMs.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

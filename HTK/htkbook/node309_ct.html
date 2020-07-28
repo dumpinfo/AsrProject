@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node310_mn.html">
+<LINK REL="previous" HREF="node308_mn.html">
+<LINK REL="up" HREF="node308_mn.html">
+<LINK REL="next" HREF="node310_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05191000000000000000">&#160;</A><A NAME="s:HLEd-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="28047">&#160;</A>
+This program is a simple editor for manipulating label files.
+Typical examples of its use might be to merge a sequence of
+labels into a single composite label or to expand a set of
+labels into a context sensitive set.  HLE<SMALL>D</SMALL> works by
+reading in a list of <EM>editing</EM> commands from an edit
+script file and then makes an edited copy of one or more 
+label files.  For multiple level files, edit commands are applied
+to the <SPAN  CLASS="textit">current level</SPAN> which is initially the first (i.e. 1).
+Other levels may be edited by moving to the required level using the
+<TT>ML</TT> Move Level command.
+
+<P>
+Each edit command in the script file must be
+on a separate line.  The first two-letter mnemonic on each line is the command name and
+the remaining letters denote labels<A NAME="tex2html82" HREF="footnode_mn.html#foot28048" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">7</SPAN></SUP></A>.
+The commands supported may be divided into
+two sets.  Those in the first set are used to edit individual
+labels and they are as follows
+
+<P>
+
+<DL COMPACT>
+<DT><TT>CH X A Y B</TT>
+<DD>Change <TT>Y</TT> in the context of <TT>A_B</TT> 
+      to <TT>X</TT>.  <TT>A</TT> and/or <TT>B</TT> may be a <TT>*</TT> to match 
+      any context, otherwise they must be defined by a <TT>DC</TT> command
+      (see below).  A
+      block of consecutive <TT>CH</TT> commands are effectively executed in
+      parallel so that the contexts are those that exist before any of
+      the commands in the block are applied.
+   <DT><TT>DC A B C ..</TT>
+<DD>define the context <TT>A</TT> as the set of labels
+        <TT>B</TT>, <TT>C</TT>, etc.   
+   <DT><TT>DE A B ..</TT>
+<DD>Delete any occurrences of labels <TT>A</TT>
+        or <TT>B</TT> etc. 
+   <DT><TT>FI A Y B</TT>
+<DD>Find <TT>Y</TT> in the context of <TT>A_B</TT> 
+      and count the number of occurrences.
+   <DT><TT>ME X A B ..</TT>
+<DD>Merge any sequence of labels <TT>A</TT>
+       <TT>B</TT> <TT>C</TT> etc.  and call the new segment <TT>X</TT>.
+   <DT><TT>ML N</TT>
+<DD>Move to label level <TT>N</TT>.
+   <DT><TT>RE X A B ..</TT>
+<DD>Replace all occurrences of labels <TT>A</TT>
+      or <TT>B</TT> etc. by the label <TT>X</TT>.
+  
+</DD>
+</DL>
+
+<P>
+The commands in the second set perform global operations on whole
+transcriptions.  They are as follows.
+
+<P>
+
+<DL COMPACT>
+<DT><TT>DL [N]</TT>
+<DD>Delete all labels in the current level.  If the
+     optional integer arg is given, then level <TT>N</TT> is deleted.
+   <DT><TT>EX</TT>
+<DD>Expand all labels either from words to phones using the 
+        first pronunciation from a dictionary when it is specified on the 
+        command line otherwise expand labels of the form 
+        <TT>A_B_C_D_...</TT> into a sequence of separate labels 
+        <TT>A B C D ....</TT>.  This is useful for label formats which 
+        include a complete orthography as a single label or for creating 
+        a set of sub-word labels from a word orthography for a sub-word 
+        based recogniser.  When a label is expanded in this way, the 
+        label duration is divided into equal length segments.  This can
+        only be performed on the root level of a multiple level file.
+   <DT><TT>FG X</TT>
+<DD>Mark all unlabelled segments of the input
+       file of duration greater than <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img640.png"
+ ALT="$ T_g$"></SPAN> msecs with the label <TT>X</TT>.
+       The default value for <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img640.png"
+ ALT="$ T_g$"></SPAN> is 50000.0 (=5msecs) but this
+       can be changed using the <TT>-g</TT> command line option.  This
+       command
+       is mainly used for explicitly labelling inter-word silences in
+       data files for which only the actual speech has been transcribed.
+   <DT><TT>IS A B</TT>
+<DD>Insert label <TT>A</TT> at the start of every
+       transcription and <TT>B</TT> at the end.  This command is usually
+       used to insert silence labels.
+   <DT><TT>IT</TT>
+<DD>Ignore triphone contexts in <TT>CH</TT> and <TT>FI</TT>
+       commands.
+   <DT><TT>LC [X]</TT>
+<DD>Convert all phoneme labels to left context
+       dependent.  If <TT>X</TT> is given then the first phoneme label
+       <TT>a</TT> becomes <TT>X-a</TT> otherwise it is left unchanged.
+   <DT><TT>NB X</TT>
+<DD>The label  <TT>X</TT> (typically a short pause)
+       should be ignored at word boundaries when using the context
+       commands <TT>LC</TT>, <TT>RC</TT> and <TT>TC</TT>.
+   <DT><TT>RC [X]</TT>
+<DD>Convert all phoneme labels to right context
+       dependent.  If <TT>X</TT> is given then the last phoneme label
+       <TT>z</TT> becomes <TT>z+X</TT> otherwise it is left unchanged.
+   <DT><TT>SB X</TT>
+<DD>Define the label <TT>X</TT> to be a sentence boundary
+       marker.  This label can then be used in context-sensitive change
+       commands.
+   <DT><TT>SO</TT>
+<DD>Sort all labels into time order.
+   <DT><TT>SP</TT>
+<DD>Split multiple levels into multiple alternative label lists.
+   <DT><TT>TC [X[Y]</TT>
+<DD>] Convert all phoneme labels to Triphones, that is
+       left and right context
+       dependent.  If <TT>X</TT> is given then the first phoneme label
+       <TT>a</TT> becomes <TT>X-a+b</TT> otherwise it is left unchanged.
+       If <TT>Y</TT> is given then the last phoneme label
+       <TT>z</TT> becomes <TT>y-z+Y</TT> otherwise  if <TT>X</TT> is given then it
+        becomes <TT>y-z+X</TT> otherwise it is left unchanged.
+   <DT><TT>WB X</TT>
+<DD>Define <TT>X</TT> to be an inter-word label. 
+       This command affects the operation of the <TT>LC</TT>, <TT>RC</TT>
+       and <TT>TC</TT> commands.  The expansion of context labels is 
+       blocked wherever an inter-word label occurs.
+  
+</DD>
+</DL>
+
+<P>
+The source and target label file formats can be 
+defined using the <TT>-G</TT> and <TT>-P</TT> command line arguments.  They can
+also be set using the configuration variables <TT>SOURCELABEL</TT> 
+and <TT>TARGETLABEL</TT>.  The default for both cases is the HTK format.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

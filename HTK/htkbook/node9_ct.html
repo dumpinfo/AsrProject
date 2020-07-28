@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Continuous Speech Recognition</TITLE>
+<META NAME="description" CONTENT="Contents of Continuous Speech Recognition">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node10_mn.html">
+<LINK REL="previous" HREF="node8_mn.html">
+<LINK REL="up" HREF="node3_mn.html">
+<LINK REL="next" HREF="node10_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION02160000000000000000">&#160;</A><A NAME="s:consprec">&#160;</A>
+<BR>
+Continuous Speech Recognition
+</H1>
+
+<P>
+Returning now to the conceptual model of speech production and
+recognition exemplified by Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>, it should be
+clear that the extension to continuous speech simply involves
+connecting HMMs together in sequence.  Each model in the sequence
+corresponds directly to the assumed underlying symbol.  These
+could be either whole words for so-called 
+<I>connected speech recognition</I> or sub-words such as phonemes
+for <I>continuous speech recognition</I>.  The reason for including
+the non-emitting entry and exit 
+states<A NAME="1382">&#160;</A> should now be evident, these
+states provide the <I>glue</I> needed to join models together.
+
+<P>
+There are, however, some
+practical difficulties to overcome.  The training
+data for continuous speech must consist of continuous utterances and,
+in general, the boundaries dividing the segments of speech
+corresponding to each underlying sub-word model in the sequence will not
+be known.  In practice, it is usually feasible to mark the boundaries
+of a small amount of data by hand.  All of the segments corresponding
+to a given model can then be extracted and the <I>isolated word</I>
+style of training described above can be used.  However, the 
+amount of data obtainable in this way is usually very limited and
+the resultant models will be poor estimates.  Furthermore, even
+if there was a large amount of data, the boundaries imposed by
+hand-marking may not be optimal as far as the HMMs are concerned.
+Hence, in HTK the use of HI<SMALL>NIT</SMALL> and HR<SMALL>EST</SMALL>
+for initialising sub-word
+models is regarded as a <I>bootstrap</I><A NAME="1388">&#160;</A> operation<A NAME="tex2html5" HREF="footnode_mn.html#foot1475" TARGET="footer"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A>.
+The main
+training phase involves the use of a tool called 
+HER<SMALL>EST</SMALL><A NAME="1476">&#160;</A> which does
+<I>embedded training</I>.
+
+<P>
+Embedded training<A NAME="1394">&#160;</A> uses the same 
+Baum-Welch procedure as for the 
+isolated case but rather than training each model individually
+all models are trained in parallel.  It works in the following 
+steps:
+
+<OL>
+<LI>Allocate and zero accumulators for all parameters of all HMMs.
+</LI>
+<LI>Get the next training utterance.
+</LI>
+<LI>Construct a composite HMM by joining in sequence  the
+      HMMs corresponding to the symbol transcription of the
+      training utterance. 
+</LI>
+<LI>Calculate the forward and backward probabilities for the
+      composite HMM.  The inclusion of
+      intermediate non-emitting states in the composite model 
+      requires some changes to the computation of the forward
+      and backward probabilities but these are only minor.  The
+      details are given in chapter&nbsp;<A HREF="node112_ct.html#c:Training">8</A>.
+</LI>
+<LI>Use the forward and backward probabilities to compute 
+      the probabilities of state occupation at each time frame
+      and update the accumulators in the usual way.
+</LI>
+<LI>Repeat from 2 until all training utterances have been
+      processed.
+</LI>
+<LI>Use the accumulators to calculate new parameter estimates
+      for all of the HMMs.
+</LI>
+</OL>
+These steps can then all be repeated as many times as is necessary
+to achieve the required convergence.  Notice that although the
+location of symbol boundaries in the training data is not 
+required (or wanted) for this procedure, the symbolic transcription
+of each training utterance is needed.
+
+<P>
+Whereas the extensions needed to the Baum-Welch procedure for
+training sub-word models are relatively minor<A NAME="tex2html6" HREF="footnode_mn.html#foot1477" TARGET="footer"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A>, the corresponding
+extensions to the Viterbi algorithm are more substantial.
+
+<P>
+In HTK, an alternative formulation of the Viterbi algorithm is
+used<A NAME="1399">&#160;</A> called the <I>Token Passing Model</I> <A NAME="tex2html7" HREF="footnode_mn.html#foot1478" TARGET="footer"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">7</SPAN></SUP></A>.  
+In brief,
+the token<A NAME="1402">&#160;</A> passing model makes the concept of a state alignment
+path explicit.  Imagine each state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> of a HMM at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN> holds a single
+moveable token which contains, amongst other information,
+the partial log probability <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img94.png"
+ ALT="$ \psi_j(t)$"></SPAN>.  This token then represents
+a partial match between the observation sequence <!-- MATH
+ ${\mbox{\boldmath $o$}}_1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ {\mbox{\boldmath $o$}}_1$"></SPAN> to
+<!-- MATH
+ ${\mbox{\boldmath $o$}}_t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ {\mbox{\boldmath $o$}}_t$"></SPAN> and the model subject to the constraint that the model
+is in state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>.  The path extension algorithm represented
+by the recursion of equation&nbsp;<A HREF="node8_ct.html#e:30">1.31</A> is then replaced by the
+equivalent <I>token passing algorithm</I> which is
+executed at each time frame <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>.  The key steps in this algorithm
+are as follows
+
+<OL>
+<LI>Pass a copy of every token in state <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN> 
+      to all connecting states <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN>, incrementing the log probability
+      of the copy by <!-- MATH
+ $log[a_{ij}]+log[b_j({\mbox{\boldmath $o$}}(t)]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="150" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img96.png"
+ ALT="$ log[a_{ij}]+log[b_j({\mbox{\boldmath $o$}}(t)]$"></SPAN>.
+</LI>
+<LI>Examine the tokens in every state and discard all but
+      the token with the highest probability.
+</LI>
+</OL>
+In practice, some modifications are needed to deal with the non-emitting
+states but these are straightforward  if the tokens in entry
+states are assumed to represent paths extended to time <!-- MATH
+ $t-\delta t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img64.png"
+ ALT="$ t-\delta t$"></SPAN>
+and tokens in exit
+states are assumed to represent paths extended to time <!-- MATH
+ $t+\delta t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.png"
+ ALT="$ t+\delta t$"></SPAN>.
+
+<P>
+The point of using the Token Passing Model is that it extends
+very simply to the continuous speech case.  Suppose that the
+allowed sequence of HMMs is defined by a finite state network.
+For example, Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A> shows a simple network in
+which each word is defined as a sequence of phoneme-based HMMs
+and all of the words are placed in a loop. 
+In this network, the oval boxes denote HMM 
+instances<A NAME="1412">&#160;</A> and the square
+boxes denote <SPAN  CLASS="textit">word-end</SPAN> nodes<A NAME="1414">&#160;</A>. This composite
+network is essentially just a single large HMM and the above
+Token Passing algorithm applies.  The only difference now is that
+more information is needed beyond the log probability of the best
+token.  When the best token reaches the end of the speech,
+the route it took through the network must be known in order 
+to recover the recognised sequence of models.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:netforcsr">&#160;</A><IMG
+ WIDTH="298" HEIGHT="328" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.png"
+ ALT="% latex2html id marker 48668
+$\textstyle \parbox{65mm}{ \begin{center}\setlength...
+... Network for Continuously
+Spoken Word Recognition}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+The history of a token's route through the network may be 
+recorded efficiently as follows.  Every token carries a pointer
+called a <I>word end link</I>.  When a token is propagated from the 
+exit state of a word (indicated by passing through a 
+word-end node<A NAME="1419">&#160;</A>)
+to the entry state of another, that transition
+represents a potential word boundary.  Hence a record called 
+a <I>Word Link Record</I> is generated<A NAME="1421">&#160;</A><A NAME="1422">&#160;</A>
+in which is stored the identity of the word from which the token
+has just emerged and the current value of the token's link.  The
+token's actual link is then replaced by a pointer to the newly
+created WLR.  Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A> illustrates this process.
+
+<P>
+Once all of the unknown speech has been processed, the WLRs
+attached to the link of the best matching token
+(i.e. the token with the highest log probability)
+can be traced back to give the best matching sequence of words.
+At the same time the positions of the word boundaries can also
+be extracted if required.  
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:wlroper">&#160;</A><IMG
+ WIDTH="457" HEIGHT="354" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.png"
+ ALT="% latex2html id marker 48669
+$\textstyle \parbox{100mm}{ \begin{center}\setlengt...
+...abic{figctr}  Recording Word Boundary Decisions}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+The token passing algorithm for continuous speech has been described
+in terms of recording the word sequence only.  If required, the same
+principle can be used to record decisions at the model and state level.
+Also, more than just the best token at each word boundary can be saved.
+This gives the potential for generating a lattice of hypotheses rather
+than just the single best hypothesis.  Algorithms based on this idea
+are called <SPAN  CLASS="textit">lattice N-best</SPAN><A NAME="1428">&#160;</A>.   
+They are suboptimal because the
+use of a single token per state limits the number of different token
+histories that can be maintained.  This limitation can be avoided by
+allowing each model state to hold multiple-tokens and regarding
+tokens as distinct if they come from different preceding words.  This
+gives a class of algorithm called  <SPAN  CLASS="textit">word N-best</SPAN> which has been
+shown empirically to be comparable in performance to an optimal N-best
+algorithm. <A NAME="1430">&#160;</A><A NAME="1431">&#160;</A>
+
+<P>
+The above outlines the main idea of Token Passing as it is
+implemented within HTK. The algorithms are embedded in the
+library modules HN<SMALL>ET</SMALL><A NAME="1479">&#160;</A> and 
+HR<SMALL>EC</SMALL><A NAME="1480">&#160;</A> and they may be
+invoked using the recogniser tool called HV<SMALL>ITE</SMALL><A NAME="1481">&#160;</A>.
+They provide single and multiple-token<A NAME="1438">&#160;</A> 
+passing recognition, single-best
+output, lattice output, N-best lists, support for cross-word context-dependency,
+lattice rescoring<A NAME="1439">&#160;</A> and forced alignment<A NAME="1440">&#160;</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

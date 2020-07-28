@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of AIFF File Format</TITLE>
+<META NAME="description" CONTENT="Contents of AIFF File Format">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node76_mn.html">
+<LINK REL="previous" HREF="node74_mn.html">
+<LINK REL="up" HREF="node68_mn.html">
+<LINK REL="next" HREF="node76_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION032117000000000000000">
+AIFF File Format</A>
+</H2>
+
+<P>
+<A NAME="6035">&#160;</A>
+The AIFF format was defined by Apple Computer for storing monoaural and
+multichannel sampled sounds.  An AIFF file consists of a number of <I>chunks</I>.  A <I>Common</I> chunk contains the fundamental parameters of the sound
+(sample rate, number of channels, etc) and a <I>Sound Data</I> chunk contains
+sampled audio data.  HTK only partially supports AIFF since some of the
+information in it is stored as floating point numbers.  In particular, the
+sample rate is stored in this form and to avoid portability problems, 
+HTK ignores the given sample rate and assumes that it is 16kHz.  If this 
+default rate is incorrect, then the true sample period should be
+specified by setting the <TT>SOURCERATE</TT> configuration parameter.
+Full details of the AIFF format are available from Apple Developer
+Technical Support.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

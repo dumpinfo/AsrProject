@@ -1,0 +1,453 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node355_mn.html">
+<LINK REL="previous" HREF="node353_mn.html">
+<LINK REL="up" HREF="node352_mn.html">
+<LINK REL="next" HREF="node355_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051192000000000000000">&#160;</A><A NAME="s:HSLab-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HSL<SMALL>AB</SMALL> is invoked by typing the command line
+<PRE>
+   HSLab [options] dataFile
+</PRE>
+where <TT>dataFile</TT> is a data file in any of the supported formats with a 
+<TT>WAVEFORM</TT> sample kind.   If the given data file does not exist, then
+HSL<SMALL>AB</SMALL> will assume that a new file is to be recorded with this name.
+
+<P>
+The available options for HSL<SMALL>AB</SMALL> are
+
+<P>
+
+<DL COMPACT>
+<DT><TT>-a</TT>
+<DD>With this switch present, the numeric part of the global labelling
+  string is automatically incremented after every <TT>Label</TT> operation.
+
+<P>
+<DT><TT>-i file</TT>
+<DD>This option allows transcription files to be output to the
+  named master label file (MLF). 
+
+<P>
+<DT><TT>-n</TT>
+<DD>Normally HSL<SMALL>AB</SMALL> expects to load an existing label file
+  whose name is derived from the speech data file. This option tells 
+  HSL<SMALL>AB</SMALL> that a new empty transcription is to be created for the loaded 
+  data-file.
+
+<P>
+<DT><TT>-s string</TT>
+<DD>This option allows the user to set the string displayed
+  in the ``command'' button used to trigger external commands.
+
+<P>
+
+  <DT><TT>-F fmt</TT>
+<DD>Set the source data format to <TT>fmt</TT>.
+
+  <DT><TT>-G fmt</TT>
+<DD>Set the label file format to <TT>fmt</TT>.
+
+  <DT><TT>-I mlf</TT>
+<DD>This loads the master label file <TT>mlf</TT>.  This option
+     may be repeated to load several MLFs.
+
+  <DT><TT>-L dir</TT>
+<DD>Search directory <TT>dir</TT> for label files (default
+     is to search current directory).
+
+  <DT><TT>-X ext</TT>
+<DD>Set label file extension to <TT>ext</TT> 
+  (default is <TT>lab</TT>).
+
+</DD>
+</DL>
+
+HSL<SMALL>AB</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+The following is a summary of the function of each HSL<SMALL>AB</SMALL>
+button.
+
+<P>
+
+<DL COMPACT>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Load}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img681.png"
+ ALT="\fbox{\texttt{Load}}"></SPAN></TT>
+<DD>Load a speech data file and associated transcription.
+      If changes have been made to the currently loaded transcription 
+      since it was last saved the user will be prompted to save these 
+      changes before loading the new file.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Save}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img682.png"
+ ALT="\fbox{\texttt{Save}}"></SPAN></TT>
+<DD>Save changes made to the transcription into a specified
+      label file.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{About}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img683.png"
+ ALT="\fbox{\texttt{About}}"></SPAN></TT>
+<DD>Print information about HSLab.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Quit}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img684.png"
+ ALT="\fbox{\texttt{Quit}}"></SPAN></TT>
+<DD>Exit from HSL<SMALL>AB</SMALL>. If alterations have been made 
+      to the currently loaded transcription since it was last saved, the user 
+      will be prompted to save these changes before exiting.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Command}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img685.png"
+ ALT="\fbox{\texttt{Command}}"></SPAN></TT>
+<DD>This button is used to trigger an external command which 
+      can process the waveform file currently loaded in HSL<SMALL>AB</SMALL>. This 
+      is accomplished by setting the environment variable <TT>HSLABCMD</TT> to the 
+      shell command required to perform the processing. When the <TT>Command</TT>
+      button is pressed, any occurrence of <TT>$</TT> in the shell command is 
+      replaced by the name of the currently loaded waveform file. Note that 
+      only the filename without its extension is substituted. The string 
+      displayed in the ``command'' button can be changed using the <TT>-s</TT> 
+      option.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Mark}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img686.png"
+ ALT="\fbox{\texttt{Mark}}"></SPAN></TT>
+<DD>Mark a region of the displayed waveform. The user 
+      is prompted to specify the start and the end point of a region with
+      the mouse pointer. The marked region will be displayed in inverse 
+      colours. Only one region can be marked at a time.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Unmark}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img687.png"
+ ALT="\fbox{\texttt{Unmark}}"></SPAN></TT>
+<DD>Unmark a previously marked region.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{<- -}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img688.png"
+ ALT="\fbox{\texttt{&lt;-}}"></SPAN></TT>
+<DD>Scroll the display to the left.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{- ->}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img689.png"
+ ALT="\fbox{\texttt{-&gt;}}"></SPAN></TT>
+<DD>Scroll the display to the right.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Z.In}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img690.png"
+ ALT="\fbox{\texttt{Z.In}}"></SPAN></TT>
+<DD>Zoom into a part of the displayed waveform. If there is 
+      a currently marked region then that region will be zoomed into, 
+      otherwise, the user will be prompted to select a slice of the 
+      waveform by specifying two points using the mouse pointer.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Z.Out}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img691.png"
+ ALT="\fbox{\texttt{Z.Out}}"></SPAN></TT>
+<DD>Restore the previous viewing level.  
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Restore}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img692.png"
+ ALT="\fbox{\texttt{Restore}}"></SPAN></TT>
+<DD>Display the complete waveform into the window. Any 
+      marked regions will be unmarked.  
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Play}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img693.png"
+ ALT="\fbox{\texttt{Play}}"></SPAN></TT>
+<DD>If there is a marked region of the waveform then
+      that portion of the signal will be played through the internal speaker.
+      Otherwise, the command will apply to the waveform visible on the 
+      screen.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Rec}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img694.png"
+ ALT="\fbox{\texttt{Rec}}"></SPAN></TT>
+<DD>This initiates recording from the audio input device. The maximum
+      duration of a recording is limited to 2 mins at 16KHz sampling rate. Two bar-graphs 
+      are displayed: the first (red) shows the number of samples recorded, the second
+      bar (green) displays the energy of the incoming signal. Once pressed, the
+      <TT>Rec</TT> button changes into <TT>Stop</TT> which, in turn, is used to terminate
+      the operation. When finished, the audio data stored in the buffer is written
+      out to disk. Each recording is stored in alternating files 
+      <TT>dataFile_0</TT> and <TT>dataFile_1</TT>.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Pause}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img695.png"
+ ALT="\fbox{\texttt{Pause}}"></SPAN></TT>
+<DD>Clicking on this button pauses/un-pauses the recording operation.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Volume}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img696.png"
+ ALT="\fbox{\texttt{Volume}}"></SPAN></TT>
+<DD>This button is used to select the playback volume of the
+      audio device.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{x1}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img697.png"
+ ALT="\fbox{\texttt{x1}}"></SPAN></TT>
+<DD>This button selects the current level of waveform magnification.
+      The available factors are <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img698.png"
+ ALT="$ \times 1$"></SPAN>,  <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img699.png"
+ ALT="$ \times 2$"></SPAN>,  <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img700.png"
+ ALT="$ \times 4$"></SPAN>,  <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img701.png"
+ ALT="$ \times 8$"></SPAN>, 
+       <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img702.png"
+ ALT="$ \times 16$"></SPAN>, and  <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img703.png"
+ ALT="$ \times 32$"></SPAN>.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Label}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img704.png"
+ ALT="\fbox{\texttt{Label}}"></SPAN></TT>
+<DD>If a marked region exists, then the waveform contained in the 
+      region will be labelled with <EM>The Current Label</EM>. Otherwise, the 
+      command will be applied to the waveform visible on the screen.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Labelas}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img705.png"
+ ALT="\fbox{\texttt{Labelas}}"></SPAN></TT>
+<DD>Same as above, however, the user is prompted to type in 
+      the labelling string.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Delete}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img706.png"
+ ALT="\fbox{\texttt{Delete}}"></SPAN></TT>
+<DD>Delete a label.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Edit}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img707.png"
+ ALT="\fbox{\texttt{Edit}}"></SPAN></TT>
+<DD>Edit the string of a label.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Select}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img708.png"
+ ALT="\fbox{\texttt{Select}}"></SPAN></TT>
+<DD>Select a label as a marked region.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Adjust}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img709.png"
+ ALT="\fbox{\texttt{Adjust}}"></SPAN></TT>
+<DD>Adjust the boundaries of a label.  To select the label 
+      boundary to adjust, click in the display near to the label boundary.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Set [?]}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img710.png"
+ ALT="\fbox{\texttt{Set [?]}}"></SPAN></TT>
+<DD>This button is used to select the current alternative 
+      transcription displayed and used in HSL<SMALL>AB</SMALL>.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{New}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img711.png"
+ ALT="\fbox{\texttt{New}}"></SPAN></TT>
+<DD>Creates a new alternative transcription. If an empty alternative 
+      transcription already exists, then a new transcription is not created.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Undo}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img712.png"
+ ALT="\fbox{\texttt{Undo}}"></SPAN></TT>
+<DD>Single level undo operation for labelling commands.
+
+<P>
+<DT><TT><!-- MATH
+ $\fbox{\texttt{Speech}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img713.png"
+ ALT="\fbox{\texttt{Speech}}"></SPAN></TT>
+<DD>Change the current labelling string (the button in the 
+  bottom right of the control area).
+  
+</DD>
+</DL>
+
+<P>
+The following ``mouse'' shortcuts are provided. To mark a region position the pointer at
+one of the desired boundaries, then press the left mouse button and while holding it down
+position the pointer at the other region boundary. Upon releasing the mouse button the 
+marked region will be hilighted. To play a label position the mouse cursor anywhere within
+the corresponding label ``slice'' in the label area of the display and click the left
+mouse button.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

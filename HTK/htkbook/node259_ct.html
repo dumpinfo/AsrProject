@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node260_mn.html">
+<LINK REL="previous" HREF="node258_mn.html">
+<LINK REL="up" HREF="node257_mn.html">
+<LINK REL="next" HREF="node260_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05152000000000000000">&#160;</A><A NAME="s:HDMan-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HDM<SMALL>AN</SMALL> is invoked by typing the command line
+<PRE>
+   HDMan [options] newDict srcDict1 srcDict2 ...
+</PRE>
+This causes HDM<SMALL>AN</SMALL> read in the source dictionaries <TT>srcDict1</TT>,
+<TT>srcDict2</TT>, etc. and generate a new dictionary <TT>newDict</TT>.
+The available options are
+
+<P>
+
+<DL COMPACT>
+<DT><TT>-a s</TT>
+<DD>Each character in the string <TT>s</TT> denotes the
+      start of a comment line.  By default there is just one
+      comment character defined which is <TT>#</TT>.
+  <DT><TT>-b s</TT>
+<DD>Define <TT>s</TT> to be a word boundary symbol.
+  <DT><TT>-e dir</TT>
+<DD>Look for edit scripts in the directory <TT>dir</TT>.
+  <DT><TT>-g f</TT>
+<DD>File <TT>f</TT> holds the global edit script.  By
+     default, HDM<SMALL>AN</SMALL> expects the global edit script to be
+     called <TT>global.ded</TT>.
+  <DT><TT>-h i j</TT>
+<DD>Skip the first <TT>i</TT> lines of the <TT>j</TT>'th
+     listed source dictionary.
+  <DT><TT>-i</TT>
+<DD>Include word output symbols in the output dictionary.
+  <DT><TT>-j</TT>
+<DD>Include pronunciation probabilities in the output dictionary.
+  <DT><TT>-l s</TT>
+<DD>Write a log file to <TT>s</TT>.  The log file will include
+     dictionary statistics and a list of the number of occurrences
+     of each phone.
+  <DT><TT>-m</TT>
+<DD>Merge pronunciations from all source dictionaries.  By default,
+    HDM<SMALL>AN</SMALL> generates a single pronunciation for each word.  If several
+    input dictionaries have pronunciations for a word, then the first encountered
+    is used.  Setting this option causes all distinct pronunciations to be
+    output for each word.
+  <DT><TT>-n f</TT>
+<DD>Output a list of all distinct phones encountered 
+     to file <TT>f</TT>.
+  <DT><TT>-o</TT>
+<DD>Disable dictionary output.
+  <DT><TT>-p f</TT>
+<DD>Load the phone list stored in file <TT>f</TT>.  This
+     enables a check to be made that all output phones are in the supplied
+     list. You need to create a log file (<TT>-l</TT>) to view the results of 
+     this check.
+  <DT><TT>-t</TT>
+<DD>Tag output words with the name of the source dictionary which
+    provided the pronunciation.
+  <DT><TT>-w f</TT>
+<DD>Load the word list stored in file <TT>f</TT>.  Only 
+    pronunciations for the words in this list will be extracted from
+    the source dictionaries. 
+
+  <DT><TT>-Q</TT>
+<DD>Print a summary of all commands supported by this tool.
+
+</DD>
+</DL>
+
+HDM<SMALL>AN</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

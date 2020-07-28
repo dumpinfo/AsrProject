@@ -1,0 +1,681 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Baum-Welch Re-Estimation</TITLE>
+<META NAME="description" CONTENT="Contents of Baum-Welch Re-Estimation">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node8_mn.html">
+<LINK REL="previous" HREF="node6_mn.html">
+<LINK REL="up" HREF="node3_mn.html">
+<LINK REL="next" HREF="node8_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION02140000000000000000">&#160;</A><A NAME="s:bwrest">&#160;</A>
+<BR>
+Baum-Welch Re-Estimation
+</H1>
+
+<P>
+To determine the parameters of a HMM it is first necessary to make
+a rough guess at what they might be.  Once this is done, more
+accurate (in the maximum likelihood sense) parameters
+can be found by applying the so-called 
+Baum-Welch re-estimation<A NAME="1167">&#160;</A>
+formulae.  
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:subsmixrep">&#160;</A><IMG
+ WIDTH="276" HEIGHT="285" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.png"
+ ALT="% latex2html id marker 48463
+$\textstyle \parbox{60mm}{ \begin{center}\setlength...
+...chapter.\arabic{figctr}  Representing a Mixture}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+Chapter&nbsp;<A HREF="node112_ct.html#c:Training">8</A> gives the formulae used 
+in HTK in full detail.  
+Here the basis
+of the formulae will be presented in a very informal way.
+Firstly, it should be noted that the inclusion of multiple data
+streams does not alter matters significantly since each stream
+is considered to be statistically independent.  Furthermore,
+mixture components can be considered to be a special form of 
+sub-state in which the transition probabilities are the mixture
+weights (see Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>).
+
+<P>
+Thus, the essential problem is to estimate the means and 
+variances of a HMM in which each state output distribution is a single
+component Gaussian, that is
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:10">&#160;</A><!-- MATH
+ \begin{equation}
+b_j({\mbox{\boldmath$o$}}_t) = \frac{1}{\sqrt{(2 \pi)^n | {\mbox{\boldmath$\Sigma_j$}} |}}
+e^{- \frac{1}{2}({\mbox{\boldmath$o$}}_t - {\mbox{\boldmath$\mu$}}_j)'{\mbox{\boldmath$\Sigma$}}_j^{-1}({\mbox{\boldmath$o$}}_t - {\mbox{\boldmath$\mu$}}_j)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="317" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.png"
+ ALT="$\displaystyle b_j({\mbox{\boldmath$o$}}_t) = \frac{1}{\sqrt{(2 \pi)^n \vert {\m...
+...boldmath$\Sigma$}}_j^{-1}({\mbox{\boldmath$o$}}_t - {\mbox{\boldmath$\mu$}}_j)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">10</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+If there was just one state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> in the HMM, this parameter
+estimation would be easy.  The maximum likelihood estimates of 
+<!-- MATH
+ ${\mbox{\boldmath $\mu$}}_j$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.png"
+ ALT="$ {\mbox{\boldmath $\mu$}}_j$"></SPAN> and <!-- MATH
+ ${\mbox{\boldmath $\Sigma$}}_j$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img53.png"
+ ALT="$ {\mbox{\boldmath $\Sigma$}}_j$"></SPAN> would be just the simple averages, 
+that is
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:11">&#160;</A><!-- MATH
+ \begin{equation}
+\hat{{\mbox{\boldmath$\mu$}}}_j = \frac{1}{T} \sum_{t=1}^{T} {\mbox{\boldmath$o$}}_t
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="102" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img54.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\mu$}}}_j = \frac{1}{T} \sum_{t=1}^{T} {\mbox{\boldmath$o$}}_t$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">11</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:12">&#160;</A><!-- MATH
+ \begin{equation}
+\hat{{\mbox{\boldmath$\Sigma$}}}_j = \frac{1}{T} \sum_{t=1}^{T}
+        ({\mbox{\boldmath$o$}}_t - {\mbox{\boldmath$\mu$}}_j) ({\mbox{\boldmath$o$}}_t - {\mbox{\boldmath$\mu$}}_j)'
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="220" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img55.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\Sigma$}}}_j = \frac{1}{T} \sum_{t=1}^{T} (...
+...mbox{\boldmath$\mu$}}_j) ({\mbox{\boldmath$o$}}_t - {\mbox{\boldmath$\mu$}}_j)'$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">12</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+In practice, of course, there are multiple states and there is no
+direct assignment of observation vectors to individual states 
+because the underlying state sequence is unknown.  Note, however,
+that if some approximate assignment of vectors to states could be made then
+equations <A HREF="node7_ct.html#e:11">1.11</A> and <A HREF="node7_ct.html#e:12">1.12</A> could be used to give the
+required initial values for the parameters.  Indeed, this is exactly
+what is done in the HTK tool called HI<SMALL>NIT</SMALL><A NAME="1462">&#160;</A>.  
+HI<SMALL>NIT</SMALL> first divides the
+training observation vectors equally amongst the model states and then
+uses equations <A HREF="node7_ct.html#e:11">1.11</A> and <A HREF="node7_ct.html#e:12">1.12</A> to give initial values for
+the mean and variance of each state.  It then finds the maximum
+likelihood state sequence using the Viterbi<A NAME="1218">&#160;</A> 
+algorithm described  below,
+reassigns the observation vectors to states and then uses
+equations <A HREF="node7_ct.html#e:11">1.11</A> and <A HREF="node7_ct.html#e:12">1.12</A> again to get better initial 
+values.  This process is repeated until the estimates
+do not change.
+
+<P>
+Since the full likelihood of each observation sequence
+is based on the summation of all possible state sequences,
+each observation vector <!-- MATH
+ ${\mbox{\boldmath $o$}}_t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ {\mbox{\boldmath $o$}}_t$"></SPAN> contributes to the computation
+of the maximum likelihood parameter values for each state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN>.
+In other words, instead of assigning each observation vector
+to a specific state as in the above approximation, each
+observation is assigned to every state in proportion to
+the probability of the model being in that state when the
+vector was observed.  Thus, if <SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.png"
+ ALT="$ L_j(t)$"></SPAN> denotes the probability
+of being in state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN> then the 
+equations <A HREF="node7_ct.html#e:11">1.11</A> and <A HREF="node7_ct.html#e:12">1.12</A> given above become the
+following weighted averages
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:13">&#160;</A><!-- MATH
+ \begin{equation}
+\hat{{\mbox{\boldmath$\mu$}}}_j = \frac{ \sum_{t=1}^{T} L_j(t) {\mbox{\boldmath$o$}}_t}
+                          {\sum_{t=1}^{T} L_j(t)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="139" HEIGHT="61" ALIGN="MIDDLE" BORDER="0"
+ SRC="img57.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\mu$}}}_j = \frac{ \sum_{t=1}^{T} L_j(t) {\mbox{\boldmath$o$}}_t} {\sum_{t=1}^{T} L_j(t)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">13</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:14">&#160;</A><!-- MATH
+ \begin{equation}
+\hat{{\mbox{\boldmath$\Sigma$}}}_j = \frac{ \sum_{t=1}^{T} L_j(t)
+        ({\mbox{\boldmath$o$}}_t - {\mbox{\boldmath$\mu$}}_j) ({\mbox{\boldmath$o$}}_t - {\mbox{\boldmath$\mu$}}_j)' }
+                      {\sum_{t=1}^{T} L_j(t)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="260" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img58.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\Sigma$}}}_j = \frac{ \sum_{t=1}^{T} L_j(t)...
+...{\mbox{\boldmath$o$}}_t - {\mbox{\boldmath$\mu$}}_j)' } {\sum_{t=1}^{T} L_j(t)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">14</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where the summations in the denominators are included to give
+the required normalisation.
+
+<P>
+Equations <A HREF="node7_ct.html#e:13">1.13</A> and <A HREF="node7_ct.html#e:14">1.14</A> are the 
+Baum-Welch re-estimation<A NAME="1247">&#160;</A>
+formulae for the means and covariances of a HMM.  A similar but
+slightly more complex formula can be derived for the transition
+probabilities (see chapter&nbsp;<A HREF="node112_ct.html#c:Training">8</A>).
+
+<P>
+Of course, to apply equations <A HREF="node7_ct.html#e:13">1.13</A> and <A HREF="node7_ct.html#e:14">1.14</A>, the
+probability of state occupation <SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.png"
+ ALT="$ L_j(t)$"></SPAN> must be calculated.
+This is done efficiently using the so-called <I>Forward-Backward</I>
+<A NAME="1252">&#160;</A>
+algorithm.  Let the forward probability<A NAME="tex2html2" HREF="footnode_mn.html#foot1253" TARGET="footer"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A><A NAME="1254">&#160;</A> <!-- MATH
+ $\alpha_j(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ \alpha_j(t)$"></SPAN> for some model
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ M$"></SPAN> with <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> states be defined as 
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:15">&#160;</A><!-- MATH
+ \begin{equation}
+\alpha_j(t) = P({\mbox{\boldmath$o$}}_1,\ldots,{\mbox{\boldmath$o$}}_t, x(t)=j | M).
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="241" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img61.png"
+ ALT="$\displaystyle \alpha_j(t) = P({\mbox{\boldmath$o$}}_1,\ldots,{\mbox{\boldmath$o$}}_t, x(t)=j \vert M).$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">15</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+That is, <!-- MATH
+ $\alpha_j(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ \alpha_j(t)$"></SPAN> is the joint probability of observing the
+first <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN> speech vectors and being in state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>.  This
+forward probability can be efficiently calculated by the following
+recursion
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:16">&#160;</A><!-- MATH
+ \begin{equation}
+\alpha_j(t) = \left[ \sum_{i=2}^{N-1} \alpha_i(t-1) a_{ij} \right]
+                     b_j({\mbox{\boldmath$o$}}_t).
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="238" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img62.png"
+ ALT="$\displaystyle \alpha_j(t) = \left[ \sum_{i=2}^{N-1} \alpha_i(t-1) a_{ij} \right] b_j({\mbox{\boldmath$o$}}_t).$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">16</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+This recursion depends on the fact that the probability
+of being in state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN> and seeing observation <!-- MATH
+ ${\mbox{\boldmath $o$}}_t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ {\mbox{\boldmath $o$}}_t$"></SPAN>
+can be deduced by summing the forward probabilities for all
+possible predecessor states <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN> weighted by the transition
+probability <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ a_{ij}$"></SPAN>.  The slightly odd limits are caused by
+the fact that states <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img63.png"
+ ALT="$ 1$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> are non-emitting<A NAME="tex2html3" HREF="footnode_mn.html#foot1469" TARGET="footer"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A>.   The
+initial conditions for the above recursion are
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\alpha_1(1) = 1
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="71" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.png"
+ ALT="$\displaystyle \alpha_1(1) = 1$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">17</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\alpha_j(1) = a_{1j} b_j({\mbox{\boldmath$o$}}_1)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="126" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$\displaystyle \alpha_j(1) = a_{1j} b_j({\mbox{\boldmath$o$}}_1)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">18</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for <SPAN CLASS="MATH"><IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.png"
+ ALT="$ 1&lt;j&lt;N$"></SPAN> and the final condition is given by
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\alpha_N(T) = \sum_{i=2}^{N-1} \alpha_i(T) a_{iN}.
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="170" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img69.png"
+ ALT="$\displaystyle \alpha_N(T) = \sum_{i=2}^{N-1} \alpha_i(T) a_{iN}.$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">19</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Notice here that from the definition of <!-- MATH
+ $\alpha_j(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ \alpha_j(t)$"></SPAN>, 
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+P({\mbox{\boldmath$O$}}|M) = \alpha_N(T).
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="136" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img70.png"
+ ALT="$\displaystyle P({\mbox{\boldmath$O$}}\vert M) = \alpha_N(T).$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">20</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Hence, the calculation of the forward probability also
+yields the total likelihood<A NAME="1284">&#160;</A> <!-- MATH
+ $P({\mbox{\boldmath $O$}}|M)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="64" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img71.png"
+ ALT="$ P({\mbox{\boldmath $O$}}\vert M)$"></SPAN>.
+
+<P>
+The backward probability<A NAME="1286">&#160;</A> <!-- MATH
+ $\beta_j(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.png"
+ ALT="$ \beta_j(t)$"></SPAN> is defined as 
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:21">&#160;</A><!-- MATH
+ \begin{equation}
+\beta_j(t) = P({\mbox{\boldmath$o$}}_{t+1},\ldots,{\mbox{\boldmath$o$}}_T | x(t)=j , M).
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="258" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.png"
+ ALT="$\displaystyle \beta_j(t) = P({\mbox{\boldmath$o$}}_{t+1},\ldots,{\mbox{\boldmath$o$}}_T \vert x(t)=j , M).$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">21</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+As in the forward case, this backward probability can be 
+computed efficiently using the following recursion
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\beta_i(t) = \sum_{j=2}^{N-1} a_{ij} b_j({\mbox{\boldmath$o$}}_{t+1}) \beta_j(t+1)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="226" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img74.png"
+ ALT="$\displaystyle \beta_i(t) = \sum_{j=2}^{N-1} a_{ij} b_j({\mbox{\boldmath$o$}}_{t+1}) \beta_j(t+1)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">22</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+with initial condition given by
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\beta_i(T) = a_{iN}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="89" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$\displaystyle \beta_i(T) = a_{iN}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">23</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for <SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ 1&lt;i&lt;N$"></SPAN> and final condition given by
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\beta_1(1) = \sum_{j=2}^{N-1} a_{1j} b_j({\mbox{\boldmath$o$}}_1) \beta_j(1).
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="196" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img77.png"
+ ALT="$\displaystyle \beta_1(1) = \sum_{j=2}^{N-1} a_{1j} b_j({\mbox{\boldmath$o$}}_1) \beta_j(1).$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">24</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Notice that in the definitions above, the forward
+probability is a joint probability whereas the backward
+probability is a conditional probability.  This somewhat
+asymmetric definition is deliberate since it allows the
+probability of state occupation to be determined by taking the
+product of the two probabilities.  From the definitions,
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:25">&#160;</A><!-- MATH
+ \begin{equation}
+\alpha_j(t) \beta_j(t) = P({\mbox{\boldmath$O$}},x(t)=j | M).
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="222" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img78.png"
+ ALT="$\displaystyle \alpha_j(t) \beta_j(t) = P({\mbox{\boldmath$O$}},x(t)=j \vert M).$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">25</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Hence, 
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+L_j(t) & = & P(x(t)=j|{\mbox{\boldmath$O$}},M) \\\nonumber
+         & = & \frac{P({\mbox{\boldmath$O$}},x(t)=j | M)}{P({\mbox{\boldmath$O$}}|M)} \\\nonumber
+                & = & \frac{1}{P} \alpha_j(t) \beta_j(t)
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="40" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img79.png"
+ ALT="$\displaystyle L_j(t)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="127" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img81.png"
+ ALT="$\displaystyle P(x(t)=j\vert{\mbox{\boldmath$O$}},M)$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">26</SPAN>)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="131" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img82.png"
+ ALT="$\displaystyle \frac{P({\mbox{\boldmath$O$}},x(t)=j \vert M)}{P({\mbox{\boldmath$O$}}\vert M)}$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="89" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img83.png"
+ ALT="$\displaystyle \frac{1}{P} \alpha_j(t) \beta_j(t)$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $P=P({\mbox{\boldmath $O$}}|M)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="98" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img84.png"
+ ALT="$ P=P({\mbox{\boldmath $O$}}\vert M)$"></SPAN>.
+
+<P>
+All of the information needed to perform HMM
+parameter re-estimation using the Baum-Welch algorithm<A NAME="1321">&#160;</A>
+is now in place.
+The steps in this algorithm may be summarised as follows
+
+<OL>
+<LI>For every parameter vector/matrix requiring 
+      re-estimation, allocate storage for the numerator
+      and denominator summations of the form illustrated
+      by equations&nbsp;<A HREF="node7_ct.html#e:13">1.13</A> and <A HREF="node7_ct.html#e:14">1.14</A>.  These
+      storage locations are referred to as<A NAME="1325">&#160;</A>
+      <I>accumulators</I><A NAME="tex2html4" HREF="footnode_mn.html#foot1327" TARGET="footer"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A>.
+</LI>
+<LI>Calculate the forward and backward probabilities
+      for all states <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> and times <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>.
+</LI>
+<LI>For each state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> and time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>, use the probability
+      <SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.png"
+ ALT="$ L_j(t)$"></SPAN> and the current observation vector <!-- MATH
+ ${\mbox{\boldmath $o$}}_t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ {\mbox{\boldmath $o$}}_t$"></SPAN>
+      to update the accumulators for that state.
+</LI>
+<LI>Use the final accumulator values to calculate new
+      parameter values.
+</LI>
+<LI>If the value of <!-- MATH
+ $P=P({\mbox{\boldmath $O$}}|M)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="98" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img84.png"
+ ALT="$ P=P({\mbox{\boldmath $O$}}\vert M)$"></SPAN> for this iteration is not
+      higher than the value at the previous
+      iteration then stop, otherwise repeat the above steps
+      using the new re-estimated parameter values.
+</LI>
+</OL>
+
+<P>
+All of the above assumes that the parameters for a HMM are
+re-estimated from a single observation sequence, that is a
+single example of the spoken word.  In practice, many
+examples are needed to get good parameter estimates.  However,
+the use of multiple observation sequences adds no additional complexity
+to the algorithm. Steps 2 and 3 above are simply repeated for
+each distinct training sequence.
+
+<P>
+One final point that should be mentioned is that the computation
+of the forward and backward probabilities involves taking the
+product of a large number of probabilities.  In practice, this
+means that the actual numbers involved become very small.  Hence,
+to avoid numerical problems, the forward-backward computation
+is computed in HTK using log arithmetic<A NAME="1331">&#160;</A>.
+
+<P>
+The HTK program which implements the above 
+algorithm is called HR<SMALL>EST</SMALL><A NAME="1472">&#160;</A>.  
+In combination with the tool HI<SMALL>NIT</SMALL><A NAME="1473">&#160;</A> for
+estimating initial values mentioned earlier, HR<SMALL>EST</SMALL> allows isolated
+word HMMs to be constructed from a set of training examples
+using Baum-Welch re-estimation.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

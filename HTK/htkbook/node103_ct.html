@@ -1,0 +1,569 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Basic HMM Definitions</TITLE>
+<META NAME="description" CONTENT="Contents of Basic HMM Definitions">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node104_mn.html">
+<LINK REL="previous" HREF="node102_mn.html">
+<LINK REL="up" HREF="node101_mn.html">
+<LINK REL="next" HREF="node104_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03420000000000000000">&#160;</A><A NAME="s:OneHMM">&#160;</A>
+<BR>
+Basic HMM Definitions
+</H1>
+
+<P>
+Some HTK tools require a single HMM to be defined.  For example, the
+isolated-unit re-estimation tool HR<SMALL>EST</SMALL> would be invoked as
+<PRE>
+    HRest hmmdef s1 s2 s3 ....
+</PRE>
+
+<P>
+This would cause the model defined in the file <TT>hmmdef</TT>
+to be input and its parameters re-estimated using the speech data
+files <TT>s1</TT>, <TT>s2</TT>, etc.<A NAME="8657">&#160;</A>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:hmm1def">&#160;</A><IMG
+ WIDTH="296" HEIGHT="620" ALIGN="MIDDLE" BORDER="0"
+ SRC="img223.png"
+ ALT="% latex2html id marker 49653
+$\textstyle \parbox{60mm}{\noindent
+\fbox{ \parbox...
+...thechapter.\arabic{figctr}  Definition for Simple L-R HMM}
+\end{center}
+}$">
+</DIV> 
+
+<P>
+HMM definition files consist of a sequence of symbols representing
+the elements of a simple language.  These symbols are mainly
+keywords written within angle brackets and integer and
+floating point numbers. 
+The full HTK definition language is presented
+more formally later in section&nbsp;<A HREF="node111_ct.html#s:hmmdef">7.10</A>.  For now, the
+main features of the language will be described by some
+examples.<A NAME="8680">&#160;</A>
+
+<P>
+Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A> shows a HMM definition corresponding to the simple
+left-right HMM illustrated in Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  It is a continuous density
+HMM with 5 states in total, 3 of which are emitting.  The first symbol in the
+file <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">h</SPAN> indicates that the following string is the name of a macro of
+type <SPAN  CLASS="textsf">h</SPAN> which means that it is a HMM definition (macros are explained
+in detail later).  Thus, this definition describes a HMM called ``hmm1''.  
+Note that HMM names should be composed of alphanumeric characters only and must
+not consist solely of numbers. The HMM definition itself is bracketed by the
+symbols <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">BeginHMM</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="8686">&#160;</A> and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">EndHMM</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="8688">&#160;</A>.<A NAME="8689">&#160;</A>
+
+<P>
+The first 
+line of the definition proper specifies<A NAME="8690">&#160;</A>
+the <SPAN  CLASS="textit">global</SPAN> features of the HMM.  In any system
+consisting of many HMMs, these
+features will be the same for all of them.
+In this case, the global definitions indicate that
+the observation vectors have 4 components
+(<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">VecSize</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="8693">&#160;</A> 4) and that they denote
+MFCC coefficients<A NAME="8694">&#160;</A> (<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">MFCC</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN>).
+
+<P>
+The next line specifies the number of states in the HMM. There
+then follows a definition for each emitting state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN>, each of which
+has a single mean 
+vector <!-- MATH
+ ${\mbox{\boldmath $\mu$}}_j$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.png"
+ ALT="$ {\mbox{\boldmath $\mu$}}_j$"></SPAN> introduced by the keyword <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">Mean</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN>
+<A NAME="8698">&#160;</A> 
+and a diagonal variance vector <!-- MATH
+ ${\mbox{\boldmath $\Sigma$}}_j$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img53.png"
+ ALT="$ {\mbox{\boldmath $\Sigma$}}_j$"></SPAN>
+introduced by the keyword <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">Variance</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN>.
+<A NAME="8701">&#160;</A>
+The definition ends with the transition matrix <!-- MATH
+ $\{a_{ij}\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="40" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img33.png"
+ ALT="$ \{a_{ij}\}$"></SPAN>
+introduced by the keyword 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">TransP</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="8704">&#160;</A>.  
+<A NAME="8705">&#160;</A>
+<A NAME="8706">&#160;</A>
+<A NAME="8707">&#160;</A>
+
+<P>
+Notice that
+the dimension of each vector or matrix is specified
+explicitly before listing the component values.  These
+dimensions must be consistent with the corresponding observation 
+width (in the case of output distribution parameters) or
+number of states (in the case of transition matrices).
+Although in this example they could be inferred, 
+HTK requires that 
+they are included explicitly since, as will
+be described shortly, they can be detached from the HMM definition
+and stored elsewhere as a macro.<A NAME="8708">&#160;</A><A NAME="8709">&#160;</A>
+
+<P>
+The definition for <SPAN  CLASS="textsf">hmm1</SPAN> makes use of many defaults.
+In particular, there is no definition for the number of
+input data streams or for the number of 
+mixture components per output distribution.  Hence, in both
+cases, a default of 1 is assumed.
+
+<P>
+Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A> shows a HMM definition in which
+the emitting states are 2 component mixture Gaussians.
+The number of mixture components in each state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> is indicated by the keyword
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">NumMixes</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="8713">&#160;</A> and each mixture component 
+is prefixed by the keyword <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">Mixture</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="8715">&#160;</A>  followed by the 
+component index <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ m$"></SPAN> and component weight <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img227.png"
+ ALT="$ c_{jm}$"></SPAN>.  Note
+that there is no requirement for the number of mixture components
+to be the same in each distribution.<A NAME="8717">&#160;</A>
+
+<P>
+State definitions and the mixture components within them may be
+listed in any order.  When a HMM definition is loaded, a check is made
+that all the required components have been defined.  In addition,
+checks are made that the mixture component weights and each row
+of the transition matrix sum to one.
+If very rapid loading is required, this consistency checking can be inhibited
+by setting the Boolean configuration variable 
+<TT>CHKHMMDEFS</TT><A NAME="9463">&#160;</A> to
+false.
+
+<P>
+As an alternative to diagonal variance vectors, a Gaussian distribution
+can have a full rank covariance<A NAME="8720">&#160;</A> matrix.   An example of
+this is shown in the definition for <SPAN  CLASS="textsf">hmm3</SPAN> shown in 
+Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  Since covariance matrices are symmetric,
+they are stored in upper triangular form<A NAME="8723">&#160;</A>  
+i.e. each row of the matrix
+starts at the diagonal element<A NAME="tex2html27" HREF="footnode_mn.html#foot8724" TARGET="footer"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A>.  Also, covariance matrices are stored
+in their inverse form i.e. HMM definitions contain <!-- MATH
+ ${\mbox{\boldmath $\Sigma$}}^{-1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img228.png"
+ ALT="$ {\mbox{\boldmath $\Sigma$}}^{-1}$"></SPAN>
+rather than  <!-- MATH
+ ${\mbox{\boldmath $\Sigma$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img46.png"
+ ALT="$ {\mbox{\boldmath $\Sigma$}}$"></SPAN>.  To reflect this, the keyword chosen to
+introduce a full covariance matrix is <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">InvCovar</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="8729">&#160;</A>.  
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:hmm2def">&#160;</A><IMG
+ WIDTH="296" HEIGHT="735" ALIGN="MIDDLE" BORDER="0"
+ SRC="img229.png"
+ ALT="% latex2html id marker 49752
+$\textstyle \parbox{60mm}{\noindent
+\fbox{ \parbox...
+... \thechapter.\arabic{figctr}  Simple Mixture Gaussian HMM}
+\end{center}
+}$">
+</DIV> 
+
+<P>
+
+<P>
+Notice that only the second
+state has a full covariance Gaussian component.  The first state
+has a mixture of two diagonal variance Gaussian components.  Again, this
+illustrates the flexibility of HMM definition in HTK.  If required
+the structure of every
+Gaussian can be individually configured.
+
+<P>
+Another possible way to store covariance information is in the form
+of the Choleski decomposition<A NAME="8758">&#160;</A> <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img161.png"
+ ALT="$ L$"></SPAN> of the 
+inverse covariance matrix
+i.e. <!-- MATH
+ ${\mbox{\boldmath $\Sigma$}}^{-1} = LL'$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="82" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img230.png"
+ ALT="$ {\mbox{\boldmath $\Sigma$}}^{-1} = LL'$"></SPAN>.
+Again this is stored externally in upper triangular form so <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img231.png"
+ ALT="$ L'$"></SPAN> is
+actually stored.  It is distinguished from the normal inverse covariance
+matrix by using the keyword <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">LLTCovar</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="8762">&#160;</A> 
+in place of <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">InvCovar</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="tex2html28" HREF="footnode_mn.html#foot8764" TARGET="footer"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A>.  
+
+<P>
+The definition for <SPAN  CLASS="textsf">hmm3</SPAN> also illustrates another
+macro type, that is, <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">o</SPAN>.  This macro is used as an alternative
+way of specifying global options and, in fact, it is the format used
+by HTK tools when they write out a HMM definition.  It is provided so that global
+options can be specifed ahead of any other HMM parameters.  As will
+be seen later, this is useful when using many types of macro.
+<A NAME="8767">&#160;</A>
+
+<P>
+As noted earlier, the observation vectors used to represent
+the speech signal can be divided into two or more statistically
+independent data streams.  This corresponds to the splitting-up
+of the input speech vectors as described in section&nbsp;<A HREF="node81_ct.html#s:streams">5.13</A>.
+In HMM definitions, the use of multiple data
+streams must be indicated by specifying the number of streams and
+the width (i.e dimension) of each stream as a global
+option.  This is done using the keyword <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">StreamInfo</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN>
+<A NAME="8770">&#160;</A> followed
+by the number of streams, and then a sequence of numbers indicating
+the width of each stream.  The sum of these
+stream widths must equal the original vector size as indicated
+by the  <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">VecSize</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN> keyword. 
+
+<P>
+An example of a HMM definition for multiple data 
+streams<A NAME="8772">&#160;</A>
+is <SPAN  CLASS="textsf">hmm4</SPAN> shown in 
+Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  This HMM is intended to model 2 distinct
+streams, the first has 3 components and the second has 1.
+This is indicated by the global option <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">StreamInfo</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN> 2 3 1.
+The definition of each state output distribution now
+includes means and variances for each individual stream.
+
+<P>
+Thus, in Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>, each state is subdivided into
+2 streams using the <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">Stream</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="8778">&#160;</A> keyword followed by the stream
+number.  Note also, that each individual stream can be weighted.
+In state 2 of <SPAN  CLASS="textsf">hmm4</SPAN>, the vector following the
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">SWeights</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><A NAME="8781">&#160;</A> keyword indicates that
+stream 1 has a weight of 0.9 whereas
+stream 2 has a weight of 1.1.  There is no stream weight
+<A NAME="8782">&#160;</A> vector
+in state 3 and hence the default weight of 1.0 will be
+assigned to each stream.
+
+<P>
+<BR>
+<BR>
+<BR>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="f:hmm3def">&#160;</A></P>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\framebox[100mm]{
+\begin{minipage}{100mm}
+           \begin{program}
+\mbox{$\sim$\textsf{o}}  \mbox{$<$\textsf{VecSize}$>$} 4 \mbox{$<$\textsf{MFCC}$>$} \\
+\mbox{$\sim$\textsf{h ``hmm3''}} \\
+\mbox{$<$\textsf{BeginHMM}$>$}  \\
+\> \mbox{$<$\textsf{NumStates}$>$} 4  \\
+\> \mbox{$<$\textsf{State}$>$} 2 \mbox{$<$\textsf{NumMixes}$>$} 2 \\
+\>\>   \mbox{$<$\textsf{Mixture}$>$} 1 0.4 \\
+\>\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\> \>      0.3 0.2 0.2 1.0 \\
+\>\>\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>\> \>      1.0 1.0 1.0 1.0 \\
+\>\>\>   \mbox{$<$\textsf{Mixture}$>$} 2 0.6 \\
+\>\>\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>\>       0.1 0.0 0.0 0.8  \\
+\>\>\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\> \>\>      1.0 1.0 1.0 1.0 \\
+\> \mbox{$<$\textsf{State}$>$} 3 \mbox{$<$\textsf{NumMixes}$>$} 1 \\
+\>\>   \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>\>       0.1 \> 0.2 \> 0.6 \> 1.4 \\
+\>\>    \mbox{$<$\textsf{InvCovar}$>$} 4 \\
+\>\>\>       1.0 \> 0.1 \> 0.0 \> 0.0\\
+\>\>\>       \>  1.0 \>  0.2 \> 0.0\\
+\>\>\>       \>\>  1.0 \>  0.1\\
+\>\>\>       \>\>\> 1.0 \\
+\> \mbox{$<$\textsf{TransP}$>$} 4 \\
+\>\>   0.0 1.0 0.0 0.0 \\
+\>\>   0.0 0.5 0.5 0.0 \\
+\>\>   0.0 0.0 0.6 0.4 \\
+\>\>   0.0 0.0 0.0 0.0 \\
+\mbox{$<$\textsf{EndHMM}$>$}
+\end{program}
+       \end{minipage} }$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="457" HEIGHT="580" ALIGN="MIDDLE" BORDER="0"
+ SRC="img232.png"
+ ALT="\framebox[100mm]{
+\begin{minipage}{100mm}
+\begin{program}
+\mbox{$\sim$\textsf{...
+... 0.0 0.0 0.0 0.0 \\
+\mbox{$&lt;$\textsf{EndHMM}$&gt;$}
+\end{program} \end{minipage} }"></SPAN>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+       <BR>
+<BR>
+          <SPAN  CLASS="textbf"> Fig. <SPAN CLASS="arabic">7</SPAN>..<SPAN CLASS="arabic">1</SPAN>  HMM with Full Covariance</SPAN> 
+    
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+
+<P>
+No HTK tools are supplied for estimating optimal stream 
+weight<A NAME="8808">&#160;</A> 
+values.  Hence, they must either be set manually or derived
+from some outside source.  However, once set, they are used in
+the calculation of output probabilities as specified in 
+equations&nbsp;<A HREF="node102_ct.html#e:cdpdf">7.1</A> and <A HREF="node102_ct.html#e:ddpdf">7.3</A>, and hence they will
+affect the operation of both the training and recognition tools.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="f:hmm4def">&#160;</A></P>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\framebox[100mm]{
+\begin{minipage}{100mm}
+           \begin{program}
+\mbox{$\sim$\textsf{o}} \>  \mbox{$<$\textsf{VecSize}$>$} 4 \mbox{$<$\textsf{MFCC}$>$} \\
+\> \mbox{$<$\textsf{StreamInfo}$>$} 2 3 1 \\
+\mbox{$\sim$\textsf{h ``hmm4''}} \\
+\mbox{$<$\textsf{BeginHMM}$>$}  \\
+\> \mbox{$<$\textsf{NumStates}$>$} 4 \\
+\> \mbox{$<$\textsf{State}$>$} 2 \\
+\>\>   \mbox{$<$\textsf{SWeights}$>$} 2 0.9 1.1 \\
+\>\>   \mbox{$<$\textsf{Stream}$>$} 1 \\
+\>\>\>     \mbox{$<$\textsf{Mean}$>$} 3 \\
+\>\>\>\>      0.2 0.1 0.1 \\
+\>\>\>     \mbox{$<$\textsf{Variance}$>$} 3 \\
+\>\>\>\>       1.0 1.0 1.0 \\
+\>\>   \mbox{$<$\textsf{Stream}$>$} 2 \\
+\>\>\>     \mbox{$<$\textsf{Mean}$>$} 1 0.0 \\
+\>\>\>     \mbox{$<$\textsf{Variance}$>$} 1 4.0 \\
+\> \mbox{$<$\textsf{State}$>$} 3 \\
+\>\>   \mbox{$<$\textsf{Stream}$>$} 1 \\
+\>\>\>     \mbox{$<$\textsf{Mean}$>$} 3 \\
+\>\>\>\>       0.3 0.2 0.0 \\
+\>\>\>     \mbox{$<$\textsf{Variance}$>$} 3 \\
+\>\>\>\>       1.0 1.0 1.0 \\
+\>\>   \mbox{$<$\textsf{Stream}$>$} 2 \\
+\>\>\>     \mbox{$<$\textsf{Mean}$>$} 1 0.5 \\
+\>\>\>     \mbox{$<$\textsf{Variance}$>$} 1 3.0 \\
+\> \mbox{$<$\textsf{TransP}$>$} 4 \\
+\>\>   0.0 1.0 0.0 0.0 \\
+\>\>   0.0 0.6 0.4 0.0 \\
+\>\>   0.0 0.0 0.4 0.6 \\
+\>\>   0.0 0.0 0.0 0.0 \\
+\mbox{$<$\textsf{EndHMM}$>$}
+\end{program}
+       \end{minipage} }$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="457" HEIGHT="599" ALIGN="MIDDLE" BORDER="0"
+ SRC="img233.png"
+ ALT="\framebox[100mm]{
+\begin{minipage}{100mm}
+\begin{program}
+\mbox{$\sim$\textsf{...
+... 0.0 0.0 0.0 0.0 \\
+\mbox{$&lt;$\textsf{EndHMM}$&gt;$}
+\end{program} \end{minipage} }"></SPAN>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+       <BR>
+<BR>
+          <SPAN  CLASS="textbf"> Fig. <SPAN CLASS="arabic">7</SPAN>..<SPAN CLASS="arabic">2</SPAN>  HMM with 2 Data Streams</SPAN> 
+    
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

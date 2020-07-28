@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of The Fundamentals of HTK</TITLE>
+<META NAME="description" CONTENT="Contents of The Fundamentals of HTK">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node11_mn.html">
+<LINK REL="previous" HREF="node2_mn.html">
+<LINK REL="up" HREF="node2_mn.html">
+<LINK REL="next" HREF="node4_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION02100000000000000000">&#160;</A><A NAME="c:fundaments">&#160;</A>
+<BR>
+The Fundamentals of HTK
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:overview">&#160;</A><IMG
+ WIDTH="185" HEIGHT="232" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.png"
+ ALT="$\textstyle \parbox{40mm}{ \begin{center}\setlength{\epsfxsize}{40mm}
+\epsfbox{HTKFigs//overview.eps}
+\end{center} }$">
+</DIV>
+
+<P>
+HTK is a toolkit for building Hidden Markov Models (HMMs). 
+HMMs can be used to model any time series and the core of 
+HTK is similarly general-purpose. However, HTK is primarily
+designed for building HMM-based speech processing tools,  in
+particular recognisers.  Thus, much of the infrastructure
+support in HTK is dedicated to this task.  As shown in the picture
+above, there are two major processing stages involved.  Firstly,
+the HTK training tools are used to estimate the parameters of a set
+of HMMs using 
+training utterances and their associated transcriptions. Secondly,
+unknown utterances are transcribed using the HTK recognition tools.
+
+<P>
+The main body of this book is mostly concerned with the mechanics of these
+two processes. However, before launching into detail it is necessary to
+understand some of the basic principles of HMMs.  It is also helpful to have
+an overview of the toolkit and to have some appreciation of 
+how training and recognition in HTK is organised. 
+
+<P>
+This first part of the book attempts to provide this information. In this
+chapter, the basic ideas of HMMs and their use in speech recognition are
+introduced.  The following chapter then presents a brief overview
+of HTK and, for users of older versions, it highlights the main
+differences in version 2.0 and later.  Finally in this tutorial part of the book, chapter 3
+describes how a HMM-based speech
+recogniser can be built using
+HTK.  It does this by describing the construction of a simple small vocabulary
+continuous speech recogniser.
+
+<P>
+The second part of the book then revisits the topics skimmed over here
+and discusses each in detail. This can be 
+read in conjunction with the third and final part
+of the book which provides a reference manual for HTK.  This includes
+a description of each tool,  summaries of the various
+parameters used to configure HTK and a list of the error messages that
+it generates when things go wrong.
+
+<P>
+Finally, note that this book is concerned only with HTK as a tool-kit.
+It does not provide  information for using the HTK libraries as a programming
+environment.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html945" HREF="node4_mn.html" TARGET="main"><SMALL>General Principles of HMMs</SMALL></A>
+<LI><A NAME="tex2html946" HREF="node5_mn.html" TARGET="main"><SMALL>Isolated Word Recognition</SMALL></A>
+<LI><A NAME="tex2html947" HREF="node6_mn.html" TARGET="main"><SMALL>Output Probability Specification</SMALL></A>
+<LI><A NAME="tex2html948" HREF="node7_mn.html" TARGET="main"><SMALL>Baum-Welch Re-Estimation</SMALL></A>
+<LI><A NAME="tex2html949" HREF="node8_mn.html" TARGET="main"><SMALL>Recognition and Viterbi Decoding</SMALL></A>
+<LI><A NAME="tex2html950" HREF="node9_mn.html" TARGET="main"><SMALL>Continuous Speech Recognition</SMALL></A>
+<LI><A NAME="tex2html951" HREF="node10_mn.html" TARGET="main"><SMALL>Speaker Adaptation</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

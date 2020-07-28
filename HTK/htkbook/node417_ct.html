@@ -1,0 +1,3564 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Summary of Errors by Tool and Module</TITLE>
+<META NAME="description" CONTENT="Contents of Summary of Errors by Tool and Module">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node416_mn.html">
+<LINK REL="up" HREF="node415_mn.html">
+<LINK REL="next" HREF="node418_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION05320000000000000000">&#160;</A><A NAME="s:errsum">&#160;</A>
+<BR>
+Summary of Errors by Tool and Module
+</H1>
+
+<P>
+<DL COMPACT>
+<DT>HC<SMALL>OPY</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img727.png"
+ ALT="$ +1030$"></SPAN></TT></DT>
+<DD>Non-existent part of file specified
+<BR>
+HC<SMALL>OPY</SMALL> needed to access a non-existent part of the input file.
+        Check that the times are specified correctly, that the label file
+        contains enough labels and that it corresponds to the data file.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img728.png"
+ ALT="$ \pm 1031$"></SPAN></TT></DT>
+<DD>Label file formatted incorrectly
+<BR>
+HC<SMALL>OPY</SMALL> is only able to properly copy label files with the
+        same number of levels/alternatives.  When using labels with multiple
+        alternatives only the first one is used to determine segment 
+        boundaries.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img729.png"
+ ALT="$ +1032$"></SPAN></TT></DT>
+<DD>Appending files of different type/size/rate
+<BR>
+Files that are joined together must have the same parameter kind and 
+        sample rate.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img730.png"
+ ALT="$ -1089$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input/output format has been set to <TT>ALIEN</TT>, ensure that 
+        this was intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HL<SMALL>IST</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+</DD>
+<DT>HLE<SMALL>D</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img731.png"
+ ALT="$ +1230$"></SPAN></TT></DT>
+<DD>Edit script syntax error
+<BR>
+The HLE<SMALL>D</SMALL> command script contains a syntax error, check the 
+        input script against the descriptions of each command in 
+        section&nbsp;<A HREF="node308_ct.html#s:HLEd">17.9</A> or obtained by running <TT>HLEd -Q</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img732.png"
+ ALT="$ \pm 1231$"></SPAN></TT></DT>
+<DD>Operation invalid
+<BR>
+You have either exceeded HLE<SMALL>D</SMALL> limits on the number of 
+        boundaries that can be specified, tried to perform an operation on 
+        a non-existent level or tried to sort an auxiliary level into time 
+        order.  None of these operations are supported.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img733.png"
+ ALT="$ +1232$"></SPAN></TT></DT>
+<DD>Cannot find pronunciation
+<BR>
+The dictionary does not contain a valid pronunciation (only occurs
+        when attempting expansion from a dictionary).
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img734.png"
+ ALT="$ -1289$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input/output format has been set to <TT>ALIEN</TT>, ensure that 
+        this was intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HLS<SMALL>TATS</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img735.png"
+ ALT="$ +1328$"></SPAN></TT></DT>
+<DD>Load/Make HMMSet failed
+<BR>
+The model set could not be loaded due to either an error opening the
+        file or the data within being inconsistent.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img736.png"
+ ALT="$ \pm 1330$"></SPAN></TT></DT>
+<DD>No operation specified
+<BR>
+You have invoked HLS<SMALL>TATS</SMALL> but have not specified an operation 
+        to be performed.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img737.png"
+ ALT="$ -1389$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input format has been set to <TT>ALIEN</TT>, ensure that this was 
+        intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HDM<SMALL>AN</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img738.png"
+ ALT="$ \pm 1430$"></SPAN></TT></DT>
+<DD>Limit exceeded
+<BR>
+HDM<SMALL>AN</SMALL> has several built in limits on the number of different
+        pronunciation, phones, contexts and command arguments.  This error 
+        occurs when you try to exceed one of them.  
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img739.png"
+ ALT="$ \pm 1431$"></SPAN></TT></DT>
+<DD>Item not found
+<BR>
+Could not find item for deletion.  Check that it actually occurs in the
+        dictionary.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img740.png"
+ ALT="$ \pm 1450$"></SPAN></TT></DT>
+<DD>Edit script file syntax error
+<BR>
+The HDM<SMALL>AN</SMALL> command script contains a syntax error, check the 
+        input script against the descriptions of each command in 
+        section&nbsp;<A HREF="node257_ct.html#s:HDMan">17.5</A> or obtained by running <TT>HDMan -Q</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img741.png"
+ ALT="$ \pm 1451$"></SPAN></TT></DT>
+<DD>Dictionary file syntax error
+<BR>
+One of the input dictionaries contained a syntax error.  Ensure that 
+        it is in a HTK readable form (see section&nbsp;<A HREF="node164_ct.html#s:usehdman">12.7</A>).
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img742.png"
+ ALT="$ \pm 1452$"></SPAN></TT></DT>
+<DD>Word out of order in dictionary error
+<BR>
+Entries in the dictionary must be sorted into alphabetical (ASCII) order.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HSL<SMALL>AB</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img743.png"
+ ALT="$ -1589$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input/output format has been set to <TT>ALIEN</TT>, ensure that 
+        this was intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HC<SMALL>OMP</SMALL>V</DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img744.png"
+ ALT="$ +2020$"></SPAN></TT></DT>
+<DD>HMM does not appear in HMMSet
+<BR>
+Supplied HMM filename does not appear in HMMSet. Check
+        correspondence between HMM filename and HMMSet.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img745.png"
+ ALT="$ +2021$"></SPAN></TT></DT>
+<DD>Not enough data to calculate variance
+<BR>
+There are not enough frames of data to evaluate a
+        reliable estimate of variance. Use more data.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img746.png"
+ ALT="$ +2028$"></SPAN></TT></DT>
+<DD>Load/Make HMMSet failed
+<BR>
+The model set could not be loaded due to either an error opening the
+        file or the data within being inconsistent.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img747.png"
+ ALT="$ +2030$"></SPAN></TT></DT>
+<DD>Needs continuous models
+<BR>
+HCompV can only operate on models with an HMM set kind
+        of <TT>PLAINHS</TT> or <TT>SHAREDHS</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img748.png"
+ ALT="$ +2039$"></SPAN></TT></DT>
+<DD>Speaker pattern matching failure
+<BR>
+The specified speaker pattern could not be matched against a
+        given untterance file name.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img749.png"
+ ALT="$ +2050$"></SPAN></TT></DT>
+<DD>Data does not match HMM
+<BR>
+An aspect of the data does not match the equivalent aspect in 
+        the HMMSet.  Check the parameter kind of the data.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img750.png"
+ ALT="$ -2089$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input format has been set to <TT>ALIEN</TT>, ensure that this was 
+        intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HI<SMALL>NIT</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img751.png"
+ ALT="$ +2120$"></SPAN></TT></DT>
+<DD>Unknown update flag
+<BR>
+Unknown flag set by <TT>-u</TT> option, use combinations of 
+        <TT>tmvw</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img752.png"
+ ALT="$ +2121$"></SPAN></TT></DT>
+<DD>Too little data
+<BR>
+Not enough data to reliably estimate parameters.  Use more 
+        training data.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img753.png"
+ ALT="$ +2122$"></SPAN></TT></DT>
+<DD>Segment with fewer frames than model states
+<BR>
+Segment may be too short to be matched to model, do not use
+        this segment for training.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img754.png"
+ ALT="$ +2123$"></SPAN></TT></DT>
+<DD>Cannot mix covariance kind in a single mix
+<BR>
+Covariance kind of all mixture components in any one state must be
+        the same.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img755.png"
+ ALT="$ +2124$"></SPAN></TT></DT>
+<DD>Bad covariance kind
+<BR>
+Covariance kind of mixture component must be either
+        <TT>FULLC</TT> or <TT>DIAGC</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img756.png"
+ ALT="$ +2125$"></SPAN></TT></DT>
+<DD>No best mix found
+<BR>
+The Viterbi mixture component allocation failed to find a most likely
+        component with this data.  Check that data is not corrupt and
+        that parameter values produced by the initial uniform segmentation
+        are reasonable.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img757.png"
+ ALT="$ +2126$"></SPAN></TT></DT>
+<DD>No path through segment
+<BR>
+The Viterbi segmentation failed to find a path through
+        model with this data.  Check that data is not corrupt and that
+        a valid path exists through the model.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img758.png"
+ ALT="$ +2127$"></SPAN></TT></DT>
+<DD>Zero occurrence count
+<BR>
+Parameter has had no data assigned to it and cannot be
+        updated.  Ensure that each parameter can be estimated by
+        using more training data or fewer parameters.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img759.png"
+ ALT="$ +2128$"></SPAN></TT></DT>
+<DD>Load/Make HMMSet failed
+<BR>
+The model set could not be loaded due to either an error opening the
+        file or the data within being inconsistent.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img760.png"
+ ALT="$ +2129$"></SPAN></TT></DT>
+<DD>HMM not found
+<BR>
+HMM missing from HMMSet.  Check that the HMMSet is complete and 
+        has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img761.png"
+ ALT="$ +2150$"></SPAN></TT></DT>
+<DD>Data does not match HMM
+<BR>
+An aspect of the data does not match the equivalent aspect in 
+        the HMMSet.  Check the parameter kind of the data.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img762.png"
+ ALT="$ +2170$"></SPAN></TT></DT>
+<DD>Index out of range
+<BR>
+Trying to access a mixture component or VQ index beyond the
+        range in the current HMM.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img763.png"
+ ALT="$ -2189$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input format has been set to <TT>ALIEN</TT>, ensure that this was 
+        intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HR<SMALL>EST</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img764.png"
+ ALT="$ +2220$"></SPAN></TT></DT>
+<DD>Unknown update flag
+<BR>
+Unknown flag set by <TT>-u</TT> option, use combinations of 
+        <TT>tmvw</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img765.png"
+ ALT="$ +2221$"></SPAN></TT></DT>
+<DD>Too few training examples
+<BR>
+There are fewer training examples than the minimum set by the 
+        <TT>-m</TT> option (default 3).  Either reduce the value specified
+        by <TT>-m</TT> or use more training examples.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img766.png"
+ ALT="$ +2222$"></SPAN></TT></DT>
+<DD>Zero occurrence count
+<BR>
+Parameter has had no data assigned to it and cannot be
+        updated.  Ensure that each parameter can be estimated by
+        using more training data or fewer parameters.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img767.png"
+ ALT="$ +2223$"></SPAN></TT></DT>
+<DD>Floor too high
+<BR>
+Mix weight floor has been set so high that the sum over all 
+        mixture components exceeds unity.  Reduce the floor value.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img768.png"
+ ALT="$ -2225$"></SPAN></TT></DT>
+<DD>Defunct Mix X.Y.Z 
+<BR>
+Not enough training data to re-estimate the covariance vector of
+        mixture component Z in stream Y of state X. The weight of the mixture
+        component is set to 0.0 and it will never recover even with further
+        training.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img769.png"
+ ALT="$ +2226$"></SPAN></TT></DT>
+<DD>No training data
+<BR>
+None of the supplied training data could be used to
+        re-estimate the model. Data may be corrupt or has been floored.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img770.png"
+ ALT="$ +2228$"></SPAN></TT></DT>
+<DD>Load/Make HMMSet failed
+<BR>
+The model set could not be loaded due to either an error opening the
+        file or the data within being inconsistent.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img771.png"
+ ALT="$ +2250$"></SPAN></TT></DT>
+<DD>Data does not match HMM
+<BR>
+An aspect of the data does not match the equivalent aspect in 
+        the HMMSet.  Check the parameter kind of the data.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img772.png"
+ ALT="$ -2289$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input format has been set to <TT>ALIEN</TT>, ensure that this was 
+        intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HER<SMALL>EST</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img773.png"
+ ALT="$ +2320$"></SPAN></TT></DT>
+<DD>Unknown update flag
+<BR>
+Unknown flag set by <TT>-u</TT> option, use combinations of 
+        <TT>tmvw</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img774.png"
+ ALT="$ +2321$"></SPAN></TT></DT>
+<DD>Load/Make HMMSet failed
+<BR>
+The model set could not be loaded due to either an error opening the
+        file or the data within being inconsistent.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img775.png"
+ ALT="$ -2326$"></SPAN></TT></DT>
+<DD>No transitions
+<BR>
+No transition out of an emitting state, ensure that
+        there is a transition path from beginning to end of model.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img776.png"
+ ALT="$ +2327$"></SPAN></TT></DT>
+<DD>Floor too high
+<BR>
+Mix weight floor has been set so high that the sum over all 
+        mixture components exceeds unity.  Reduce the floor value.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img777.png"
+ ALT="$ +2328$"></SPAN></TT></DT>
+<DD>No mixtures above floor
+<BR>
+None of the mixture component weights are greater than the floor value,
+        reduce the floor value.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img778.png"
+ ALT="$ -2330$"></SPAN></TT></DT>
+<DD>Zero occurrence count
+<BR>
+Parameter has had no data assigned to it and cannot be
+        updated.  Ensure that each parameter can be estimated by
+        using more training data or fewer parameters.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img779.png"
+ ALT="$ -2331$"></SPAN></TT></DT>
+<DD>Not enough training examples
+<BR>
+Model was not updated as there were not enough training examples.
+        Either reduce the minimum specified by <TT>-m</TT> or
+        use more data.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img780.png"
+ ALT="$ -2389$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input format has been set to <TT>ALIEN</TT>, ensure that this was 
+        intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HS<SMALL>MOOTH</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img781.png"
+ ALT="$ +2420$"></SPAN></TT></DT>
+<DD>Unknown update flag
+<BR>
+Unknown flag set by <TT>-u</TT> option, use combinations of 
+        <TT>tmvw</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img782.png"
+ ALT="$ +2421$"></SPAN></TT></DT>
+<DD>Invalid HMM set kind
+<BR>
+HS<SMALL>MOOTH</SMALL> can only be used if HMM set kind is either
+        <TT>DISCRETE</TT> or <TT>TIED</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img783.png"
+ ALT="$ +2422$"></SPAN></TT></DT>
+<DD>Too many monophones in list
+<BR>
+HS<SMALL>MOOTH</SMALL> is limited to HMMSets containing fewer than
+        500 monophones.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img784.png"
+ ALT="$ +2423$"></SPAN></TT></DT>
+<DD>Different number of states for smoothing
+<BR>
+Monophones and context-dependent models have differing
+        numbers of states.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img785.png"
+ ALT="$ -2424$"></SPAN></TT></DT>
+<DD>No transitions
+<BR>
+No transition out of an emitting state, ensure that
+        there is a transition path from beginning to end of model.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img786.png"
+ ALT="$ +2425$"></SPAN></TT></DT>
+<DD>Floor too high
+<BR>
+Mix weight floor has been set so high that the sum over all 
+        mixture components exceeds unity.  Reduce the floor value.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img787.png"
+ ALT="$ -2427$"></SPAN></TT></DT>
+<DD>Zero occurrence count
+<BR>
+Parameter has had no data assigned to it and cannot be
+        updated.  Ensure that each parameter can be estimated by
+        using more training data or fewer parameters.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img788.png"
+ ALT="$ -2428$"></SPAN></TT></DT>
+<DD>Not enough training examples
+<BR>
+Model was not updated as there were not enough training examples.
+        Either reduce the minimum specified by <TT>-m</TT> or
+        use more data.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img789.png"
+ ALT="$ +2429$"></SPAN></TT></DT>
+<DD>Load/Make HMMSet failed
+<BR>
+The model set could not be loaded due to either an error opening the
+        file or the data within being inconsistent.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HQ<SMALL>UANT</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img790.png"
+ ALT="$ +2530$"></SPAN></TT></DT>
+<DD>Stream widths invalid
+<BR>
+The chosen stream widths are invalid.  Check that these match the 
+        parameter kind and are specified correctly.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img791.png"
+ ALT="$ +2531$"></SPAN></TT></DT>
+<DD>Data does not match codebook
+<BR>
+Ensure that the parameter kind of the data matches that of the codebook
+        being generated.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HHE<SMALL>D</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img792.png"
+ ALT="$ +2628$"></SPAN></TT></DT>
+<DD>Load/Make HMMSet failed
+<BR>
+The model set could not be loaded due to either an error opening the
+        file or the data within being inconsistent.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img793.png"
+ ALT="$ \pm 2630$"></SPAN></TT></DT>
+<DD>Tying null or different sized items
+<BR>
+You have executed a tie command on items which do not have the 
+        appropriate structure or the structures are not matched.  Ensure 
+        that the item list refers only to the items that you wish to tie 
+        together.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img794.png"
+ ALT="$ -2631$"></SPAN></TT></DT>
+<DD>Performing operation on no items
+<BR>
+The item list was empty, no operation is performed.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img795.png"
+ ALT="$ +2632$"></SPAN></TT></DT>
+<DD>Command parameter invalid
+<BR>
+The parameters to the command are invalid either because they
+        refer to parts of the model that do not exist (for instance a
+        state that does not appear in the model) or because they 
+        do not represent an acceptable value (for instance HMMSet kind
+        is not <TT>PLAINHS</TT>, <TT>SHAREDHS</TT>, <TT>TIEDHS</TT> or 
+        <TT>DISCRETEHS</TT>).
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img796.png"
+ ALT="$ +2634$"></SPAN></TT></DT>
+<DD>Join parameters invalid or not set
+<BR>
+Make sure than the join parameters (set by the <TT>JO</TT> command)
+        are reasonable.  In particular take care that the floor is low enough 
+        to ensure that when summed over all the mixture
+        components the sum is below 1.0.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img797.png"
+ ALT="$ +2635$"></SPAN></TT></DT>
+<DD>Cannot find matching item
+<BR>
+Search for specified item was unsuccessful.  When this occurs with
+        the <TT>CL</TT> or <TT>MT</TT> commands ensure that the appropriate 
+        monophone/biphone models are in the current HMMSet.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img798.png"
+ ALT="$ -2637$"></SPAN></TT></DT>
+<DD>Small gConst
+<BR>
+A small gConst indicates a very low variance in that particular
+        Gaussian.  This could be indicative of over-training of the models.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img799.png"
+ ALT="$ -2638$"></SPAN></TT></DT>
+<DD>No typical state
+<BR>
+When tying states together a search is performed for the distribution
+        with largest variance and all tied states share this distribution.  If 
+        this cannot be found the first in the list will be used instead.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img800.png"
+ ALT="$ -2639$"></SPAN></TT></DT>
+<DD>Long macro name
+<BR>
+In general macro names should not exceed 20 characters in length.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img801.png"
+ ALT="$ +2640$"></SPAN></TT></DT>
+<DD>Not implemented
+<BR>
+You have asked HHE<SMALL>D</SMALL> to perform a function that is not 
+        implemented.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img802.png"
+ ALT="$ +2641$"></SPAN></TT></DT>
+<DD>Invalid stream split
+<BR>
+The specified number/width of the streams does not agree with the 
+        parameter kind/vector size of the models.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img803.png"
+ ALT="$ +2650$"></SPAN></TT></DT>
+<DD>Edit script syntax error
+<BR>
+The HHE<SMALL>D</SMALL> command script contains a syntax error, check the 
+        input script against the descriptions of each command in 
+        section&nbsp;<A HREF="node265_ct.html#s:HHEd">17.7</A> or obtained by running <TT>HHEd -Q</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img804.png"
+ ALT="$ +2651$"></SPAN></TT></DT>
+<DD>Command range error
+<BR>
+The value specified in the command script is out of range.  Ensure that
+        the specified state exists and the the value given is valid.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img805.png"
+ ALT="$ \pm 2655$"></SPAN></TT></DT>
+<DD>Stats file load error
+<BR>
+Either loading occupation statistics for the second time or executing 
+        an operation that needs the statistics loaded without loading them.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img806.png"
+ ALT="$ +2660$"></SPAN></TT></DT>
+<DD>Trees file syntax error
+<BR>
+The trees file format did not correspond to that expected.  Ensure that
+        the file is complete and has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img807.png"
+ ALT="$ +2661$"></SPAN></TT></DT>
+<DD>Trees file macro/question not recognised
+<BR>
+The question or macro referred to does not exist.  Ensure that the file
+        is complete and has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img808.png"
+ ALT="$ +2662$"></SPAN></TT></DT>
+<DD>Trying to sythesize for unknown model
+<BR>
+There is no tree or prototype model for the new context.  Ensure that a
+        tree has been constructed for the base phone.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img809.png"
+ ALT="$ \pm 2663$"></SPAN></TT></DT>
+<DD>Invalid types to tree cluster
+<BR>
+Tree clustering will only work for single Gaussian diagonal
+        covariance untied models of similar topology.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HB<SMALL>UILD</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img810.png"
+ ALT="$ \pm 3030$"></SPAN></TT></DT>
+<DD>Mismatch between command line and language model
+<BR>
+Ensure that the <TT>!ENTER</TT> and <TT>!EXIT</TT> words are correctly 
+        defined and that the supplied files are of the appropriate type.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img811.png"
+ ALT="$ \pm 3031$"></SPAN></TT></DT>
+<DD>Unknown word
+<BR>
+Ensure that the word list corresponds to the language model/lattice
+        supplied.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HP<SMALL>ARSE</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img812.png"
+ ALT="$ \pm 3130$"></SPAN></TT></DT>
+<DD>Variable not defined
+<BR>
+You have referenced a network that has not yet been defined.  Check 
+        that all networks are defined before they are referenced.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img813.png"
+ ALT="$ \pm 3131$"></SPAN></TT></DT>
+<DD>Loop or word expansion error
+<BR>
+There is either a mismatch between the <TT>WD_BEGIN WD_END</TT> 
+        pairs or a triphone loop is badly formed.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img814.png"
+ ALT="$ \pm 3132$"></SPAN></TT></DT>
+<DD>Dictionary error
+<BR>
+When generating a dictionary a word exceeded the maximum number of 
+        phones, a word occurred twice or no dictionary was produced.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img815.png"
+ ALT="$ \pm 3150$"></SPAN></TT></DT>
+<DD>Syntax error in HParse file
+<BR>
+The HP<SMALL>ARSE</SMALL> network definition contains a syntax error, check 
+        the input file against the network description in 
+        section&nbsp;<A HREF="node329_ct.html#s:HParse">17.14</A>.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HV<SMALL>ITE</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img816.png"
+ ALT="$ +3228$"></SPAN></TT></DT>
+<DD>Load/Make HMMSet failed
+<BR>
+The model set could not be loaded due to either an error opening the
+        file or the data within being inconsistent.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img817.png"
+ ALT="$ \pm 3230$"></SPAN></TT></DT>
+<DD>Unsupported operation
+<BR>
+HV<SMALL>ITE</SMALL> is not able to perform the operation requested
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img818.png"
+ ALT="$ \pm 3231$"></SPAN></TT></DT>
+<DD>Data does not match HMMs
+<BR>
+There is a mismatch between the data file and the HMMSet.  Ensure that
+        the data is parameterised in the correct format and the configuration
+        parameters match those used during training.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img819.png"
+ ALT="$ +3232$"></SPAN></TT></DT>
+<DD>MMF Load Error
+<BR>
+The HMMSet does not contain a well-formed regression class tree.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img820.png"
+ ALT="$ +3233$"></SPAN></TT></DT>
+<DD>Transcription empty
+<BR>
+In alignmnet mode a segment had an empty transcription and no
+        boundary word was specified.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img821.png"
+ ALT="$ -3289$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input/output format has been set to <TT>ALIEN</TT>, ensure that 
+        this was intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HR<SMALL>ESULTS</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img822.png"
+ ALT="$ -3330$"></SPAN></TT></DT>
+<DD>Empty file
+<BR>
+The file was empty and will be skipped.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img823.png"
+ ALT="$ +3331$"></SPAN></TT></DT>
+<DD>Unknown label
+<BR>
+The label did not appear in the list supplied to HResults.
+        This error will only occur if calculating confusion matrices so 
+        normally the contents of the word list file will have no effect 
+        on results.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img824.png"
+ ALT="$ +3332$"></SPAN></TT></DT>
+<DD>Too many labels
+<BR>
+HR<SMALL>ESULTS</SMALL> will only generate confusion statistics for a small 
+        number of labels.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img825.png"
+ ALT="$ \pm 3333$"></SPAN></TT></DT>
+<DD>Cannot calculate word spot results
+<BR>
+When calculating word spotting results the label files need to have 
+        both times and scores present.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img826.png"
+ ALT="$ -3389$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input format has been set to <TT>ALIEN</TT>, ensure that this was 
+        intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HSG<SMALL>EN</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img827.png"
+ ALT="$ -3420$"></SPAN></TT></DT>
+<DD>Network malformed
+<BR>
+The word network is malformed. The information in a node (word
+        and following arcs) is set incorrectly.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HLR<SMALL>ESCORE</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img828.png"
+ ALT="$ -4089$"></SPAN></TT></DT>
+<DD>ALIEN format set
+<BR>
+Input/output format has been set to <TT>ALIEN</TT>, ensure that 
+        this was intended.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HS<SMALL>HELL</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img829.png"
+ ALT="$ +5020$"></SPAN></TT></DT>
+<DD>Command line processing error
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img830.png"
+ ALT="$ +5021$"></SPAN></TT></DT>
+<DD>Command line argument type error
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img831.png"
+ ALT="$ +5022$"></SPAN></TT></DT>
+<DD>Command line argument range error
+<BR>
+The command line is badly formed.  Ensure that it matches the 
+        syntax and values expected by the command (check the manual 
+        page or the syntax obtained by running HT<SMALL>OOL</SMALL> without any
+        arguments).
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img832.png"
+ ALT="$ +5050$"></SPAN></TT></DT>
+<DD>Configuration file format error
+<BR>
+HS<SMALL>HELL</SMALL> was unable to parse the configuration. Check that
+        it is of the format described in section&nbsp;<A HREF="node46_ct.html#s:config">4.3</A>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img833.png"
+ ALT="$ +5051$"></SPAN></TT></DT>
+<DD>Script file format error
+<BR>
+Check that the script file is just a list of file names and that
+        if any file names are quoted that the quotes occur in pairs.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img834.png"
+ ALT="$ +5070$"></SPAN></TT></DT>
+<DD>Module version syntax error
+<BR>
+A module registered with HShell with an incorrectly formatted
+        version string (which should be of the form
+        <TT>"!HVER!HModule: Vers.str [WHO DD/MM/YY]"</TT>).
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img835.png"
+ ALT="$ +5071$"></SPAN></TT></DT>
+<DD>Too many configuration parameters
+<BR>
+The size of the buffer used by one of the tools or modules to read
+        its configuration parameters was exceeded.  Either reduce the total
+        number of configuration parameters in the file or make more of then
+        specific to their particular module rather than global.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img836.png"
+ ALT="$ +5072$"></SPAN></TT></DT>
+<DD>Configuration parameter of wrong type
+<BR>
+The configuration parameter is of the wrong type.  Check that its type 
+        agrees with that shown in chapter&nbsp;<A HREF="node412_ct.html#c:confvars">18</A>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img837.png"
+ ALT="$ +5073$"></SPAN></TT></DT>
+<DD>Configuration parameter out of range
+<BR>
+The configuration parameter is out of range.  
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HM<SMALL>EM</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img838.png"
+ ALT="$ +5170$"></SPAN></TT></DT>
+<DD>Heap parameters invalid
+<BR>
+You have tried to create a heap with unreasonable parameters.  Adjust 
+        these so that the growth factor is positive and the initial block 
+        size is no larger than the maximum.  For <TT>MSTAK</TT> the element 
+        size should be 1.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img839.png"
+ ALT="$ +5171$"></SPAN></TT></DT>
+<DD>Heap not found
+<BR>
+The specified heap could not be found, ensure that it has not been 
+        deleted or memory overwritten.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img840.png"
+ ALT="$ +5172$"></SPAN></TT></DT>
+<DD>Heap does not support operation
+<BR>
+The heap is of the wrong type to support the requested operation.  In 
+        particular it is not possible to <TT>Reset</TT> or <TT>Delete</TT> a
+        <TT>CHEAP</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img841.png"
+ ALT="$ +5173$"></SPAN></TT></DT>
+<DD>Wrong element size for MHEAP
+<BR>
+You have tried to allocate an item of the wrong size from a 
+        <TT>MHEAP</TT>. All items on a <TT>MHEAP</TT> must be of the same size.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img842.png"
+ ALT="$ +5174$"></SPAN></TT></DT>
+<DD>Heap not initialised
+<BR>
+You have tried to allocate an item on a heap that has not yet been 
+        created.  Ensure that <TT>CreateHeap</TT> is called to initialise 
+        the heap before any items are allocated from it.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img843.png"
+ ALT="$ +5175$"></SPAN></TT></DT>
+<DD>Freeing unseen item
+<BR>
+You have tried to free an item from the wrong heap.  This can occur
+        if the wrong heap is specified, the item pointer has been corrupted 
+        or the item has already been freed implicitly by a 
+        <TT>Reset/DeleteHeap</TT> call.  
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HM<SMALL>ATH</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img844.png"
+ ALT="$ +5220$"></SPAN></TT></DT>
+<DD>Singular covariance matrix
+<BR>
+The covariance matrix was not invertible.  This may indicate a lack
+        of training data or linearly dependent parameters.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img845.png"
+ ALT="$ +5270$"></SPAN></TT></DT>
+<DD>Size mismatch
+<BR>
+The input parameters were of incompatible sizes.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img846.png"
+ ALT="$ +5271$"></SPAN></TT></DT>
+<DD>Log of negative
+<BR>
+Result would be logarithm of a negative number.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HS<SMALL>IG</SMALL>P</DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img847.png"
+ ALT="$ +5320$"></SPAN></TT></DT>
+<DD>No results for WaveToLPC
+<BR>
+Call did not include Vectors for the results.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img848.png"
+ ALT="$ +5321$"></SPAN></TT></DT>
+<DD>Vector size mismatch
+<BR>
+Input vectors were of mismatched sizes.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img849.png"
+ ALT="$ -5322$"></SPAN></TT></DT>
+<DD>Clamped samples during zero mean
+<BR>
+During a zero mean operation samples were clipped as they were outside
+        the allowable range.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HA<SMALL>UDIO</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img850.png"
+ ALT="$ +6020$"></SPAN></TT></DT>
+<DD>Replay buffer not active
+<BR>
+Attempt to access a replay buffer when one was not attached.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img851.png"
+ ALT="$ +6021$"></SPAN></TT></DT>
+<DD>Cannot StartAudio without measuring silence
+<BR>
+An attempt was made to start audio input through the silence detector 
+        without first measuring or supplying the background silence values.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img852.png"
+ ALT="$ +6070$"></SPAN></TT></DT>
+<DD>Audio frame size/rate invalid
+<BR>
+The choice of frame period and window duration are invalid.  Check
+        both these and the sample rate.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img853.png"
+ ALT="$ -6071$"></SPAN></TT></DT>
+<DD>Setting speech threshold below silence
+<BR>
+The thresholds used in the speech detector have been set so that the
+        threshold for detecting speech is set below that of detecting silence.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HVQ</DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img854.png"
+ ALT="$ +6150$"></SPAN></TT></DT>
+<DD>VQ file format error
+<BR>
+The VQ file was incorrectly formatted.  Ensure that the file is 
+        complete and has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img855.png"
+ ALT="$ +6151$"></SPAN></TT></DT>
+<DD>VQ file range error
+<BR>
+A value from the VQ file was out of range.  Ensure that the file is 
+        complete and has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img856.png"
+ ALT="$ +6170$"></SPAN></TT></DT>
+<DD>Magic number mismatch
+<BR>
+The VQ magic number (normally based on parameter kind) does not match
+        that expected.  Check that the parameter kind used to quantise the data
+        and create the VQ table matches the current parameter kind.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img857.png"
+ ALT="$ +6171$"></SPAN></TT></DT>
+<DD>VQ table already exists
+<BR>
+All VQ tables must have distinct names.  This error will occur if you
+        try to create or load a VQ table with the same name as one already
+        loaded.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img858.png"
+ ALT="$ +6172$"></SPAN></TT></DT>
+<DD>Invalid covariance kind
+<BR>
+Entries in VQ tables must have either <TT>NULLC</TT>, <TT>FULLC</TT> or
+        <TT>INVDIAGC</TT> covariance kind.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img859.png"
+ ALT="$ +6173$"></SPAN></TT></DT>
+<DD>Node not in table
+<BR>
+A node was missing from the VQ table.  Ensure that the VQ table was 
+        properly created or that the file was complete.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img860.png"
+ ALT="$ +6174$"></SPAN></TT></DT>
+<DD>Stream codebook mismatch
+<BR>
+The number or size of streams in the VQ table does not match that 
+        requested.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HW<SMALL>AVE</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img861.png"
+ ALT="$ +6220$"></SPAN></TT></DT>
+<DD>Cannot fseek/ftell
+<BR>
+Unless the wave file is read through a pipe fseek and ftell are 
+        expected to work correctly so that HW<SMALL>AVE</SMALL> can calculate the 
+        file size.  If this error occurs when using an input pipe, supply 
+        the number of samples in the file using the configuration variable
+        <TT>NSAMPLES</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img862.png"
+ ALT="$ +6221$"></SPAN></TT></DT>
+<DD>File appears to be a infinite
+<BR>
+HW<SMALL>AVE</SMALL> cannot determine the size of the file.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img863.png"
+ ALT="$ +6230$"></SPAN></TT></DT>
+<DD>Config parameter not set
+<BR>
+A necessary configuration parameter has not been set.  Determine the 
+        correct value and place this in the configuration file before 
+        re-invoking the tool.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img864.png"
+ ALT="$ +6250$"></SPAN></TT></DT>
+<DD>Premature end of header
+<BR>
+HW<SMALL>AVE</SMALL> could not read the complete file header.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img865.png"
+ ALT="$ +6251$"></SPAN></TT></DT>
+<DD>Header contains invalid data
+<BR>
+HW<SMALL>AVE</SMALL> was unable to successfully parse the header.  The header
+        is invalid, of the wrong type or be a variation that HW<SMALL>AVE</SMALL> does
+        not handle.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img866.png"
+ ALT="$ +6252$"></SPAN></TT></DT>
+<DD>Header missing essential data
+<BR>
+The header was missing a piece of information necessary for 
+        HW<SMALL>AVE</SMALL> to load the file.  Check the processing of the 
+        input file and re-process if necessary.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img867.png"
+ ALT="$ +6253$"></SPAN></TT></DT>
+<DD>Premature end of data
+<BR>
+The file ended before all the data was read correctly.  Check that the
+        file is complete, has not been corrupted and where necessary 
+        <TT>NSAMPLES</TT> is set correctly.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img868.png"
+ ALT="$ +6254$"></SPAN></TT></DT>
+<DD>Data formated incorrectly
+<BR>
+The data could not be decoded properly.  Check that the file was 
+        complete and processed correctly.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img869.png"
+ ALT="$ +6270$"></SPAN></TT></DT>
+<DD>File format invalid
+<BR>
+The file format is not valid for the operation requested.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img870.png"
+ ALT="$ +6271$"></SPAN></TT></DT>
+<DD>Attempt to read outside file
+<BR>
+You have tried to read a sample outside of the waveform file.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HP<SMALL>ARM</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img871.png"
+ ALT="$ +6320$"></SPAN></TT></DT>
+<DD>Configuration mismatch
+<BR>
+The data file does not match the configuration.  Check the 
+        configuration file is correct.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img872.png"
+ ALT="$ +6321$"></SPAN></TT></DT>
+<DD>Invalid parameter kind
+<BR>
+Parameter kind is not valid.  Check the configuration file.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img873.png"
+ ALT="$ +6322$"></SPAN></TT></DT>
+<DD>Conversion not possible
+<BR>
+The specified conversion is not possible.  Check the configuration is
+        correct and re-code the data from waveform files if necessary.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img874.png"
+ ALT="$ +6323$"></SPAN></TT></DT>
+<DD>Audio error
+<BR>
+An audio error has been detected.  Check the HA<SMALL>UDIO</SMALL> 
+        configuration and the audio device.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img875.png"
+ ALT="$ +6324$"></SPAN></TT></DT>
+<DD>Buffer not initialised
+<BR>
+Ensure that the buffer is used in the correct manner.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img876.png"
+ ALT="$ +6325$"></SPAN></TT></DT>
+<DD>Silence detection failed
+<BR>
+The silence detector was not initialised correctly before use.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img877.png"
+ ALT="$ +6328$"></SPAN></TT></DT>
+<DD>Load/Make HMMSet failed
+<BR>
+The model set could not be loaded due to either an error opening the
+        file or the data within being inconsistent.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img878.png"
+ ALT="$ +6350$"></SPAN></TT></DT>
+<DD>CRC error
+<BR>
+The CRC does not match that of the data.  Check the data file is 
+        complete and has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img879.png"
+ ALT="$ -6351$"></SPAN></TT></DT>
+<DD>Byte swapping not possible
+<BR>
+HP<SMALL>ARM</SMALL> will attempt to byte swap parameter files but this 
+        may not work if the floating point representation of the machine 
+        that generated the file is different from that which is reading it.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img880.png"
+ ALT="$ +6352$"></SPAN></TT></DT>
+<DD>File too short to parameterise
+<BR>
+The file does not contain enough data to produce a single observation.
+        Check the file is complete and not corrupt.  If it is, it should be 
+        discarded.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img881.png"
+ ALT="$ +6370$"></SPAN></TT></DT>
+<DD>Unknown parameter kind
+<BR>
+The specified parameter kind is not recognised.  Refer to 
+        section&nbsp;<A HREF="node86_ct.html#s:spiosum">5.18</A> for a list of allowable parameter kinds
+        and qualifiers.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img882.png"
+ ALT="$ +6371$"></SPAN></TT></DT>
+<DD>Invalid parameters for coding
+<BR>
+The chosen parameters are not valid for coding.  Choose different ones.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img883.png"
+ ALT="$ +6372$"></SPAN></TT></DT>
+<DD>Stream widths not valid
+<BR>
+Cannot split the data into the specified number of streams.  Check that
+        the parameter kind is correct and matches any models used.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img884.png"
+ ALT="$ +6373$"></SPAN></TT></DT>
+<DD>Buffer/observation mismatch
+<BR>
+The observation parameter kind should match that of the input buffer.
+        Check that the configuration parameter kind is correct and matches 
+        that of any models used.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img885.png"
+ ALT="$ +6374$"></SPAN></TT></DT>
+<DD>Buffer size too small for window
+<BR>
+Calculation of delta parameters requires a window larger than the
+        buffer size chosen.  Increase the size of the buffer.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img886.png"
+ ALT="$ +6375$"></SPAN></TT></DT>
+<DD>Frame not in buffer
+<BR>
+An attempt was made to access a frame that does not appear in the 
+        buffer.  Make sure that the file actually contains the specified frame.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img887.png"
+ ALT="$ +6376$"></SPAN></TT></DT>
+<DD>Mean/Variance normalisation failed
+<BR>
+The mean or variance normalisation vector from the file
+        specified by the normalisation dir and mask cannot be applied.
+        Make sure the file format is correct and the vectors are of
+        the right dimension.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HL<SMALL>ABEL</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img888.png"
+ ALT="$ +6520$"></SPAN></TT></DT>
+<DD>MLF index out of range
+<BR>
+An attempt was made to access an MLF that has not been loaded or to 
+        load too many MLFs.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img889.png"
+ ALT="$ +6521$"></SPAN></TT></DT>
+<DD>fseek/ftell not possible
+<BR>
+HL<SMALL>ABEL</SMALL> needs random access to MLFs.  This error is generated
+        when this is not possible (for instance if access is via a pipe).
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img890.png"
+ ALT="$ +6550$"></SPAN></TT></DT>
+<DD>HTK format error
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img891.png"
+ ALT="$ +6551$"></SPAN></TT></DT>
+<DD>MLF format error
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img892.png"
+ ALT="$ +6552$"></SPAN></TT></DT>
+<DD>TIMIT format error
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img893.png"
+ ALT="$ \pm 6553$"></SPAN></TT></DT>
+<DD>ESPS format error
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img894.png"
+ ALT="$ +6554$"></SPAN></TT></DT>
+<DD>SCRIBE format error
+<BR>
+A label file was formatted incorrectly.  Label
+        file formats are described in chapter&nbsp;<A HREF="node87_ct.html#c:labels">6</A>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img895.png"
+ ALT="$ +6570$"></SPAN></TT></DT>
+<DD>Level out of range
+<BR>
+Attempted to access a non-existent label level.  Check that the correct
+        label file has been loaded.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img896.png"
+ ALT="$ +6571$"></SPAN></TT></DT>
+<DD>Label out of range
+<BR>
+Attempted to access a non-existent label.  Check that the correct
+        label file has been loaded and that the correct level is being 
+        accessed.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img897.png"
+ ALT="$ +6572$"></SPAN></TT></DT>
+<DD>Invalid format
+<BR>
+The specified file format is not valid for the particular operation.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HM<SMALL>ODEL</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img898.png"
+ ALT="$ +7020$"></SPAN></TT></DT>
+<DD>Cannot find physical HMM
+<BR>
+No physical HMM exists for a particular logical model.  Check that the
+        HMMSet was loaded or created correctly.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img899.png"
+ ALT="$ +7021$"></SPAN></TT></DT>
+<DD>INVDIAG internal format
+<BR>
+Attempts to load or save models with <TT>INVDIAG</TT> covariance kind
+        will fail as this is a purely internal model format.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img900.png"
+ ALT="$ \pm 7023$"></SPAN></TT></DT>
+<DD>varFloor should be variance floor
+<BR>
+HM<SMALL>ODEL</SMALL> reserves the macro name <TT>varFloorN</TT> as the 
+        variance floor for stream <TT>N</TT>.  These should be variance 
+        macros (type <TT>v</TT>) of the correct size for the particular stream.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img901.png"
+ ALT="$ +7024$"></SPAN></TT></DT>
+<DD>Variance tending to 0.0
+<BR>
+A variance has become too low.  Start using a variance floor or 
+        increase the amount of training data.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img902.png"
+ ALT="$ +7025$"></SPAN></TT></DT>
+<DD>Bad covariance kind
+<BR>
+The particular functionality does not support the covariance
+        kind of the mixture component.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img903.png"
+ ALT="$ +7030$"></SPAN></TT></DT>
+<DD>HMM set incomplete or inconsistent
+<BR>
+The HMMSet contained missing or inconsistent data.  Check that the 
+        file is complete and has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img904.png"
+ ALT="$ +7031$"></SPAN></TT></DT>
+<DD>HMM parameters inconsistent
+<BR>
+Some model parameters were inconsistent.  Check that the file is 
+        complete and has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img905.png"
+ ALT="$ \pm 7032$"></SPAN></TT></DT>
+<DD>Option mismatch
+<BR>
+All HMMs in a particular set must have consistent options.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img906.png"
+ ALT="$ +7035$"></SPAN></TT></DT>
+<DD>Unknown macro
+<BR>
+Macro does not exist.  Check that the name is correct and appears 
+        in the HMMSet.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img907.png"
+ ALT="$ +7036$"></SPAN></TT></DT>
+<DD>Duplicate macro
+<BR>
+Attempted to create a macro with the same name as one already present.
+        Choose a different name.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img908.png"
+ ALT="$ +7037$"></SPAN></TT></DT>
+<DD>Invalid macro
+<BR>
+Macro had invalid type.  See section&nbsp;<A HREF="node104_ct.html#s:HMMmac">7.3</A> describes the 
+        allowable macro types.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img909.png"
+ ALT="$ +7050$"></SPAN></TT></DT>
+<DD>Model file format error
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img910.png"
+ ALT="$ +7060$"></SPAN></TT></DT>
+<DD>HMM List format error
+<BR>
+The file was formated incorrectly.  Check the file is complete and
+        has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img911.png"
+ ALT="$ +7070$"></SPAN></TT></DT>
+<DD>Invalid HMM kind
+<BR>
+Invalid HMMSet kind.  Check that this is specified correctly.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img912.png"
+ ALT="$ +7071$"></SPAN></TT></DT>
+<DD>Observation not compatible with HMMSet
+<BR>
+Attempted to calculate an observation likelihood for an observation
+        not compatible with the HMMSet.  Check that the parameter kind is
+        set correctly.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HT<SMALL>RAIN</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img913.png"
+ ALT="$ +7120$"></SPAN></TT></DT>
+<DD>Clustering failed
+<BR>
+Almost certainly due to a lack of data, reduce the
+        number of clusters requested  or increase amount of data.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img914.png"
+ ALT="$ +7150$"></SPAN></TT></DT>
+<DD>Accumulator file format error
+<BR>
+Cannot read an item from an accumulator file. Check
+        that file is complete and not corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img915.png"
+ ALT="$ +7170$"></SPAN></TT></DT>
+<DD>Unsupported covariance kind
+<BR>
+Covariance kind must be either <TT>FULLC</TT>, <TT>DIAGC</TT> or 
+        <TT>INVDIAGC</TT>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img916.png"
+ ALT="$ +7171$"></SPAN></TT></DT>
+<DD>Item out of range
+<BR>
+Attempt made to access data beyond expected range. Check that 
+        the item number is correct.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img917.png"
+ ALT="$ +7172$"></SPAN></TT></DT>
+<DD>Tree size must be power of 2
+<BR>
+Requested codebook size must be a power of 2 when
+        using tree based clustering.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img918.png"
+ ALT="$ -7173$"></SPAN></TT></DT>
+<DD>Segment empty
+<BR>
+Empty data segment in file. Check that file has not
+        become corrupted and that the start and end segment times
+        are correct.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HU<SMALL>TIL</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img919.png"
+ ALT="$ +7220$"></SPAN></TT></DT>
+<DD>HMMSet empty
+<BR>
+A scan was initiated for a HMMSet with no members.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img920.png"
+ ALT="$ +7230$"></SPAN></TT></DT>
+<DD>Item list parse error
+<BR>
+The item list syntax was incorrect.  Check the item list specification
+        in section&nbsp;<A HREF="node265_ct.html#s:HHEd">17.7</A>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img921.png"
+ ALT="$ +7231$"></SPAN></TT></DT>
+<DD>Item list type error
+<BR>
+Each item in a particular list should be of the same type and size.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img922.png"
+ ALT="$ +7250$"></SPAN></TT></DT>
+<DD>Stats file format error
+<BR>
+Stats file is of wrong format.  Note the format of the stats file has 
+        changed in HTK_V2.0 and old files will need converting to the new
+        format.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img923.png"
+ ALT="$ +7251$"></SPAN></TT></DT>
+<DD>Stats file model error
+<BR>
+A model name encountered in the stats file is invalid check that the
+        model set corresponds to that used to generate the stats file and that
+        the stats file is complete and has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img924.png"
+ ALT="$ +7270$"></SPAN></TT></DT>
+<DD>Accessing non-existent macro
+<BR>
+Attempt to perform operation on non-existent macro.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img925.png"
+ ALT="$ +7271$"></SPAN></TT></DT>
+<DD>Member id out of range
+<BR>
+Attempt to perform set operation on out of range member.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HFB</DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img926.png"
+ ALT="$ +7321$"></SPAN></TT></DT>
+<DD>Unknown model
+<BR>
+Model in HMM List not found in HMMSet, check that the
+        correct HMM List is being used.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img927.png"
+ ALT="$ +7322$"></SPAN></TT></DT>
+<DD>Invalid output probability
+<BR>
+Mixture component probability has not been set.  This should
+        not occur in normal use.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img928.png"
+ ALT="$ +7323$"></SPAN></TT></DT>
+<DD>Beta prune failed on taper
+<BR>
+Utterance is possibly too short for minimum duration
+        of model sequence. Check transcription.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img929.png"
+ ALT="$ -7324$"></SPAN></TT></DT>
+<DD>No path through utterance
+<BR>
+No path was found on the beta training pass, relax the
+        pruning threshold.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img930.png"
+ ALT="$ -7325$"></SPAN></TT></DT>
+<DD>Empty label file
+<BR>
+No labels found in label file, check label file.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img931.png"
+ ALT="$ +7326$"></SPAN></TT></DT>
+<DD>Single-pass retraining data mismatch
+<BR>
+Paired training files must contain the same number of observations.  
+        Use original data to re-parameterise.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img932.png"
+ ALT="$ \pm 7332$"></SPAN></TT></DT>
+<DD>HMM with unreachable states
+<BR>
+HMM has an unreachable state, check transition matrix.
+<BR>
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img933.png"
+ ALT="$ -7333$"></SPAN></TT></DT>
+<DD>Transition matrix with discontinuity
+<BR>
+Check transition matrix.
+<BR>
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img934.png"
+ ALT="$ +7350$"></SPAN></TT></DT>
+<DD>Data does not match HMM
+<BR>
+An aspect of the data does not match the equivalent aspect in 
+        the HMMSet.  Check the parameter kind of the data.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HD<SMALL>ICT</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img935.png"
+ ALT="$ +8050$"></SPAN></TT></DT>
+<DD>Dictionary file format error
+<BR>
+The dictionary file is not correctly formatted.  
+        Section&nbsp;<A HREF="node164_ct.html#s:usehdman">12.7</A> describes the HTK dictionary file format.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HLM</DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img936.png"
+ ALT="$ +8150$"></SPAN></TT></DT>
+<DD>LM syntax error
+<BR>
+The language model file was formatted incorrectly.  Check the file is
+        complete and has not been corrupted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img937.png"
+ ALT="$ \pm 8151$"></SPAN></TT></DT>
+<DD>LM range error
+<BR>
+The specified value(s) for the language model probability are not 
+        valid.  Check the input files are correct.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HN<SMALL>ET</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img938.png"
+ ALT="$ +8220$"></SPAN></TT></DT>
+<DD>No such word
+<BR>
+The specified word does not exist or does not have a valid 
+        pronunciation.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img939.png"
+ ALT="$ -8221$"></SPAN></TT></DT>
+<DD>Duplicate pronunciations removed
+<BR>
+During network generations duplicate identical pronunciations
+        of the same word are removed.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img940.png"
+ ALT="$ +8230$"></SPAN></TT></DT>
+<DD>Contexts not consistent
+<BR>
+HN<SMALL>ET</SMALL> can only deal with the standard HTK method for specifying
+        context <TT>left-phone+right</TT> and will only allow context free 
+        phones if they are context independent and only form part of the word.
+        This may be indicative of an inconsistency between the symbols in the dictionary
+        and the hmms as defined. There may be a model/phone in the dictionary that has 
+        not been defined in the HMM list or may not have a corresponding model.
+        See also section&nbsp;<A HREF="node165_ct.html#s:netexpand">12.8</A>  on context expansion.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img941.png"
+ ALT="$ +8231$"></SPAN></TT></DT>
+<DD>No such model
+<BR>
+A particular model could not be found.  Make sure that the network is
+        being expanded in the correct fashion and then ensure that your HMM
+        list will cover all required contexts.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img942.png"
+ ALT="$ +8232$"></SPAN></TT></DT>
+<DD>Lattice badly formed
+<BR>
+Could not convert lattice to network.  The lattice should have a single
+        well defined start and a single well defined end.  When cross word 
+        expansion is being performed the number of <TT>!NULL</TT> words that 
+        can be concatenated in a string is limited.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img943.png"
+ ALT="$ +8250$"></SPAN></TT></DT>
+<DD>Lattice format error
+<BR>
+The lattice file is formatted incorrectly.  Ensure that the lattice
+        is of the format described in chapter&nbsp;<A HREF="node418_ct.html#c:htkslf">20</A>.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img944.png"
+ ALT="$ +8251$"></SPAN></TT></DT>
+<DD>Lattice file data error
+<BR>
+The value specified in the lattice file is invalid.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img945.png"
+ ALT="$ +8252$"></SPAN></TT></DT>
+<DD>Lattice file with multiple start/end nodes
+<BR>
+A lattice should have only one well defined start node and one
+        well defined end node.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img946.png"
+ ALT="$ +8253$"></SPAN></TT></DT>
+<DD>Lattice with invalid sub lattices
+<BR>
+The sub lattices referred to by the main lattices are
+        malformed.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HR<SMALL>EC</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img947.png"
+ ALT="$ \pm 8520$"></SPAN></TT></DT>
+<DD>Invalid HMM
+<BR>
+One of the HMMs in the network is invalid.  Check that the HMMSet
+        has been correctly initialised.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img948.png"
+ ALT="$ +8521$"></SPAN></TT></DT>
+<DD>Network structure invalid
+<BR>
+The network is incorrectly structured.  Take care to avoid loops
+        that can be traversed without consuming observations (this may occur 
+        if you introduce any 'tee' words in which all the models making up that
+        word contain tee-transitions).  Also ensure that the recogniser and
+        the network have been created and initialised correctly.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img949.png"
+ ALT="$ +8522$"></SPAN></TT></DT>
+<DD>Lattice structure invalid
+<BR>
+The lattice was incorrectly formed.  Ensure that the lattice was
+        created properly.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img950.png"
+ ALT="$ \pm 8570$"></SPAN></TT></DT>
+<DD>Recogniser not initialised correctly
+<BR>
+Ensure the recogniser is initialised and used correctly.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img951.png"
+ ALT="$ +8571$"></SPAN></TT></DT>
+<DD>Data does not match HMMs
+<BR>
+The observation does not match the HMM structure.  Check the parameter
+        kind of the data and ensure that the data is matched to the HMMs.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HL<SMALL>AT</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img952.png"
+ ALT="$ 8621$"></SPAN></TT></DT>
+<DD>Lattice incompatible with dictionary
+<BR>
+The lattice refers to a pronunciation variant (filed
+        <TT>v=</TT>) that doesn't exist in the current dictionary.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img953.png"
+ ALT="$ \pm 8622$"></SPAN></TT></DT>
+<DD>Lattice structure invalid
+<BR>
+The lattice does not meet the requirements for some operation.
+        All lattices must have unique start and end nodes and for many
+        operations the lattices need to be acyclic (i.e. be a
+        Directed Acyclic Graph).
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img954.png"
+ ALT="$ 8623$"></SPAN></TT></DT>
+<DD>Start or end word not found
+<BR>
+The specified lattice start or end word could not be found in
+        the dictionary.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img955.png"
+ ALT="$ 8624$"></SPAN></TT></DT>
+<DD>Lattice end node label invalid
+<BR>
+The lattice end node must either be labelled with <code>!NULL</code>
+        or the specified end word (default: <code>!SENT_END</code>)
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img956.png"
+ ALT="$ -8630$"></SPAN></TT></DT>
+<DD>LLF file not found
+<BR>
+The specified LLF file could not be found or isn't in the
+        right format.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img957.png"
+ ALT="$ 8631$"></SPAN></TT></DT>
+<DD>Lattice not found in LLF file
+<BR>
+A lattice couldn't be found in the LLF file. Note that the
+        order in the LLF file must correspond to the order of processing.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img958.png"
+ ALT="$ 8632$"></SPAN></TT></DT>
+<DD>Lattice not found
+<BR>
+The specified lattice file could not be opened.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img959.png"
+ ALT="$ 8690$"></SPAN></TT></DT>
+<DD>Lattice operation not supported
+<BR>
+The requested operation is not supported, yet.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img960.png"
+ ALT="$ 8691$"></SPAN></TT></DT>
+<DD>Lattice processing sanity check faile
+<BR>
+During processing an internal sanity check failed. This should
+        never happen..
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HG<SMALL>RAF</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img961.png"
+ ALT="$ +6870$"></SPAN></TT></DT>
+<DD>X11 error
+<BR>
+Ensure that the <TT>DISPLAY</TT> variable is set and that the
+        X11 window system is configured correctly.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>LCM<SMALL>AP</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img962.png"
+ ALT="$ +15050$"></SPAN></TT></DT>
+<DD>Unlikely num map entries[<TT>n</TT>] in <TT>XYZ</TT>
+<BR>
+A negative or infeasibly large number of class map entries
+        have been specified.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img963.png"
+ ALT="$ +15051$"></SPAN></TT></DT>
+<DD>ReadMapHeader: UNKxxx configs must be set for hdrless map
+<BR>
+There is no header on the map so you must set UNKNOWNID and UNKNOWNNAME.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img964.png"
+ ALT="$ +15052$"></SPAN></TT></DT>
+<DD>No name in <TT>XYZ</TT>
+<BR>
+No NAME header in class map.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img965.png"
+ ALT="$ +15053$"></SPAN></TT></DT>
+<DD>Unknown escmode <TT>XYZ</TT> in <TT>XYZ</TT>
+<BR>
+ESCMODE header must specify either HTK or RAW.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img966.png"
+ ALT="$ +15054$"></SPAN></TT></DT>
+<DD>Class name  <TT>XYZ</TT> duplicate in <TT>XYZ</TT>
+<BR>
+Two classes in the class map have the same name, which is not allowed.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img967.png"
+ ALT="$ +15055$"></SPAN></TT></DT>
+<DD>Bad index <TT>n</TT> for class <TT>XYZ</TT> in <TT>XYZ</TT>
+<BR>
+A class index less than 1 or greater than or equal to BASEWORDNDX (defined
+        at compile time in LWM<SMALL>AP</SMALL> - default is 65536) was found
+        in the class map.  If you need more than BASEWORDNDX
+        classes then you must recompile HTK with a new base word
+        value.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img968.png"
+ ALT="$ +15056$"></SPAN></TT></DT>
+<DD>Number of entries =  <TT>n</TT> for class <TT>XYZ</TT> in <TT>XYZ</TT>
+<BR>
+There must be at least one member in each class - empty
+        classes are not allowed.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img969.png"
+ ALT="$ +15057$"></SPAN></TT></DT>
+<DD>Bad type <TT>XYZ</TT> for class <TT>XYZ</TT> in <TT>XYZ</TT>
+<BR>
+Classes must be defined using either IN or NOTIN.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img970.png"
+ ALT="$ +15058$"></SPAN></TT></DT>
+<DD>A class is in its own exclusive list. This typically happens when a class map 
+              is specified as a plain list of words. Such list is by default assumed to be 
+              a list of words excluded from class !!UNK. The error is triggered when !!UNK
+              is in the word list. !!UNK must be removed from the list.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>LWM<SMALL>AP</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img971.png"
+ ALT="$ +15150$"></SPAN></TT></DT>
+<DD>Word list/word map file format error
+<BR>
+Check that the word list/word map file is correctly formatted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img972.png"
+ ALT="$ +15151$"></SPAN></TT></DT>
+<DD>Unlikely num map entries[<TT>n</TT>] in <TT>XYZ</TT>
+<BR>
+A negative or infeasibly large number of word map entries
+        have been specified.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img973.png"
+ ALT="$ +15152$"></SPAN></TT></DT>
+<DD>No NAME header in <TT>XYZ</TT>
+<BR>
+No NAME header in word map.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img974.png"
+ ALT="$ +15153$"></SPAN></TT></DT>
+<DD>No SEQNO header in <TT>XYZ</TT>
+<BR>
+No SEQNO header in word map.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img975.png"
+ ALT="$ +15154$"></SPAN></TT></DT>
+<DD>Unknown escmode <TT>XYZ</TT> in <TT>XYZ</TT>
+<BR>
+ESCMODE header must specify either HTK or RAW.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img976.png"
+ ALT="$ +15155$"></SPAN></TT></DT>
+<DD>Word name <TT>XYZ</TT> is duplicated in <TT>XYZ</TT>
+<BR>
+There are duplicate words in the word map, which is not allowed.
+
+<P>
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>LU<SMALL>TIL</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img977.png"
+ ALT="$ +15250$"></SPAN></TT></DT>
+<DD>Header format error
+<BR>
+Ensure that word maps and/or n-gram files used by the program start
+        with the appropriate header.
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>LGB<SMALL>ASE</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img978.png"
+ ALT="$ +15330$"></SPAN></TT></DT>
+<DD>n-gram file consistency check failure
+<BR>
+The n-gram file is incompatible with other resources used by the
+        program.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img979.png"
+ ALT="$ +15340$"></SPAN></TT></DT>
+<DD>File <TT>XYZ</TT> is <TT>n</TT>-gram but inset is <TT>n</TT>-gram
+<BR>
+The specified input gram file is not of the expected gram size.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img980.png"
+ ALT="$ +15341$"></SPAN></TT></DT>
+<DD>Requested N[<TT>n</TT>] greater than gram size [<TT>n</TT>]
+<BR>
+An n-gram was requested which was larger than any of those
+        supplied in the input files.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img981.png"
+ ALT="$ +15345$"></SPAN></TT></DT>
+<DD>n-grams out of order
+<BR>
+The input gram file is not correctly sorted.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img982.png"
+ ALT="$ +15350$"></SPAN></TT></DT>
+<DD>n-gram file format error
+<BR>
+Ensure that n-gram files used by the program are formatted correctly
+        and start with the appropriate header.
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>LM<SMALL>ODEL</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img983.png"
+ ALT="$ +15420$"></SPAN></TT></DT>
+<DD>Cannot find n-gram component
+<BR>
+The internal structure of the language model is corrupted. This error
+        is usually caused when an n-gram <SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img984.png"
+ ALT="$ (a,b,c)$"></SPAN> is encountered without
+        the presence of n-gram <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img985.png"
+ ALT="$ (a,b)$"></SPAN>.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img986.png"
+ ALT="$ +15430$"></SPAN></TT></DT>
+<DD>Incompatible probability kind in conversion
+<BR>
+The currently used language model does not allow the required
+        conversion operation. This error is caused by attempting to prune a
+        model stored in the ultra file format.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img987.png"
+ ALT="$ +15440$"></SPAN></TT></DT>
+<DD>Cannot prune models in ultra format
+<BR>
+Pruning of language models stored in <EM>ultra</EM> file format is not
+        supported.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img988.png"
+ ALT="$ +15445$"></SPAN></TT></DT>
+<DD>Word ID size error
+<BR>
+Language models with vocabularies of over 65,536 words require the
+        use of larger word identifiers. This is a sanity check error.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img989.png"
+ ALT="$ -15450$"></SPAN></TT></DT>
+<DD>Word <TT>XYZ</TT> not in unigrams - skipping n-gram.
+<BR>
+There should be a unigram count for each word in other length grams.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img990.png"
+ ALT="$ +15450$"></SPAN></TT></DT>
+<DD>Language model file format error
+<BR>
+The language model file is formatted incorrectly. Check the file is
+        complete and has not been corrupted.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img991.png"
+ ALT="$ -15451$"></SPAN></TT></DT>
+<DD>Extraneous line warning
+<BR>
+Extra lines were found on the end of a file and are being ignored.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img992.png"
+ ALT="$ -15460$"></SPAN></TT></DT>
+<DD>Model order reduced
+<BR>
+Due to the effects of pruning the model order is automatically reduced.
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>LPC<SMALL>ALC</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img993.png"
+ ALT="$ +15520$"></SPAN></TT></DT>
+<DD>Unable to find FLEntry to attach
+<BR>
+Indicates that the LM data structures are corrupt. This is normally caused
+        by NGram files which have not been sorted.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img994.png"
+ ALT="$ +15525$"></SPAN></TT></DT>
+<DD>Attempt to overwrite entries when attaching
+<BR>
+Indicates that the LM structure is corrupt. Ensure that the word map file
+        used is suitable for decoding the NGram database files.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img995.png"
+ ALT="$ -15540$"></SPAN></TT></DT>
+<DD><TT>n</TT>-gram cutoff out of range
+<BR>
+An inapplicable cutoff was ignored.
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img996.png"
+ ALT="$ +15540$"></SPAN></TT></DT>
+<DD>Pruning error
+<BR>
+The pruning parameters specified are not compatible with the parameters 
+        of the language model.
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>LPM<SMALL>ERGE</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img997.png"
+ ALT="$ +15620$"></SPAN></TT></DT>
+<DD>Unable to find word in any model
+<BR>
+Indicates that the target model vocabulary contains a word which cannot
+        be found in any of the source models.
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>LP<SMALL>LEX</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img998.png"
+ ALT="$ +16620$"></SPAN></TT></DT>
+<DD>symbol <TT>XYZ</TT> not in word list
+<BR>
+The sentence start symbol, sentence end symbol and OOV symbol (only if
+        OOVs are to be included in the perplexity calculation) must be in the
+        language model's vocabulary. Note that the vocabulary list is either 
+        specified with the <TT>-w</TT> option or is implicitly derived from the 
+        language model.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img999.png"
+ ALT="$ +16625$"></SPAN></TT></DT>
+<DD>Unable to find word <TT>XYZ</TT> in any model
+<BR>
+Ensure that all words in the vocabulary list specified with the <TT>-w</TT>
+        option are present in at least one of the language models.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1000.png"
+ ALT="$ +16630$"></SPAN></TT></DT>
+<DD>Maximum number of unique OOVs reached
+<BR>
+Too many OOVs encountered in the input text.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1001.png"
+ ALT="$ -16635$"></SPAN></TT></DT>
+<DD>Transcription file <TT>fn</TT> is empty
+<BR>
+The label file does not contain any words.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1002.png"
+ ALT="$ -16640$"></SPAN></TT></DT>
+<DD>Word too long, will be split: <TT>XYZ</TT>
+<BR>
+The word read from the input stream is of over 200 characters.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1003.png"
+ ALT="$ -16645$"></SPAN></TT></DT>
+<DD>Text buffer size exceeded (<TT>n</TT>)
+<BR>
+The maximum number of words allowed in a single utterance has been 
+        reached.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1004.png"
+ ALT="$ +16650$"></SPAN></TT></DT>
+<DD>Maximum utterance length in a label file exceeded (limit
+        is compiled to be <TT>n</TT> tokens)
+<BR>
+No label file utterance end has been encountered within
+        <TT>n</TT> tokens - perhaps this is a text file and you forgot
+        to pass the <TT>-t</TT> option?
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>HLMC<SMALL>OPY</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1005.png"
+ ALT="$ +16920$"></SPAN></TT></DT>
+<DD>Maximum number of phones reached
+<BR>
+When HLMC<SMALL>OPY</SMALL> is used to copy dictionaries, the target dictionary's
+        phone table is composed by combining the phone tables of all source
+        dictionaries. Check that the number of different phones resulting from
+        combining the phone tables of the source dictionaries does not exceed the
+        internally set limit.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1006.png"
+ ALT="$ +16930$"></SPAN></TT></DT>
+<DD>Cannot find definition for word <TT>XYZ</TT>
+<BR>
+When copying dictionaries, ensure that each word in the vocabulary list
+        occurs in at least one source dictionary.
+</DD>
+</DL>
+
+<P>
+</DD>
+<DT>C<SMALL>LUSTER</SMALL></DT>
+<DD>&nbsp;
+
+<P>
+<DL COMPACT>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1007.png"
+ ALT="$ +17050$"></SPAN></TT></DT>
+<DD>Word <TT>XYZ</TT> found in class map but not in word map
+<BR>
+All words in the class map must be found in the word map too.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1008.png"
+ ALT="$ -17051$"></SPAN></TT></DT>
+<DD>Unknown word token <TT>XYZ</TT> was explicitly given with -u, but
+          does not occur in the word map
+<BR>
+This warning appears if you specify an unknown word token
+          which is not found in the word map.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1009.png"
+ ALT="$ +17051$"></SPAN></TT></DT>
+<DD>Token not found in word list
+<BR>
+Sentence start, end and unknown (if used) tokens must be found
+        in the word map.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1010.png"
+ ALT="$ +17052$"></SPAN></TT></DT>
+<DD>Not all words were assigned to classes
+<BR>
+A classmap was imported which did not include all words in the
+        word map.
+
+<P>
+</DD>
+<DT><TT>   <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1011.png"
+ ALT="$ -17053$"></SPAN></TT></DT>
+<DD>Word <TT>XYZ</TT> is in word map but not in any gram files
+<BR>
+The stated word will remain in whichever class it is already
+        in - either as defaulted to or supplied via the input class map.
+</DD>
+</DL>
+
+<P>
+</DD>
+</DL>
+
+<P>
+
+<P>
+
+  
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Cepstral Features</TITLE>
+<META NAME="description" CONTENT="Contents of Cepstral Features">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node62_mn.html">
+<LINK REL="previous" HREF="node60_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node62_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03260000000000000000">&#160;</A><A NAME="s:cepstrum">&#160;</A>
+<BR>
+Cepstral Features
+</H1>
+
+<P>
+Most often, however, cepstral parameters are required
+and these are indicated by setting the target kind to <TT>MFCC</TT> standing
+for Mel-Frequency Cepstral Coefficients (MFCCs).  These are calculated from the
+log filterbank amplitudes <SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img170.png"
+ ALT="$ \{m_j\}$"></SPAN> using the Discrete Cosine Transform
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:dct">&#160;</A><!-- MATH
+ \begin{equation}
+c_i = \sqrt{\frac{2}{N}} \sum_{j=1}^N m_j \cos \left( \frac{\pi i}{N}(j-0.5) \right)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="249" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img171.png"
+ ALT="$\displaystyle c_i = \sqrt{\frac{2}{N}} \sum_{j=1}^N m_j \cos \left( \frac{\pi i}{N}(j-0.5) \right)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">14</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> is the number of filterbank channels set by the configuration
+parameter <TT>NUMCHANS</TT><A NAME="6649">&#160;</A>.  The required
+number of cepstral coefficients is set by
+<TT>NUMCEPS</TT><A NAME="6650">&#160;</A> as in the linear prediction
+case.  Liftering can also be applied to MFCCs using the
+<TT>CEPLIFTER</TT><A NAME="6651">&#160;</A> configuration parameter
+(see equation&nbsp;<A HREF="node58_ct.html#e:ceplifter">5.12</A>).
+
+<P>
+MFCCs are the parameterisation of choice for many speech recognition applications.
+They give good discrimination and lend themselves to a number of manipulations.
+In particular, the effect of inserting a transmission channel on the input
+speech is to multiply the speech spectrum by the channel transfer function.
+In the log cepstral domain, this multiplication becomes a simple addition which
+can be removed by subtracting the cepstral mean from all input vectors.
+In practice, of course, the mean has to be estimated over a limited amount
+of speech data so the subtraction will not be perfect.  Nevertheless, this
+simple technique is very effective in practice where it
+compensates for long-term spectral effects such as those caused by different
+microphones and audio channels.  To perform this
+so-called <SPAN  CLASS="textit">Cepstral Mean Normalisation</SPAN> (CMN) in HTK it is only necessary
+to add the <TT>_Z</TT><A NAME="6652">&#160;</A> qualifier to the 
+target parameter kind.  The mean is estimated by computing the average of
+each cepstral parameter across each input speech file.  Since this cannot be done
+with live audio, cepstral mean compensation is not supported for this case.
+<A NAME="5747">&#160;</A>
+
+<P>
+In addition to the mean normalisation the variance of the data can be
+normalised. For improved robustness both mean and variance of the data
+should be calculated on a larger units (e.g. on all the data from a
+speaker instead of just on a single utterance). To use
+speaker-/cluster-based normalisation the mean and variance estimates
+are computed offline before the actual recognition and stored in
+separate files (two files per cluster). The configuration variables
+<TT>CMEANDIR</TT><A NAME="6653">&#160;</A> and
+<TT>VARSCALEDIR</TT><A NAME="6654">&#160;</A> point to the
+directories where these files are stored. To find the actual filename
+a second set of variables
+(<TT>CMEANMASK</TT><A NAME="6655">&#160;</A> and
+<TT>VARSCALEMASK</TT><A NAME="6656">&#160;</A>) has to be
+specified. These masks are regular expressions in which you can use
+the special characters <TT>?</TT>, <TT>*</TT> and <TT>%</TT>. The
+appropriate mask is matched against the filename of the file to be
+recognised and the substring that was matched against the <TT>%</TT>
+characters is used as the filename of the normalisation file. An
+example config setting is:
+
+<P>
+<PRE>
+CMEANDIR     = /data/eval01/plp/cmn
+CMEANMASK    = %%%%%%%%%%_*
+VARSCALEDIR  = /data/eval01/plp/cvn
+VARSCALEMASK = %%%%%%%%%%_*
+VARSCALEFN   = /data/eval01/plp/globvar
+</PRE>
+
+<P>
+So, if the file <code>sw1-4930-B_4930Bx-sw1_000126_000439.plp</code> is to be
+recognised then the normalisation estimates would be loaded from the
+following files:
+
+<P>
+<PRE>
+/data/eval01/plp/cmn/sw1-4930-B
+/data/eval01/plp/cvn/sw1-4930-B
+</PRE>
+
+<P>
+The file specified by
+<TT>VARSCALEFN</TT><A NAME="6657">&#160;</A> contains the
+global target variance vector, i.e. the variance of the data is first
+normalised to 1.0 based on the estimate in the appropriate file in
+<TT>VARSCALEDIR</TT><A NAME="6658">&#160;</A> and then
+scaled to the target variance given in
+<TT>VARSCALEFN</TT><A NAME="6659">&#160;</A>.
+
+<P>
+The format of the files is very simple and each of them just contains
+one vector. Note that in the case of the cepstral mean only the static
+coefficients will be normalised. A cmn file could for example look like:
+
+<P>
+<PRE>
+&lt;CEPSNORM&gt; &lt;PLP_0&gt;
+&lt;MEAN&gt; 13
+-10.285290 -9.484871 -6.454639 ...
+</PRE>
+
+<P>
+The cepstral variance normalised always applies to the full
+observation vector after all qualifiers like delta and acceleration
+coefficients have been added, e.g.:
+
+<P>
+<PRE>
+&lt;CEPSNORM&gt; &lt;PLP_D_A_Z_0&gt;
+&lt;VARIANCE&gt; 39
+33.543018 31.241779 36.076199 ...
+</PRE>
+
+<P>
+The global variance vector will always have the same number of
+dimensions as the cvn vector, e.g.:
+
+<P>
+<PRE>
+&lt;VARSCALE&gt; 39
+ 2.974308e+01 4.143743e+01 3.819999e+01 ...
+</PRE>
+
+<P>
+These estimates can be generated using HC<SMALL>OMP</SMALL>V. See the
+reference section for details.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

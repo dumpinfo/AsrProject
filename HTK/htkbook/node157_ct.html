@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Networks, Dictionaries and Language Models</TITLE>
+<META NAME="description" CONTENT="Contents of Networks, Dictionaries and Language Models">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node167_mn.html">
+<LINK REL="previous" HREF="node152_mn.html">
+<LINK REL="up" HREF="node42_mn.html">
+<LINK REL="next" HREF="node158_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03900000000000000000">&#160;</A><A NAME="c:netdict">&#160;</A>
+<BR>
+Networks, Dictionaries and Language Models
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:Tool.netdict">&#160;</A><IMG
+ WIDTH="366" HEIGHT="353" ALIGN="MIDDLE" BORDER="0"
+ SRC="img455.png"
+ ALT="$\textstyle \parbox{80mm}{ \begin{center}\setlength{\epsfxsize}{80mm}
+\epsfbox{HTKFigs//Tool.netdict.eps}
+\end{center} }$">
+</DIV>
+
+<P>
+The preceding chapters have described how to process speech
+data and how to train various types of HMM.
+This and the following chapter are concerned with building
+a speech recogniser using HTK.  This chapter focuses on
+the use of networks<A NAME="19967">&#160;</A> and dictionaries<A NAME="19968">&#160;</A>.  
+A network describes the
+sequence of words that can be recognised and, for the case of sub-word
+systems, a dictionary describes the sequence of HMMs that constitute
+each word.
+A word level network will typically represent either
+a <SPAN  CLASS="textit">Task Grammar</SPAN> which defines all of the legal word 
+sequences explicitly
+or a <SPAN  CLASS="textit">Word Loop</SPAN> which simply puts all words of the vocabulary
+in a loop and therefore allows any word to follow any other word.
+Word-loop networks are often augmented by a stochastic language model.  
+Networks can also be used
+to define phone recognisers and various types of word-spotting systems.
+
+
+<P>
+Networks are specified using the HTK <SPAN  CLASS="textit">Standard Lattice Format</SPAN> (SLF)
+which is described in detail in Chapter&nbsp;<A HREF="node418_ct.html#c:htkslf">20</A>.
+This is a general purpose text format which is used for representing
+multiple hypotheses in a recogniser output as well as word networks.  
+Since SLF<A NAME="19490">&#160;</A> format is text-based, it can be written directly using any text editor.
+However, this can be rather tedious and HTK provides
+two tools which allow the application designer to use a higher-level
+representation.  Firstly, the tool HP<SMALL>ARSE</SMALL> allows networks
+to be generated from a source text containing extended BNF format
+grammar rules.  This format was the only grammar definition
+language provided in earlier versions of HTK and hence 
+HP<SMALL>ARSE</SMALL> also provides backwards compatibility. 
+<A NAME="19493">&#160;</A>
+
+<P>
+HP<SMALL>ARSE</SMALL> task grammars are very easy to write, but they 
+do not allow fine control
+over the actual network used by the recogniser. 
+The tool HB<SMALL>UILD</SMALL> works directly at the SLF level to provide
+this detailed control.  Its main function is to 
+enable a large word network to be decomposed into
+a set of small self-contained sub-networks using as input an extended
+SLF format.  This enhances the
+design process and avoids the need for unnecessary repetition.
+
+<P>
+HB<SMALL>UILD</SMALL> can also be used to perform a number
+of special-purpose functions.  Firstly, it can construct 
+word-loop and word-pair grammars automatically.  Secondly,
+it can incorporate a statistical bigram
+language model into a network.  These can be generated from label
+transcriptions using HLS<SMALL>TATS</SMALL>.  However,
+HTK supports the standard ARPA MIT-LL text format for backed-off
+N-gram language models, and hence, import from other sources is possible.
+
+<P>
+Whichever tool is used to generate a word network, it is important
+to ensure that the generated network represents the intended grammar.
+It is also helpful to have some measure of the difficulty of the
+recognition task.  To assist with this, the tool HSG<SMALL>EN</SMALL> is
+provided.  This tool will generate example word sequences from
+an SLF network using random sampling.  It will also estimate the
+perplexity of the network.
+
+<P>
+When a word network is loaded into a recogniser, 
+a dictionary is consulted to convert each
+word in the network into a sequence of phone HMMs.   The dictionary can
+have multiple pronunciations in which case several sequences may be joined
+in parallel to make a word.  Options exist in this process to automatically
+convert the dictionary entries to context-dependent triphone
+models, either within a word or cross-word.  Pronouncing 
+dictionaries are a vital resource in building speech recognition
+systems and, in practice, word pronunciations can be derived from
+many different sources.  The HTK tool HDM<SMALL>AN</SMALL> enables a dictionary
+to be constructed automatically from different sources.  Each source
+can be individually edited and translated and merged to form a
+uniform HTK format dictionary.
+
+<P>
+The various facilities for describing a word network and expanding into a
+HMM level network suitable for building a recogniser are implemented
+by the HTK library module HN<SMALL>ET</SMALL>.  The facilities for loading
+and manipulating dictionaries are implemented by the HTK library module
+HD<SMALL>ICT</SMALL> and  for loading
+and manipulating language models are implemented by
+HLM.  These facilities and those provided by 
+HP<SMALL>ARSE</SMALL>, HB<SMALL>UILD</SMALL>, HSG<SMALL>EN</SMALL>, 
+HLS<SMALL>TATS</SMALL> and HDM<SMALL>AN</SMALL> are
+the subject of this chapter.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html3382" HREF="node158_mn.html" TARGET="main"><SMALL>How Networks are Used</SMALL></A>
+<LI><A NAME="tex2html3383" HREF="node159_mn.html" TARGET="main"><SMALL>Word Networks and Standard Lattice Format</SMALL></A>
+<LI><A NAME="tex2html3384" HREF="node160_mn.html" TARGET="main"><SMALL>Building a Word Network with HP<SMALL>ARSE</SMALL></SMALL></A>
+<LI><A NAME="tex2html3385" HREF="node161_mn.html" TARGET="main"><SMALL>Bigram Language Models</SMALL></A>
+<LI><A NAME="tex2html3386" HREF="node162_mn.html" TARGET="main"><SMALL>Building a Word Network with HB<SMALL>UILD</SMALL></SMALL></A>
+<LI><A NAME="tex2html3387" HREF="node163_mn.html" TARGET="main"><SMALL>Testing a Word Network using HSG<SMALL>EN</SMALL></SMALL></A>
+<LI><A NAME="tex2html3388" HREF="node164_mn.html" TARGET="main"><SMALL>Constructing a Dictionary</SMALL></A>
+<LI><A NAME="tex2html3389" HREF="node165_mn.html" TARGET="main"><SMALL>Word Network Expansion</SMALL></A>
+<LI><A NAME="tex2html3390" HREF="node166_mn.html" TARGET="main"><SMALL>Other Kinds of Recognition System</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

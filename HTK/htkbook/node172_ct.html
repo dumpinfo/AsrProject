@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Generating Forced Alignments</TITLE>
+<META NAME="description" CONTENT="Contents of Generating Forced Alignments">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node173_mn.html">
+<LINK REL="previous" HREF="node171_mn.html">
+<LINK REL="up" HREF="node167_mn.html">
+<LINK REL="next" HREF="node173_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION031050000000000000000">&#160;</A><A NAME="s:falign">&#160;</A>
+<BR>
+Generating Forced Alignments
+</H1>
+
+<P>
+<A NAME="20738">&#160;</A>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:hvalign">&#160;</A><IMG
+ WIDTH="253" HEIGHT="240" ALIGN="MIDDLE" BORDER="0"
+ SRC="img485.png"
+ ALT="% latex2html id marker 51312
+$\textstyle \parbox{55mm}{ \begin{center}\setlength...
+.... \thechapter.\arabic{figctr}  Forced Alignment}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+HV<SMALL>ITE</SMALL> can be made to compute forced alignments by not 
+specifying a network with the <TT>-w</TT> option but by specifying
+the <TT>-a</TT> option instead.  In this mode, HV<SMALL>ITE</SMALL> 
+computes a new network for each input utterance using the word
+level transcriptions and a dictionary.  By default, the output
+transcription will just contain the words and their boundaries.
+One of the main uses of forced alignment<A NAME="21000">&#160;</A>, 
+however, is to 
+determine the actual pronunciations used in the utterances
+used to train the HMM system in this case, the <TT>-m</TT>
+option can be used to generate model level output transcriptions.
+
+This type of forced alignment is usually part of a <SPAN  CLASS="textit">bootstrap</SPAN>
+process, initially models are trained on the basis of one fixed
+pronunciation per <A NAME="20866">&#160;</A>
+<A NAME="20867">&#160;</A>word<A NAME="tex2html52" HREF="footnode_mn.html#foot20868" TARGET="footer"><SUP><SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A>.  
+Then HV<SMALL>ITE</SMALL> is used in forced alignment mode
+to select the best matching pronunciations.  The new phone level
+transcriptions can then be used to retrain the HMMs.  Since training
+data may have leading and trailing silence, it is usually
+necessary to insert a silence model at the start and end of the
+recognition network.  The  <TT>-b</TT> option can be used to do this.
+
+<P>
+As an illustration, executing
+<PRE>
+    HVite -a -b sil -m -o SWT -I words.mlf \
+       -H hmmset dict hmmlist file.mfc
+</PRE>
+would result in the following sequence of events (see Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>).
+The input file name <TT>file.mfc</TT> would have its extension replaced by
+<TT>lab</TT> and then a label file of this name would be searched for.
+In this case, the MLF file <TT>words.mlf</TT> has been loaded. 
+Assuming that this file contains a word level transcription called
+<TT>file.lab</TT>, this transcription along with the dictionary <TT>dict</TT>
+will be used to construct a network equivalent to <TT>file.lab</TT>
+but with alternative pronunciations included in parallel.  Since <TT>-b</TT>
+option has been set, the specified <TT>sil</TT> model will be inserted
+at the start and end of the network.  The decoder then finds the best
+matching path through the network and constructs a lattice which
+includes model alignment information.  Finally, the lattice is converted
+to a transcription and output to the label file <TT>file.rec</TT>.
+As for testing on a database, alignments will normally be computed on
+a large number of input files so in practice the input files would be listed
+in a <TT>.scp</TT> file and the output transcriptions would be written
+to an MLF using the <TT>-i</TT> option.
+
+<P>
+When the <TT>-m</TT> option is used, the transcriptions output by HV<SMALL>ITE</SMALL> 
+would by default contain both the model level and 
+word level transcriptions
+<A NAME="20772">&#160;</A>.
+<A NAME="20773">&#160;</A>
+<A NAME="20774">&#160;</A>
+For example, a typical fragment of the output might be
+<PRE>
+    7500000  8700000 f  -1081.604736 FOUR 30.000000
+    8700000  9800000 ao  -903.821350
+    9800000 10400000 r   -665.931641
+   10400000 10400000 sp    -0.103585
+   10400000 11700000 s  -1266.470093 SEVEN 22.860001
+   11700000 12500000 eh  -765.568237
+   12500000 13000000 v   -476.323334
+   13000000 14400000 n  -1285.369629
+   14400000 14400000 sp    -0.103585
+</PRE>
+Here the score alongside each model name is the acoustic score for that segment.
+The score alongside the word is just the language model score.
+
+<P>
+Although the above information can be useful for some purposes, for example
+in bootstrap training, only the model names are required.
+The formatting option <TT>-o SWT</TT> in the above suppresses all output
+except the model names.<A NAME="20778">&#160;</A>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Language model generation</TITLE>
+<META NAME="description" CONTENT="Contents of Language model generation">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node196_mn.html">
+<LINK REL="previous" HREF="node194_mn.html">
+<LINK REL="up" HREF="node192_mn.html">
+<LINK REL="next" HREF="node196_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04230000000000000000">&#160;</A><A NAME="s:HLMlanmodgen">&#160;</A>
+<BR>
+Language model generation
+</H1>
+
+Language models are built using the LB<SMALL>UILD</SMALL> command.  If you're
+constructing a class-based model you'll also need the C<SMALL>LUSTER</SMALL>
+tool, but for now we'll construct a standard word <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram model.
+
+<P>
+You'll probably want to accept the default of using Turing-Good
+discounting for your <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram model, so the first step in generating a
+language model is to produce a frequency of frequency (FoF) table for
+the chosen vocabulary list.  This is performed automatically by
+LB<SMALL>UILD</SMALL>, but optionally you can generate this yourself using
+the LF<SMALL>O</SMALL>F tool and pass the result into LB<SMALL>UILD</SMALL>.  This
+has only a negligable effect on computation time, but the result is
+interesting in itself because it provides useful information for
+setting cut-offs.  Cut-offs are where you choose to discard low
+frequency events from the training text - you might wish to do this
+to decrease model size, or because you judge these infrequent events
+to be unimportant.
+
+<P>
+In this example, you can generate a suitable table from the language
+model databases and the newly generated OOV <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files:
+<PRE>
+$ LFoF -T 1 -n 4 -f 32 lm_5k/5k.wmap lm_5k/5k.fof
+     holmes.1/data.* lm_5k/data.*
+Input file holmes.1/data.0 added, weight=1.0000
+Input file holmes.1/data.1 added, weight=1.0000
+Input file holmes.1/data.2 added, weight=1.0000
+Input file lm_5k/data.0 added, weight=1.0000
+Calculating FoF table
+</PRE> 
+<P>
+After executing the command, the FoF table will be stored in
+<TT>lm_5k/5k.fof</TT>.  It shows the number of times a word is found
+with a given frequency - if you recall the definition of Turing-Good
+discounting you will see that this needs to be known.  See chapter
+<A HREF="node206_ct.html#c:hlmfiles">16</A> for further details of the FoF file format.
+
+<P>
+You can also pass a configuration parameter to LF<SMALL>O</SMALL>F to make it
+output a related table showing the number of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams that will be
+left if different cut-off rates are applied.  Rerun LF<SMALL>O</SMALL>F and
+also pass it the existing configuration file <TT>config</TT>:
+<PRE>
+$ LFoF -C config -T 1 -n 4 -f 32 lm_5k/5k.wmap lm_5k/5k.fof
+     holmes.1/data.* lm_5k/data.*
+Input file holmes.1/data.0 added, weight=1.0000
+Input file holmes.1/data.1 added, weight=1.0000
+Input file holmes.1/data.2 added, weight=1.0000
+Input file lm_5k/data.0 added, weight=1.0000
+Calculating FoF table
+
+cutoff  1-g     2-g     3-g     4-g
+0       5001    128252  330433  471998 
+1       5001    49014   60314   40602 
+2       5001    30082   28646   15492 
+3       5001    21614   17945   8801 
+...
+</PRE> The information can be interpreted as follows.  A bigram cut-off value
+of 1 will leave 49014 bigrams in the model, whilst a trigram cut-off
+of 3 will result in 17945 trigrams in the model.  The configuration
+file <TT>config</TT> forces the tool to print out this extra
+information by setting <TT>LPCALC: TRACE=3</TT>.  This is the trace
+level for one of the library modules, and is separate from the trace
+level for the tool itself (in this case we are passing <TT>-T 1</TT> to
+set trace level 1.  The trace field consists of a series of bits, so
+setting trace 3 actually turns on two of those trace flags.
+
+<P>
+We'll now proceed to build our actual language model.  In this the
+model will be generated in stages by executing the LB<SMALL>UILD</SMALL>
+separately for each of the unigram, bigram and trigram sections of the
+model (we won't build a 4-gram model in this example, although the
+<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files we've build allow us to do so at a later date if we so
+wish), but you can build the final trigram in one go if you like.  The
+following command will generate the unigram model:
+<PRE>
+$ LBuild -T 1 -n 1 lm_5k/5k.wmap lm_5k/ug 
+         holmes.1/data.* lm_5k/data.*
+</PRE> Look in the <TT>lm_5k</TT> directory and you'll discover the model <TT>ug</TT> which can now be used on its own as a complete ARPA format
+unigram language model.
+
+<P>
+We'll now build a bigram model with a cut-off of 1 and to save
+regenerating the unigram component we'll include our existing unigram model:
+<PRE>
+$ LBuild -C config -T 1 -t lm_5k/5k.fof -c 2 1 -n 2
+         -l lm_5k/ug lm_5k/5k.wmap lm_5k/bg1 
+         holmes.1/data.* lm_5k/data.*
+</PRE> Passing the <TT>config</TT> file again means that we get given some
+discount coefficient information.  Try rerunning the tool without the
+<TT>-C config</TT> to see the difference.  We've also passed in the
+existing <TT>lm_5k/5k.fof</TT> file although this is not necessary -
+try omitting this and you'll find that the resulting file is
+identical.  What will be different, however, is that the tool will
+print out the cut-off table seen when running LF<SMALL>O</SMALL>F with the
+<TT>LPCALC: TRACE = 3</TT> parameter set; if you don't want to see this
+then don't set <TT>LPCALC: TRACE = 3</TT> in the configuration file (try
+running the above command without <TT>-t</TT> and <TT>-C</TT>).
+
+<P>
+Note that this bigram model is created in HTKs own binary version
+of the ARPA format language model, with just the unigram component in
+text format by default.  This makes the model more compact and faster
+to load.  If you want to override this then simply add the <TT>-f
+TEXT</TT> parameter to the command.
+
+<P>
+Finally, the trigram model can be generated using the command:
+<PRE>
+$ LBuild -T 1 -c 3 1 -n 3 -l lm_5k/bg1
+         lm_5k/5k.wmap lm_5k/tg1_1  
+         holmes.1/data.* lm_5k/data.*
+</PRE> 
+<P>
+Alternatively instead of the three stages above, you can also build
+the final trigram in one step:
+<PRE>
+$ LBuild -T 1 -c 2 1 -c 3 1 -n 3 lm_5k/5k.wmap
+         lm_5k/tg2-1_1 holmes.1/data.* lm_5k/data.*
+</PRE> If you compare the two trigram models you'll see that they're the same
+size - there will probably be a few insignificant changes in
+probability due to more cumulative rounding errors incorporated in the
+three stage procedure.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

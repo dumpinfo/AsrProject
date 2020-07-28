@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Building a Word Network with HBUILD</TITLE>
+<META NAME="description" CONTENT="Contents of Building a Word Network with HBUILD">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node163_mn.html">
+<LINK REL="previous" HREF="node161_mn.html">
+<LINK REL="up" HREF="node157_mn.html">
+<LINK REL="next" HREF="node163_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03950000000000000000">&#160;</A><A NAME="s:usehbuild">&#160;</A>
+<BR>
+Building a Word Network with HB<SMALL>UILD</SMALL>
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:decinet">&#160;</A><IMG
+ WIDTH="285" HEIGHT="184" ALIGN="MIDDLE" BORDER="0"
+ SRC="img467.png"
+ ALT="% latex2html id marker 51235
+$\textstyle \parbox{62mm}{ \begin{center}\setlength...
+...ig. \thechapter.\arabic{figctr}  Decimal Syntax}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+As mentioned in the introduction, the main function of HB<SMALL>UILD</SMALL>
+is allow a word-level network to be constructed from
+a main lattice and a set of sub-lattices<A NAME="20102">&#160;</A>.  Any lattice
+can contain node definitions which refer to other lattices.
+This allows a word-level recognition network to be decomposed
+into a number of sub-networks which can be reused at different
+points in the network.  
+
+<A NAME="19937">&#160;</A>
+
+<P>
+For example, suppose that decimal number
+input was required.  A suitable network structure would be
+as shown in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  However, to write this directly
+in an SLF file would require the digit loop to be written twice.
+This can be avoided by defining the digit loop as a sub-network
+and referencing it within the main <SPAN  CLASS="textit">decimal</SPAN> network as
+follows
+
+<P>
+<PRE>
+    # Digit network
+    SUBLAT=digits
+    N=14 L=21
+    # define digits
+    I=0  W=zero
+    I=1  W=one
+    I=2  W=two
+    ...
+    I=9  W=nine
+    #  enter/exit &amp; loop-back null nodes
+    I=10 W=!NULL
+    I=11 W=!NULL
+    I=12 W=!NULL
+    I=13 W=!NULL
+    # null-&gt;null-&gt;digits
+    J=0 S=10 E=11
+    J=1 S=11 E=0
+    J=2 S=11 E=1
+    ...
+    J=10 S=11 E=9
+    # digits-&gt;null-&gt;null
+    J=11 S=0 E=12
+    ...
+    J=19 S=9 E=12
+    J=20 S=12 E=13
+    # finally add loop back
+    J=21 S=12 E=11
+    .
+
+    # Decimal netork
+    N=5 L=4
+    # digits -&gt; point -&gt; digits
+    I=0 W=start
+    I=1 L=digits
+    I=2 W=pause
+    I=3 L=digits
+    I=4 W=end
+    # digits -&gt; point -&gt; digits
+    J=0 S=0 E=1
+    J=1 S=1 E=2
+    J=2 S=2 E=3
+    J=3 S=3 E=4
+</PRE>
+The sub-network is identified by the field 
+<TT>SUBLAT</TT><A NAME="19938">&#160;</A> in the header
+and it is terminated by a single period on a line by itself.  The
+main body of the sub-network is written as normal.
+Once defined, a sub-network can be substituted into a higher level
+network using an <TT>L</TT> field in a node definition, as in nodes
+1 and 3 of the decimal network above.
+
+<P>
+Of course, this process can be continued and a higher level network
+could reference the decimal network wherever it needed decimal
+number entry.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:bobig">&#160;</A><IMG
+ WIDTH="457" HEIGHT="394" ALIGN="MIDDLE" BORDER="0"
+ SRC="img468.png"
+ ALT="% latex2html id marker 51236
+$\textstyle \parbox{100mm}{ \begin{center}\setlengt...
+...abic{figctr}  Back-off Bigram Word-Loop Network}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+One of the commonest form of recognition network is the 
+word-loop<A NAME="19695">&#160;</A>
+where all vocabulary items are placed in parallel with a loop-back
+to allow any word sequence to be recognised.  This is the basic
+arrangement used in most dictation or transcription applications.
+HB<SMALL>UILD</SMALL> can build such a loop automatically from a list
+of words.  It can also read in a bigram in either ARPA MIT-LL 
+format or HTK matrix format and attach a bigram probability to
+each word transition.  Note, however, that using a full bigram
+language model means that every distinct pair of words must
+have its own unique loop-back transition.  This increases the size of
+the network considerably and slows down the recogniser.
+When a back-off bigram is used, however, backed-off transitions
+can share a common loop-back transition.  Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>
+illustrates this.  When backed-off bigrams are input via an ARPA MIT-LL 
+format file, HB<SMALL>UILD</SMALL> will exploit this where possible.
+
+<P>
+Finally, HB<SMALL>UILD</SMALL> can automatically construct a 
+word-pair grammar<A NAME="19700">&#160;</A> as 
+used in the ARPA Naval Resource Management task.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

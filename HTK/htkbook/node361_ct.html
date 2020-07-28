@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node362_mn.html">
+<LINK REL="previous" HREF="node360_mn.html">
+<LINK REL="up" HREF="node360_mn.html">
+<LINK REL="next" HREF="node362_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051211000000000000000">&#160;</A><A NAME="s:HVite-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="31691">&#160;</A>
+HV<SMALL>ITE</SMALL> is a general-purpose Viterbi word recogniser.  It will 
+match a speech file against a network of HMMs and output a transcription 
+for each.  When performing N-best recognition a word level lattice 
+containing multiple hypotheses can also be produced.
+
+<P>
+Either a word level lattice or a label file is read in and then
+expanded using the supplied dictionary to create a model based 
+network.  This allows arbitrary finite state word networks and
+simple forced alignment to be specified.
+
+<P>
+This expansion can be used to create context independent, word internal
+context dependent and cross word context dependent networks.  The way
+in which the expansion is performed is determined automatically from
+the dictionary and HMMList.  When all labels appearing in the
+dictionary are defined in the HMMList no expansion of model names is 
+performed.  Otherwise if all the labels in the dictionary can be 
+satisfied by models dependent only upon word internal context these
+will be used else cross word context expansion will be performed.
+These defaults can be overridden by HN<SMALL>ET</SMALL> configuration parameters.
+
+<P>
+HV<SMALL>ITE</SMALL> supports shared parameters and appropriately pre-computes 
+output probabilities. 
+For increased processing speed, HV<SMALL>ITE</SMALL> can optionally perform a beam
+search controlled by a user specified threshold (see <TT>-t</TT> option).
+When fully tied mixture models are used, observation pruning is also provided
+(see the  <TT>-c</TT> option).
+Speaker adaptation is also supported by HV<SMALL>ITE</SMALL> both in terms of 
+recognition using an adapted model set or a TMF (see the <TT>-k</TT> option),  
+and in the estimation of a transform by unsupervised adaptation using 
+linear transformation  in an incremental mode (see the <TT>-j</TT> option) or 
+in a batch mode (<TT>-K</TT> option).
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

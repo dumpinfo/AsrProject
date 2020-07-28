@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Evaluating Recognition Results</TITLE>
+<META NAME="description" CONTENT="Contents of Evaluating Recognition Results">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node172_mn.html">
+<LINK REL="previous" HREF="node170_mn.html">
+<LINK REL="up" HREF="node167_mn.html">
+<LINK REL="next" HREF="node172_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION031040000000000000000">&#160;</A><A NAME="s:receval">&#160;</A>
+<BR>
+Evaluating Recognition Results
+</H1>
+
+<P>
+<A NAME="20646">&#160;</A>
+Once the test data has been processed by the recogniser, the next step is to
+analyse the results. The tool <A NAME="20861">&#160;</A>
+HR<SMALL>ESULTS</SMALL> is provided for this purpose. HR<SMALL>ESULTS</SMALL> compares 
+the transcriptions output by HV<SMALL>ITE</SMALL> with the original reference
+transcriptions and then outputs various statistics. HR<SMALL>ESULTS</SMALL> matches
+each of the recognised and reference label sequences by performing an optimal
+string match<A NAME="20652">&#160;</A> using dynamic programming. Except when
+scoring word-spotter output as described later, it does not take any notice of
+any boundary timing information stored in the files being compared.  The
+optimal string match works by calculating a score for the match with respect to
+the reference such that identical labels match with score 0, a label insertion
+carries a score of 7, a deletion carries a score of 7 and a substitution
+carries a score of 10<A NAME="tex2html50" HREF="footnode_mn.html#foot20862" TARGET="footer"><SUP><SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A>. The optimal
+string match is the label alignment which has the lowest possible score.
+
+<P>
+Once the optimal alignment has been found, the number of substitution
+errors (<SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img36.png"
+ ALT="$ S$"></SPAN>), deletion errors (<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img463.png"
+ ALT="$ D$"></SPAN>) and insertion errors (<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img202.png"
+ ALT="$ I$"></SPAN>) can be
+calculated.  The percentage correct is then
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\mbox{Percent Correct} = \frac{N-D-S}{N} \times 100\%
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH">Percent Correct<IMG
+ WIDTH="159" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img478.png"
+ ALT="$\displaystyle = \frac{N-D-S}{N} \times 100\%$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> is the total number of labels in the reference transcriptions.
+Notice that this measure ignores insertion errors.  For many purposes,
+the percentage accuracy defined as
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\mbox{Percent Accuracy} = \frac{N-D-S-I}{N} \times 100\%
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH">Percent Accuracy<IMG
+ WIDTH="187" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img479.png"
+ ALT="$\displaystyle = \frac{N-D-S-I}{N} \times 100\%$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+is a more representative figure of 
+recogniser performance<A NAME="20664">&#160;</A>.
+
+<P>
+HR<SMALL>ESULTS</SMALL> outputs both of the above measures. As with all 
+HTK tools it can process individual label files and files stored in MLFs.
+Here the examples will assume that both reference and test transcriptions
+are stored in MLFs.
+
+<P>
+As an example of use, suppose that the MLF <TT>results</TT> contains
+recogniser output transcriptions, <TT>refs</TT> contains
+the corresponding reference transcriptions and <TT>wlist</TT>
+contains a list of all labels appearing in these files.  Then typing the command
+<PRE>
+    HResults -I refs wlist results
+</PRE>
+would generate something like the following
+<PRE>
+  ====================== HTK Results Analysis =======================
+    Date: Sat Sep  2 14:14:22 1995
+    Ref : refs
+    Rec : results
+  ------------------------ Overall Results --------------------------
+  SENT: %Correct=98.50 [H=197, S=3, N=200]
+  WORD: %Corr=99.77, Acc=99.65 [H=853, D=1, S=1, I=1, N=855]
+  ===================================================================
+</PRE>
+The first part shows the date and the names of the files being used.
+The line labelled <TT>SENT</TT> shows the total number of 
+complete sentences which were recognised correctly.  The second line 
+labelled <TT>WORD</TT> 
+gives the
+recognition statistics<A NAME="20675">&#160;</A> for the individual words<A NAME="tex2html51" HREF="footnode_mn.html#foot20863" TARGET="footer"><SUP><SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A>.
+
+<P>
+It is often useful to visually inspect the 
+recognition errors<A NAME="20681">&#160;</A>.  Setting the
+<TT>-t</TT> option causes aligned test and reference transcriptions to
+be output for all sentences containing errors.  For example, a typical
+output might be
+<PRE>
+  Aligned transcription: testf9.lab vs testf9.rec
+   LAB: FOUR    SEVEN NINE THREE
+   REC: FOUR OH SEVEN FIVE THREE
+</PRE>
+here an ``oh'' has been inserted by the recogniser and ``nine''
+has been recognised as ``five''
+
+<P>
+If preferred, results output can be formatted in an identical
+manner to NIST scoring software<A NAME="20685">&#160;</A> by setting the  <TT>-h</TT> option.
+For example, the results given above would appear as follows in
+NIST format<A NAME="20687">&#160;</A>
+<PRE>
+  ,-------------------------------------------------------------.
+  | HTK Results Analysis at Sat Sep  2 14:42:06 1995            |
+  | Ref: refs                                                   |
+  | Rec: results                                                |
+  |=============================================================|
+  |           # Snt |  Corr    Sub    Del    Ins    Err  S. Err |
+  |-------------------------------------------------------------|
+  | Sum/Avg |  200  |  99.77   0.12   0.12   0.12   0.35   1.50 |
+  `-------------------------------------------------------------'
+</PRE>
+
+<P>
+When computing recognition results it is sometimes
+inappropriate to distinguish certain labels.  For example, to assess
+a digit recogniser used for voice dialing it might be required to
+treat the alternative vocabulary items ``oh'' and ``zero'' as being
+equivalent.  This can be done by making them equivalent using the
+<TT>-e</TT> option, that is
+<PRE>
+    HResults -e ZERO OH  .....
+</PRE>
+If a label is equated to the special label <code>???</code>, then it 
+is ignored.  Hence, for example, if the recognition output had
+silence marked by <TT>SIL</TT>, the setting the option
+<code>-e ??? SIL</code> would cause all the <TT>SIL</TT> labels to be
+ignored.<A NAME="20695">&#160;</A>
+
+<P>
+HR<SMALL>ESULTS</SMALL> contains a number of other options.
+Recognition statistics can be generated for each file
+individually by setting the <TT>-f</TT> option and a 
+confusion matrix<A NAME="20698">&#160;</A>
+can be generated by setting the  <TT>-p</TT> option.
+When comparing phone recognition results, HR<SMALL>ESULTS</SMALL> will
+strip any triphone contexts by setting the  <TT>-s</TT> option.
+HR<SMALL>ESULTS</SMALL> can also process N-best recognition output.
+Setting the option <TT>-d N</TT> causes HR<SMALL>ESULTS</SMALL> to
+search the first <TT>N</TT> alternatives of each test output
+file to find the most accurate match with the reference labels.
+
+<P>
+When analysing the performance of a speaker independent recogniser
+it is often useful to obtain accuracy figures on a per speaker basis.
+This can be done using the option <TT>-k mask</TT> where <TT>mask</TT>
+is a pattern used to extract 
+the speaker identifier<A NAME="20708">&#160;</A> from the test label file name.  
+The pattern consists of a string of characters which can include
+the pattern matching metacharacters 
+<TT>*</TT> and <TT>?</TT> to match zero or more characters and a single character,
+respectively.
+The pattern
+should also contain a string of one or more <TT>%</TT> characters which
+are used as a mask to identify the speaker identifier.  
+
+<P>
+For example,
+suppose that the test filenames had the following structure
+<PRE>
+    DIGITS_spkr_nnnn.rec
+</PRE>
+where <TT>spkr</TT> is a 4 character speaker id and <TT>nnnn</TT>
+is a 4 digit utterance id.  Then executing HR<SMALL>ESULTS</SMALL> by
+<PRE>
+    HResults -h -k '*_%%%%_????.*' ....
+</PRE>
+would give output of the form
+<PRE>
+    ,-------------------------------------------------------------.
+    | HTK Results Analysis at Sat Sep  2 15:05:37 1995            |
+    | Ref: refs                                                   |
+    | Rec: results                                                |
+    |-------------------------------------------------------------|
+    |    SPKR | # Snt |  Corr    Sub    Del    Ins    Err  S. Err |
+    |-------------------------------------------------------------|
+    |    dgo1 |   20  | 100.00   0.00   0.00   0.00   0.00   0.00 |
+    |-------------------------------------------------------------|
+    |    pcw1 |   20  |  97.22   1.39   1.39   0.00   2.78  10.00 |
+    |-------------------------------------------------------------|
+    ......
+    |=============================================================|
+    | Sum/Avg |  200  |  99.77   0.12   0.12   0.12   0.35   1.50 |
+    `-------------------------------------------------------------'
+</PRE>
+
+<P>
+In addition to string matching, HR<SMALL>ESULTS</SMALL> can also 
+analyse the results of a recogniser configured for word-spotting.
+In this case, there is no DP alignment.  Instead, each recogniser
+label <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img337.png"
+ ALT="$ w$"></SPAN> is compared with the reference transcriptions.
+If the start and end times of <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img337.png"
+ ALT="$ w$"></SPAN> lie either side of the mid-point
+of an identical label in the reference, then that recogniser label
+represents a <SPAN  CLASS="textit">hit</SPAN>, otherwise it is a <SPAN  CLASS="textit">false-alarm</SPAN> (FA).
+
+<P>
+The recogniser output must include the log likelihood scores as
+well as the word boundary information.  <A NAME="20724">&#160;</A>
+These scores are used to compute the <SPAN  CLASS="textit">Figure of Merit</SPAN> (FOM)
+defined by NIST which is an upper-bound estimate on word spotting
+accuracy averaged over 1 to 10 false alarms per hour.
+The FOM<A NAME="20726">&#160;</A> is calculated  as follows where it is assumed that the
+total duration of the test speech is <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img183.png"
+ ALT="$ T$"></SPAN> hours.  For each word, all of
+the spots are ranked in score order.  The percentage of true hits
+<SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img480.png"
+ ALT="$ p_i$"></SPAN> found before the <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN>'th false alarm is then calculated for 
+<!-- MATH
+ $i = 1 \ldots N+1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="104" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img481.png"
+ ALT="$ i = 1 \ldots N+1$"></SPAN> where <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> is the first integer <!-- MATH
+ $\ge 10T - 0.5$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="88" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img482.png"
+ ALT="$ \ge 10T - 0.5$"></SPAN>.
+The figure of merit is then defined as
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:nistfom">&#160;</A><!-- MATH
+ \begin{equation}
+\mbox{FOM} = \frac{1}{10T}(p_1 + p_2 + \ldots + p_N + a p_{N+1})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH">FOM<IMG
+ WIDTH="256" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img483.png"
+ ALT="$\displaystyle = \frac{1}{10T}(p_1 + p_2 + \ldots + p_N + a p_{N+1})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $a = 10T - N$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="95" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img484.png"
+ ALT="$ a = 10T - N$"></SPAN> is a factor that interpolates to 10 false
+alarms per hour.
+
+<P>
+Word spotting analysis is enabled by setting the <TT>-w</TT> option
+and the resulting output has the form
+<PRE>
+  ------------------- Figures of Merit --------------------
+      KeyWord:    #Hits     #FAs  #Actual      FOM
+        BADGE:       92       83      102    73.56
+       CAMERA:       20        2       22    89.86
+       WINDOW:       84        8       92    86.98
+        VIDEO:       72        6       72    99.81
+      Overall:      268       99      188    87.55
+  ---------------------------------------------------------
+</PRE>
+If required the standard time unit of 1 hour as used in the above
+definition of FOM can be changed using the <TT>-u option</TT>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of MU m itemList(p)</TITLE>
+<META NAME="description" CONTENT="Contents of MU m itemList(p)">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node283_mn.html">
+<LINK REL="previous" HREF="node281_mn.html">
+<LINK REL="up" HREF="node266_mn.html">
+<LINK REL="next" HREF="node283_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H3><A NAME="SECTION051711600000000000000">
+<TT>MU m itemList(p)</TT></A>
+</H3>
+
+<P>
+Increase the number of non-defunct mixture components
+in each pdf in the <TT>itemList</TT> to <TT>m</TT> (when <TT>m</TT> 
+is just a number) or by <TT>m</TT> (when <TT>m</TT> is a number 
+preceeded by a <TT>+</TT> sign.  A defunct mixture
+is one for which the weight has fallen below <TT>MINMIX</TT>. This command
+works in two steps.  Firstly, the weight of each mixture
+in each pdf is checked.  If any defunct mixtures are discovered, 
+then each is successively replaced by a non-defunct
+mixture component until either the required total number of non-defunct
+mixtures is reached or there are no defunct mixtures left.
+This replacement works by first deleting the defunct mixture
+and then finding the mixture with the largest weight and splitting
+it.
+The split operation is as follows.  The weight of the mixture
+component is first halved and then the mixture is cloned.  The
+two identical mean vectors are then perturbed by adding <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img632.png"
+ ALT="$ 0.2$"></SPAN>
+standard deviations to one and subtracting the same amount
+from the other.
+
+<P>
+In the second step, the mixture component with the largest
+weight is split as above.  This is repeated until the required
+number of mixture components are obtained.
+Whenever, a mixture is split, a count is incremented  for that mixture
+so that splitting occurs evenly across the mixtures.  Furthermore,
+a mixture whose <I>gconst</I> value falls more than four standard
+deviations below the mean is not split.
+
+<P>
+As an example, the command
+<PRE>
+         MU 6 {*-aa+*.state[3].mix}
+</PRE>
+would increase the number of mixture components in state 3
+of all triphones of <TT>aa</TT> to 6.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

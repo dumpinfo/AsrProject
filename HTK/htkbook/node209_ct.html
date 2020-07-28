@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Word Map Files</TITLE>
+<META NAME="description" CONTENT="Contents of Word Map Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node210_mn.html">
+<LINK REL="previous" HREF="node208_mn.html">
+<LINK REL="up" HREF="node206_mn.html">
+<LINK REL="next" HREF="node210_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04330000000000000000">&#160;</A><A NAME="s:wmaps">&#160;</A>
+<BR>
+Word Map Files
+</H1>
+
+<P>
+A word map file is a text file consisting of a header and a list of
+word entries.  The header<A NAME="23386">&#160;</A> contains the
+following
+
+<OL>
+<LI>a name consisting of any printable character string 
+      (<TT>Name=sss</TT>).
+
+<P>
+</LI>
+<LI>the number of word entries (<TT>Entries=nnn</TT>)
+
+<P>
+</LI>
+<LI>a sequence number (<TT>SeqNo=nnn</TT>)
+
+<P>
+</LI>
+<LI>whether or not word ids <TT>ID</TT>s and word frequency counts 
+      <TT>WFC</TT>s are included (<TT>Fields=ID</TT> or
+      <TT>Fields=ID,WFC</TT>).  When the <TT>Fields</TT> field is
+      missing, the word map contains only word names and it
+      degenerates to the special case of a word list.
+
+<P>
+</LI>
+<LI>escaping mode (<TT>EscMode=HTK</TT> or <TT>EscMode=RAW</TT>). 
+      The default is <TT>HTK</TT>.
+
+<P>
+</LI>
+<LI>the language (<TT>Language=xxx</TT>)
+
+<P>
+</LI>
+<LI>word map source, a text string used with derived word maps
+      to describe the source from which the subset was derived.
+      (<TT>Source=...</TT>).
+
+<P>
+</LI>
+</OL>
+The first two of these fields must always be included, and for word
+maps, the <TT>Fields</TT> field must also be included.  The remaining
+fields are optional.  More header fields may be defined later and the
+user is free to insert others.
+
+<P>
+The word entries begin with the keyword <code>\Words\</code>.  Each word is
+on a separate line with the format<A NAME="23403">&#160;</A>
+<PRE>
+    word [id [count]]
+</PRE>
+where the id and count are optional. Proper word maps always have an
+<TT>id</TT>.  When the <TT>count</TT> is included, it denotes the
+number of times that the word has been encountered during the
+processing of text data.
+
+<P>
+For example, a typical word map file might be
+<PRE>
+    Name=US_Business_News
+    SeqNo=13
+    Entries=133986
+    Fields=ID,WFC
+    Language=American
+    EscMode=RAW
+    \Words\
+    &lt;s&gt;    65536 34850
+    CAN'T  65537 2087
+    THE    65538 12004
+    DOLLAR 65539 169
+    IS     65540 4593
+    ....
+</PRE>
+In this example,<A NAME="23410">&#160;</A> the word map is called
+``US_Business_News'' and it has been updated 13 times since it was
+originally created.  It contains a total of 133986 entries and word
+frequency counts are included.  The language is ``American'' and there
+is no escaping used (e.g. can't is written <code>CAN'T</code> rather than
+the standard HTK escaped form of <code>CAN\'T</code>).
+
+<P>
+As noted above, when the <TT>Fields</TT> field is missing, the word
+map contains only the words and serves the purpose of a simple word
+list.  For example, a typical word list might be defined as follows
+<PRE>
+    Name=US_Business_News
+    Entries=10000
+    \Words\
+    A
+    ABLE
+    ABOUT
+    ...
+    ZOO
+</PRE>
+Word lists are used to define subsets of the words in a word map.
+Whenever a tool requires a word list, a simple list of words
+can be input instead of the above.  For example, the previous list
+could be input as
+<PRE>
+    A
+    ABLE
+    ABOUT
+    ...
+    ZOO
+</PRE>
+In this case, the default is to assume that all input words are
+escaped.  If raw mode input is required, the configuration variable
+<TT>INWMAPRAW</TT> should be set true (see
+section&nbsp;<A HREF="node49_ct.html#s:htkstrings">4.6</A>).<A NAME="23418">&#160;</A>
+
+<P>
+As explained in section&nbsp;<A HREF="node49_ct.html#s:htkstrings">4.6</A>, by default HTK tools
+output word maps in HTK escaped form.  However, this can be overridden
+by setting the LWM<SMALL>AP</SMALL> configuration variable
+<TT>OUTWMAPRAW</TT> to true.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

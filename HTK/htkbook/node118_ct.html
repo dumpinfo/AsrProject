@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Single-Pass Retraining</TITLE>
+<META NAME="description" CONTENT="Contents of Single-Pass Retraining">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node119_mn.html">
+<LINK REL="previous" HREF="node117_mn.html">
+<LINK REL="up" HREF="node112_mn.html">
+<LINK REL="next" HREF="node119_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03560000000000000000">&#160;</A><A NAME="s:singlepass">&#160;</A>
+<BR>
+Single-Pass Retraining
+</H1>
+
+<P>
+In addition to re-estimating the parameters of a HMM set, HER<SMALL>EST</SMALL>
+also provides a mechanism for mapping a set of models trained using
+one parameterisation into another set based on a different parameterisation.
+This facility allows the front-end of a HMM-based recogniser to be 
+modified without having to rebuild the models from scratch.
+
+<P>
+This facility is known as single-pass retraining<A NAME="13836">&#160;</A>.
+Given one set of well-trained models, a new set matching a
+different training data parameterisation can be generated in a single
+re-estimation pass. This is done by computing the forward and backward
+probabilities using the original models together with the original
+training data, but then switching to the new training data to compute
+the parameter estimates for the new set of models.
+
+<P>
+Single-pass retraining is enabled in HER<SMALL>EST</SMALL> by setting the
+<TT>-r</TT> switch.  This causes the input training files to be read
+in pairs.  The first of each pair is used to compute the
+forward/backward probabilities and the second is used to estimate the
+parameters for the new models.  Very often, of course, data input to
+HTK is modified by the HP<SMALL>ARM</SMALL> module in accordance with
+parameters set in a configuration file.  In single-pass retraining mode,
+configuration parameters can be prefixed by the pseudo-module names
+<TT>HPARM1</TT> and <TT>HPARM2</TT>.  Then when reading in the first
+file of each pair, only the <TT>HPARM1</TT> parameters are used and
+when reading the second file of each pair, only the <TT>HPARM2</TT>
+parameters are used.<A NAME="13844">&#160;</A>
+
+<P>
+As an example, suppose that a set of models has been trained on data
+with <TT>MFCC_E_D</TT> parameterisation and a new set of models using
+Cepstral Mean Normalisation (<TT>_Z</TT>) is required. These two data
+parameterisations are specified in a configuration file
+(<TT>config</TT>) as two separate instances of the configuration
+variable <TT>TARGETKIND</TT> i.e.
+<PRE>
+    # Single pass retraining
+    HPARM1: TARGETKIND = MFCC_E_D
+    HPARM2: TARGETKIND = MFCC_E_D_Z
+</PRE>
+HER<SMALL>EST</SMALL> would then be invoked with the <TT>-r</TT> option set to enable 
+single-pass retraining. For example,
+<PRE>
+    HERest -r -C config -S trainList -I labs -H dir1/hmacs -M dir2 hmmList
+</PRE>
+The script file  <TT>trainlist</TT> contains a list of data file
+pairs. For each pair, the first file should match the parameterisation of 
+the original model set and the second file should match that of the
+required new set.
+This will cause the model parameter estimates to be performed using the 
+new set of training data and a new set of models matching this data will  
+be output to <TT>dir2</TT>. This process of single-pass retraining is
+a significantly faster route to a new set of models than training a fresh 
+set from scratch.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Embedded Training using HEREST</TITLE>
+<META NAME="description" CONTENT="Contents of Embedded Training using HEREST">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node118_mn.html">
+<LINK REL="previous" HREF="node116_mn.html">
+<LINK REL="up" HREF="node112_mn.html">
+<LINK REL="next" HREF="node118_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03550000000000000000">&#160;</A><A NAME="s:eresthmm">&#160;</A>
+<BR>
+Embedded Training using HER<SMALL>EST</SMALL>
+</H1>
+
+<P>
+<A NAME="13744">&#160;</A>
+Whereas isolated unit training is sufficient for  building whole  word
+models and initialisation of models using hand-labelled <SPAN  CLASS="textit">bootstrap</SPAN>
+data,  the main HMM training procedures for building sub-word systems
+revolve around the  concept of <SPAN  CLASS="textit">embedded training</SPAN>. Unlike the
+processes described so far,  embedded training<A NAME="13747">&#160;</A> simultaneously updates all
+of the HMMs in a system using all of the training data.  It is performed by
+HER<SMALL>EST</SMALL><A NAME="14315">&#160;</A> which, unlike HR<SMALL>EST</SMALL>, performs just a single iteration.  
+<A NAME="13751">&#160;</A>
+
+<P>
+In outline, HER<SMALL>EST</SMALL> works as follows.  On startup, HER<SMALL>EST</SMALL> 
+loads in a complete
+set of HMM definitions.  Every training file must have an associated
+label file which gives a transcription for that file.  Only the
+sequence of labels is used by HER<SMALL>EST</SMALL>, however, and any boundary location
+information is ignored.  Thus, these transcriptions can be generated
+automatically from the known orthography of what was said and 
+a pronunciation dictionary.
+
+<P>
+HER<SMALL>EST</SMALL> processes each training file in turn.  After loading it into memory,
+it uses the associated transcription to 
+construct a  composite HMM which spans the whole utterance.
+This composite HMM is made by concatenating instances of the phone HMMs 
+corresponding to each label in the transcription.  The Forward-Backward
+algorithm is then applied and the sums needed to form the weighted
+averages accumulated in the normal way.  When all of the training
+files have been processed, the new parameter estimates are formed
+from the weighted sums and the updated HMM set is output.
+<A NAME="13756">&#160;</A>
+
+<P>
+The mathematical details of embedded Baum-Welch re-estimation
+are given below in section&nbsp;<A HREF="node120_ct.html#s:bwformulae">8.8</A>.
+
+<P>
+In order to use HER<SMALL>EST</SMALL>, it is first necessary to construct a 
+file containing a list
+of all HMMs in the model set with each model name being written on a separate line.
+The names of the models in this<A NAME="13759">&#160;</A>
+list must correspond to the labels used in the transcriptions and there
+must be a corresponding model for every distinct transcription label.
+HER<SMALL>EST</SMALL> is typically invoked by a command line of the form
+<PRE>
+    HERest -S trainlist -I labs -H dir1/hmacs -M dir2 hmmlist
+</PRE>
+where <TT>hmmlist</TT> contains the list of HMMs.  On startup, HER<SMALL>EST</SMALL> will 
+load the HMM master macro file (MMF) <TT>hmacs</TT> (there may be
+several of these).  It then searches for a definition for each
+HMM listed in the <TT>hmmlist</TT>, if any HMM name is not found, 
+it attempts to open a file of the same name in the current directory
+(or a directory designated by the <TT>-d</TT> option).
+Usually in large subword systems, however, all of the HMM definitions
+will be stored in MMFs.  Similarly, all of the required transcriptions
+will be stored in one or more Master Label Files
+<A NAME="13768">&#160;</A> (MLFs), and in the
+example, they are stored in the single MLF called <TT>labs</TT>.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:herestdp">&#160;</A><IMG
+ WIDTH="412" HEIGHT="438" ALIGN="MIDDLE" BORDER="0"
+ SRC="img260.png"
+ ALT="% latex2html id marker 50446
+$\textstyle \parbox{90mm}{ \begin{center}\setlength...
+...bic{figctr}  File Processing in \textsc{HERest}}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+Once all MMFs and MLFs have been loaded, HER<SMALL>EST</SMALL> processes each file in the
+<TT>trainlist</TT>, and accumulates the required statistics as described
+above.  On completion, an updated  MMF is output to the directory
+<TT>dir2</TT>.  If a second iteration is required, then HER<SMALL>EST</SMALL> is reinvoked
+reading in the MMF from <TT>dir2</TT> and outputing 
+a new one to <TT>dir3</TT>, and so on.
+This process is illustrated by Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.
+
+<P>
+When performing embedded training,  it is good practice to
+monitor the performance of the models on unseen test data
+and stop training when no further improvement is obtained.  Enabling
+top level tracing by setting <TT>-T 1</TT> will cause HER<SMALL>EST</SMALL> to
+output the overall log likelihood per frame of the training data.
+This measure could be used as a termination condition for
+repeated application of HER<SMALL>EST</SMALL>.  However, 
+repeated re-estimation to convergence<A NAME="13783">&#160;</A> 
+may take an impossibly long time.
+Worse still, it can lead to over-training since the models can become too
+closely matched to the training data and fail to generalise well on unseen
+test data.  Hence in practice around 2 to 5 cycles of 
+embedded re-estimation are normally sufficient when training phone
+models.
+
+<P>
+In order to get accurate acoustic models, a large amount of training
+data is needed.  Several hundred
+utterances are needed for speaker dependent recognition and
+several thousand are needed for
+speaker independent recognition.  In the latter case, a single
+iteration of embedded training
+might take several hours to compute.  There are two mechanisms for 
+speeding up this computation.  Firstly, HER<SMALL>EST</SMALL> has a pruning
+<A NAME="13785">&#160;</A> mechanism
+incorporated into its forward-backward computation.  HER<SMALL>EST</SMALL> calculates
+the backward probabilities <!-- MATH
+ $\beta_j(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.png"
+ ALT="$ \beta_j(t)$"></SPAN> first and then the forward probabilities
+<!-- MATH
+ $\alpha_j(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ \alpha_j(t)$"></SPAN>.
+The full computation of these probabilities for all values of state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN>
+and time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN> is unnecessary since many of these combinations will be highly
+improbable.   On the forward pass, HER<SMALL>EST</SMALL> restricts the computation of
+the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN> values to just those for which the total log likelihood 
+as determined by the product <!-- MATH
+ $\alpha_j(t)\beta_j(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img261.png"
+ ALT="$ \alpha_j(t)\beta_j(t)$"></SPAN> is
+within a fixed distance from the total likelihood <!-- MATH
+ $P({\mbox{\boldmath $O$}}|M)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="64" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img71.png"
+ ALT="$ P({\mbox{\boldmath $O$}}\vert M)$"></SPAN>.  This
+pruning is always enabled since it is completely safe and causes no loss
+of modelling accuracy.  
+
+<P>
+Pruning on the backward pass is also possible.
+However, in this case, the likelihood product <!-- MATH
+ $\alpha_j(t)\beta_j(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img261.png"
+ ALT="$ \alpha_j(t)\beta_j(t)$"></SPAN>
+is unavailable since <!-- MATH
+ $\alpha_j(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$ \alpha_j(t)$"></SPAN> has yet to be computed, and hence a 
+much broader <I>beam</I> must be set to
+avoid pruning errors.  Pruning on the backward path is therefore under
+user control. It is set using the <TT>-t</TT> option which has two 
+forms.  In the simplest case, a fixed pruning beam is set.  For example,
+using <TT>-t 250.0</TT> would set a fixed beam of 250.0.  This method
+is adequate when there is sufficient compute time available to 
+use a generously wide beam.  When a narrower beam is used, HER<SMALL>EST</SMALL> will 
+reject any utterance for which the beam proves to be too narrow.
+This can be avoided by using an incremental threshold.  For example,
+executing 
+<PRE>
+    HERest -t 120.0 60.0 240.0 -S trainlist -I labs \
+           -H dir1/hmacs -M dir2 hmmlist
+</PRE>
+would cause HER<SMALL>EST</SMALL> to run normally
+at a beam width<A NAME="13796">&#160;</A> of 120.0.  However, if a pruning 
+error<A NAME="13797">&#160;</A> occurs, the
+beam is increased by 60.0 and HER<SMALL>EST</SMALL> reprocesses the offending training
+utterance.  Repeated errors cause the beam width to be increased
+again and this continues until either the utterance is 
+successfully processed or the upper beam limit is reached, in this
+case 240.0.  Note that errors which occur at very high beam widths
+are often caused by transcription errors, hence, it is best not to
+set the upper limit too high.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:parher">&#160;</A><IMG
+ WIDTH="412" HEIGHT="386" ALIGN="MIDDLE" BORDER="0"
+ SRC="img262.png"
+ ALT="% latex2html id marker 50465
+$\textstyle \parbox{90mm}{ \begin{center}\setlength...
+...bic{figctr}  \textsc{HERest} Parallel Operation}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+<A NAME="13802">&#160;</A>
+The second way of speeding-up the operation of HER<SMALL>EST</SMALL> is to use more than
+one computer in parallel.  The way that this is done is to divide the
+training data amongst the available machines and then to run HER<SMALL>EST</SMALL> on each
+machine such that each invocation of HER<SMALL>EST</SMALL> 
+uses the same initial set of models but has its own private set of data.
+By setting the option <TT>-p N</TT> where <TT>N</TT> is an integer, HER<SMALL>EST</SMALL> will
+dump the contents of all its accumulators<A NAME="13809">&#160;</A>  into a file called <TT>HERN.acc</TT>
+rather than updating and outputing a new set of models.  These dumped
+files are collected together and input to a new invocation of HER<SMALL>EST</SMALL> with
+the option <TT>-p 0</TT> set.  HER<SMALL>EST</SMALL> then reloads the accumulators from
+all of the dump files and updates the models in the normal way.
+This process is illustrated in Figure&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.
+
+<P>
+To give a concrete example, suppose that four networked workstations
+were available to execute the HER<SMALL>EST</SMALL> command given earlier. The training files 
+listed previously in <TT>trainlist</TT> would be split 
+into four equal sets and a list
+of the files in each set stored in <TT>trlist1</TT>, 
+<TT>trlist2</TT>, <TT>trlist3</TT>, and <TT>trlist4</TT>.
+On the first workstation, the command
+<PRE>
+    HERest -S trlist1 -I labs -H dir1/hmacs -M dir2 -p 1 hmmlist
+</PRE>
+would be executed.  This will load in the HMM definitions in 
+<TT>dir1/hmacs</TT>, process the files listed in <TT>trlist1</TT> and finally
+dump its accumulators into a file called <TT>HER1.acc</TT> in the output
+directory <TT>dir2</TT>.  At the same time, the command
+<PRE>
+    HERest -S trlist2 -I labs -H dir1/hmacs -M dir2 -p 2 hmmlist
+</PRE>
+would be executed on the second workstation, and so on.  When 
+HER<SMALL>EST</SMALL> has finished on all four
+workstations,  the following command will be executed on just one of them
+<PRE>
+    HERest -H dir1/hmacs -M dir2 -p 0 hmmlist dir2/*.acc
+</PRE>
+where the list of training files has been replaced by the dumped accumulator
+files.  This will cause the accumulated
+statistics to be reloaded and merged so that the model parameters can
+be reestimated and the new model set output to <TT>dir2</TT>
+The time to perform this last phase of the operation is very small, hence
+the whole process will be around four times quicker than for the
+straightforward sequential case. 
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

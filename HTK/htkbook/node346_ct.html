@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node347_mn.html">
+<LINK REL="previous" HREF="node345_mn.html">
+<LINK REL="up" HREF="node344_mn.html">
+<LINK REL="next" HREF="node347_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051172000000000000000">&#160;</A><A NAME="s:HResults-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HR<SMALL>ESULTS</SMALL> is invoked by typing the command line
+<PRE>
+   HResults [options] hmmList recFiles ...
+</PRE>
+This causes HR<SMALL>ESULTS</SMALL> to be applied to each <TT>recFile</TT> in turn.  The
+<TT>hmmList</TT> should contain a list of all model names for which result
+information is required.  Note, however, that since the context dependent parts
+of a label can be stripped, this list is not necessarily the same as the one
+used to perform the actual recognition.  For each <TT>recFile</TT>, a
+transcription file with the same name but the extension <TT>.lab</TT> (or some
+user specified extension - see the <TT>-X</TT> option) is read in and matched with
+it. The <TT>recfiles</TT> may be master label files (MLFs), but note that even if  such an MLF is loaded using the <TT>-I</TT> option, the list of files to be checked still needs to be passed, either as individual command line arguments or via a script with the <TT>-S</TT> option. For this reason, it is simpler to pass the <TT>recFile</TT> MLF as one of the command line filename arguments. For loading reference label file MLF's, the <TT>-I</TT> option must be used. The reference labels and the recognition labels must have different file extensions.
+The available options are
+
+<DL COMPACT>
+<DT><TT>-a s</TT>
+<DD>change the label <TT>SENT</TT> in the output to 
+      <TT>s</TT>.
+
+<P>
+<DT><TT>-b s</TT>
+<DD>change the label <TT>WORD</TT> in the output to 
+      <TT>s</TT>.
+
+<P>
+<DT><TT>-c</TT>
+<DD>when comparing labels convert to upper case.  Note that
+      case is still significant for equivalences (see <TT>-e</TT> below).
+
+<P>
+<DT><TT>-d N</TT>
+<DD>search the first <TT>N</TT> alternatives for each test label
+      file to find the most accurate match with the reference labels.
+      Output results will be based on the most accurate match to allow 
+      NBest error rates to be found.
+
+<P>
+<DT><TT>-e s t</TT>
+<DD>the label <TT>t</TT> is made equivalent to the
+      label <TT>s</TT>.  More precisely, <TT>t</TT> is assigned to an equivalence
+      class of which <TT>s</TT> is the identifying member.
+
+<P>
+<DT><TT>-f</TT>
+<DD>Normally, HR<SMALL>ESULTS</SMALL> accumulates statistics for all
+      input files and just outputs a summary on completion.
+      This option forces match statistics to be output for each
+      input test file.
+
+<P>
+<DT><TT>-g fmt</TT>
+<DD>This sets the test label format to <TT>fmt</TT>. 
+      If this is not set, the <TT>recFiles</TT> should be in the
+      same format as the reference files.
+
+<P>
+<DT><TT>-h</TT>
+<DD>Output the results in the same format as US NIST scoring 
+      software.
+
+<P>
+<DT><TT>-k s</TT>
+<DD>Collect and output results on a speaker by speaker basis
+      (as well as globally).  <TT>s</TT> defines a pattern which is used 
+      to extract the speaker identifier from the test label file name.
+      In addition to the pattern matching metacharacters 
+      <TT>*</TT> and <TT>?</TT>
+      (which match zero or more characters and a single character 
+      respectively), the character <TT>%</TT> matches any character whilst
+      including it as part of the speaker identifier.
+
+<P>
+<DT><TT>-m N</TT>
+<DD>Terminate after collecting statistics from the first
+      <TT>N</TT> files.  
+
+<P>
+<DT><TT>-n</TT>
+<DD>Set US NIST scoring software compatibility.
+
+<P>
+<DT><TT>-p</TT>
+<DD>This option causes a phoneme confusion matrix to
+      be output.
+
+<P>
+<DT><TT>-s</TT>
+<DD>This option causes all phoneme labels with the form
+      <TT>A-B+C</TT> to be converted to <TT>B</TT>.  It is useful for
+      analysing the results of phone recognisers using context dependent
+      models.
+
+<P>
+<DT><TT>-t</TT>
+<DD>This option causes a time-aligned transcription of
+      each test file to be output provided that it differs from
+      the reference transcription file.
+
+<P>
+<DT><TT>-u f</TT>
+<DD>Changes the time unit for calculating false alarm
+      rates (for word spotting scoring) to <TT>f</TT> hours (default is 1.0).
+
+<P>
+<DT><TT>-w</TT>
+<DD>Perform word spotting analysis rather than string
+      accuracy calculation.  
+
+<P>
+<DT><TT>-z s</TT>
+<DD>This redefines the null class name to <TT>s</TT>. 
+  The default null class name is <TT>???</TT>, which may be difficult 
+  to manage in shell script programming.
+
+<P>
+
+  <DT><TT>-G fmt</TT>
+<DD>Set the label file format to <TT>fmt</TT>.
+
+  <DT><TT>-I mlf</TT>
+<DD>This loads the master label file <TT>mlf</TT>.  This option
+     may be repeated to load several MLFs.
+
+  <DT><TT>-L dir</TT>
+<DD>Search directory <TT>dir</TT> for label files (default
+     is to search current directory).
+
+  <DT><TT>-X ext</TT>
+<DD>Set label file extension to <TT>ext</TT> 
+  (default is <TT>lab</TT>).
+
+<P>
+</DD>
+</DL>
+
+HR<SMALL>ESULTS</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

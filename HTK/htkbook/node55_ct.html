@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Speech Input/Output</TITLE>
+<META NAME="description" CONTENT="Contents of Speech Input/Output">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node87_mn.html">
+<LINK REL="previous" HREF="node43_mn.html">
+<LINK REL="up" HREF="node42_mn.html">
+<LINK REL="next" HREF="node56_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03200000000000000000">&#160;</A><A NAME="c:speechio">&#160;</A>
+<BR>
+Speech Input/Output
+</H1>
+
+<P>
+Many tools need to input parameterised speech data and HTK provides 
+a number of different methods for doing this:
+
+<UL>
+<LI>input from a previously encoded speech parameter file
+</LI>
+<LI>input from a waveform file which is encoded as part of the 
+       input processing
+</LI>
+<LI>input from an audio device which is encoded as part of the 
+       input processing.
+</LI>
+</UL>
+For input from a waveform file, a large number of different file formats
+are supported, including all of the commonly used CD-ROM formats.
+Input/output for parameter files is limited to the standard HTK file format
+and the new Entropic Esignal format.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:Tool.spio">&#160;</A><IMG
+ WIDTH="276" HEIGHT="277" ALIGN="MIDDLE" BORDER="0"
+ SRC="img125.png"
+ ALT="$\textstyle \parbox{60mm}{ \begin{center}\setlength{\epsfxsize}{60mm}
+\epsfbox{HTKFigs//Tool.spio.eps}
+\end{center} }$">
+</DIV>
+
+<P>
+All HTK speech input<A NAME="5464">&#160;</A> is controlled by configuration
+parameters which give details of what processing operations to apply to each
+input speech file or audio source.  This chapter describes speech input/output
+in HTK.  The general mechanisms are explained and the various configuration
+parameters are defined.  The facilities for signal pre-processing, linear
+prediction-based processing, Fourier-based processing and vector quantisation
+are presented and the supported file formats are given.  Also described are the
+facilities for augmenting the basic speech parameters with energy measures,
+delta coefficients and acceleration (delta-delta) coefficients and for
+splitting each parameter vector into multiple data streams to form
+<SPAN  CLASS="textit">observations</SPAN>.  The chapter concludes with a brief description of the
+tools HL<SMALL>IST</SMALL> and HC<SMALL>OPY</SMALL> which are provided for viewing,
+manipulating and encoding speech files.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1848" HREF="node56_mn.html" TARGET="main"><SMALL>General Mechanism</SMALL></A>
+<LI><A NAME="tex2html1849" HREF="node57_mn.html" TARGET="main"><SMALL>Speech Signal Processing</SMALL></A>
+<LI><A NAME="tex2html1850" HREF="node58_mn.html" TARGET="main"><SMALL>Linear Prediction Analysis</SMALL></A>
+<LI><A NAME="tex2html1851" HREF="node59_mn.html" TARGET="main"><SMALL>Filterbank Analysis</SMALL></A>
+<LI><A NAME="tex2html1852" HREF="node60_mn.html" TARGET="main"><SMALL>Vocal Tract Length Normalisation</SMALL></A>
+<LI><A NAME="tex2html1853" HREF="node61_mn.html" TARGET="main"><SMALL>Cepstral Features</SMALL></A>
+<LI><A NAME="tex2html1854" HREF="node62_mn.html" TARGET="main"><SMALL>Perceptual Linear Prediction</SMALL></A>
+<LI><A NAME="tex2html1855" HREF="node63_mn.html" TARGET="main"><SMALL>Energy Measures</SMALL></A>
+<LI><A NAME="tex2html1856" HREF="node64_mn.html" TARGET="main"><SMALL>Delta, Acceleration and Third Differential Coefficients</SMALL></A>
+<LI><A NAME="tex2html1857" HREF="node65_mn.html" TARGET="main"><SMALL>Storage of Parameter Files</SMALL></A>
+<UL>
+<LI><A NAME="tex2html1858" HREF="node66_mn.html" TARGET="main"><SMALL>HTK Format Parameter Files</SMALL></A>
+<LI><A NAME="tex2html1859" HREF="node67_mn.html" TARGET="main"><SMALL>Esignal Format Parameter Files</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1860" HREF="node68_mn.html" TARGET="main"><SMALL>Waveform File Formats</SMALL></A>
+<UL>
+<LI><A NAME="tex2html1861" HREF="node69_mn.html" TARGET="main"><SMALL>HTK File Format</SMALL></A>
+<LI><A NAME="tex2html1862" HREF="node70_mn.html" TARGET="main"><SMALL>Esignal File Format</SMALL></A>
+<LI><A NAME="tex2html1863" HREF="node71_mn.html" TARGET="main"><SMALL>TIMIT File Format</SMALL></A>
+<LI><A NAME="tex2html1864" HREF="node72_mn.html" TARGET="main"><SMALL>NIST File Format</SMALL></A>
+<LI><A NAME="tex2html1865" HREF="node73_mn.html" TARGET="main"><SMALL>SCRIBE File Format</SMALL></A>
+<LI><A NAME="tex2html1866" HREF="node74_mn.html" TARGET="main"><SMALL>SDES1 File Format</SMALL></A>
+<LI><A NAME="tex2html1867" HREF="node75_mn.html" TARGET="main"><SMALL>AIFF File Format</SMALL></A>
+<LI><A NAME="tex2html1868" HREF="node76_mn.html" TARGET="main"><SMALL>SUNAU8 File Format</SMALL></A>
+<LI><A NAME="tex2html1869" HREF="node77_mn.html" TARGET="main"><SMALL>OGI File Format</SMALL></A>
+<LI><A NAME="tex2html1870" HREF="node78_mn.html" TARGET="main"><SMALL>WAV File Format</SMALL></A>
+<LI><A NAME="tex2html1871" HREF="node79_mn.html" TARGET="main"><SMALL>ALIEN and NOHEAD File Formats</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1872" HREF="node80_mn.html" TARGET="main"><SMALL>Direct Audio Input/Output</SMALL></A>
+<LI><A NAME="tex2html1873" HREF="node81_mn.html" TARGET="main"><SMALL>Multiple Input Streams</SMALL></A>
+<LI><A NAME="tex2html1874" HREF="node82_mn.html" TARGET="main"><SMALL>Vector Quantisation</SMALL></A>
+<LI><A NAME="tex2html1875" HREF="node83_mn.html" TARGET="main"><SMALL>Viewing Speech with HL<SMALL>IST</SMALL></SMALL></A>
+<LI><A NAME="tex2html1876" HREF="node84_mn.html" TARGET="main"><SMALL>Copying and Coding using HC<SMALL>OPY</SMALL></SMALL></A>
+<LI><A NAME="tex2html1877" HREF="node85_mn.html" TARGET="main"><SMALL>Version 1.5 Compatibility</SMALL></A>
+<LI><A NAME="tex2html1878" HREF="node86_mn.html" TARGET="main"><SMALL>Summary</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Linear Prediction Analysis</TITLE>
+<META NAME="description" CONTENT="Contents of Linear Prediction Analysis">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node59_mn.html">
+<LINK REL="previous" HREF="node57_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node59_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03230000000000000000">&#160;</A><A NAME="s:lpcanal">&#160;</A>
+<BR>
+Linear Prediction Analysis
+</H1>
+
+<P>
+In linear prediction (LP) <A NAME="5606">&#160;</A> analysis, the 
+vocal tract transfer function
+is modelled by an all-pole filter<A NAME="5607">&#160;</A> with transfer function<A NAME="tex2html20" HREF="footnode_mn.html#foot6622" TARGET="footer"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:allpole">&#160;</A><!-- MATH
+ \begin{equation}
+H(z) = \frac{1}{\sum_{i=0}^p a_i z^{-i}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="142" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img139.png"
+ ALT="$\displaystyle H(z) = \frac{1}{\sum_{i=0}^p a_i z^{-i}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">4</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img140.png"
+ ALT="$ p$"></SPAN> is the number of poles and <!-- MATH
+ $a_0 \equiv 1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.png"
+ ALT="$ a_0 \equiv 1$"></SPAN>.
+The filter coefficients <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img142.png"
+ ALT="$ \{a_i \}$"></SPAN> are chosen to minimise
+the mean square filter prediction error summed over the analysis
+window.  The HTK module HS<SMALL>IG</SMALL>P uses the <SPAN  CLASS="textit">autocorrelation
+method</SPAN> to perform this optimisation as follows.
+
+<P>
+Given a window of speech samples <!-- MATH
+ $\{s_n, n=1,N \}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="104" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img129.png"
+ ALT="$ \{s_n, n=1,N \}$"></SPAN>,
+the first <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img143.png"
+ ALT="$ p+1$"></SPAN> terms of the autocorrelation sequence are
+calculated from
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:autoco">&#160;</A><!-- MATH
+ \begin{equation}
+r_i = \sum_{j=1}^{N-i} s_j s_{j+i}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="109" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img144.png"
+ ALT="$\displaystyle r_i = \sum_{j=1}^{N-i} s_j s_{j+i}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">5</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="54" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img145.png"
+ ALT="$ i = 0,p$"></SPAN>.
+The filter coefficients are then computed recursively
+using a set of auxiliary coefficients <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img146.png"
+ ALT="$ \{k_i\}$"></SPAN> which can be
+interpreted as the reflection coefficients of an equivalent
+acoustic tube and the prediction error <SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img147.png"
+ ALT="$ E$"></SPAN> which is initially
+equal to <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.png"
+ ALT="$ r_0$"></SPAN>.  Let <!-- MATH
+ $\{k_j^{(i-1)} \}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="60" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img149.png"
+ ALT="$ \{k_j^{(i-1)} \}$"></SPAN> and <!-- MATH
+ $\{a_j^{(i-1)} \}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="60" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img150.png"
+ ALT="$ \{a_j^{(i-1)} \}$"></SPAN>
+be the reflection and filter coefficients for a filter of order
+<SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img151.png"
+ ALT="$ i-1$"></SPAN>, then a filter of order <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN> can be calculated in three steps.
+Firstly, a new set of reflection coefficients<A NAME="5623">&#160;</A> are calculated.
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:kupdate1">&#160;</A><!-- MATH
+ \begin{equation}
+k_j^{(i)} = k_j^{(i-1)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="90" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img152.png"
+ ALT="$\displaystyle k_j^{(i)} = k_j^{(i-1)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">6</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for <SPAN CLASS="MATH"><IMG
+ WIDTH="81" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img153.png"
+ ALT="$ j = 1,i-1$"></SPAN> and
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:kupdate2">&#160;</A><!-- MATH
+ \begin{equation}
+k_i^{(i)} =  \left\{ r_i +
+          \sum_{j=1}^{i-1} a_j^{(i-1)} r_{i-j} \right\} / E^{(i-1)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="258" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img154.png"
+ ALT="$\displaystyle k_i^{(i)} = \left\{ r_i + \sum_{j=1}^{i-1} a_j^{(i-1)} r_{i-j} \right\} / E^{(i-1)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">7</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Secondly, the prediction energy is updated.
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:Eupdate">&#160;</A><!-- MATH
+ \begin{equation}
+E^{(i)} = (1 -  k_i^{(i)}  k_i^{(i)} ) E^{(i-1)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="185" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img155.png"
+ ALT="$\displaystyle E^{(i)} = (1 - k_i^{(i)} k_i^{(i)} ) E^{(i-1)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">8</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Finally, new filter coefficients are computed
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:aupdate1">&#160;</A><!-- MATH
+ \begin{equation}
+a_j^{(i)} = a_j^{(i-1)} - k_i^{(i)} a_{i-j}^{(i-1)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="172" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img156.png"
+ ALT="$\displaystyle a_j^{(i)} = a_j^{(i-1)} - k_i^{(i)} a_{i-j}^{(i-1)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">9</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for <SPAN CLASS="MATH"><IMG
+ WIDTH="81" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img153.png"
+ ALT="$ j = 1,i-1$"></SPAN> and
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:aupdate2">&#160;</A><!-- MATH
+ \begin{equation}
+a_i^{(i)} = - k_i^{(i)}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="85" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img157.png"
+ ALT="$\displaystyle a_i^{(i)} = - k_i^{(i)}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">10</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+This process is repeated from <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img158.png"
+ ALT="$ i=1$"></SPAN> through to the required filter order
+<SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img159.png"
+ ALT="$ i=p$"></SPAN>.
+
+<P>
+To effect the above transformation, the target parameter kind must
+be set to either <TT>LPC</TT><A NAME="6630">&#160;</A> to obtain the LP filter parameters <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img142.png"
+ ALT="$ \{a_i \}$"></SPAN> or
+<TT>LPREFC</TT><A NAME="6631">&#160;</A> to obtain the reflection coefficients  <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img146.png"
+ ALT="$ \{k_i\}$"></SPAN>.  The
+required filter order must also be set using the configuration
+parameter <TT>LPCORDER</TT><A NAME="6632">&#160;</A>.
+Thus, for example, the following configuration
+settings would produce a target parameterisation
+consisting of 12 reflection coefficients per vector.
+<PRE>
+    TARGETKIND = LPREFC
+    LPCORDER = 12
+</PRE>
+
+<P>
+An alternative LPC-based parameterisation is obtained by setting the
+target kind to  <TT>LPCEPSTRA</TT><A NAME="6633">&#160;</A> to generate linear prediction cepstra.  
+The cepstrum of a signal is computed by taking a Fourier (or similar)
+transform of the log spectrum.  In the case of linear 
+prediction cepstra<A NAME="5658">&#160;</A>, the
+required spectrum is the linear prediction spectrum which can be obtained
+from the Fourier transform of the filter coefficients. However, it can be shown
+that the required cepstra can be more efficiently computed using 
+a simple recursion
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:lpcepstra">&#160;</A><!-- MATH
+ \begin{equation}
+c_n = -a_n - \frac{1}{n} \sum_{i=1}^{n-1} (n-i) a_i c_{n-i}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="220" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img160.png"
+ ALT="$\displaystyle c_n = -a_n - \frac{1}{n} \sum_{i=1}^{n-1} (n-i) a_i c_{n-i}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">11</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+The number of cepstra generated need not be the same as the number of
+filter coefficients, hence it is set by a separate configuration 
+parameter called <TT>NUMCEPS</TT><A NAME="6635">&#160;</A>.
+
+<P>
+The principal advantage of cepstral coefficients is that they are 
+generally decorrelated and this allows diagonal covariances
+to be used in the HMMs.  However, one minor problem with 
+them is that the higher order cepstra are numerically quite small and 
+this results in
+a very wide range of variances when going from the low to high cepstral 
+coefficients<A NAME="5667">&#160;</A>.
+HTK does not have a problem with this but for pragmatic reasons such as
+displaying model parameters, flooring variances, etc., it is convenient to re-scale
+the cepstral coefficients to have similar magnitudes.  This is done by
+setting the configuration parameter <TT>CEPLIFTER</TT><A NAME="6636">&#160;</A> to some value <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img161.png"
+ ALT="$ L$"></SPAN> to
+<SPAN  CLASS="textit">lifter</SPAN> the cepstra according to the following formula
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:ceplifter">&#160;</A><!-- MATH
+ \begin{equation}
+{c^{\prime}}_n = \left( 1 + \frac{L}{2} sin \frac{\pi n}{L}
+      \right) c_n
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="175" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img162.png"
+ ALT="$\displaystyle {c^{\prime}}_n = \left( 1 + \frac{L}{2} sin \frac{\pi n}{L} \right) c_n$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">12</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+As an example, the following configuration parameters would
+use a 14'th order linear prediction analysis to
+generate 12 liftered LP cepstra per target vector
+<PRE>
+    TARGETKIND = LPCEPSTRA
+    LPCORDER = 14
+    NUMCEPS = 12
+    CEPLIFTER = 22
+</PRE>
+These are typical of the values needed to generate a good front-end
+parameterisation for a speech recogniser based on linear prediction.
+<A NAME="5679">&#160;</A><A NAME="5680">&#160;</A>
+
+<P>
+Finally, note that the conversions supported by HTK are not limited to
+the case where the source is a waveform.  HTK can convert any
+LP-based parameter into any other LP-based parameter.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

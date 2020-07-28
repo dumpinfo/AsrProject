@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Data Preparation Tools</TITLE>
+<META NAME="description" CONTENT="Contents of Data Preparation Tools">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node16_mn.html">
+<LINK REL="previous" HREF="node14_mn.html">
+<LINK REL="up" HREF="node14_mn.html">
+<LINK REL="next" HREF="node16_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02231000000000000000">
+Data Preparation Tools</A>
+</H2>
+
+<P>
+<A NAME="2827">&#160;</A>
+In order to build a set of HMMs, a set of speech data files
+and their associated transcriptions are required.  Very often
+speech data will be obtained from database archives, typically
+on CD-ROMs.  Before it can be used in training, it must be 
+converted into the appropriate parametric form and any associated
+transcriptions must be converted to have the correct format
+and use the required phone or word labels.  If the speech needs to be
+recorded, then the tool HSL<SMALL>AB</SMALL><A NAME="3003">&#160;</A> can be used both to record the
+speech and to manually annotate it with any required transcriptions.
+
+<P>
+Although all HTK tools can parameterise waveforms <SPAN  CLASS="textit">on-the-fly</SPAN>, in practice
+it is usually better to
+parameterise the data just once.  The tool HC<SMALL>OPY</SMALL><A NAME="3004">&#160;</A>
+is used for this.  As the name suggests, HC<SMALL>OPY</SMALL> is used to copy one
+or more source files to an output file.  
+Normally, HC<SMALL>OPY</SMALL> copies the whole file, but a variety
+of mechanisms are provided for extracting segments of files and concatenating
+files.  By setting the appropriate configuration variables, all input files
+can be converted to parametric form as they are read-in.
+Thus, simply copying each file in this manner performs the required encoding.
+The tool HL<SMALL>IST</SMALL><A NAME="3005">&#160;</A> can be used to check the contents of any speech file
+and since it can also convert input on-the-fly, it can be used to check
+the results of any conversions before processing large quantities of data.
+Transcriptions will also need preparing.  Typically the labels used in the
+original source transcriptions will not be exactly as required, for example,
+because of differences in the phone sets used.  Also, HMM training might
+require the labels to be context-dependent.  The tool HLE<SMALL>D</SMALL><A NAME="3006">&#160;</A> is
+a script-driven label editor which is designed to make the required transformations
+to label files.  HLE<SMALL>D</SMALL> can also output files  to a single <SPAN  CLASS="textit">Master Label
+File</SPAN> MLF which is usually more convenient for subsequent processing.
+Finally on data preparation, HLS<SMALL>TATS</SMALL><A NAME="3007">&#160;</A> can gather and display statistics
+on label files and where required, HQ<SMALL>UANT</SMALL><A NAME="3008">&#160;</A> can be used to build a
+VQ codebook in preparation for building  discrete probability HMM system.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

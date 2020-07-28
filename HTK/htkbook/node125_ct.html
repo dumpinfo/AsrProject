@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of HMM Adaptation</TITLE>
+<META NAME="description" CONTENT="Contents of HMM Adaptation">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node143_mn.html">
+<LINK REL="previous" HREF="node112_mn.html">
+<LINK REL="up" HREF="node42_mn.html">
+<LINK REL="next" HREF="node126_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03600000000000000000">&#160;</A><A NAME="c:Adapt">&#160;</A>
+<BR>
+HMM Adaptation
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:headapt">&#160;</A><IMG
+ WIDTH="366" HEIGHT="399" ALIGN="MIDDLE" BORDER="0"
+ SRC="img331.png"
+ ALT="$\textstyle \parbox{80mm}{ \begin{center}\setlength{\epsfxsize}{80mm}
+\epsfbox{HTKFigs//headapt.eps}
+\end{center} }$">
+</DIV>
+
+<P>
+Chapter&nbsp;<A HREF="node112_ct.html#c:Training">8</A> described how the parameters are estimated
+for plain continuous density HMMs within HTK, primarily using the
+embedded training tool HER<SMALL>EST</SMALL>. Using the training strategy
+depicted in figure&nbsp;<A HREF="node113_ct.html#f:subword">8.2</A>, together with other techniques can
+produce high performance speaker independent acoustic models for a 
+large vocabulary recognition system. However it is possible to build
+improved acoustic models by tailoring a model set to a specific
+speaker. By collecting data from a speaker and training
+a model set on this speaker's data alone, the speaker's characteristics
+can be modelled more accurately. Such systems are commonly 
+known as <SPAN  CLASS="textit">speaker dependent</SPAN> systems, and on a typical word
+recognition task, may have half the errors of a speaker
+independent system. The drawback of speaker dependent systems is that
+a large amount of data (typically hours) must be collected in order to
+obtain sufficient model accuracy.
+
+
+<P>
+Rather than training speaker dependent models, 
+<SPAN  CLASS="textit">adaptation</SPAN> techniques can be applied. In this case, by using
+only a small amount of data from a new speaker, a good speaker
+independent system model set can be adapted to better fit the
+characteristics of this new speaker.
+
+<P>
+Speaker adaptation techniques can be used in various different
+modes<A NAME="15708">&#160;</A>. If
+the true transcription of the adaptation data is known then
+it is termed 
+<SPAN  CLASS="textit">supervised adaptation</SPAN><A NAME="15710">&#160;</A>, 
+whereas if the adaptation
+data is unlabelled then it is termed 
+<SPAN  CLASS="textit">unsupervised adaptation</SPAN><A NAME="15712">&#160;</A>.
+In the case where all the adaptation data is available in one block,
+e.g. from a speaker enrollment session, then this termed <SPAN  CLASS="textit">static
+adaptation</SPAN>. Alternatively adaptation can proceed incrementally as
+adaptation data becomes available, and this is termed 
+<SPAN  CLASS="textit">incremental adaptation</SPAN>.  
+
+<P>
+HTK provides two tools to adapt continuous density HMMs. 
+HER<SMALL>EST</SMALL><A NAME="16413">&#160;</A> 
+performs offline supervised adaptation using various forms of linear
+transformation and/or maximum a-posteriori (MAP) adaptation, while
+unsupervised adaptation is supported by HV<SMALL>ITE</SMALL> (using only
+linear transformations).  In this case HV<SMALL>ITE</SMALL> not only performs
+recognition, but simultaneously adapts the model set as the data
+becomes available through recognition. Currently, linear
+transformation adaptation can be applied in both incremental and
+static modes while MAP supports only static adaptation.
+
+<P>
+This chapter describes the operation of supervised adaptation with the
+HER<SMALL>EST</SMALL> tools.  The first sections of the chapter give an
+overview of linear transformation schemes and MAP adaptation and this
+is followed by a section describing the general usages of
+HER<SMALL>EST</SMALL> to build simple and more complex adapted systems. The
+chapter concludes with a section detailing the various formulae used
+by the adaptation tool.  The use of HV<SMALL>ITE</SMALL> to perform
+unsupervised adaptation is discussed in section&nbsp;<A HREF="#s:unsup_adapt" TARGET="_top">[*]</A>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html2901" HREF="node126_mn.html" TARGET="main"><SMALL>Model Adaptation using Linear Transformations</SMALL></A>
+<UL>
+<LI><A NAME="tex2html2902" HREF="node127_mn.html" TARGET="main"><SMALL>Linear Transformations</SMALL></A>
+<UL>
+<LI><A NAME="tex2html2903" HREF="node128_mn.html" TARGET="main"><SMALL>Maximum Likelihood Linear Regression (<TT>MLLRMEAN</TT>)</SMALL></A>
+<LI><A NAME="tex2html2904" HREF="node129_mn.html" TARGET="main"><SMALL>Variance MLLR (<TT>MLLRVAR</TT> and <TT>MLLRCOV</TT>)</SMALL></A>
+<LI><A NAME="tex2html2905" HREF="node130_mn.html" TARGET="main"><SMALL>Constrained MLLR (<TT>CMLLR</TT>)</SMALL></A>
+</UL>
+<LI><A NAME="tex2html2906" HREF="node131_mn.html" TARGET="main"><SMALL>Input/Output/Parent Transformations</SMALL></A>
+<LI><A NAME="tex2html2907" HREF="node132_mn.html" TARGET="main"><SMALL>Base Class Definitions</SMALL></A>
+<LI><A NAME="tex2html2908" HREF="node133_mn.html" TARGET="main"><SMALL>Regression Class Trees</SMALL></A>
+<LI><A NAME="tex2html2909" HREF="node134_mn.html" TARGET="main"><SMALL>Linear Transform Format</SMALL></A>
+<LI><A NAME="tex2html2910" HREF="node135_mn.html" TARGET="main"><SMALL>Hierarchy of Transform</SMALL></A>
+<LI><A NAME="tex2html2911" HREF="node136_mn.html" TARGET="main"><SMALL>Mutiple Stream Systems</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2912" HREF="node137_mn.html" TARGET="main"><SMALL>Adaptive Training with Linear Transforms</SMALL></A>
+<LI><A NAME="tex2html2913" HREF="node138_mn.html" TARGET="main"><SMALL>Model Adaptation using MAP</SMALL></A>
+<LI><A NAME="tex2html2914" HREF="node139_mn.html" TARGET="main"><SMALL>Linear Transformation Estimation Formulae</SMALL></A>
+<UL>
+<LI><A NAME="tex2html2915" HREF="node140_mn.html" TARGET="main"><SMALL>Mean Transformation Matrix (<TT>MLLRMEAN</TT>)</SMALL></A>
+<LI><A NAME="tex2html2916" HREF="node141_mn.html" TARGET="main"><SMALL>Variance Transformation Matrix (<TT>MLLRVAR</TT>, <TT>MLLRCOV</TT>)</SMALL></A>
+<LI><A NAME="tex2html2917" HREF="node142_mn.html" TARGET="main"><SMALL>Constrained MLLR Transformation Matrix (<TT>CMLLR</TT>)</SMALL></A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

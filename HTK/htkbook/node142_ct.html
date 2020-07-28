@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Constrained MLLR Transformation Matrix (CMLLR)</TITLE>
+<META NAME="description" CONTENT="Contents of Constrained MLLR Transformation Matrix (CMLLR)">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node141_mn.html">
+<LINK REL="up" HREF="node139_mn.html">
+<LINK REL="next" HREF="node143_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03643000000000000000">&#160;</A><A NAME="s:cmllrest">&#160;</A>
+<BR>
+Constrained MLLR Transformation Matrix (<TT>CMLLR</TT>)
+</H2>
+
+<P>
+Substituting the for expressions for CMLLR adaptation where<A NAME="tex2html44" HREF="footnode_mn.html#foot16476" TARGET="footer"><SUP><SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A>
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+\hat{{\mbox{\boldmath$\mu$}}}_{m_r} = {\mbox{\boldmath$H$}}_r{\mbox{\boldmath$\mu$}}_{m_r} + \tilde{{\mbox{\boldmath$b$}}}_r, \:\:\:\:
+\hat{{\mbox{\boldmath$\Sigma$}}}_{m_r} = {{\mbox{\boldmath$H$}}}_r{{\mbox{\boldmath$\Sigma$}}}_{m_r}{{\mbox{\boldmath$H$}}}_r^T
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="300" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img432.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\mu$}}}_{m_r} = {\mbox{\boldmath$H$}}_r{\mb...
+...{\boldmath$H$}}}_r{{\mbox{\boldmath$\Sigma$}}}_{m_r}{{\mbox{\boldmath$H$}}}_r^T$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">18</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+into the auxiliary function, and using the fact that the covariance
+matrices are diagonal yields
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+{\cal Q}({\cal M},{\hat{\cal M}}) = K +
+\frac{1}{2}
+\sum_{r=1}^R\left[
+\beta\log({\bf p}_{ri}{\mbox{\boldmath$w$}}_{ri}^T)-
+\sum_{j=1}^d{
+\left({\mbox{\boldmath$w$}}_{rj}{\bf G}^{(j)}_r{\mbox{\boldmath$w$}}^T_{rj} - 2{\mbox{\boldmath$w$}}_{rj}{\bf k}^{(j)}_r
+\right)}\right] \nonumber
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="513" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img433.png"
+ ALT="$\displaystyle {\cal Q}({\cal M},{\hat{\cal M}}) = K +
+\frac{1}{2}
+\sum_{r=1}^R\...
+...ldmath$w$}}^T_{rj} - 2{\mbox{\boldmath$w$}}_{rj}{\bf k}^{(j)}_r
+\right)}\right]$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where 
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+{\mbox{\boldmath$W$}}_r = \left[\begin{array}{c c}
+-{\mbox{\boldmath$A$}}_r\tilde{{\mbox{\boldmath$b$}}}_r & {\mbox{\boldmath$H$}}_r^{-1} \end{array}
+\right] =  \left[\begin{array}{c c}
+{\mbox{\boldmath$b$}} & {\mbox{\boldmath$A$}} \end{array}
+\right]
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="268" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img434.png"
+ ALT="$\displaystyle {\mbox{\boldmath$W$}}_r = \left[\begin{array}{c c}
+-{\mbox{\boldm...
+...in{array}{c c}
+{\mbox{\boldmath$b$}} &amp; {\mbox{\boldmath$A$}} \end{array}\right]$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">19</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+<!-- MATH
+ ${\mbox{\boldmath $w$}}_{ri}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img435.png"
+ ALT="$ {\mbox{\boldmath $w$}}_{ri}$"></SPAN> is <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img422.png"
+ ALT="$ i^{th}$"></SPAN> row of <!-- MATH
+ ${\mbox{\boldmath $W$}}_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img397.png"
+ ALT="$ {\mbox{\boldmath $W$}}_r$"></SPAN>, the <SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img424.png"
+ ALT="$ 1\times n$"></SPAN> row vector <!-- MATH
+ ${\bf p}_{ri}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img436.png"
+ ALT="$ {\bf p}_{ri}$"></SPAN> is the zero  
+extended vector of cofactors of <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img423.png"
+ ALT="$ {\bf A}_r$"></SPAN>, <!-- MATH
+ ${\bf G}^{(i)}_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img427.png"
+ ALT="$ {\bf G}^{(i)}_r$"></SPAN> and <!-- MATH
+ ${\bf k}^{(i)}_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img437.png"
+ ALT="$ {\bf k}^{(i)}_r$"></SPAN> are defined as
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="eq:gi_mllr3">&#160;</A><!-- MATH
+ \begin{eqnarray}
+{\bf G}^{(i)}_r=\sum_{m_r=1}^{M_r}
+\frac{1}{\sigma_{m_ri}^{2}}
+\sum_{t=1}^TL_{m_r}(t){{\mbox{\boldmath$\zeta$}}}(t){{\mbox{\boldmath$\zeta$}}}^{T}(t)
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="268" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img438.png"
+ ALT="$\displaystyle {\bf G}^{(i)}_r=\sum_{m_r=1}^{M_r}
+\frac{1}{\sigma_{m_ri}^{2}}
+\s...
+...=1}^TL_{m_r}(t){{\mbox{\boldmath$\zeta$}}}(t){{\mbox{\boldmath$\zeta$}}}^{T}(t)$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">20</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and 
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="eq:gi_mllr4">&#160;</A><!-- MATH
+ \begin{eqnarray}
+{\bf k}^{(i)}_r=\sum_{m_r=1}^{M_r}
+\frac{\mu_{m_ri}}{\sigma_{m_ri}^{2}}
+\sum_{t=1}^TL_{m_r}(t){{\mbox{\boldmath$\zeta$}}}^{T}(t)
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="236" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img439.png"
+ ALT="$\displaystyle {\bf k}^{(i)}_r=\sum_{m_r=1}^{M_r}
+\frac{\mu_{m_ri}}{\sigma_{m_ri}^{2}}
+\sum_{t=1}^TL_{m_r}(t){{\mbox{\boldmath$\zeta$}}}^{T}(t)$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">21</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Differentiating the auxiliary function with respect to the transform
+<!-- MATH
+ ${\mbox{\boldmath $W$}}_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img397.png"
+ ALT="$ {\mbox{\boldmath $W$}}_r$"></SPAN> , and then maximising it with respect to the transformed mean
+yields the following update
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+{\mbox{\boldmath$w$}}_{ri} = \left(\alpha{{\bf p}_{ri}} + {\bf k}^{(i)}_r\right){\bf G}^{(i)-1}_r
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="194" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="img440.png"
+ ALT="$\displaystyle {\mbox{\boldmath$w$}}_{ri} = \left(\alpha{{\bf p}_{ri}} + {\bf k}^{(i)}_r\right){\bf G}^{(i)-1}_r$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">22</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN> satisfies
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="eq:alpha_quad">&#160;</A><!-- MATH
+ \begin{eqnarray}
+\alpha^2{\bf p}_{ri}{\bf G}^{(i)-1}_r{\bf p}_{ri}^T +
+\alpha{\bf p}_{ri}{\bf G}^{(i)-1}_r{\bf k}^{(i)T}_r - \beta=0
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="301" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img441.png"
+ ALT="$\displaystyle \alpha^2{\bf p}_{ri}{\bf G}^{(i)-1}_r{\bf p}_{ri}^T +
+\alpha{\bf p}_{ri}{\bf G}^{(i)-1}_r{\bf k}^{(i)T}_r - \beta=0$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">23</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+There are thus two possible solutions for <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN>. The solutions that
+yields the maximum increase in the auxiliary function (obtained by
+simply substituting in the two options) is used. This is an iterative
+optimisation scheme as the cofactors mean the estimate of row <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN> is
+dependent on all the other rows (in that block).
+
+<P>
+
+<P>
+
+  
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

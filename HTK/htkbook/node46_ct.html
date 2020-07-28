@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Configuration Files</TITLE>
+<META NAME="description" CONTENT="Contents of Configuration Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node47_mn.html">
+<LINK REL="previous" HREF="node45_mn.html">
+<LINK REL="up" HREF="node43_mn.html">
+<LINK REL="next" HREF="node47_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03130000000000000000">&#160;</A><A NAME="s:config">&#160;</A>
+<BR>
+Configuration Files
+</H1>
+
+<P>
+Configuration files<A NAME="4807">&#160;</A><A NAME="4808">&#160;</A> 
+are used for customising the HTK working environment.
+They consist of a list of parameter-values pairs along with an optional
+prefix which limits the scope of the parameter to a specific module
+or tool.
+
+<P>
+The name of a configuration file can be specified explicitly on the
+command line using the <TT>-C</TT><A NAME="5124">&#160;</A> command.  For example, when executing
+<PRE>
+    HERest ... -C myconfig  s1 s2 s3 s4 ...
+</PRE>
+The operation of HER<SMALL>EST</SMALL> will depend on the parameter settings
+in the file <TT>myconfig</TT>.    
+
+<P>
+When an explicit configuration file is specified, only those parameters mentioned
+in that file are actually changed and all other parameters retain their
+default values.  These defaults are built-in.  However, user-defined defaults
+can be set by assigning the name of a default configuration file to
+the environment variable <TT>HCONFIG</TT><A NAME="5125">&#160;</A>.
+<A NAME="4817">&#160;</A>
+Thus, for example, using the UNIX C Shell, writing
+<PRE>
+    setenv HCONFIG myconfig
+    HERest ... s1 s2 s3 s4 ...
+</PRE>
+would have an identical effect to the preceding example.  However, in this
+case, a further refinement of the configuration values is possible since
+the opportunity to specify an explicit configuration file on the command
+line remains.  For example, in
+<PRE>
+    setenv HCONFIG myconfig
+    HERest ... -C xconfig  s1 s2 s3 s4 ...
+</PRE>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:Config">&#160;</A><IMG
+ WIDTH="276" HEIGHT="297" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.png"
+ ALT="% latex2html id marker 48750
+$\textstyle \parbox{60mm}{ \begin{center}\setlength...
+...apter.\arabic{figctr}  Defining a Configuration}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+the parameter values in <TT>xconfig</TT> will over-ride those in 
+<TT>myconfig</TT> which in turn will over-ride the built-in defaults.
+In practice, most HTK users will set general-purpose
+default configuration values using <TT>HCONFIG</TT> and will then over-ride
+these as required for specific tasks using the <TT>-C</TT> command line option.
+This is illustrated in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A> where the darkened rectangles
+indicate <SPAN  CLASS="textit">active</SPAN> parameter definitions.
+Viewed from above, 
+all of the remaining parameter definitions can be seen to be masked by
+higher level over-rides.
+
+<P>
+The configuration file itself consists of a sequence of parameter
+definitions of the form<A NAME="4832">&#160;</A>
+<PRE>
+    [MODULE:] PARAMETER = VALUE
+</PRE>
+One parameter definition is written per line and square brackets
+indicate that the module name is
+optional. Parameter definitions are not case sensitive
+but by convention they are written in upper case.  A <code>#</code> character 
+indicates that the rest of the line is a comment.
+
+<P>
+As an example, the following is a simple configuration file
+<PRE>
+    # Example config file
+            TARGETKIND = MFCC
+            NUMCHANS   = 20
+            WINDOWSIZE = 250000.0    # ie 25 msecs
+            PREEMCOEF = 0.97
+            ENORMALISE = T
+    HSHELL: TRACE = 02               # octal
+    HPARM:  TRACE = 0101
+</PRE>
+The first five lines contain no module name and hence they apply
+globally, that is, any library module or tool which is interested
+in the configuration parameter <TT>NUMCHANS</TT> will read the given
+parameter value.  In practice, this is not a problem with library modules
+since nearly all configuration parameters have unique
+names.  The final two lines show the same parameter name being given
+different values within different modules.  This is an example of
+a parameter which every module responds to and hence does not have a unique
+name.
+
+<P>
+This example also shows each of the four possible types of value that can
+appear in a configuration file: string<A NAME="4838">&#160;</A>, 
+integer<A NAME="4839">&#160;</A>, float<A NAME="4840">&#160;</A> and 
+Boolean<A NAME="4841">&#160;</A>.
+The configuration parameter <TT>TARGETKIND</TT>
+<A NAME="5126">&#160;</A> requires a string
+value specifying the name of a speech parameter kind. Strings not
+starting with a letter should be enclosed in double quotes. 
+<TT>NUMCHANS</TT><A NAME="5127">&#160;</A>  requires an 
+integer value specifying the number of
+filter-bank channels to use in the analysis.
+<TT>WINDOWSIZE</TT><A NAME="5128">&#160;</A>  actually requires a floating-point value
+specifying  the window size in units of 100ns.  However, an integer
+can always be given wherever a float is required.
+<TT>PREEMCOEF</TT> also requires a floating-point  value specifying the
+pre-emphasis coefficient to be used.  Finally, <TT>ENORMALISE</TT>
+<A NAME="5129">&#160;</A> is
+a Boolean parameter  which determines whether or not energy
+normalisation is to be performed, its value must be <TT>T</TT>, <TT>TRUE</TT> or
+<TT>F</TT>, <TT>FALSE</TT>.  Notice also that, as in command line options,
+integer values can use the C conventions for writing in non-decimal bases.
+Thus, the trace value of 0101 is equal to decimal 65.  This is particularly
+useful in this
+case because trace values are typically interpreted as bit-strings by
+HTK modules and tools.<A NAME="4855">&#160;</A>
+
+<P>
+If the name of a configuration variable is mis-typed, there will be no
+warning and the variable will simply be ignored.  To help guard
+against this, the standard option <TT>-D</TT> can be used.  This
+displays all of the configuration variables before and after the tool
+runs.  In the latter case, all configuration variables which are still
+unread are marked by a hash character.  The initial display allows the
+configuration values to be checked before potentially wasting a large
+amount of cpu time through incorrectly set parameters.  The final
+display shows which configuration variables were actually used during
+the execution of the tool.  The form of the output is shown by the
+following example
+<PRE>
+    HTK Configuration Parameters[3]
+      Module/Tool     Parameter                  Value
+    #                 SAVEBINARY                  TRUE
+      HPARM           TARGETRATE         256000.000000
+                      TARGETKIND                MFCC_0
+</PRE>
+Here three configuration parameters have been set but the hash
+(<code>#</code>) indicates that <TT>SAVEBINARY</TT> has not been used.
+<A NAME="4860">&#160;</A>
+<A NAME="4861">&#160;</A>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

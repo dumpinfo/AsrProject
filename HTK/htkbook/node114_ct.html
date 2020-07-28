@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Initialisation using HINIT</TITLE>
+<META NAME="description" CONTENT="Contents of Initialisation using HINIT">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node115_mn.html">
+<LINK REL="previous" HREF="node113_mn.html">
+<LINK REL="up" HREF="node112_mn.html">
+<LINK REL="next" HREF="node115_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03520000000000000000">&#160;</A><A NAME="s:inithmm">&#160;</A>
+<BR>
+Initialisation using HI<SMALL>NIT</SMALL>
+</H1>
+
+<P>
+In order to create a HMM definition, it is first necessary to produce
+a prototype definition.  As explained in Chapter&nbsp;<A HREF="node101_ct.html#c:HMMDefs">7</A>, HMM definitions
+can be stored as a text file and hence the simplest way of creating
+a prototype is by using a text editor to manually produce a definition of the form
+shown in Fig&nbsp;<A HREF="node103_ct.html#f:hmm1def">7.2</A>, Fig&nbsp;<A HREF="node103_ct.html#f:hmm2def">7.3</A> etc.  The function of a prototype
+definition is to describe the form and topology of the HMM,  the actual numbers used
+in the definition are not important.   Hence, the vector size and parameter kind should
+be specified and the number of states chosen.  The allowable transitions between states
+should be indicated by putting non-zero values in the corresponding elements of the
+transition matrix and zeros elsewhere.  The rows of the transition matrix must sum to one
+except for the final row which should be all zero.  Each state definition should show the
+required number of streams and mixture components in each stream.  All mean values
+can be zero but diagonal variances should be positive and covariance matrices
+should have positive diagonal elements.  All state definitions can be identical.
+<A NAME="13589">&#160;</A>
+
+<P>
+Having set up an appropriate prototype, a HMM can be initialised using the HTKtool
+HI<SMALL>NIT</SMALL>.   The basic principle of HI<SMALL>NIT</SMALL> depends on the concept of a HMM as
+a generator of speech vectors.  Every training example can be viewed as the output
+of the HMM whose parameters are to be estimated.  
+Thus, if the state that generated each vector in the training
+data was known, then the unknown means and variances could be estimated by averaging all the
+vectors associated with each state.  Similarly, the transition matrix could be estimated
+by simply counting the number of time slots that each state was occupied.  This process
+is described more formally in section&nbsp;<A HREF="node120_ct.html#s:bwformulae">8.8</A> below.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:vitloop">&#160;</A><IMG
+ WIDTH="276" HEIGHT="625" ALIGN="MIDDLE" BORDER="0"
+ SRC="img256.png"
+ ALT="% latex2html id marker 50439
+$\textstyle \parbox{60mm}{ \begin{center}\setlength...
+...apter.\arabic{figctr}  \textsc{HInit} Operation}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+The above idea can be implemented by an iterative scheme as shown in Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  
+Firstly, the Viterbi<A NAME="14484">&#160;</A>
+algorithm is used to find the most likely state sequence corresponding to
+each training example, then the HMM parameters are estimated.  As a side-effect
+of finding the Viterbi state alignment, the log likelihood of the training data
+can be computed.  Hence, the whole estimation process can be repeated until
+no further increase in likelihood is obtained.
+
+<P>
+This process requires some initial HMM parameters to get started.  To circumvent
+this problem, HI<SMALL>NIT</SMALL> starts by uniformly segmenting the data and associating
+each successive segment with successive states.  Of course, this only makes sense
+if the HMM is  left-right.  If the HMM is ergodic, then the uniform 
+segmentation<A NAME="14486">&#160;</A> can be disabled and some other 
+approach taken.  For example,
+HC<SMALL>OMP</SMALL>V can be used as described below.
+
+<P>
+If any HMM state has multiple mixture components, then the training vectors are
+associated with the mixture component with the highest likelihood.  The number of
+vectors associated with each component within a state can then be used to estimate the mixture
+weights.  In the uniform segmentation stage, a K-means 
+clustering<A NAME="14488">&#160;</A> algorithm is used
+to cluster the vectors within each state.<A NAME="14489">&#160;</A>
+
+<P>
+Turning now to the practical use of HI<SMALL>NIT</SMALL>, whole word models can be  initialised by
+typing a command of the form
+
+<P>
+<PRE>
+    HInit hmm data1 data2 data3
+</PRE>
+where <TT>hmm</TT> is the name of the file holding the prototype
+HMM and <TT>data1</TT>, <TT>data2</TT>, etc.  are the
+names of the speech files holding the training examples, each file holding a single example
+with no leading or trailing silence.  The HMM definition can be distributed across a number
+of macro files loaded using the standard <TT>-H</TT> option.  For example, in
+<PRE>
+    HInit -H mac1 -H mac2 hmm data1 data2 data3 ...
+</PRE>
+then the macro files <TT>mac1</TT> and <TT>mac2</TT> would be loaded first.  If these contained a
+definition for <TT>hmm</TT>, then no further HMM definition input would be attempted.  If however,
+they did not contain a definition for <TT>hmm</TT>, then HI<SMALL>NIT</SMALL> would attempt to open a file called
+<TT>hmm</TT> and would expect to find a definition for <TT>hmm</TT> within it.  HI<SMALL>NIT</SMALL> can in principle
+load a large set of HMM definitions, but it will only update the parameters of the single named
+HMM.  On completion, HI<SMALL>NIT</SMALL> will write out new versions of all HMM definitions loaded on start-up.
+The default behaviour is to write these to the current directory which has the usually
+undesirable effect of overwriting the prototype definition.  This can be prevented by
+specifying a new directory for the output definitions using the <TT>-M</TT> option.
+Thus, typical usage of HI<SMALL>NIT</SMALL> takes the form <A NAME="13624">&#160;</A>
+<PRE>
+    HInit -H globals -M dir1 proto data1 data2 data3 ...
+    mv dir1/proto dir1/wordX
+</PRE>
+Here <TT>globals</TT> is assumed to hold a global 
+options macro<A NAME="13628">&#160;</A>  (and possibly others).  
+The actual HMM definition is loaded from the file <TT>proto</TT> in the current directory and
+the newly initialised definition along with a copy of <TT>globals</TT> will be written to
+<TT>dir1</TT>.  Since the newly created HMM will still be called <TT>proto</TT>, it is renamed
+as appropriate.
+
+<P>
+For most real tasks, the number of data files required will 
+exceed the command line argument
+limit and a script file<A NAME="13633">&#160;</A> is used instead.  
+Hence, if the names of the data files are stored in the file
+<TT>trainlist</TT> then typing
+<PRE>
+    HInit -S trainlist -H globals -M dir1 proto
+</PRE>
+would have the same effect as previously.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:hinitdp">&#160;</A><IMG
+ WIDTH="412" HEIGHT="443" ALIGN="MIDDLE" BORDER="0"
+ SRC="img257.png"
+ ALT="% latex2html id marker 50440
+$\textstyle \parbox{90mm}{ \begin{center}\setlength...
+...abic{figctr}  File Processing in \textsc{HInit}}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+When building sub-word models, HI<SMALL>NIT</SMALL> can be used in the same manner as above to initialise
+each individual sub-word HMM.  However, in this case, the training data is typically continuous
+speech with associated label files identifying the speech segments corresponding to
+each sub-word.  To illustrate this, the following command could be used to initialise
+a sub-word HMM for the phone <TT>ih</TT>
+<PRE>
+    HInit -S trainlist -H globals -M dir1 -l ih -L labs proto
+    mv dir1/proto dir1/ih
+</PRE>
+where the option <TT>-l</TT> defines the name of the sub-word model, and 
+the file <TT>trainlist</TT> is assumed to hold
+<PRE>
+    data/tr1.mfc
+    data/tr2.mfc
+    data/tr3.mfc
+    data/tr4.mfc
+    data/tr5.mfc
+    data/tr6.mfc
+</PRE>
+In this case,  HI<SMALL>NIT</SMALL> will first try to find label
+<A NAME="13649">&#160;</A>
+files corresponding to each data file.  In the example here, the 
+standard <TT>-L</TT><A NAME="14306">&#160;</A> option 
+indicates that they are
+stored in a directory called <TT>labs</TT>.  As an alternative, they
+could be stored in a Master Label File<A NAME="13653">&#160;</A> (MLF) and 
+loaded via the standard option <TT>-I</TT>.
+Once the label files have been loaded, each data file is scanned and all segments
+corresponding the label <TT>ih</TT> are loaded.  Figure&nbsp;<A HREF="#_" TARGET="_top">[*]</A>
+illustrates this process.
+
+<P>
+All HTK tools support the <TT>-T</TT>
+<A NAME="14307">&#160;</A> trace option and although the details of 
+tracing varies from tool to tool, setting the least signicant bit (e.g. by <TT>-T 1</TT>), 
+causes all tools to output top level progress information.  In the case
+of HI<SMALL>NIT</SMALL>, this information includes the log likelihood at each iteration and hence
+it is very useful for monitoring convergence<A NAME="13661">&#160;</A>.  For example, enabling top level tracing
+in the previous example might result in the following being output
+<PRE>
+    Initialising  HMM proto . . . 
+     States   :   2  3  4 (width)
+     Mixes  s1:   1  1  1 ( 26  )
+     Num Using:   0  0  0
+     Parm Kind:  MFCC_E_D
+     Number of owners = 1
+     SegLab   :  ih
+     maxIter  :  20
+     epsilon  :  0.000100
+     minSeg   :  3
+     Updating :  Means Variances MixWeights/DProbs TransProbs
+    16 Observation Sequences Loaded
+    Starting Estimation Process
+    Iteration 1: Average LogP =  -898.24976
+    Iteration 2: Average LogP =  -884.05402  Change =    14.19574
+    Iteration 3: Average LogP =  -883.22119  Change =     0.83282
+    Iteration 4: Average LogP =  -882.84381  Change =     0.37738
+    Iteration 5: Average LogP =  -882.76526  Change =     0.07855
+    Iteration 6: Average LogP =  -882.76526  Change =     0.00000
+    Estimation converged at iteration 7
+    Output written to directory :dir1:
+</PRE>
+The first part summarises the structure of the HMM, in this case, the data is
+single stream MFCC coefficients with energy and deltas appended.  The HMM has
+3 emitting states, each single Gaussian and the stream width is 26.  The current
+option settings are then given followed by the convergence information.  In this
+example, convergence was reached after 6 iterations, however if the <TT>maxIter</TT>
+limit was reached, then the process would terminate regardless.
+
+<P>
+HI<SMALL>NIT</SMALL> provides a variety of command line options for controlling 
+its detailed behaviour.
+<A NAME="13666">&#160;</A>
+The types of parameter 
+estimated by HI<SMALL>NIT</SMALL> can be controlled
+using the <TT>-u</TT> option, for example, <TT>-u mtw</TT> would update the means, 
+transition matrices and
+mixture component weights but would leave the variances untouched.  
+A variance floor<A NAME="13670">&#160;</A>
+can be applied using the <TT>-v</TT> to prevent any variance getting too small.   This
+option applies the same variance floor to all speech vector elements.  More precise
+control can be obtained by specifying a variance macro (i.e. a <TT>&nbsp;v</TT> macro)
+called <TT>varFloor1</TT><A NAME="14308">&#160;</A> for 
+stream 1, <TT>varFloor2</TT> for stream 2, etc.  Each
+element of these variance vectors then defines a floor for the corresponding HMM variance
+components.
+
+<P>
+The full list of options supported by HI<SMALL>NIT</SMALL> is described in the Reference Section.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

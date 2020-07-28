@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Compatibility Mode</TITLE>
+<META NAME="description" CONTENT="Contents of Compatibility Mode">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node333_mn.html">
+<LINK REL="previous" HREF="node331_mn.html">
+<LINK REL="up" HREF="node329_mn.html">
+<LINK REL="next" HREF="node333_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051143000000000000000">&#160;</A><A NAME="s:HParse-Compatibility_Mode">&#160;</A>
+<BR>
+Compatibility Mode
+</H2>
+
+In HP<SMALL>ARSE</SMALL> compatibility mode, the interpretation of the 
+ENBF network is that used by the HTK V1.5 HV<SMALL>ITE</SMALL> program.
+in which HP<SMALL>ARSE</SMALL> ENBF notation was used to define both the word 
+level syntax and the dictionary.
+Compatibility mode is aimed at converting files written for
+HTK V1.5 into their equivalent HTK V2 representation.
+Therefore HP<SMALL>ARSE</SMALL> will output the word level
+portion of such a ENBF syntax as an HTK V2 lattice file and the
+pronunciation information is optionally stored in
+an HTK V2 dictionary file. When operating in compatibility mode
+and not generating dictionary output, the pronunciation information
+is discarded.
+
+<P>
+In compatibility mode, the reserved
+node names <TT>WD_BEGIN</TT> and <TT>WD_END</TT> are used to delimit word 
+boundaries--nodes between a <TT>WD_BEGIN/WD_END</TT> pair are called 
+``word-internal'' while all other nodes are  ``word-external''.  
+All <TT>WD_BEGIN/WD_END</TT> nodes 
+must have an ``external name'' attached that denotes the word. 
+It is a requirement that the number of <TT>WD_BEGIN</TT> and the number
+of <TT>WD_END</TT> nodes are equal and furthermore that there isn't
+a direct connection from a <TT>WD_BEGIN</TT> node to a <TT>WD_END</TT>.
+For example a portion of such an HTK V1.5  network could be 
+<PRE>
+     $A        =  WD_BEGIN%A ax WD_END%A;
+     $ABDOMEN  =  WD_BEGIN%ABDOMEN ae b d ax m ax n WD_END%ABDOMEN;
+     $ABIDES   =  WD_BEGIN%ABIDES ax b ay d z WD_END%ABIDES;
+     $ABOLISH  =  WD_BEGIN%ABOLISH ax b aa l ih sh WD_END%ABOLISH;
+      ... etc
+
+
+     ( &lt; 
+        $A | $ABDOMEN | $ABIDES | $ABOLISH | ... etc
+     &gt; )
+</PRE>
+HP<SMALL>ARSE</SMALL> will output the connectivity of the words 
+in an HTK V2 word lattice format file
+and the pronunciation information in an HTK V2 dictionary.
+Word-external nodes are treated as words and stored in the lattice
+with corresponding entries in the dictionary. 
+
+<P>
+It should be noted that in HTK V1.5 any ENBF network could appear
+between a <TT>WD_BEGIN/WD_END</TT> pair, which includes loops.
+Care should therefore be taken with syntaxes that define very complex
+sets of alternative pronunciations.  It should also be noted
+that each dictionary entry is limited in length to 100 phones.
+If multiple instances of the same word are found in the expanded
+HParse network, a dictionary entry will be created for only the
+first instance and subsequent instances are ignored (a warning is
+printed). If words with a NULL external name are present then 
+the dictionary will contain a NULL output symbol.
+
+<P>
+Finally, since the implementation of the generation of
+the HP<SMALL>ARSE</SMALL> network has been revised<A NAME="tex2html87" HREF="footnode_mn.html#foot29371" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">12</SPAN></SUP></A>the semantics of variable definition and use has been slightly changed. 
+Previously variables could be redefined during network definition
+and each use would follow the most recent definition. In HTK V2 only
+the final definition of any variable is used in network expansion.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

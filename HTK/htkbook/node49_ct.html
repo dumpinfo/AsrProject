@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Strings and Names</TITLE>
+<META NAME="description" CONTENT="Contents of Strings and Names">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node51_mn.html">
+<LINK REL="previous" HREF="node48_mn.html">
+<LINK REL="up" HREF="node43_mn.html">
+<LINK REL="next" HREF="node50_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03160000000000000000">&#160;</A><A NAME="s:htkstrings">&#160;</A>
+<BR>
+Strings and Names
+</H1>
+
+<P>
+Many HTK  definition files include names of various types of
+objects: for example labels, model names, words, etc.
+In order to achieve some uniformity, HTK applies standard
+rules for reading strings which are names.<A NAME="4898">&#160;</A>
+These rules are not, however, necessary when using the language
+modelling tools - see below.
+
+<P>
+A name string consists of a single white space delimited word or
+a quoted string.  Either the single quote <code>'</code> or 
+the double quote <code>"</code> can be used to quote strings but the
+start and end quotes must be matched.  The backslash <code>\</code> 
+character can also
+be used to introduce otherwise reserved characters.  The 
+character following a backslash is inserted into the string without special
+processing unless that character is a digit in the range 0 to 7.  
+In that case, the three
+characters following the backslash are read and interpreted as an octal
+character code.  When the three characters are not octal digits the result
+is not well defined.<A NAME="4899">&#160;</A>
+
+<P>
+In summary the special processing is
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">Notation</TD>
+<TD ALIGN="LEFT">Meaning</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><code>\\</code></TD>
+<TD ALIGN="LEFT"><code>\</code></TD>
+</TR>
+<TR><TD ALIGN="CENTER"><code>\_ </code></TD>
+<TD ALIGN="LEFT">represents a space that will not terminate a string</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><code>\'</code></TD>
+<TD ALIGN="LEFT"><code>'</code>  (and will not end a quoted string)</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><code>\"</code></TD>
+<TD ALIGN="LEFT"><code>"</code> (and will not end a quoted string)</TD>
+</TR>
+<TR><TD ALIGN="CENTER"><code>\nnn</code></TD>
+<TD ALIGN="LEFT">the character with octal code <code>\nnn</code></TD>
+</TR>
+</TABLE>
+</DIV>
+
+<P>
+<A NAME="4905">&#160;</A>
+Note that the above allows the same effect to be achieved in a number of 
+different ways.  For example,
+<PRE>
+    "\"QUOTE" 
+    \"QUOTE 
+    '"QUOTE' 
+    \042QUOTE
+</PRE>
+all produce the string <code>"QUOTE</code>.
+
+<P>
+The only exceptions to the above general rules are:
+
+<UL>
+<LI>Where models are specified in HHE<SMALL>D</SMALL> scripts,
+commas (<code>,</code>), 
+dots (<code>.</code>),
+and closing brackets (<code>)</code>) 
+are all used as extra delimiters to allow  HHE<SMALL>D</SMALL> scripts
+created for earlier versions of HTK to be used unchanged.
+Hence for example, <TT>(a,b,c,d)</TT> would be split into 4 
+distinct name strings <TT>a</TT>, <TT>b</TT>, <TT>c</TT> and <TT>d</TT>.
+
+<P>
+</LI>
+<LI>When the configuration variable
+<TT>RAWMITFORMAT</TT> is set true,  each word in a language model
+definition file consists of a white space delimited string with no 
+special processing being performed.
+
+<P>
+</LI>
+<LI>Source dictionaries read by HDM<SMALL>AN</SMALL> are read using
+the standard HTK string conventions, however, the command <TT>IR</TT>
+can be used in a HDM<SMALL>AN</SMALL> source edit script to switch to using
+this raw format.
+
+<P>
+</LI>
+<LI>To ensure that the general definition of a name string works
+properly in HTK master label files, all
+MLFs must have the reserved <TT>.</TT> and <code>///</code> terminators 
+alone on a line with no surrounding white space. 
+If this causes problems reading old MLF files, the configuration
+variable <TT>V1COMPAT</TT> should be set true in the module HL<SMALL>ABEL</SMALL>.  
+In this case,
+HTK will attempt to simulate the behaviour of the older version 1.5.
+
+<P>
+</LI>
+<LI>To force numbers to be interpreted as strings rather than times or scores in a
+label file, they must be quoted.  If the configuration variable
+<TT>QUOTECHAR</TT> is set to <code>'</code> or <code>"</code> then output labels will be
+quoted with the specified quote character.  If <TT>QUOTECHAR</TT> is set to  
+<code>\</code>, then output labels will be escaped. The default is to select the 
+simplest quoting mechanism.<A NAME="4925">&#160;</A>
+</LI>
+</UL>
+
+<P>
+Note that under some versions of <TT>Unix</TT> HTK can support the 8-bit
+character sets used for the representation of various orthographies. In
+such cases the shell environment variable <TT>$LANG</TT> usually governs
+which ISO character set is in use.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><A NAME="tex2html1767" HREF="node50_mn.html" TARGET="main"><SMALL>Language modelling tools</SMALL></A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

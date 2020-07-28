@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Linear Transformation Estimation Formulae</TITLE>
+<META NAME="description" CONTENT="Contents of Linear Transformation Estimation Formulae">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node138_mn.html">
+<LINK REL="up" HREF="node125_mn.html">
+<LINK REL="next" HREF="node140_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03640000000000000000">&#160;</A><A NAME="s:mllrformulae">&#160;</A>
+<BR>
+Linear Transformation Estimation Formulae
+</H1>
+
+<P>
+For reference purposes, this section lists the various formulae
+employed within the HTK adaptation tool<A NAME="16003">&#160;</A>. It is assumed throughout
+that single stream data is used and that diagonal covariances are also
+used. All are standard and can be found in various literature.
+
+<P>
+The following notation is used in this section
+<PRE><TT>
+		 <!-- MATH
+ $\mathcal{M}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img375.png"
+ ALT="$ \mathcal{M}$"></SPAN> the model set
+<BR><!-- MATH
+ $\hat{\mathcal{M}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img376.png"
+ ALT="$ \hat{\mathcal{M}}$"></SPAN> the adapted model set
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img183.png"
+ ALT="$ T$"></SPAN> number of observations 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ m$"></SPAN> a mixture component 
+<BR><!-- MATH
+ ${\mbox{\boldmath $O$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ {\mbox{\boldmath $O$}}$"></SPAN> a sequence of <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img377.png"
+ ALT="$ d$"></SPAN>-dimensional observations 
+<BR><!-- MATH
+ ${\mbox{\boldmath $o$}}(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img378.png"
+ ALT="$ {\mbox{\boldmath $o$}}(t)$"></SPAN> the observation at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>, <!-- MATH
+ $1 \leq t \leq T$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="72" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img265.png"
+ ALT="$ 1 \leq t \leq T $"></SPAN>
+<BR><!-- MATH
+ ${\mbox{\boldmath $\zeta$}}(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img379.png"
+ ALT="$ {\mbox{\boldmath $\zeta$}}(t)$"></SPAN>		 extended observation at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>, <!-- MATH
+ $1 \leq t \leq T$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="72" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img265.png"
+ ALT="$ 1 \leq t \leq T $"></SPAN>
+<BR><!-- MATH
+ ${\mbox{\boldmath $\mu$}}_{m_r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img380.png"
+ ALT="$ {\mbox{\boldmath $\mu$}}_{m_r}$"></SPAN> mean vector for the mixture component <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img381.png"
+ ALT="$ m_r$"></SPAN>
+<BR><!-- MATH
+ ${\mbox{\boldmath $\xi$}}_{m_r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img382.png"
+ ALT="$ {\mbox{\boldmath $\xi$}}_{m_r}$"></SPAN> extended mean vector for the mixture component <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img381.png"
+ ALT="$ m_r$"></SPAN>
+<BR><!-- MATH
+ ${\mbox{\boldmath $\Sigma$}}_{m_r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img383.png"
+ ALT="$ {\mbox{\boldmath $\Sigma$}}_{m_r}$"></SPAN> covariance matrix for the mixture component <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img381.png"
+ ALT="$ m_r$"></SPAN> 
+<BR><!-- MATH
+ $L_{m_r}(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="52" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img384.png"
+ ALT="$ L_{m_r}(t)$"></SPAN> the occupancy probability for the mixture component <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img381.png"
+ ALT="$ m_r$"></SPAN>
+<BR>
+at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN> 
+</TT></PRE>
+
+<P>
+To enable robust transformations to be trained, the transform matrices
+are tied across a number of Gaussians. The set of Gaussians which
+share a transform is referred to as a regression class.  For a
+particular transform case <!-- MATH
+ ${\mbox{\boldmath $W_r$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img385.png"
+ ALT="$ {\mbox{\boldmath $W_r$}}$"></SPAN>, the <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img386.png"
+ ALT="$ M_r$"></SPAN> Gaussian components
+<!-- MATH
+ $\left\{m_1, m_2, \dots, m_{M_r}\right\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="138" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img387.png"
+ ALT="$ \left\{m_1, m_2, \dots, m_{M_r}\right\}$"></SPAN> will be tied together, as
+determined by the regression class tree (see
+section&nbsp;<A HREF="node133_ct.html#s:reg_classes">9.1.4</A>).  The standard auxiliary
+function shown below is used to estimate the transforms.
+ 
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+{\cal Q}({\cal M},{\hat{\cal M}}) =
+- \frac{1}{2}
+\sum_{r=1}^R
+\sum_{m_r=1}^{M_r}
+\sum_{t=1}^T
+L_{m_r}(t)\left[
+K^{(m)}+\log(|{\hat{{\mbox{\boldmath$\Sigma$}}}}_{m_r}|)+({{\mbox{\boldmath$o$}}}(t)-
+{\hat{{\mbox{\boldmath$\mu$}}}}_{m_r})^T{{\hat{{\mbox{\boldmath$\Sigma$}}}}}_{m_r}^{-1}({{\mbox{\boldmath$o$}}}(t)-{\hat{{\mbox{\boldmath$\mu$}}}}_{m_r})
+\right] \nonumber
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="639" HEIGHT="67" ALIGN="MIDDLE" BORDER="0"
+ SRC="img388.png"
+ ALT="$\displaystyle {\cal Q}({\cal M},{\hat{\cal M}}) =
+- \frac{1}{2}
+\sum_{r=1}^R
+\s...
+...^{-1}({{\mbox{\boldmath$o$}}}(t)-{\hat{{\mbox{\boldmath$\mu$}}}}_{m_r})
+\right]$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img389.png"
+ ALT="$ K^{(m)}$"></SPAN> subsumes all constants and <!-- MATH
+ $L_{m_r}(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="52" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img384.png"
+ ALT="$ L_{m_r}(t)$"></SPAN>, the occupation likelihood, is defined as,
+<!-- MATH
+ \begin{displaymath}
+L_{m_r}(t)= p(q_{m_r}(t)\;|\;\mathcal{M}, {\mbox{\boldmath$O$}}_T)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="200" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img390.png"
+ ALT="$\displaystyle L_{m_r}(t)= p(q_{m_r}(t)\;\vert\;\mathcal{M}, {\mbox{\boldmath$O$}}_T)
+$">
+</DIV><P></P>
+and <!-- MATH
+ $q_{m_r}(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img391.png"
+ ALT="$ q_{m_r}(t)$"></SPAN> indicates the Gaussian component <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img381.png"
+ ALT="$ m_r$"></SPAN> at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>,
+and <!-- MATH
+ ${\mbox{\boldmath $O$}}_T = \left\{{\mbox{\boldmath $o$}}(1),\dots,{\mbox{\boldmath $o$}}(T)\right\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="163" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img392.png"
+ ALT="$ {\mbox{\boldmath $O$}}_T = \left\{{\mbox{\boldmath $o$}}(1),\dots,{\mbox{\boldmath $o$}}(T)\right\}$"></SPAN> is the
+adaptation data. The occupation likelihood is obtained from the
+forward-backward process described in section&nbsp;<A HREF="node120_ct.html#s:bwformulae">8.8</A>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html3121" HREF="node140_mn.html" TARGET="main"><SMALL>Mean Transformation Matrix (<TT>MLLRMEAN</TT>)</SMALL></A>
+<LI><A NAME="tex2html3122" HREF="node141_mn.html" TARGET="main"><SMALL>Variance Transformation Matrix (<TT>MLLRVAR</TT>, <TT>MLLRCOV</TT>)</SMALL></A>
+<LI><A NAME="tex2html3123" HREF="node142_mn.html" TARGET="main"><SMALL>Constrained MLLR Transformation Matrix (<TT>CMLLR</TT>)</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

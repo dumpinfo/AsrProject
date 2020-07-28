@@ -1,0 +1,1420 @@
+ WARNING [-2631]  QuestionCommand: No items for question R_Silence
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question R_dd
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question R_dx
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question R_el
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question R_en
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question R_kd
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question R_pd
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question R_td
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question R_ts
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question L_Silence
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question L_dd
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question L_dx
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question L_el
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question L_en
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question L_kd
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question L_pd
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question L_td
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  QuestionCommand: No items for question L_ts
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+
+TB 350.00 ST_aa_2_ {}
+ Tree based clustering
+ Start  aa[2] : 184  have LogL=-85.650 occ=4764.8
+
+ Via    aa[2] : 15 gives LogL=-82.812 occ=4764.8
+
+ End    aa[2] : 13 gives LogL=-82.944 occ=4764.8
+
+ TB: Stats 184->13 [7.1%]  { 184->13 [7.1%] total }
+
+TB 350.00 ST_ae_2_ {}
+ Tree based clustering
+ Start  ae[2] : 268  have LogL=-80.677 occ=13574.7
+
+ Via    ae[2] : 25 gives LogL=-76.463 occ=13574.7
+
+ End    ae[2] : 24 gives LogL=-76.487 occ=13574.7
+
+ TB: Stats 268->24 [9.0%]  { 452->37 [8.2%] total }
+
+TB 350.00 ST_ah_2_ {}
+ Tree based clustering
+ Start  ah[2] : 255  have LogL=-87.477 occ=4634.7
+
+ Via    ah[2] : 16 gives LogL=-83.340 occ=4634.7
+
+ End    ah[2] : 15 gives LogL=-83.415 occ=4634.7
+
+ TB: Stats 255->15 [5.9%]  { 707->52 [7.4%] total }
+
+TB 350.00 ST_ao_2_ {}
+ Tree based clustering
+ Start  ao[2] : 227  have LogL=-86.457 occ=7863.7
+
+ Via    ao[2] : 23 gives LogL=-81.516 occ=7863.7
+
+ End    ao[2] : 20 gives LogL=-81.637 occ=7863.7
+
+ TB: Stats 227->20 [8.8%]  { 934->72 [7.7%] total }
+
+TB 350.00 ST_aw_2_ {}
+ Tree based clustering
+ Start  aw[2] : 110  have LogL=-81.388 occ=2752.9
+
+ Via    aw[2] : 9 gives LogL=-79.146 occ=2752.9
+
+ End    aw[2] : 9 gives LogL=-79.146 occ=2752.9
+
+ TB: Stats 110->9 [8.2%]  { 1044->81 [7.8%] total }
+
+TB 350.00 ST_ax_2_ {}
+ Tree based clustering
+ Start  ax[2] : 568  have LogL=-89.088 occ=14229.2
+
+ Via    ax[2] : 49 gives LogL=-84.422 occ=14229.2
+
+ End    ax[2] : 41 gives LogL=-84.583 occ=14229.2
+
+ TB: Stats 568->41 [7.2%]  { 1612->122 [7.6%] total }
+
+TB 350.00 ST_ay_2_ {}
+ Tree based clustering
+ Start  ay[2] : 262  have LogL=-82.583 occ=7579.3
+
+ Via    ay[2] : 14 gives LogL=-78.911 occ=7579.3
+
+ End    ay[2] : 13 gives LogL=-78.953 occ=7579.3
+
+ TB: Stats 262->13 [5.0%]  { 1874->135 [7.2%] total }
+
+TB 350.00 ST_b_2_ {}
+ Tree based clustering
+ Start   b[2] : 364  have LogL=-82.771 occ=6970.0
+
+ Via     b[2] : 18 gives LogL=-80.565 occ=6970.0
+
+ End     b[2] : 13 gives LogL=-80.748 occ=6970.0
+
+ TB: Stats 364->13 [3.6%]  { 2238->148 [6.6%] total }
+
+TB 350.00 ST_ch_2_ {}
+ Tree based clustering
+ Start  ch[2] : 172  have LogL=-86.516 occ=3538.4
+
+ Via    ch[2] : 5 gives LogL=-85.439 occ=3538.4
+
+ End    ch[2] : 4 gives LogL=-85.529 occ=3538.4
+
+ TB: Stats 172->4 [2.3%]  { 2410->152 [6.3%] total }
+
+TB 350.00 ST_d_2_ {}
+ Tree based clustering
+ Start   d[2] : 606  have LogL=-87.977 occ=14176.0
+
+ Via     d[2] : 28 gives LogL=-84.964 occ=14176.0
+
+ End     d[2] : 22 gives LogL=-85.073 occ=14176.0
+
+ TB: Stats 606->22 [3.6%]  { 3016->174 [5.8%] total }
+
+TB 350.00 ST_dh_2_ {}
+ Tree based clustering
+ Start  dh[2] : 210  have LogL=-82.767 occ=8631.9
+
+ Via    dh[2] : 13 gives LogL=-80.381 occ=8631.9
+
+ End    dh[2] : 11 gives LogL=-80.445 occ=8631.9
+
+ TB: Stats 210->11 [5.2%]  { 3226->185 [5.7%] total }
+
+TB 350.00 ST_ea_2_ {}
+ Tree based clustering
+ Start  ea[2] : 65  have LogL=-83.022 occ=717.2
+
+ Via    ea[2] : 3 gives LogL=-81.810 occ=717.2
+
+ End    ea[2] : 3 gives LogL=-81.810 occ=717.2
+
+ TB: Stats 65->3 [4.6%]  { 3291->188 [5.7%] total }
+
+TB 350.00 ST_eh_2_ {}
+ Tree based clustering
+ Start  eh[2] : 227  have LogL=-85.033 occ=6186.4
+
+ Via    eh[2] : 20 gives LogL=-80.880 occ=6186.4
+
+ End    eh[2] : 18 gives LogL=-80.988 occ=6186.4
+
+ TB: Stats 227->18 [7.9%]  { 3518->206 [5.9%] total }
+
+TB 350.00 ST_er_2_ {}
+ Tree based clustering
+ Start  er[2] : 160  have LogL=-83.160 occ=4207.4
+
+ Via    er[2] : 9 gives LogL=-77.930 occ=4207.4
+
+ End    er[2] : 9 gives LogL=-77.930 occ=4207.4
+
+ TB: Stats 160->9 [5.6%]  { 3678->215 [5.8%] total }
+
+TB 350.00 ST_ey_2_ {}
+ Tree based clustering
+ Start  ey[2] : 327  have LogL=-81.857 occ=6970.4
+
+ Via    ey[2] : 16 gives LogL=-78.316 occ=6970.4
+
+ End    ey[2] : 16 gives LogL=-78.316 occ=6970.4
+
+ TB: Stats 327->16 [4.9%]  { 4005->231 [5.8%] total }
+
+TB 350.00 ST_f_2_ {}
+ Tree based clustering
+ Start   f[2] : 380  have LogL=-80.806 occ=5277.7
+
+ Via     f[2] : 14 gives LogL=-78.251 occ=5277.7
+
+ End     f[2] : 11 gives LogL=-78.365 occ=5277.7
+
+ TB: Stats 380->11 [2.9%]  { 4385->242 [5.5%] total }
+
+TB 350.00 ST_g_2_ {}
+ Tree based clustering
+ Start   g[2] : 251  have LogL=-90.515 occ=6853.6
+
+ Via     g[2] : 12 gives LogL=-88.437 occ=6853.6
+
+ End     g[2] : 10 gives LogL=-88.498 occ=6853.6
+
+ TB: Stats 251->10 [4.0%]  { 4636->252 [5.4%] total }
+
+TB 350.00 ST_hh_2_ {}
+ Tree based clustering
+ Start  hh[2] : 279  have LogL=-80.968 occ=7711.0
+
+ Via    hh[2] : 17 gives LogL=-77.883 occ=7711.0
+
+ End    hh[2] : 15 gives LogL=-77.961 occ=7711.0
+
+ TB: Stats 279->15 [5.4%]  { 4915->267 [5.4%] total }
+
+TB 350.00 ST_ia_2_ {}
+ Tree based clustering
+ Start  ia[2] : 76  have LogL=-81.178 occ=1668.4
+
+ Via    ia[2] : 5 gives LogL=-78.738 occ=1668.4
+
+ End    ia[2] : 5 gives LogL=-78.738 occ=1668.4
+
+ TB: Stats 76->5 [6.6%]  { 4991->272 [5.4%] total }
+
+TB 350.00 ST_ih_2_ {}
+ Tree based clustering
+ Start  ih[2] : 385  have LogL=-83.053 occ=26628.0
+
+ Via    ih[2] : 75 gives LogL=-79.411 occ=26628.0
+
+ End    ih[2] : 60 gives LogL=-79.569 occ=26628.0
+
+ TB: Stats 385->60 [15.6%]  { 5376->332 [6.2%] total }
+
+TB 350.00 ST_iy_2_ {}
+ Tree based clustering
+ Start  iy[2] : 469  have LogL=-84.952 occ=15509.6
+
+ Via    iy[2] : 26 gives LogL=-79.248 occ=15509.6
+
+ End    iy[2] : 23 gives LogL=-79.287 occ=15509.6
+
+ TB: Stats 469->23 [4.9%]  { 5845->355 [6.1%] total }
+
+TB 350.00 ST_jh_2_ {}
+ Tree based clustering
+ Start  jh[2] : 165  have LogL=-88.744 occ=4201.3
+
+ Via    jh[2] : 8 gives LogL=-87.399 occ=4201.3
+
+ End    jh[2] : 6 gives LogL=-87.539 occ=4201.3
+
+ TB: Stats 165->6 [3.6%]  { 6010->361 [6.0%] total }
+
+TB 350.00 ST_k_2_ {}
+ Tree based clustering
+ Start   k[2] : 528  have LogL=-88.312 occ=22443.1
+
+ Via     k[2] : 26 gives LogL=-86.284 occ=22443.1
+
+ End     k[2] : 21 gives LogL=-86.338 occ=22443.1
+
+ TB: Stats 528->21 [4.0%]  { 6538->382 [5.8%] total }
+
+TB 350.00 ST_l_2_ {}
+ Tree based clustering
+ Start   l[2] : 665  have LogL=-86.713 occ=14112.2
+
+ Via     l[2] : 35 gives LogL=-82.491 occ=14112.2
+
+ End     l[2] : 24 gives LogL=-82.708 occ=14112.2
+
+ TB: Stats 665->24 [3.6%]  { 7203->406 [5.6%] total }
+
+TB 350.00 ST_m_2_ {}
+ Tree based clustering
+ Start   m[2] : 502  have LogL=-86.405 occ=7054.2
+
+ Via     m[2] : 19 gives LogL=-82.674 occ=7054.2
+
+ End     m[2] : 13 gives LogL=-82.846 occ=7054.2
+
+ TB: Stats 502->13 [2.6%]  { 7705->419 [5.4%] total }
+
+TB 350.00 ST_n_2_ {}
+ Tree based clustering
+ Start   n[2] : 648  have LogL=-85.557 occ=15149.3
+
+ Via     n[2] : 30 gives LogL=-82.863 occ=15149.3
+
+ End     n[2] : 24 gives LogL=-82.964 occ=15149.3
+
+ TB: Stats 648->24 [3.7%]  { 8353->443 [5.3%] total }
+
+TB 350.00 ST_ng_2_ {}
+ Tree based clustering
+ Start  ng[2] : 82  have LogL=-83.186 occ=2940.3
+
+ Via    ng[2] : 4 gives LogL=-82.115 occ=2940.3
+
+ End    ng[2] : 4 gives LogL=-82.115 occ=2940.3
+
+ TB: Stats 82->4 [4.9%]  { 8435->447 [5.3%] total }
+
+TB 350.00 ST_oh_2_ {}
+ Tree based clustering
+ Start  oh[2] : 187  have LogL=-80.273 occ=7328.1
+
+ Via    oh[2] : 20 gives LogL=-76.013 occ=7328.1
+
+ End    oh[2] : 17 gives LogL=-76.123 occ=7328.1
+
+ TB: Stats 187->17 [9.1%]  { 8622->464 [5.4%] total }
+
+TB 350.00 ST_ow_2_ {}
+ Tree based clustering
+ Start  ow[2] : 260  have LogL=-85.239 occ=6661.1
+
+ Via    ow[2] : 15 gives LogL=-82.222 occ=6661.1
+
+ End    ow[2] : 15 gives LogL=-82.222 occ=6661.1
+
+ TB: Stats 260->15 [5.8%]  { 8882->479 [5.4%] total }
+
+TB 350.00 ST_oy_2_ {}
+ Tree based clustering
+ Start  oy[2] : 54  have LogL=-76.714 occ=5454.4
+
+ Via    oy[2] : 9 gives LogL=-75.639 occ=5454.4
+
+ End    oy[2] : 6 gives LogL=-75.825 occ=5454.4
+
+ TB: Stats 54->6 [11.1%]  { 8936->485 [5.4%] total }
+
+TB 350.00 ST_p_2_ {}
+ Tree based clustering
+ Start   p[2] : 424  have LogL=-85.633 occ=5933.1
+
+ Via     p[2] : 13 gives LogL=-82.192 occ=5933.1
+
+ End     p[2] : 11 gives LogL=-82.298 occ=5933.1
+
+ TB: Stats 424->11 [2.6%]  { 9360->496 [5.3%] total }
+
+TB 350.00 ST_r_2_ {}
+ Tree based clustering
+ Start   r[2] : 459  have LogL=-81.889 occ=23403.4
+
+ Via     r[2] : 50 gives LogL=-76.472 occ=23403.4
+
+ End     r[2] : 39 gives LogL=-76.593 occ=23403.4
+
+ TB: Stats 459->39 [8.5%]  { 9819->535 [5.4%] total }
+
+TB 350.00 ST_s_2_ {}
+ Tree based clustering
+ Start   s[2] : 641  have LogL=-83.350 occ=19768.8
+
+ Via     s[2] : 28 gives LogL=-80.007 occ=19768.8
+
+ End     s[2] : 24 gives LogL=-80.059 occ=19768.8
+
+ TB: Stats 641->24 [3.7%]  { 10460->559 [5.3%] total }
+
+TB 350.00 ST_sh_2_ {}
+ Tree based clustering
+ Start  sh[2] : 203  have LogL=-83.435 occ=6919.0
+
+ Via    sh[2] : 11 gives LogL=-79.179 occ=6919.0
+
+ End    sh[2] : 9 gives LogL=-79.262 occ=6919.0
+
+ TB: Stats 203->9 [4.4%]  { 10663->568 [5.3%] total }
+
+TB 350.00 ST_sil_2_ {}
+ Tree based clustering
+ Start sil[2] : 1  have LogL=-62.181 occ=88563.5
+
+ Via   sil[2] : 1 gives LogL=-62.181 occ=88563.5
+
+ End   sil[2] : 1 gives LogL=-62.181 occ=88563.5
+
+ TB: Stats 1->1 [100.0%]  { 10664->569 [5.3%] total }
+
+TB 350.00 ST_sp_2_ {}
+ Tree based clustering
+ WARNING [-2631]  TreeBuildCommand: No items to cluster for ST_sp_2_
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+
+TB 350.00 ST_sp2_2_ {}
+ Tree based clustering
+ WARNING [-2631]  TreeBuildCommand: No items to cluster for ST_sp2_2_
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+
+TB 350.00 ST_t_2_ {}
+ Tree based clustering
+ Start   t[2] : 724  have LogL=-91.989 occ=18960.3
+
+ Via     t[2] : 37 gives LogL=-87.620 occ=18960.3
+
+ End     t[2] : 29 gives LogL=-87.733 occ=18960.3
+
+ TB: Stats 724->29 [4.0%]  { 11388->598 [5.3%] total }
+
+TB 350.00 ST_th_2_ {}
+ Tree based clustering
+ Start  th[2] : 157  have LogL=-85.221 occ=1415.4
+
+ Via    th[2] : 3 gives LogL=-84.352 occ=1415.4
+
+ End    th[2] : 3 gives LogL=-84.352 occ=1415.4
+
+ TB: Stats 157->3 [1.9%]  { 11545->601 [5.2%] total }
+
+TB 350.00 ST_ua_2_ {}
+ Tree based clustering
+ Start  ua[2] : 27  have LogL=-86.000 occ=469.6
+
+ Via    ua[2] : 2 gives LogL=-84.492 occ=469.6
+
+ End    ua[2] : 2 gives LogL=-84.492 occ=469.6
+
+ TB: Stats 27->2 [7.4%]  { 11572->603 [5.2%] total }
+
+TB 350.00 ST_uh_2_ {}
+ Tree based clustering
+ Start  uh[2] : 49  have LogL=-88.815 occ=1120.5
+
+ Via    uh[2] : 7 gives LogL=-84.314 occ=1120.5
+
+ End    uh[2] : 7 gives LogL=-84.314 occ=1120.5
+
+ TB: Stats 49->7 [14.3%]  { 11621->610 [5.2%] total }
+
+TB 350.00 ST_uw_2_ {}
+ Tree based clustering
+ Start  uw[2] : 181  have LogL=-84.013 occ=5095.4
+
+ Via    uw[2] : 13 gives LogL=-80.072 occ=5095.4
+
+ End    uw[2] : 13 gives LogL=-80.072 occ=5095.4
+
+ TB: Stats 181->13 [7.2%]  { 11802->623 [5.3%] total }
+
+TB 350.00 ST_v_2_ {}
+ Tree based clustering
+ Start   v[2] : 297  have LogL=-80.177 occ=3956.1
+
+ Via     v[2] : 11 gives LogL=-77.921 occ=3956.1
+
+ End     v[2] : 9 gives LogL=-78.074 occ=3956.1
+
+ TB: Stats 297->9 [3.0%]  { 12099->632 [5.2%] total }
+
+TB 350.00 ST_w_2_ {}
+ Tree based clustering
+ Start   w[2] : 253  have LogL=-86.881 occ=8644.2
+
+ Via     w[2] : 14 gives LogL=-83.080 occ=8644.2
+
+ End     w[2] : 13 gives LogL=-83.116 occ=8644.2
+
+ TB: Stats 253->13 [5.1%]  { 12352->645 [5.2%] total }
+
+TB 350.00 ST_y_2_ {}
+ Tree based clustering
+ Start   y[2] : 132  have LogL=-87.148 occ=6157.0
+
+ Via     y[2] : 13 gives LogL=-83.210 occ=6157.0
+
+ End     y[2] : 12 gives LogL=-83.247 occ=6157.0
+
+ TB: Stats 132->12 [9.1%]  { 12484->657 [5.3%] total }
+
+TB 350.00 ST_z_2_ {}
+ Tree based clustering
+ Start   z[2] : 462  have LogL=-84.106 occ=11923.5
+
+ Via     z[2] : 21 gives LogL=-81.534 occ=11923.5
+
+ End     z[2] : 19 gives LogL=-81.579 occ=11923.5
+
+ TB: Stats 462->19 [4.1%]  { 12946->676 [5.2%] total }
+
+TB 350.00 ST_zh_2_ {}
+ Tree based clustering
+ Start  zh[2] : 15  have LogL=-82.424 occ=286.8
+
+ Via    zh[2] : 2 gives LogL=-80.684 occ=286.8
+
+ End    zh[2] : 2 gives LogL=-80.684 occ=286.8
+
+ TB: Stats 15->2 [13.3%]  { 12961->678 [5.2%] total }
+
+TB 350.00 ST_aa_3_ {}
+ Tree based clustering
+ Start  aa[3] : 184  have LogL=-71.775 occ=12140.1
+
+ Via    aa[3] : 26 gives LogL=-69.665 occ=12140.1
+
+ End    aa[3] : 18 gives LogL=-69.853 occ=12140.1
+
+ TB: Stats 184->18 [9.8%]  { 13145->696 [5.3%] total }
+
+TB 350.00 ST_ae_3_ {}
+ Tree based clustering
+ Start  ae[3] : 268  have LogL=-67.083 occ=32633.5
+
+ Via    ae[3] : 42 gives LogL=-64.909 occ=32633.5
+
+ End    ae[3] : 31 gives LogL=-65.009 occ=32633.5
+
+ TB: Stats 268->31 [11.6%]  { 13413->727 [5.4%] total }
+
+TB 350.00 ST_ah_3_ {}
+ Tree based clustering
+ Start  ah[3] : 255  have LogL=-76.627 occ=8305.5
+
+ Via    ah[3] : 27 gives LogL=-74.214 occ=8305.5
+
+ End    ah[3] : 22 gives LogL=-74.395 occ=8305.5
+
+ TB: Stats 255->22 [8.6%]  { 13668->749 [5.5%] total }
+
+TB 350.00 ST_ao_3_ {}
+ Tree based clustering
+ Start  ao[3] : 227  have LogL=-71.716 occ=17383.4
+
+ Via    ao[3] : 36 gives LogL=-67.492 occ=17383.4
+
+ End    ao[3] : 26 gives LogL=-67.637 occ=17383.4
+
+ TB: Stats 227->26 [11.5%]  { 13895->775 [5.6%] total }
+
+TB 350.00 ST_aw_3_ {}
+ Tree based clustering
+ Start  aw[3] : 110  have LogL=-68.163 occ=6496.6
+
+ Via    aw[3] : 11 gives LogL=-67.100 occ=6496.6
+
+ End    aw[3] : 9 gives LogL=-67.201 occ=6496.6
+
+ TB: Stats 110->9 [8.2%]  { 14005->784 [5.6%] total }
+
+TB 350.00 ST_ax_3_ {}
+ Tree based clustering
+ Start  ax[3] : 568  have LogL=-86.739 occ=19280.2
+
+ Via    ax[3] : 65 gives LogL=-82.422 occ=19280.2
+
+ End    ax[3] : 56 gives LogL=-82.568 occ=19280.2
+
+ TB: Stats 568->56 [9.9%]  { 14573->840 [5.8%] total }
+
+TB 350.00 ST_ay_3_ {}
+ Tree based clustering
+ Start  ay[3] : 262  have LogL=-70.304 occ=17930.9
+
+ Via    ay[3] : 42 gives LogL=-67.833 occ=17930.9
+
+ End    ay[3] : 26 gives LogL=-68.092 occ=17930.9
+
+ TB: Stats 262->26 [9.9%]  { 14835->866 [5.8%] total }
+
+TB 350.00 ST_b_3_ {}
+ Tree based clustering
+ Start   b[3] : 364  have LogL=-83.702 occ=5316.8
+
+ Via     b[3] : 13 gives LogL=-81.653 occ=5316.8
+
+ End     b[3] : 9 gives LogL=-81.878 occ=5316.8
+
+ TB: Stats 364->9 [2.5%]  { 15199->875 [5.8%] total }
+
+TB 350.00 ST_ch_3_ {}
+ Tree based clustering
+ Start  ch[3] : 172  have LogL=-73.654 occ=3678.0
+
+ Via    ch[3] : 5 gives LogL=-73.138 occ=3678.0
+
+ End    ch[3] : 4 gives LogL=-73.224 occ=3678.0
+
+ TB: Stats 172->4 [2.3%]  { 15371->879 [5.7%] total }
+
+TB 350.00 ST_d_3_ {}
+ Tree based clustering
+ Start   d[3] : 606  have LogL=-87.566 occ=10348.5
+
+ Via     d[3] : 21 gives LogL=-84.772 occ=10348.5
+
+ End     d[3] : 16 gives LogL=-84.887 occ=10348.5
+
+ TB: Stats 606->16 [2.6%]  { 15977->895 [5.6%] total }
+
+TB 350.00 ST_dh_3_ {}
+ Tree based clustering
+ Start  dh[3] : 210  have LogL=-83.556 occ=5053.5
+
+ Via    dh[3] : 11 gives LogL=-81.391 occ=5053.5
+
+ End    dh[3] : 9 gives LogL=-81.464 occ=5053.5
+
+ TB: Stats 210->9 [4.3%]  { 16187->904 [5.6%] total }
+
+TB 350.00 ST_ea_3_ {}
+ Tree based clustering
+ Start  ea[3] : 65  have LogL=-72.052 occ=1273.0
+
+ Via    ea[3] : 3 gives LogL=-71.253 occ=1273.0
+
+ End    ea[3] : 3 gives LogL=-71.253 occ=1273.0
+
+ TB: Stats 65->3 [4.6%]  { 16252->907 [5.6%] total }
+
+TB 350.00 ST_eh_3_ {}
+ Tree based clustering
+ Start  eh[3] : 227  have LogL=-73.771 occ=11600.0
+
+ Via    eh[3] : 35 gives LogL=-71.142 occ=11600.0
+
+ End    eh[3] : 26 gives LogL=-71.371 occ=11600.0
+
+ TB: Stats 227->26 [11.5%]  { 16479->933 [5.7%] total }
+
+TB 350.00 ST_er_3_ {}
+ Tree based clustering
+ Start  er[3] : 160  have LogL=-70.653 occ=8133.8
+
+ Via    er[3] : 20 gives LogL=-67.937 occ=8133.8
+
+ End    er[3] : 17 gives LogL=-68.040 occ=8133.8
+
+ TB: Stats 160->17 [10.6%]  { 16639->950 [5.7%] total }
+
+TB 350.00 ST_ey_3_ {}
+ Tree based clustering
+ Start  ey[3] : 327  have LogL=-68.811 occ=14139.6
+
+ Via    ey[3] : 31 gives LogL=-67.203 occ=14139.6
+
+ End    ey[3] : 23 gives LogL=-67.361 occ=14139.6
+
+ TB: Stats 327->23 [7.0%]  { 16966->973 [5.7%] total }
+
+TB 350.00 ST_f_3_ {}
+ Tree based clustering
+ Start   f[3] : 380  have LogL=-68.024 occ=12937.1
+
+ Via     f[3] : 11 gives LogL=-67.533 occ=12937.1
+
+ End     f[3] : 8 gives LogL=-67.595 occ=12937.1
+
+ TB: Stats 380->8 [2.1%]  { 17346->981 [5.7%] total }
+
+TB 350.00 ST_g_3_ {}
+ Tree based clustering
+ Start   g[3] : 251  have LogL=-92.426 occ=5822.4
+
+ Via     g[3] : 11 gives LogL=-90.231 occ=5822.4
+
+ End     g[3] : 10 gives LogL=-90.269 occ=5822.4
+
+ TB: Stats 251->10 [4.0%]  { 17597->991 [5.6%] total }
+
+TB 350.00 ST_hh_3_ {}
+ Tree based clustering
+ Start  hh[3] : 279  have LogL=-81.350 occ=3825.9
+
+ Via    hh[3] : 10 gives LogL=-78.278 occ=3825.9
+
+ End    hh[3] : 9 gives LogL=-78.316 occ=3825.9
+
+ TB: Stats 279->9 [3.2%]  { 17876->1000 [5.6%] total }
+
+TB 350.00 ST_ia_3_ {}
+ Tree based clustering
+ Start  ia[3] : 76  have LogL=-73.169 occ=1794.1
+
+ Via    ia[3] : 5 gives LogL=-71.843 occ=1794.1
+
+ End    ia[3] : 5 gives LogL=-71.843 occ=1794.1
+
+ TB: Stats 76->5 [6.6%]  { 17952->1005 [5.6%] total }
+
+TB 350.00 ST_ih_3_ {}
+ Tree based clustering
+ Start  ih[3] : 385  have LogL=-86.897 occ=14286.9
+
+ Via    ih[3] : 39 gives LogL=-82.879 occ=14286.9
+
+ End    ih[3] : 36 gives LogL=-82.930 occ=14286.9
+
+ TB: Stats 385->36 [9.4%]  { 18337->1041 [5.7%] total }
+
+TB 350.00 ST_iy_3_ {}
+ Tree based clustering
+ Start  iy[3] : 469  have LogL=-75.786 occ=29217.4
+
+ Via    iy[3] : 66 gives LogL=-72.365 occ=29217.4
+
+ End    iy[3] : 43 gives LogL=-72.598 occ=29217.4
+
+ TB: Stats 469->43 [9.2%]  { 18806->1084 [5.8%] total }
+
+TB 350.00 ST_jh_3_ {}
+ Tree based clustering
+ Start  jh[3] : 165  have LogL=-78.873 occ=3710.3
+
+ Via    jh[3] : 6 gives LogL=-77.496 occ=3710.3
+
+ End    jh[3] : 4 gives LogL=-77.615 occ=3710.3
+
+ TB: Stats 165->4 [2.4%]  { 18971->1088 [5.7%] total }
+
+TB 350.00 ST_k_3_ {}
+ Tree based clustering
+ Start   k[3] : 528  have LogL=-88.663 occ=15126.9
+
+ Via     k[3] : 21 gives LogL=-85.581 occ=15126.9
+
+ End     k[3] : 17 gives LogL=-85.642 occ=15126.9
+
+ TB: Stats 528->17 [3.2%]  { 19499->1105 [5.7%] total }
+
+TB 350.00 ST_l_3_ {}
+ Tree based clustering
+ Start   l[3] : 665  have LogL=-81.960 occ=21786.2
+
+ Via     l[3] : 43 gives LogL=-78.951 occ=21786.2
+
+ End     l[3] : 34 gives LogL=-79.073 occ=21786.2
+
+ TB: Stats 665->34 [5.1%]  { 20164->1139 [5.6%] total }
+
+TB 350.00 ST_m_3_ {}
+ Tree based clustering
+ Start   m[3] : 502  have LogL=-80.821 occ=11548.1
+
+ Via     m[3] : 23 gives LogL=-77.712 occ=11548.1
+
+ End     m[3] : 16 gives LogL=-77.875 occ=11548.1
+
+ TB: Stats 502->16 [3.2%]  { 20666->1155 [5.6%] total }
+
+TB 350.00 ST_n_3_ {}
+ Tree based clustering
+ Start   n[3] : 648  have LogL=-82.501 occ=21367.0
+
+ Via     n[3] : 33 gives LogL=-79.959 occ=21367.0
+
+ End     n[3] : 24 gives LogL=-80.081 occ=21367.0
+
+ TB: Stats 648->24 [3.7%]  { 21314->1179 [5.5%] total }
+
+TB 350.00 ST_ng_3_ {}
+ Tree based clustering
+ Start  ng[3] : 82  have LogL=-80.833 occ=4349.7
+
+ Via    ng[3] : 7 gives LogL=-79.466 occ=4349.7
+
+ End    ng[3] : 7 gives LogL=-79.466 occ=4349.7
+
+ TB: Stats 82->7 [8.5%]  { 21396->1186 [5.5%] total }
+
+TB 350.00 ST_oh_3_ {}
+ Tree based clustering
+ Start  oh[3] : 187  have LogL=-68.647 occ=13496.1
+
+ Via    oh[3] : 29 gives LogL=-66.211 occ=13496.1
+
+ End    oh[3] : 23 gives LogL=-66.351 occ=13496.1
+
+ TB: Stats 187->23 [12.3%]  { 21583->1209 [5.6%] total }
+
+TB 350.00 ST_ow_3_ {}
+ Tree based clustering
+ Start  ow[3] : 260  have LogL=-72.723 occ=13206.6
+
+ Via    ow[3] : 30 gives LogL=-70.387 occ=13206.6
+
+ End    ow[3] : 23 gives LogL=-70.534 occ=13206.6
+
+ TB: Stats 260->23 [8.8%]  { 21843->1232 [5.6%] total }
+
+TB 350.00 ST_oy_3_ {}
+ Tree based clustering
+ Start  oy[3] : 54  have LogL=-74.916 occ=2749.6
+
+ Via    oy[3] : 3 gives LogL=-74.153 occ=2749.6
+
+ End    oy[3] : 3 gives LogL=-74.153 occ=2749.6
+
+ TB: Stats 54->3 [5.6%]  { 21897->1235 [5.6%] total }
+
+TB 350.00 ST_p_3_ {}
+ Tree based clustering
+ Start   p[3] : 424  have LogL=-72.279 occ=10009.1
+
+ Via     p[3] : 12 gives LogL=-70.928 occ=10009.1
+
+ End     p[3] : 8 gives LogL=-71.056 occ=10009.1
+
+ TB: Stats 424->8 [1.9%]  { 22321->1243 [5.6%] total }
+
+TB 350.00 ST_r_3_ {}
+ Tree based clustering
+ Start   r[3] : 459  have LogL=-82.349 occ=15785.7
+
+ Via     r[3] : 36 gives LogL=-77.089 occ=15785.7
+
+ End     r[3] : 30 gives LogL=-77.196 occ=15785.7
+
+ TB: Stats 459->30 [6.5%]  { 22780->1273 [5.6%] total }
+
+TB 350.00 ST_s_3_ {}
+ Tree based clustering
+ Start   s[3] : 641  have LogL=-69.932 occ=42886.3
+
+ Via     s[3] : 32 gives LogL=-68.839 occ=42886.3
+
+ End     s[3] : 26 gives LogL=-68.880 occ=42886.3
+
+ TB: Stats 641->26 [4.1%]  { 23421->1299 [5.5%] total }
+
+TB 350.00 ST_sh_3_ {}
+ Tree based clustering
+ Start  sh[3] : 203  have LogL=-69.048 occ=14526.5
+
+ Via    sh[3] : 10 gives LogL=-67.837 occ=14526.5
+
+ End    sh[3] : 8 gives LogL=-67.880 occ=14526.5
+
+ TB: Stats 203->8 [3.9%]  { 23624->1307 [5.5%] total }
+
+TB 350.00 ST_sil_3_ {}
+ Tree based clustering
+ Start sil[3] : 1  have LogL=-81.496 occ=17089.9
+
+ Via   sil[3] : 1 gives LogL=-81.496 occ=17089.9
+
+ End   sil[3] : 1 gives LogL=-81.496 occ=17089.9
+
+ TB: Stats 1->1 [100.0%]  { 23625->1308 [5.5%] total }
+
+TB 350.00 ST_sp_3_ {}
+ Tree based clustering
+ WARNING [-2631]  TreeBuildCommand: No items to cluster for ST_sp_3_
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+
+TB 350.00 ST_sp2_3_ {}
+ Tree based clustering
+ WARNING [-2631]  TreeBuildCommand: No items to cluster for ST_sp2_3_
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+
+TB 350.00 ST_t_3_ {}
+ Tree based clustering
+ Start   t[3] : 724  have LogL=-86.067 occ=28214.5
+
+ Via     t[3] : 46 gives LogL=-83.656 occ=28214.5
+
+ End     t[3] : 31 gives LogL=-83.788 occ=28214.5
+
+ TB: Stats 724->31 [4.3%]  { 24349->1339 [5.5%] total }
+
+TB 350.00 ST_th_3_ {}
+ Tree based clustering
+ Start  th[3] : 157  have LogL=-73.901 occ=3227.6
+
+ Via    th[3] : 1 gives LogL=-73.901 occ=3227.6
+
+ End    th[3] : 1 gives LogL=-73.901 occ=3227.6
+
+ TB: Stats 157->1 [0.6%]  { 24506->1340 [5.5%] total }
+
+TB 350.00 ST_ua_3_ {}
+ Tree based clustering
+ Start  ua[3] : 27  have LogL=-73.849 occ=930.3
+
+ Via    ua[3] : 4 gives LogL=-71.839 occ=930.3
+
+ End    ua[3] : 4 gives LogL=-71.839 occ=930.3
+
+ TB: Stats 27->4 [14.8%]  { 24533->1344 [5.5%] total }
+
+TB 350.00 ST_uh_3_ {}
+ Tree based clustering
+ Start  uh[3] : 49  have LogL=-82.044 occ=1646.7
+
+ Via    uh[3] : 8 gives LogL=-77.815 occ=1646.7
+
+ End    uh[3] : 8 gives LogL=-77.815 occ=1646.7
+
+ TB: Stats 49->8 [16.3%]  { 24582->1352 [5.5%] total }
+
+TB 350.00 ST_uw_3_ {}
+ Tree based clustering
+ Start  uw[3] : 181  have LogL=-72.313 occ=12011.1
+
+ Via    uw[3] : 31 gives LogL=-69.528 occ=12011.1
+
+ End    uw[3] : 25 gives LogL=-69.669 occ=12011.1
+
+ TB: Stats 181->25 [13.8%]  { 24763->1377 [5.6%] total }
+
+TB 350.00 ST_v_3_ {}
+ Tree based clustering
+ Start   v[3] : 297  have LogL=-80.099 occ=4214.8
+
+ Via     v[3] : 11 gives LogL=-78.445 occ=4214.8
+
+ End     v[3] : 8 gives LogL=-78.643 occ=4214.8
+
+ TB: Stats 297->8 [2.7%]  { 25060->1385 [5.5%] total }
+
+TB 350.00 ST_w_3_ {}
+ Tree based clustering
+ Start   w[3] : 253  have LogL=-78.932 occ=11644.8
+
+ Via     w[3] : 24 gives LogL=-76.017 occ=11644.8
+
+ End     w[3] : 18 gives LogL=-76.159 occ=11644.8
+
+ TB: Stats 253->18 [7.1%]  { 25313->1403 [5.5%] total }
+
+TB 350.00 ST_y_3_ {}
+ Tree based clustering
+ Start   y[3] : 132  have LogL=-74.099 occ=9573.2
+
+ Via     y[3] : 14 gives LogL=-69.796 occ=9573.2
+
+ End     y[3] : 11 gives LogL=-69.871 occ=9573.2
+
+ TB: Stats 132->11 [8.3%]  { 25445->1414 [5.6%] total }
+
+TB 350.00 ST_z_3_ {}
+ Tree based clustering
+ Start   z[3] : 462  have LogL=-75.590 occ=19490.3
+
+ Via     z[3] : 23 gives LogL=-73.601 occ=19490.3
+
+ End     z[3] : 19 gives LogL=-73.645 occ=19490.3
+
+ TB: Stats 462->19 [4.1%]  { 25907->1433 [5.5%] total }
+
+TB 350.00 ST_zh_3_ {}
+ Tree based clustering
+ Start  zh[3] : 15  have LogL=-75.004 occ=359.5
+
+ Via    zh[3] : 1 gives LogL=-75.004 occ=359.5
+
+ End    zh[3] : 1 gives LogL=-75.004 occ=359.5
+
+ TB: Stats 15->1 [6.7%]  { 25922->1434 [5.5%] total }
+
+TB 350.00 ST_aa_4_ {}
+ Tree based clustering
+ Start  aa[4] : 184  have LogL=-88.907 occ=5575.2
+
+ Via    aa[4] : 9 gives LogL=-86.728 occ=5575.2
+
+ End    aa[4] : 9 gives LogL=-86.728 occ=5575.2
+
+ TB: Stats 184->9 [4.9%]  { 26106->1443 [5.5%] total }
+
+TB 350.00 ST_ae_4_ {}
+ Tree based clustering
+ Start  ae[4] : 268  have LogL=-85.662 occ=16319.7
+
+ Via    ae[4] : 20 gives LogL=-81.611 occ=16319.7
+
+ End    ae[4] : 20 gives LogL=-81.611 occ=16319.7
+
+ TB: Stats 268->20 [7.5%]  { 26374->1463 [5.5%] total }
+
+TB 350.00 ST_ah_4_ {}
+ Tree based clustering
+ Start  ah[4] : 255  have LogL=-88.544 occ=4830.0
+
+ Via    ah[4] : 13 gives LogL=-84.903 occ=4830.0
+
+ End    ah[4] : 13 gives LogL=-84.903 occ=4830.0
+
+ TB: Stats 255->13 [5.1%]  { 26629->1476 [5.5%] total }
+
+TB 350.00 ST_ao_4_ {}
+ Tree based clustering
+ Start  ao[4] : 227  have LogL=-87.088 occ=9206.7
+
+ Via    ao[4] : 22 gives LogL=-82.171 occ=9206.7
+
+ End    ao[4] : 18 gives LogL=-82.298 occ=9206.7
+
+ TB: Stats 227->18 [7.9%]  { 26856->1494 [5.6%] total }
+
+TB 350.00 ST_aw_4_ {}
+ Tree based clustering
+ Start  aw[4] : 110  have LogL=-84.992 occ=3371.7
+
+ Via    aw[4] : 7 gives LogL=-82.932 occ=3371.7
+
+ End    aw[4] : 7 gives LogL=-82.932 occ=3371.7
+
+ TB: Stats 110->7 [6.4%]  { 26966->1501 [5.6%] total }
+
+TB 350.00 ST_ax_4_ {}
+ Tree based clustering
+ Start  ax[4] : 568  have LogL=-89.753 occ=16350.4
+
+ Via    ax[4] : 44 gives LogL=-83.959 occ=16350.4
+
+ End    ax[4] : 40 gives LogL=-84.022 occ=16350.4
+
+ TB: Stats 568->40 [7.0%]  { 27534->1541 [5.6%] total }
+
+TB 350.00 ST_ay_4_ {}
+ Tree based clustering
+ Start  ay[4] : 262  have LogL=-86.662 occ=10032.3
+
+ Via    ay[4] : 16 gives LogL=-83.745 occ=10032.3
+
+ End    ay[4] : 15 gives LogL=-83.776 occ=10032.3
+
+ TB: Stats 262->15 [5.7%]  { 27796->1556 [5.6%] total }
+
+TB 350.00 ST_b_4_ {}
+ Tree based clustering
+ Start   b[4] : 364  have LogL=-89.218 occ=4878.9
+
+ Via     b[4] : 12 gives LogL=-86.355 occ=4878.9
+
+ End     b[4] : 10 gives LogL=-86.474 occ=4878.9
+
+ TB: Stats 364->10 [2.7%]  { 28160->1566 [5.6%] total }
+
+TB 350.00 ST_ch_4_ {}
+ Tree based clustering
+ Start  ch[4] : 172  have LogL=-84.944 occ=2218.5
+
+ Via    ch[4] : 8 gives LogL=-82.649 occ=2218.5
+
+ End    ch[4] : 7 gives LogL=-82.797 occ=2218.5
+
+ TB: Stats 172->7 [4.1%]  { 28332->1573 [5.6%] total }
+
+TB 350.00 ST_d_4_ {}
+ Tree based clustering
+ Start   d[4] : 606  have LogL=-90.457 occ=13422.8
+
+ Via     d[4] : 28 gives LogL=-86.844 occ=13422.8
+
+ End     d[4] : 23 gives LogL=-86.930 occ=13422.8
+
+ TB: Stats 606->23 [3.8%]  { 28938->1596 [5.5%] total }
+
+TB 350.00 ST_dh_4_ {}
+ Tree based clustering
+ Start  dh[4] : 210  have LogL=-85.055 occ=4483.7
+
+ Via    dh[4] : 10 gives LogL=-82.320 occ=4483.7
+
+ End    dh[4] : 10 gives LogL=-82.320 occ=4483.7
+
+ TB: Stats 210->10 [4.8%]  { 29148->1606 [5.5%] total }
+
+TB 350.00 ST_ea_4_ {}
+ Tree based clustering
+ Start  ea[4] : 65  have LogL=-71.303 occ=1454.0
+
+ Via    ea[4] : 5 gives LogL=-69.743 occ=1454.0
+
+ End    ea[4] : 4 gives LogL=-69.910 occ=1454.0
+
+ TB: Stats 65->4 [6.2%]  { 29213->1610 [5.5%] total }
+
+TB 350.00 ST_eh_4_ {}
+ Tree based clustering
+ Start  eh[4] : 227  have LogL=-87.474 occ=6811.3
+
+ Via    eh[4] : 16 gives LogL=-83.115 occ=6811.3
+
+ End    eh[4] : 15 gives LogL=-83.162 occ=6811.3
+
+ TB: Stats 227->15 [6.6%]  { 29440->1625 [5.5%] total }
+
+TB 350.00 ST_er_4_ {}
+ Tree based clustering
+ Start  er[4] : 160  have LogL=-86.471 occ=5594.2
+
+ Via    er[4] : 14 gives LogL=-81.911 occ=5594.2
+
+ End    er[4] : 13 gives LogL=-81.972 occ=5594.2
+
+ TB: Stats 160->13 [8.1%]  { 29600->1638 [5.5%] total }
+
+TB 350.00 ST_ey_4_ {}
+ Tree based clustering
+ Start  ey[4] : 327  have LogL=-86.523 occ=7892.6
+
+ Via    ey[4] : 19 gives LogL=-83.540 occ=7892.6
+
+ End    ey[4] : 14 gives LogL=-83.692 occ=7892.6
+
+ TB: Stats 327->14 [4.3%]  { 29927->1652 [5.5%] total }
+
+TB 350.00 ST_f_4_ {}
+ Tree based clustering
+ Start   f[4] : 380  have LogL=-82.891 occ=5817.6
+
+ Via     f[4] : 13 gives LogL=-80.453 occ=5817.6
+
+ End     f[4] : 12 gives LogL=-80.501 occ=5817.6
+
+ TB: Stats 380->12 [3.2%]  { 30307->1664 [5.5%] total }
+
+TB 350.00 ST_g_4_ {}
+ Tree based clustering
+ Start   g[4] : 251  have LogL=-89.928 occ=4349.2
+
+ Via     g[4] : 11 gives LogL=-86.487 occ=4349.2
+
+ End     g[4] : 10 gives LogL=-86.537 occ=4349.2
+
+ TB: Stats 251->10 [4.0%]  { 30558->1674 [5.5%] total }
+
+TB 350.00 ST_hh_4_ {}
+ Tree based clustering
+ Start  hh[4] : 279  have LogL=-80.049 occ=4164.8
+
+ Via    hh[4] : 10 gives LogL=-77.004 occ=4164.8
+
+ End    hh[4] : 9 gives LogL=-77.083 occ=4164.8
+
+ TB: Stats 279->9 [3.2%]  { 30837->1683 [5.5%] total }
+
+TB 350.00 ST_ia_4_ {}
+ Tree based clustering
+ Start  ia[4] : 76  have LogL=-75.210 occ=2086.9
+
+ Via    ia[4] : 5 gives LogL=-72.926 occ=2086.9
+
+ End    ia[4] : 5 gives LogL=-72.926 occ=2086.9
+
+ TB: Stats 76->5 [6.6%]  { 30913->1688 [5.5%] total }
+
+TB 350.00 ST_ih_4_ {}
+ Tree based clustering
+ Start  ih[4] : 385  have LogL=-88.858 occ=13581.8
+
+ Via    ih[4] : 31 gives LogL=-83.309 occ=13581.8
+
+ End    ih[4] : 28 gives LogL=-83.366 occ=13581.8
+
+ TB: Stats 385->28 [7.3%]  { 31298->1716 [5.5%] total }
+
+TB 350.00 ST_iy_4_ {}
+ Tree based clustering
+ Start  iy[4] : 469  have LogL=-87.899 occ=19580.9
+
+ Via    iy[4] : 35 gives LogL=-82.384 occ=19580.9
+
+ End    iy[4] : 31 gives LogL=-82.433 occ=19580.9
+
+ TB: Stats 469->31 [6.6%]  { 31767->1747 [5.5%] total }
+
+TB 350.00 ST_jh_4_ {}
+ Tree based clustering
+ Start  jh[4] : 165  have LogL=-84.241 occ=2498.6
+
+ Via    jh[4] : 8 gives LogL=-80.146 occ=2498.6
+
+ End    jh[4] : 7 gives LogL=-80.254 occ=2498.6
+
+ TB: Stats 165->7 [4.2%]  { 31932->1754 [5.5%] total }
+
+TB 350.00 ST_k_4_ {}
+ Tree based clustering
+ Start   k[4] : 528  have LogL=-86.639 occ=17787.6
+
+ Via     k[4] : 31 gives LogL=-82.883 occ=17787.6
+
+ End     k[4] : 24 gives LogL=-82.994 occ=17787.6
+
+ TB: Stats 528->24 [4.5%]  { 32460->1778 [5.5%] total }
+
+TB 350.00 ST_l_4_ {}
+ Tree based clustering
+ Start   l[4] : 665  have LogL=-87.844 occ=15698.8
+
+ Via     l[4] : 31 gives LogL=-82.124 occ=15698.8
+
+ End     l[4] : 26 gives LogL=-82.209 occ=15698.8
+
+ TB: Stats 665->26 [3.9%]  { 33125->1804 [5.4%] total }
+
+TB 350.00 ST_m_4_ {}
+ Tree based clustering
+ Start   m[4] : 502  have LogL=-87.455 occ=7969.3
+
+ Via     m[4] : 23 gives LogL=-82.645 occ=7969.3
+
+ End     m[4] : 19 gives LogL=-82.753 occ=7969.3
+
+ TB: Stats 502->19 [3.8%]  { 33627->1823 [5.4%] total }
+
+TB 350.00 ST_n_4_ {}
+ Tree based clustering
+ Start   n[4] : 648  have LogL=-90.207 occ=19082.5
+
+ Via     n[4] : 32 gives LogL=-86.613 occ=19082.5
+
+ End     n[4] : 25 gives LogL=-86.712 occ=19082.5
+
+ TB: Stats 648->25 [3.9%]  { 34275->1848 [5.4%] total }
+
+TB 350.00 ST_ng_4_ {}
+ Tree based clustering
+ Start  ng[4] : 82  have LogL=-87.768 occ=3465.7
+
+ Via    ng[4] : 10 gives LogL=-84.304 occ=3465.7
+
+ End    ng[4] : 9 gives LogL=-84.355 occ=3465.7
+
+ TB: Stats 82->9 [11.0%]  { 34357->1857 [5.4%] total }
+
+TB 350.00 ST_oh_4_ {}
+ Tree based clustering
+ Start  oh[4] : 187  have LogL=-86.525 occ=8183.8
+
+ Via    oh[4] : 15 gives LogL=-83.206 occ=8183.8
+
+ End    oh[4] : 15 gives LogL=-83.206 occ=8183.8
+
+ TB: Stats 187->15 [8.0%]  { 34544->1872 [5.4%] total }
+
+TB 350.00 ST_ow_4_ {}
+ Tree based clustering
+ Start  ow[4] : 260  have LogL=-87.198 occ=6578.6
+
+ Via    ow[4] : 14 gives LogL=-83.821 occ=6578.6
+
+ End    ow[4] : 13 gives LogL=-83.858 occ=6578.6
+
+ TB: Stats 260->13 [5.0%]  { 34804->1885 [5.4%] total }
+
+TB 350.00 ST_oy_4_ {}
+ Tree based clustering
+ Start  oy[4] : 54  have LogL=-79.670 occ=3202.4
+
+ Via    oy[4] : 6 gives LogL=-77.544 occ=3202.4
+
+ End    oy[4] : 6 gives LogL=-77.544 occ=3202.4
+
+ TB: Stats 54->6 [11.1%]  { 34858->1891 [5.4%] total }
+
+TB 350.00 ST_p_4_ {}
+ Tree based clustering
+ Start   p[4] : 424  have LogL=-83.827 occ=12595.6
+
+ Via     p[4] : 19 gives LogL=-82.112 occ=12595.6
+
+ End     p[4] : 15 gives LogL=-82.208 occ=12595.6
+
+ TB: Stats 424->15 [3.5%]  { 35282->1906 [5.4%] total }
+
+TB 350.00 ST_r_4_ {}
+ Tree based clustering
+ Start   r[4] : 459  have LogL=-86.641 occ=15877.5
+
+ Via     r[4] : 41 gives LogL=-79.781 occ=15877.5
+
+ End     r[4] : 30 gives LogL=-79.951 occ=15877.5
+
+ TB: Stats 459->30 [6.5%]  { 35741->1936 [5.4%] total }
+
+TB 350.00 ST_s_4_ {}
+ Tree based clustering
+ Start   s[4] : 641  have LogL=-84.742 occ=23664.3
+
+ Via     s[4] : 29 gives LogL=-80.998 occ=23664.3
+
+ End     s[4] : 23 gives LogL=-81.067 occ=23664.3
+
+ TB: Stats 641->23 [3.6%]  { 36382->1959 [5.4%] total }
+
+TB 350.00 ST_sh_4_ {}
+ Tree based clustering
+ Start  sh[4] : 203  have LogL=-84.350 occ=7838.7
+
+ Via    sh[4] : 10 gives LogL=-80.250 occ=7838.7
+
+ End    sh[4] : 8 gives LogL=-80.327 occ=7838.7
+
+ TB: Stats 203->8 [3.9%]  { 36585->1967 [5.4%] total }
+
+TB 350.00 ST_sil_4_ {}
+ Tree based clustering
+ Start sil[4] : 1  have LogL=-70.400 occ=37182.1
+
+ Via   sil[4] : 1 gives LogL=-70.400 occ=37182.1
+
+ End   sil[4] : 1 gives LogL=-70.400 occ=37182.1
+
+ TB: Stats 1->1 [100.0%]  { 36586->1968 [5.4%] total }
+
+TB 350.00 ST_sp_4_ {}
+ Tree based clustering
+ WARNING [-2631]  TreeBuildCommand: No items to cluster for ST_sp_4_
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+
+TB 350.00 ST_sp2_4_ {}
+ Tree based clustering
+ WARNING [-2631]  TreeBuildCommand: No items to cluster for ST_sp2_4_
+ in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+
+TB 350.00 ST_t_4_ {}
+ Tree based clustering
+ Start   t[4] : 724  have LogL=-88.250 occ=24348.1
+
+ Via     t[4] : 46 gives LogL=-84.721 occ=24348.1
+
+ End     t[4] : 36 gives LogL=-84.837 occ=24348.1
+
+ TB: Stats 724->36 [5.0%]  { 37310->2004 [5.4%] total }
+
+TB 350.00 ST_th_4_ {}
+ Tree based clustering
+ Start  th[4] : 157  have LogL=-85.992 occ=1705.7
+
+ Via    th[4] : 3 gives LogL=-85.029 occ=1705.7
+
+ End    th[4] : 3 gives LogL=-85.029 occ=1705.7
+
+ TB: Stats 157->3 [1.9%]  { 37467->2007 [5.4%] total }
+
+TB 350.00 ST_ua_4_ {}
+ Tree based clustering
+ Start  ua[4] : 27  have LogL=-85.910 occ=388.2
+
+ Via    ua[4] : 2 gives LogL=-83.886 occ=388.2
+
+ End    ua[4] : 2 gives LogL=-83.886 occ=388.2
+
+ TB: Stats 27->2 [7.4%]  { 37494->2009 [5.4%] total }
+
+TB 350.00 ST_uh_4_ {}
+ Tree based clustering
+ Start  uh[4] : 49  have LogL=-90.374 occ=1211.1
+
+ Via    uh[4] : 4 gives LogL=-87.355 occ=1211.1
+
+ End    uh[4] : 4 gives LogL=-87.355 occ=1211.1
+
+ TB: Stats 49->4 [8.2%]  { 37543->2013 [5.4%] total }
+
+TB 350.00 ST_uw_4_ {}
+ Tree based clustering
+ Start  uw[4] : 181  have LogL=-88.152 occ=7043.4
+
+ Via    uw[4] : 17 gives LogL=-84.360 occ=7043.4
+
+ End    uw[4] : 15 gives LogL=-84.438 occ=7043.4
+
+ TB: Stats 181->15 [8.3%]  { 37724->2028 [5.4%] total }
+
+TB 350.00 ST_v_4_ {}
+ Tree based clustering
+ Start   v[4] : 297  have LogL=-84.371 occ=4338.9
+
+ Via     v[4] : 14 gives LogL=-81.707 occ=4338.9
+
+ End     v[4] : 12 gives LogL=-81.808 occ=4338.9
+
+ TB: Stats 297->12 [4.0%]  { 38021->2040 [5.4%] total }
+
+TB 350.00 ST_w_4_ {}
+ Tree based clustering
+ Start   w[4] : 253  have LogL=-83.056 occ=7173.9
+
+ Via     w[4] : 20 gives LogL=-78.284 occ=7173.9
+
+ End     w[4] : 15 gives LogL=-78.450 occ=7173.9
+
+ TB: Stats 253->15 [5.9%]  { 38274->2055 [5.4%] total }
+
+TB 350.00 ST_y_4_ {}
+ Tree based clustering
+ Start   y[4] : 132  have LogL=-75.980 occ=5732.4
+
+ Via     y[4] : 10 gives LogL=-72.542 occ=5732.4
+
+ End     y[4] : 9 gives LogL=-72.600 occ=5732.4
+
+ TB: Stats 132->9 [6.8%]  { 38406->2064 [5.4%] total }
+
+TB 350.00 ST_z_4_ {}
+ Tree based clustering
+ Start   z[4] : 462  have LogL=-85.841 occ=15228.6
+
+ Via     z[4] : 21 gives LogL=-82.923 occ=15228.6
+
+ End     z[4] : 18 gives LogL=-82.977 occ=15228.6
+
+ TB: Stats 462->18 [3.9%]  { 38868->2082 [5.4%] total }
+
+TB 350.00 ST_zh_4_ {}
+ Tree based clustering
+ Start  zh[4] : 15  have LogL=-80.981 occ=243.7
+
+ Via    zh[4] : 1 gives LogL=-80.981 occ=243.7
+
+ End    zh[4] : 1 gives LogL=-80.981 occ=243.7
+
+ TB: Stats 15->1 [6.7%]  { 38883->2083 [5.4%] total }
+
+AU fulllist
+ Creating HMMset using trees to add unseen triphones
+ AU: 21504 Log/21504 Phys created from 12961 Log/12961 Phys

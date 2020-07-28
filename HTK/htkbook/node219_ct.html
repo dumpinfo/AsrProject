@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of The class probabilities format</TITLE>
+<META NAME="description" CONTENT="Contents of The class probabilities format">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node220_mn.html">
+<LINK REL="previous" HREF="node218_mn.html">
+<LINK REL="up" HREF="node217_mn.html">
+<LINK REL="next" HREF="node220_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION04382000000000000000">&#160;</A><A NAME="s:HLMclassprobslmformat">&#160;</A>
+<A NAME="23596">&#160;</A>
+<BR>
+The class probabilities format
+</H2>
+The format of a word-given-class probabilities file, as generated using the
+<TT>-p</TT> option from C<SMALL>LUSTER</SMALL>, is very similar to that of
+the counts file described in the previous sub-section, and is as follows:
+<BR><TT>Word|Class probabilities</TT>
+<BR><SPAN  CLASS="textit">[blank line]</SPAN>
+<BR><TT>Derived from: &lt;file&gt;</TT>
+<BR><TT>Number of classes: &lt;int&gt;</TT>
+<BR><TT>Number of words: &lt;int&gt;</TT>
+<BR><TT>Iterations: &lt;int&gt;</TT>
+<BR><SPAN  CLASS="textit">[blank line]</SPAN>
+<BR><TT>Word    Class name   Probability (log)</TT>
+<BR>
+followed by one line for each word in the model of the form:
+<BR><TT>&lt;word&gt; CLASS&lt;int&gt; &lt;float&gt;</TT>
+<BR>
+<P>
+As in the previous section, the fields are mostly self-explanatory.
+The <TT>Iterations:</TT> header is for information only and records how
+many iterations had been performed to produce the classmap contained
+within the file, and the <TT>Derived from:</TT> header is similarly also
+for display purposes only.  Any number of headers may be present; the
+header section is terminated by finding a line beginning with the four
+characters making up <TT>Word</TT>. The colon-terminated headers may be
+in any order.
+
+<P>
+<TT>CLASS&lt;int&gt;</TT> must be the name of a
+class in the classmap (technically actually the wordmap) used to build
+the class-given-class history <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram component of the language model
+- the file built by LB<SMALL>UILD</SMALL>.  In the current implementation
+these class names are restricted to being of the form <TT>CLASS&lt;int&gt;</TT>, although a modification to the code in LM<SMALL>ODEL.C</SMALL>
+would allow this restriction to be removed.  Each <TT>&lt;float&gt;</TT>
+specifies the natural logarithm of the probability of the word given
+the class, or -99.9900 if the probability of the word is less than
+<!-- MATH
+ $1.0\times10^{-20}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="83" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img624.png"
+ ALT="$ 1.0\times10^{-20}$"></SPAN>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

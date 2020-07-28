@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Other Kinds of Recognition System</TITLE>
+<META NAME="description" CONTENT="Contents of Other Kinds of Recognition System">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node165_mn.html">
+<LINK REL="up" HREF="node157_mn.html">
+<LINK REL="next" HREF="node167_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03990000000000000000">&#160;</A><A NAME="s:othernets">&#160;</A>
+<BR>
+Other Kinds of Recognition System
+</H1>
+
+<P>
+Although the recognition facilities of HTK are aimed primarily
+at sub-word based connected word recognition, it can nevertheless
+support a variety of other types of recognition system.
+
+<P>
+To build a phoneme recogniser, a word-level network is defined using
+an SLF file in the usual
+way except that each ``word'' in the network represents a single phone.
+The structure of the network will typically be a loop in which all
+phones loop back to each other.<A NAME="19919">&#160;</A>
+
+<P>
+The dictionary then contains an entry for each ``word'' such that the word and
+the pronunciation are the same, for example, the dictionary might contain
+<PRE>
+    ih ih
+    eh eh
+    ah ah
+    ... etc
+</PRE>
+
+<P>
+Phoneme recognisers often use biphones to provide some measure of
+context-dependency.  Provided that the HMM set contains all the necessary
+biphones, then HN<SMALL>ET</SMALL> will expand a simple phone loop into a context-sensitive
+biphone loop simply by setting the configuration variable 
+<TT>FORCELEFTBI</TT> or <TT>FORCERIGHTBI</TT> to true, as appropriate.
+
+<P>
+Whole word recognisers can be set-up in a similar way.  The word network
+is designed using the same considerations as for a sub-word based system
+but the dictionary gives the name of the whole-word HMM in place of each
+word pronunciation.<A NAME="19925">&#160;</A>
+
+<P>
+Finally, word spotting<A NAME="19926">&#160;</A> systems can be defined by placing each keyword
+in a word network in parallel with the appropriate filler models.
+The keywords can be whole-word models or subword based.  Note in this
+case that word transition penalties placed on the transitions can be
+used to gain fine control over the false alarm rate.
+
+<P>
+
+<P>
+
+  
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

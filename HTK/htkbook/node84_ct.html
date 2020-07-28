@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Copying and Coding using HCOPY</TITLE>
+<META NAME="description" CONTENT="Contents of Copying and Coding using HCOPY">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node85_mn.html">
+<LINK REL="previous" HREF="node83_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node85_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION032160000000000000000">&#160;</A><A NAME="s:UseHCopy">&#160;</A>
+<BR>
+Copying and Coding using HC<SMALL>OPY</SMALL>
+</H1>
+
+<P>
+<A NAME="6298">&#160;</A>
+HC<SMALL>OPY</SMALL><A NAME="6712">&#160;</A> is a general-purpose tool 
+for copying and manipulating speech files.
+The general form of invocation is
+<PRE>
+    HCopy src tgt
+</PRE>
+which will make a new copy called <TT>tgt</TT> of the file called <TT>src</TT>.
+HC<SMALL>OPY</SMALL> can also concatenate several sources together as in 
+<PRE>
+    HCopy src1 + src2 + src3 tgt
+</PRE>
+which concatenates the contents of <TT>src1</TT>, <TT>src2</TT> and <TT>src3</TT>,
+storing the results in the file <TT>tgt</TT>.  As well as putting speech files
+together, HC<SMALL>OPY</SMALL> can also take them apart.  For example,
+<PRE>
+    HCopy -s 100 -e -100 src tgt
+</PRE>
+will extract samples 100 through to N-100 of the file <TT>src</TT> to the file
+<TT>tgt</TT> where N is the total number of samples in the source file.
+The range of samples to be copied can also be specified with reference to
+a label file, and modifications made to the speech file can be tracked in a 
+copy of the label file.  All of the various options provided by HC<SMALL>OPY</SMALL> 
+are given in the reference section and in total they provide a powerful
+facility for manipulating speech data files.
+
+<P>
+However, the use of HC<SMALL>OPY</SMALL> extends beyond that of copying, chopping
+and concatenating files.  HC<SMALL>OPY</SMALL> reads in all files using the speech 
+input/output subsystem described in the preceding sections.  Hence, by specifying
+an appropriate configuration file, HC<SMALL>OPY</SMALL> is also a speech coding tool.
+For example, if the configuration file <TT>config</TT> was set-up to convert
+waveform data to MFCC coefficients, the command
+<PRE>
+    HCopy -C config -s 100 -e -100 src.wav tgt.mfc
+</PRE>
+would parameterise the file waveform file <TT>src.wav</TT>, excluding the
+first and last 100 samples, and store the result in <TT>tgt.mfc</TT>.
+
+<P>
+HC<SMALL>OPY</SMALL> will process its arguments in pairs, and as with all HTK tools,
+argument lists can be written in a script file specified via the <TT>-S</TT>
+option.  When coding a large database, the separate invocation of HC<SMALL>OPY</SMALL> 
+for each file needing to be processed would incur a very large overhead.  Hence,
+it is better to create a file, <TT>flist</TT> say, containing a list of
+all source and target files, as in for example,
+<PRE>
+    src1.wav tgt1.mfc
+    src2.wav tgt2.mfc
+    src3.wav tgt3.mfc
+    src4.wav tgt4.mfc
+    etc
+</PRE>
+and then invoke HC<SMALL>OPY</SMALL> by
+<PRE>
+    HCopy -C config -s 100 -e -100 -S flist
+</PRE>
+which would encode each file listed in <TT>flist</TT> in a single invocation.
+
+<P>
+Normally HC<SMALL>OPY</SMALL> makes a direct copy of the target speech data in the
+output file.  However, if the configuration 
+parameter <TT>SAVECOMPRESSED</TT><A NAME="6713">&#160;</A>
+is set true then the output is saved in compressed 
+form and if the 
+configuration parameter <TT>SAVEWITHCRC</TT><A NAME="6714">&#160;</A>
+is set true then a checksum is appended to the output 
+(see section&nbsp;<A HREF="node65_ct.html#s:parmstore">5.10</A>).  If the configuration 
+parameter <TT>SAVEASVQ</TT> is set true then only
+VQ indices are saved and the kind of the target file is changed to
+<TT>DISCRETE</TT>.  For this to work, the target kind must have the
+qualifier <TT>_V</TT>
+<A NAME="6715">&#160;</A>
+attached (see section&nbsp;<A HREF="node82_ct.html#s:vquant">5.14</A>). 
+<A NAME="6347">&#160;</A><A NAME="6348">&#160;</A>
+<A NAME="6349">&#160;</A><A NAME="6350">&#160;</A>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:coercions">&#160;</A><IMG
+ WIDTH="457" HEIGHT="269" ALIGN="MIDDLE" BORDER="0"
+ SRC="img207.png"
+ ALT="% latex2html id marker 49224
+$\textstyle \parbox{100mm}{ \begin{center}\setlengt...
+...rabic{figctr}  Valid Parameter Kind Conversions}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

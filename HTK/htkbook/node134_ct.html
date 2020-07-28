@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Linear Transform Format</TITLE>
+<META NAME="description" CONTENT="Contents of Linear Transform Format">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node135_mn.html">
+<LINK REL="previous" HREF="node133_mn.html">
+<LINK REL="up" HREF="node126_mn.html">
+<LINK REL="next" HREF="node135_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03615000000000000000">&#160;</A><A NAME="s:tmfs">&#160;</A>
+<BR>
+Linear Transform Format
+</H2>
+
+<P>
+HER<SMALL>EST</SMALL> estimates the required transformation statistics and can
+either output a set of transformation models, or a single transform
+model file (TMF)<A NAME="15915">&#160;</A>. The advantage
+in storing the transforms as opposed to an adapted MMF is that the
+TMFs are considerably smaller than MMFs (especially triphone
+MMFs). This section describes the format that the transforms are 
+stored in.
+
+<P>
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="15919">&#160;</A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 9.4:</STRONG>
+Example Constrained MLLR transform using hard weights</CAPTION>
+<TR><TD><IMG
+ WIDTH="324" HEIGHT="432" BORDER="0"
+ SRC="img364.png"
+ ALT="\begin{figure}\begin{verbatim}&nbsp;a \lq\lq cued''
+&lt;ADAPTKIND&gt; CLASS
+&lt;BASECLASSES&gt;&nbsp;...
+...-0.032
+-0.017 1.041
+&lt;XFORMWGTSET&gt;
+&lt;CLASSXFORM&gt; 1 1\end{verbatim}\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+Figure&nbsp;<A HREF="node135_ct.html#fig:hiermllr">9.5</A> shows the format of a single transform. In
+the same fashion as HMMs all transforms are stored as macros. The
+header information gives how the transform was estimated, currently
+either with a regression class tree <TT>TREE</TT> or directly using the
+base classes <TT>BASE</TT>. The base class macro is then specified. The
+form of transformation is then described in the transformset. The code
+currently supports constrained MLLR (illustrated), MLLR mean
+adaptation, MLLR full variance adaptation and diagonal variance
+adaptation.  Arbitrary block structures are allowable.  The assignment
+of base class to transform number is specified at the end of the file.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

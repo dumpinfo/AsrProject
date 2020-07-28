@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node337_mn.html">
+<LINK REL="previous" HREF="node335_mn.html">
+<LINK REL="up" HREF="node335_mn.html">
+<LINK REL="next" HREF="node337_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051151000000000000000">&#160;</A><A NAME="s:HQuant-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="29684">&#160;</A>
+This program will construct a HTK format VQ table consisting of one or
+more codebooks, each corresponding to an independent data stream.  
+A codebook is a collection of indexed reference vectors that are intended to
+represent the structure of the training data. Ideally, every compact
+cluster of points in the training data is represented by one reference
+vector.  VQ
+tables are used directly when building systems based on Discrete
+Probability HMMs.  In this case, the continuous-valued speech vectors
+in each stream are replaced by the index of the closest reference
+vector in each corresponding codebook.
+Codebooks can also be used to attach VQ indices to
+continuous observations.  A typical use of this is to preselect
+Gaussians in probability computations.  More information on the
+use of VQ tables is given in section&nbsp;<A HREF="node82_ct.html#s:vquant">5.14</A>.
+
+<P>
+Codebook construction consists of finding clusters in the training data,
+assigning a unique reference vector (the cluster centroid) to each,
+and storing the resultant reference vectors and associated codebook data
+in a VQ table. HQ<SMALL>UANT</SMALL> uses a top-down clustering process whereby
+clusters are iteratively split until the desired number of clusters are
+found. The optimal codebook size (number of reference vectors) depends
+on the structure and amount of the training data, but a value of 256 is
+commonly used.
+
+<P>
+HQ<SMALL>UANT</SMALL> can construct both linear (i.e. flat) and tree-structured
+(i.e. binary) codebooks.  Linear codebooks can have lower quantisation
+errors but tree-structured codebooks have <SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img662.png"
+ ALT="$ \log_2 N$"></SPAN> access times
+compared to <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> for the linear case.  The distance metric can either be
+Euclidean, diagonal covariance Mahalanobis or full covariance
+Mahalanobis.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

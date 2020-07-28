@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Transcriptions and Label Files</TITLE>
+<META NAME="description" CONTENT="Contents of Transcriptions and Label Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node101_mn.html">
+<LINK REL="previous" HREF="node55_mn.html">
+<LINK REL="up" HREF="node42_mn.html">
+<LINK REL="next" HREF="node88_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03300000000000000000">&#160;</A><A NAME="c:labels">&#160;</A>
+<BR>
+Transcriptions and Label Files
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:Tool.labs">&#160;</A><IMG
+ WIDTH="366" HEIGHT="355" ALIGN="MIDDLE" BORDER="0"
+ SRC="img208.png"
+ ALT="$\textstyle \parbox{80mm}{ \begin{center}\setlength{\epsfxsize}{80mm}
+\epsfbox{HTKFigs//Tool.labs.eps}
+\end{center} }$">
+</DIV>
+
+<P>
+Many of the operations performed by HTK which involve speech data
+files assume that the speech is divided into segments and each segment
+has a name or <SPAN  CLASS="textit">label</SPAN>.  The set of labels associated with a
+speech file constitute a <SPAN  CLASS="textit">transcription</SPAN> and each transcription is
+stored in a separate <SPAN  CLASS="textit">label file</SPAN>.  Typically, the name of the
+label file will be the same as the corresponding speech file but with
+a different extension.  For convenience, label files are often stored
+in a separate directory and all HTK tools have an option to specify
+this.  When very large numbers of files are being processing, label
+file access can be greatly facilitated by using<A NAME="7870">&#160;</A>
+<SPAN  CLASS="textit">Master Label Files (MLFs)</SPAN>.  MLFs may be regarded as index<A NAME="7872">&#160;</A>
+files holding pointers to the actual label files which can either be
+embedded in the same index file or stored anywhere else in the file system.
+Thus, MLFs allow large sets of files to be stored in a single file, they
+allow a single transcription to be shared by many logical label files
+and they allow arbitrary file redirection.<A NAME="7873">&#160;</A>
+
+<P>
+The HTK interface to label files is provided by the module HL<SMALL>ABEL</SMALL>
+which implements the MLF facility and support for a number of external
+label file formats. 
+All of the facilities supplied by HL<SMALL>ABEL</SMALL>, including the
+supported label file formats, are described in this chapter.
+In addition, HTK provides a tool called HLE<SMALL>D</SMALL> for simple 
+batch editing of label files and this is also described.
+Before proceeding to the details, however, the general structure of
+label files will be reviewed.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html2334" HREF="node88_mn.html" TARGET="main"><SMALL>Label File Structure</SMALL></A>
+<LI><A NAME="tex2html2335" HREF="node89_mn.html" TARGET="main"><SMALL>Label File Formats</SMALL></A>
+<UL>
+<LI><A NAME="tex2html2336" HREF="node90_mn.html" TARGET="main"><SMALL>HTK Label Files</SMALL></A>
+<LI><A NAME="tex2html2337" HREF="node91_mn.html" TARGET="main"><SMALL>ESPS Label Files</SMALL></A>
+<LI><A NAME="tex2html2338" HREF="node92_mn.html" TARGET="main"><SMALL>TIMIT Label Files</SMALL></A>
+<LI><A NAME="tex2html2339" HREF="node93_mn.html" TARGET="main"><SMALL>SCRIBE Label Files</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2340" HREF="node94_mn.html" TARGET="main"><SMALL>Master Label Files</SMALL></A>
+<UL>
+<LI><A NAME="tex2html2341" HREF="node95_mn.html" TARGET="main"><SMALL>General Principles of MLFs</SMALL></A>
+<LI><A NAME="tex2html2342" HREF="node96_mn.html" TARGET="main"><SMALL>Syntax and Semantics</SMALL></A>
+<LI><A NAME="tex2html2343" HREF="node97_mn.html" TARGET="main"><SMALL>MLF Search</SMALL></A>
+<LI><A NAME="tex2html2344" HREF="node98_mn.html" TARGET="main"><SMALL>MLF Examples</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2345" HREF="node99_mn.html" TARGET="main"><SMALL>Editing Label Files</SMALL></A>
+<LI><A NAME="tex2html2346" HREF="node100_mn.html" TARGET="main"><SMALL>Summary</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

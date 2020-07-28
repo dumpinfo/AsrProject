@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Regression Class Tree Construction</TITLE>
+<META NAME="description" CONTENT="Contents of Regression Class Tree Construction">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node151_mn.html">
+<LINK REL="previous" HREF="node149_mn.html">
+<LINK REL="up" HREF="node143_mn.html">
+<LINK REL="next" HREF="node151_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03770000000000000000">&#160;</A><A NAME="s:hhedregtree">&#160;</A>
+<BR>
+Regression Class Tree Construction
+</H1>
+
+<P>
+In order to perform most model adaptation tasks (see
+chapter&nbsp;<A HREF="node125_ct.html#c:Adapt">9</A>), it will be neccesary to produce a binary regression
+class tree<A NAME="18695">&#160;</A>. 
+This tree is stored in the MMF, along with a regression
+base class identifier for each mixture component. An example
+regression tree and how it may be used is shown in
+subsection&nbsp;<A HREF="node133_ct.html#s:reg_classes">9.1.4</A>. HHE<SMALL>D</SMALL> provides the means to
+construct a regression class tree for a given MMF, and is invoked
+using the <TT>RC</TT> command<A NAME="18765">&#160;</A>. 
+It is also necessary to supply a
+statistics file, which is output using the <TT>-s</TT> option of
+<TT>HERest</TT>. The statistics file can be loaded by invoking the
+<TT>LS</TT><A NAME="18766">&#160;</A> command.
+
+<P>
+A centroid-splitting algorithm using a Euclidean distance measure is
+used to grow the binary regression class tree to cluster the model
+set's  mixture components.  Each leaf node therefore specifies a 
+particular mixture component cluster. This algorithm proceeds
+as follows until the requested number of terminals has been achieved.
+
+<UL>
+<LI>Select a terminal node that is to be split.
+</LI>
+<LI>Calculated the mean and variance from the mixture components clustered
+at this node.
+</LI>
+<LI>Create two children. Initialise their means to the parent mean 
+perturbed in opposite directions (for each child) by a fraction of 
+the variance.
+</LI>
+<LI>For each component at the parent node assign the component 
+to one of the children by using a Euclidean distance measure to 
+ascertain which child mean the component is closest to.
+</LI>
+<LI>Once all the components have been assigned, calculate the new
+means for the children, based on the component assignments.
+</LI>
+<LI>Keep re-assigning components to the children and re-estimating
+the child means until there is no change in assignments from one
+iteration to the next. Now finalise the split.
+</LI>
+</UL>
+
+<P>
+As an example, the following HHE<SMALL>D</SMALL> script would produce a 
+regression class tree with 32 terminal nodes, or regression base
+classes:-
+<PRE>
+     LS "statsfile"
+     RC 32 "rtree"
+</PRE>
+
+<P>
+A further optional argument is possible with the 
+<TT>RC</TT> command. 
+This argument allows the user to specify the non-speech class
+mixture components using an <TT>itemlist</TT>, 
+such as the silence mixture components. 
+<PRE>
+     LS "statsfile"
+     RC 32 "rtree" {sil.state[2-4].mix}
+</PRE>
+In this case the first split that will be made in the regression class tree
+will be to split the speech and non-speech sounds, after which the
+tree building continues as usual. 
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

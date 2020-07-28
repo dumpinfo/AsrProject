@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node264_mn.html">
+<LINK REL="previous" HREF="node262_mn.html">
+<LINK REL="up" HREF="node261_mn.html">
+<LINK REL="next" HREF="node264_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05162000000000000000">&#160;</A><A NAME="s:HERest-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HER<SMALL>EST</SMALL> is invoked via the command line
+<PRE>
+   HERest [options] hmmList trainFile ...
+</PRE>
+This causes the set of HMMs given in <TT>hmmList</TT> to be loaded.
+The given list of
+training files is then used to perform one re-estimation cycle. As always,
+the list of training files can be stored in a script file if required.  On
+completion, HER<SMALL>EST</SMALL> outputs new updated versions of each HMM definition. If
+the number of training examples falls below a specified threshold 
+for some particular HMM, then
+the new parameters for that HMM are ignored and the original parameters are used 
+instead.
+
+<P>
+The detailed operation of HER<SMALL>EST</SMALL> is controlled by the following
+command line options
+
+<DL COMPACT>
+<DT><TT>-a</TT>
+<DD>Use an input transform to obtain alignments for updating
+      models or transforms (default off).
+
+<P>
+<DT><TT>-c f</TT>
+<DD>Set the threshold for tied-mixture observation
+      pruning to <TT>f</TT>.
+      For tied-mixture <TT>TIEDHS</TT> systems, only those 
+      mixture component probabilities which fall within <TT>f</TT> of
+      the maximum mixture component probability are used in calculating
+      the state output probabilities (default 10.0).
+
+<P>
+<DT><TT>-d dir</TT>
+<DD>Normally HER<SMALL>EST</SMALL> looks for HMM definitions
+       (not already loaded via MMF files) 
+      in the current directory.  This option tells HER<SMALL>EST</SMALL> to look in
+      the directory <TT>dir</TT> to find them.
+
+<P>
+<DT><TT>-h mask</TT>
+<DD>Set the mask for determining which transform names are 
+	to be used for the output transforms. If <TT>PAXFORMMASK</TT>
+       	or <TT>INXFORMMASK</TT> are not specified then the input
+  	transform mask is assumed for both output and parent transforms.
+
+<P>
+<DT><TT>-l N</TT>
+<DD>Set the maximum number of files to use for each 
+	speaker, determined by the output transform speaker mask,
+	to estimate the transform with.(default <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img628.png"
+ ALT="$ \infty$"></SPAN>).
+
+<P>
+<DT><TT>-m N</TT>
+<DD>Set the minimum number of training examples 
+    required for any model to <TT>N</TT>.  If the actual number
+    falls below this value, the HMM is not updated and the original
+    parameters are used for the new version (default value 3).
+
+<P>
+<DT><TT>-o ext</TT>
+<DD>This causes the file name extensions of the
+      original models (if any) to be replaced by <TT>ext</TT>.
+
+<P>
+<DT><TT>-p N</TT>
+<DD>This switch is used to set parallel mode operation.
+      If <TT>p</TT> is set to a positive integer <TT>N</TT>, then HER<SMALL>EST</SMALL> will
+      process the training files and then dump all the accumulators
+      into a file called <TT>HERN.acc</TT>.  If <TT>p</TT> is set to 0, then
+      it treats all file names input on the command line as the names
+      of <TT>.acc</TT> dump files.  It reads them all in, adds together
+      all the partial accumulations and then re-estimates all the
+      HMM parameters in the normal way. 
+
+<P>
+<DT><TT>-r</TT>
+<DD>This enables single-pass retraining.  The list of training
+      files is processed pair-by-pair.  For each pair, the first file
+      should match the parameterisation of the original model set.  The
+      second file should match the parameterisation of the required new
+      set.  All speech input processing is controlled by configuration
+      variables in the normal way except that the variables describing
+      the old parameterisation are qualified by the name <TT>HPARM1</TT>
+      and the variables describing the new parameterisation are
+      qualified by the name <TT>HPARM2</TT>.  The stream widths for the
+      old and the new must be identical.
+
+<P>
+<DT><TT>-s file</TT>
+<DD>This causes statistics on occupation of each
+      state to be output to the named file.  This file
+      is needed for the <TT>RO</TT> command of HHEd but it is also
+      generally useful for assessing the amount of training material
+      available for each HMM state.
+
+<P>
+<DT><TT>-t f [i l]</TT>
+<DD>Set the pruning threshold to <TT>f</TT>.  During the 
+      backward probability calculation, at
+      each time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN> 
+      all (log) <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img288.png"
+ ALT="$ \beta$"></SPAN> values falling more than <TT>f</TT> below the
+      maximum <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img288.png"
+ ALT="$ \beta$"></SPAN> value at that time are ignored.  During the
+      subsequent forward pass, (log) <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN> values are only
+      calculated if there are corresponding valid <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img288.png"
+ ALT="$ \beta$"></SPAN> values.
+      Furthermore, if the ratio of the <!-- MATH
+ $\alpha \beta$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img629.png"
+ ALT="$ \alpha \beta $"></SPAN> product divided
+      by the total probability (as computed on the backward pass)
+      falls below a fixed threshold then those values of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN>
+      and <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img288.png"
+ ALT="$ \beta$"></SPAN> are ignored. Setting <TT>f</TT> to zero disables
+      pruning  (default value 0.0).  Tight pruning thresholds can
+       result in HER<SMALL>EST</SMALL> failing to process an utterance.
+      if the <TT>i</TT> and <TT>l</TT> options are given, then a pruning
+      error results in the threshold being increased by <TT>i</TT> and
+      utterance processing restarts.  If errors continue, this procedure will 
+      be repeated until the limit <TT>l</TT> is reached.
+
+<P>
+<DT><TT>-u flags</TT>
+<DD>By default, HER<SMALL>EST</SMALL> updates all of the HMM parameters,
+      that is, means, variances, mixture weights and 
+      transition probabilies. This 
+      option causes just the parameters indicated by the <TT>flags</TT>
+      argument to be updated, this argument is a string containing one
+      or more of the letters <TT>m</TT> (mean), <TT>v</TT> (variance) ,
+      <TT>t</TT> (transition), <TT>a</TT> (linear transform), <TT>p</TT> (use 
+	MAP adaptation), and <TT>w</TT> (mixture weight).  The 
+      presence of a letter enables
+      the updating of the corresponding parameter set.
+
+<P>
+<DT><TT>-v f</TT>
+<DD>This sets the minimum variance (i.e. diagonal element of
+      the covariance matrix) to the real value <TT>f</TT> (default value
+      0.0).
+
+<P>
+<DT><TT>-w f</TT>
+<DD>Any mixture weight which falls below the global
+            constant <TT>MINMIX</TT> is treated as being zero.
+      When this parameter is  set,  all mixture weights  are floored
+      to <TT>f * MINMIX</TT>.
+
+<P>
+<DT><TT>-x ext</TT>
+<DD>By default, HER<SMALL>EST</SMALL> expects a HMM definition for 
+      the label X to be stored in a file called <TT>X</TT>.  This
+      option causes HER<SMALL>EST</SMALL> to look for the HMM definition in the
+      file <TT>X.ext</TT>.
+
+<P>
+<DT><TT>-z file</TT>
+<DD>Save all output transforms to file. Default
+	is TMF.
+
+<P>
+
+  <DT><TT>-B</TT>
+<DD>Output HMM definition files in binary format.
+
+  <DT><TT>-E dir [ext]</TT>
+<DD>Parent transform directory and optional extension
+	for parent transforms. The default option is that no parent
+	transform is used.
+
+  <DT><TT>-F fmt</TT>
+<DD>Set the source data format to <TT>fmt</TT>.
+
+  <DT><TT>-G fmt</TT>
+<DD>Set the label file format to <TT>fmt</TT>.
+
+  <DT><TT>-H mmf</TT>
+<DD>Load HMM macro model file <TT>mmf</TT>.  This option
+     may be repeated to load multiple MMFs.
+
+  <DT><TT>-I mlf</TT>
+<DD>This loads the master label file <TT>mlf</TT>.  This option
+     may be repeated to load several MLFs.
+
+  <DT><TT>-J dir [ext]</TT>
+<DD>Add directory to the list of possible input
+	transform directories. Only one of the options can specify the
+	extrension to use for the input transforms.
+
+  <DT><TT>-K dir [ext]</TT>
+<DD>Output transform directory and optional extension
+	for output transforms. The default option is that there is no
+	output extension and the current transform directoryis used.
+
+  <DT><TT>-L dir</TT>
+<DD>Search directory <TT>dir</TT> for label files (default
+     is to search current directory).
+
+  <DT><TT>-M dir</TT>
+<DD>Store output HMM macro model files in the directory <TT>dir</TT>.  
+     If this option is not given, the new HMM definition will overwrite
+     the existing one.
+
+  <DT><TT>-X ext</TT>
+<DD>Set label file extension to <TT>ext</TT> 
+  (default is <TT>lab</TT>).
+
+<P>
+</DD>
+</DL>
+
+HER<SMALL>EST</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

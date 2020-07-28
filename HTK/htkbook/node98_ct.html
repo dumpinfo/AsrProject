@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of MLF Examples</TITLE>
+<META NAME="description" CONTENT="Contents of MLF Examples">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node97_mn.html">
+<LINK REL="up" HREF="node94_mn.html">
+<LINK REL="next" HREF="node99_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03334000000000000000">
+MLF Examples</A>
+</H2>
+
+<P>
+<A NAME="8011">&#160;</A>
+
+<OL>
+<LI>Suppose a data set consisted of two training data files with
+corresponding label files:
+<BR>
+<TT>a.lab</TT> contains 
+<PRE>
+       000000  590000  sil
+       600000 2090000  a
+      2100000 4500000  sil
+</PRE>
+<TT>b.lab</TT> contains 
+<PRE>
+       000000  990000  sil
+      1000000 3090000  b
+      3100000 4200000  sil
+</PRE>
+Then the above two individual label files could be replaced by a single MLF
+<PRE>
+      #!MLF!#
+      "*/a.lab"
+       000000  590000  sil
+       600000 2090000  a
+      2100000 4500000  sil
+      .                      
+      "*/b.lab"
+       000000  990000  sil
+      1000000 3090000  b
+      3100000 4200000  sil
+      .
+</PRE>
+
+<P>
+</LI>
+<LI>A digit data base contains training tokens <TT>one.1.wav, one.2.wav, one.3.wav, ...,
+two.1.wav, two.2.wav, two.3.wav, ...</TT>, etc.  Label files are required containing
+just the name of the model so that HTK tools such as HER<SMALL>EST</SMALL> can be used.
+If MLFs are not used, individual label files are needed.  For example,
+the individual label files <TT>one.1.lab, one.2.lab, one.3.lab, ....</TT> would be
+needed
+to identifiy instances of ``one'' even though each file contains the same entry, just
+<PRE>
+      one
+</PRE>
+Using an MLF containing
+<PRE>
+      #!MLF!#
+      "*/one.*.lab"
+      one
+      .
+      "*/two.*.lab"
+      two
+      .
+      "*/three.*.lab"
+      three
+      .
+      &lt;etc.&gt;
+</PRE>
+avoids the need for many duplicate label files.
+
+<P>
+</LI>
+<LI>A training database <TT>/db</TT> contains directories <TT>dr1, dr2, ..., dr8</TT>.
+Each directory contains a subdirectory called <TT>labs</TT> holding the
+label files for the data files in that directory.  The following
+MLF would allow them to be found
+<PRE>
+      #!MLF!#
+      "*" -&gt; "/db/dr1/labs"
+      "*" -&gt; "/db/dr2/labs"
+      ...
+      "*" -&gt; "/db/dr7/labs"
+      "*" -&gt; "/db/dr8/labs"
+</PRE>      
+Each attempt to open a label file will result in a linear search
+through <TT>dr1</TT> to <TT>dr8</TT> to find that file.  If the sub-directory name
+is embedded into the label file name, then this searching can
+be avoided.  For example, if the label files in directory <TT>drx</TT> had
+the form <TT>drx_xxxx.lab</TT>, then the MLF would be written as
+<PRE>
+      #!MLF!#
+      "*/dr1_*" -&gt; "/db/dr1/labs"
+      "*/dr2_*" -&gt; "/db/dr2/labs"
+      ...
+      "*/dr7_*" -&gt; "/db/dr7/labs"
+      "*/dr8_*" -&gt; "/db/dr8/labs"
+</PRE>   
+
+<P>
+</LI>
+<LI>A training database is organised as a hierarchy where 
+<TT>/disk1/db/dr1/sp2/u3.wav</TT> is the data file for the third
+repetition from speaker 2 in dialect region <TT>dr1</TT>
+(see Figure&nbsp;<A HREF="node98_ct.html#f:dbhier">6.2</A>).  
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:dbhier">&#160;</A><IMG
+ WIDTH="366" HEIGHT="297" ALIGN="MIDDLE" BORDER="0"
+ SRC="img211.png"
+ ALT="% latex2html id marker 49535
+$\textstyle \parbox{80mm}{ \begin{center}\setlength...
+... Database Hierarchy: Data [Left]; Labels [Right].}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+Suppose
+that a similar hierarchy of label files was constructed on
+<TT>disk3</TT>.
+These label files could be found by any HTK tool by using an
+MLF containing just
+<PRE>
+      #!MLF!#
+      "*" =&gt; "/disk3"
+</PRE>      
+If for some reason all of the <TT>drN</TT> directories were
+renamed <TT>ldrN</TT> in the label hierarchy, then this could be
+handled by an MLF file containing
+<PRE>
+      #!MLF!#
+      "*/dr1/*" =&gt; "/disk3/ldr1"
+      "*/dr2/*" =&gt; "/disk3/ldr2"
+      "*/dr3/*" =&gt; "/disk3/ldr3"
+               etc.
+</PRE>
+</LI>
+</OL>
+These few examples should illustrate the flexibility and power of MLF files.
+It should noted, however, that when generating label names automatically from data file names, HTK sometimes discards path details. For example, during recognition, if the data files /disk1/dr2/sx43.wav and /disk2/dr4/sx43.wav are being recognised, and a single directory is specified for the output label files, then recognition results for both files will be written to a file called sx43.lab, and the latter occurrence will overwrite the former.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

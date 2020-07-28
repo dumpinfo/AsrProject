@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Delta, Acceleration and Third Differential Coefficients</TITLE>
+<META NAME="description" CONTENT="Contents of Delta, Acceleration and Third Differential Coefficients">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node65_mn.html">
+<LINK REL="previous" HREF="node63_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node65_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03290000000000000000">&#160;</A><A NAME="s:delta">&#160;</A>
+<BR>
+Delta, Acceleration and Third Differential Coefficients
+</H1>
+
+<P>
+<A NAME="5809">&#160;</A>
+The performance of a speech recognition system can be greatly enhanced by
+adding time derivatives to the basic static parameters.  In HTK, these are
+indicated by attaching qualifiers to the basic parameter kind.  The qualifier
+<TT>_D</TT> indicates that first order regression coefficients (referred to as
+delta coefficients) are appended, the qualifier
+<TT>_A</TT><A NAME="6670">&#160;</A> indicates that second order
+regression coefficients (referred to as acceleration coefficients) and 
+ the qualifier
+<TT>_T</TT><A NAME="6671">&#160;</A> indicates that third order
+regression coefficients (referred to as third differential coefficients) are
+appended. The <TT>_A</TT> qualifier cannot be used without also using the
+<TT>_D</TT><A NAME="6672">&#160;</A> qualifier. Similarly
+the <TT>_T</TT> qualifier cannot be used without also using the
+<TT>_D</TT> and <TT>_A</TT> qualifiers.
+
+<P>
+The delta coefficients<A NAME="5821">&#160;</A> are computed using the
+following regression formula<A NAME="5822">&#160;</A>
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:deltas">&#160;</A><!-- MATH
+ \begin{equation}
+d_t = \frac{ \sum_{\theta =1}^\Theta \theta(c_{t+\theta} - c_{t-\theta}) }{
+                2 \sum_{\theta = 1}^\Theta \theta^2 }
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="183" HEIGHT="61" ALIGN="MIDDLE" BORDER="0"
+ SRC="img176.png"
+ ALT="$\displaystyle d_t = \frac{ \sum_{\theta =1}^\Theta \theta(c_{t+\theta} - c_{t-\theta}) }{ 2 \sum_{\theta = 1}^\Theta \theta^2 }$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">16</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img177.png"
+ ALT="$ d_t$"></SPAN> is a delta coefficient at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN> computed in terms of the
+corresponding static coefficients <!-- MATH
+ $c_{t-\Theta}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img178.png"
+ ALT="$ c_{t-\Theta}$"></SPAN> to <!-- MATH
+ $c_{t+\Theta}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img179.png"
+ ALT="$ c_{t+\Theta}$"></SPAN>.  The value
+of <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img180.png"
+ ALT="$ \Theta$"></SPAN> is set using the configuration parameter
+<TT>DELTAWINDOW</TT><A NAME="6675">&#160;</A>.  The same formula
+is applied to the delta coefficients to obtain acceleration coefficients except
+that in this case the window size is set by
+<TT>ACCWINDOW</TT><A NAME="6676">&#160;</A>. Similarly
+the third differentials use <TT>THIRDWINDOW</TT>. Since
+equation&nbsp;<A HREF="node64_ct.html#e:deltas">5.16</A> relies on past and future speech parameter values, 
+some modification is needed at the beginning and end of the speech.  The
+default behaviour is to replicate the first or last vector as needed to fill
+the regression window.
+
+<P>
+In older version 1.5 of HTK and earlier, this end-effect problem was solved
+by using simple 
+first order differences at the start and end of the speech, that is
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+d_t = c_{t+1} - c_t,\;\;\; t<\Theta
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="159" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img181.png"
+ ALT="$\displaystyle d_t = c_{t+1} - c_t,\;\;\; t&lt;\Theta$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">17</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+d_t = c_t - c_{t-1}, \;\;\; t \geq T-\Theta
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="191" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img182.png"
+ ALT="$\displaystyle d_t = c_t - c_{t-1}, \;\;\; t \geq T-\Theta$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">18</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img183.png"
+ ALT="$ T$"></SPAN> is the length of the data file.  If required, this older behaviour
+can be restored by setting the configuration variable 
+<TT>V1COMPAT</TT><A NAME="6677">&#160;</A>
+to true in HP<SMALL>ARM</SMALL>.
+
+<P>
+For some purposes, it is useful to use simple differences throughout.  This
+can be achieved by setting the configuration 
+variable <TT>SIMPLEDIFFS</TT><A NAME="6678">&#160;</A>
+to true in HP<SMALL>ARM</SMALL>.  In this case, just the end-points of the delta window
+are used, i.e.
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:simdiffs">&#160;</A><!-- MATH
+ \begin{equation}
+d_t = \frac{ (c_{t+\Theta} - c_{t-\Theta}) }{
+                2 \Theta}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="139" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img184.png"
+ ALT="$\displaystyle d_t = \frac{ (c_{t+\Theta} - c_{t-\Theta}) }{ 2 \Theta}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">19</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<A NAME="5852">&#160;</A>
+
+<P>
+When delta and acceleration coefficients are requested, they are computed for
+all static parameters including energy if present.  In some applications, the
+absolute energy is not useful but time derivatives of the energy may be.  By
+including the <TT>_E</TT> qualifier together with the
+<TT>_N</TT><A NAME="6680">&#160;</A> qualifier, the absolute energy
+is suppressed leaving just the delta and acceleration coefficients of the
+energy.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

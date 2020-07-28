@@ -1,0 +1,548 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node256_mn.html">
+<LINK REL="previous" HREF="node254_mn.html">
+<LINK REL="up" HREF="node253_mn.html">
+<LINK REL="next" HREF="node256_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05142000000000000000">
+Use</A>
+</H2>
+
+<P>
+HC<SMALL>OPY</SMALL> is invoked by typing the command line
+<PRE>
+   HCopy [options] sa1 [ + sa2 + ... ] ta  [ sb1 [ + sb2 + ... ] tb ... ]
+</PRE>
+This causes the contents of the one or more source files 
+<TT>sa1</TT>, <TT>sa2</TT>, ...
+ to be concatenated
+and the result copied to the given target file <TT>ta</TT>. To avoid the overhead
+of reinvoking the tool when processing large databases, multiple
+sources and targets may be specified, for example
+<PRE>
+HCopy srcA.wav + srcB.wav tgtAB.wav srcC.wav tgtD.wav
+</PRE>
+will create two new files <TT>tgtAB.wav</TT> and  <TT>tgtD.wav</TT>.
+HC<SMALL>OPY</SMALL> takes file arguments from a script specified using the <TT>-S</TT> option
+exactly as from the
+command line, except that any newlines are ignored. 
+
+<P>
+The allowable options to HC<SMALL>OPY</SMALL> are as follows where all times
+and durations are given in 100 ns units and
+are written as floating-point numbers.
+
+<P>
+
+<DL COMPACT>
+<DT><TT>-a i</TT>
+<DD>Use level i of associated label files with the <TT>-n</TT>
+   and  <TT>-x</TT> options.  Note that this is not the same as using the
+ <TT>TRANSLEVEL</TT> configuration variable since the  <TT>-a</TT> option
+still allows all levels to be copied through to the output files.
+
+<P>
+<DT><TT>-e f</TT>
+<DD>End copying from the source file at time <TT>f</TT>.  The
+ default is the end of the file. If <TT>f</TT> is negative or zero, it is
+ interpreted as a time relative to the end of the file, while a positive value
+ indicates an absolute time from the start of the file.
+
+<P>
+<DT><TT>-i mlf</TT>
+<DD>Output label files to master file <TT>mlf</TT>.
+
+<P>
+<DT><TT>-l s</TT>
+<DD>Output label files to the directory <TT>s</TT>.
+    The default is to output to the current directory.
+
+<P>
+<DT><TT>-m t</TT>
+<DD>Set a margin of duration <TT>t</TT> around the
+    segments defined by the <TT>-n</TT> and <TT>-x</TT> options. 
+
+<P>
+<DT><TT>-n i [j]</TT>
+<DD>Extract the speech segment corresponding to the <TT>     i</TT>'th label in the source file.  If <TT>j</TT> is specified, then the
+     segment corresponding to the sequence of labels <TT>i</TT> to <TT>j</TT>
+     is extracted. Labels are numbered from their position in the
+     label file.  A negative index can be used to count from the end
+    of the label list.   Thus, <TT>-n 1 -1</TT> would specify the segment
+    starting at the first label and ending at the last.
+
+<P>
+<DT><TT>-s f</TT>
+<DD>Start copying from the source file at time <TT>f</TT>. 
+    The default is 0.0, ie the beginning of the file.
+
+<P>
+<DT><TT>-t n</TT>
+<DD>Set the line width to <TT>n</TT> chars when formatting
+    trace output.
+
+<P>
+<DT><TT>-x s [n]</TT>
+<DD>Extract the speech segment corresponding to the
+       first occurrence of label <TT>s</TT> in the source file.  If <TT>n</TT>
+       is specified, then the <TT>n</TT>'th occurrence is extracted. If
+       multiple files are being concatenated, segments are extracted
+       from each file in turn, and the label must exist for each
+       concatenated file.
+
+<P>
+
+  <DT><TT>-F fmt</TT>
+<DD>Set the source data format to <TT>fmt</TT>.
+
+  <DT><TT>-G fmt</TT>
+<DD>Set the label file format to <TT>fmt</TT>.
+
+  <DT><TT>-I mlf</TT>
+<DD>This loads the master label file <TT>mlf</TT>.  This option
+     may be repeated to load several MLFs.
+
+  <DT><TT>-L dir</TT>
+<DD>Search directory <TT>dir</TT> for label files (default
+     is to search current directory).
+
+  <DT><TT>-O fmt</TT>
+<DD>Set the target data format to <TT>fmt</TT>.
+
+  <DT><TT>-P fmt</TT>
+<DD>Set the target label format to <TT>fmt</TT>.
+
+  <DT><TT>-X ext</TT>
+<DD>Set label file extension to <TT>ext</TT> 
+  (default is <TT>lab</TT>).
+
+<P>
+</DD>
+</DL>
+
+HC<SMALL>OPY</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+Note that the parameter kind conversion 
+mechanisms described in chapter&nbsp;<A HREF="node55_ct.html#c:speechio">5</A>
+will be applied to all source files.  In particular, if an automatic
+conversion is requested via the configuration file, then HC<SMALL>OPY</SMALL> will copy
+or concatenate the converted source files, not the actual contents.
+Similarly, automatic byte swapping may occur depending on the source
+format and the configuration variable <TT>BYTEORDER</TT>. Because the
+sampling rate may change during conversions, the options that 
+specify a position within a file i.e. <TT>-s</TT> and <TT>-e</TT>
+use absolute times rather than sample index numbers.  All times in HTK are given in units of 100ns and
+are written as floating-point numbers. To save writing long strings of zeros, 
+standard 
+exponential notation may be used, for example <TT>-s 1E6</TT> indicates a
+start time of 0.1 seconds from the beginning of the file.
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD></TD>
+<TD ALIGN="CENTER" COLSPAN=10><SPAN><I>Outputs </I></SPAN></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">L</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER">W</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">P</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">D</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER">A</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">C</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">M</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">I</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER">V</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">L</TD>
+<TD ALIGN="CENTER">E</TD>
+<TD ALIGN="CENTER">I</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">E</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">S</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER">E</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">P</TD>
+<TD ALIGN="CENTER">P</TD>
+<TD ALIGN="CENTER">R</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">F</TD>
+<TD ALIGN="CENTER">L</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">C</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER">F</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">R</TD>
+<TD ALIGN="CENTER">S</TD>
+<TD ALIGN="CENTER">E</TD>
+<TD ALIGN="CENTER">M</TD>
+<TD ALIGN="CENTER">B</TD>
+<TD ALIGN="CENTER">S</TD>
+<TD ALIGN="CENTER">U</TD>
+<TD ALIGN="CENTER">R</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER">O</TD>
+<TD ALIGN="CENTER">L</TD>
+<TD ALIGN="CENTER">E</TD>
+<TD ALIGN="CENTER">T</TD>
+<TD ALIGN="CENTER">E</TD>
+<TD ALIGN="CENTER">F</TD>
+<TD ALIGN="CENTER">A</TD>
+<TD ALIGN="CENTER">P</TD>
+<TD ALIGN="CENTER">S</TD>
+<TD ALIGN="CENTER">E</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER">R</TD>
+<TD ALIGN="CENTER">P</TD>
+<TD ALIGN="CENTER">F</TD>
+<TD ALIGN="CENTER">R</TD>
+<TD ALIGN="CENTER">F</TD>
+<TD ALIGN="CENTER">C</TD>
+<TD ALIGN="CENTER">N</TD>
+<TD ALIGN="CENTER">E</TD>
+<TD ALIGN="CENTER">E</TD>
+<TD ALIGN="CENTER">T</TD>
+</TR>
+<TR><TD ALIGN="RIGHT"><I>Inputs</I></TD>
+<TD ALIGN="CENTER">M</TD>
+<TD ALIGN="CENTER">C</TD>
+<TD ALIGN="CENTER">C</TD>
+<TD ALIGN="CENTER">A</TD>
+<TD ALIGN="CENTER">C</TD>
+<TD ALIGN="CENTER">C</TD>
+<TD ALIGN="CENTER">K</TD>
+<TD ALIGN="CENTER">C</TD>
+<TD ALIGN="CENTER">R</TD>
+<TD ALIGN="CENTER">E</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;WAVEFORM</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LPC</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;&nbsp;&nbsp;LPREFC</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">LPCEPSTRA</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;&nbsp;&nbsp;&nbsp;IREFC</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MFCC</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;&nbsp;&nbsp;&nbsp;FBANK</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;&nbsp;MELSPEC</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;USER</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">&nbsp;DISCRETE</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img627.png"
+ ALT="$ \surd$"></SPAN></TD>
+</TR>
+</TABLE>
+
+  <A NAME="t:validcons">&#160;</A>    
+           <SPAN  CLASS="textbf"> Table. <SPAN CLASS="arabic">17</SPAN>..<SPAN CLASS="arabic">1</SPAN>  Valid Parameter Conversions</SPAN>
+
+</DIV>
+
+<P>
+Note that truncations are performed <EM>after</EM> any desired coding,
+which may result in a loss of time resolution if the target file format
+has a lower sampling rate. Also, because of windowing effects,
+truncation, coding, and concatenation operations are not necessarily
+interchangeable.  If in doubt, perform all truncation/concatenation in
+the waveform domain and then perform parameterisation as a last, separate
+invocation of HC<SMALL>OPY</SMALL>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

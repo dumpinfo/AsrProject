@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Class Map Files</TITLE>
+<META NAME="description" CONTENT="Contents of Class Map Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node211_mn.html">
+<LINK REL="previous" HREF="node209_mn.html">
+<LINK REL="up" HREF="node206_mn.html">
+<LINK REL="next" HREF="node211_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04340000000000000000">&#160;</A><A NAME="s:cmaps">&#160;</A>
+<BR>
+Class Map Files
+</H1>
+
+<P>
+A class map file defines one or more word classes.  It has a header
+similar to that of a word map file, containing values for
+<TT>Name</TT>, <TT>Entries</TT>, <TT>EscMode</TT> and <TT>Language</TT>.  
+In this case, the number of entries refers to the number of classes
+defined.  <A NAME="23428">&#160;</A>
+
+<P>
+The class definitions are introduced by the keyword <code>\Classes\</code>.
+Each class definition has a single line sub-header consisting of a
+name, an id number, the number of class members (or non-members) and a
+keyword which must be <TT>IN</TT> or <TT>NOTIN</TT>.  In the latter
+case, the class consists of all words <SPAN  CLASS="textit">except</SPAN> those listed
+i.e. the class is defined by its complement. <A NAME="23432">&#160;</A>
+
+<P>
+The following is a simple example  of a class map file.
+<PRE>
+    Name=Simple_Classes
+    Entries=97
+    EscMode=HTK
+    Language=British
+    \Classes\
+    ARTICLES 1 3 IN
+      A
+      AN
+      THE
+    COLOURS 2 4 IN
+      RED
+      BLUE
+      GREEN
+      YELLOW
+    SHAPES 3 6 IN
+      SQUARE
+      CIRCLE
+      ...
+    etc
+</PRE>
+This class map file defines 97 distinct classes, the first of which is
+a class called <TT>ARTICLES</TT> (id=1) with 3 members: (a, an, the).
+
+<P>
+For simple word-based language models, the class map file is used to
+define the class of unknown words.  This is usually just the
+complement of the vocabulary list.  For example, a typical class map
+file defining the <SPAN  CLASS="textit">unknown</SPAN> class <TT>!!UNKID</TT> might
+be<A NAME="23438">&#160;</A> <A NAME="23439">&#160;</A>
+<PRE>
+    Name=Vocab_65k_V2.3
+    Entries=1
+    Language=American
+    EscMode=NONE
+    \Classes\
+    !!UNKID 1 65426 NOTIN
+      A
+      ABATE
+      ABLE
+      ABORT
+      ABOUND
+      ...
+</PRE>
+Since this case is so common, the tools also allow a plain
+vocabulary list to be supplied in place of a proper class map file.
+For example, supplying a class map file containing just
+<PRE>
+    A
+    ABATE
+    ABLE
+    ABORT
+    ABOUND
+    ...
+</PRE>
+would have an equivalent effect to the previous example provided that
+the LCM<SMALL>AP</SMALL> configuration variables <TT>UNKNOWNID</TT> and
+<TT>UNKNOWNNAME</TT> have been set in order to define the id and name
+to be used for the unknown class.  In the example given, including the
+following two lines in the configuration file would have the desired
+effect
+<PRE>
+    LCMAP: UNKNOWNID = 1
+    LCMAP: UNKNOWNNAME = !!UNKID
+</PRE>
+Notice that the similarity with the special case of word lists
+described in section&nbsp;<A HREF="node209_ct.html#s:wmaps">16.3</A>.  A plain word list can therefore
+be used to define both a vocabulary subset and the unknown class.  In
+a conventional language model, these are, of course, the same thing.
+
+<P>
+In a similar fashion to word maps, the input of a headerless class map
+can be set to raw mode by setting the LCM<SMALL>AP</SMALL> configuration
+variable <TT>INCMAPRAW</TT> and all class maps can be output in raw
+mode <A NAME="23452">&#160;</A> by setting the configuration
+variable
+<TT>OUTCMAPRAW</TT> to true.<A NAME="23454">&#160;</A>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

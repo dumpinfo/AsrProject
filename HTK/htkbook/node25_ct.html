@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Data Preparation</TITLE>
+<META NAME="description" CONTENT="Contents of Data Preparation">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node31_mn.html">
+<LINK REL="previous" HREF="node24_mn.html">
+<LINK REL="up" HREF="node24_mn.html">
+<LINK REL="next" HREF="node26_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION02310000000000000000">&#160;</A><A NAME="s:egdataprep">&#160;</A>
+<BR>
+Data Preparation
+</H1>
+
+<P>
+The first stage of any recogniser development project is data preparation.
+<A NAME="3429">&#160;</A>  Speech data is needed both for training and for
+testing.  In the system to be built here, all of this speech will be recorded
+from scratch and to do this scripts are needed to prompt for each sentence.  In
+the case of the test data, these prompt scripts will also provide the reference
+transcriptions against which the recogniser's performance can be measured and a
+convenient way to create them is to use the task grammar as a random generator.
+In the case of the training data, the prompt scripts will be used in
+conjunction with a pronunciation dictionary to provide the initial phone level
+transcriptions needed to start the HMM training process.  Since the application
+requires that arbitrary names can be added to the recogniser, training data
+with good phonetic balance and coverage is needed.  Here for convenience the
+prompt scripts needed for training are taken from the TIMIT acoustic-phonetic
+database.
+
+<P>
+It follows from the above that before the data can be recorded, a phone set
+must be defined, a dictionary must be constructed to cover both training and
+testing and a task grammar must be defined.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1287" HREF="node26_mn.html" TARGET="main"><SMALL>Step 1 - the Task Grammar</SMALL></A>
+<LI><A NAME="tex2html1288" HREF="node27_mn.html" TARGET="main"><SMALL>Step 2 - the Dictionary</SMALL></A>
+<LI><A NAME="tex2html1289" HREF="node28_mn.html" TARGET="main"><SMALL>Step 3 - Recording the Data</SMALL></A>
+<LI><A NAME="tex2html1290" HREF="node29_mn.html" TARGET="main"><SMALL>Step 4 - Creating the Transcription Files</SMALL></A>
+<LI><A NAME="tex2html1291" HREF="node30_mn.html" TARGET="main"><SMALL>Step 5 - Coding the Data</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Constructing Context-Dependent Models</TITLE>
+<META NAME="description" CONTENT="Contents of Constructing Context-Dependent Models">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node146_mn.html">
+<LINK REL="previous" HREF="node144_mn.html">
+<LINK REL="up" HREF="node143_mn.html">
+<LINK REL="next" HREF="node146_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03720000000000000000">&#160;</A><A NAME="s:mkCDHMMs">&#160;</A>
+<BR>
+Constructing Context-Dependent Models
+</H1>
+
+<P>
+<A NAME="18417">&#160;</A>
+The first stage of model refinement is usually to convert a set of
+initialised and trained context-independent monophone HMMs to a 
+set of context dependent models<A NAME="18418">&#160;</A>.  As
+explained in section&nbsp;<A HREF="node99_ct.html#s:edlab">6.4</A>, HTK uses the convention that a HMM
+name of the form <TT>l-p+r</TT> denotes the context-dependent version of the
+phone <TT>p</TT> which is to be used when the left neighbour is the phone
+<TT>l</TT> and the right neighbour is the phone <TT>r</TT>.  To make a set
+of context dependent phone models, it is only necessary to construct a HMM
+list, called say <TT>cdlist</TT>, containing the required context-dependent models  and
+then execute HHE<SMALL>D</SMALL> with a single command in its edit script
+<PRE>
+    CL cdlist
+</PRE>
+The effect of this command is that for each model <TT>l-p+r</TT> in <TT>cdlist</TT>
+it makes a copy of the monophone <TT>p</TT>.  
+<A NAME="18431">&#160;</A><A NAME="18745">&#160;</A>
+
+<P>
+The set of context-dependent models output by the above must be reestimated using
+HER<SMALL>EST</SMALL>.  To do this, the training data transcriptions must be converted
+to use context-dependent labels and the original monophone hmm list must be
+replaced by <TT>cdlist</TT>.  In fact, it is best to do this conversion before
+cloning the monophones because if the HLE<SMALL>D</SMALL> <TT>TC</TT> 
+command<A NAME="18746">&#160;</A> 
+is used then the <TT>-n</TT> option
+can be used to generate the required list of context dependent HMMs automatically. 
+
+<P>
+Before building a set of context-dependent models,
+it is necessary to decide whether or not cross-word 
+triphones<A NAME="18439">&#160;</A> are
+to be used.  If they are, then word boundaries in the training data can be ignored and
+all monophone labels can be converted to triphones.  If, however, word internal triphones
+are to be used, then word boundaries in the training transcriptions must be marked in
+some way (either by an explicit marker which is subsequently deleted or by using a short
+pause <SPAN  CLASS="textit">tee-model</SPAN>).  This word boundary marker is then identified to HLE<SMALL>D</SMALL>
+using the <TT>WB</TT> command<A NAME="18747">&#160;</A> to make the <TT>TC</TT> command use biphones rather
+than triphones at word boundaries<A NAME="18445">&#160;</A> (see
+section&nbsp;<A HREF="node99_ct.html#s:edlab">6.4</A>).
+
+<P>
+All HTK tools can read and write
+HMM definitions in text or binary form.  Text is good for seeing exactly
+what the tools are producing, but binary is much faster to load and store, and
+much more compact.  Binary output is enabled either using the standard option
+<TT>-B</TT> or by setting the configuration variable 
+<TT>SAVEBINARY</TT><A NAME="18748">&#160;</A>.
+In the above example, the HMM set input to HHE<SMALL>D</SMALL> will contain a small
+set of monophones whereas the output will be a large set of triphones.
+In order, to save storage and computation, this is usually a good point to
+switch to binary storage<A NAME="18451">&#160;</A> of MMFs. 
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

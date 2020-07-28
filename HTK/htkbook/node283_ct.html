@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of NC N macro itemList(s)</TITLE>
+<META NAME="description" CONTENT="Contents of NC N macro itemList(s)">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node284_mn.html">
+<LINK REL="previous" HREF="node282_mn.html">
+<LINK REL="up" HREF="node266_mn.html">
+<LINK REL="next" HREF="node284_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H3><A NAME="SECTION051711700000000000000">
+<TT>NC N macro itemList(s)</TT></A>
+</H3>
+
+<P>
+N-cluster the states listed in the 
+<TT>itemList</TT> and tie each cluster <TT>i</TT> as macro <TT>macroi</TT>
+where <TT>i</TT> is 1,2,3,...,<TT>N</TT>.
+The set of states in the <TT>itemList</TT> are divided into <TT>N</TT>
+clusters using the following furthest neighbour hierarchical
+cluster algorithm:
+<PRE>
+         create 1 cluster for each state;
+         n = number of clusters;
+         while (n&gt;N) {
+            find i and j for which g(i,j) is minimum;
+            merge clusters i and j;
+         }
+</PRE>
+Here <TT>g(i,j)</TT> is the inter-group distance between
+clusters <TT>i</TT> and <TT>j</TT> defined as the maximum
+distance between any state in cluster <TT>i</TT> and any state
+in cluster <TT>j</TT>.  The calculation of the inter-state
+distance depends on the type of HMMs involved.  Single
+mixture Gaussians use
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+d(i,j) = \frac{1}{S} \sum_{s=1}^S
+        \left[
+           \frac{1}{V_s} \sum_{k=1}^{V_s}
+                 \frac{({\mbox{\boldmath$\mu$}}_{isk} - {\mbox{\boldmath$\mu$}}_{jsk})^2}{
+                         {\mbox{\boldmath$\sigma$}}_{isk}{\mbox{\boldmath$\sigma$}}_{jsk}}
+        \right]^{\frac{1}{2}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="289" HEIGHT="77" ALIGN="MIDDLE" BORDER="0"
+ SRC="img633.png"
+ ALT="$\displaystyle d(i,j) = \frac{1}{S} \sum_{s=1}^S \left[ \frac{1}{V_s} \sum_{k=1}...
+...boldmath$\sigma$}}_{isk}{\mbox{\boldmath$\sigma$}}_{jsk}} \right]^{\frac{1}{2}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img634.png"
+ ALT="$ V_s$"></SPAN> is the dimensionality of stream <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img41.png"
+ ALT="$ s$"></SPAN>.  Fully tied
+mixture systems (ie <TT>TIEDHS</TT>) use
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+d(i,j) = \frac{1}{S} \sum_{s=1}^S
+        \left[
+           \frac{1}{M_s} \sum_{m=1}^{M_s}
+                (c_{ism} - c_{jsm})^2
+        \right]^{\frac{1}{2}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="293" HEIGHT="77" ALIGN="MIDDLE" BORDER="0"
+ SRC="img635.png"
+ ALT="$\displaystyle d(i,j) = \frac{1}{S} \sum_{s=1}^S \left[ \frac{1}{M_s} \sum_{m=1}^{M_s} (c_{ism} - c_{jsm})^2 \right]^{\frac{1}{2}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and all others use
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+d(i,j) = - \frac{1}{S} \sum_{s=1}^S
+         \frac{1}{M_s} \sum_{m=1}^{M_s}
+          \log[b_{js}({\mbox{\boldmath$\mu$}}_{ism})] + \log[b_{is}({\mbox{\boldmath$\mu$}}_{jsm})]
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="390" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img636.png"
+ ALT="$\displaystyle d(i,j) = - \frac{1}{S} \sum_{s=1}^S \frac{1}{M_s} \sum_{m=1}^{M_s...
+...}({\mbox{\boldmath$\mu$}}_{ism})] + \log[b_{is}({\mbox{\boldmath$\mu$}}_{jsm})]$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $b_{js}({\mbox{\boldmath $x$}})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="47" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img637.png"
+ ALT="$ b_{js}({\mbox{\boldmath $x$}})$"></SPAN> is as defined in equation&nbsp;<A HREF="node102_ct.html#e:cdpdf">7.1</A> for
+the continuous case and equation&nbsp;<A HREF="node102_ct.html#e:ddpdf">7.3</A> for the discrete case.  The actual
+tying of the states in each cluster is performed exactly as for
+the Tie (<TT>TI</TT>) command below.  The macro for the <TT>i</TT>'th
+tied cluster is called <TT>macroi</TT>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

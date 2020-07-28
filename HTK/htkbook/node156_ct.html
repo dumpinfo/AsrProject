@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Parameter Smoothing</TITLE>
+<META NAME="description" CONTENT="Contents of Parameter Smoothing">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node155_mn.html">
+<LINK REL="up" HREF="node152_mn.html">
+<LINK REL="next" HREF="node157_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03840000000000000000">&#160;</A><A NAME="s:psmooth">&#160;</A>
+<BR>
+Parameter Smoothing
+</H1>
+
+<P>
+When large sets of context-dependent triphones are built using
+discrete models or
+tied-mixture models, under-training<A NAME="19216">&#160;</A> can be a 
+severe problem since each 
+state has a large number of mixture weight parameters to estimate.
+The HTK tool HS<SMALL>MOOTH</SMALL> allows these discrete probabilities or
+mixture component weights
+to be smoothed with the monophone weights using a technique called 
+deleted interpolation<A NAME="19218">&#160;</A>.  
+
+<P>
+HS<SMALL>MOOTH</SMALL> is used in combination with HER<SMALL>EST</SMALL>
+working in parallel mode.  The training data is split
+into blocks and each block is used separately to re-estimate the
+HMMs.  However, since HER<SMALL>EST</SMALL> is in parallel mode, it outputs a dump
+file of accumulators instead of updating the models.  HS<SMALL>MOOTH</SMALL> is then
+used in place of the second pass of HER<SMALL>EST</SMALL>.  It reads in the 
+accumulator information from each of the blocks, performs deleted
+interpolation smoothing on the accumulator values and then outputs
+the re-estimated HMMs in the normal way.
+
+<P>
+HS<SMALL>MOOTH</SMALL><A NAME="19270">&#160;</A> implements a 
+conventional deleted interpolation scheme.
+However, optimisation of the smoothing weights uses a fast 
+binary chop<A NAME="19226">&#160;</A> scheme 
+rather than the more usual Baum-Welch approach.
+The algorithm for finding the optimal interpolation weights for a given
+state and stream is as follows where the description is given in terms
+of tied-mixture weights but the same applies to discrete probabilities.  
+
+<P>
+Assume that HER<SMALL>EST</SMALL>
+has been set-up to output <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> separate blocks of accumulators.
+Let <SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img450.png"
+ ALT="$ w_i^{(n)}$"></SPAN> be the <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN>'th
+mixture weight based on the accumulator blocks <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img63.png"
+ ALT="$ 1$"></SPAN> to <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> but excluding
+block <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>, and let <!-- MATH
+ $\bar{w}_i^{(n)}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img451.png"
+ ALT="$ \bar{w}_i^{(n)}$"></SPAN> be the corresponding context
+independent weight.  Let <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img452.png"
+ ALT="$ x_i^{(n)}$"></SPAN> be the <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN>'th mixture weight 
+count for the deleted block <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>.  The derivative of the log
+likelihood of the deleted block, given the probability distribution with
+weights <!-- MATH
+ $c_i = \lambda w_i + (1 - \lambda) \bar{w}_i$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="149" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img453.png"
+ ALT="$ c_i = \lambda w_i + (1 - \lambda) \bar{w}_i$"></SPAN> is given by
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+D(\lambda) = \sum_{n=1}^N \sum_{i=1}^M x_i^{(n)}
+   \left[ \frac{w_i^{(n)} - \bar{w}_i^{(n)}}{
+            \lambda w_i^{(n)} + (1 - \lambda ) \bar{w}_i^{(n)}}
+   \right]
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="304" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img454.png"
+ ALT="$\displaystyle D(\lambda) = \sum_{n=1}^N \sum_{i=1}^M x_i^{(n)} \left[ \frac{w_i...
+...- \bar{w}_i^{(n)}}{ \lambda w_i^{(n)} + (1 - \lambda ) \bar{w}_i^{(n)}} \right]$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">11</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Since the log likelihood is a convex function of <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img268.png"
+ ALT="$ \lambda$"></SPAN>, this derivative
+allows the optimal value of <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img268.png"
+ ALT="$ \lambda$"></SPAN> to be found by a simple
+binary chop algorithm, viz.
+<PRE>
+     function FindLambdaOpt:
+        if (D(0) &lt;= 0) return 0;
+        if (D(1) &gt;= 0) return = 1;
+        l=0; r=1;
+        for (k=1; k&lt;=maxStep; k++){
+           m = (l+r)/2;
+           if (D(m) == 0) return m;
+           if (D(m) &gt; 0) l=m; else r=m;
+        }
+        return m;
+</PRE>
+
+<P>
+HS<SMALL>MOOTH</SMALL> is invoked in a similar way to HER<SMALL>EST</SMALL>.
+For example, suppose that the directory <TT>hmm2</TT> contains a set of
+accumulator files output by the first pass of HER<SMALL>EST</SMALL> running in parallel
+mode using as source the HMM definitions listed in <TT>hlist</TT> and 
+stored in <TT>hmm1/HMMDefs</TT>.  Then the command
+<PRE>
+    HSmooth -c 4 -w 2.0 -H hmm1/HMMDefs -M hmm2 hlist hmm2/*.acc
+</PRE>
+would generate a new smoothed HMM set in <TT>hmm2</TT>.  Here the <TT>-w</TT>
+option is used to set the minimum mixture component weight in any state to
+twice the value of <TT>MINMIX</TT><A NAME="19273">&#160;</A>.  
+The <TT>-c</TT> option sets the maximum
+number of iterations of the binary chop procedure to be 4.
+
+<P>
+
+<P>
+
+  
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

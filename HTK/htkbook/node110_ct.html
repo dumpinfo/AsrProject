@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Binary Storage Format</TITLE>
+<META NAME="description" CONTENT="Contents of Binary Storage Format">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node111_mn.html">
+<LINK REL="previous" HREF="node109_mn.html">
+<LINK REL="up" HREF="node101_mn.html">
+<LINK REL="next" HREF="node111_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03490000000000000000">&#160;</A><A NAME="s:binsave">&#160;</A>
+<BR>
+Binary Storage Format
+</H1>
+
+<P>
+Throughout this chapter, a text-based representation
+has been used for the external storage of HMM
+definitions.  For experimental work, text-based storage allows
+simple and direct 
+access to HMM parameters and this can be invaluable.
+However, when using very large HMM sets, storage in text form
+is less practical since it is inefficient in its use of
+memory and the time taken to load can be excessive due to
+the large number of character to float conversions needed.
+
+<P>
+To solve these problems, HTK also provides a 
+binary storage<A NAME="9253">&#160;</A><A NAME="9254">&#160;</A>
+format.  In binary mode, keywords are written as a single
+colon followed by an 8 bit code representing the actual
+keyword.  Any subsequent numerical information following
+the keyword is then in binary.  Integers are written as
+16-bit shorts and all floating-point numbers are written
+as 32-bit single precision floats.  The repeat
+factor used in the run-length encoding
+scheme for tied-mixture and discrete HMMs is written as
+a single byte.  Its presence immediately after a 16-bit
+discrete log probability is indicated by setting the top
+bit to 1 (this is the reason why the range of discrete 
+log probabilities is limited to
+0 to 32767 i.e. only 15 bits are used for the actual
+value).  For tied-mixtures, the repeat count is signalled
+by subtracting 2.0 from the weight.
+
+<P>
+Binary storage format and text storage format can be mixed
+within and between input files.  Each time a keyword is
+encountered, its coding is used to determine whether the
+subsequent numerical information should be input in text
+or binary form.  This means, for example, that binary
+files can be manually patched by replacing a binary-format
+definition by a text format definition<A NAME="tex2html31" HREF="footnode_mn.html#foot9255" TARGET="footer"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A>.
+
+<P>
+HTK tools provide a standard command line option (<TT>-B</TT>) to indicate
+that HMM definitions should be output in binary format.
+Alternatively, the Boolean configuration 
+variable <TT>SAVEBINARY</TT><A NAME="9480">&#160;</A> can be set to true to
+force binary format output.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="f:dischmm">&#160;</A></P>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\framebox[80mm]{
+\begin{minipage}{80mm}
+           \begin{program}
+\mbox{$\sim$\textsf{o}} \mbox{$<$\textsf{DISCRETE}$>$} \mbox{$<$\textsf{StreamInfo}$>$} 2 1 1 \\
+\mbox{$\sim$\textsf{h ``dhmm1''}} \\
+\mbox{$<$\textsf{BeginHMM}$>$} \\
+\> \mbox{$<$\textsf{NumStates}$>$} 4  \\
+\> \mbox{$<$\textsf{State}$>$} 2   \\
+\>\>   \mbox{$<$\textsf{NumMixes}$>$} 10 2 \\
+\>\>   \mbox{$<$\textsf{SWeights}$>$} 2 0.9 1.1 \\
+\>\>   \mbox{$<$\textsf{Stream}$>$} 1 \\
+\> \>\>     \mbox{$<$\textsf{DProb}$>$} 3288*4  32767*6 \\
+\>\>   \mbox{$<$\textsf{Stream}$>$} 2 \\
+\>\> \>     \mbox{$<$\textsf{DProb}$>$} 1644*2 \\
+\> \mbox{$<$\textsf{State}$>$} 3   \\
+\>\>   \mbox{$<$\textsf{NumMixes}$>$} 10 2 \\
+\>\>   \mbox{$<$\textsf{SWeights}$>$} 2 0.9 1.1 \\
+\> \>  \mbox{$<$\textsf{Stream}$>$} 1 \\
+\> \> \>    \mbox{$<$\textsf{DProb}$>$} 5461*10 \\
+\> \>  \mbox{$<$\textsf{Stream}$>$} 2 \\
+\> \> \>    \mbox{$<$\textsf{DProb}$>$} 1644*2 \\
+\>\mbox{$<$\textsf{TransP}$>$} 4 \\
+\> \>  0.0 1.0 0.0 0.0 \\
+ \> \>  0.0 0.5 0.5 0.0 \\
+ \> \>  0.0 0.0 0.6 0.4 \\
+\> \>   0.0 0.0 0.0 0.0 \\
+\mbox{$<$\textsf{EndHMM}$>$}
+\end{program}
+       \end{minipage} }$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="366" HEIGHT="484" ALIGN="MIDDLE" BORDER="0"
+ SRC="img249.png"
+ ALT="\framebox[80mm]{
+\begin{minipage}{80mm}
+\begin{program}
+\mbox{$\sim$\textsf{o}...
+...0.0 0.0 0.0 0.0 \\
+\mbox{$&lt;$\textsf{EndHMM}$&gt;$}
+\end{program} \end{minipage} }"></SPAN>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+       <BR>
+<BR>
+          <SPAN  CLASS="textbf"> Fig. <SPAN CLASS="arabic">7</SPAN>..<SPAN CLASS="arabic">9</SPAN>  Discrete Probability HMM</SPAN> 
+    
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="f:macregtreedef">&#160;</A></P>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\framebox[80mm]{
+\begin{minipage}{80mm}
+           \begin{program}
+\mbox{$\sim$\textsf{o}} \> \mbox{$<$\textsf{HMMSetId}$>$} ecrl\_us\_mono \\
+\>    \mbox{$<$\textsf{VecSize}$>$} 4 \mbox{$<$\textsf{MFCC}$>$} \\
+\mbox{$\sim$\textsf{r ``ecrl\_us\_mono\_tree\_4''}} \\
+\>    \mbox{$<$\textsf{RegTree}$>$} 4 \\
+\>    \mbox{$<$\textsf{Node}$>$} 1 2 3 \\
+\>    \mbox{$<$\textsf{Node}$>$} 2 4 5 \\
+\>    \mbox{$<$\textsf{Node}$>$} 3 6 7 \\
+\>    \mbox{$<$\textsf{TNode}$>$} 4 30 \\
+\>    \mbox{$<$\textsf{TNode}$>$} 5 25 \\
+\>    \mbox{$<$\textsf{TNode}$>$} 6 40 \\
+\>    \mbox{$<$\textsf{TNode}$>$} 7 39 \\
+\mbox{$\sim$\textsf{s ``stateA''}} \mbox{$<$\textsf{NumMixes}$>$} 3 \\
+\>    \mbox{$<$\textsf{Mixture}$>$} 1 0.34 \\
+\>\>    \mbox{$<$\textsf{RClass}$>$} 4 \\
+\>\>    \mbox{$\sim$\textsf{u ``mean51''}} \\
+\>\>    \mbox{$\sim$\textsf{v ``var65''}} \\
+\>    \mbox{$<$\textsf{Mixture}$>$} 2 0.52 \\
+\>\>    \mbox{$<$\textsf{RClass}$>$} 7 \\
+\>\>    \mbox{$\sim$\textsf{u ``mean32''}} \\
+\>\>    \mbox{$\sim$\textsf{v ``var65''}} \\
+\>    \mbox{$<$\textsf{Mixture}$>$} 3 0.14 \\
+\>\>    \mbox{$<$\textsf{RClass}$>$} 5 \\
+\>\>    \mbox{$\sim$\textsf{u ``mean12''}} \\
+\>\>    \mbox{$\sim$\textsf{v ``var3''}}
+\end{program}
+       \end{minipage} }$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="366" HEIGHT="484" ALIGN="MIDDLE" BORDER="0"
+ SRC="img250.png"
+ ALT="\framebox[80mm]{
+\begin{minipage}{80mm}
+\begin{program}
+\mbox{$\sim$\textsf{o}...
+...n12''}} \\
+\&gt;\&gt; \mbox{$\sim$\textsf{v \lq\lq var3''}}
+\end{program} \end{minipage} }"></SPAN>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+       <BR>
+<BR>
+          <SPAN  CLASS="textbf"> Fig. <SPAN CLASS="arabic">7</SPAN>..<SPAN CLASS="arabic">10</SPAN>  MMF with a regression tree and classes</SPAN> 
+    
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

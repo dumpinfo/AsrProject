@@ -1,0 +1,704 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of HTKBook for HTK3</TITLE>
+<META NAME="description" CONTENT="Contents of HTKBook for HTK3">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node1_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<P>
+ <BIG CLASS="XLARGE"> 
+<BR></BIG>
+<P>
+<BIG CLASS="XLARGE">
+<BR>
+<BR>
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">The HTK Book
+</BIG>
+<P>
+<BIG CLASS="XLARGE">
+<BR>
+<BR>
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">Steve Young 
+<BR>
+Gunnar Evermann 
+<BR>
+Mark Gales 
+<BR>
+Thomas Hain 
+<BR>
+Dan Kershaw 
+<BR>
+Gareth Moore 
+<BR>
+Julian Odell 
+<BR>
+Dave Ollason 
+<BR>
+Dan Povey 
+<BR>
+Valtcho Valtchev 
+<BR>
+Phil Woodland 
+<BR></BIG>
+<P>
+<BIG CLASS="XLARGE">
+<BR>
+<BR>
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">The HTK Book (for HTK Version 3.3)
+</BIG>
+<P>
+<BIG CLASS="XLARGE">
+<BR>
+<BR>
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">&#169;COPYRIGHT 1995-1999 Microsoft Corporation. 
+</BIG>
+<P>
+<BIG CLASS="XLARGE">&#169;COPYRIGHT 2001-2005 Cambridge University Engineering Department. 
+</BIG>
+<P>
+<BIG CLASS="XLARGE">
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">All Rights Reserved
+</BIG>
+<P>
+<BIG CLASS="XLARGE">
+<BR>
+<BR>
+<BR>
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">First published December 1995
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">Reprinted March 1996 
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">Revised for HTK Version 2.1 March 1997 
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">Revised for HTK Version 2.2 January 1999 
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">Revised for HTK Version 3.0 July 2000 
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">Revised for HTK Version 3.1 December 2001
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">Revised for HTK Version 3.2 December 2002
+<BR>
+</BIG>
+<P>
+<BIG CLASS="XLARGE">Revised for HTK Version 3.3 April 2005
+<BR>
+</BIG>
+<P>
+
+
+<P>
+
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html99" HREF="node1_mn.html" TARGET="main"><SMALL>Contents</SMALL></A>
+<LI><A NAME="tex2html100" HREF="node2_mn.html" TARGET="main"><SMALL>Tutorial Overview</SMALL></A>
+<UL>
+<LI><A NAME="tex2html101" HREF="node3_mn.html" TARGET="main"><SMALL>The Fundamentals of HTK</SMALL></A>
+<UL>
+<LI><A NAME="tex2html102" HREF="node4_mn.html" TARGET="main"><SMALL>General Principles of HMMs</SMALL></A>
+<LI><A NAME="tex2html103" HREF="node5_mn.html" TARGET="main"><SMALL>Isolated Word Recognition</SMALL></A>
+<LI><A NAME="tex2html104" HREF="node6_mn.html" TARGET="main"><SMALL>Output Probability Specification</SMALL></A>
+<LI><A NAME="tex2html105" HREF="node7_mn.html" TARGET="main"><SMALL>Baum-Welch Re-Estimation</SMALL></A>
+<LI><A NAME="tex2html106" HREF="node8_mn.html" TARGET="main"><SMALL>Recognition and Viterbi Decoding</SMALL></A>
+<LI><A NAME="tex2html107" HREF="node9_mn.html" TARGET="main"><SMALL>Continuous Speech Recognition</SMALL></A>
+<LI><A NAME="tex2html108" HREF="node10_mn.html" TARGET="main"><SMALL>Speaker Adaptation</SMALL></A>
+</UL>
+<LI><A NAME="tex2html109" HREF="node11_mn.html" TARGET="main"><SMALL>An Overview of the HTK Toolkit</SMALL></A>
+<UL>
+<LI><A NAME="tex2html110" HREF="node12_mn.html" TARGET="main"><SMALL>HTK Software Architecture</SMALL></A>
+<LI><A NAME="tex2html111" HREF="node13_mn.html" TARGET="main"><SMALL>Generic Properties of a HTK Tool</SMALL></A>
+<LI><A NAME="tex2html112" HREF="node14_mn.html" TARGET="main"><SMALL>The Toolkit</SMALL></A>
+<UL>
+<LI><A NAME="tex2html113" HREF="node15_mn.html" TARGET="main"><SMALL>Data Preparation Tools</SMALL></A>
+<LI><A NAME="tex2html114" HREF="node16_mn.html" TARGET="main"><SMALL>Training Tools</SMALL></A>
+<LI><A NAME="tex2html115" HREF="node17_mn.html" TARGET="main"><SMALL>Recognition Tools</SMALL></A>
+<LI><A NAME="tex2html116" HREF="node18_mn.html" TARGET="main"><SMALL>Analysis Tool</SMALL></A>
+</UL>
+<LI><A NAME="tex2html117" HREF="node19_mn.html" TARGET="main"><SMALL>Whats New In Version 3.3</SMALL></A>
+<UL>
+<LI><A NAME="tex2html118" HREF="node20_mn.html" TARGET="main"><SMALL>New In Version 3.2</SMALL></A>
+<LI><A NAME="tex2html119" HREF="node21_mn.html" TARGET="main"><SMALL>New In Version 3.1</SMALL></A>
+<LI><A NAME="tex2html120" HREF="node22_mn.html" TARGET="main"><SMALL>New In Version 2.2</SMALL></A>
+<LI><A NAME="tex2html121" HREF="node23_mn.html" TARGET="main"><SMALL>Features Added To Version 2.1</SMALL></A>
+</UL>
+</UL>
+<LI><A NAME="tex2html122" HREF="node24_mn.html" TARGET="main"><SMALL>A Tutorial Example of Using HTK</SMALL></A>
+<UL>
+<LI><A NAME="tex2html123" HREF="node25_mn.html" TARGET="main"><SMALL>Data Preparation</SMALL></A>
+<UL>
+<LI><A NAME="tex2html124" HREF="node26_mn.html" TARGET="main"><SMALL>Step 1 - the Task Grammar</SMALL></A>
+<LI><A NAME="tex2html125" HREF="node27_mn.html" TARGET="main"><SMALL>Step 2 - the Dictionary</SMALL></A>
+<LI><A NAME="tex2html126" HREF="node28_mn.html" TARGET="main"><SMALL>Step 3 - Recording the Data</SMALL></A>
+<LI><A NAME="tex2html127" HREF="node29_mn.html" TARGET="main"><SMALL>Step 4 - Creating the Transcription Files</SMALL></A>
+<LI><A NAME="tex2html128" HREF="node30_mn.html" TARGET="main"><SMALL>Step 5 - Coding the Data</SMALL></A>
+</UL>
+<LI><A NAME="tex2html129" HREF="node31_mn.html" TARGET="main"><SMALL>Creating Monophone HMMs</SMALL></A>
+<UL>
+<LI><A NAME="tex2html130" HREF="node32_mn.html" TARGET="main"><SMALL>Step 6 - Creating Flat Start Monophones</SMALL></A>
+<LI><A NAME="tex2html131" HREF="node33_mn.html" TARGET="main"><SMALL>Step 7 - Fixing the Silence Models</SMALL></A>
+<LI><A NAME="tex2html132" HREF="node34_mn.html" TARGET="main"><SMALL>Step 8 - Realigning the Training Data</SMALL></A>
+</UL>
+<LI><A NAME="tex2html133" HREF="node35_mn.html" TARGET="main"><SMALL>Creating Tied-State Triphones</SMALL></A>
+<UL>
+<LI><A NAME="tex2html134" HREF="node36_mn.html" TARGET="main"><SMALL>Step 9 - Making Triphones from Monophones</SMALL></A>
+<LI><A NAME="tex2html135" HREF="node37_mn.html" TARGET="main"><SMALL>Step 10 - Making Tied-State Triphones</SMALL></A>
+</UL>
+<LI><A NAME="tex2html136" HREF="node38_mn.html" TARGET="main"><SMALL>Recogniser Evaluation</SMALL></A>
+<UL>
+<LI><A NAME="tex2html137" HREF="node39_mn.html" TARGET="main"><SMALL>Step 11 - Recognising the Test Data</SMALL></A>
+</UL>
+<LI><A NAME="tex2html138" HREF="node40_mn.html" TARGET="main"><SMALL>Running the Recogniser Live</SMALL></A>
+<LI><A NAME="tex2html139" HREF="node41_mn.html" TARGET="main"><SMALL>Summary</SMALL></A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html140" HREF="node42_mn.html" TARGET="main"><SMALL>HTK in Depth</SMALL></A>
+<UL>
+<LI><A NAME="tex2html141" HREF="node43_mn.html" TARGET="main"><SMALL>The Operating Environment</SMALL></A>
+<UL>
+<LI><A NAME="tex2html142" HREF="node44_mn.html" TARGET="main"><SMALL>The Command Line</SMALL></A>
+<LI><A NAME="tex2html143" HREF="node45_mn.html" TARGET="main"><SMALL>Script Files</SMALL></A>
+<LI><A NAME="tex2html144" HREF="node46_mn.html" TARGET="main"><SMALL>Configuration Files</SMALL></A>
+<LI><A NAME="tex2html145" HREF="node47_mn.html" TARGET="main"><SMALL>Standard Options</SMALL></A>
+<LI><A NAME="tex2html146" HREF="node48_mn.html" TARGET="main"><SMALL>Error Reporting</SMALL></A>
+<LI><A NAME="tex2html147" HREF="node49_mn.html" TARGET="main"><SMALL>Strings and Names</SMALL></A>
+<LI><A NAME="tex2html148" HREF="node51_mn.html" TARGET="main"><SMALL>Memory Management</SMALL></A>
+<LI><A NAME="tex2html149" HREF="node52_mn.html" TARGET="main"><SMALL>Input/Output via Pipes and Networks</SMALL></A>
+<LI><A NAME="tex2html150" HREF="node53_mn.html" TARGET="main"><SMALL>Byte-swapping of HTK data files</SMALL></A>
+<LI><A NAME="tex2html151" HREF="node54_mn.html" TARGET="main"><SMALL>Summary</SMALL></A>
+</UL>
+<LI><A NAME="tex2html152" HREF="node55_mn.html" TARGET="main"><SMALL>Speech Input/Output</SMALL></A>
+<UL>
+<LI><A NAME="tex2html153" HREF="node56_mn.html" TARGET="main"><SMALL>General Mechanism</SMALL></A>
+<LI><A NAME="tex2html154" HREF="node57_mn.html" TARGET="main"><SMALL>Speech Signal Processing</SMALL></A>
+<LI><A NAME="tex2html155" HREF="node58_mn.html" TARGET="main"><SMALL>Linear Prediction Analysis</SMALL></A>
+<LI><A NAME="tex2html156" HREF="node59_mn.html" TARGET="main"><SMALL>Filterbank Analysis</SMALL></A>
+<LI><A NAME="tex2html157" HREF="node60_mn.html" TARGET="main"><SMALL>Vocal Tract Length Normalisation</SMALL></A>
+<LI><A NAME="tex2html158" HREF="node61_mn.html" TARGET="main"><SMALL>Cepstral Features</SMALL></A>
+<LI><A NAME="tex2html159" HREF="node62_mn.html" TARGET="main"><SMALL>Perceptual Linear Prediction</SMALL></A>
+<LI><A NAME="tex2html160" HREF="node63_mn.html" TARGET="main"><SMALL>Energy Measures</SMALL></A>
+<LI><A NAME="tex2html161" HREF="node64_mn.html" TARGET="main"><SMALL>Delta, Acceleration and Third Differential Coefficients</SMALL></A>
+<LI><A NAME="tex2html162" HREF="node65_mn.html" TARGET="main"><SMALL>Storage of Parameter Files</SMALL></A>
+<UL>
+<LI><A NAME="tex2html163" HREF="node66_mn.html" TARGET="main"><SMALL>HTK Format Parameter Files</SMALL></A>
+<LI><A NAME="tex2html164" HREF="node67_mn.html" TARGET="main"><SMALL>Esignal Format Parameter Files</SMALL></A>
+</UL>
+<LI><A NAME="tex2html165" HREF="node68_mn.html" TARGET="main"><SMALL>Waveform File Formats</SMALL></A>
+<UL>
+<LI><A NAME="tex2html166" HREF="node69_mn.html" TARGET="main"><SMALL>HTK File Format</SMALL></A>
+<LI><A NAME="tex2html167" HREF="node70_mn.html" TARGET="main"><SMALL>Esignal File Format</SMALL></A>
+<LI><A NAME="tex2html168" HREF="node71_mn.html" TARGET="main"><SMALL>TIMIT File Format</SMALL></A>
+<LI><A NAME="tex2html169" HREF="node72_mn.html" TARGET="main"><SMALL>NIST File Format</SMALL></A>
+<LI><A NAME="tex2html170" HREF="node73_mn.html" TARGET="main"><SMALL>SCRIBE File Format</SMALL></A>
+<LI><A NAME="tex2html171" HREF="node74_mn.html" TARGET="main"><SMALL>SDES1 File Format</SMALL></A>
+<LI><A NAME="tex2html172" HREF="node75_mn.html" TARGET="main"><SMALL>AIFF File Format</SMALL></A>
+<LI><A NAME="tex2html173" HREF="node76_mn.html" TARGET="main"><SMALL>SUNAU8 File Format</SMALL></A>
+<LI><A NAME="tex2html174" HREF="node77_mn.html" TARGET="main"><SMALL>OGI File Format</SMALL></A>
+<LI><A NAME="tex2html175" HREF="node78_mn.html" TARGET="main"><SMALL>WAV File Format</SMALL></A>
+<LI><A NAME="tex2html176" HREF="node79_mn.html" TARGET="main"><SMALL>ALIEN and NOHEAD File Formats</SMALL></A>
+</UL>
+<LI><A NAME="tex2html177" HREF="node80_mn.html" TARGET="main"><SMALL>Direct Audio Input/Output</SMALL></A>
+<LI><A NAME="tex2html178" HREF="node81_mn.html" TARGET="main"><SMALL>Multiple Input Streams</SMALL></A>
+<LI><A NAME="tex2html179" HREF="node82_mn.html" TARGET="main"><SMALL>Vector Quantisation</SMALL></A>
+<LI><A NAME="tex2html180" HREF="node83_mn.html" TARGET="main"><SMALL>Viewing Speech with HL<SMALL>IST</SMALL></SMALL></A>
+<LI><A NAME="tex2html181" HREF="node84_mn.html" TARGET="main"><SMALL>Copying and Coding using HC<SMALL>OPY</SMALL></SMALL></A>
+<LI><A NAME="tex2html182" HREF="node85_mn.html" TARGET="main"><SMALL>Version 1.5 Compatibility</SMALL></A>
+<LI><A NAME="tex2html183" HREF="node86_mn.html" TARGET="main"><SMALL>Summary</SMALL></A>
+</UL>
+<LI><A NAME="tex2html184" HREF="node87_mn.html" TARGET="main"><SMALL>Transcriptions and Label Files</SMALL></A>
+<UL>
+<LI><A NAME="tex2html185" HREF="node88_mn.html" TARGET="main"><SMALL>Label File Structure</SMALL></A>
+<LI><A NAME="tex2html186" HREF="node89_mn.html" TARGET="main"><SMALL>Label File Formats</SMALL></A>
+<UL>
+<LI><A NAME="tex2html187" HREF="node90_mn.html" TARGET="main"><SMALL>HTK Label Files</SMALL></A>
+<LI><A NAME="tex2html188" HREF="node91_mn.html" TARGET="main"><SMALL>ESPS Label Files</SMALL></A>
+<LI><A NAME="tex2html189" HREF="node92_mn.html" TARGET="main"><SMALL>TIMIT Label Files</SMALL></A>
+<LI><A NAME="tex2html190" HREF="node93_mn.html" TARGET="main"><SMALL>SCRIBE Label Files</SMALL></A>
+</UL>
+<LI><A NAME="tex2html191" HREF="node94_mn.html" TARGET="main"><SMALL>Master Label Files</SMALL></A>
+<UL>
+<LI><A NAME="tex2html192" HREF="node95_mn.html" TARGET="main"><SMALL>General Principles of MLFs</SMALL></A>
+<LI><A NAME="tex2html193" HREF="node96_mn.html" TARGET="main"><SMALL>Syntax and Semantics</SMALL></A>
+<LI><A NAME="tex2html194" HREF="node97_mn.html" TARGET="main"><SMALL>MLF Search</SMALL></A>
+<LI><A NAME="tex2html195" HREF="node98_mn.html" TARGET="main"><SMALL>MLF Examples</SMALL></A>
+</UL>
+<LI><A NAME="tex2html196" HREF="node99_mn.html" TARGET="main"><SMALL>Editing Label Files</SMALL></A>
+<LI><A NAME="tex2html197" HREF="node100_mn.html" TARGET="main"><SMALL>Summary</SMALL></A>
+</UL>
+<LI><A NAME="tex2html198" HREF="node101_mn.html" TARGET="main"><SMALL>HMM Definition Files</SMALL></A>
+<UL>
+<LI><A NAME="tex2html199" HREF="node102_mn.html" TARGET="main"><SMALL>The HMM Parameters</SMALL></A>
+<LI><A NAME="tex2html200" HREF="node103_mn.html" TARGET="main"><SMALL>Basic HMM Definitions</SMALL></A>
+<LI><A NAME="tex2html201" HREF="node104_mn.html" TARGET="main"><SMALL>Macro Definitions</SMALL></A>
+<LI><A NAME="tex2html202" HREF="node105_mn.html" TARGET="main"><SMALL>HMM Sets</SMALL></A>
+<LI><A NAME="tex2html203" HREF="node106_mn.html" TARGET="main"><SMALL>Tied-Mixture Systems</SMALL></A>
+<LI><A NAME="tex2html204" HREF="node107_mn.html" TARGET="main"><SMALL>Discrete Probability HMMs</SMALL></A>
+<LI><A NAME="tex2html205" HREF="node108_mn.html" TARGET="main"><SMALL>Input Linear Transforms</SMALL></A>
+<LI><A NAME="tex2html206" HREF="node109_mn.html" TARGET="main"><SMALL>Tee Models</SMALL></A>
+<LI><A NAME="tex2html207" HREF="node110_mn.html" TARGET="main"><SMALL>Binary Storage Format</SMALL></A>
+<LI><A NAME="tex2html208" HREF="node111_mn.html" TARGET="main"><SMALL>The HMM Definition Language</SMALL></A>
+</UL>
+<LI><A NAME="tex2html209" HREF="node112_mn.html" TARGET="main"><SMALL>HMM Parameter Estimation</SMALL></A>
+<UL>
+<LI><A NAME="tex2html210" HREF="node113_mn.html" TARGET="main"><SMALL>Training Strategies</SMALL></A>
+<LI><A NAME="tex2html211" HREF="node114_mn.html" TARGET="main"><SMALL>Initialisation using HI<SMALL>NIT</SMALL></SMALL></A>
+<LI><A NAME="tex2html212" HREF="node115_mn.html" TARGET="main"><SMALL>Flat Starting with HC<SMALL>OMP</SMALL>V</SMALL></A>
+<LI><A NAME="tex2html213" HREF="node116_mn.html" TARGET="main"><SMALL>Isolated Unit Re-Estimation using HR<SMALL>EST</SMALL></SMALL></A>
+<LI><A NAME="tex2html214" HREF="node117_mn.html" TARGET="main"><SMALL>Embedded Training using HER<SMALL>EST</SMALL></SMALL></A>
+<LI><A NAME="tex2html215" HREF="node118_mn.html" TARGET="main"><SMALL>Single-Pass Retraining</SMALL></A>
+<LI><A NAME="tex2html216" HREF="node119_mn.html" TARGET="main"><SMALL>Two-model Re-Estimation</SMALL></A>
+<LI><A NAME="tex2html217" HREF="node120_mn.html" TARGET="main"><SMALL>Parameter Re-Estimation Formulae</SMALL></A>
+<UL>
+<LI><A NAME="tex2html218" HREF="node121_mn.html" TARGET="main"><SMALL>Viterbi Training (HI<SMALL>NIT</SMALL>)</SMALL></A>
+<LI><A NAME="tex2html219" HREF="node122_mn.html" TARGET="main"><SMALL>Forward/Backward Probabilities</SMALL></A>
+<LI><A NAME="tex2html220" HREF="node123_mn.html" TARGET="main"><SMALL>Single Model Reestimation(HR<SMALL>EST</SMALL>)</SMALL></A>
+<LI><A NAME="tex2html221" HREF="node124_mn.html" TARGET="main"><SMALL>Embedded Model Reestimation(HER<SMALL>EST</SMALL>)</SMALL></A>
+</UL>
+</UL>
+<LI><A NAME="tex2html222" HREF="node125_mn.html" TARGET="main"><SMALL>HMM Adaptation</SMALL></A>
+<UL>
+<LI><A NAME="tex2html223" HREF="node126_mn.html" TARGET="main"><SMALL>Model Adaptation using Linear Transformations</SMALL></A>
+<UL>
+<LI><A NAME="tex2html224" HREF="node127_mn.html" TARGET="main"><SMALL>Linear Transformations</SMALL></A>
+<LI><A NAME="tex2html225" HREF="node131_mn.html" TARGET="main"><SMALL>Input/Output/Parent Transformations</SMALL></A>
+<LI><A NAME="tex2html226" HREF="node132_mn.html" TARGET="main"><SMALL>Base Class Definitions</SMALL></A>
+<LI><A NAME="tex2html227" HREF="node133_mn.html" TARGET="main"><SMALL>Regression Class Trees</SMALL></A>
+<LI><A NAME="tex2html228" HREF="node134_mn.html" TARGET="main"><SMALL>Linear Transform Format</SMALL></A>
+<LI><A NAME="tex2html229" HREF="node135_mn.html" TARGET="main"><SMALL>Hierarchy of Transform</SMALL></A>
+<LI><A NAME="tex2html230" HREF="node136_mn.html" TARGET="main"><SMALL>Mutiple Stream Systems</SMALL></A>
+</UL>
+<LI><A NAME="tex2html231" HREF="node137_mn.html" TARGET="main"><SMALL>Adaptive Training with Linear Transforms</SMALL></A>
+<LI><A NAME="tex2html232" HREF="node138_mn.html" TARGET="main"><SMALL>Model Adaptation using MAP</SMALL></A>
+<LI><A NAME="tex2html233" HREF="node139_mn.html" TARGET="main"><SMALL>Linear Transformation Estimation Formulae</SMALL></A>
+<UL>
+<LI><A NAME="tex2html234" HREF="node140_mn.html" TARGET="main"><SMALL>Mean Transformation Matrix (<TT>MLLRMEAN</TT>)</SMALL></A>
+<LI><A NAME="tex2html235" HREF="node141_mn.html" TARGET="main"><SMALL>Variance Transformation Matrix (<TT>MLLRVAR</TT>, <TT>MLLRCOV</TT>)</SMALL></A>
+<LI><A NAME="tex2html236" HREF="node142_mn.html" TARGET="main"><SMALL>Constrained MLLR Transformation Matrix (<TT>CMLLR</TT>)</SMALL></A>
+</UL>
+</UL>
+<LI><A NAME="tex2html237" HREF="node143_mn.html" TARGET="main"><SMALL>HMM System Refinement</SMALL></A>
+<UL>
+<LI><A NAME="tex2html238" HREF="node144_mn.html" TARGET="main"><SMALL>Using HHE<SMALL>D</SMALL></SMALL></A>
+<LI><A NAME="tex2html239" HREF="node145_mn.html" TARGET="main"><SMALL>Constructing Context-Dependent Models</SMALL></A>
+<LI><A NAME="tex2html240" HREF="node146_mn.html" TARGET="main"><SMALL>Parameter Tying and Item Lists</SMALL></A>
+<LI><A NAME="tex2html241" HREF="node147_mn.html" TARGET="main"><SMALL>Data-Driven Clustering</SMALL></A>
+<LI><A NAME="tex2html242" HREF="node148_mn.html" TARGET="main"><SMALL>Tree-Based Clustering</SMALL></A>
+<LI><A NAME="tex2html243" HREF="node149_mn.html" TARGET="main"><SMALL>Mixture Incrementing</SMALL></A>
+<LI><A NAME="tex2html244" HREF="node150_mn.html" TARGET="main"><SMALL>Regression Class Tree Construction</SMALL></A>
+<LI><A NAME="tex2html245" HREF="node151_mn.html" TARGET="main"><SMALL>Miscellaneous Operations</SMALL></A>
+</UL>
+<LI><A NAME="tex2html246" HREF="node152_mn.html" TARGET="main"><SMALL>Discrete and Tied-Mixture Models</SMALL></A>
+<UL>
+<LI><A NAME="tex2html247" HREF="node153_mn.html" TARGET="main"><SMALL>Modelling Discrete Sequences</SMALL></A>
+<LI><A NAME="tex2html248" HREF="node154_mn.html" TARGET="main"><SMALL>Using Discrete Models with Speech</SMALL></A>
+<LI><A NAME="tex2html249" HREF="node155_mn.html" TARGET="main"><SMALL>Tied Mixture Systems</SMALL></A>
+<LI><A NAME="tex2html250" HREF="node156_mn.html" TARGET="main"><SMALL>Parameter Smoothing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html251" HREF="node157_mn.html" TARGET="main"><SMALL>Networks, Dictionaries and Language Models</SMALL></A>
+<UL>
+<LI><A NAME="tex2html252" HREF="node158_mn.html" TARGET="main"><SMALL>How Networks are Used</SMALL></A>
+<LI><A NAME="tex2html253" HREF="node159_mn.html" TARGET="main"><SMALL>Word Networks and Standard Lattice Format</SMALL></A>
+<LI><A NAME="tex2html254" HREF="node160_mn.html" TARGET="main"><SMALL>Building a Word Network with HP<SMALL>ARSE</SMALL></SMALL></A>
+<LI><A NAME="tex2html255" HREF="node161_mn.html" TARGET="main"><SMALL>Bigram Language Models</SMALL></A>
+<LI><A NAME="tex2html256" HREF="node162_mn.html" TARGET="main"><SMALL>Building a Word Network with HB<SMALL>UILD</SMALL></SMALL></A>
+<LI><A NAME="tex2html257" HREF="node163_mn.html" TARGET="main"><SMALL>Testing a Word Network using HSG<SMALL>EN</SMALL></SMALL></A>
+<LI><A NAME="tex2html258" HREF="node164_mn.html" TARGET="main"><SMALL>Constructing a Dictionary</SMALL></A>
+<LI><A NAME="tex2html259" HREF="node165_mn.html" TARGET="main"><SMALL>Word Network Expansion</SMALL></A>
+<LI><A NAME="tex2html260" HREF="node166_mn.html" TARGET="main"><SMALL>Other Kinds of Recognition System</SMALL></A>
+</UL>
+<LI><A NAME="tex2html261" HREF="node167_mn.html" TARGET="main"><SMALL>Decoding</SMALL></A>
+<UL>
+<LI><A NAME="tex2html262" HREF="node168_mn.html" TARGET="main"><SMALL>Decoder Operation</SMALL></A>
+<LI><A NAME="tex2html263" HREF="node169_mn.html" TARGET="main"><SMALL>Decoder Organisation</SMALL></A>
+<LI><A NAME="tex2html264" HREF="node170_mn.html" TARGET="main"><SMALL>Recognition using Test Databases</SMALL></A>
+<LI><A NAME="tex2html265" HREF="node171_mn.html" TARGET="main"><SMALL>Evaluating Recognition Results</SMALL></A>
+<LI><A NAME="tex2html266" HREF="node172_mn.html" TARGET="main"><SMALL>Generating Forced Alignments</SMALL></A>
+<LI><A NAME="tex2html267" HREF="node173_mn.html" TARGET="main"><SMALL>Recognition using Direct Audio Input</SMALL></A>
+<LI><A NAME="tex2html268" HREF="node174_mn.html" TARGET="main"><SMALL>N-Best Lists and Lattices</SMALL></A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html269" HREF="node175_mn.html" TARGET="main"><SMALL>Language Modelling</SMALL></A>
+<UL>
+<LI><A NAME="tex2html270" HREF="node176_mn.html" TARGET="main"><SMALL>Fundamentals of language modelling</SMALL></A>
+<UL>
+<LI><A NAME="tex2html271" HREF="node177_mn.html" TARGET="main"><SMALL><I>n</I>-gram language models</SMALL></A>
+<UL>
+<LI><A NAME="tex2html272" HREF="node178_mn.html" TARGET="main"><SMALL>Word <I>n</I>-gram models</SMALL></A>
+<LI><A NAME="tex2html273" HREF="node179_mn.html" TARGET="main"><SMALL>Equivalence classes</SMALL></A>
+<LI><A NAME="tex2html274" HREF="node180_mn.html" TARGET="main"><SMALL>Class <I>n</I>-gram models</SMALL></A>
+</UL>
+<LI><A NAME="tex2html275" HREF="node181_mn.html" TARGET="main"><SMALL>Statistically-derived Class Maps</SMALL></A>
+<UL>
+<LI><A NAME="tex2html276" HREF="node182_mn.html" TARGET="main"><SMALL>Word exchange algorithm</SMALL></A>
+</UL>
+<LI><A NAME="tex2html277" HREF="node183_mn.html" TARGET="main"><SMALL>Robust model estimation</SMALL></A>
+<UL>
+<LI><A NAME="tex2html278" HREF="node184_mn.html" TARGET="main"><SMALL>Estimating probabilities</SMALL></A>
+<LI><A NAME="tex2html279" HREF="node187_mn.html" TARGET="main"><SMALL>Smoothing probabilities</SMALL></A>
+</UL>
+<LI><A NAME="tex2html280" HREF="node189_mn.html" TARGET="main"><SMALL>Perplexity</SMALL></A>
+<LI><A NAME="tex2html281" HREF="node190_mn.html" TARGET="main"><SMALL>Overview of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-Gram Construction Process</SMALL></A>
+<LI><A NAME="tex2html282" HREF="node191_mn.html" TARGET="main"><SMALL>Class-Based Language Models</SMALL></A>
+</UL>
+<LI><A NAME="tex2html283" HREF="node192_mn.html" TARGET="main"><SMALL>A Tutorial Example of Building Language Models</SMALL></A>
+<UL>
+<LI><A NAME="tex2html284" HREF="node193_mn.html" TARGET="main"><SMALL>Database preparation</SMALL></A>
+<LI><A NAME="tex2html285" HREF="node194_mn.html" TARGET="main"><SMALL>Mapping OOV words</SMALL></A>
+<LI><A NAME="tex2html286" HREF="node195_mn.html" TARGET="main"><SMALL>Language model generation</SMALL></A>
+<LI><A NAME="tex2html287" HREF="node196_mn.html" TARGET="main"><SMALL>Testing the LM perplexity</SMALL></A>
+<LI><A NAME="tex2html288" HREF="node197_mn.html" TARGET="main"><SMALL>Generating and using count-based models</SMALL></A>
+<LI><A NAME="tex2html289" HREF="node198_mn.html" TARGET="main"><SMALL>Model interpolation</SMALL></A>
+<LI><A NAME="tex2html290" HREF="node199_mn.html" TARGET="main"><SMALL>Class-based models</SMALL></A>
+<LI><A NAME="tex2html291" HREF="node200_mn.html" TARGET="main"><SMALL>Problem solving</SMALL></A>
+<UL>
+<LI><A NAME="tex2html292" HREF="node201_mn.html" TARGET="main"><SMALL>File format problems</SMALL></A>
+<LI><A NAME="tex2html293" HREF="node202_mn.html" TARGET="main"><SMALL>Command syntax problems</SMALL></A>
+<LI><A NAME="tex2html294" HREF="node203_mn.html" TARGET="main"><SMALL>Word maps</SMALL></A>
+<LI><A NAME="tex2html295" HREF="node204_mn.html" TARGET="main"><SMALL>Memory problems</SMALL></A>
+<LI><A NAME="tex2html296" HREF="node205_mn.html" TARGET="main"><SMALL>Unexpected perplexities</SMALL></A>
+</UL>
+</UL>
+<LI><A NAME="tex2html297" HREF="node206_mn.html" TARGET="main"><SMALL>Language Modelling Reference</SMALL></A>
+<UL>
+<LI><A NAME="tex2html298" HREF="node207_mn.html" TARGET="main"><SMALL>Words and Classes</SMALL></A>
+<LI><A NAME="tex2html299" HREF="node208_mn.html" TARGET="main"><SMALL>Data File Headers</SMALL></A>
+<LI><A NAME="tex2html300" HREF="node209_mn.html" TARGET="main"><SMALL>Word Map Files</SMALL></A>
+<LI><A NAME="tex2html301" HREF="node210_mn.html" TARGET="main"><SMALL>Class Map Files</SMALL></A>
+<LI><A NAME="tex2html302" HREF="node211_mn.html" TARGET="main"><SMALL>Gram Files</SMALL></A>
+<LI><A NAME="tex2html303" HREF="node212_mn.html" TARGET="main"><SMALL>Frequency-of-frequency (FoF) Files</SMALL></A>
+<LI><A NAME="tex2html304" HREF="node213_mn.html" TARGET="main"><SMALL>Word LM file formats</SMALL></A>
+<UL>
+<LI><A NAME="tex2html305" HREF="node214_mn.html" TARGET="main"><SMALL>The ARPA-MIT LM format</SMALL></A>
+<LI><A NAME="tex2html306" HREF="node215_mn.html" TARGET="main"><SMALL>The modified ARPA-MIT format</SMALL></A>
+<LI><A NAME="tex2html307" HREF="node216_mn.html" TARGET="main"><SMALL>The binary LM format</SMALL></A>
+</UL>
+<LI><A NAME="tex2html308" HREF="node217_mn.html" TARGET="main"><SMALL>Class LM file formats</SMALL></A>
+<UL>
+<LI><A NAME="tex2html309" HREF="node218_mn.html" TARGET="main"><SMALL>Class counts format</SMALL></A>
+<LI><A NAME="tex2html310" HREF="node219_mn.html" TARGET="main"><SMALL>The class probabilities format</SMALL></A>
+<LI><A NAME="tex2html311" HREF="node220_mn.html" TARGET="main"><SMALL>The class LM three file format</SMALL></A>
+<LI><A NAME="tex2html312" HREF="node221_mn.html" TARGET="main"><SMALL>The class LM single file format</SMALL></A>
+</UL>
+<LI><A NAME="tex2html313" HREF="node222_mn.html" TARGET="main"><SMALL>Language modelling tracing</SMALL></A>
+<UL>
+<LI><A NAME="tex2html314" HREF="node223_mn.html" TARGET="main"><SMALL>LCMap</SMALL></A>
+<LI><A NAME="tex2html315" HREF="node224_mn.html" TARGET="main"><SMALL>LGBase</SMALL></A>
+<LI><A NAME="tex2html316" HREF="node225_mn.html" TARGET="main"><SMALL>LModel</SMALL></A>
+<LI><A NAME="tex2html317" HREF="node226_mn.html" TARGET="main"><SMALL>LPCalc</SMALL></A>
+<LI><A NAME="tex2html318" HREF="node227_mn.html" TARGET="main"><SMALL>LPMerge</SMALL></A>
+<LI><A NAME="tex2html319" HREF="node228_mn.html" TARGET="main"><SMALL>LUtil</SMALL></A>
+<LI><A NAME="tex2html320" HREF="node229_mn.html" TARGET="main"><SMALL>LWMap</SMALL></A>
+</UL>
+<LI><A NAME="tex2html321" HREF="node230_mn.html" TARGET="main"><SMALL>Run-time configuration parameters</SMALL></A>
+<UL>
+<LI><A NAME="tex2html322" HREF="node231_mn.html" TARGET="main"><SMALL>USEINTID</SMALL></A>
+</UL>
+<LI><A NAME="tex2html323" HREF="node232_mn.html" TARGET="main"><SMALL>Compile-time configuration
+parameters</SMALL></A>
+<UL>
+<LI><A NAME="tex2html324" HREF="node233_mn.html" TARGET="main"><SMALL>LM_ID_SHORT</SMALL></A>
+<LI><A NAME="tex2html325" HREF="node234_mn.html" TARGET="main"><SMALL>LM_COMPACT</SMALL></A>
+<LI><A NAME="tex2html326" HREF="node235_mn.html" TARGET="main"><SMALL>LMPROB_SHORT</SMALL></A>
+<LI><A NAME="tex2html327" HREF="node236_mn.html" TARGET="main"><SMALL>INTERPOLATE_MAX</SMALL></A>
+<LI><A NAME="tex2html328" HREF="node237_mn.html" TARGET="main"><SMALL>SANITY</SMALL></A>
+<LI><A NAME="tex2html329" HREF="node238_mn.html" TARGET="main"><SMALL>INTEGRITY_CHECK</SMALL></A>
+</UL>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html330" HREF="node239_mn.html" TARGET="main"><SMALL>Reference Section</SMALL></A>
+<UL>
+<LI><A NAME="tex2html331" HREF="node240_mn.html" TARGET="main"><SMALL>The HTK Tools</SMALL></A>
+<UL>
+<LI><A NAME="tex2html332" HREF="node241_mn.html" TARGET="main"><SMALL>Cluster</SMALL></A>
+<UL>
+<LI><A NAME="tex2html333" HREF="node242_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html334" HREF="node243_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html335" HREF="node244_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html336" HREF="node245_mn.html" TARGET="main"><SMALL>HBuild</SMALL></A>
+<UL>
+<LI><A NAME="tex2html337" HREF="node246_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html338" HREF="node247_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html339" HREF="node248_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html340" HREF="node249_mn.html" TARGET="main"><SMALL>HCompV</SMALL></A>
+<UL>
+<LI><A NAME="tex2html341" HREF="node250_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html342" HREF="node251_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html343" HREF="node252_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html344" HREF="node253_mn.html" TARGET="main"><SMALL>HCopy</SMALL></A>
+<UL>
+<LI><A NAME="tex2html345" HREF="node254_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html346" HREF="node255_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html347" HREF="node256_mn.html" TARGET="main"><SMALL>Trace Output</SMALL></A>
+</UL>
+<LI><A NAME="tex2html348" HREF="node257_mn.html" TARGET="main"><SMALL>HDMan</SMALL></A>
+<UL>
+<LI><A NAME="tex2html349" HREF="node258_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html350" HREF="node259_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html351" HREF="node260_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html352" HREF="node261_mn.html" TARGET="main"><SMALL>HERest</SMALL></A>
+<UL>
+<LI><A NAME="tex2html353" HREF="node262_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html354" HREF="node263_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html355" HREF="node264_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html356" HREF="node265_mn.html" TARGET="main"><SMALL>HHEd</SMALL></A>
+<UL>
+<LI><A NAME="tex2html357" HREF="node266_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html358" HREF="node302_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html359" HREF="node303_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html360" HREF="node304_mn.html" TARGET="main"><SMALL>HInit</SMALL></A>
+<UL>
+<LI><A NAME="tex2html361" HREF="node305_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html362" HREF="node306_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html363" HREF="node307_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html364" HREF="node308_mn.html" TARGET="main"><SMALL>HLEd</SMALL></A>
+<UL>
+<LI><A NAME="tex2html365" HREF="node309_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html366" HREF="node310_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html367" HREF="node311_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html368" HREF="node312_mn.html" TARGET="main"><SMALL>HList</SMALL></A>
+<UL>
+<LI><A NAME="tex2html369" HREF="node313_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html370" HREF="node314_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html371" HREF="node315_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html372" HREF="node316_mn.html" TARGET="main"><SMALL>HLMCopy</SMALL></A>
+<UL>
+<LI><A NAME="tex2html373" HREF="node317_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html374" HREF="node318_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html375" HREF="node319_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html376" HREF="node320_mn.html" TARGET="main"><SMALL>HLRescore</SMALL></A>
+<UL>
+<LI><A NAME="tex2html377" HREF="node321_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html378" HREF="node322_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html379" HREF="node323_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html380" HREF="node324_mn.html" TARGET="main"><SMALL>HLStats</SMALL></A>
+<UL>
+<LI><A NAME="tex2html381" HREF="node325_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html382" HREF="node326_mn.html" TARGET="main"><SMALL>Bigram Generation</SMALL></A>
+<LI><A NAME="tex2html383" HREF="node327_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html384" HREF="node328_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html385" HREF="node329_mn.html" TARGET="main"><SMALL>HParse</SMALL></A>
+<UL>
+<LI><A NAME="tex2html386" HREF="node330_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html387" HREF="node331_mn.html" TARGET="main"><SMALL>Network Definition</SMALL></A>
+<LI><A NAME="tex2html388" HREF="node332_mn.html" TARGET="main"><SMALL>Compatibility Mode</SMALL></A>
+<LI><A NAME="tex2html389" HREF="node333_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html390" HREF="node334_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html391" HREF="node335_mn.html" TARGET="main"><SMALL>HQuant</SMALL></A>
+<UL>
+<LI><A NAME="tex2html392" HREF="node336_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html393" HREF="node337_mn.html" TARGET="main"><SMALL>VQ Codebook Format</SMALL></A>
+<LI><A NAME="tex2html394" HREF="node338_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html395" HREF="node339_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html396" HREF="node340_mn.html" TARGET="main"><SMALL>HRest</SMALL></A>
+<UL>
+<LI><A NAME="tex2html397" HREF="node341_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html398" HREF="node342_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html399" HREF="node343_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html400" HREF="node344_mn.html" TARGET="main"><SMALL>HResults</SMALL></A>
+<UL>
+<LI><A NAME="tex2html401" HREF="node345_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html402" HREF="node346_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html403" HREF="node347_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html404" HREF="node348_mn.html" TARGET="main"><SMALL>HSGen</SMALL></A>
+<UL>
+<LI><A NAME="tex2html405" HREF="node349_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html406" HREF="node350_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html407" HREF="node351_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html408" HREF="node352_mn.html" TARGET="main"><SMALL>HSLab</SMALL></A>
+<UL>
+<LI><A NAME="tex2html409" HREF="node353_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html410" HREF="node354_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html411" HREF="node355_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html412" HREF="node356_mn.html" TARGET="main"><SMALL>HSmooth</SMALL></A>
+<UL>
+<LI><A NAME="tex2html413" HREF="node357_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html414" HREF="node358_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html415" HREF="node359_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html416" HREF="node360_mn.html" TARGET="main"><SMALL>HVite</SMALL></A>
+<UL>
+<LI><A NAME="tex2html417" HREF="node361_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html418" HREF="node362_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html419" HREF="node363_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html420" HREF="node364_mn.html" TARGET="main"><SMALL>LAdapt</SMALL></A>
+<UL>
+<LI><A NAME="tex2html421" HREF="node365_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html422" HREF="node366_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html423" HREF="node367_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html424" HREF="node368_mn.html" TARGET="main"><SMALL>LBuild</SMALL></A>
+<UL>
+<LI><A NAME="tex2html425" HREF="node369_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html426" HREF="node370_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html427" HREF="node371_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html428" HREF="node372_mn.html" TARGET="main"><SMALL>LFoF</SMALL></A>
+<UL>
+<LI><A NAME="tex2html429" HREF="node373_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html430" HREF="node374_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html431" HREF="node375_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html432" HREF="node376_mn.html" TARGET="main"><SMALL>LGCopy</SMALL></A>
+<UL>
+<LI><A NAME="tex2html433" HREF="node377_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html434" HREF="node378_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html435" HREF="node379_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html436" HREF="node380_mn.html" TARGET="main"><SMALL>LGList</SMALL></A>
+<UL>
+<LI><A NAME="tex2html437" HREF="node381_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html438" HREF="node382_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html439" HREF="node383_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html440" HREF="node384_mn.html" TARGET="main"><SMALL>LGPrep</SMALL></A>
+<UL>
+<LI><A NAME="tex2html441" HREF="node385_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html442" HREF="node386_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html443" HREF="node387_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html444" HREF="node388_mn.html" TARGET="main"><SMALL>LLink</SMALL></A>
+<UL>
+<LI><A NAME="tex2html445" HREF="node389_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html446" HREF="node390_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html447" HREF="node391_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html448" HREF="node392_mn.html" TARGET="main"><SMALL>LMerge</SMALL></A>
+<UL>
+<LI><A NAME="tex2html449" HREF="node393_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html450" HREF="node394_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html451" HREF="node395_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html452" HREF="node396_mn.html" TARGET="main"><SMALL>LNewMap</SMALL></A>
+<UL>
+<LI><A NAME="tex2html453" HREF="node397_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html454" HREF="node398_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html455" HREF="node399_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html456" HREF="node400_mn.html" TARGET="main"><SMALL>LNorm</SMALL></A>
+<UL>
+<LI><A NAME="tex2html457" HREF="node401_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html458" HREF="node402_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html459" HREF="node403_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html460" HREF="node404_mn.html" TARGET="main"><SMALL>LPlex</SMALL></A>
+<UL>
+<LI><A NAME="tex2html461" HREF="node405_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html462" HREF="node406_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html463" HREF="node407_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+<LI><A NAME="tex2html464" HREF="node408_mn.html" TARGET="main"><SMALL>LSubset</SMALL></A>
+<UL>
+<LI><A NAME="tex2html465" HREF="node409_mn.html" TARGET="main"><SMALL>Function</SMALL></A>
+<LI><A NAME="tex2html466" HREF="node410_mn.html" TARGET="main"><SMALL>Use</SMALL></A>
+<LI><A NAME="tex2html467" HREF="node411_mn.html" TARGET="main"><SMALL>Tracing</SMALL></A>
+</UL>
+</UL>
+<LI><A NAME="tex2html468" HREF="node412_mn.html" TARGET="main"><SMALL>Configuration Variables</SMALL></A>
+<UL>
+<LI><A NAME="tex2html469" HREF="node413_mn.html" TARGET="main"><SMALL>Configuration Variables used in Library Modules</SMALL></A>
+<LI><A NAME="tex2html470" HREF="node414_mn.html" TARGET="main"><SMALL>Configuration Variables used in Tools</SMALL></A>
+</UL>
+<LI><A NAME="tex2html471" HREF="node415_mn.html" TARGET="main"><SMALL>Error and Warning Codes</SMALL></A>
+<UL>
+<LI><A NAME="tex2html472" HREF="node416_mn.html" TARGET="main"><SMALL>Generic Errors</SMALL></A>
+<LI><A NAME="tex2html473" HREF="node417_mn.html" TARGET="main"><SMALL>Summary of Errors by Tool and Module</SMALL></A>
+</UL>
+<LI><A NAME="tex2html474" HREF="node418_mn.html" TARGET="main"><SMALL>HTK Standard Lattice Format (SLF)</SMALL></A>
+<UL>
+<LI><A NAME="tex2html475" HREF="node419_mn.html" TARGET="main"><SMALL>SLF Files</SMALL></A>
+<LI><A NAME="tex2html476" HREF="node420_mn.html" TARGET="main"><SMALL>Format</SMALL></A>
+<LI><A NAME="tex2html477" HREF="node421_mn.html" TARGET="main"><SMALL>Syntax</SMALL></A>
+<LI><A NAME="tex2html478" HREF="node422_mn.html" TARGET="main"><SMALL>Field Types</SMALL></A>
+<LI><A NAME="tex2html479" HREF="node423_mn.html" TARGET="main"><SMALL>Example SLF file</SMALL></A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html480" HREF="node424_mn.html" TARGET="main"><SMALL>Index</SMALL></A>
+<LI><A NAME="tex2html481" HREF="node425_mn.html" TARGET="main"><SMALL>About this document ...</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

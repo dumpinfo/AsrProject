@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node354_mn.html">
+<LINK REL="previous" HREF="node352_mn.html">
+<LINK REL="up" HREF="node352_mn.html">
+<LINK REL="next" HREF="node354_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051191000000000000000">&#160;</A><A NAME="s:HSLab-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="30835">&#160;</A>
+HSL<SMALL>AB</SMALL> is an interactive label editor for manipulating speech label files. 
+An example of using HSL<SMALL>AB</SMALL> would be to load a sampled waveform file, 
+determine the boundaries of the speech units of interest and assign labels 
+to them. Alternatively, an existing label file can be loaded and edited by
+changing current label boundaries, deleting and creating new labels.
+HSL<SMALL>AB</SMALL> is the only tool in the HTK package which makes use of the 
+graphics library HG<SMALL>RAF</SMALL>.
+
+<P>
+When started HSL<SMALL>AB</SMALL> displays a window which is split into two parts: a
+display section and a control section (see Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>). 
+The display section contains the plotted speech waveform with the 
+associated labels. The control section consists of a palette of buttons 
+which are used to invoke the various facilities available in the tool. 
+The buttons are laid out into three different groups depending on the 
+function they perform. Group one (top row) contains buttons related to 
+basic input/output commands. 
+Group two (middle row) implements the viewing and record/playback functions. 
+The buttons in group three (bottom row) are used for labelling. To invoke a 
+particular function, place the mouse pointer onto the corresponding button 
+and click once. All commands which require further interaction with the user 
+after invocation will display guiding text in the message area telling the 
+user what he or she is expected to do next. For example, to delete a label, 
+the user will click on <TT>Delete</TT>, the message ``Please select label to delete'' 
+will appear in the message area and the user will be expected to click in that 
+part of the display section corresponding to the label to be deleted (not on 
+the label itself).
+
+<P>
+A <EM>marked region</EM> is a slice of the waveform currently visible in the 
+window. A region is marked by clicking on <TT>Mark</TT> and specifying two 
+boundaries by clicking in the display section. 
+When marked, a region will be displayed in inverse colours. In the presence 
+of a marked region the commands <TT>Play</TT>, <TT>Label</TT> and <TT>Label as</TT> 
+will be applied to the specified region rather than to the whole of the 
+waveform visible on the screen. 
+Part of the waveform can also be made into a marked region with the commands 
+<TT>Zoom Out</TT> and <TT>Select</TT>. <TT>Zoom Out</TT> will take the user back 
+to the previous level of magnification and the waveform being displayed before 
+the execution of the command will become a marked region. 
+<TT>Select</TT> will make the part of the waveform corresponding to a particular 
+label into a marked region. This can be useful for playing back existing labels. 
+
+<P>
+Labelling is carried out with <TT>Label </TT> and <TT>Label as</TT>. <TT>Label</TT>
+will assign <EM>The Current Label</EM> to a specified slice of the waveform,
+whilst <TT>Label as</TT> will prompt the user to type-in the labelling string. 
+<EM>The Current Label</EM> is shown in the button in the bottom right corner of 
+the control section.  It defaults to ``Speech'' and it can be changed by clicking 
+on the button it resides in. 
+Multiple alternative transcriptions are manipulated using the <TT>Set [?]</TT> and 
+<TT>New</TT> buttons. The former is used to select the desired transcription, the 
+latter is used to create a new alternative transcription.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:hslab">&#160;</A><IMG
+ WIDTH="547" HEIGHT="471" ALIGN="MIDDLE" BORDER="0"
+ SRC="img680.png"
+ ALT="% latex2html id marker 53351
+$\textstyle \parbox{120mm}{ \begin{center}\setlengt...
+...hechapter.\arabic{figctr}  HSLab display window}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

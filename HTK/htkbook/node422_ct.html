@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Field Types</TITLE>
+<META NAME="description" CONTENT="Contents of Field Types">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node423_mn.html">
+<LINK REL="previous" HREF="node421_mn.html">
+<LINK REL="up" HREF="node418_mn.html">
+<LINK REL="next" HREF="node423_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION05440000000000000000">&#160;</A><A NAME="s:slffields">&#160;</A>
+<BR>
+Field Types
+</H1>
+
+<P>
+The currently defined fields are as follows:-
+
+<P>
+<PRE>
+  Field        abbr o|c Description
+
+Header fields
+  VERSION=%s     V  o  Lattice specification adhered to
+  UTTERANCE=%s   U  o  Utterance identifier
+  SUBLAT=%s      S  o  Sub-lattice name
+  acscale=%f        o  Scaling factor for acoustic likelihoods
+  tscale=%f         o  Scaling factor for times (default 1.0, i.e.\ seconds)
+  base=%f           o  LogBase for Likelihoods (0.0 not logs, default base e)
+  lmname=%s         o  Name of Language model
+  lmscale=%f        o  Scaling factor for language model
+  wdpenalty=%f      o  Word insertion penalty
+
+Lattice Size fields
+  NODES=%d       N  c  Number of nodes in lattice
+  LINKS=%d       L  c  Number of links in lattice
+
+Node Fields
+  I=%d                 Node identifier.  Starts node information
+  time=%f        t  o  Time from start of utterance (in seconds)
+  WORD=%s        W wc  Word (If lattice labels nodes rather that links)
+  L=%s             wc  Substitute named sub-lattice for this node
+  var=%d         v wo  Pronunciation variant number
+  s=%s           s  o  Semantic Tag
+
+Link Fields
+  J=%d                 Link identifier.  Starts link information
+  START=%d       S  c  Start node number (of the link)
+  END=%d         E  c  End node number (of the link)
+  WORD=%s        W wc  Word (If lattice labels links rather that nodes)
+  var=%d         v wo  Pronunciation variant number
+  div=%s         d wo  Segmentation (modelname, duration, likelihood) triples
+  acoustic=%f    a wo  Acoustic likelihood of link
+  language=%f    l  o  General language model likelihood of link
+  r=%f           r  o  Pronunciation probability
+
+Note: The word identity (and associated `w' fields var,div and acoustic) must
+      appear on either the link or the end node.
+
+      abbr is a possible single character abbreviation for the field name
+      o|c indicates whether field is optional or compulsory.
+</PRE>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

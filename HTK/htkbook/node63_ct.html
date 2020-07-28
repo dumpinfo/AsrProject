@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Energy Measures</TITLE>
+<META NAME="description" CONTENT="Contents of Energy Measures">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node64_mn.html">
+<LINK REL="previous" HREF="node62_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node64_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03280000000000000000">&#160;</A><A NAME="s:energy">&#160;</A>
+<BR>
+Energy Measures
+</H1>
+
+<P>
+<A NAME="5783">&#160;</A> 
+To augment the spectral parameters derived from linear prediction or
+mel-filterbank analysis, an energy term can be appended by including the
+qualifier <TT>_E</TT><A NAME="6661">&#160;</A> in the target kind.
+The energy is computed as the log of the signal energy, that is, for speech
+samples <!-- MATH
+ $\{s_n, n=1,N \}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="104" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img129.png"
+ ALT="$ \{s_n, n=1,N \}$"></SPAN>
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:logenergy">&#160;</A><!-- MATH
+ \begin{equation}
+E = log \sum_{n=1}^N s_n^2
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="104" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img172.png"
+ ALT="$\displaystyle E = log \sum_{n=1}^N s_n^2$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">15</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+This log energy measure can be normalised to the range <!-- MATH
+ $-E_{min}..1.0$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="82" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img173.png"
+ ALT="$ -E_{min}..1.0$"></SPAN> by
+setting the Boolean configuration parameter
+<TT>ENORMALISE</TT><A NAME="6663">&#160;</A> to true (default
+setting).  This
+normalisation is implemented by subtracting the maximum value of <SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img147.png"
+ ALT="$ E$"></SPAN> in the
+utterance and adding <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img174.png"
+ ALT="$ 1.0$"></SPAN>. 
+Note that energy normalisation is incompatible with live audio 
+input and in such circumstances the configuration variable <TT>ENORMALISE</TT> 
+should be explicitly set false.
+The lowest energy in the utterance can be clamped using the configuration
+parameter
+<TT>SILFLOOR</TT><A NAME="6664">&#160;</A> which gives the ratio
+between the maximum and minimum energies in the utterance in dB. Its default
+value is 50dB. 
+Finally, the overall log energy can be arbitrarily scaled by the value of the 
+configuration parameter <TT>ESCALE</TT><A NAME="6665">&#160;</A> whose 
+default is <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img175.png"
+ ALT="$ 0.1$"></SPAN>. <A NAME="5796">&#160;</A>
+
+<P>
+When calculating energy for LPC-derived parameterisations, the default is to
+use the zero-th delay autocorrelation coefficient (<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.png"
+ ALT="$ r_0$"></SPAN>).  However, this means
+that the energy is calculated after windowing and pre-emphasis.  If the
+configuration parameter <TT>RAWENERGY</TT><A NAME="6666">&#160;</A>
+is set true, however, then energy is calculated separately before any windowing
+or pre-emphasis regardless of the requested parameterisation<A NAME="tex2html22" HREF="footnode_mn.html#foot6667" TARGET="footer"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A>.
+
+<P>
+In addition to, or in place of, the log energy, the qualifier
+<TT>_O</TT><A NAME="6668">&#160;</A> can be added to a target kind
+to indicate that the 0'th cepstral parameter <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img110.png"
+ ALT="$ C_0$"></SPAN> is to be appended.  This
+qualifier is only valid if the target kind is <TT>MFCC</TT>.  Unlike earlier
+versions of HTK scaling factors set by the configuration variable
+<TT>ESCALE</TT> are not applied to <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img110.png"
+ ALT="$ C_0$"></SPAN><A NAME="tex2html23" HREF="footnode_mn.html#foot6669" TARGET="footer"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">7</SPAN></SUP></A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,80 @@
+ 	
+                                       POSSIBLE PHONETIC
+  BEEP-dict     SYMBOL    EXAMPLE WORD   TRANSCRIPTION   
+  ------------  ------    ------------   -------------   
+  Stops:   
+  b               b          bee           BCL B iy
+  d               d          day           DCL D ey
+  g               g          gay           GCL G ey 
+  p               p          pea           PCL P iy
+  t               t          tea           TCL T iy
+  k               k          key           KCL K iy
+  d               dx         muddy, dirty  m ah DX iy, dcl d er DX iy
+  t               q          bat           bcl b ae Q
+
+  Affricates:
+  jh              jh         joke          DCL JH ow kcl k
+  ch              ch         choke         TCL CH ow kcl k
+
+  Fricatives:
+  s               s          sea           S iy
+  sh              sh         she           SH iy
+  z               z          zone          Z ow n
+  zh              zh         azure         ae ZH er
+  f               f          fin           F ih n
+  th              th         thin          TH ih n
+  v               v          van           V ae n 
+  dh              dh         then          DH e n
+
+  Nasals:
+  m               m          mom           M aa M
+  n               n          noon          N uw N
+  ng              ng         sing          s ih NG
+  m               em         bottom        b aa tcl t EM
+  n               en         button        b ah q EN
+  ng              eng        washington    w aa sh ENG tcl t ax n
+  n               nx         winner        w ih NX axr
+                                
+  Semivowels and
+  Glides:
+  l               l          lay           L ey
+  r               r          ray           R ey
+  w               w          way           W ey
+  y               y          yacht         Y aa tcl t
+  hh              hh         hay           HH ey
+  hh              hv         ahead         ax HV eh dcl d
+  l               el         bottle        bcl b aa tcl t EL
+                  
+
+  Vowels:
+                  iy         beet          bcl b IY tcl t
+                  ih         bit           bcl b IH tcl t 
+                  eh         bet           bcl b EH tcl t
+                  ey         bait          bcl b EY tcl t
+                  ae         bat           bcl b AE tcl t
+                  aa         bott          bcl b AA tcl t
+                  aw         bout          bcl b AW tcl t
+                  ay         bite          bcl b AY tcl t
+                  ah         but           bcl b AH tcl t
+                  ao         bought        bcl b AO tcl t
+                  oy         boy           bcl b OY
+                  ow         boat          bcl b OW tcl t
+                  uh         book          bcl b UH kcl k
+                  uw         boot          bcl b UW tcl t
+                  ux         toot          tcl t UX tcl t
+                  er         bird          bcl b ER dcl d
+                  ax         about         AX bcl b aw tcl t
+                  ix         debit         dcl d eh bcl b IX tcl t
+                  axr        butter        bcl b ah dx AXR
+                  ax-h       suspect       s AX-H s pcl p eh kcl k tcl t
+
+
+
+  Others:
+                SYMBOL    DESCRIPTION
+                ------    -----------
+                  pau     pause
+                  epi     epenthetic silence
+                  h#      begin/end marker (non-speech events)
+                  1       primary stress marker
+                  2       secondary stress marker

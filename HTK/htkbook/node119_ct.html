@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Two-model Re-Estimation</TITLE>
+<META NAME="description" CONTENT="Contents of Two-model Re-Estimation">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node120_mn.html">
+<LINK REL="previous" HREF="node118_mn.html">
+<LINK REL="up" HREF="node112_mn.html">
+<LINK REL="next" HREF="node120_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03570000000000000000">&#160;</A><A NAME="s:twomodel">&#160;</A>
+<BR>
+Two-model Re-Estimation
+</H1>
+
+<P>
+Another method for initialisation of model parameters implemented in
+HER<SMALL>EST</SMALL> is two-model re-estimation. HMM sets often use the same
+basic units such as triphones but differ in the way the underlying HMM
+parameters are tied. In these cases two-model re-estimation can be
+used to obtain the state-level alignment using one model set which is
+used to update the parameters of a second model set. This is helpful
+when the model set to be updated is less well trained.
+
+<P>
+A typical use of two-model re-estimation<A NAME="13860">&#160;</A> is the initialisation of state clustered triphone
+models. In the standard case triphone models are obtained by cloning
+of monophone models and subsequent clustering of triphone states.
+However, the unclustered triphone models are considerably less
+powerful than state clustered triphone HMMs using mixtures of
+Gaussians. The consequence is poor state level alignment and thus poor
+parameter estimates, prior to clustering.  This can be ameliorated by
+the use of well-trained <SPAN  CLASS="textit">alignment models</SPAN> for computing the
+forward-backward probabilities. In the maximisation stage of the
+Baum-Welch algorithm the state level posteriors are used to
+re-restimate the parameters of the <SPAN  CLASS="textit">update model set</SPAN>. Note that
+the corresponding models in the two sets must have the same number of
+states.
+
+<P>
+As an example, suppose that we would like to update a set of cloned
+single Gaussian monophone models in <TT>dir1/hmacs</TT> using the well
+trained state-clustered triphones in <TT>dir2/hmacs</TT> as alignment
+models. Associated with each model set are the model lists <TT>  hmmlist1</TT> and <TT>hmmlist2</TT> respectively. In order to use the
+second model set for alignment a configuration file <TT>  config.2model</TT> containing
+<PRE>
+   # alignment model set for two-model re-estimation
+   ALIGNMODELMMF = dir2/hmacs
+   ALIGNHMMLIST  = hmmlist2
+</PRE>
+is necessary. HER<SMALL>EST</SMALL> only needs to be invoked using that
+configuration file.
+<PRE>
+   HERest -C config -C config.2model -S trainlist -I labs -H dir1/hmacs -M dir3 hmmlist1
+</PRE>
+The models in directory <TT>dir1</TT> are updated using the alignment
+models stored in directory <TT>dir2</TT> and the result is written to
+directory <TT>dir3</TT>. Note that <TT>trainlist</TT> is a standard HTK 
+script and that the above command uses the capability of HERest to
+accept multiple configuration files on the command line. If each HMM
+is stored in a separate file, the configuration variables <TT>  ALIGNMODELDIR</TT> and <TT>ALIGNMODELEXT</TT> can be used.
+
+<P>
+Only the state level alignment is obtained using the alignment models.
+In the exceptional case that the update model set contains mixtures of
+Gaussians, component level posterior probabilities are obtained from
+the update models themselves.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

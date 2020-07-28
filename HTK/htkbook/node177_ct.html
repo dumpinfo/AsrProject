@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of n-gram language models</TITLE>
+<META NAME="description" CONTENT="Contents of n-gram language models">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node181_mn.html">
+<LINK REL="previous" HREF="node176_mn.html">
+<LINK REL="up" HREF="node176_mn.html">
+<LINK REL="next" HREF="node178_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04110000000000000000">&#160;</A><A NAME="s:ngramLMs">&#160;</A>
+<BR>
+<I>n</I>-gram language models
+</H1>
+
+Language models estimate the probability of a word sequence, <!-- MATH
+ $\hat
+P(w_1, w_2, \ldots, w_m)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="132" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img487.png"
+ ALT="$ \hat
+P(w_1, w_2, \ldots, w_m)$"></SPAN> - that is, they evaluate <SPAN CLASS="MATH"><IMG
+ WIDTH="46" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.png"
+ ALT="$ P(w_i)$"></SPAN> as defined in equation
+<A HREF="node5_ct.html#e:3">1.3</A> in chapter <A HREF="node3_ct.html#c:fundaments">1</A>.<A NAME="tex2html54" HREF="footnode_mn.html#foot21760" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>
+<P>
+The probability <!-- MATH
+ $\hat P(w_1, w_2, \ldots, w_m)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="132" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img487.png"
+ ALT="$ \hat
+P(w_1, w_2, \ldots, w_m)$"></SPAN> can be decomposed as a
+product of conditional probabilities:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="cond_prob_model">&#160;</A><!-- MATH
+ \begin{equation}
+\hat P(w_1, w_2, \ldots, w_m) = \prod_{i=1}^{m} \hat P(w_i \;|\; w_1,
+\ldots, w_{i-1})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="318" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img488.png"
+ ALT="$\displaystyle \hat P(w_1, w_2, \ldots, w_m) = \prod_{i=1}^{m} \hat P(w_i \;\vert\; w_1, \ldots, w_{i-1})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html3750" HREF="node178_mn.html" TARGET="main"><SMALL>Word <I>n</I>-gram models</SMALL></A>
+<LI><A NAME="tex2html3751" HREF="node179_mn.html" TARGET="main"><SMALL>Equivalence classes</SMALL></A>
+<LI><A NAME="tex2html3752" HREF="node180_mn.html" TARGET="main"><SMALL>Class <I>n</I>-gram models</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

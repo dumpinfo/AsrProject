@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Error and Warning Codes</TITLE>
+<META NAME="description" CONTENT="Contents of Error and Warning Codes">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node418_mn.html">
+<LINK REL="previous" HREF="node412_mn.html">
+<LINK REL="up" HREF="node239_mn.html">
+<LINK REL="next" HREF="node416_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION05300000000000000000">&#160;</A><A NAME="c:errors">&#160;</A>      
+
+<A NAME="34677">&#160;</A><A NAME="34678">&#160;</A>
+<BR>
+Error and Warning Codes
+</H1>
+
+<P>
+When a problem occurs in any HTK tool, either
+error<A NAME="34679">&#160;</A>
+or warning messages<A NAME="34680">&#160;</A> are printed.  
+
+<P>
+If a warning occurs then a message is sent to standard output and
+execution continues. The format of this warning message is as follows:
+<PRE>
+    WARNING [-nnnn] Function: 'Brief Explanation' in HTool
+</PRE>
+
+<P>
+The message consists of four parts.  On the first line is the tool
+name and the error number<A NAME="34683">&#160;</A>.  Positive
+error numbers are fatal, whilst negative numbers are warnings and
+allow execution to continue.  On the second line is the function in
+which the problem occurred and a brief textual explanation.  The
+reason for sending warnings to standard output is so that they are
+synchronised with any trace output.
+
+<P>
+If an error occurs a number of error messages may be produced on
+standard error. Many of the functions in the HTK Library do not exit
+immediately when an error condition occurs, but instead print a message and return a failure
+value back to their calling function. This process may be repeated several
+times. When the HTK Tool that called the function receives the failure
+value, it exits the program with a fatal error message. Thus the
+displayed output has a typical format as follows:
+
+<P>
+<PRE>
+  ERROR [+nnnn] FunctionA: 'Brief explanation'
+  ERROR [+nnnn] FunctionB: 'Brief explanation'
+  ERROR [+nnnn] FunctionC: 'Brief explanation'
+ FATAL ERROR - Terminating program HTool
+</PRE>
+
+<P>
+Error numbers in HTK are allocated on a module by module
+and tool by tool basis in blocks of 100 as shown by the table shown
+overleaf.
+Within each block of 100 numbers the first 20 (0 - 19)
+and the final 10 (90-99) are reserved for standard types 
+of error which are common to all tools and library 
+modules.
+
+<P>
+All other codes are module or tool specific.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html7593" HREF="node416_mn.html" TARGET="main"><SMALL>Generic Errors</SMALL></A>
+<LI><A NAME="tex2html7594" HREF="node417_mn.html" TARGET="main"><SMALL>Summary of Errors by Tool and Module</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

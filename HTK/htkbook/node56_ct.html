@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of General Mechanism</TITLE>
+<META NAME="description" CONTENT="Contents of General Mechanism">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node57_mn.html">
+<LINK REL="previous" HREF="node55_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node57_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03210000000000000000">&#160;</A><A NAME="s:genio">&#160;</A>
+<BR>
+General Mechanism
+</H1>
+
+<P>
+The facilities for speech input and output in HTK are provided
+by five distinct modules: HA<SMALL>UDIO</SMALL>, HW<SMALL>AVE</SMALL>,
+HP<SMALL>ARM</SMALL>, HVQ and HS<SMALL>IG</SMALL>P.  The interconnections
+between these modules are shown in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  
+<A NAME="5476">&#160;</A>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:Spmods">&#160;</A><IMG
+ WIDTH="285" HEIGHT="368" ALIGN="MIDDLE" BORDER="0"
+ SRC="img126.png"
+ ALT="% latex2html id marker 48943
+$\textstyle \parbox{62mm}{ \begin{center}\setlength...
+...chapter.\arabic{figctr}  Speech Input Subsystem}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+Waveforms
+are read from files using HW<SMALL>AVE</SMALL>, or are input direct from
+an audio device using HA<SMALL>UDIO</SMALL>.  In a few rare cases, such as
+in the display tool HSL<SMALL>AB</SMALL>, only the speech waveform is needed.
+However, in most cases the waveform is wanted in parameterised form and
+the required encoding is performed by HP<SMALL>ARM</SMALL>
+using the signal processing operations defined in 
+HS<SMALL>IG</SMALL>P.  The parameter vectors are output by HP<SMALL>ARM</SMALL>
+in the form of observations which are the basic units of data processed
+by the HTK recognition and training tools.  An observation contains all
+components of a raw parameter vector but it may be possibly split into
+a number of independent parts.  Each such part is regarded by a HTK tool
+as a statistically independent data stream.  Also, an observation
+may include VQ indices attached to each data stream.  Alternatively,
+VQ indices can be read directly from a parameter file in which case the
+observation will contain only VQ indices.
+
+<P>
+Usually a HTK tool will require a number of speech data files to be
+specified on the command line.  In the majority of cases, these
+files will be required in parameterised form.  Thus, the following example
+invokes the HTK embedded training tool HER<SMALL>EST</SMALL>
+to re-estimate a set of models using the speech data
+files <TT>s1</TT>, <TT>s2</TT>, <TT>s3</TT>, ....  These are
+input via the library module HP<SMALL>ARM</SMALL> and they
+must be in exactly the form needed by the models.
+<PRE>
+    HERest ...  s1 s2 s3 s4 ...
+</PRE>
+
+<P>
+However, if the external form of the speech data files is not in the
+required form, it will often be possible to convert them automatically during
+the input process.
+To do this, configuration parameter values are specified whose function 
+is to define exactly
+how the conversion should be done.  
+The key idea is that there is a 
+<SPAN  CLASS="textit">source parameter kind</SPAN> and <SPAN  CLASS="textit">target parameter kind</SPAN>.
+The source refers to the natural form of the data in
+the external medium and the target refers to the form of the
+data that is required internally by the HTK tool.
+The principle function of the speech
+input subsystem is to convert the source parameter kind into the 
+required target parameter kind. <A NAME="5496">&#160;</A>
+
+<P>
+Parameter kinds consist of a base form to which one or more
+qualifiers may be attached where each qualifier consists of
+a single letter preceded by an underscore character.<A NAME="5497">&#160;</A>
+Some examples of parameter kinds are
+
+<DL COMPACT>
+<DT><TT>WAVEFORM</TT>
+<DD>simple waveform
+   <DT><TT>LPC</TT>
+<DD>linear prediction coefficients
+   <DT><TT>LPC_D_E</TT>
+<DD>LPC with energy and delta coefficients
+   <DT><TT>MFCC_C</TT>
+<DD>compressed mel-cepstral coefficients
+  
+</DD>
+</DL>
+<A NAME="5508">&#160;</A>
+
+<P>
+The required source and target parameter kinds are specified
+using the configuration parameters <TT>SOURCEKIND</TT>
+<A NAME="6606">&#160;</A> and 
+<TT>TARGETKIND</TT><A NAME="6607">&#160;</A>.
+Thus, if the following configuration parameters were defined
+<PRE>
+    SOURCEKIND = WAVEFORM
+    TARGETKIND = MFCC_E
+</PRE>
+then the speech input subsystem would expect each input file to contain
+a speech waveform and it would convert it to mel-frequency cepstral
+coefficients with log energy appended.
+
+<P>
+The source need not be a waveform.  For example, the configuration
+parameters
+<PRE>
+    SOURCEKIND = LPC
+    TARGETKIND = LPREFC
+</PRE>
+would be used to read in files containing linear prediction coefficients
+and convert them to reflection coefficients.
+
+<P>
+For convenience, a special parameter kind called
+<TT>ANON</TT><A NAME="6608">&#160;</A> is provided.  When the source is
+specified as <TT>ANON</TT> then the actual kind of the source is determined
+from the input file.  When <TT>ANON</TT> is used in the target kind, then it is
+assumed to be identical to the source.  For example, the effect of the
+following configuration parameters
+<PRE>
+    SOURCEKIND = ANON
+    TARGETKIND = ANON_D
+</PRE>
+would simply be to add delta coefficients to whatever the source form
+happened to be.  
+The source and target parameter kinds default to <TT>ANON</TT>
+to indicate that by default
+no input conversions are performed.  Note, however, that where two or more
+files are listed on the command line, the meaning of
+<TT>ANON</TT> will not be re-interpreted from one file to the next.  Thus, it
+is a general rule, that any tool reading multiple source speech files requires
+that all the files have the same parameter kind.
+
+<P>
+The conversions applied by HTK's input subsystem can be complex and may
+not always behave exactly as expected.  There are two facilities that can 
+be used to help check and debug the set-up of the speech i/o
+configuration parameters.
+Firstly, the tool HL<SMALL>IST</SMALL> simply displays speech data by listing it
+on the terminal.  However, since HL<SMALL>IST</SMALL>  uses the speech 
+input subsystem like
+all HTK tools, if a value for <TT>TARGETKIND</TT> is set, then 
+it will display the target
+form rather than the source form.  This is the simplest way to check the form of
+the speech data that will actually be delivered to a HTK tool. 
+HL<SMALL>IST</SMALL>  is described
+in more detail in section&nbsp;<A HREF="node83_ct.html#s:UseHList">5.15</A> below.
+
+<P>
+Secondly, trace output can be generated from the HP<SMALL>ARM</SMALL> module
+by setting the <TT>TRACE</TT> configuration file parameter.  This is a
+bit-string in which individual bits cover different parts of the
+conversion processing.  The details are given in the reference section.
+
+<P>
+To summarise,  speech input in HTK is controlled by  configuration
+parameters. The key parameters  are <TT>SOURCEKIND</TT> and <TT>TARGETKIND</TT> which specify the source and target parameter kinds. 
+These determine the end-points of the required input conversion.
+However,  to properly specify the detailed steps in between,  more
+configuration parameters must be defined.
+These are described in subsequent sections.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

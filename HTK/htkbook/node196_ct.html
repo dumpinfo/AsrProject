@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Testing the LM perplexity</TITLE>
+<META NAME="description" CONTENT="Contents of Testing the LM perplexity">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node197_mn.html">
+<LINK REL="previous" HREF="node195_mn.html">
+<LINK REL="up" HREF="node192_mn.html">
+<LINK REL="next" HREF="node197_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04240000000000000000">&#160;</A><A NAME="s:HLMtestingpp">&#160;</A>      
+
+<A NAME="22646">&#160;</A>
+<BR>
+Testing the LM perplexity
+</H1>
+Once the language models have been generated, their ``goodness'' can
+be evaluated by computing the perplexity of previously unseen text
+data.  This won't necessarily tell you how well the language model
+will perform in a speech recognition task because it takes no account
+of acoustic similarities or the vagaries of any particular system, but
+it will reveal how well a given piece of test text is modelled by your
+language model.  The directory <TT>test</TT> contains a single story
+which was withheld from the training text for testing purposes - if
+it had been included in the training text then it wouldn't be fair to
+test the perplexity on it since the model would have already `seen' it.
+
+<P>
+Perplexity evaluation is carried out using LP<SMALL>LEX</SMALL>. The tool
+accepts input text in one of two forms - either as an HTK style MLF
+(this is the default mode) or as a simple text stream. The text stream
+mode, specified with the <TT>-t</TT> option, will be used to evaluate
+the test material in this example.
+
+<P>
+<PRE>
+$ LPlex -n 2 -n 3 -t lm_5k/tg1_1 test/red-headed_league.txt 
+LPlex test #0: 2-gram
+perplexity 131.8723, var 7.8744, utterances 556, words predicted 8588
+num tokens 10408, OOV 665, OOV rate 6.75% (excl. &lt;/s&gt;)
+
+Access statistics for lm_5k/tg1_1:
+Lang model  requested  exact backed    n/a     mean    stdev
+    bigram       8588  78.9%  20.6%   0.4%    -4.88     2.81
+   trigram          0   0.0%   0.0%   0.0%     0.00     0.00
+LPlex test #1: 3-gram
+perplexity 113.2480, var 8.9254, utterances 556, words predicted 8127
+num tokens 10408, OOV 665, OOV rate 6.75% (excl. &lt;/s&gt;)
+
+Access statistics for lm_5k/tg1_1:
+Lang model  requested  exact backed    n/a     mean    stdev
+    bigram       5357  68.2%  31.1%   0.6%    -5.66     2.93
+   trigram       8127  34.1%  30.2%  35.7%    -4.73     2.99
+</PRE> The multiple <TT>-n</TT> options instruct LP<SMALL>LEX</SMALL> to perform two
+separate tests on the data. The first test (<TT>-n 2</TT>) will use
+only the bigram part of the model (and unigram when backing off),
+whilst the second test (<TT>-n 3</TT>) will use the full trigram
+model. For each test, the first part of the result gives general
+information such as the number of utterances and tokens encountered,
+words predicted and OOV statistics.  The second part of the results
+gives explicit access statistics for the back off model.  For the
+trigram model test, the total number of words predicted is 8127. From
+this number, 34.1% were found as explicit trigrams in the model, 30.2%
+were computed by backing off to the respective bigrams and 35.7% were
+simply computed as bigrams by shortening the word context.
+
+<P>
+These perplexity tests do not include the prediction of words from
+context which includes OOVs. To include such <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams in the 
+calculation the <TT>-u</TT> option should be used.
+<PRE>
+$ LPlex -u -n 3 -t lm_5k/tg1_1 test/red-headed_league.txt 
+LPlex test #0: 3-gram
+perplexity 117.4177, var 8.9075, utterances 556, words predicted 9187
+num tokens 10408, OOV 665, OOV rate 6.75% (excl. &lt;/s&gt;)
+
+Access statistics for lm_5k/tg1_1:
+Lang model  requested  exact backed    n/a     mean    stdev
+    bigram       5911  68.5%  30.9%   0.6%    -5.75     2.94
+   trigram       9187  35.7%  31.2%  33.2%    -4.77     2.98
+</PRE> The number of tokens predicted has now risen to 9187.  For analysing
+OOV rates the tool provides the <TT>-o</TT> option which will print a
+list of unique OOVs encountered together with their occurrence counts.
+Further trace output is available with the
+<TT>-T</TT> option.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

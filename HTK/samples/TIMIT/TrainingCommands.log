@@ -1,0 +1,187 @@
+# Creation of the dictionary and the labels and master label file
+# Edit TIMIT.cfg to 
+#     1. point to installation of TIMIT corpus ($TIMITDIR)
+#     2. point to outout directory where the models will be built ($OUTPUTDIR)
+# make sure perl script installation has ConfigVar.pm in its path.
+# Execute:
+# 
+>~/perl/bin/perl createMLF.pl -config TIMIT.cfg
+#
+# Go to output-dir:
+#
+>cd ~/HTK/samples/TIMIT
+#
+#
+# Computation of Features: 
+#	mfcc.scp is the list file of features file. 
+#	Edit included one or generate a new one
+#
+>HCopy -T 1 -C config.mfcc -S mfcc.scp
+>c:/HTK/htk-3.3/bin.win32/HCopy -T 1 -C config.mfcc -S test_mfcc.scp
+#
+# Computation of Monophone Models
+#
+>mkdir hmm0
+>HCompV -C mono_hmm0.config -f 0.01 -m -S train_mfc.scp -M hmm0 mono_proto
+#
+# Adjusting the silence Model
+#
+ FATAL ERROR - Terminating program c:\HTK\htk-3.3\bin.win32\HHed.exe
+[vkepuska@ceec051695 ~...samples/TIMIT]$ c:/HTK/htk-3.3/bin.win32/HHed -T 511 -H
+ hmms/hmm.3/macros -H hmms/hmm.3/hmmdefs -M hmms/hmm.4 hmms/hmm.3/sil.hed c:/HTK
+/samples/TIMIT/lists/TIMITmonoPhonesList
+ WARNING [-7032]  OWarn: change HMM Set covKind in c:\HTK\htk-3.3\bin.win32\HHed
+.exe
+HHEd
+ 46/46 Models Loaded [5 states max, 1 mixes max]
+
+AT 2 4 0.200 {}
+ Adding transitions to transP
+ Models
+  sil
+  1 models in itemlist
+ AT: 1 transP matrices adjusted
+
+AT 4 2 0.200 {}
+ Adding transitions to transP
+ Models
+  sil
+  1 models in itemlist
+ AT: 1 transP matrices adjusted
+
+AT 1 3 0.300 {}
+ Adding transitions to transP
+ Models
+  sp
+  1 models in itemlist
+ AT: 1 transP matrices adjusted
+ Models
+  sil
+  1 models in itemlist
+          sil.state[3]
+ Models
+  sp
+  1 models in itemlist
+           sp.state[2]
+
+TI silst {}
+ Tie items
+   Macro: ~s:silst created for 2/2 items
+
+Saving new HMM files ...
+Edit Complete
+#
+# Restimation of the parameters
+#
+[vkepuska@ceec051695 ~...samples/TIMIT]$ c:/HTK/htk-3.3/bin.win32/HERest.exe -C
+mono_hmm0.config -I TIMIT5.mlf -S train_mfc.scp -H hmms/hmm.4/macros -H hmms/hmm
+.4/hmmdefs -M hmms/hmm.5 TIMITmonoPhonesList5
+Pruning-Off
+[vkepuska@ceec051695 ~...samples/TIMIT]$ c:/HTK/htk-3.3/bin.win32/HERest.exe -C
+mono_hmm0.config -I TIMIT5.mlf -S train_mfc.scp -H hmms/hmm.5/macros -H hmms/hmm
+.5/hmmdefs -M hmms/hmm.6 TIMITmonoPhonesList5
+Pruning-Off
+[vkepuska@ceec051695 ~...samples/TIMIT]$ c:/HTK/htk-3.3/bin.win32/HERest.exe -C
+mono_hmm0.config -I TIMIT5.mlf -S train_mfc.scp -H hmms/hmm.6/macros -H hmms/hmm
+.6/hmmdefs -M hmms/hmm.7 TIMITmonoPhonesList5
+Pruning-Off
+#
+# Re-labeling of the data
+#
+[vkepuska@ceec051695 ~...samples/TIMIT]$ c:/HTK/htk-3.3/bin.win32/HVite.exe -l '
+*' -o SWT -b silence -C toolsconfs/hvite.conf -a -H hmms/hmm.7/macros -H hmms/hm
+m.7/hmmdefs -i aligned.mlf -m -y lab -I TIMIT_wrd5.mlf -S train_mfc.scp c:/HTK/D
+ict/BeebDict/beep/myHTKdict.sort TIMITmonoPhonesList5
+#
+# Re-estimation of the HMM parameters
+#
+[vkepuska@ceec051695 ~...samples/TIMIT]$ c:/HTK/htk-3.3/bin.win32/HERest.exe -C
+mono_hmm0.config -I aligned.mlf -S train_mfc.scp -H hmms/hmm.7/macros -H hmms/hm
+m.7/hmmdefs -M hmms/hmm.8 TIMITmonoPhonesList5
+Pruning-Off
+ WARNING [-2331]  UpdateModels: sp[40] copied: only 0 egs
+ in c:\HTK\htk-3.3\bin.win32\HERest.exe
+ WARNING [-2331]  UpdateModels: sp2[47] copied: only 0 egs
+ in c:\HTK\htk-3.3\bin.win32\HERest.exe
+[vkepuska@ceec051695 ~...samples/TIMIT]$ c:/HTK/htk-3.3/bin.win32/HERest.exe -C
+mono_hmm0.config -I aligned.mlf -S train_mfc.scp -H hmms/hmm.8/macros -H hmms/hm
+m.8/hmmdefs -M hmms/hmm.9 TIMITmonoPhonesList5
+Pruning-Off
+ WARNING [-2331]  UpdateModels: sp[40] copied: only 0 egs
+ in c:\HTK\htk-3.3\bin.win32\HERest.exe
+ WARNING [-2331]  UpdateModels: sp2[47] copied: only 0 egs
+ in c:\HTK\htk-3.3\bin.win32\HERest.exe
+#
+# Tri-phone creation -- must be investigated
+#
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+c:/HTK/htk-3.3/bin.win32/HLEd.exe -n triphones1 -l '*' -i wintri.mlf mktri.led aligned.mlf
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+c:/perl/bin/perl c:/HTK/samples/HTKTutorial/maketrihed.pl TIMITmonoPhonesList5 triphones1
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+c:/HTK/htk-3.3/bin.win32/HHEd -B -H hmms/hmm.9/macros -H hmms/hmm.9/hmmdefs -M hmms/hmm.10 mktri.hed TIMITmonoPhonesList5
+ WARNING [-2631]  ApplyTie: Macro T_sil has nothing to tie of type t in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  ApplyTie: Macro T_sp has nothing to tie of type t in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+ WARNING [-2631]  ApplyTie: Macro T_sp2 has nothing to tie of type t in c:\HTK\htk-3.3\bin.win32\HHEd.exe
+# Re-estimation
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+	c:/HTK/htk-3.3/bin.win32/HERest.exe -B \
+	-C hmm_MFCC_0_D_A.config -I wintri.mlf -S train_mfc.scp \
+	-H hmms/hmm.10/macros -H hmms/hmm.10/hmmdefs -M hmms/hmm.11 triphones1
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+	c:/HTK/htk-3.3/bin.win32/HERest.exe -B \
+	-C hmm_MFCC_0_D_A.config -I wintri.mlf -t 250 150 1000.0 -s stats \
+	-S train_mfc.scp -H hmms/hmm.11/macros -H hmms/hmm.11/hmmdefs -M hmms/hmm.12 triphones1
+
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+	c:/HTK/htk-3.3/bin.win32/HDMan -b sp -n fulllist -g global.ded \
+	-l HDManlog myHTK-tri.dict c:/HTK/Dict/BeebDict/beep/myHTKdict.sort
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+	c:/HTK/htk-3.3/bin.win32/HHEd.exe -B -H hmms/hmm.12/macros \
+	-H hmms/hmm.12/hmmdefs -M hmms/hmm.13 tree.hed triphones1 > log
+#
+# Computing test features
+#
+>HCopy -T 1 -C config.mfcc -S mfcc.scp
+>c:/HTK/htk-3.3/bin.win32/HCopy -T 1 -C test_config.mfcc -S test_mfcc.scp
+#
+# Computing lattice.
+#
+>HParse gram wdnet
+$ c:/HTK/htk-3.3/bin.win32/HParse.exe timit_monoPhone_gram timit_monoPhone_net
+#
+# Running Recogntion
+#
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+c:/HTK/htk-3.3/bin.win32/HVite.exe -H hmms/hmm.9/macros -H hmms/hmm.9/hmmdefs \
+	-S test_mfc.scp -i recout.mlf \
+	-w timit_monoPhone_net TIMITmonoPhonesList5.dict TIMITmonoPhonesList5
+ WARNING [-8232]  ExpandWordNet: Pronunciation 1 of sp is 'tee' word in c:\HTK\htk-3.3\bin.win32\HVite.exe
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+c:/HTK/htk-3.3/bin.win32/HResults.exe -I TIMIT5_test.mlf TIMITmonoPhonesList5 recout.mlf
+====================== HTK Results Analysis =======================
+  Date: Sat Nov 05 14:34:33 2005
+  Ref : TIMIT5_test.mlf
+  Rec : recout.mlf
+------------------------ Overall Results --------------------------
+SENT: %Correct=0.00 [H=0, S=1680, N=1680]
+WORD: %Corr=51.88, Acc=33.01 [H=30614, D=5172, S=23219, I=11139, N=59005]
+===================================================================
+
+
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+c:/HTK/htk-3.3/bin.win32/HVite.exe -H hmms/hmm.9/macros -H hmms/hmm.9/hmmdefs \
+	-S test_mfc.scp -i recout-p0s5.mlf \
+	-w timit_monoPhone_net -p -5.0 -s 5.0 TIMITmonoPhonesList5.dict TIMITmonoPhonesList5
+ WARNING [-8232]  ExpandWordNet: Pronunciation 1 of sp is 'tee' word in c:\HTK\htk-3.3\bin.win32\HVite.exe
+
+[vkepuska@ceec051695 ~...samples/TIMIT]$ 
+c:/HTK/htk-3.3/bin.win32/HResults.exe -I TIMIT5_test.mlf TIMITmonoPhonesList5 recout-p-5s5.mlf
+====================== HTK Results Analysis =======================
+  Date: Sat Nov 05 14:46:27 2005
+  Ref : TIMIT5_test.mlf
+  Rec : recout-p-5s5.mlf
+------------------------ Overall Results --------------------------
+SENT: %Correct=0.00 [H=0, S=1680, N=1680]
+WORD: %Corr=50.21, Acc=39.82 [H=29625, D=6992, S=22388, I=6131, N=59005]
+===================================================================

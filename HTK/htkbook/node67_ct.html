@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Esignal Format Parameter Files</TITLE>
+<META NAME="description" CONTENT="Contents of Esignal Format Parameter Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node66_mn.html">
+<LINK REL="up" HREF="node65_mn.html">
+<LINK REL="next" HREF="node68_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION032102000000000000000">
+Esignal Format Parameter Files</A>
+</H2>
+
+<P>
+<A NAME="5936">&#160;</A>
+The default for parameter files is native HTK format.  However, HTK tools
+also support the Entropic Esignal format for both input and output. Esignal
+replaces the Entropic ESPS file format. To ensure compatibility Entropic
+provides conversion programs from ESPS to ESIG and vice versa.
+
+<P>
+To indicate that a source file is in Esignal format the configuration
+variable  <TT>SOURCEFORMAT</TT><A NAME="6685">&#160;</A>
+should be set to <TT>ESIG</TT>.  Alternatively, 
+<TT>-F ESIG</TT><A NAME="6686">&#160;</A> can be specified
+as a command-line option.  
+To generate Esignal format output files, the configuration variable
+<TT>TARGETFORMAT</TT> should be set to <TT>ESIG</TT> or the command line option
+<TT>-O ESIG</TT> should be set.
+
+<P>
+ESIG files consist of three parts: a preamble, a sequence of field 
+specifications called the field list and a sequence of records. The preamble
+and the field list together constitute the header. The preamble is purely 
+ASCII. Currently it consists of 6 information items that are all terminated
+by a new line.  The information in the preamble is the following:
+<PRE><TT>
+		<TT>line 1</TT>		- identification of the file format 
+<BR><TT>line 2</TT>		- version of the file format
+<BR><TT>line 3</TT>		- architecture (ASCII, EDR1, EDR2, machine name)
+<BR><TT>line 4</TT>		- preamble size (48 bytes)
+<BR><TT>line 5</TT>		- total header size
+<BR><TT>line 6</TT>		- record size
+<BR>
+</TT></PRE>
+All ESIG files that are output by HTK programs contain the following 
+global fields:
+<DL>
+<DT><STRONG>commandLine</STRONG></DT>
+<DD>the command-line used to generate the file;
+  
+</DD>
+<DT><STRONG>recordFreq</STRONG></DT>
+<DD>a double value that indicates the sample frequency
+        in Herz;
+  
+</DD>
+<DT><STRONG>startTime</STRONG></DT>
+<DD>a double value that indicates a time at which the first 
+        sample is presumed to be starting;
+  
+</DD>
+<DT><STRONG>parmKind</STRONG></DT>
+<DD>a character string that indicates the full 
+        type of parameters in the file, e.g: <TT>MFCC_E_D</TT>.
+  
+</DD>
+<DT><STRONG>source_1</STRONG></DT>
+<DD>if the input file was an ESIG file this field includes the
+        header items in the input file.
+</DD>
+</DL>
+After that there are field specifiers for the records. The first specifier 
+is for the  basekind of the parameters, e.g: <TT>MFCC</TT>. Then for each 
+available qualifier there are additional specifiers. Possible specifiers are:
+<PRE><TT>
+		<TT>zeroc</TT>  
+<BR><TT>energy</TT>
+<BR><TT>delta</TT>
+<BR><TT>delta_zeroc</TT> 
+<BR><TT>delta_energy</TT>
+<BR><TT>accs</TT>
+<BR><TT>accs_zeroc</TT> 
+<BR><TT>accs_energy</TT>
+<BR>
+</TT></PRE><A NAME="5967">&#160;</A>
+The data segments of the ESIG files have exactly the same format as the
+the corresponding HTK files. This format was described in the previous 
+section.
+
+<P>
+HTK can only input parameter files that have a valid parameter kind as value
+of the header field <TT>parmKind</TT>. If this field does not exist or if the
+value of this field does not contain a valid parameter kind, the file is 
+rejected. After the header has been read the file is treated as an HTK file.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

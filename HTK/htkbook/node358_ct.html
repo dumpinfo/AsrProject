@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node359_mn.html">
+<LINK REL="previous" HREF="node357_mn.html">
+<LINK REL="up" HREF="node356_mn.html">
+<LINK REL="next" HREF="node359_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051202000000000000000">&#160;</A><A NAME="s:HSmooth-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HS<SMALL>MOOTH</SMALL> is invoked via the command line
+<PRE>
+   HSmooth [options] hmmList accFile ...
+</PRE>
+where <TT>hmmList</TT> contains the list of context dependent models
+to be smoothed and each <TT>accFile</TT> is a file of the form
+<TT>HERN.acc</TT> dumped by a previous execution of HER<SMALL>EST</SMALL> with the <TT>-p</TT>
+option set to <TT>N</TT>.  The HMM definitions are loaded and then for
+every state and stream of every context dependent model X, the optimal
+interpolation weight is found for smoothing between the mixture
+weights determined from the X accumulators alone and those determined
+from the context independent version of X.  The latter is computed simply
+by summing the accumulators across all context dependent allophones of X.
+
+<P>
+The detailed operation of HS<SMALL>MOOTH</SMALL> is controlled by the following
+command line options
+
+<DL COMPACT>
+<DT><TT>-b f</TT>
+<DD>Set the value of epsilon for convergence 
+      in the binary chop  optimisation procedure to <TT>f</TT>.
+       The binary chop  optimisation procedure for each
+       interpolation weight terminates when the gradient is
+       within epsilon of zero (default 0.001).
+
+<P>
+<DT><TT>-c N</TT>
+<DD>Set maximum number of interpolation iterations
+       for the binary chop  optimisation procedure to be N
+       (default 16).
+
+<P>
+<DT><TT>-d dir</TT>
+<DD>Normally HS<SMALL>MOOTH</SMALL> expects to find the HMM definitions
+      in the current directory.  This option tells HS<SMALL>MOOTH</SMALL> to look in
+      the directory <TT>dir</TT> to find them.
+
+<P>
+<DT><TT>-m N</TT>
+<DD>Set the minimum number of training examples 
+    required for any model to <TT>N</TT>.  If the actual number
+    falls below this value, the HMM is not updated and the original
+    parameters are used for the new version (default value 1).
+
+<P>
+<DT><TT>-o ext</TT>
+<DD>This causes the file name extensions of the
+      original models (if any) to be replaced by <TT>ext</TT>.
+
+<P>
+<DT><TT>-s file</TT>
+<DD>This causes statistics on occupation of each
+      state to be output to the named file.  
+
+<P>
+<DT><TT>-u flags</TT>
+<DD>By default, HS<SMALL>MOOTH</SMALL> updates all of the HMM parameters,
+      that is, means, variances and transition probabilies. This 
+      option causes just the parameters indicated by the <TT>flags</TT>
+      argument to be updated, this argument is a string containing one
+      or more of the letters <TT>m</TT> (mean), <TT>v</TT> (variance) ,
+      <TT>t</TT> (transition) and <TT>w</TT> (mixture weight).  The 
+      presence of a letter enables
+      the updating of the corresponding parameter set.
+
+<P>
+<DT><TT>-v f</TT>
+<DD>This sets the minimum variance (i.e. diagonal element of
+      the covariance matrix) to the real value <TT>f</TT> (default value
+      0.0).
+
+<P>
+<DT><TT>-w f</TT>
+<DD>Any mixture weight which falls below the global
+            constant <TT>MINMIX</TT> is treated as being zero.
+      When this parameter is  set,  all mixture weights  are floored
+      to <TT>f * MINMIX</TT>.
+
+<P>
+<DT><TT>-x ext</TT>
+<DD>By default, HS<SMALL>MOOTH</SMALL> expects a HMM definition for 
+      the model X to be stored in a file called <TT>X</TT>.  This
+      option causes HS<SMALL>MOOTH</SMALL> to look for the HMM definition in the
+      file <TT>X.ext</TT>.
+
+<P>
+
+  <DT><TT>-B</TT>
+<DD>Output HMM definition files in binary format.
+
+  <DT><TT>-H mmf</TT>
+<DD>Load HMM macro model file <TT>mmf</TT>.  This option
+     may be repeated to load multiple MMFs.
+
+  <DT><TT>-M dir</TT>
+<DD>Store output HMM macro model files in the directory <TT>dir</TT>.  
+     If this option is not given, the new HMM definition will overwrite
+     the existing one.
+
+<P>
+</DD>
+</DL>
+
+HS<SMALL>MOOTH</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

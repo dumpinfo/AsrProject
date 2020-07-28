@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of The modified ARPA-MIT format</TITLE>
+<META NAME="description" CONTENT="Contents of The modified ARPA-MIT format">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node216_mn.html">
+<LINK REL="previous" HREF="node214_mn.html">
+<LINK REL="up" HREF="node213_mn.html">
+<LINK REL="next" HREF="node216_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION04372000000000000000">&#160;</A><A NAME="s:HLMmodifiedarpamitlm">&#160;</A>
+<BR>
+The modified ARPA-MIT format
+</H2>
+
+The efficient loading of the language model file requires prior
+information as to memory requirements. Such information is partially
+available from the header of the file which shows how many entries
+will be found in each section of the model. From the back-off nature
+of the language model it is clear that the back-off weight associated
+with an <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram <!-- MATH
+ $(w_1, w_2, \ldots, w_{n-1})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="132" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img619.png"
+ ALT="$ (w_1, w_2, \ldots, w_{n-1})$"></SPAN> is only useful when
+<!-- MATH
+ $p(w_n | w_1, word_2, \ldots, w_{n-1})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="189" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img620.png"
+ ALT="$ p(w_n \vert w_1, word_2, \ldots, w_{n-1})$"></SPAN> is an explicitly entry in the
+file or computed via backing-off to the corresponding
+<SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img583.png"
+ ALT="$ (n-1)$"></SPAN>-grams. In other words, the presence of a back-off weight
+associated with the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram <!-- MATH
+ $w_1, w_2, \ldots, w_{n-1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="120" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img621.png"
+ ALT="$ w_1, w_2, \ldots, w_{n-1}$"></SPAN> can be used
+to indicate the existence of explicit <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams <!-- MATH
+ $w_1, w_2, \ldots,
+w_n$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="104" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img622.png"
+ ALT="$ w_1, w_2, \ldots,
+w_n$"></SPAN>. The use of such information can greatly reduce the storage
+requirements of the language model since the back-off weight requires
+extra storage. For example, considering the statistics shown in table
+<A HREF="node215_ct.html#fg_stats">16.1</A>, such selective memory allocation can result in dramatic 
+savings.
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="23547">&#160;</A>
+<TABLE>
+<CAPTION><STRONG>Table 16.1:</STRONG>
+Component statistics for a 65k word fourgram language model with 
+  cut-offs: bigram 1, trigram 2, fourgram 2.</CAPTION>
+<TR><TD>  
+  <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Component</TD>
+<TD ALIGN="RIGHT"># with back-off weights</TD>
+<TD ALIGN="RIGHT">Total</TD>
+</TR>
+<TR><TD ALIGN="LEFT">unigram</TD>
+<TD ALIGN="RIGHT">65,467</TD>
+<TD ALIGN="RIGHT">65,467</TD>
+</TR>
+<TR><TD ALIGN="LEFT">bigram</TD>
+<TD ALIGN="RIGHT">2,074,422</TD>
+<TD ALIGN="RIGHT">6,224,660</TD>
+</TR>
+<TR><TD ALIGN="LEFT">trigram</TD>
+<TD ALIGN="RIGHT">4,485,738</TD>
+<TD ALIGN="RIGHT">9,745,297</TD>
+</TR>
+<TR><TD ALIGN="LEFT">fourgram</TD>
+<TD ALIGN="RIGHT">0</TD>
+<TD ALIGN="RIGHT">9,946,193</TD>
+</TR>
+</TABLE>
+   
+  <A NAME="fg_stats">&#160;</A></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+This information is accommodated by modifying the syntax and semantics
+of the rule
+<PRE>
+       &lt;ngramdef1&gt; = &lt;float&gt; { &lt;word&gt; } [ &lt;float&gt; ]
+</PRE>
+whereby a back-off weight associated with <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram <!-- MATH
+ $(w_1, w_2,\ldots,
+w_{n-1})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="132" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img619.png"
+ ALT="$ (w_1, w_2, \ldots, w_{n-1})$"></SPAN> indicates the existence of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams <!-- MATH
+ $(w_1, w_2, \ldots,
+w_n)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="116" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img623.png"
+ ALT="$ (w_1, w_2, \ldots,
+w_n)$"></SPAN>. This version will be referred to as the modified ARPA-text
+format.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

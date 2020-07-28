@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of HMM Sets</TITLE>
+<META NAME="description" CONTENT="Contents of HMM Sets">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node106_mn.html">
+<LINK REL="previous" HREF="node104_mn.html">
+<LINK REL="up" HREF="node101_mn.html">
+<LINK REL="next" HREF="node106_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03440000000000000000">&#160;</A><A NAME="s:hmmsets">&#160;</A>
+<BR>
+HMM Sets
+</H1>
+
+<P>
+The previous sections have described how a single HMM definition
+can be specified.  However, many HTK tools require complete model
+sets to be specified rather than just a single model.<A NAME="8950">&#160;</A>
+When this is the case, the individual HMMs which belong to the set
+are listed in a file rather than being enumerated explicitly on
+the command line.  Thus, for example, a typical invocation of
+the tool HER<SMALL>EST</SMALL> might be as follows
+<PRE>
+    HERest ... -H mf1 -H mf2 ... hlist
+</PRE>
+where each <TT>-H</TT> option names a macro file and <TT>hlist</TT>
+contains a list of HMM names, one per line. For example, it might contain
+<PRE>
+    ha
+    hb
+    hc
+</PRE>
+In a case such as this, the macro files would normally<A NAME="8958">&#160;</A>
+contain definitions for the models <TT>ha</TT>, 
+<TT>hb</TT> and <TT>hc</TT>, along with any lower level macro 
+definitions that they might require.
+
+<P>
+As an illustration,
+Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A> and Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A> give examples of
+what the macro files <TT>mf1</TT> and <TT>mf2</TT> might contain.
+The first file contains definitions for three states and a
+transition matrix.  The second file
+contains definitions for the three HMMs.  In this example,
+each HMM shares the three
+states and the common transition matrix.  A HMM set such as 
+this is called a <SPAN  CLASS="textit">tied-state</SPAN> system.
+
+<P>
+The order in which macro files are listed on
+the command line and the order of definition within
+each file must ensure that all macro
+definitions are defined before they are referenced.
+Thus, macro files are typically organised such that all
+low level structures come first followed by states and
+transition matrices, with the actual HMM definitions coming last.
+
+<P>
+When the HMM list contains the name of a HMM for which no corresponding
+macro has been defined, then an attempt is made to open a file with the
+same name.  This file is expected to contain a single definition 
+corresponding to the required HMM.  Thus, the general mechanism for
+loading a set of HMMs is as shown in Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  In this
+example, the HMM list <TT>hlist</TT> contains the names of five HMMs 
+of which
+only three have been predefined via the macro files.  Hence, the
+remaining definitions are found in individual HMM definition files
+<TT>hd</TT> and <TT>he</TT>.
+
+<P>
+When a large number of HMMs must be loaded from individual files, it is
+common to store them in a specific directory.  Most HTK tools allow
+this directory to be specified explicitly using a command line option.
+For example, in the command
+<PRE>
+    HERest -d hdir ... hlist ....
+</PRE>
+the definitions for the HMM listed in <TT>hlist</TT> will be
+searched for in the subdirectory <TT>hdir</TT>.
+
+<P>
+After loading each HMM set,<A NAME="8975">&#160;</A> HM<SMALL>ODEL</SMALL> marks it as belonging
+to one of the following categories (called the <SPAN  CLASS="textit">HSKind</SPAN><A NAME="8978">&#160;</A>
+
+<UL>
+<LI><TT>PLAINHS</TT>
+</LI>
+<LI><TT>SHAREDHS</TT>
+</LI>
+<LI><TT>TIEDHS</TT>
+</LI>
+<LI><TT>DISCRETEHS</TT>
+</LI>
+</UL>
+
+<P>
+Any HMM set containing discrete output distributions is assigned<A NAME="8985">&#160;</A>
+to the <TT>DISCRETEHS</TT><A NAME="9469">&#160;</A> category (see section&nbsp;<A HREF="node107_ct.html#s:dischmm">7.6</A>).  
+If all mixture components are tied, then it
+is assigned to the <TT>TIEDHS</TT> category (see section&nbsp;<A HREF="node106_ct.html#s:tmix">7.5</A>).  
+If it contains any shared states (<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">s</SPAN> macros) 
+or Gaussians (<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">m</SPAN> macros) then it is <TT>SHAREDHS</TT><A NAME="9470">&#160;</A>.
+Otherwise, it is <TT>PLAINHS</TT>. The  category assigned
+to a HMM set determines which of several possible optimisations
+the various HTK tools can apply to it.  As a check, the required kind of
+a HMM set can also be set via the configuration variable <TT>HMMSETKIND</TT>.
+For debugging purposes, this can also be used to re-categorise a 
+<TT>SHAREDHS</TT> system as <TT>PLAINHS</TT><A NAME="9471">&#160;</A>.
+
+<P>
+As shown in Figure&nbsp;<A HREF="#_" TARGET="_top">[*]</A>, complete HMM
+definitions can be tied as well as their individual parameters.  However,
+tying at the HMM level is defined in a different way.  
+HMM lists have so far<A NAME="9001">&#160;</A>
+been described as simply a list of model names. In fact, every HMM has two
+names: a <I>logical</I> name and a <I>physical name</I>. The logical name
+reflects the r&#244;le of the model and the physical name is used to
+identify the definition on disk.  By default, the logical and physical names
+are identical.  HMM tying is implemented by letting several logically
+distinct HMMs share the same physical definition.  This is done by giving
+an explicit physical name immediately after the logical name in a HMM 
+list<A NAME="9005">&#160;</A>.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="f:mac6def">&#160;</A></P>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\framebox[100mm]{
+\begin{minipage}{100mm}
+           \begin{program}
+\par
+\mbox{$\sim$\textsf{o}} \>\> \mbox{$<$\textsf{VecSize}$>$} 4 \mbox{$<$\textsf{MFCC}$>$} \\
+\mbox{$\sim$\textsf{s ``stateA''}} \\
+\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>       0.2 0.1 0.1 0.9  \\
+\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>       1.0 1.0 1.0 1.0  \\
+\mbox{$\sim$\textsf{s ``stateB''}} \\
+\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>       0.4 0.9 0.2 0.1  \\
+\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>       1.0 2.0 2.0 0.5  \\
+\mbox{$\sim$\textsf{s ``stateC''}} \\
+\>    \mbox{$<$\textsf{Mean}$>$} 4 \\
+\>\>       1.2 3.1 0.5 0.9  \\
+\>    \mbox{$<$\textsf{Variance}$>$} 4 \\
+\>\>       5.0 5.0 5.0 5.0  \\
+\mbox{$\sim$\textsf{t ``tran''}} \\
+\> \mbox{$<$\textsf{TransP}$>$} 5 \\
+\>\>   0.0 0.5 0.5 0.0 0.0 \\
+\>\>   0.0 0.4 0.4 0.2 0.0 \\
+\>\>   0.0 0.0 0.6 0.4 0.0 \\
+\>\>   0.0 0.0 0.0 0.7 0.3 \\
+\>\>   0.0 0.0 0.0 0.0 0.0
+\end{program}
+       \end{minipage} }$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="457" HEIGHT="465" ALIGN="MIDDLE" BORDER="0"
+ SRC="img237.png"
+ ALT="\framebox[100mm]{
+\begin{minipage}{100mm}
+\begin{program}
+\par
+\mbox{$\sim$\te...
+...0.0 0.0 0.0 0.7 0.3 \\
+\&gt;\&gt; 0.0 0.0 0.0 0.0 0.0
+\end{program} \end{minipage} }"></SPAN>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+       <BR>
+<BR>
+          <SPAN  CLASS="textbf"> Fig. <SPAN CLASS="arabic">7</SPAN>..<SPAN CLASS="arabic">3</SPAN>  File mf1: shared state and
+transition matrix macros</SPAN> 
+    
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="f:hmm6def">&#160;</A></P>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\framebox[100mm]{
+\begin{minipage}{100mm}
+           \begin{program}\mbox{$\sim$\textsf{h ``ha''}} \\
+\mbox{$<$\textsf{BeginHMM}$>$} \\
+\> \mbox{$<$\textsf{NumStates}$>$} 5  \\
+\> \mbox{$<$\textsf{State}$>$} 2 \\
+\>\>   \mbox{$\sim$\textsf{s ``stateA''}} \\
+\> \mbox{$<$\textsf{State}$>$} 3 \\
+\>\>   \mbox{$\sim$\textsf{s ``stateB''}} \\
+\> \mbox{$<$\textsf{State}$>$} 4 \\
+\>\>   \mbox{$\sim$\textsf{s ``stateB''}} \\
+\> \mbox{$\sim$\textsf{t ``tran''}}  \\
+\mbox{$<$\textsf{EndHMM}$>$} \\
+ \\
+\mbox{$\sim$\textsf{h ``hb''}} \\
+\mbox{$<$\textsf{BeginHMM}$>$} \\
+\> \mbox{$<$\textsf{NumStates}$>$} 5  \\
+\> \mbox{$<$\textsf{State}$>$} 2 \\
+\>\>   \mbox{$\sim$\textsf{s ``stateB''}} \\
+\> \mbox{$<$\textsf{State}$>$} 3 \\
+\>\>   \mbox{$\sim$\textsf{s ``stateA''}} \\
+\> \mbox{$<$\textsf{State}$>$} 4 \\
+\>\>   \mbox{$\sim$\textsf{s ``stateC''}} \\
+\> \mbox{$\sim$\textsf{t ``tran''}}  \\
+\mbox{$<$\textsf{EndHMM}$>$} \\
+ \\
+\mbox{$\sim$\textsf{h ``hc''}} \\
+\mbox{$<$\textsf{BeginHMM}$>$} \\
+\> \mbox{$<$\textsf{NumStates}$>$} 5  \\
+\> \mbox{$<$\textsf{State}$>$} 2 \\
+\>\>   \mbox{$\sim$\textsf{s ``stateC''}} \\
+\> \mbox{$<$\textsf{State}$>$} 3 \\
+\>\>   \mbox{$\sim$\textsf{s ``stateC''}} \\
+\> \mbox{$<$\textsf{State}$>$} 4 \\
+\>\>   \mbox{$\sim$\textsf{s ``stateB''}} \\
+\> \mbox{$\sim$\textsf{t ``tran''}}  \\
+\mbox{$<$\textsf{EndHMM}$>$}
+\end{program}
+       \end{minipage} }$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="457" HEIGHT="695" ALIGN="MIDDLE" BORDER="0"
+ SRC="img238.png"
+ ALT="\framebox[100mm]{
+\begin{minipage}{100mm}
+\begin{program}\mbox{$\sim$\textsf{h...
+...tsf{t \lq\lq tran''}} \\
+\mbox{$&lt;$\textsf{EndHMM}$&gt;$}
+\end{program} \end{minipage} }"></SPAN>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+       <BR>
+<BR>
+          <SPAN  CLASS="textbf"> Fig. <SPAN CLASS="arabic">7</SPAN>..<SPAN CLASS="arabic">4</SPAN>  Simple Tied-State System</SPAN> 
+    
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:hsetdef">&#160;</A><IMG
+ WIDTH="547" HEIGHT="478" ALIGN="MIDDLE" BORDER="0"
+ SRC="img239.png"
+ ALT="% latex2html id marker 49886
+$\textstyle \parbox{120mm}{ \begin{center}\setlengt...
+...hechapter.\arabic{figctr}  Defining a Model Set}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+For example, in the HMM list shown in Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>,
+the logical HMMs <TT>two</TT>, <TT>too</TT> and <TT>to</TT> are tied
+and share the same physical HMM definition <TT>tuw</TT>.  The HMMs <TT>one</TT>
+and <TT>won</TT> are also tied but in this case <TT>won</TT> shares <TT>one</TT>'s
+definition.  There is, however, no subtle distinction here. The two different
+cases are given just to emphasise that the names used for the logical and physical
+HMMs can be the same or different, as is convenient.  Finally, in this example,
+the models <TT>three</TT> and <TT>four</TT> are untied.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:hlisteg">&#160;</A><IMG
+ WIDTH="342" HEIGHT="242" ALIGN="MIDDLE" BORDER="0"
+ SRC="img240.png"
+ ALT="% latex2html id marker 49887
+$\textstyle \parbox{70mm}{\noindent
+\fbox{ \parbox...
+...bf{ Fig. \thechapter.\arabic{figctr}  HMM List with Tying}
+\end{center}
+}$">
+</DIV> 
+
+<P>
+This mechanism is implemented internally by creating a <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">l</SPAN> macro
+definition for every HMM in the HMM list.  If an explicit physical HMM
+is also given in the list, then the logical HMM is linked to 
+that macro, otherwise a <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">h</SPAN> macro
+is created with the same name as the <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">l</SPAN> macro.  Notice that this is
+one case where the ``define before use'' rule is relaxed.  If an undefined
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">h</SPAN> is encountered then a dummy place-holder is created for it and,
+as explained above,
+HM<SMALL>ODEL</SMALL> subsequently tries to find a HMM definition 
+file of the same name.
+
+<P>
+Finally it should be noted that 
+in earlier versions of HTK, there were no HMM macros.  However,
+HMM definitions could be listed in a single <A NAME="9102">&#160;</A>
+<SPAN  CLASS="textit">master macro file</SPAN> or MMF<A NAME="9104">&#160;</A>.  Each HMM definition began
+with its name written as a quoted string and ended with a period
+written on its own (just like master label files), and  the first
+line of an MMF contained the string <TT>#!MMF!#</TT>.  In HTK 3.3, 
+the use of MMFs has been subsumed within the general macro
+definition facility using the <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">h</SPAN> type.
+However, for compatibility, the older MMF style of file can still be
+read by all HTK tools.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

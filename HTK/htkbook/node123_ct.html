@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Single Model Reestimation(HREST)</TITLE>
+<META NAME="description" CONTENT="Contents of Single Model Reestimation(HREST)">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node124_mn.html">
+<LINK REL="previous" HREF="node122_mn.html">
+<LINK REL="up" HREF="node120_mn.html">
+<LINK REL="next" HREF="node124_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03583000000000000000">
+Single Model Reestimation(HR<SMALL>EST</SMALL>)</A>
+</H2>
+
+<P>
+<A NAME="14102">&#160;</A>
+In this style of model training, a set of training observations
+<!-- MATH
+ ${\mbox{\boldmath $O$}}^r, \;\; 1 \leq r \leq R$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="111" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img269.png"
+ ALT="$ {\mbox{\boldmath $O$}}^r, \;\; 1 \leq r \leq R$"></SPAN> is used to estimate the 
+parameters of a single HMM. The
+basic formula for the reestimation of the transition probabilities is
+ 
+<!-- MATH
+ \begin{displaymath}
+\hat{a}_{ij} = \frac{
+                  \sum_{r=1}^R \frac{1}{P_r}
+                  \sum_{t=1}^{T_r-1}
+                  \alpha^r_i(t)a_{ij}b_j({\mbox{\boldmath$o$}}^r_{t+1})\beta^r_j(t+1)
+                    }{
+                  \sum_{r=1}^R \frac{1}{P_r}
+                  \sum_{t=1}^{T_r}
+                  \alpha^r_i(t)\beta^r_i(t)
+}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="337" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img311.png"
+ ALT="$\displaystyle \hat{a}_{ij} = \frac{
+\sum_{r=1}^R \frac{1}{P_r}
+\sum_{t=1}^{T_r-...
+...+1)
+}{
+\sum_{r=1}^R \frac{1}{P_r}
+\sum_{t=1}^{T_r}
+\alpha^r_i(t)\beta^r_i(t)
+}
+$">
+</DIV><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ 1&lt;i&lt;N$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.png"
+ ALT="$ 1&lt;j&lt;N$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img312.png"
+ ALT="$ P_r$"></SPAN> is the total probability
+<!-- MATH
+ $P = \mbox{prob}({\mbox{\boldmath $O$}}^r | \lambda)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img308.png"
+ ALT="$ P =$">&nbsp; &nbsp;prob<IMG
+ WIDTH="51" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img313.png"
+ ALT="$ ({\mbox{\boldmath $O$}}^r \vert \lambda)$"></SPAN> of the <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img314.png"
+ ALT="$ r$"></SPAN>'th observation.  
+The transitions from the non-emitting entry state are reestimated by
+<!-- MATH
+ \begin{displaymath}
+\hat{a}_{1j} = \frac{1}{R}
+                  \sum_{r=1}^R \frac{1}{P_r}
+                  \alpha^r_j(1) \beta^r_j(1)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="187" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img315.png"
+ ALT="$\displaystyle \hat{a}_{1j} = \frac{1}{R}
+\sum_{r=1}^R \frac{1}{P_r}
+\alpha^r_j(1) \beta^r_j(1)
+$">
+</DIV><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.png"
+ ALT="$ 1&lt;j&lt;N$"></SPAN> and the transitions from the emitting states to the final
+non-emitting exit state are reestimated by
+<!-- MATH
+ \begin{displaymath}
+\hat{a}_{iN} = \frac{
+                  \sum_{r=1}^R \frac{1}{P_r}
+                  \alpha^r_i(T)\beta^r_i(T)
+                    }{
+                  \sum_{r=1}^R \frac{1}{P_r}
+                  \sum_{t=1}^{T_r}
+                  \alpha^r_i(t)\beta^r_i(t)
+                    }
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="229" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img316.png"
+ ALT="$\displaystyle \hat{a}_{iN} = \frac{
+\sum_{r=1}^R \frac{1}{P_r}
+\alpha^r_i(T)\be...
+...(T)
+}{
+\sum_{r=1}^R \frac{1}{P_r}
+\sum_{t=1}^{T_r}
+\alpha^r_i(t)\beta^r_i(t)
+}
+$">
+</DIV><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ 1&lt;i&lt;N$"></SPAN>.
+
+<P>
+For a HMM with <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ M_s$"></SPAN> mixture components in stream <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img41.png"
+ ALT="$ s$"></SPAN>, the means, covariances
+and mixture weights for that stream are reestimated as follows.
+Firstly, the probability of occupying the <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ m$"></SPAN>'th mixture component in stream
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img41.png"
+ ALT="$ s$"></SPAN> at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN> for the <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img314.png"
+ ALT="$ r$"></SPAN>'th observation is
+<!-- MATH
+ \begin{displaymath}
+L^r_{jsm}(t) = \frac{1}{P_r} U^r_j(t) c_{jsm} b_{jsm}({\mbox{\boldmath$o$}}^r_{st})
+                  \beta^r_j(t) b^*_{js}({\mbox{\boldmath$o$}}^r_t)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="315" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img317.png"
+ ALT="$\displaystyle L^r_{jsm}(t) = \frac{1}{P_r} U^r_j(t) c_{jsm} b_{jsm}({\mbox{\boldmath$o$}}^r_{st})
+\beta^r_j(t) b^*_{js}({\mbox{\boldmath$o$}}^r_t)
+$">
+</DIV><P></P>
+where
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:urjt">&#160;</A><!-- MATH
+ \begin{equation}
+U^r_j(t) = \left\{ \begin{array}{cl}
+                              a_{1j}             & \mbox{if $t=1$} \\
+                   \sum^{N-1}_{i=2} \alpha^r_i(t-1)
+                       a_{ij}         & \mbox{otherwise}
+                \end{array}
+        \right.
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="305" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img318.png"
+ ALT="$\displaystyle U^r_j(t) = \left\{ \begin{array}{cl} a_{1j} &amp; \mbox{if $t=1$}  \sum^{N-1}_{i=2} \alpha^r_i(t-1) a_{ij} &amp; \mbox{otherwise} \end{array} \right.$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and
+<!-- MATH
+ \begin{displaymath}
+b^*_{js}({\mbox{\boldmath$o$}}^r_t) = \prod_{k \neq s} b_{jk}({\mbox{\boldmath$o$}}^r_{kt})
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="154" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img319.png"
+ ALT="$\displaystyle b^*_{js}({\mbox{\boldmath$o$}}^r_t) = \prod_{k \neq s} b_{jk}({\mbox{\boldmath$o$}}^r_{kt})
+$">
+</DIV><P></P>
+For single Gaussian streams, the probability of mixture component occupancy is
+equal to the probability of state occupancy and hence it is more efficient
+in this case to use
+<!-- MATH
+ \begin{displaymath}
+L^r_{jsm}(t) =  L^r_{j}(t) = \frac{1}{P_r} \alpha_j(t) \beta_j(t)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="225" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img320.png"
+ ALT="$\displaystyle L^r_{jsm}(t) = L^r_{j}(t) = \frac{1}{P_r} \alpha_j(t) \beta_j(t)
+$">
+</DIV><P></P>
+
+<P>
+Given the above definitions, the re-estimation formulae may 
+now be expressed in terms of <!-- MATH
+ $L^r_{jsm}(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img321.png"
+ ALT="$ L^r_{jsm}(t)$"></SPAN> as 
+follows.
+
+<P>
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+\hat{{\mbox{\boldmath$\mu$}}}_{jsm} = \frac{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r} L^r_{jsm}(t)
+{\mbox{\boldmath$o$}}^r_{st}}{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r} L^r_{jsm}(t)
+}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="222" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img322.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\mu$}}}_{jsm} = \frac{
+\sum_{r=1}^R \sum_{t...
+...t)
+{\mbox{\boldmath$o$}}^r_{st}}{
+\sum_{r=1}^R \sum_{t=1}^{T_r} L^r_{jsm}(t)
+}
+$">
+</DIV><P></P>
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:sigjsm">&#160;</A><!-- MATH
+ \begin{equation}
+\hat{{\mbox{\boldmath$\Sigma$}}}_{jsm} = \frac{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r} L^r_{jsm}(t)
+({\mbox{\boldmath$o$}}^r_{st} - \hat{{\mbox{\boldmath$\mu$}}}_{jsm})
+                                        ({\mbox{\boldmath$o$}}^r_{st} - \hat{{\mbox{\boldmath$\mu$}}}_{jsm})'
+                }{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r} L^r_{jsm}(t)
+}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="384" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img323.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\Sigma$}}}_{jsm} = \frac{ \sum_{r=1}^R \sum...
+...\mbox{\boldmath$\mu$}}}_{jsm})' }{ \sum_{r=1}^R \sum_{t=1}^{T_r} L^r_{jsm}(t) }$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">8</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+{\mbox{\boldmath$c$}}_{jsm} = \frac{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r} L^r_{jsm}(t)
+}{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r} L^r_{j}(t)
+}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="198" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img324.png"
+ ALT="$\displaystyle {\mbox{\boldmath$c$}}_{jsm} = \frac{
+\sum_{r=1}^R \sum_{t=1}^{T_r} L^r_{jsm}(t)
+}{
+\sum_{r=1}^R \sum_{t=1}^{T_r} L^r_{j}(t)
+}
+$">
+</DIV><P></P>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

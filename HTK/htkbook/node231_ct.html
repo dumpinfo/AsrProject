@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of USEINTID</TITLE>
+<META NAME="description" CONTENT="Contents of USEINTID">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node230_mn.html">
+<LINK REL="up" HREF="node230_mn.html">
+<LINK REL="next" HREF="node232_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION043101000000000000000">&#160;</A><A NAME="s:HLMuseintid">&#160;</A>
+<BR>
+USEINTID
+</H2>
+<A NAME="23842">&#160;</A>
+
+<P>
+Setting this to <TT>T</TT> as opposed to its default of <TT>F</TT> forces the
+LM<SMALL>ODEL</SMALL> library to save language models using an unsigned int for each
+word ID as opposed to the default of an unsigned short.  In most
+systems these lengths correspond to 4-byte and 2-byte fields
+respectively.  Note that if you do not set this that LM<SMALL>ODEL</SMALL>
+will automatically choose an int field size if the short field is too
+small - the exception to this is if you have compiled with <TT>LM_ID_SHORT</TT> which limits the field size to an unsigned short, in
+which case the tool will be forced to abort; see section
+<A HREF="node233_ct.html#s:HLMlmidshort">16.11.1</A> below.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

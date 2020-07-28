@@ -1,0 +1,358 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Variance Transformation Matrix (MLLRVAR, MLLRCOV)</TITLE>
+<META NAME="description" CONTENT="Contents of Variance Transformation Matrix (MLLRVAR, MLLRCOV)">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node142_mn.html">
+<LINK REL="previous" HREF="node140_mn.html">
+<LINK REL="up" HREF="node139_mn.html">
+<LINK REL="next" HREF="node142_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03642000000000000000">&#160;</A><A NAME="s:vtransest">&#160;</A>
+<BR>
+Variance Transformation Matrix (<TT>MLLRVAR</TT>, <TT>MLLRCOV</TT>)
+</H2>
+
+<P>
+Estimation of the first variance transformation matrices is only available
+for diagonal covariance Gaussian systems in the current implementation,
+though full transforms can in theory be estimated. The Gaussian covariance is
+transformed using<A NAME="tex2html43" HREF="footnode_mn.html#foot16459" TARGET="footer"><SUP><SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A>,
+<!-- MATH
+ \begin{displaymath}
+\hat{{\mbox{\boldmath$\mu$}}}_{m_r} = {\mbox{\boldmath$\mu$}}_{m_r}, \:\:\:\:
+        \hat{{\mbox{\boldmath$\Sigma$}}}_{r} = {\mbox{\boldmath$B$}}_{m_r}^T{\mbox{\boldmath$H$}}_r{\mbox{\boldmath$B$}}_{m_r}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="238" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img408.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\mu$}}}_{m_r} = {\mbox{\boldmath$\mu$}}_{m_...
+...\mbox{\boldmath$B$}}_{m_r}^T{\mbox{\boldmath$H$}}_r{\mbox{\boldmath$B$}}_{m_r}
+$">
+</DIV><P></P>
+where <!-- MATH
+ ${\mbox{\boldmath $H$}}_m$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img343.png"
+ ALT="$ {\mbox{\boldmath $H$}}_m$"></SPAN> is the linear transformation to be estimated and
+<!-- MATH
+ ${\mbox{\boldmath $B$}}_m$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img344.png"
+ ALT="$ {\mbox{\boldmath $B$}}_m$"></SPAN> is the inverse of the Choleski factor of <!-- MATH
+ ${\mbox{\boldmath $\Sigma$}}_{m_r}^{-1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img409.png"
+ ALT="$ {\mbox{\boldmath $\Sigma$}}_{m_r}^{-1}$"></SPAN>,
+so
+<!-- MATH
+ \begin{displaymath}
+{\mbox{\boldmath$\Sigma$}}_{m_r}^{-1} = {\mbox{\boldmath$C$}}_{m_r}{\mbox{\boldmath$C$}}_{m_r}^T
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="122" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img410.png"
+ ALT="$\displaystyle {\mbox{\boldmath$\Sigma$}}_{m_r}^{-1} = {\mbox{\boldmath$C$}}_{m_r}{\mbox{\boldmath$C$}}_{m_r}^T
+$">
+</DIV><P></P>
+and
+<!-- MATH
+ \begin{displaymath}
+{\mbox{\boldmath$B$}}_{m_r} = {\mbox{\boldmath$C$}}_{m_r}^{-1}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="91" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img411.png"
+ ALT="$\displaystyle {\mbox{\boldmath$B$}}_{m_r} = {\mbox{\boldmath$C$}}_{m_r}^{-1}
+$">
+</DIV><P></P>
+After rewriting the auxiliary function, the transform matrix <!-- MATH
+ ${\mbox{\boldmath $H$}}_m$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img343.png"
+ ALT="$ {\mbox{\boldmath $H$}}_m$"></SPAN>
+is estimated from,
+<!-- MATH
+ \begin{displaymath}
+{\mbox{\boldmath$H$}}_r = \frac{ \sum_{m_r=1}^{M_r}{\mbox{\boldmath$C$}}_{m_r}^T
+                          \left[
+                            L_{m_r}(t)({\mbox{\boldmath$o$}}(t) - \hat{{\mbox{\boldmath$\mu$}}}_{m_r})
+                                   ({\mbox{\boldmath$o$}}(t) - \hat{{\mbox{\boldmath$\mu$}}}_{m_r})^T
+                          \right]
+                          {\mbox{\boldmath$C$}}_{m_r}
+                        }
+                        { L_{m_r}(t)}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="426" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img412.png"
+ ALT="$\displaystyle {\mbox{\boldmath$H$}}_r = \frac{ \sum_{m_r=1}^{M_r}{\mbox{\boldma...
+...\boldmath$\mu$}}}_{m_r})^T
+\right]
+{\mbox{\boldmath$C$}}_{m_r}
+}
+{ L_{m_r}(t)}
+$">
+</DIV><P></P>
+Here, <!-- MATH
+ ${\mbox{\boldmath $H$}}_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="28" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img413.png"
+ ALT="$ {\mbox{\boldmath $H$}}_r$"></SPAN> is forced to be a diagonal transformation by setting
+the off-diagonal terms to zero, which ensures that
+<!-- MATH
+ $\hat{{\mbox{\boldmath $\Sigma$}}}_{m_r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img414.png"
+ ALT="$ \hat{{\mbox{\boldmath $\Sigma$}}}_{m_r}$"></SPAN> is also diagonal.
+
+<P>
+The alternative form of variance adaptation us supported for full,
+block and diagonal transforms. Substituting the for expressions for
+variance adaptation
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+\hat{{\mbox{\boldmath$\mu$}}}_{m_r} = {\mbox{\boldmath$\mu$}}_{m_r}, \:\:\:\:
+\hat{{\mbox{\boldmath$\Sigma$}}}_{m_r} = {{\mbox{\boldmath$H$}}}_r{{\mbox{\boldmath$\Sigma$}}}_{m_r}{{\mbox{\boldmath$H$}}}_r^T
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="242" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img415.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\mu$}}}_{m_r} = {\mbox{\boldmath$\mu$}}_{m_...
+...{\boldmath$H$}}}_r{{\mbox{\boldmath$\Sigma$}}}_{m_r}{{\mbox{\boldmath$H$}}}_r^T$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">12</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+into the auxiliary function, and using the fact that the covariance
+matrices are diagonal yields
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+{\cal Q}({\cal M},{\hat{\cal M}}) = K +
+\frac{1}{2}
+\sum_{r=1}^R
+\beta_r\log({\bf c}_{ri}{\bf a}_{ri}^T)-
+\sum_{j=1}^d{
+\left({\bf a}_{rj}{\bf G}^{(j)}_r{\bf a}^T_{rj}
+\right)} \nonumber
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="401" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img416.png"
+ ALT="$\displaystyle {\cal Q}({\cal M},{\hat{\cal M}}) = K +
+\frac{1}{2}
+\sum_{r=1}^R
+...
+...{ri}^T)-
+\sum_{j=1}^d{
+\left({\bf a}_{rj}{\bf G}^{(j)}_r{\bf a}^T_{rj}
+\right)}$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where 
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+\beta_r &=& \sum_{m_r=1}^{M_r}\sum_{t=1}^TL_{m_r}(t)\\
+{\bf A}_r &=& {\bf H}_r^{-1}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img417.png"
+ ALT="$\displaystyle \beta_r$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="114" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img418.png"
+ ALT="$\displaystyle \sum_{m_r=1}^{M_r}\sum_{t=1}^TL_{m_r}(t)$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">13</SPAN>)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img419.png"
+ ALT="$\displaystyle {\bf A}_r$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="35" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img420.png"
+ ALT="$\displaystyle {\bf H}_r^{-1}$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">14</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+<!-- MATH
+ ${\bf a}_{ri}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img421.png"
+ ALT="$ {\bf a}_{ri}$"></SPAN> is <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img422.png"
+ ALT="$ i^{th}$"></SPAN> row of <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img423.png"
+ ALT="$ {\bf A}_r$"></SPAN>, the <SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img424.png"
+ ALT="$ 1\times n$"></SPAN> row vector <!-- MATH
+ ${\bf c}_{ri}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img425.png"
+ ALT="$ {\bf c}_{ri}$"></SPAN> is the vector of
+cofactors of <SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img423.png"
+ ALT="$ {\bf A}_r$"></SPAN>, <!-- MATH
+ $c_{rij}={\mbox{cof}}({\bf A}_{rij})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="113" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img426.png"
+ ALT="$ c_{rij}={\mbox{cof}}({\bf A}_{rij})$"></SPAN>,
+and  <!-- MATH
+ ${\bf G}^{(i)}_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img427.png"
+ ALT="$ {\bf G}^{(i)}_r$"></SPAN> is defined as
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="eq:gi_mllr2">&#160;</A><!-- MATH
+ \begin{eqnarray}
+{\bf G}^{(i)}_r=\sum_{m_r=1}^{M_r}
+\frac{1}{\sigma_{m_ri}^{2}}
+\sum_{t=1}^TL_{m_r}(t)({\mbox{\boldmath$o$}}(t)-\hat{{\mbox{\boldmath$\mu$}}}_{m_r})
+({\mbox{\boldmath$o$}}(t)-\hat{{\mbox{\boldmath$\mu$}}}_{m_r})^T
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="391" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img428.png"
+ ALT="$\displaystyle {\bf G}^{(i)}_r=\sum_{m_r=1}^{M_r}
+\frac{1}{\sigma_{m_ri}^{2}}
+\s...
+...\mu$}}}_{m_r})
+({\mbox{\boldmath$o$}}(t)-\hat{{\mbox{\boldmath$\mu$}}}_{m_r})^T$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">15</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Differentiating the auxiliary function with respect to the transform
+<!-- MATH
+ ${{\mbox{\boldmath $A$}}}_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img429.png"
+ ALT="$ {{\mbox{\boldmath $A$}}}_r$"></SPAN> , and then maximising it with respect to the transformed mean
+yields the following update
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+{\bf a}_{ri} ={\bf c}_{ri}{\bf G}^{(i)-1}_r
+\sqrt{\left(\frac{\beta_r}{{\bf c}_{ri}{\bf G}_r^{(i)-1}{\bf c}^T_{ri}}\right)}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="242" HEIGHT="77" ALIGN="MIDDLE" BORDER="0"
+ SRC="img430.png"
+ ALT="$\displaystyle {\bf a}_{ri} ={\bf c}_{ri}{\bf G}^{(i)-1}_r
+\sqrt{\left(\frac{\beta_r}{{\bf c}_{ri}{\bf G}_r^{(i)-1}{\bf c}^T_{ri}}\right)}$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">16</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+This is an iterative optimisation scheme as the cofactors mean the estimate
+of row <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN> is dependent on all the other rows (in that block). For the 
+diagonal transform case it is of course non-iterative and simplifies to
+the same form as the <TT>MLLRVAR</TT> transform.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

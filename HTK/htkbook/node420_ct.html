@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Format</TITLE>
+<META NAME="description" CONTENT="Contents of Format">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node421_mn.html">
+<LINK REL="previous" HREF="node419_mn.html">
+<LINK REL="up" HREF="node418_mn.html">
+<LINK REL="next" HREF="node421_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION05420000000000000000">&#160;</A><A NAME="s:slfformat">&#160;</A>
+<BR>
+Format
+</H1>
+
+<P>
+The format<A NAME="38095">&#160;</A> is designed to allow optional
+information that at its most detailed gives full identity, alignment
+and score (log likelihood) information at the word and phone level to
+allow calculation of the alignment and likelihood of an individual
+hypothesis. However, without scores or times the lattice is just a
+word graph. The format is designed to be extensible.  Further field
+names can be defined to allow arbitrary information to be added to the
+lattice without making the resulting file unreadable by others.
+
+<P>
+The lattices are stored in a text file as a series of fields that form
+two blocks:
+
+<P>
+
+<UL>
+<LI>A header, specifying general information about the lattice.
+</LI>
+<LI>The node and link definitions.
+</LI>
+</UL>
+
+<P>
+Either block may contain comment lines<A NAME="38098">&#160;</A>,
+for which the first character is a `#' and the rest of the line is
+ignored.
+
+<P>
+All non-comment lines consist of fields, separated by white space.
+Fields consist of an alphanumeric field name, followed by a delimiter
+(the character `=' or `<code>~</code>') and a (possibly ``quoted'') field
+value.  Single character field names are reserved for fields defined
+in the specification and single character abbreviations may be used
+for many of the fields defined below. Field values can be specified
+either as normal text (e.g. <code>a=-318.31</code>) or in a binary
+representation if the `=' character is replaced by `<code>~</code>'. The
+binary representation consists of a 4-byte floating point number (IEEE
+754) or a 4-byte integer number stored in big-endian byte order by
+default (see section&nbsp;<A HREF="node53_ct.html#s:byteswap">4.9</A> for a discussion of different
+byte-orders in HTK).
+
+<P>
+The convention used to define the current field
+names<A NAME="38100">&#160;</A> is that lower case is used for
+optional fields and upper case is used for required fields. The
+meaning of field names can be dependent on the context in which they
+appear.
+
+<P>
+The header must include a field specifying which utterance was used to
+generate the lattice and a field specifying the version of the lattice
+specification used.  The header is terminated by a line which defines
+the number of nodes and links in the lattice.
+
+<P>
+The node definitions are optional but if included each node definition
+consists of a single line which specifies the node number followed by
+optional fields that may (for instance) define the time of the node or
+the word hypothesis ending at that node.
+
+<P>
+The link definitions are required and each link definition consists of
+a single line which specifies the link number as well as the start and
+end node numbers that it connects to and optionally other information
+about the link such as the word identity and language model score. If
+word identity information is not present in node definitions then it
+must appear in link definitions.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

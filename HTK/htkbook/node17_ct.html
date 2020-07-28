@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Recognition Tools</TITLE>
+<META NAME="description" CONTENT="Contents of Recognition Tools">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node18_mn.html">
+<LINK REL="previous" HREF="node16_mn.html">
+<LINK REL="up" HREF="node14_mn.html">
+<LINK REL="next" HREF="node18_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02233000000000000000">
+Recognition Tools</A>
+</H2>
+
+<P>
+HTK provides a single recognition 
+tool<A NAME="2892">&#160;</A> called HV<SMALL>ITE</SMALL><A NAME="3017">&#160;</A>
+which uses the token passing algorithm described in the previous
+chapter to perform Viterbi-based speech recognition.  HV<SMALL>ITE</SMALL>
+takes as input a network describing the allowable word sequences,
+a dictionary defining how each word is pronounced and a set of HMMs.
+It operates by converting the word network to a phone network and
+then attaching the appropriate HMM definition to each phone instance.
+Recognition can then be performed on either a list of stored speech
+files or on direct audio input.  As noted at the end of the last
+chapter, HV<SMALL>ITE</SMALL> can support cross-word triphones and it can
+run with multiple tokens to generate
+lattices containing multiple hypotheses.  It can also be configured
+to rescore lattices and perform forced alignments.
+
+<P>
+The word networks needed to drive HV<SMALL>ITE</SMALL> are usually either
+simple word loops in which any word can follow any other word or they
+are directed graphs representing a finite-state task grammar.  In the
+former case, bigram probabilities are normally attached to the word
+transitions.  Word networks are stored using
+the HTK standard lattice format<A NAME="2898">&#160;</A>.  
+This is a text-based format and<A NAME="2899">&#160;</A><A NAME="2900">&#160;</A>
+hence word networks can be created directly using a text-editor.
+However, this is rather tedious and hence HTK provides two
+tools to assist in creating word networks.  Firstly, HB<SMALL>UILD</SMALL> 
+allows sub-networks to be created and used within higher level networks.
+Hence, although the same low level notation is used, much duplication
+is avoided.  Also, HB<SMALL>UILD</SMALL><A NAME="3018">&#160;</A> can be used to generate word loops
+and it can also read in a backed-off bigram language model and 
+modify the word loop transitions to incorporate the bigram probabilities.
+Note that the label statistics tool HLS<SMALL>TATS</SMALL> mentioned earlier
+can be used to generate a backed-off bigram language model.
+
+<P>
+As an alternative to specifying a word network directly, a higher
+level grammar notation can be used.  This notation is based on
+the Extended Backus Naur Form (EBNF<A NAME="2905">&#160;</A>) used in compiler specification and
+it is compatible with the grammar specification language used in 
+earlier versions of HTK.  The 
+tool HP<SMALL>ARSE</SMALL><A NAME="3019">&#160;</A> is supplied
+to convert this notation into the equivalent word network.
+
+<P>
+Whichever method is chosen to generate a word network, it is useful
+to be able to see examples of the <SPAN  CLASS="textit">language</SPAN> that it defines.
+The tool HSG<SMALL>EN</SMALL><A NAME="3020">&#160;</A> is 
+provided to do this.  It takes as input
+a network and then randomly traverses the network outputting word
+strings.  These strings can then be inspected to ensure that they
+correspond to what is required.  HSG<SMALL>EN</SMALL> can also compute
+the empirical perplexity of the task.
+
+<P>
+Finally, the construction of large dictionaries can involve merging
+several sources and performing a variety of transformations on each
+sources.  The dictionary management 
+tool HDM<SMALL>AN</SMALL><A NAME="3021">&#160;</A> is supplied
+to assist with this process.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

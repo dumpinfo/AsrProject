@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node255_mn.html">
+<LINK REL="previous" HREF="node253_mn.html">
+<LINK REL="up" HREF="node253_mn.html">
+<LINK REL="next" HREF="node255_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05141000000000000000">
+Function</A>
+</H2>
+
+<P>
+<A NAME="25471">&#160;</A>
+This program will copy one or more data files to a designated output
+file, optionally converting the data into a parameterised form.  While
+the source files can be in any supported format, the output format is
+always HTK.  By default, the whole of the source file is copied to
+the target but options exist to only copy a specified segment.  Hence,
+this program is used to convert data files in other formats to the HTK 
+format, to concatenate or segment data files, and to parameterise the
+result.  If any option is set which leads to the extraction of a segment
+of the source file rather than all of it, then segments will be
+extracted from all source files and concatenated to the target.
+
+<P>
+Labels will be copied/concatenated if any of the options indicating
+labels are specified (<TT>-i -l -x -G -I -L -P -X</TT>). In this case, each
+source data file must have an associated label file, and a target label
+file is created. The name of the target label file is the root name of
+the target data file with the extension <TT>.lab</TT>, unless the <TT>-X</TT>
+option is used.  This new label file will contain the appropriately
+copied/truncated/concatenated labels to correspond with the target data
+file; all start and end boundaries are recalculated if necessary. 
+
+<P>
+When used in conjunction with HSL<SMALL>AB</SMALL>, HC<SMALL>OPY</SMALL> provides a facility for tasks
+such as cropping silence surrounding recorded utterances.  Since input
+files may be coerced, HC<SMALL>OPY</SMALL> can also be used to convert the parameter
+kind of a file, for example from WAVEFORM to MFCC, depending on the
+configuration options. 
+Not all possible conversions can actually be performed; see Table&nbsp;<A HREF="#_" TARGET="_top">[*]</A> for a list of valid conversions. Conversions must be specified via a configuration file as described in chapter&nbsp;<A HREF="node55_ct.html#c:speechio">5</A>. Note also that the parameterisation qualifier <TT>_N</TT> cannot be used when saving files to disk, and is meant only for on-the-fly parameterisation. 
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

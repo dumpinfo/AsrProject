@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Generating and using count-based models</TITLE>
+<META NAME="description" CONTENT="Contents of Generating and using count-based models">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node198_mn.html">
+<LINK REL="previous" HREF="node196_mn.html">
+<LINK REL="up" HREF="node192_mn.html">
+<LINK REL="next" HREF="node198_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04250000000000000000">&#160;</A><A NAME="s:HLMgeneratingcount">&#160;</A>      
+
+<A NAME="22663">&#160;</A>
+<BR>
+Generating and using count-based models
+</H1>
+The language models generated in the previous section are static in
+terms of their size and vocabulary. For example, in order to evaluate
+a trigram model with cut-offs 2 (bigram) and 2 (trigram) the user
+would be required to rebuild the bigram and trigram stages of the
+model.  When large amounts of text data are used this can be a very
+time consuming operation.
+
+<P>
+The HLM toolkit provides the capabilities to generate and manipulate a
+more generic type of model, called a count-based models, which can be
+dynamically adjusted in terms of its size and vocabulary.  Count-based
+models are produced by specifying the <TT>-x</TT> option to
+LB<SMALL>UILD</SMALL>.  The user may set cut-off parameters which control the
+initial size of the model, but if so then once the model is generated
+only higher cut-off values may be specified in the subsequent
+operations.  The following command demonstrates how to generate a
+count-based model:
+<PRE>
+$ LBuild -C config -T 1 -t lm_5k/5k.fof -c 2 1 -c 3 1 
+         -x -n 3 lm_5k/5k.wmap lm_5k/tg1_1c 
+         holmes.1/data.* lm_5k/data.0
+</PRE> Note that in the above example the full trigram model is generated
+by a single invocation of the tool and no intermediate files are
+kept (i.e. the unigram and bigram models files).  
+
+<P>
+The generated model can now be used in perplexity tests and different
+model sizes can be obtained by specifying new cut-off values via the
+<TT>-c</TT> option of LP<SMALL>LEX</SMALL>.  Thus, using a trigram model with 
+cut-offs (2,2) gives
+<PRE>
+$ LPlex -c 2 2 -c 3 2 -T 1 -u -n 3 -t lm_5k/tg1_1c 
+        test/red-headed_league.txt
+...
+LPlex test #0: 3-gram 
+Processing text stream: test/red-headed_league.txt
+perplexity 126.2665, var 9.0519, utterances 556, words predicted 9187
+num tokens 10408, OOV 665, OOV rate 6.75% (excl. &lt;/s&gt;)
+...
+</PRE> and a model with cut-offs (3,3) gives
+<PRE>
+$ LPlex -c 2 3 -c 3 3 -T 1 -u -n 3 -t lm_5k/tg1_1c 
+        test/red-headed_league.txt
+...
+Processing text stream: test/red-headed_league.txt
+perplexity 133.4451, var 9.0880, utterances 556, words predicted 9187
+num tokens 10408, OOV 665, OOV rate 6.75% (excl. &lt;/s&gt;)
+...
+</PRE> 
+<P>
+However, the count model <TT>tg1_1c</TT> cannot be used directly in
+recognition tools such as HV<SMALL>ITE</SMALL> or HL<SMALL>VX</SMALL>.  An ARPA
+style model of the required size suitable for recognition can be
+derived using the HLMC<SMALL>OPY</SMALL> tool:
+<PRE>
+$ HLMCopy -T 1 lm_5k/tg1_1c lm_5k/rtg1_1
+</PRE> This will be the same as the original trigram model built above, with
+the exception of some insignificant rounding differences.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

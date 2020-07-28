@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Features Added To Version 2.1</TITLE>
+<META NAME="description" CONTENT="Contents of Features Added To Version 2.1">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node22_mn.html">
+<LINK REL="up" HREF="node19_mn.html">
+<LINK REL="next" HREF="node24_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02244000000000000000">
+Features Added To Version 2.1</A>
+</H2>
+
+<P>
+For the benefit of users of earlier versions of HTK this 
+<A NAME="2967">&#160;</A> section lists the main changes 
+in HTK Version 2.1 compared to the preceding Version 2.0.
+
+<P>
+
+<OL>
+<LI>The speech input handling has been partially re-designed and a new 
+energy-based speech/silence detector has been incorporated into HP<SMALL>ARM</SMALL>.
+The detector is robust yet flexible and can be configured through a number of
+configuration variables. Speech/silence detection can now be performed on
+waveform files. The calibration of speech/silence detector parameters is now
+accomplished by asking the user to speak an arbitrary sentence.
+
+<P>
+</LI>
+<LI>HP<SMALL>ARM</SMALL> now allows random noise signal to be added to waveform
+data via the configuration parameter <TT>ADDDITHER</TT>. This prevents
+numerical overflows which can occur with artificially created waveform data
+under some coding schemes.
+
+<P>
+</LI>
+<LI>HN<SMALL>ET</SMALL> has been optimised for more efficient operation when
+performing forced alignments of utterances using HV<SMALL>ITE</SMALL>. Further
+network optimisations tailored to biphone/triphone-based phone recognition 
+have also been incorporated.
+
+<P>
+</LI>
+<LI>HV<SMALL>ITE</SMALL> can now produce partial recognition hypothesis even when 
+no tokens survive to the end of the network. This is accomplished by setting
+the HR<SMALL>EC</SMALL> configuration parameter <TT>FORCEOUT</TT> to true.
+
+<P>
+</LI>
+<LI>Dictionary support has been extended to allow pronunciation probabilities
+to be associated with different pronunciations of the same word. At the same
+time, HV<SMALL>ITE</SMALL> now allows the use of a pronunciation scale factor during
+recognition.
+
+<P>
+</LI>
+<LI>HTK now provides consistent support for reading and writing of HTK 
+binary files (waveforms, binary MMFs, binary SLFs, HER<SMALL>EST</SMALL> accumulators)
+across different machine architectures incorporating automatic byte swapping.
+By default, all binary data files handled by the tools are now written/read in
+big-endian (<TT>NONVAX</TT>) byte order. The default behavior can be changed
+via the configuration parameters <TT>NATURALREADORDER</TT> and
+<TT>NATURALWRITEORDER</TT>.
+
+<P>
+</LI>
+<LI>HW<SMALL>AVE</SMALL> supports the reading of waveforms in Microsoft WAVE file
+format.
+
+<P>
+</LI>
+<LI>HA<SMALL>UDIO</SMALL> allows key-press control of live audio input.
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<P>
+
+  
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

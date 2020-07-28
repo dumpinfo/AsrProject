@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Data File Headers</TITLE>
+<META NAME="description" CONTENT="Contents of Data File Headers">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node209_mn.html">
+<LINK REL="previous" HREF="node207_mn.html">
+<LINK REL="up" HREF="node206_mn.html">
+<LINK REL="next" HREF="node209_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04320000000000000000">&#160;</A><A NAME="s:dfhdrs">&#160;</A>
+<BR>
+Data File Headers
+</H1>
+
+<P>
+All the data files have headers containing information about the
+file and the associated environment.  The header is variable-size
+being terminated by a data symbol (e.g. <code>\Words\</code> <code>\Grams\</code>
+<code>\FoFs\</code>, etc) followed by the start of the actual data.
+
+<P>
+Each header field is written on a separate line in the
+form<A NAME="23376">&#160;</A>
+<PRE>
+ &lt;Field&gt; = &lt;value&gt;
+</PRE>
+where <TT>&lt;Field&gt;</TT> is the name of the field and <TT>&lt;value&gt;</TT>
+is its value.  The field name is case insensitive and zero or more
+spaces can surround the <TT>=</TT> sign.  The <TT>&lt;value&gt;</TT> starts
+with the first printing character and ends at the last printing
+character on the line.  HTK style escaping is never used in HLM headers.
+
+<P>
+Fields may be given in any order.  Field names which are unrecognised
+by HTK are ignored.  Further field names may be introduced in
+future, but these are guaranteed not to start with the letter ``U''.
+
+<P>
+(NB. The above format rules do not apply to the files described in section
+<A HREF="node217_ct.html#s:HLMclasslmfileformats">16.8</A> - see that section for more details)
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

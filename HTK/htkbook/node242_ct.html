@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node243_mn.html">
+<LINK REL="previous" HREF="node241_mn.html">
+<LINK REL="up" HREF="node241_mn.html">
+<LINK REL="next" HREF="node243_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05111000000000000000">&#160;</A><A NAME="s:Cluster-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="24714">&#160;</A>
+This program is used to statistically cluster words into deterministic
+classes.  The main purpose of C<SMALL>LUSTER</SMALL> is to optimise a class
+map on the basis of the training text likelihood, although it can also
+import an existing class map and generate one of the files necessary
+for creating a class-based language model from the HTK language
+modelling tools.
+
+<P>
+Class-based language models use a reduced number of classes relative
+to the number of words, with each class containing one or more words,
+to allow a language model to be able to generalise to unseen training
+contexts.  Class-based models also typically require less training
+text to produce a well-trained model than a similar complexity word
+model, and are often more compact due to the much reduced number of
+possible distinct history contexts that can be encountered in the
+training data.
+
+<P>
+C<SMALL>LUSTER</SMALL> takes as input a set of one or more training text gram
+files, which may optionally be weighted on input, and their associated
+word map.  It then clusters the words in the word map into classes
+using a bigram likelihood measure.  Due to the computational
+complexity of this task a sub-optimal greedy algorithm is used, but
+multiple iterations of this algorithm may be performed in order to
+further refine the class map, although at some point a local maximum
+will be reached where the class map will not change
+further.<A NAME="tex2html76" HREF="footnode_mn.html#foot24635" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>  In practice as few as two iterations may be perfectly
+adequate, even with large training data sets.
+
+<P>
+The algorithm works by considering each word in the vocabulary in turn
+and calculating the change in bigram training text likelihood if the
+word was moved from its default class (see below) to each other class
+in turn.  The word is then moved to the class which increases the
+likelihood the most, or it is left in its current class if no such
+increase is found.  Each iteration of the algorithm considers each
+word exactly once.  Because this can be a slow process, with typical
+execution times measured in terms of a few hours, not a few minutes,
+the C<SMALL>LUSTER</SMALL> tool also allows <SPAN  CLASS="textit">recovery</SPAN> files to be written
+at regular intervals, which contain the current class map part-way
+through an iteration along with associated files detailing at what
+point in the iteration the class map was exported.  These files are
+not essential for operation, but might be desirable if there is a risk
+of a long-running process being killed via some external influence.
+During the execution of an iteration the tool claims no new
+memory,<A NAME="tex2html77" HREF="footnode_mn.html#foot24638" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A> so it cannot crash
+in the middle of an iteration due to a lack of memory (it can,
+however, fail to start an iteration in the first place).
+
+<P>
+Before beginning an iteration, C<SMALL>LUSTER</SMALL> places each word either
+into a default class or one specified via the <TT>-l</TT>, import
+classmap, or <TT>-x</TT>, use recovery, options.  The default
+distribution, given <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ m$"></SPAN> classes, is to place the most frequent <SPAN CLASS="MATH"><IMG
+ WIDTH="58" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img626.png"
+ ALT="$ (m-1)$"></SPAN>
+words into singleton classes and then the remainder into the remaining
+class.  C<SMALL>LUSTER</SMALL> allows words to be considered in either
+decreasing frequency of occurrence order, or the order they are
+encountered in the word map.  The popular choice is to use the former
+method, although in experiments it was found that the more random
+second approach typically gave better class maps after fewer
+iterations in practice.<A NAME="tex2html78" HREF="footnode_mn.html#foot24643" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A> The <TT>-w</TT> option specifies this choice.
+
+<P>
+During execution C<SMALL>LUSTER</SMALL> will always write a logfile
+describing the changes it makes to the classmap, unless you explicitly
+disable this using the <TT>-n</TT> option.  If the <TT>-v</TT> switch
+is used then this logfile is written in explicit English, allowing you
+to easily trace the execution of the clusterer; without <TT>-v</TT>
+then similar information is exported in a more compact format.
+
+<P>
+Two or three special classes are also defined.  The sentence start and
+sentence end word tokens are always kept in singleton classes, and
+optionally the unknown word token can be kept in a singleton class too
+- pass the <TT>-k</TT> option.<A NAME="tex2html79" HREF="footnode_mn.html#foot24650" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A> These
+tokens are placed in these classes on initialisation and no moves to
+or from these classes are ever considered.
+
+<P>
+Language model files are built using either the <TT>-p</TT> or
+<TT>-q</TT> options, which are effectively equivalent if using
+the HTK language modelling tools as black boxes.  The former creates
+a word-given-class probabilities file, whilst the latter stores word
+counts and lets the language model code itself calculate the same
+probabilities.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Recognition using Test Databases</TITLE>
+<META NAME="description" CONTENT="Contents of Recognition using Test Databases">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node171_mn.html">
+<LINK REL="previous" HREF="node169_mn.html">
+<LINK REL="up" HREF="node167_mn.html">
+<LINK REL="next" HREF="node171_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION031030000000000000000">&#160;</A><A NAME="s:hvrec">&#160;</A>
+<BR>
+Recognition using Test Databases
+</H1>
+
+<P>
+When building a speech recognition system or investigating speech
+recognition algorithms, performance must be monitored by testing
+on databases of test utterances for which reference transcriptions
+are available.  To use HV<SMALL>ITE</SMALL> for this purpose it is
+invoked with a command line of the form
+<PRE>
+    HVite -w wdnet dict hmmlist testf1 testf2 ....
+</PRE>
+where <TT>wdnet</TT> is an SLF file containing the word level network, 
+<TT>dict</TT> is the pronouncing dictionary and hmmlist contains
+a list of the HMMs to use.  The effect of this command is that
+HV<SMALL>ITE</SMALL> will use HN<SMALL>ET</SMALL> to compile the word level network
+and then use HR<SMALL>EC</SMALL> to recognise each test file.   The parameter kind
+of these test files must match exactly with that used to train the HMMs.
+For evaluation purposes, test files are normally stored in parameterised
+form but only the basic static coefficients are saved on disk.  For example,
+delta parameters are normally computed during loading.  As explained in
+Chapter&nbsp;<A HREF="node55_ct.html#c:speechio">5</A>, HTK can perform a range of parameter conversions
+on loading and these are controlled by configuration variables.  Thus,
+when using HV<SMALL>ITE</SMALL>, it is normal to include a configuration file
+via the <TT>-C</TT> option in which the required target parameter kind 
+is specified.  Section&nbsp;<A HREF="node173_ct.html#s:recaudio">13.6</A> below on processing direct
+audio input explains the use of configuration files in more detail.
+<A NAME="20603">&#160;</A>
+
+<P>
+In the simple
+default form of invocation given above, HV<SMALL>ITE</SMALL> would
+expect to find each HMM definition in a separate file in the current
+directory and each
+output transcription would be written to a separate file in the current directory.
+Also, of course, there will typically be a large number of test files.
+
+<P>
+In practice, it is much more convenient to store HMMs in master macro files (MMFs),
+store transcriptions in master label files (MLFs) and list data files
+in a script file.  Thus, a more common form of the above invocation would
+be 
+<PRE>
+    HVite -T 1 -S test.scp -H hmmset -i results -w wdnet dict hmmlist
+</PRE>
+where the file <TT>test.scp</TT> contains the list of test file names,
+<TT>hmmset</TT> is an MMF containing the HMM definitions<A NAME="tex2html49" HREF="footnode_mn.html#foot20859" TARGET="footer"><SUP><SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>,
+and  <TT>results</TT> is the MLF for storing the recognition output.
+
+<P>
+<A NAME="20611">&#160;</A>
+As shown, it is usually a good idea to enable basic progress reporting
+by setting the trace option as shown.  This will cause the recognised
+word string to be printed after processing each file.  For example,
+in a digit recognition task the trace output might look like
+<PRE>
+   File: testf1.mfc
+   SIL ONE NINE FOUR SIL 
+   [178 frames] -96.1404 [Ac=-16931.8 LM=-181.2] (Act=75.0)
+</PRE>
+where the information listed after the recognised string is the total
+number of frames in the utterance, the average 
+log probability<A NAME="20614">&#160;</A> per frame,
+the total acoustic likelihood, the total language model likelihood and
+the average number of active models.<A NAME="20615">&#160;</A>
+
+<P>
+The corresponding transcription
+written to the output MLF form will contain an entry of the form
+<A NAME="20616">&#160;</A>
+
+<P>
+<PRE>
+    "testf1.rec"
+           0  6200000 SIL  -6067.333008
+     6200000  9200000 ONE  -3032.359131
+     9200000 12300000 NINE -3020.820312
+    12300000 17600000 FOUR -4690.033203
+    17600000 17800000 SIL   -302.439148
+    .
+</PRE>
+This shows the start and end time of each word and the total log probability.
+The fields output by HV<SMALL>ITE</SMALL> can be controlled using 
+the <TT>-o</TT>.  For example, the option <TT>-o ST</TT> would suppress
+the scores and the times to give
+<PRE>
+    "testf1.rec"
+    SIL 
+    ONE
+    NINE
+    FOUR
+    SIL 
+    .
+</PRE>
+
+<P>
+In order to use HV<SMALL>ITE</SMALL> effectively and efficiently, it is important to 
+set appropriate values for its pruning<A NAME="20625">&#160;</A> thresholds and the language model
+scaling parameters.   The main pruning beam is set by the  <TT>-t</TT> option.
+Some experimentation will be necessary to determine appropriate levels
+but around 250.0 is usually a reasonable starting point.  Word-end pruning
+(<TT>-v</TT>) and the maximum model limit<A NAME="20628">&#160;</A> (<TT>-u</TT>) can also be set
+if required, but these are not mandatory and their effectiveness will
+depend greatly on the task.
+
+<P>
+The relative levels of insertion 
+and deletion errors<A NAME="20630">&#160;</A>
+<A NAME="20631">&#160;</A> can be controlled
+by scaling the language model<A NAME="20632">&#160;</A> likelihoods using the <TT>-s</TT> option
+and adding a fixed <SPAN  CLASS="textit">penalty</SPAN>   using the <TT>-p</TT> option.
+For example, setting <TT>-s 10.0 -p -20.0</TT> would mean that every language
+model log probability <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img191.png"
+ ALT="$ x$"></SPAN> would be converted to <SPAN CLASS="MATH"><IMG
+ WIDTH="64" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img477.png"
+ ALT="$ 10x - 20$"></SPAN> before being
+added to the tokens emitted from the corresponding word-end node. As
+an extreme example, setting <TT>-p 100.0</TT>
+caused the digit recogniser above to output
+<PRE>
+   SIL OH OH ONE OH OH OH NINE FOUR OH OH OH OH SIL
+</PRE>
+where adding 100 to each word-end transition has resulted in a large number of
+insertion errors.  The word inserted is ``oh'' primarily because it is the
+shortest in the vocabulary. 
+Another problem which may occur during recognition is the inability to arrive
+at the final node in the recognition network after processing the whole
+utterance. <A NAME="20860">&#160;</A> The user is made aware of the
+problem by the message ``No tokens survived to final node of network''. The
+inability to match the data against the recognition network is usually caused
+by poorly trained acoustic models and/or very tight pruning beam-widths. In
+such cases, partial recognition results can still be obtained by setting the
+HR<SMALL>EC</SMALL> configuration variable <TT>FORCEOUT</TT> true. 
+<A NAME="20643">&#160;</A> The results will be based on the most likely partial 
+hypothesis found in the network.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

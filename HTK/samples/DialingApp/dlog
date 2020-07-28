@@ -1,0 +1,53 @@
+WARNING: no script file ../../Dict/BeebDict/beep/myHTKdict.sort.ded
+WARNING: no script file namesDict.sort.ded
+Missing Words
+-------------
+JOOP
+ODELL
+OLLASON
+SENT-END
+SENT-START
+
+Dictionary Usage Statistics
+---------------------------
+  Dictionary    TotalWords WordsUsed  TotalProns PronsUsed
+myHTKdict.so    237497         21     256778         22
+namesDict.so         2          2          3          3
+      myDict        23         23         25         25
+
+28 words required, 5 missing
+
+New Phone Usage Counts
+---------------------
+  1. k     :     4
+  2. ao    :     4
+  3. l     :     5
+  4. sp    :    25
+  5. d     :     4
+  6. ey    :     2
+  7. v     :     6
+  8. ay    :     3
+  9. ax    :     3
+ 10. t     :     5
+ 11. f     :     5
+ 12. r     :     3
+ 13. jh    :     2
+ 14. ae    :     1
+ 15. n     :    11
+ 16. s     :     6
+ 17. eh    :     4
+ 18. uw    :     3
+ 19. ia    :     2
+ 20. p     :     1
+ 21. ah    :     4
+ 22. ow    :     3
+ 23. w     :     2
+ 24. ih    :     2
+ 25. iy    :     2
+ 26. th    :     1
+ 27. uh    :     1
+ 28. y     :     1
+ 29. ng    :     1
+ 30. z     :     1
+
+Dictionary myDict created

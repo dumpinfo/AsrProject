@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Flat Starting with HCOMPV</TITLE>
+<META NAME="description" CONTENT="Contents of Flat Starting with HCOMPV">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node116_mn.html">
+<LINK REL="previous" HREF="node114_mn.html">
+<LINK REL="up" HREF="node112_mn.html">
+<LINK REL="next" HREF="node116_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03530000000000000000">&#160;</A><A NAME="s:flatstart">&#160;</A>
+<BR>
+Flat Starting with HC<SMALL>OMP</SMALL>V
+</H1>
+
+<P>
+One limitation of using HI<SMALL>NIT</SMALL> for the initialisation
+of sub-word models is that it requires labelled training data.
+For cases where this is not readily available, an alternative
+initialisation strategy is to make all models equal initially and
+move straight to embedded training using HER<SMALL>EST</SMALL>.  The
+idea behind this so-called <SPAN  CLASS="textit">flat start</SPAN> training is similar to the
+uniform segmentation strategy adopted by HI<SMALL>NIT</SMALL> since by making
+all states of all models equal, the first iteration of embedded training
+will effectively rely on a uniform segmentation of the data.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:flatst">&#160;</A><IMG
+ WIDTH="412" HEIGHT="274" ALIGN="MIDDLE" BORDER="0"
+ SRC="img258.png"
+ ALT="% latex2html id marker 50442
+$\textstyle \parbox{90mm}{ \begin{center}\setlength...
+...pter.\arabic{figctr}  Flat Start Initialisation}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+Flat start<A NAME="13686">&#160;</A> initialisation is provided by the HTK tool HC<SMALL>OMP</SMALL>V whose operation
+is illustrated by Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  The input/output of HMM definition files
+and training files in HC<SMALL>OMP</SMALL>V<A NAME="14310">&#160;</A> works in exactly the same way as described above for
+HI<SMALL>NIT</SMALL>.  It reads in a prototype HMM definition and some training data
+and outputs a new definition in which every mean and covariance is equal to 
+the global speech mean and covariance.  Thus, for example, the following
+command would read a prototype definition called <TT>proto</TT>, read in all speech
+vectors from <TT>data1</TT>, <TT>data2</TT>, <TT>data3</TT>, etc, 
+compute the global mean and covariance
+and write out a new version of <TT>proto</TT> in <TT>dir1</TT> with this mean and
+covariance.
+<PRE>
+    HCompV -m -H globals -M dir1 proto data1 data2 data3 ...
+</PRE>
+
+<P>
+The default operation of HC<SMALL>OMP</SMALL>V is only to update the covariances of the HMM
+and leave the means unchanged.  The use of the <TT>-m</TT> option above causes the
+means to be updated too.  This apparently curious default behaviour arises because
+HC<SMALL>OMP</SMALL>V is also used to initialise the variances in so-called
+<SPAN  CLASS="textit">Fixed-Variance</SPAN> HMMs. These are HMMs initialised in the normal way except
+that all covariances are set equal to the global speech covariance and never
+subsequently changed.<A NAME="13704">&#160;</A>
+
+<P>
+Finally, it should be noted that HC<SMALL>OMP</SMALL>V can also be used to generate 
+variance floor macros by using the <TT>-f</TT> option.
+<A NAME="13707">&#160;</A>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Mapping OOV words</TITLE>
+<META NAME="description" CONTENT="Contents of Mapping OOV words">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node195_mn.html">
+<LINK REL="previous" HREF="node193_mn.html">
+<LINK REL="up" HREF="node192_mn.html">
+<LINK REL="next" HREF="node195_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04220000000000000000">&#160;</A><A NAME="s:HLMmapoov">&#160;</A>
+<BR>
+Mapping OOV words
+</H1>
+
+An important step in building a language model is to decide on the
+system's vocabulary. For the purpose of this tutorial, we have
+supplied a word list in the file <TT>5k.wlist</TT> which contains the
+5000 most common words found in the text.  We'll build our language
+models and all intermediate files in the <TT>lm_5k</TT> directory,
+so create it with a suitable command:
+<PRE>
+$ mkdir lm_5k
+</PRE> 
+<P>
+Once the system's vocabulary has been specified, the tool
+LGC<SMALL>OPY</SMALL> should be used to filter out all out-of-vocabulary
+(OOV) words.  To achieve this, the 5K word list is used as a special
+case of a class map which maps all OOVs into members of the
+``unknown'' word class.  The unknown class symbol defaults to
+<TT>!!UNK</TT>, although this can be changed via the configuration
+parameter <TT>UNKNOWNNAME</TT>.  Run LGC<SMALL>OPY</SMALL> again:
+
+<P>
+<PRE>
+$ LGCopy -T 1 -o -m lm_5k/5k.wmap -b 200000 -d lm_5k -w 5k.wlist 
+         holmes.0/wmap holmes.1/data.*
+Input file holmes.1/data.0 added, weight=1.0000
+Input file holmes.1/data.1 added, weight=1.0000
+Input file holmes.1/data.2 added, weight=1.0000
+Copying 3 input files to output files with 200000 entries
+Class map = 5k.wlist [Class mappings only]
+ saving 75400 ngrams to file lm_5k/data.0
+92918 out of 489516 ngrams stored in 1 files
+</PRE> 
+<P>
+Because the <TT>-o</TT> option was passed, all <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams containing OOVs
+will be extracted from the input files and the OOV words mapped to the
+unknown symbol with the results stored in the files
+<TT>lm_5k/data.*</TT>.  A new word map containing the new class
+symbols (<TT>!!UNK</TT> in this case) and only words in the vocabulary
+will be saved to <TT>lm_5k/5k.wmap</TT>.  Note how the newly produced
+OOV <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files can no longer be decoded by the original word map
+<TT>holmes.0/wmap</TT>:
+<PRE>
+$ LGList holmes.0/wmap lm_5k/data.0 |
+  ERROR [+15330]  OpenNGramFile: Gram file map Holmes%%5k.wlist 
+        inconsistent with Holmes
+ FATAL ERROR - Terminating program LGList
+</PRE> The error is due to the mismatch between the original map's name
+(``Holmes'') and the name of the map stored in the header of the
+<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram file we attempted to list (``Holmes%%5k.wlist''). The latter
+name indicates that the word map was derived from the original map
+<TT>Holmes</TT> by resolving class membership using the class map
+<TT>5k.wlist</TT>.  As a further consistency indicator, the original
+map has a sequence count of 1 whilst the class-resolved map has a
+sequence count of 2.
+
+<P>
+The correct command for listing the contents of the OOV <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram
+file is:
+<PRE>
+$ LGList lm_5k/5k.wmap lm_5k/data.0 | more
+
+4-Gram File lm_5k/data.0[75400 entries]:
+ Text Source: LGCopy
+!!UNK       !!UNK       !!UNK       !!UNK        : 50
+!!UNK       !!UNK       !!UNK       &lt;/s&gt;         : 20
+!!UNK       !!UNK       !!UNK       A            : 2
+!!UNK       !!UNK       !!UNK       ACCOUNTS     : 1
+!!UNK       !!UNK       !!UNK       ACROSS       : 1
+!!UNK       !!UNK       !!UNK       AND          : 17
+...
+</PRE> 
+<P>
+At the same time the class resolved map <TT>lm_5k/5k.wmap</TT> can
+be used to list the contents of the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram, database files - the
+newer map can view the older grams, but not vice-versa.
+<PRE>
+$ LGList lm_5k/5k.wmap holmes.1/data.2 | more
+
+4-Gram File holmes.1/data.2[89516 entries]:
+ Text Source: LGCopy
+THE         SUSSEX      MANOR       HOUSE        : 1
+THE         SWARTHY     GIANT       GLARED       : 1
+THE         SWEEP       OF          HIS          : 1
+THE         SWEET       FACE        OF           : 1
+THE         SWEET       PROMISE     OF           : 1
+THE         SWINGING    DOOR        OF           : 1
+...
+</PRE> However, any <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams containing OOV words will be discarded since
+these are no longer in the word map.
+
+<P>
+Note that the required word map <TT>lm_5k/5k.wmap</TT> can also be
+produced also using the LS<SMALL>UBSET</SMALL> tool:
+<PRE>
+$ LSubset -T 1 holmes.0/wmap 5k.wlist lm_5k/5k.wmap
+</PRE> 
+<P>
+Note also that had the <TT>-o</TT> option not been passed to
+LGC<SMALL>OPY</SMALL> then the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files built in <TT>lm_5k</TT> would have
+contained not only those with OOV entries but also all the remaining
+purely in-vocabulary words, the union of those shown by the two
+preceding <TT>LGList</TT> commands, in fact.  The method that you choose
+to use depends on what experiments you are performing - the HTK tools allow you a degree of flexibility.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

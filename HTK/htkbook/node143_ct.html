@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of HMM System Refinement</TITLE>
+<META NAME="description" CONTENT="Contents of HMM System Refinement">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node152_mn.html">
+<LINK REL="previous" HREF="node125_mn.html">
+<LINK REL="up" HREF="node42_mn.html">
+<LINK REL="next" HREF="node144_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03700000000000000000">&#160;</A><A NAME="c:Refine">&#160;</A>
+<BR>
+HMM System Refinement
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:Tool.hedit">&#160;</A><IMG
+ WIDTH="254" HEIGHT="424" ALIGN="MIDDLE" BORDER="0"
+ SRC="img442.png"
+ ALT="$\textstyle \parbox{55mm}{ \begin{center}\setlength{\epsfxsize}{55mm}
+\epsfbox{HTKFigs//Tool.hedit.eps}
+\end{center} }$">
+</DIV>
+
+<P>
+In chapter&nbsp;<A HREF="node112_ct.html#c:Training">8</A>, the basic processes involved in training
+a continuous density HMM system were explained and examples were given
+of building a set of HMM phone models.  In the practical application
+of these techniques to building real systems, there are often a number of  
+problems to overcome.  Most of these arise from the conflicting desire
+to have a large number of model parameters in order to
+achieve high accuracy, whilst at the same time having limited and uneven
+training data. <A NAME="18357">&#160;</A>
+
+<P>
+As mentioned previously,
+the HTK philosophy is to build systems incrementally.  Starting 
+with a set of context-independent 
+monophone HMMs, a system can be refined in a sequence of stages.  Each refinement
+step typically uses the HTK HMM definition editor HHE<SMALL>D</SMALL> followed
+by re-estimation using HER<SMALL>EST</SMALL>.  These incremental manipulations of
+the HMM set often involve parameter tying, thus many of HHE<SMALL>D</SMALL>'s
+operations involve generating new macro definitions.
+
+<P>
+The principle types of manipulation that can be performed 
+by HHE<SMALL>D</SMALL><A NAME="18740">&#160;</A>
+are 
+
+<UL>
+<LI>HMM cloning to form context-dependent model sets
+</LI>
+<LI>Generalised parameter tying
+</LI>
+<LI>Data driven and decision tree based clustering.
+</LI>
+<LI>Mixture component splitting
+</LI>
+<LI>Adding/removing state transitions
+</LI>
+<LI>Stream splitting, resizing and recasting
+</LI>
+</UL>
+This chapter describes how the HTK tool HHE<SMALL>D</SMALL> is used,  its
+editing language and the main operations that can be
+performed.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html3178" HREF="node144_mn.html" TARGET="main"><SMALL>Using HHE<SMALL>D</SMALL></SMALL></A>
+<LI><A NAME="tex2html3179" HREF="node145_mn.html" TARGET="main"><SMALL>Constructing Context-Dependent Models</SMALL></A>
+<LI><A NAME="tex2html3180" HREF="node146_mn.html" TARGET="main"><SMALL>Parameter Tying and Item Lists</SMALL></A>
+<LI><A NAME="tex2html3181" HREF="node147_mn.html" TARGET="main"><SMALL>Data-Driven Clustering</SMALL></A>
+<LI><A NAME="tex2html3182" HREF="node148_mn.html" TARGET="main"><SMALL>Tree-Based Clustering</SMALL></A>
+<LI><A NAME="tex2html3183" HREF="node149_mn.html" TARGET="main"><SMALL>Mixture Incrementing</SMALL></A>
+<LI><A NAME="tex2html3184" HREF="node150_mn.html" TARGET="main"><SMALL>Regression Class Tree Construction</SMALL></A>
+<LI><A NAME="tex2html3185" HREF="node151_mn.html" TARGET="main"><SMALL>Miscellaneous Operations</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

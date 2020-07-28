@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Regression Class Trees</TITLE>
+<META NAME="description" CONTENT="Contents of Regression Class Trees">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node134_mn.html">
+<LINK REL="previous" HREF="node132_mn.html">
+<LINK REL="up" HREF="node126_mn.html">
+<LINK REL="next" HREF="node134_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03614000000000000000">&#160;</A><A NAME="s:reg_classes">&#160;</A>
+<A NAME="15872">&#160;</A>
+<BR>
+Regression Class Trees
+</H2>
+To improve the flexibility of the adaptation process it is possible to
+determine the appropriate set of baseclasses depending on the amount
+of adaptation data that is available. If a small amount of data is
+available then a <SPAN  CLASS="textit">global</SPAN> adaptation transform
+<A NAME="15874">&#160;</A> can be generated. A global transform 
+(as its name suggests) is applied
+to every Gaussian component in the model set. However as more
+adaptation data becomes available, improved adaptation is possible by
+increasing the number of transformations. Each transformation is now
+more specific and applied to certain groupings of Gaussian components.
+For instance the Gaussian components could be grouped into the broad 
+phone classes: silence, vowels, stops, glides, nasals, fricatives, etc.
+The adaptation data could now be used to construct more specific broad
+class transforms to apply to these groupings.
+
+<P>
+Rather than specifying static component groupings or classes, a robust
+and dynamic method is used for the construction of further transformations
+as more adaptation data becomes available. MLLR makes
+use of a <SPAN  CLASS="textit">regression class tree</SPAN> to group the Gaussians in the
+model set, so that the set of transformations to be estimated can be
+chosen according to the amount and type of adaptation data that is
+available. The tying of each transformation across a number of mixture
+components makes it possible to adapt distributions for which there
+were no observations at all. With this process all models can be
+adapted and the adaptation process is dynamically refined when more
+adaptation data becomes available.
+<BR>
+<P>
+The regression class tree is constructed so as to cluster together
+components that are close in acoustic space, so that similar
+components can be transformed in a similar way.  Note that the tree is
+built using the original speaker independent model set, and is thus
+independent of any new speaker.  The tree is constructed with a
+centroid splitting algorithm, which uses a Euclidean distance
+measure. For more details see section&nbsp;<A HREF="node150_ct.html#s:hhedregtree">10.7</A>.  The
+terminal nodes or leaves of the tree specify the final component
+groupings, and are termed the <SPAN  CLASS="textit">base (regression) classes</SPAN>. Each
+Gaussian component of a model set belongs to one particular base
+class. The tool HHE<SMALL>D</SMALL> can be used to build a binary regression
+class tree, and to label each component with a base class number.
+Both the tree and component base class numbers can be saved as part of
+the MMF, or simply stored separately. Please refer to
+section&nbsp;<A HREF="node150_ct.html#s:hhedregtree">10.7</A> for further details.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:regtree1">&#160;</A><IMG
+ WIDTH="253" HEIGHT="306" ALIGN="MIDDLE" BORDER="0"
+ SRC="img357.png"
+ ALT="% latex2html id marker 50839
+$\textstyle \parbox{55mm}{ \begin{center}\setlength...
+...apter.\arabic{figctr}  A binary regression tree}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+Figure&nbsp;<A HREF="node133_ct.html#f:regtree1">9.1</A> shows a simple example of a binary regression
+tree with four base classes, denoted as <!-- MATH
+ $\{C_4, C_5, C_6,
+C_7\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="115" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img358.png"
+ ALT="$ \{C_4, C_5, C_6,
+C_7\}$"></SPAN>. During ``dynamic'' adaptation, the occupation counts are
+accumulated for each of the regression base classes. The diagram shows
+a solid arrow and circle (or node), indicating that there is
+sufficient data for a transformation matrix to be generated using the
+data associated with that class. A dotted line and circle indicates
+that there is insufficient data. For example neither node 6 or 7 has
+sufficient data; however when pooled at node 3, there is sufficient
+adaptation data.  The amount of data that is ``determined'' as
+sufficient is set as a configuration option for HER<SMALL>EST</SMALL> (see
+reference section&nbsp;<A HREF="node261_ct.html#s:HERest">17.6</A>).
+
+<P>
+HER<SMALL>EST</SMALL> uses a top-down approach to traverse the regression
+class tree. Here the search starts at the root node and progresses
+down the tree generating transforms only for those nodes which
+
+<OL>
+<LI>have sufficient data <SPAN  CLASS="textbf">and</SPAN>
+</LI>
+<LI>are either terminal nodes (i.e. base classes) <SPAN  CLASS="textbf">or</SPAN> have
+any children without sufficient data.
+</LI>
+</OL>
+
+<P>
+In the example shown in figure&nbsp;<A HREF="node133_ct.html#f:regtree1">9.1</A>, transforms are constructed
+only for regression nodes 2, 3 and 4, which can be denoted as
+<SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img359.png"
+ ALT="$ {\bf W}_2$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img360.png"
+ ALT="$ {\bf W}_3$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="30" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img361.png"
+ ALT="$ {\bf W}_4$"></SPAN>. Hence when the transformed
+model set is required, the transformation matrices (mean and variance)
+are applied in the following fashion to the Gaussian components in
+each base class:-
+<!-- MATH
+ \begin{displaymath}
+\left\{
+        \begin{array}{ccl}
+                {\bf W}_2 & \rightarrow & \left\{C_5\right\} \\
+                {\bf W}_3 & \rightarrow & \left\{C_6, C_7\right\} \\
+                {\bf W}_4 & \rightarrow & \left\{C_4\right\}
+        \end{array}
+        \right\}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="182" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img362.png"
+ ALT="$\displaystyle \left\{
+\begin{array}{ccl}
+{\bf W}_2 &amp; \rightarrow &amp; \left\{C_5\r...
+...7\right\} \\
+{\bf W}_4 &amp; \rightarrow &amp; \left\{C_4\right\}
+\end{array}\right\}
+$">
+</DIV><P></P>
+
+<P>
+At this point it is interesting to note that the global adaptation
+case is the same as a tree with just a root node, and is in fact
+treated as such.
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<DIV ALIGN="CENTER"><A NAME="fig:regtree">&#160;</A><A NAME="15907">&#160;</A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 9.3:</STRONG>
+Regression class tree example</CAPTION>
+<TR><TD><IMG
+ WIDTH="266" HEIGHT="164" BORDER="0"
+ SRC="img363.png"
+ ALT="\begin{figure}\begin{verbatim}&nbsp;r ''regtree_4.tree''
+&lt;BASECLASS&gt;&nbsp;b ''baseclas...
+...DE&gt; 4 1 1
+&lt;TNODE&gt; 5 1 2
+&lt;TNODE&gt; 6 1 3
+&lt;TNODE&gt; 7 1 4\end{verbatim}\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+<DIV ALIGN="CENTER">
+</DIV>
+An example of a regression class tree is shown in figure&nbsp;<A HREF="node133_ct.html#fig:regtree">9.3</A>.
+This uses the four baseclasses from the baseclass macro ``baseclass_4.base''.
+A binary regression tree is shown, thus there are 4 terminal nodes. 
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

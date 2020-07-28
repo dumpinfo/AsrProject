@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node302_mn.html">
+<LINK REL="previous" HREF="node265_mn.html">
+<LINK REL="up" HREF="node265_mn.html">
+<LINK REL="next" HREF="node267_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05171000000000000000">
+Function</A>
+</H2>
+
+<P>
+<A NAME="27064">&#160;</A>
+HHE<SMALL>D</SMALL> is a script driven editor for manipulating sets of HMM definitions.
+Its basic operation is to load in a set of HMMs, apply a sequence of edit
+operations and then output the transformed set. HHE<SMALL>D</SMALL> is mainly used for
+applying tyings across selected HMM parameters.  It also has facilities for
+cloning HMMs, clustering states and editing HMM structures.
+
+<P>
+Many HHE<SMALL>D</SMALL> commands operate on sets of similar items selected from the
+set of currently loaded HMMs.  For example, it is possible to define a set of
+all final states of all vowel models, or all mean vectors of all mixture
+components within the model X, etc.  Sets such as these are defined by item
+lists using the syntax rules given below.  In all commands, all of the items in
+the set defined by an item list must be of the same type where the possible
+types are
+<PRE><TT>
+		  s 		 - state 		 t 		 - transition matrix 
+<BR>
+p 		 - pdf 		 w 		 - stream weights 
+<BR>
+m 		 - mixture component 		 d 		 - duration parameters 
+<BR>
+u 		 - mean vector 		 x 		 - transform matrix 
+<BR>
+v 		 - variance vector 		 i 		 - inverse covariance matrix 
+<BR>
+h 		 - HMM definition
+</TT></PRE>
+
+Most of the above correspond directly to the tie points shown in
+Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  There is just one exception.  The type ``p''
+corresponds to a pdf (ie a sum of Gaussian mixtures).  Pdf's cannot
+be tied, however, they can be named in a Tie (<TT>TI</TT>) command
+(see below) in which case, the effect is to join all of the contained
+mixture components into one pool of mixtures and then all of the
+mixtures in the pool are shared across all pdf's.  This allows
+conventional <I>tied-mixture</I> or <I>semi-continuous</I> HMM systems
+to be constructed.
+
+<P>
+The syntax rules for item lists are as follows.  An item list
+consists of a comma separated list of item sets.
+<PRE><TT>
+		     itemList		  = 		 ``{'' itemSet { ``,'' itemSet } ``}'' 
+</TT></PRE>
+
+Each <I CLASS="sans">itemSet</I> consists of the name of one
+or more HMMs (or a pattern
+representing a set of HMMs) followed by a specification
+which represents a set of paths down the parameter hierarchy 
+each terminating at one of the required parameter items.
+<PRE><TT>
+		      itemSet 		  = 		 hmmName . [``transP'' <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> ``state'' state ]
+<BR>
+hmmName 		  = 		 ident <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> identList 
+<BR>
+identList		  = 		 ``('' ident { ``,'' ident } ``)'' 
+<BR>
+ident 		  = 		 <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN> char <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> metachar <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN> 
+<BR>
+metachar 		  = 		 ``?'' <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> ``<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img630.png"
+ ALT="$ \star$"></SPAN>''
+</TT></PRE>
+
+A <I CLASS="sans">hmmName</I> consists of a single <I CLASS="sans">ident</I> or
+a comma separated list of <I CLASS="sans">ident</I>'s.  The following examples
+are all valid <I CLASS="sans">hmmName</I>'s:
+<PRE>
+         aa  three  model001  (aa,iy,ah,uh)  (one,two,three)
+</PRE>
+In addition, an <I CLASS="sans">ident</I> can contain the metacharacter
+``?'' which matches any single character and the metacharacter
+``<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img630.png"
+ ALT="$ \star$"></SPAN>'' which matches a string of zero or more characters.
+For example, the item list
+<PRE>
+         {*-aa+*.transP}
+</PRE>
+would represent the set of transition matrices of all loaded
+triphone variations of <TT>aa</TT>.
+
+<P>
+Items within states require the state indices to be specified
+<PRE><TT>
+		      state 		  = 		 index [``.'' stateComp ] 
+<BR>
+index 		  = 		 ``['' intRange { ``,'' intRange } ``]'' 
+<BR>
+intRange 		 = 		 integer [ ``-'' integer ]
+</TT></PRE>
+For example, the item list
+<PRE>
+         {*.state[1,3-5,9]}
+</PRE>
+represents the set of all states 1, 3 to 5 inclusive and 9 of all
+currently loaded HMMs.  Items within states include durational
+parameters, stream weights, pdf's and all items within mixtures
+<PRE><TT>
+		   stateComp 		  = 		 ``dur'' <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> ``weights'' <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> [ `` stream'' index ]        ``.'' ``mix'' [ mix ]
+</TT></PRE>
+For example, 
+<PRE>
+         {(aa,ah,ax).state[2].dur}
+</PRE>
+denotes the set of durational parameter vectors from state 2 of the
+HMMs <TT>aa</TT>, <TT>ah</TT> and <TT>ax</TT>.  Similarly, 
+<PRE>
+         {*.state[2-4].weights}
+</PRE>
+denotes the set of stream weights for states 2 to 4 of all currently
+loaded HMMs.  The specification of pdf's may optionally include a
+list of the relevant streams, if omitted, stream 1 is assumed.
+For example,
+<PRE>
+         {three.state[3].mix}
+</PRE>
+and
+<PRE>
+         {three.state[3].stream[1].mix}
+</PRE>
+both denote a list of the single pdf belonging to stream 1 of state 3 
+of the HMM <TT>three</TT>.
+
+<P>
+Within a pdf, the possible item types are mixture components,
+mean vectors, and the various possible forms of covariance
+parameters
+<PRE><TT>
+		   mix 		  = 		  index [ ``.'' ( ``mean'' <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> ``cov'' ) ]
+</TT></PRE>
+For example,
+<PRE>
+         {*.state[2].mix[1-3]}
+</PRE>
+denotes the set of mixture components 1 to 3 from state 2 of all
+currently loaded HMMs and
+<PRE>
+         {(one,two).state[4].stream[3].mix[1].mean}
+</PRE>
+denotes the set of mean vectors from mixture component 1, stream 3,
+state 4 of the HMMs <TT>one</TT> and <TT>two</TT>.  When <I CLASS="sans">cov</I>
+is specified, the type of the covariance item referred to is 
+determined from the <TT>CovKind</TT> of the loaded models.  Thus,
+for diagonal covariance models, the item list
+<PRE>
+         {*.state[2-4].mix[1].cov}
+</PRE>
+would denote the set of variance vectors for mixture 1, states 2 to 4
+of all loaded HMMs.
+
+<P>
+Note finally, that it is not an error to specify non-existent models,
+states, mixtures, etc.  All item list specifications are regarded
+as patterns which are matched against the currently loaded set of
+models.  All and only those items which match are included in
+the set.  However, both a null result and a set of items of mixed
+type do result in errors.
+
+<P>
+All HHE<SMALL>D</SMALL> commands consist of a 2 character command name followed
+by zero or more arguments.  In the following descriptions, item
+lists are shown as <TT>itemList(c)</TT> where the character c denotes the
+type of item expected by that command.  If this type indicator is
+missing then the command works for all item types.
+
+<P>
+The HHE<SMALL>D</SMALL> commands are as follows
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html5448" HREF="node267_mn.html" TARGET="main"><SMALL><TT>AT i j prob itemList(t)</TT></SMALL></A>
+<LI><A NAME="tex2html5449" HREF="node268_mn.html" TARGET="main"><SMALL><TT>AU hmmList</TT></SMALL></A>
+<LI><A NAME="tex2html5450" HREF="node269_mn.html" TARGET="main"><SMALL><TT>CL hmmList</TT></SMALL></A>
+<LI><A NAME="tex2html5451" HREF="node270_mn.html" TARGET="main"><SMALL><TT>CO newList</TT></SMALL></A>
+<LI><A NAME="tex2html5452" HREF="node271_mn.html" TARGET="main"><SMALL><TT>DP s n id ...</TT></SMALL></A>
+<LI><A NAME="tex2html5453" HREF="node272_mn.html" TARGET="main"><SMALL><TT>FA varscale</TT></SMALL></A>
+<LI><A NAME="tex2html5454" HREF="node273_mn.html" TARGET="main"><SMALL><TT>FC</TT></SMALL></A>
+<LI><A NAME="tex2html5455" HREF="node274_mn.html" TARGET="main"><SMALL><TT>FV file</TT></SMALL></A>
+<LI><A NAME="tex2html5456" HREF="node275_mn.html" TARGET="main"><SMALL><TT>HK hsetkind</TT></SMALL></A>
+<LI><A NAME="tex2html5457" HREF="node276_mn.html" TARGET="main"><SMALL><TT>JO size minw</TT></SMALL></A>
+<LI><A NAME="tex2html5458" HREF="node277_mn.html" TARGET="main"><SMALL><TT>LS statsfile</TT></SMALL></A>
+<LI><A NAME="tex2html5459" HREF="node278_mn.html" TARGET="main"><SMALL><TT>LT treesfile</TT></SMALL></A>
+<LI><A NAME="tex2html5460" HREF="node279_mn.html" TARGET="main"><SMALL><TT>MD nmix itemlist</TT></SMALL></A>
+<LI><A NAME="tex2html5461" HREF="node280_mn.html" TARGET="main"><SMALL><TT>MM macro itemList</TT></SMALL></A>
+<LI><A NAME="tex2html5462" HREF="node281_mn.html" TARGET="main"><SMALL><TT>MT triList newTriList</TT></SMALL></A>
+<LI><A NAME="tex2html5463" HREF="node282_mn.html" TARGET="main"><SMALL><TT>MU m itemList(p)</TT></SMALL></A>
+<LI><A NAME="tex2html5464" HREF="node283_mn.html" TARGET="main"><SMALL><TT>NC N macro itemList(s)</TT></SMALL></A>
+<LI><A NAME="tex2html5465" HREF="node284_mn.html" TARGET="main"><SMALL><TT>PS nstates power [numiters]   </TT></SMALL></A>
+<LI><A NAME="tex2html5466" HREF="node285_mn.html" TARGET="main"><SMALL><TT>QS name itemList(h)</TT></SMALL></A>
+<LI><A NAME="tex2html5467" HREF="node286_mn.html" TARGET="main"><SMALL><TT>RC N identifier [itemlist]</TT></SMALL></A>
+<LI><A NAME="tex2html5468" HREF="node287_mn.html" TARGET="main"><SMALL><TT>RN hmmIdName</TT></SMALL></A>
+<LI><A NAME="tex2html5469" HREF="node288_mn.html" TARGET="main"><SMALL><TT>RM hmmFile</TT></SMALL></A>
+<LI><A NAME="tex2html5470" HREF="node289_mn.html" TARGET="main"><SMALL><TT>RO f [statsfile]</TT></SMALL></A>
+<LI><A NAME="tex2html5471" HREF="node290_mn.html" TARGET="main"><SMALL><TT>RT i j itemList(t)</TT></SMALL></A>
+<LI><A NAME="tex2html5472" HREF="node291_mn.html" TARGET="main"><SMALL><TT>SH</TT></SMALL></A>
+<LI><A NAME="tex2html5473" HREF="node292_mn.html" TARGET="main"><SMALL><TT>SK skind</TT></SMALL></A>
+<LI><A NAME="tex2html5474" HREF="node293_mn.html" TARGET="main"><SMALL><TT>SS N</TT></SMALL></A>
+<LI><A NAME="tex2html5475" HREF="node294_mn.html" TARGET="main"><SMALL><TT>ST filename</TT></SMALL></A>
+<LI><A NAME="tex2html5476" HREF="node295_mn.html" TARGET="main"><SMALL><TT>SU N w1 w2 w3 .. wN</TT></SMALL></A>
+<LI><A NAME="tex2html5477" HREF="node296_mn.html" TARGET="main"><SMALL><TT>SW s n</TT></SMALL></A>
+<LI><A NAME="tex2html5478" HREF="node297_mn.html" TARGET="main"><SMALL><TT>TB f macro itemList(s or h)</TT></SMALL></A>
+<LI><A NAME="tex2html5479" HREF="node298_mn.html" TARGET="main"><SMALL><TT>TC f macro itemList(s)</TT></SMALL></A>
+<LI><A NAME="tex2html5480" HREF="node299_mn.html" TARGET="main"><SMALL><TT>TI macro itemList</TT></SMALL></A>
+<LI><A NAME="tex2html5481" HREF="node300_mn.html" TARGET="main"><SMALL><TT>TR n</TT></SMALL></A>
+<LI><A NAME="tex2html5482" HREF="node301_mn.html" TARGET="main"><SMALL><TT>UT itemList</TT></SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

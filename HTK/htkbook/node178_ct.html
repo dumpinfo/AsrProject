@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Word n-gram models</TITLE>
+<META NAME="description" CONTENT="Contents of Word n-gram models">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node179_mn.html">
+<LINK REL="previous" HREF="node177_mn.html">
+<LINK REL="up" HREF="node177_mn.html">
+<LINK REL="next" HREF="node179_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION04111000000000000000">&#160;</A><A NAME="s:wordngrams">&#160;</A>
+<BR>
+Word <I>n</I>-gram models
+</H2>
+
+Equation <A HREF="node177_ct.html#cond_prob_model">14.1</A> presents an opportunity for
+approximating <!-- MATH
+ $\hat{P}(\cal{W})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="46" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img489.png"
+ ALT="$ \hat{P}(\cal{W})$"></SPAN> by limiting the context:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="ngram_model">&#160;</A><!-- MATH
+ \begin{equation}
+\hat P(w_1, w_2, \ldots, w_m) \simeq \prod_{i=1}^{m} \hat P(w_i \;|\; w_{i-n+1},
+\ldots, w_{i-1})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="350" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img490.png"
+ ALT="$\displaystyle \hat P(w_1, w_2, \ldots, w_m) \simeq \prod_{i=1}^{m} \hat P(w_i \;\vert\; w_{i-n+1}, \ldots, w_{i-1})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for some <!-- MATH
+ $n \geqslant 1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img491.png"
+ ALT="$ n \geqslant 1$"></SPAN>. If language is assumed to be ergodic - that
+is, it has the property that the probability of any state can be
+estimated from a large enough history independent of the starting
+conditions<A NAME="tex2html55" HREF="footnode_mn.html#foot21291" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A> - then for sufficiently high <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN> equation
+<A HREF="node178_ct.html#ngram_model">14.2</A> is exact.  Due to reasons of data sparsity, however,
+values of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN> in the range of 1 to 4 inclusive are typically used, and
+there are also practicalities of storage space for these estimates to
+consider.  Models using contiguous but limited context in this way are
+usually referred to as <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram language models, and the conditional
+context component of the probability (``<!-- MATH
+ $w_{i-n+1}, \ldots, w_{i-1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="123" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img492.png"
+ ALT="$ w_{i-n+1}, \ldots, w_{i-1}$"></SPAN>''
+in equation <A HREF="node178_ct.html#ngram_model">14.2</A>) is referred to as the <I>history</I>.
+
+<P>
+Estimates of probabilities in <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram models are commonly based on maximum
+likelihood estimates - that is, by counting events in context on some given
+training text:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="ngramcountdiv">&#160;</A><!-- MATH
+ \begin{equation}
+\hat P(w_i | w_{i-n+1}, \ldots, w_{i-1}) =
+\frac{C(w_{i-n+1}, \ldots, w_i)}{C(w_{i-n+1}, \ldots, w_{i-1})}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="338" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img493.png"
+ ALT="$\displaystyle \hat P(w_i \vert w_{i-n+1}, \ldots, w_{i-1}) = \frac{C(w_{i-n+1}, \ldots, w_i)}{C(w_{i-n+1}, \ldots, w_{i-1})}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img494.png"
+ ALT="$ C(.)$"></SPAN> is the count of a given word sequence in the
+training text. Refinements to this maximum likelihood estimate are
+described later in this chapter.
+
+<P>
+The choice of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN> has a significant effect on the number of potential
+parameters that the model can have, which is maximally bounded by
+<!-- MATH
+ $|\mathbb{W}|^n$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img495.png"
+ ALT="$ \vert\mathbb{W}\vert^n$"></SPAN>, where <!-- MATH
+ $\mathbb{W}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img496.png"
+ ALT="$ \mathbb{W}$"></SPAN> is the set of words in the
+language model, also known as the <I>vocabulary</I>.  A 4-gram model
+with a typically-sized 65,000 word vocabulary can therefore
+potentially have <!-- MATH
+ $65,000\,^4
+\simeq 1.8\times10^{19}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="151" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img497.png"
+ ALT="$ 65,000 ^4
+\simeq 1.8\times10^{19}$"></SPAN> parameters.  In practice, however, only a
+small subset of the possible parameter combinations represent likely
+word sequences, so the storage requirement is far less than this
+theoretical maximum - of the order of <SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img498.png"
+ ALT="$ 10^{11}$"></SPAN> times less in
+fact.<A NAME="tex2html56" HREF="footnode_mn.html#foot21310" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A>  Even given this significant reduction in
+coverage and a very large training text<A NAME="tex2html57" HREF="footnode_mn.html#foot21311" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A> there are still many plausible word
+sequences which will not be encountered in the training text, or will
+not be found a statistically significant number of times. It would not
+be sensible to assign all unseen sequences zero probability, so
+methods of coping with low and zero occurrence word tuples have been
+developed. This is discussed later in section <A HREF="node183_ct.html#robust_estimation">14.3</A>.
+
+<P>
+It is not only the storage space that must be considered, however -
+it is also necessary to be able to attach a reasonable degree of
+confidence to the derived estimates. Suitably large quantities of
+example training text are also therefore required to ensure statistical
+significance.  Increasing the amount of training text not only gives
+greater confidence in model estimates, however, but also demands more
+storage space and longer analysis periods when estimating model
+parameters, which may place feasibility limits on how much data can be
+used in constructing the final model or how thoroughly it can be
+analysed. At the other end of the scale for restricted domain models
+there may be only a limited quantity of suitable in-domain text
+available, so local estimates may need smoothing with global priors.
+In addition, if language models are to be used for speech recognition
+then it is good to train them on <I>precise</I> acoustic transcriptions
+where possible - that is, text which features the hesitations,
+repetitions, word fragments, mistakes and all the other sources of
+deviation from purely grammatical language that characterise everyday
+speech. However, such acoustically accurate transcriptions are in
+limited supply since they must be specifically prepared; real-world
+transcripts as available for various other purposes almost
+ubiquitously correct any disfluencies or mistakes made by speakers.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

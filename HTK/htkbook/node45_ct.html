@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Script Files</TITLE>
+<META NAME="description" CONTENT="Contents of Script Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node46_mn.html">
+<LINK REL="previous" HREF="node44_mn.html">
+<LINK REL="up" HREF="node43_mn.html">
+<LINK REL="next" HREF="node46_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03120000000000000000">&#160;</A><A NAME="s:script">&#160;</A>
+<BR>
+Script Files
+</H1>
+
+<P>
+Tools which require a potentially very long list of files (e.g. training
+tools) always allow the files to be specified in a script<A NAME="4780">&#160;</A>
+file<A NAME="4781">&#160;</A> via the <TT>-S</TT> option instead of via the command
+line.
+<A NAME="5121">&#160;</A>This is particularly useful when running
+under an OS with limited file name expansion capability.  Thus, for example,
+HI<SMALL>NIT</SMALL><A NAME="5122">&#160;</A> may be invoked by either
+<PRE>
+     HInit hmmfile s1 s2 s3 s4 s5 ....
+</PRE>  
+or
+<PRE>
+     HInit -S filelist hmmfile
+</PRE>          
+where <TT>filelist</TT> holds the list of files <TT>s1</TT>, <TT>s2</TT>, etc.
+Each file listed in a script should be separated by white space or a new line.
+Usually, files are listed on separate lines, however, when using
+HC<SMALL>OPY</SMALL><A NAME="5123">&#160;</A> which read pairs of files as its
+arguments, it is normal to write each pair on a single line.  Script files
+should only be used for storing ellipsed<A NAME="4795">&#160;</A>
+file list arguments. Note that shell meta-characters should not be
+used in script files and will not be interpreted by the HTK tools.
+
+<P>
+Starting with HTK 3.1 the syntax of script fies has been extended.
+In addition to directly specifying the name of a physical file it is
+possible to define aliases and to select a segment from a file. The
+general syntax of an extended filename <A NAME="4796">&#160;</A> is
+<PRE>
+     logfile=physfile[s,e]
+</PRE>
+where <TT>logfile</TT> is the logical filename used by the HTK tools
+and will appear in mlf files and similar. <TT>physfile</TT> is the
+physical name of the actual file on disk that will be accessed and
+<TT>s</TT> and <TT>e</TT> are indices that can be used to select only
+a segment of the file. One example of a use of this feature is the
+evaluation of different segmentations of the audio data. A new
+segmentation can be used by creating a new script file without having
+to create multiple copies of the data.
+
+<P>
+A typical script file might look like:
+<PRE>
+s23-0001-A_000143_000291.plp=/data/plp/complete/s23-0001-A.plp[143,291]
+s23-0001-A_000291_000500.plp=/data/plp/complete/s23-0001-A.plp[291,500]
+s23-0001-A_000500_000889.plp=/data/plp/complete/s23-0001-A.plp[500,889]
+</PRE>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

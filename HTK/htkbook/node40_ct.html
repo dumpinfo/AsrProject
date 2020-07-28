@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Running the Recogniser Live</TITLE>
+<META NAME="description" CONTENT="Contents of Running the Recogniser Live">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node41_mn.html">
+<LINK REL="previous" HREF="node38_mn.html">
+<LINK REL="up" HREF="node24_mn.html">
+<LINK REL="next" HREF="node41_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION02350000000000000000">&#160;</A><A NAME="s:egreclive">&#160;</A>
+<BR>
+Running the Recogniser Live
+</H1>
+
+<P>
+The recogniser can also be run with live input<A NAME="3968">&#160;</A>.  
+<A NAME="3969">&#160;</A>
+To do this it is only
+necessary to set the configuration variables needed to convert the input
+audio to the correct form of  parameterisation.  Specifically, the following
+needs to be appended to the configuration file <TT>config</TT> to
+create a new configuration file <TT>config2</TT>
+<PRE>
+    # Waveform capture
+    SOURCERATE=625.0
+    SOURCEKIND=HAUDIO
+    SOURCEFORMAT=HTK
+    ENORMALISE=F
+    USESILDET=T
+    MEASURESIL=F
+    OUTSILWARN=T
+</PRE>
+These indicate that the source is direct audio with sample period 62.5
+<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img121.png"
+ ALT="$ \mu$"></SPAN>secs.  The silence detector is enabled and a measurement of the background
+speech/silence levels should be made at start-up.  The final line makes sure
+that a warning is printed when this silence measurement is being made.
+
+<P>
+Once the configuration file has been set-up for direct audio input,
+HV<SMALL>ITE</SMALL> can be run as in the previous step except that no files need be
+given as arguments
+
+<P>
+<PRE>
+    HVite -H hmm15/macros -H hmm15/hmmdefs -C config2 \
+          -w wdnet -p 0.0 -s 5.0 dict tiedlist
+</PRE>
+
+<P>
+On start-up, HV<SMALL>ITE</SMALL> will prompt the user to speak an
+arbitrary sentence (approx. 4 secs) in order to measure the speech and
+background silence levels. It will then repeatedly recognise and, if trace
+level bit 1 is set, it will output each utterance to the terminal. A typical
+session is as follows<A NAME="3978">&#160;</A>
+
+<P>
+<PRE>
+   Read 1648 physical / 4131 logical HMMs
+   Read lattice with 26 nodes / 52 arcs
+   Created network with 123 nodes / 151 links
+
+   READY[1]&gt;
+   Please speak sentence - measuring levels
+   Level measurement completed
+   DIAL FOUR SIX FOUR TWO FOUR OH  
+        == [303 frames] -95.5773 [Ac=-28630.2 LM=-329.8] (Act=21.8)
+   
+   READY[2]&gt;
+    DIAL ZERO EIGHT SIX TWO 
+        == [228 frames] -99.3758 [Ac=-22402.2 LM=-255.5] (Act=21.8)
+   
+   READY[3]&gt;
+    etc
+</PRE>
+During loading, information will be printed out regarding the different
+recogniser components. The physical models are the distinct HMMs used by 
+the system, while the logical models include all model names. The number 
+of logical models is higher than the number of physical models because many 
+logically distinct models have been determined to be physically identical 
+and have been merged during the previous model building steps. The lattice
+information refers to the number of links and nodes in the recognition syntax.
+The network information refers to actual recognition network built by
+expanding the lattice using the current HMM set, dictionary and any context
+expansion rules specified.
+After each utterance, the numerical information gives the total number
+of frames, the average log likelihood per frame, the total acoustic score,
+the total language model score and the average number of models active.
+
+<P>
+Note that if it was required to recognise a new name, then the
+following two changes would be needed
+
+<OL>
+<LI>the grammar would be altered to include the new name
+</LI>
+<LI>a pronunciation for the new name would be added to the dictionary
+</LI>
+</OL>
+If the new name required triphones which did not exist, then they could be
+created by loading the existing triphone set into
+HHE<SMALL>D</SMALL><A NAME="4031">&#160;</A>, loading the decision trees using the
+<TT>LT</TT> command<A NAME="4032">&#160;</A> and then using the
+<TT>AU</TT> command<A NAME="4033">&#160;</A> to generate a new complete
+triphone set.<A NAME="3989">&#160;</A>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

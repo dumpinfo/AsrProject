@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0054)http://www.moonstar.com/~morticia/thesis/chapter3.html -->
+<HTML><HEAD><TITLE>Chapter 3 Preprocessing Of The Speech Data</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY>
+<CENTER><A 
+href="http://www.moonstar.com/~morticia/thesis/chapter2.html">[Back]</A> <A 
+href="http://www.moonstar.com/~morticia/thesis/contents.html">[Contents 
+Page]</A> <A 
+href="http://www.moonstar.com/~morticia/thesis/chapter4.html">[Next]</A></CENTER><BR><BR>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=0 width=640 border=0>
+  <TBODY>
+  <TR vAlign=center align=left WIDTH="640">
+    <TD width=640>
+      <CENTER>
+      <H1>Chapter 3 Preprocessing Of The Speech Data</H1></CENTER><BR><BR><A 
+      name=31>
+      <H3>3.1 Introduction </H3></A>As mentioned in section 2.3, two of the 
+      major problems in speech recognition systems have been due to the 
+      fluctuations in the speech pattern time axis and spectral pattern 
+      variation [51]. Speech is greatly affected by differences in the speaker 
+      such as age and sex as well their physical and psychological condition. 
+      The pitch and speed of the speaker will be altered by the way they feel at 
+      the time. If they are agitated, angry or short of time they will most 
+      likely speak at a faster rate and higher pitch than when they are calm and 
+      relaxed [23]. <BR><BR>Speaking rate variation results in non-linear 
+      fluctuations in the speech pattern time axis. The length of the input 
+      pattern to the neural network in question is constrained by the number of 
+      input neurons to the neural network since this type of network 
+      architecture cannot be varied once trained. The input pattern vectors must 
+      be modified to fit the neural network while still retaining all their 
+      discriminating features. <BR><BR>Various algorithms are available to 
+      perform this time alignment of the input pattern to the neural network and 
+      the performance of the neural network is dependent upon the performance of 
+      the time alignment algorithm used. In this chapter, the various types of 
+      time alignment algorithms are described and their operation is outlined in 
+      detail. <BR><BR><BR><A name=32>
+      <H3>3.2 Time Alignment Algorithms </H3></A>The simplest time alignment 
+      algorithms are linear. However, they take no account of the importance of 
+      the feature vectors within the pattern vector when deleting or duplicating 
+      them to shorten or lengthen the pattern vector if required. Important 
+      features, therefore, may be lost in the process. <BR><BR>On the other 
+      hand, non-linear time alignment algorithms are more complicated and 
+      involve higher computational expenditure. Their advantage lies in the fact 
+      that they recognize important features and attempt to retain these 
+      features in the time aligned pattern vector. Two non-linear time alignment 
+      algorithms are dynamic time warping (DTW) and trace segmentation (TS). 
+      <BR><BR><A name=321><B>3.2.1 Linear Time Alignment</B></A> <BR><BR>Linear 
+      time alignment algorithms are the simplest algorithms to implement and 
+      they can be used for both expansion or compression of the speech pattern 
+      vector. There are various ways of implementing linear algorithms but all 
+      use the basic method of deleting feature vectors to shorten the speech 
+      pattern and duplicating feature vectors to length the speech pattern. An 
+      example is to duplicate or delete vectors at regular intervals along the 
+      pattern vector until the speech pattern is the correct size. An example of 
+      a linear algorithm used in conjunction with a neural network is that of 
+      Woodland [61]. Woodland achieved recognition rates of 91% for multiple 
+      speaker recognition and 88.3% for speaker independent recognition. These 
+      tests were carried out on the BT English alphabet database used in this 
+      thesis. <BR><BR><BR><A name=322><B>3.2.2 Dynamic Time Warping</B></A> 
+      <BR><BR>Dynamic time warping (DTW) for time alignment was introduced by 
+      Sakoe and Chiba in 1978 [49] when it was used in conjunction with dynamic 
+      programming techniques for the recognition of isolated words. DTW has been 
+      used in conjunction with a neural network by Sakoe et al in 1989 [51] for 
+      the recognition of isolated words in the form of Japanese digits. 
+      <BR><BR>The DTW algorithm removes timing differences between speech 
+      patterns by warping the time axis of one speech pattern until it maximally 
+      coincides with the other. All pattern vectors are warped against a 
+      reference pattern vector of the same category which has the same number of 
+      feature vectors as there are frames in the input layer of the neural 
+      network. <BR><BR>After the relevant feature extraction has taken place, 
+      speech patterns can be represented as a sequence of feature vectors,<BR>
+      <CENTER><I>A = a<SUB>1</SUB>, a<SUB>2</SUB>, ..., a<SUB>i</SUB>, ..., 
+      a<SUB>K</SUB></I></CENTER><BR>
+      <CENTER><I>B = b<SUB>1</SUB>, b<SUB>2</SUB>, ..., b<SUB>j</SUB>, ..., 
+      b<SUB>M</SUB></I></CENTER><BR>Let <I>A</I> be the reference speech pattern 
+      and <I>B</I> be the pattern vector to be aligned against <I>A</I>. Figure 
+      3.1 shows <I>A</I> and <I>B</I> developed against the <I>i</I> and 
+      <I>j</I> axes.<BR><BR>
+      <CENTER><IMG height=293 alt="[Warping Function And Adjustment Window]" 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/fig31.gif" width=439 
+      border=0></CENTER><BR>Consider a warping function <I>F</I> between the 
+      input pattern time <I>j</I> and the reference pattern time <I>i</I>, 
+      where<BR><BR>
+      <CENTER><I>j = j(i)</I></CENTER><BR>A measure of the difference between 
+      the two feature vectors <I>a<SUB>i</SUB></I> and <I>b<SUB>j</SUB></I>is 
+      the distance<BR><BR>
+      <CENTER><I>d(i, j) = || a<SUB>i</SUB> - 
+      b<SUB>j</SUB>||</I></CENTER><BR>When the warping function is applied to B 
+      this distance becomes<BR><BR>
+      <CENTER><I>d(i, j(i)) = || a<SUB>i</SUB> - 
+      b'<SUB>j</SUB>||</I></CENTER><BR>where:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>b'<SUB>j</SUB></I> 
+      is the jth element of <I>B</I> after the warping function has been 
+      applied.<BR><BR>The weighted summation of these distances on the warping 
+      function is<BR>
+      <CENTER><IMG height=62 alt=[Equation] 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/eq31.gif" width=442 
+      border=0></CENTER>where:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<CITE>w(i)</CITE> 
+      is a nonnegative weighting coefficient. <BR><BR><I>E</I> reaches a minimal 
+      value when the warping function is determined to optimally align the two 
+      pattern vectors.<BR><BR>The minimum residual distance between <I>A</I> and 
+      <I>B</I> is the distance still remaining between them after minimizing the 
+      timing differences between them. The time normalized difference is defined 
+      as follows:<BR><BR>
+      <CENTER><IMG height=105 alt=[Equation] 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/eq32.gif" width=443 
+      border=0></CENTER><BR>Certain restrictions are applied to the warping 
+      function to ensure that it approximates the properties of actual time axis 
+      fluctuation. This means it should preserve all the significant linguistic 
+      features present in the speech pattern being warped. Such properties are 
+      monotonicity and continuity [47]. These can be realized by imposing the 
+      following conditions on the warping function <I>E</I> .<BR><BR>Monotonic 
+      conditions<BR>
+      <CENTER><I>j(i-1) &lt;= j(i)</I></CENTER><BR>Continuity conditions<BR>
+      <CENTER><I>j(i) - j(i-1) &lt;= 1</I></CENTER><BR>Boundary conditions are 
+      imposed as follows;<BR>
+      <CENTER><I>j(i) = 1</I></CENTER><BR>
+      <CENTER><I>j(K) = M</I></CENTER><BR>An adjustment window is implemented 
+      such that<BR><BR>
+      <CENTER><I>| i - j(i) | &lt;= r</I></CENTER><BR>where <I>r</I> is a 
+      positive integer. The adjustment window condition is imposed since the 
+      time axis fluctuation does not yield excessive timing differences, 
+      therefore the algorithm must do likewise.<BR><BR>The final constraint 
+      imposed is the slope constraint condition. The results of this condition 
+      is that if <I>b'<SUB>j(i)</SUB></I> moves forward in one direction, 
+      <I>m</I> times consecutively, then it must step <I>n</I> times in the 
+      diagonal direction before it can step any further in that direction. This 
+      ensures a realistic relation between <I>A</I> and <I>B</I> by ensuring 
+      that relatively short segments of one are not mapped to relatively long 
+      segments of the other. The intensity of slope constraint is measured as 
+      follows;<BR>
+      <CENTER><I>P = n/m</I></CENTER><BR>The warping function slope is more 
+      rigidly restricted by increasing <I>P</I> but if it is too severe then 
+      time normalization is not effective.<BR><BR>The denominator of the time 
+      normalized distance equation can be defined as:<BR>
+      <CENTER><IMG height=54 alt=[Equation] 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/eq33.gif" width=441 
+      border=0></CENTER>Since <I>N</I> is independent of the warping function 
+      <I>F</I> it can be put out of the bracket in <I>E(F)</I> simplifying the 
+      equation as follows:<BR>
+      <CENTER><IMG height=57 alt=[Equation] 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/eq34.gif" width=444 
+      border=0></CENTER><BR>Minimization can be achieved by applying dynamic 
+      programming principles. There are two typical weighting coefficient 
+      definitions which allow this simplification, one for symmetric time 
+      warping and one for asymmetric. In symmetric time warping the summation of 
+      distances is carried out along a temporarily defined time axis <I>l = i + 
+      j</I> . The previous discussion has described asymmetric time warping 
+      where the summation is carried out along the <I>i</I> axis warping 
+      <I>B</I> to be of the same size as <I>A</I>. In asymmetric time warping 
+      the weighting coefficient is defined by the following<BR><BR>
+      <CENTER><I>w(i) = j(i) - j(i - 1)</I></CENTER><BR>When the warping 
+      function attempts to step in the direction of the <I>j</I> axis the 
+      weighting coefficient reduces to 0, since<BR>
+      <CENTER><I>j(i)=j(i-1)</I></CENTER><BR>therefore,<BR>
+      <CENTER><I>w(i) = 0</I></CENTER><BR><BR>and when the warping function 
+      steps in the direction of the <I>i</I> axis or the diagonal, then,<BR><BR>
+      <CENTER><I>w(i) = 1</I></CENTER><BR>then<BR>
+      <CENTER><I>N=K</I></CENTER><BR>Applying Dynamic programming principles to 
+      the simplified time normalization equation gives the following algorithm 
+      for calculating the minimal value of the summation:<BR><BR>The dynamic 
+      programming equation is<BR><BR>
+      <CENTER><IMG height=19 alt=[Equation] 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/eq39.gif" width=242 
+      border=0></CENTER>The time normalized distance is<BR>
+      <CENTER><IMG height=48 alt=[Equation] 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/eq35.gif" width=444 
+      border=0></CENTER>The initial condition is<BR>
+      <CENTER><I>g1(1, 1) = d(1, 1) * w(1) = d(1,1)</I></CENTER><BR><BR>The 
+      dynamic programming equation for <I>P = 0</I> is<BR>
+      <CENTER><IMG height=75 alt=[Equation] 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/eq36.gif" width=443 
+      border=0></CENTER>The permissible paths through which the warping 
+      functions may move under this slope constraint are shown in figure 
+      3.2(a).<BR><BR><BR>
+      <CENTER><IMG height=251 
+      alt="[Possible Warping Function Paths Under Different Slope Constraints]" 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/fig32.gif" width=443 
+      border=0></CENTER><BR><BR>For <I>P = 1</I> the dynamic programming 
+      equation will be<BR>
+      <CENTER><IMG height=75 alt=[Equation] 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/eq37.gif" width=443 
+      border=0></CENTER>The permissible paths through which the warping 
+      functions may move under this slope constraint are shown in figure 
+      3.2(b).<BR><BR>For <I>P=2</I> the dynamic programming equation will 
+      be<BR><BR>
+      <CENTER><IMG height=75 alt=[Equation] 
+      src="Chapter 3 Preprocessing Of The Speech Data_files/eq38.gif" width=443 
+      border=0></CENTER>The permissible paths through which the warping 
+      functions may move under this slope constraint are shown in figure 
+      3.2(c).<BR><BR>The entailing result is that, for the initial condition, 
+      the first feature vector of <I>B</I> is taken as the first feature vector 
+      of the warped pattern vector <I>b<SUB>1</SUB>'</I>. Subsequent feature 
+      vectors for the warped pattern vector are chosen such that the <I>nth</I> 
+      feature vector is that feature vector from the input pattern vector 
+      <I>B</I> closest to the <I>nth</I> feature vector of the reference pattern 
+      vector.<BR><BR>The asymmetric dynamic time warping algorithm only provides 
+      compression of speech patterns. This means that a linear algorithm must be 
+      used with any speech patterns that need to be expanded. This is acceptable 
+      since no feature vectors are being deleted when a linear algorithm is used 
+      in this form and there is no danger of losing important features of the 
+      speech pattern.<BR><BR><BR><A name=323><B>3.2.3 Trace Segmentation</B></A> 
+      <BR><BR>Trace segmentation (TS) was introduced by Kuhn et al in 1981 and 
+      was used on its own and in conjunction with dynamic programming (DP) 
+      methods for isolated word recognition [27]. Two databases were used to 
+      train and test the speech recognition systems. The TS algorithm on its own 
+      performed worse than DTW on its own yielding error rates of around 10%. 
+      When the TS algorithm was used as a preprocessing step to DP it performed 
+      better than the DP alone. This method was also found to offer savings in 
+      computational expenditure of a factor of 10 or more over the DP algorithm 
+      used on its own. <BR><BR>TS is based on the assumption that despite timing 
+      differences, for speech signals of the same category, fluctuations in the 
+      frequency spectrum with time will occur in the same sequence but over 
+      different lengths of time.<BR><BR>Assuming speech patterns of the same 
+      form as <I>A</I> and <I>B</I> in the previous section e.g.<BR><BR>
+      <CENTER><I>A = a<SUB>1</SUB>, a<SUB>2</SUB>, ..., a<SUB>i</SUB>, ..., 
+      a<SUB>K</SUB></I></CENTER><BR>and also assuming that each feature vector 
+      contains <I>N</I> features<BR><BR>
+      <CENTER><I>a<SUB>i</SUB> = (a<SUB>i1</SUB>, a<SUB>i2</SUB>, ..., 
+      a<SUB>il</SUB>, ..., a<SUB>iN</SUB>)</I></CENTER><BR>which can be 
+      represented as a point in <I>N</I>-dimensional space, the speech pattern 
+      can therefore be seen as a trace of points in <I>N</I>-dimensional 
+      space.<BR>Where there is no change in frequency there will be a high 
+      density of points and where the frequency changes are rapid the points 
+      will be widely spaced. The number of feature vectors in a trace can be 
+      reduced by removing those which occur during the stationary portions of 
+      the speech pattern. Kuhn et al achieved this by summing the Euclidian 
+      distances between successive feature vectors of a pattern vector to give 
+      the total length <I>D</I>of the trace [27]. If <I>F</I> feature vectors 
+      are required in the time aligned pattern vector then <I>D</I> is divided 
+      into <I>F-1</I> segments of length <I>L</I> where<BR><BR>
+      <CENTER><I>L = D/(F-1)</I></CENTER><BR>The most suitable vectors from the 
+      pattern vector are selected as follows. The first feature vector of the 
+      input pattern vector is taken as the first feature vector of the time 
+      aligned pattern vector. Successive feature vectors of the time aligned 
+      pattern vector are then chosen such that the Euclidian distance between 
+      each of them is as close to <I>L</I> as possible. The final time aligned 
+      pattern vector should therefore consist of <I>F</I> feature vectors with 
+      Euclidian distances between them of approximately <I>L</I>.<BR><BR>Lienard 
+      and Soong used the TS algorithm for the recognition of the P-set from the 
+      English alphabet which consists of the letters "P', "B", "T", "D", "V" and 
+      "Z" spoken by 4 speakers and obtained promising results [30]. Nadeu et al 
+      also applied TS to isolated word recognition of the ten Catalan digit 
+      words spoken by one speaker [37]. It was found that the recognition did 
+      not significantly degrade when TS was applied to the speech signal prior 
+      to recognition unless the number of frames removed from the speech signal 
+      by the algorithm was very high.<BR><BR>Gauvin and Mariani applied the TS 
+      algorithm to connected speech recognition comparing it to a linear time 
+      alignment algorithm and another non-linear time alignment algorithm, 
+      comparing fixed length and variable length versions of the algorithms 
+      [13]. The variable length trace segmentation algorithm gave the best 
+      recognition results overall<BR><BR>The TS algorithm was used in 
+      conjunction with a neural network by Demichelis et al [10] for the 
+      recognition of isolated digits. They achieved 86.4% performance and 
+      compared this to an hidden Markov model (HMM) approach where a 95% 
+      recognition rate was achieved. TS is used in conjunction with a neural 
+      network for the research described in chapters 4 and 5. In chapter 4 the 
+      DTW time alignment algorithm and the TS algorithm are compared when used 
+      in conjunction with neural networks.<BR><BR>As with the asymmetric DTW, 
+      trace segmentation algorithm only provides compression of speech patterns. 
+      This means that a linear algorithm must be used with any speech patterns 
+      that need to be expanded. As mentioned previously, this is acceptable 
+      since no feature vectors are being deleted when a linear algorithm is used 
+      in this form and there is no danger of losing important features of the 
+      speech pattern. <BR><BR><BR><A name=33>
+      <H3>3.3 Summary </H3></A>The concept of time alignment algorithms for 
+      preprocessing the speech pattern before it is presented to a neural 
+      network was introduced in this chapter. The two types of algorithm 
+      available, linear and non-linear, were described. Possible implementations 
+      of a linear algorithm were outlined and two non-linear algorithms were 
+      described in detail. The first was the widely used dynamic time warping 
+      algorithm which has been used both with and without neural networks for 
+      speech recognition and the less well known trace segmentation algorithm. 
+      Non-linear algorithms take into account the importance of feature vectors 
+      when adding or discarding them to change the length of speech patterns. 
+      This means they offer less danger of losing important features of the 
+      speech signal. For this reason, non-linear algorithms are the main 
+      interest of this thesis. The trace segmentation algorithm offers great 
+      computational savings over the dynamic time warping algorithm so in 
+      chapter 4 the performances of the two are compared to find out if there is 
+      any loss in performance incurred by the TS algorithm. 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR>
+<CENTER><A 
+href="http://www.moonstar.com/~morticia/thesis/chapter2.html">[Back]</A> <A 
+href="http://www.moonstar.com/~morticia/thesis/contents.html">[Contents 
+Page]</A> <A 
+href="http://www.moonstar.com/~morticia/thesis/chapter4.html">[Next]</A></CENTER></BODY></HTML>

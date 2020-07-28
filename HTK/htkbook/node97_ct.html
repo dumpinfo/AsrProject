@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of MLF Search</TITLE>
+<META NAME="description" CONTENT="Contents of MLF Search">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node98_mn.html">
+<LINK REL="previous" HREF="node96_mn.html">
+<LINK REL="up" HREF="node94_mn.html">
+<LINK REL="next" HREF="node98_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03333000000000000000">
+MLF Search</A>
+</H2>
+
+<P>
+The names of label files in HTK are invariably reconstructed from an
+existing data file name and this means that the
+file names used to access label files can be partial or full path names in which
+the path has been constructed either from the path of the corresponding
+data file or by direct specification via the <TT>-L</TT> option.  These
+path names are retained in the MLF search<A NAME="7995">&#160;</A> which proceeds as follows.
+The given label file specification <TT>../d3/d2/d1/name</TT> is matched
+against each pattern in the MLF.  If a pattern matches, then either the
+named subdirectory is searched or an immediate definition is loaded.
+Pattern matching continues in this way until a definition is found.  If
+no pattern matches<A NAME="7997">&#160;</A> then an attempt is made to open <TT>../d3/d2/d1/name</TT>
+directly.  If this fails an error is reported.
+
+<P>
+The search of a sub-directory<A NAME="7999">&#160;</A> proceeds as follows.  In simple search
+mode indicated by  <TT>-&gt;</TT>, the file <TT>name</TT> must occur directly in the
+sub-directory.  In full search mode indicated by <TT>=&gt;</TT>, the files
+<TT>name, d1/name, d2/d1/name</TT>, etc. are searched for in that order.
+This full search allows a hierarchy of label files to be constructed
+which mirrors a hierarchy of data files (see Example 4 below).
+
+<P>
+Hashing is performed when the label file specification is either
+a full path name or in the form <TT>*/file</TT> so in these cases
+the search is very fast. Any other use of metacharacters invokes
+a linear search with a full and relatively slow pattern match at each step.
+Note that all tools which generate label files have a <TT>-l</TT>
+option which is used to define the output directory in which to store
+individual label files.  When outputting master label files,  the <TT>-l</TT>
+option can be used to define the path in the output label file specifications.
+In particular, setting the option <TT>-l '*'</TT> causes
+the form <TT>*/file</TT> to be generated.<A NAME="8009">&#160;</A>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

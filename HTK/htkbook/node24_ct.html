@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of A Tutorial Example of Using HTK</TITLE>
+<META NAME="description" CONTENT="Contents of A Tutorial Example of Using HTK">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node11_mn.html">
+<LINK REL="up" HREF="node2_mn.html">
+<LINK REL="next" HREF="node25_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION02300000000000000000">&#160;</A><A NAME="c:exampsys">&#160;</A>
+<BR>
+A Tutorial Example of Using HTK
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:recipe">&#160;</A><IMG
+ WIDTH="366" HEIGHT="235" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.png"
+ ALT="$\textstyle \parbox{80mm}{ \begin{center}\setlength{\epsfxsize}{80mm}
+\epsfbox{HTKFigs//recipe.eps}
+\end{center} }$">
+</DIV>
+
+<P>
+This final chapter of the tutorial part of the book will describe the
+construction of a recogniser for simple voice dialling applications.  This
+recogniser will be designed to recognise continuously spoken digit strings and
+a limited set of names.  It is sub-word based so that adding a new name to the
+vocabulary involves only modification to the pronouncing dictionary and task
+grammar.  The HMMs will be continuous density mixture Gaussian tied-state
+triphones with clustering performed using phonetic decision trees.  Although
+the voice dialling task itself is quite simple, the system design is
+general-purpose and would be useful for a range of applications.  
+
+
+<P>
+The system will be built from scratch even to the extent of recording training
+and test data using the HTK tool HSL<SMALL>AB</SMALL>.  To make this tractable, the
+system will be speaker dependent<A NAME="tex2html8" HREF="footnode_mn.html#foot3422" TARGET="footer"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>, but the same design 
+would be followed to build a speaker independent system.  The only difference being 
+that data would be required from a large number of speakers and there would 
+be a consequential increase in model complexity. 
+
+<P>
+Building a speech recogniser from scratch involves a number of inter-related
+subtasks and pedagogically it is not obvious what the best order is to present
+them. In the presentation here, the ordering is chronological so that in effect
+the text provides a recipe that could be followed to construct a similar
+system.  The entire process is described in considerable detail in order give a
+clear view of the range of functions that HTK addresses and thereby to
+motivate the rest of the book.
+
+<P>
+The HTK software distribution also contains an example of constructing a
+recognition system for the 1000 word ARPA Naval Resource Management Task. This
+is contained in the directory <TT>RMHTK</TT> of the HTK distribution.
+Further demonstration of HTK's capabilities can be found in the directory 
+<TT>HTKDemo</TT>. Some example scripts that may be of assistance during the 
+tutorial are available in the <TT>HTKTutorial</TT> directory.
+
+<P>
+At each step of the tutorial presented in this chapter, the user is advised to
+thoroughly read the entire section before executing the commands, and also to
+consult the reference section for each HTK tool being introduced
+(chapter&nbsp;<A HREF="node240_ct.html#c:toolref">17</A>), so that all command line options and arguments are
+clearly understood.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html1256" HREF="node25_mn.html" TARGET="main"><SMALL>Data Preparation</SMALL></A>
+<UL>
+<LI><A NAME="tex2html1257" HREF="node26_mn.html" TARGET="main"><SMALL>Step 1 - the Task Grammar</SMALL></A>
+<LI><A NAME="tex2html1258" HREF="node27_mn.html" TARGET="main"><SMALL>Step 2 - the Dictionary</SMALL></A>
+<LI><A NAME="tex2html1259" HREF="node28_mn.html" TARGET="main"><SMALL>Step 3 - Recording the Data</SMALL></A>
+<LI><A NAME="tex2html1260" HREF="node29_mn.html" TARGET="main"><SMALL>Step 4 - Creating the Transcription Files</SMALL></A>
+<LI><A NAME="tex2html1261" HREF="node30_mn.html" TARGET="main"><SMALL>Step 5 - Coding the Data</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1262" HREF="node31_mn.html" TARGET="main"><SMALL>Creating Monophone HMMs</SMALL></A>
+<UL>
+<LI><A NAME="tex2html1263" HREF="node32_mn.html" TARGET="main"><SMALL>Step 6 - Creating Flat Start Monophones</SMALL></A>
+<LI><A NAME="tex2html1264" HREF="node33_mn.html" TARGET="main"><SMALL>Step 7 - Fixing the Silence Models</SMALL></A>
+<LI><A NAME="tex2html1265" HREF="node34_mn.html" TARGET="main"><SMALL>Step 8 - Realigning the Training Data</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1266" HREF="node35_mn.html" TARGET="main"><SMALL>Creating Tied-State Triphones</SMALL></A>
+<UL>
+<LI><A NAME="tex2html1267" HREF="node36_mn.html" TARGET="main"><SMALL>Step 9 - Making Triphones from Monophones</SMALL></A>
+<LI><A NAME="tex2html1268" HREF="node37_mn.html" TARGET="main"><SMALL>Step 10 - Making Tied-State Triphones</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1269" HREF="node38_mn.html" TARGET="main"><SMALL>Recogniser Evaluation</SMALL></A>
+<UL>
+<LI><A NAME="tex2html1270" HREF="node39_mn.html" TARGET="main"><SMALL>Step 11 - Recognising the Test Data</SMALL></A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1271" HREF="node40_mn.html" TARGET="main"><SMALL>Running the Recogniser Live</SMALL></A>
+<LI><A NAME="tex2html1272" HREF="node41_mn.html" TARGET="main"><SMALL>Summary</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

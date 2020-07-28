@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Training Strategies</TITLE>
+<META NAME="description" CONTENT="Contents of Training Strategies">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node114_mn.html">
+<LINK REL="previous" HREF="node112_mn.html">
+<LINK REL="up" HREF="node112_mn.html">
+<LINK REL="next" HREF="node114_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03510000000000000000">&#160;</A><A NAME="s:tstrats">&#160;</A>
+<BR>
+Training Strategies
+</H1>
+
+<P>
+As indicated in the introduction above, the basic operation of 
+the HTK training tools
+involves  reading in a set of one or more HMM definitions, and then using
+speech data to estimate the parameters of  these definitions.  The speech
+data files are normally stored in parameterised form such as <TT>LPC</TT> or 
+<TT>MFCC</TT>
+parameters.  However, additional parameters such as delta coefficients are
+normally computed <SPAN  CLASS="textit">on-the-fly</SPAN> whilst loading each file.  
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:isoword">&#160;</A><IMG
+ WIDTH="285" HEIGHT="495" ALIGN="MIDDLE" BORDER="0"
+ SRC="img254.png"
+ ALT="% latex2html id marker 50436
+$\textstyle \parbox{62mm}{ \begin{center}\setlength...
+...chapter.\arabic{figctr}  Isolated Word Training}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+In fact,
+it is also possible to use waveform data directly by performing the full parameter
+conversion <SPAN  CLASS="textit">on-the-fly</SPAN>.  Which approach is preferred depends on the
+available computing resources.  The advantages of storing the data already
+encoded are that the data is more compact in parameterised form  and pre-encoding
+avoids wasting compute time converting the data each time that it is read
+in.  However, if the training data is derived from CD-ROMS and they can be
+accessed automatically on-line, then the extra compute may be worth the
+saving in magnetic disk storage.<A NAME="14420">&#160;</A>
+
+<P>
+The methods for configuring speech data
+input to HTK tools were described in detail in chapter&nbsp;<A HREF="node55_ct.html#c:speechio">5</A>.
+All of the various input mechanisms are supported by the HTK training
+tools except direct audio input.
+
+<P>
+The precise way in which the training tools are  used depends on the
+type of HMM system to be built and the form of the available
+training data. Furthermore,
+HTK tools are designed to interface cleanly to each other, so a
+large number of configurations are possible.  In practice, however,
+HMM-based  speech recognisers are either whole-word or sub-word.
+
+<P>
+As the name suggests,  whole word modelling<A NAME="13541">&#160;</A> refers to a technique
+whereby each individual word in the system vocabulary is modelled by
+a  single HMM.  As shown in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>, whole word HMMs
+are most commonly trained on examples of each word spoken in
+isolation.  If these training examples, which are often called
+<SPAN  CLASS="textit">tokens</SPAN>, have had leading and trailing silence removed, then
+they can be input directly into the training tools without the need
+for any label information. The most common method of building whole
+word HMMs is to firstly use
+HI<SMALL>NIT</SMALL><A NAME="14297">&#160;</A> to calculate initial 
+parameters for the model and then
+use
+HR<SMALL>EST</SMALL><A NAME="14298">&#160;</A> to refine the parameters using Baum-Welch
+re-estimation. Where there is limited training data and recognition
+in adverse noise environments is needed, so-called <I>fixed
+variance</I> models can offer improved robustness. These are models in
+which all the variances are set equal to 
+the global speech variance<A NAME="13549">&#160;</A>
+and never subsequently re-estimated.  The tool
+HC<SMALL>OMP</SMALL>V<A NAME="14299">&#160;</A> can be used to 
+compute this global variance.
+<A NAME="13552">&#160;</A>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:subword">&#160;</A><IMG
+ WIDTH="412" HEIGHT="599" ALIGN="MIDDLE" BORDER="0"
+ SRC="img255.png"
+ ALT="% latex2html id marker 50437
+$\textstyle \parbox{90mm}{ \begin{center}\setlength...
+...echapter.\arabic{figctr}  Training Subword HMMs}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+Although HTK gives full support for building whole-word
+HMM systems, the bulk of its facilities are focussed on 
+building sub-word systems in which the basic units are the
+individual sounds of the language called <SPAN  CLASS="textit">phones</SPAN>.
+One HMM is constructed for each such phone<A NAME="13557">&#160;</A> and 
+continuous speech<A NAME="13558">&#160;</A> 
+is recognised by joining the phones together to 
+make any required vocabulary using a pronunciation dictionary.
+
+<P>
+<A NAME="13559">&#160;</A>
+The basic procedures involved in training a set of subword models
+are shown in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  The core process involves the
+embedded training<A NAME="13561">&#160;</A> tool 
+HER<SMALL>EST</SMALL><A NAME="14300">&#160;</A>.  HER<SMALL>EST</SMALL> uses 
+continuously spoken utterances as its source of training data
+and simultaneously re-estimates the complete set of subword HMMs.
+For each input utterance, HER<SMALL>EST</SMALL> needs a transcription i.e. a list of
+the phones in that utterance.  HER<SMALL>EST</SMALL> then joins together all of the 
+subword HMMs corresponding to this phone list to make a single
+composite HMM.  This composite HMM is used to collect
+the necessary statistics for the re-estimation.  When all of the
+training utterances have been processed, the total set of accumulated
+statistics are used to re-estimate the parameters of all of the phone
+HMMs. 
+It is important to emphasise that in the above process, the transcriptions
+are only needed to identify the sequence of phones in each utterance.
+No phone boundary information is needed.  
+
+<P>
+The initialisation<A NAME="13567">&#160;</A> of a 
+set of phone HMMs prior to embedded re-estimation
+using HER<SMALL>EST</SMALL> can be achieved in two different ways.  As shown on the
+left of Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>, a small set of hand-labelled 
+<SPAN  CLASS="textit">bootstrap</SPAN> training data can be used along with<A NAME="13571">&#160;</A>
+the isolated training tools HI<SMALL>NIT</SMALL> and HR<SMALL>EST</SMALL> to
+initialise each phone HMM individually.  When used in this way,
+both HI<SMALL>NIT</SMALL> and HR<SMALL>EST</SMALL> use the label information
+to extract all the segments of speech corresponding to the current
+phone HMM in order to perform isolated word training.   
+
+<P>
+A simpler initialisation procedure uses HC<SMALL>OMP</SMALL>V to assign the global
+speech mean and variance to every Gaussian distribution in every phone
+HMM.  This so-called <SPAN  CLASS="textit">flat start</SPAN> procedure implies that during the
+first cycle of embedded re-estimation, each training utterance will be
+uniformly segmented.  The hope then is that enough of the phone models
+align with actual realisations of that phone so that on the second and
+subsequent iterations, the models align as intended.<A NAME="13578">&#160;</A>
+
+<P>
+One of the major problems to be faced in building any HMM-based
+system is that the amount of training data for each model will be
+variable and is rarely sufficient.  To overcome this, HTK allows
+a variety of sharing mechanisms to be implemented whereby HMM parameters
+are tied together so that the training data is pooled and more robust
+estimates result.  These tyings, along with a variety of other
+manipulations, are performed using the  HTK HMM editor HHE<SMALL>D</SMALL>.
+The use of HHE<SMALL>D</SMALL><A NAME="14301">&#160;</A> is 
+described in a later chapter.  Here it is
+sufficient to note that a phone-based HMM set typically goes through
+several refinement cycles of editing using HHE<SMALL>D</SMALL> followed
+by parameter re-estimation using HER<SMALL>EST</SMALL> before the final model set is
+obtained.
+
+<P>
+Having described in outline the main training strategies, each
+of the above procedures will be described in more detail.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

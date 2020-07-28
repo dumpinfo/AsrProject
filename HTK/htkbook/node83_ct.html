@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Viewing Speech with HLIST</TITLE>
+<META NAME="description" CONTENT="Contents of Viewing Speech with HLIST">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node84_mn.html">
+<LINK REL="previous" HREF="node82_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node84_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION032150000000000000000">&#160;</A><A NAME="s:UseHList">&#160;</A>
+<BR>
+Viewing Speech with HL<SMALL>IST</SMALL>
+</H1>
+
+<P>
+<A NAME="6239">&#160;</A>
+As mentioned in section&nbsp;<A HREF="node56_ct.html#s:genio">5.1</A>, the tool HL<SMALL>IST</SMALL><A NAME="6708">&#160;</A> provides
+a dual r&#244;le in HTK.  Firstly, it can be used for examining the contents
+of speech data files.  
+In general, HL<SMALL>IST</SMALL> displays three types of information
+
+<OL>
+<LI><SPAN  CLASS="textit">source header</SPAN>: requested using the <TT>-h</TT> option
+</LI>
+<LI><SPAN  CLASS="textit">target header</SPAN>: requested using the <TT>-t</TT> option
+</LI>
+<LI><SPAN  CLASS="textit">target data</SPAN>: printed by default.  The begin and end samples of the
+displayed data can be specified using the <TT>-s</TT> and <TT>-e</TT> options.
+</LI>
+</OL>
+When the default configuration parameters are used, 
+no conversions are applied and the target
+data is identical to the contents of the file.  
+
+<P>
+<A NAME="6254">&#160;</A>
+As an example, suppose that the file called <TT>timit.wav</TT> holds speech
+waveform data using the TIMIT format.  The command
+<PRE>
+    HList -h -e 49 -F TIMIT timit.wav
+</PRE>
+would display the source header information and the first 50 samples of the
+file.  The output would look something like the following
+
+<P>
+
+<UL>
+<LI><PRE>
+         ----------------------------- Source: timit.wav ---------------------------
+           Sample Bytes:  2        Sample Kind:   WAVEFORM
+           Num Comps:     1        Sample Period: 62.5 us
+           Num Samples:   31437    File Format:   TIMIT
+         ------------------------------ Samples: 0-&gt;49 -----------------------------
+             0:     8     -4     -1      0     -2     -1     -3     -2      0      0
+            10:    -1      0     -1     -2     -1      1      0     -1     -2      1
+            20:    -2      0      0      0      2      1     -2      2      1      0
+            30:     1      0      0     -1      4      2      0     -1      4      0
+            40:     2      2      1     -1     -1      1      1      2      1      1
+         ------------------------------------ END ----------------------------------
+</PRE>
+</LI>
+</UL>
+The source information confirms that the file contains <TT>WAVEFORM</TT>
+data with 2 byte samples and 31437 samples in total.  The sample period is
+<SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img206.png"
+ ALT="$ 62.5\mu s$"></SPAN> which corresponds to a 16kHz sample rate.  
+The displayed data is numerically small because it corresponds to leading silence.
+Any part of the file could be viewed by suitable choice of the begin and end
+sample indices. For example,
+<PRE>
+   HList -s 5000 -e 5049 -F TIMIT timit.wav
+</PRE>
+would display samples 5000 through to 5049.  
+The output might look like the following
+
+<UL>
+<LI><PRE>
+         ---------------------------- Samples: 5000-&gt;5049 --------------------------
+          5000:    85   -116   -159   -252     23     99     69     92     79   -166
+          5010:  -100   -123   -111     48    -19     15    111     41   -126   -304
+          5020:  -189     91    162    255     80   -134   -174    -55     57    155
+          5030:    90     -1     33    154     68   -149    -70     91    165    240
+          5040:   297     50     13     72    187    189    193    244    198    128
+         ------------------------------------ END ----------------------------------
+</PRE>
+</LI>
+</UL>
+
+<P>
+The second use of HL<SMALL>IST</SMALL> is to check that input conversions
+are being performed properly.  Suppose that the above TIMIT format file is
+part of a database to be used for training a recogniser and that mel-frequency
+cepstra are to be used along with energy and the first differential coefficients.
+Suitable configuration parameters needed to achieve this might be as follows
+<PRE>
+    # Wave -&gt; MFCC config file
+    SOURCEFORMAT = TIMIT    # same as -F TIMIT
+    TARGETKIND   = MFCC_E_D # MFCC + Energy + Deltas
+    TARGETRATE   = 100000   # 10ms frame rate
+    WINDOWSIZE   = 200000   # 20ms window
+    NUMCHANS     = 24       # num filterbank chans
+    NUMCEPS      = 8        # compute c1 to c8
+</PRE>
+HL<SMALL>IST</SMALL> can be used to check this.  For example, typing
+<PRE>
+    HList -C config -o -h -t -s 100 -e 104 -i 9  timit.wav
+</PRE>
+will cause the waveform file to be converted, then the source header, 
+the target header and parameter vectors 100 through to 104 to be listed.
+A typical output would be as follows
+<PRE>
+   ------------------------------ Source: timit.wav ---------------------------
+     Sample Bytes:  2        Sample Kind:   WAVEFORM
+     Num Comps:     1        Sample Period: 62.5 us
+     Num Samples:   31437    File Format:   TIMIT
+   ------------------------------------ Target --------------------------------
+     Sample Bytes:  72       Sample Kind:   MFCC_E_D
+     Num Comps:     18       Sample Period: 10000.0 us
+     Num Samples:   195      File Format:   HTK
+   -------------------------- Observation Structure ---------------------------
+   x:    MFCC-1  MFCC-2  MFCC-3  MFCC-4  MFCC-5  MFCC-6  MFCC-7  MFCC-8       E
+          Del-1   Del-2   Del-3   Del-4   Del-5   Del-6   Del-7   Del-8    DelE
+   ------------------------------ Samples: 100-&gt;104 ---------------------------
+   100:   3.573 -19.729  -1.256  -6.646  -8.293 -15.601 -23.404  10.988   0.834
+          3.161  -1.913   0.573  -0.069  -4.935   2.309  -5.336   2.460   0.080
+   101:   3.372 -16.278  -4.683  -3.600 -11.030  -8.481 -21.210  10.472   0.777
+          0.608  -1.850  -0.903  -0.665  -2.603  -0.194  -2.331   2.180   0.069
+   102:   2.823 -15.624  -5.367  -4.450 -12.045 -15.939 -22.082  14.794   0.830
+         -0.051   0.633  -0.881  -0.067  -1.281  -0.410   1.312   1.021   0.005
+   103:   3.752 -17.135  -5.656  -6.114 -12.336 -15.115 -17.091  11.640   0.825
+         -0.002  -0.204   0.015  -0.525  -1.237  -1.039   1.515   1.007   0.015
+   104:   3.127 -16.135  -5.176  -5.727 -14.044 -14.333 -18.905  15.506   0.833
+         -0.034  -0.247   0.103  -0.223  -1.575   0.513   1.507   0.754   0.006
+   ------------------------------------- END ----------------------------------
+</PRE>
+
+<P>
+The target header information shows that the converted data consists
+of 195 parameter vectors, each vector having 18 components and being 72 bytes in
+size.  The structure of each parameter vector is displayed as a simple sequence
+of floating-point numbers.   The layout information described in 
+section&nbsp;<A HREF="node65_ct.html#s:parmstore">5.10</A> can be used to interpret the data.  
+However, including the <TT>-o</TT> option, as in the example, causes HL<SMALL>IST</SMALL>
+to output a schematic of the observation structure.  Thus, it can be seen that
+the first row of each sample contains the static coefficients and the second 
+contains the delta
+coefficients.  The energy is in the final column.
+The command line option <TT>-i 9</TT> controls the number of values displayed
+per line and can be used to aid in the visual interpretation of the data.
+Notice finally that the command line option <TT>-F TIMIT</TT> was not required
+in this case because the source format was specified in the configuration file.
+
+<P>
+It should be stressed that when HL<SMALL>IST</SMALL> displays parameterised data,
+it does so in exactly the form that <SPAN  CLASS="textit">observations</SPAN> are passed to
+a HTK tool.  So, for example, if the above data was input to a system
+built using 3 data streams, then this can be simulated by using the
+command line option <TT>-n</TT> to set the number of streams.  For example, typing
+<PRE>
+    HList -C config -n 3 -o -s 100 -e 101 -i 9  timit.wav
+</PRE>
+would result in the following output
+<PRE>
+      ------------------------ Observation Structure -----------------------
+      nTotal=18 nStatic=8 nDel=16  eSep=T
+      x.1:    MFCC-1  MFCC-2  MFCC-3  MFCC-4  MFCC-5  MFCC-6  MFCC-7  MFCC-8
+      x.2:     Del-1   Del-2   Del-3   Del-4   Del-5   Del-6   Del-7   Del-8
+      x.3:         E    DelE
+      -------------------------- Samples: 100-&gt;101 -------------------------
+      100.1:   3.573 -19.729  -1.256  -6.646  -8.293 -15.601 -23.404  10.988
+      100.2:   3.161  -1.913   0.573  -0.069  -4.935   2.309  -5.336   2.460
+      100.3:   0.834   0.080
+      101.1:   3.372 -16.278  -4.683  -3.600 -11.030  -8.481 -21.210  10.472
+      101.2:   0.608  -1.850  -0.903  -0.665  -2.603  -0.194  -2.331   2.180
+      101.3:   0.777   0.069
+      --------------------------------- END --------------------------------
+</PRE>
+Notice that the data is identical to the previous case, but it has been
+re-organised into separate streams.<A NAME="6295">&#160;</A>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

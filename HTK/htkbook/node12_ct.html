@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of HTK Software Architecture</TITLE>
+<META NAME="description" CONTENT="Contents of HTK Software Architecture">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node13_mn.html">
+<LINK REL="previous" HREF="node11_mn.html">
+<LINK REL="up" HREF="node11_mn.html">
+<LINK REL="next" HREF="node13_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION02210000000000000000">&#160;</A><A NAME="s:softarch">&#160;</A>
+<BR>
+HTK Software Architecture
+</H1>
+
+<P>
+Much of the functionality of HTK is built into the library modules. 
+These modules ensure that every tool interfaces to the outside world 
+in exactly the same way.  They also provide a central resource of 
+commonly used functions.  Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A> illustrates 
+the software<A NAME="2757">&#160;</A>
+structure of a typical HTK tool and shows its input/output interfaces.
+
+<P>
+User input/output and interaction with the operating system is 
+controlled by the library 
+module HS<SMALL>HELL</SMALL><A NAME="2985">&#160;</A> and all memory management
+is controlled by HM<SMALL>EM</SMALL><A NAME="2986">&#160;</A>.  
+Math support is provided by HM<SMALL>ATH</SMALL><A NAME="2987">&#160;</A>
+and the signal processing operations needed for speech analysis are
+in HS<SMALL>IG</SMALL>P<A NAME="2988">&#160;</A>.<A NAME="2766">&#160;</A>
+Each of the file types required by HTK has a dedicated
+interface module.  
+HL<SMALL>ABEL</SMALL><A NAME="2989">&#160;</A> provides the interface for label files,
+HLM<A NAME="2990">&#160;</A> for language model files,
+HN<SMALL>ET</SMALL><A NAME="2991">&#160;</A> for networks and lattices,
+HD<SMALL>ICT</SMALL><A NAME="2992">&#160;</A> for dictionaries,
+HVQ<A NAME="2993">&#160;</A> for VQ codebooks and
+HM<SMALL>ODEL</SMALL><A NAME="2994">&#160;</A> for HMM definitions.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:softarch">&#160;</A><IMG
+ WIDTH="344" HEIGHT="370" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.png"
+ ALT="% latex2html id marker 48674
+$\textstyle \parbox{75mm}{ \begin{center}\setlength...
+...echapter.\arabic{figctr}  Software Architecture}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+All speech input and output at the waveform level
+is via HW<SMALL>AVE</SMALL> 
+and at the parameterised level via HP<SMALL>ARM</SMALL>.
+As well as providing a consistent interface, HW<SMALL>AVE</SMALL> and 
+HL<SMALL>ABEL</SMALL>
+support multiple file formats allowing data to be imported
+from other systems.   Direct audio input is 
+supported by HA<SMALL>UDIO</SMALL>
+and simple interactive graphics is 
+provided by HG<SMALL>RAF</SMALL>.  
+HU<SMALL>TIL</SMALL> provides a 
+number of utility routines for manipulating
+HMMs while HT<SMALL>RAIN</SMALL> and HFB contain support for the 
+various HTK training tools.   HA<SMALL>DAPT</SMALL> provides support
+for the various HTK adaptation tools.
+Finally, HR<SMALL>EC</SMALL> contains 
+the main recognition processing functions.
+
+<A NAME="2996">&#160;</A>
+<A NAME="2997">&#160;</A>
+<A NAME="2998">&#160;</A>
+<A NAME="2999">&#160;</A>
+<A NAME="3000">&#160;</A>
+<A NAME="3001">&#160;</A>
+<A NAME="3002">&#160;</A>
+
+<P>
+As noted in the next section, fine control over 
+the behaviour of these library modules
+is provided by setting configuration variables<A NAME="2801">&#160;</A>.  Detailed descriptions
+of the functions provided by the library modules are given in the second
+part of this book and the relevant configuration variables are described
+as they arise.  For reference purposes, a complete list is given in
+chapter&nbsp;<A HREF="node412_ct.html#c:confvars">18</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

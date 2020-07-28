@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of The HMM Parameters</TITLE>
+<META NAME="description" CONTENT="Contents of The HMM Parameters">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node103_mn.html">
+<LINK REL="previous" HREF="node101_mn.html">
+<LINK REL="up" HREF="node101_mn.html">
+<LINK REL="next" HREF="node103_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03410000000000000000">&#160;</A><A NAME="s:HMMparm">&#160;</A>
+<BR>
+The HMM Parameters
+</H1>
+
+<P>
+A HMM consists of a number of states.  Each state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> has an associated
+observation probability distribution <!-- MATH
+ $b_{j}({\mbox{\boldmath $o$}}_t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="45" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.png"
+ ALT="$ b_{j}({\mbox{\boldmath $o$}}_t)$"></SPAN> which
+determines the probability of generating observation <!-- MATH
+ ${\mbox{\boldmath $o$}}_t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ {\mbox{\boldmath $o$}}_t$"></SPAN> at
+time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN> and each pair of states <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> has an associated
+transition probability <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ a_{ij}$"></SPAN>.  In HTK  the entry state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img63.png"
+ ALT="$ 1$"></SPAN> and
+the exit state <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> of an <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> state HMM are non-emitting.  
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:hmm1">&#160;</A><IMG
+ WIDTH="321" HEIGHT="299" ALIGN="MIDDLE" BORDER="0"
+ SRC="img214.png"
+ ALT="% latex2html id marker 49599
+$\textstyle \parbox{70mm}{ \begin{center}\setlength...
+...echapter.\arabic{figctr}  Simple Left-Right HMM}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A> shows a simple left-right HMM with five states in
+total.  Three of these are emitting states and have output probability
+distributions associated with them.   The transition matrix for
+this model will have 5 rows and 5 columns.  Each row will sum to one
+except for the final row which is always all zero since no
+transitions are allowed out of the final state.
+
+<P>
+HTK is principally concerned with continuous<A NAME="9535">&#160;</A>
+density models in which each observation probability distribution
+is represented by a mixture Gaussian density.  In this case,
+for state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN>
+the probability <!-- MATH
+ $b_{j}({\mbox{\boldmath $o$}}_t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="45" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.png"
+ ALT="$ b_{j}({\mbox{\boldmath $o$}}_t)$"></SPAN> of generating 
+observation <!-- MATH
+ ${\mbox{\boldmath $o$}}_t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ {\mbox{\boldmath $o$}}_t$"></SPAN> is given by
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:cdpdf">&#160;</A><!-- MATH
+ \begin{equation}
+b_{j}({\mbox{\boldmath$o$}}_t) = \prod_{s=1}^S \left[
+     \sum_{m=1}^{M_{js}} c_{jsm} {\cal N}({\mbox{\boldmath$o$}}_{st};
+                    {\mbox{\boldmath$\mu$}}_{jsm}, {\mbox{\boldmath$\Sigma$}}_{jsm})
+  \right]^{\gamma_s}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="322" HEIGHT="74" ALIGN="MIDDLE" BORDER="0"
+ SRC="img215.png"
+ ALT="$\displaystyle b_{j}({\mbox{\boldmath$o$}}_t) = \prod_{s=1}^S \left[ \sum_{m=1}^...
+...ox{\boldmath$\mu$}}_{jsm}, {\mbox{\boldmath$\Sigma$}}_{jsm}) \right]^{\gamma_s}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">1</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="32" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img216.png"
+ ALT="$ M_{js}$"></SPAN> is the number of mixture components<A NAME="8601">&#160;</A> 
+in state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> for stream <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img41.png"
+ ALT="$ s$"></SPAN>,
+<SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$ c_{jsm}$"></SPAN> is the weight of the <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ m$"></SPAN>'th  component and 
+<!-- MATH
+ ${\cal N}(\cdot; {\mbox{\boldmath $\mu$}}, {\mbox{\boldmath $\Sigma$}})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.png"
+ ALT="$ {\cal N}(\cdot; {\mbox{\boldmath $\mu$}}, {\mbox{\boldmath $\Sigma$}})$"></SPAN> is a multivariate Gaussian
+with mean vector<A NAME="8606">&#160;</A> <!-- MATH
+ ${\mbox{\boldmath $\mu$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.png"
+ ALT="$ {\mbox{\boldmath $\mu$}}$"></SPAN> and 
+covariance matrix<A NAME="8608">&#160;</A> <!-- MATH
+ ${\mbox{\boldmath $\Sigma$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img46.png"
+ ALT="$ {\mbox{\boldmath $\Sigma$}}$"></SPAN>, that
+is<A NAME="8610">&#160;</A>
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:gnorm">&#160;</A><!-- MATH
+ \begin{equation}
+{\cal N}({\mbox{\boldmath$o$}}; {\mbox{\boldmath$\mu$}}, {\mbox{\boldmath$\Sigma$}}) =
+       \frac{1}{\sqrt{(2 \pi)^n | {\mbox{\boldmath$\Sigma$}} |}}
+       e^{- \frac{1}{2}({\mbox{\boldmath$o$}}-{\mbox{\boldmath$\mu$}})' {\mbox{\boldmath$\Sigma$}}^{-1}({\mbox{\boldmath$o$}}-{\mbox{\boldmath$\mu$}})}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="322" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.png"
+ ALT="$\displaystyle {\cal N}({\mbox{\boldmath$o$}}; {\mbox{\boldmath$\mu$}}, {\mbox{\...
+...{\mbox{\boldmath$\Sigma$}}^{-1}({\mbox{\boldmath$o$}}-{\mbox{\boldmath$\mu$}})}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN> is the dimensionality of <!-- MATH
+ ${\mbox{\boldmath $o$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img48.png"
+ ALT="$ {\mbox{\boldmath $o$}}$"></SPAN>.  The exponent <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img49.png"
+ ALT="$ \gamma_s$"></SPAN> is
+a stream weight<A NAME="8627">&#160;</A> and its 
+default value is one.  Other values can be
+used to emphasise particular streams, however, none of the standard
+HTK tools manipulate it.
+
+<P>
+HTK also supports discrete probability 
+distributions<A NAME="8628">&#160;</A> in which
+case <A NAME="8629">&#160;</A>
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:ddpdf">&#160;</A><!-- MATH
+ \begin{equation}
+b_{j}({\mbox{\boldmath$o$}}_t) = \prod_{s=1}^S \left\{
+     P_{js}[v_s({\mbox{\boldmath$o$}}_{st})]
+  \right\}^{\gamma_s}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="200" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img217.png"
+ ALT="$\displaystyle b_{j}({\mbox{\boldmath$o$}}_t) = \prod_{s=1}^S \left\{ P_{js}[v_s({\mbox{\boldmath$o$}}_{st})] \right\}^{\gamma_s}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $v_s({\mbox{\boldmath $o$}}_{st})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="52" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img218.png"
+ ALT="$ v_s({\mbox{\boldmath $o$}}_{st})$"></SPAN> is the output of the vector 
+quantiser for stream <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img41.png"
+ ALT="$ s$"></SPAN>
+given input vector <!-- MATH
+ ${\mbox{\boldmath $o$}}_{st}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img219.png"
+ ALT="$ {\mbox{\boldmath $o$}}_{st}$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img220.png"
+ ALT="$ P_{js}[v]$"></SPAN> is the 
+probability of state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> generating symbol <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img221.png"
+ ALT="$ v$"></SPAN> in stream <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img41.png"
+ ALT="$ s$"></SPAN>.
+
+<P>
+In addition to the above, any model or state can have an
+associated vector of duration parameters
+<A NAME="8643">&#160;</A> <SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img222.png"
+ ALT="$ \{d_k\}$"></SPAN><A NAME="tex2html26" HREF="footnode_mn.html#foot8644" TARGET="footer"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>.  
+Also,
+it is necessary to specify the kind of the observation
+vectors, and the width of the observation vector in each stream.
+Thus, the total information needed to define a single HMM is 
+as follows
+   
+<UL>
+<LI>type of observation vector
+</LI>
+<LI>number and width of each data stream
+</LI>
+<LI>optional model duration parameter vector
+</LI>
+<LI>number of states
+</LI>
+<LI>for each emitting state and each stream
+        
+<UL>
+<LI>mixture component weights or discrete probabilities
+</LI>
+<LI>if continuous density, then means and covariances
+</LI>
+<LI>optional stream weight vector    
+</LI>
+<LI>optional duration parameter vector
+         
+</LI>
+</UL>  
+</LI>
+<LI>transition matrix
+</LI>
+</UL>
+The following sections explain how these are defined.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

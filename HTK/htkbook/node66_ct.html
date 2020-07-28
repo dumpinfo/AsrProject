@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of HTK Format Parameter Files</TITLE>
+<META NAME="description" CONTENT="Contents of HTK Format Parameter Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node67_mn.html">
+<LINK REL="previous" HREF="node65_mn.html">
+<LINK REL="up" HREF="node65_mn.html">
+<LINK REL="next" HREF="node67_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION032101000000000000000">
+HTK Format Parameter Files</A>
+</H2>
+
+<P>
+HTK format files consist of a contiguous sequence of <SPAN  CLASS="textit">samples</SPAN>
+preceded by a header.  Each sample is a vector of either 2-byte integers or
+4-byte floats.  2-byte integers are used for compressed forms as described
+below and for vector quantised data as described later in
+section&nbsp;<A HREF="node82_ct.html#s:vquant">5.14</A>.  HTK format data files can also be used to store
+speech waveforms as described in section&nbsp;<A HREF="node68_ct.html#s:waveform">5.11</A>.  <A NAME="5862">&#160;</A>
+
+<P>
+The HTK file format header is 12 bytes long and contains the following data 
+<PRE><TT>
+		<TT>nSamples</TT>		- number of samples in file (4-byte integer) 
+<BR><TT>sampPeriod</TT>		- sample period in 100ns units (4-byte integer) 
+<BR><TT>sampSize</TT>		- number of bytes per sample (2-byte integer) 
+<BR><TT>parmKind</TT>		- a code indicating the sample kind (2-byte integer)
+</TT></PRE>
+The parameter kind<A NAME="5869">&#160;</A> consists of a 6 bit
+code representing the basic parameter kind plus additional bits for
+each of the possible qualifiers<A NAME="5870">&#160;</A>.  The basic parameter kind codes are
+<PRE><TT>
+		0 		 <TT>WAVEFORM</TT> 		 sampled waveform 
+<BR>
+1 		 <TT>LPC</TT> 		 linear prediction filter coefficients 
+<BR>
+2 		 <TT>LPREFC</TT> 		 linear prediction reflection coefficients 
+<BR>
+3 		 <TT>LPCEPSTRA</TT> 		 LPC cepstral coefficients 
+<BR>
+4 		 <TT>LPDELCEP</TT> 		 LPC cepstra plus delta coefficients 
+<BR>
+5 		 <TT>IREFC</TT> 		 LPC reflection coef in 16 bit integer format  
+<BR>
+6 		 <TT>MFCC</TT> 		 mel-frequency cepstral coefficients 
+<BR>
+7 		 <TT>FBANK</TT> 		 log mel-filter bank channel outputs 
+<BR>
+8 		 <TT>MELSPEC</TT> 		 linear mel-filter bank channel outputs 
+<BR>
+9 		 <TT>USER</TT> 		 user defined sample kind 
+<BR>
+10 		 <TT>DISCRETE</TT> 		 vector quantised data 
+<BR>
+</TT></PRE>
+and the bit-encoding for the qualifiers (in octal) is 
+<PRE><TT>
+		<TT>_E</TT> 		 000100 		 has energy 
+<BR><TT>_N</TT> 		 000200 		 absolute energy suppressed 
+<BR><TT>_D</TT> 		 000400 		 has delta coefficients 
+<BR><TT>_A</TT> 		 001000 		 has acceleration coefficients
+<BR><TT>_C</TT> 		 002000 		 is compressed 
+<BR><TT>_Z</TT> 		 004000 		 has zero mean static coef. 
+<BR><TT>_K</TT> 		 010000 		 has CRC checksum 
+<BR><TT>_O</TT> 		 020000 		 has 0'th cepstral coef. 
+<BR>
+</TT></PRE><A NAME="5894">&#160;</A>
+The <TT>_A</TT> qualifier can only be specified when <TT>_D</TT>
+is also specified.
+The <TT>_N</TT> qualifier is only valid when both energy and delta
+coefficients are present.  
+The sample kind <TT>LPDELCEP</TT> is identical to <TT>LPCEPSTRA_D</TT>
+and is retained for compatibility with older versions of HTK.
+The <TT>_C</TT><A NAME="6681">&#160;</A> and 
+<TT>_K</TT><A NAME="6682">&#160;</A> only exist in external files.  Compressed
+files are always decompressed on loading and any attached CRC 
+is checked and removed.  An external file can contain both an energy
+term and a 0'th order cepstral coefficient.  These may be retained
+on loading but normally one or the other is discarded<A NAME="tex2html24" HREF="footnode_mn.html#foot5904" TARGET="footer"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">8</SPAN></SUP></A>.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:HTKFormat">&#160;</A><IMG
+ WIDTH="591" HEIGHT="313" ALIGN="MIDDLE" BORDER="0"
+ SRC="img185.png"
+ ALT="% latex2html id marker 49121
+$\textstyle \parbox{130mm}{ \begin{center}\setlengt...
+...}  Parameter Vector Layout in HTK Format Files}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+All parameterised forms of HTK data files consist of a sequence of vectors.
+Each vector is organised as shown by the examples in Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>
+where various different qualified forms are listed.  As can be seen, an energy
+value if present immediately follows the base coefficients.  If delta
+coefficients are added, these follow the base coefficients and energy value.
+Note that the base form <TT>LPC</TT> is used in this figure only as an example,
+the same layout applies to all base sample kinds.  If the 0'th order cepstral
+coefficient is included as well as energy then it is inserted immediately
+before the energy coefficient, otherwise it replaces it.
+
+<P>
+For external storage of speech parameter files, two compression methods are
+provided.  For LP coding only, the <TT>IREFC</TT> parameter kind exploits the
+fact that the reflection coefficients are bounded by <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img186.png"
+ ALT="$ \pm 1$"></SPAN> and hence they can
+be stored as scaled integers such that <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img187.png"
+ ALT="$ +1.0$"></SPAN> is stored as <SPAN CLASS="MATH"><IMG
+ WIDTH="44" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img188.png"
+ ALT="$ 32767$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img189.png"
+ ALT="$ -1.0$"></SPAN>
+is stored as <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img190.png"
+ ALT="$ -32767$"></SPAN>.  For other types of parameterisation, a more general
+compression facility indicated by the
+<TT>_C</TT><A NAME="6683">&#160;</A> qualifier is used.  
+HTK compressed parameter files consist of a set of compressed parameter 
+vectors stored as shorts such that for parameter <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img191.png"
+ ALT="$ x$"></SPAN>
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+x_{short} & = & A*x_{float}-B  \nonumber
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="45" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img192.png"
+ ALT="$\displaystyle x_{short}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="103" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img193.png"
+ ALT="$\displaystyle A*x_{float}-B$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+The coefficients <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img194.png"
+ ALT="$ A$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img195.png"
+ ALT="$ B$"></SPAN> are defined as
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+A & = & 2*I/(x_{max}-x_{min}) \nonumber\\
+B & = & (x_{max}+x_{min})*I/(x_{max}-x_{min}) \nonumber
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img196.png"
+ ALT="$\displaystyle A$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="144" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img197.png"
+ ALT="$\displaystyle 2*I/(x_{max}-x_{min})$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle B$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img80.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="237" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img199.png"
+ ALT="$\displaystyle (x_{max}+x_{min})*I/(x_{max}-x_{min})$"></TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img200.png"
+ ALT="$ x_{max}$"></SPAN> is the maximum value of parameter <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img191.png"
+ ALT="$ x$"></SPAN> in the whole file and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img201.png"
+ ALT="$ x_{min}$"></SPAN> is the corresponding minimum. <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img202.png"
+ ALT="$ I$"></SPAN> is the maximum range of a 2-byte
+integer i.e. 32767.  The values of <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img194.png"
+ ALT="$ A$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img195.png"
+ ALT="$ B$"></SPAN> are stored as two floating
+point vectors prepended to the start of the file immediately after the header.
+
+<P>
+When a HTK tool writes out a speech file to external storage, no further
+signal conversions are performed.  Thus, for most purposes, the target
+parameter kind specifies both the required internal representation and the form
+of the written output, if any.  However, there is a distinction in the way that
+the external data is actually stored.  Firstly, it can be compressed as
+described above by setting the configuration parameter <TT>SAVECOMPRESSED</TT>
+to true.  If the target kind is <TT>LPREFC</TT> then this compression is
+implemented by converting to <TT>IREFC</TT> otherwise the general compression
+algorithm described above is used.  Secondly, in order to avoid data corruption
+problems, externally stored HTK parameter files can have a cyclic redundancy
+checksum appended.  This is indicated by the qualifier
+<TT>_K</TT><A NAME="6684">&#160;</A> and it is generated by setting
+the configuration parameter <TT>SAVEWITHCRC</TT> to true.  The principle tool
+which uses these output conversions is HC<SMALL>OPY</SMALL> (see
+section&nbsp;<A HREF="node84_ct.html#s:UseHCopy">5.16</A>).
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

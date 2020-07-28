@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Modelling Discrete Sequences</TITLE>
+<META NAME="description" CONTENT="Contents of Modelling Discrete Sequences">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node154_mn.html">
+<LINK REL="previous" HREF="node152_mn.html">
+<LINK REL="up" HREF="node152_mn.html">
+<LINK REL="next" HREF="node154_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03810000000000000000">&#160;</A><A NAME="s:discseq">&#160;</A>
+<BR>
+Modelling Discrete Sequences
+</H1>
+
+<P>
+Building HMMs for discrete symbol sequences is essentially the same
+as described previously for continuous density systems. 
+Firstly, a prototype HMM definition must be specified in order
+to fix the model topology.  For example, the following
+is a 3 state ergodic HMM in which the emitting states
+are fully connected.
+<PRE>
+    ~o &lt;DISCRETE&gt; &lt;StreamInfo&gt; 1 1 
+    ~h "dproto"
+    &lt;BeginHMM&gt;
+       &lt;NumStates&gt; 5 
+       &lt;State&gt; 2 &lt;NumMixes&gt; 10
+          &lt;DProb&gt; 5461*10
+       &lt;State&gt; 3 &lt;NumMixes&gt; 10
+          &lt;DProb&gt; 5461*10
+       &lt;State&gt; 4 &lt;NumMixes&gt; 10
+          &lt;DProb&gt; 5461*10
+       &lt;TransP&gt; 5
+           0.0 1.0 0.0 0.0 0.0
+           0.0 0.3 0.3 0.3 0.1
+           0.0 0.3 0.3 0.3 0.1
+           0.0 0.3 0.3 0.3 0.1
+           0.0 0.0 0.0 0.0 0.0
+    &lt;EndHMM&gt;
+</PRE>
+As described in chapter&nbsp;<A HREF="node101_ct.html#c:HMMDefs">7</A>, the notation for discrete
+HMMs borrows heavily on that used for continuous density models
+by equating mixture components with symbol indices.  Thus,
+this definition assumes that each training data sequence contains
+a single stream of symbols indexed from 1 to 10.  In this example,
+all symbols in each state have been set to be equally likely<A NAME="tex2html46" HREF="footnode_mn.html#foot19109" TARGET="footer"><SUP><SPAN CLASS="arabic">11</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>.  If prior information is available then this can of course be used
+to set these initial values.
+
+<P>
+The training data needed to build a discrete HMM can take one of two forms. It
+can either be discrete (<TT>SOURCEKIND=DISCRETE</TT>) in which case it consists
+of a sequence of 2-byte integer symbol indices.  Alternatively, it can consist
+of continuous parameter vectors with an associated VQ codebook.  This latter
+case is dealt with in the next section.  Here it will be assumed that the data
+is symbolic and that it is therefore stored in discrete form.<A NAME="19111">&#160;</A> Given a set of training files listed in the script file
+<TT>train.scp</TT>, an initial HMM could be estimated using
+<PRE>
+    HInit -T 1 -w 1.0 -o dhmm -S train.scp -M hmm0 dproto
+</PRE>
+This use of HI<SMALL>NIT</SMALL> is identical to that which would be
+used for building whole word HMMs where no associated label file is
+assumed and the whole of each training sequence is used to estimate
+the HMM parameters.  Its effect is to read in the prototype
+stored in the file <TT>dproto</TT> and then use the training examples
+to estimate initial values for the output distributions
+and transition probabilities.  This is done by firstly uniformly 
+segmenting the data and for each segment counting the number of occurrences
+of each symbol.  These counts are then normalised to provide output distributions
+for each state.  HI<SMALL>NIT</SMALL> then uses the Viterbi algorithm to resegment
+the data and recompute the parameters.  This is repeated until convergence
+is achieved or an upper limit on the iteration count is reached.
+The transition probabilities at each step are estimated simply by
+counting the number of times that each transition is made in the Viterbi alignments
+and normalising.  The final model is renamed <TT>dhmm</TT> and stored in
+the directory <TT>hmm0</TT>.
+
+<P>
+When building discrete HMMs, it is important to floor the discrete
+probabilites so that no symbol has a zero probability.  This is 
+achieved using the <TT>-w</TT> option which specifies a floor value
+as a multiple of a global constant called <TT>MINMIX</TT> whose
+value is <SPAN CLASS="MATH"><IMG
+ WIDTH="37" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img447.png"
+ ALT="$ 10^{-5}$"></SPAN>. 
+
+<P>
+The initialised HMM created by HI<SMALL>NIT</SMALL> 
+can then be further refined if desired by using HR<SMALL>EST</SMALL>
+to perform Baum-Welch re-estimation.  It would be invoked in a similar
+way to the above except that there is now no need to rename the model.
+For example,
+<PRE>
+    HRest -T 1 -w 1.0 -S train.scp -M hmm1 hmm0/dhmm
+</PRE>
+would read in the model stored in <TT>hmm0/dhmm</TT> and write out a new
+model of the same name to the directory <TT>hmm1</TT>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

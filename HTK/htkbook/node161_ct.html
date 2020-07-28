@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Bigram Language Models</TITLE>
+<META NAME="description" CONTENT="Contents of Bigram Language Models">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node162_mn.html">
+<LINK REL="previous" HREF="node160_mn.html">
+<LINK REL="up" HREF="node157_mn.html">
+<LINK REL="next" HREF="node162_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03940000000000000000">&#160;</A><A NAME="s:biglms">&#160;</A>
+<BR>
+Bigram Language Models
+</H1>
+
+<P>
+<A NAME="19636">&#160;</A>
+Before continuing with the description of network generation
+and, in particular, the use of HB<SMALL>UILD</SMALL><A NAME="19931">&#160;</A>, the 
+use of bigram language models needs to be described.
+Support for statistical language models in HTK is provided
+by the library module HLM.  Although the interface to
+HLM<A NAME="19932">&#160;</A> can support general N-grams<A NAME="19642">&#160;</A>,  
+the facilities for
+constructing and using N-grams are limited to bigrams.
+
+<P>
+A bigram language model can be built using HLS<SMALL>TATS</SMALL><A NAME="19933">&#160;</A>
+invoked as follows where it is a assumed that all of the
+label files used for
+training are stored in an MLF called <TT>labs</TT>
+<PRE>
+    HLStats -b bigfn -o wordlist labs
+</PRE>
+All words used in the label files must be listed in the <TT>wordlist</TT>.
+This command will read all of the transcriptions in <TT>labs</TT>,
+build a table of
+bigram counts in memory, and then output a back-off bigram<A NAME="19650">&#160;</A>
+to the file <TT>bigfn</TT>.  The formulae used for this are
+given in the reference entry for HLS<SMALL>TATS</SMALL>.  However, the 
+basic idea is encapsulated in the following formula
+<!-- MATH
+ \begin{displaymath}
+p(i,j) = \left\{
+      \begin{array}{ll}
+           (N(i,j) - D )/N(i) & \mbox{if $N(i,j) > t$} \\
+                  b(i) p(j)  & \mbox{otherwise}
+       \end{array}
+   \right.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="332" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img460.png"
+ ALT="$\displaystyle p(i,j) = \left\{
+\begin{array}{ll}
+(N(i,j) - D )/N(i) &amp; \mbox{if $N(i,j) &gt; t$} \\
+b(i) p(j) &amp; \mbox{otherwise}
+\end{array}\right.
+$">
+</DIV><P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="51" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img461.png"
+ ALT="$ N(i,j)$"></SPAN> is the number of times word <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> follows word <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN> and
+<SPAN CLASS="MATH"><IMG
+ WIDTH="36" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img462.png"
+ ALT="$ N(i)$"></SPAN> is the number of times that word <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN> appears.
+Essentially, a small part of the available probability mass
+is deducted from the higher bigram counts and distributed amongst
+the infrequent bigrams.  This process is called <SPAN  CLASS="textit">discounting</SPAN>.
+The default value for the discount constant <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img463.png"
+ ALT="$ D$"></SPAN> is 0.5 but 
+this can be altered using the configuration variable 
+<TT>DISCOUNT</TT><A NAME="19934">&#160;</A>.
+When a bigram count falls below the threshold
+<SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>, the bigram is backed-off to the unigram probability suitably scaled
+by a back-off weight in order to ensure that all bigram probabilities for a given
+history sum to one.
+
+<P>
+Backed-off bigrams<A NAME="19661">&#160;</A> are 
+stored in a text file using the standard
+ARPA MIT-LL format which as used in HTK is as follows
+
+<P>
+<PRE>
+    \data\
+    ngram 1=&lt;num 1-grams&gt;
+    ngram 2=&lt;num 2-ngrams&gt;
+
+    \1-grams:
+    P(!ENTER)      !ENTER  B(!ENTER)
+    P(W1)           W1     B(W1)
+    P(W2)           W2     B(W2)
+    ...
+    P(!EXIT)       !EXIT   B(!EXIT)
+
+    \2-grams:
+    P(W1 | !ENTER)  !ENTER W1
+    P(W2 | !ENTER)  !ENTER W2
+    P(W1 | W1)      W1     W1
+    P(W2 | W1)      W1     W2
+    P(W1 | W2)      W2     W1
+    ....
+    P(!EXIT | W1)   W1     !EXIT
+    P(!EXIT | W2)   W2     !EXIT
+    \end\
+</PRE>
+where all probabilities are stored as base-10 logs.  The default
+start and end words, <TT>!ENTER</TT> and <TT>!EXIT</TT> can be changed
+using the HLS<SMALL>TATS</SMALL> <TT>-s</TT> option.
+
+<P>
+For some applications, a simple matrix style of bigram representation
+may be more appropriate.  If the <TT>-o</TT> option is omitted in
+the above invocation of HLS<SMALL>TATS</SMALL>, then a simple full bigram
+matrix will be output using the format
+<PRE>
+    !ENTER    0   P(W1 | !ENTER) P(W2 | !ENTER) .....
+    W1        0   P(W1 | W1)     P(W2 | W1)     .....
+    W2        0   P(W1 | W2)     P(W2 | W2)     .....
+    ...
+    !EXIT     0   PN             PN             .....
+</PRE> 
+where the probability <!-- MATH
+ $P(w_j|w_i)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="68" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img464.png"
+ ALT="$ P(w_j\vert w_i)$"></SPAN> is given by row <SPAN CLASS="MATH"><IMG
+ WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img465.png"
+ ALT="$ i,j$"></SPAN> of the matrix.
+If there are a total of N words in the vocabulary then <TT>PN</TT>
+in the above is set to <SPAN CLASS="MATH"><IMG
+ WIDTH="74" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img466.png"
+ ALT="$ 1/(N+1)$"></SPAN>, this ensures that the last row
+sums to one.  As a very crude form of smoothing, a floor can be set
+using the <TT>-f minp</TT> option to prevent any entry falling
+below <TT>minp</TT>.  Note, however, that this does not affect the 
+bigram entries in the first
+column which are zero by definition.  Finally, as with the storage
+of tied-mixture and discrete probabilities, a run-length encoding
+scheme is used whereby any value can be followed by an 
+asterisk and a repeat count (see section&nbsp;<A HREF="node106_ct.html#s:tmix">7.5</A>).
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

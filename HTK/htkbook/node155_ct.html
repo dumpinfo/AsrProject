@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Tied Mixture Systems</TITLE>
+<META NAME="description" CONTENT="Contents of Tied Mixture Systems">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node156_mn.html">
+<LINK REL="previous" HREF="node154_mn.html">
+<LINK REL="up" HREF="node152_mn.html">
+<LINK REL="next" HREF="node156_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03830000000000000000">&#160;</A><A NAME="s:tiedmix">&#160;</A>
+<BR>
+Tied Mixture Systems
+</H1>
+
+<P>
+<A NAME="19172">&#160;</A>
+Discrete systems have the advantage of low run-time computation.  However,
+vector quantisation reduces accuracy and this can lead to poor performance.
+As a intermediate between discrete and continuous, a fully tied-mixture
+system can be used.
+Tied-mixtures are conceptually just another example of the general parameter tying
+mechanism built-in to HTK.  However, to use them effectively in
+speech recognition systems a number of storage and computational 
+optimisations must be made.  Hence, they are given special treatment in HTK.
+
+<P>
+When specific mixtures are tied as in 
+<PRE>
+     TI "mix" {*.state[2].mix[1]}
+</PRE>
+then a Gaussian mixture component is shared across all of the owners
+of the tie.  In this example, all models will share the same Gaussian
+for the first mixture component of state 2.  However, if the mixture
+component index is missing, then all of the mixture components participating in
+the tie are <I>joined</I> rather than tied. More specifically, the commands
+<PRE>
+     JO 128 2.0
+     TI "mix" {*.state[2-4].mix}
+</PRE>
+has the following effect.  All of the mixture components in states 2 to 4 of
+all models are collected into a pool.  If the number of components
+in the pool exceeds 128, as set by the preceding join command 
+<TT>JO</TT><A NAME="19265">&#160;</A>, then
+components with the smallest weights are removed until the pool size is exactly
+128.  Similarly, if the size of the initial pool is less than 128, then mixture
+components are split using the same algorithm as for the Mix-Up <TT>MU</TT>
+command.<A NAME="19181">&#160;</A>   All states then share all of the 
+mixture components in this pool.  The new mixture weights are chosen to be proportional
+to the log probability of the corresponding new mixture component mean with
+respect to the original distribution for that state.  The log is used here
+to give a wider spread of mixture weights.  All mixture weights are floored
+to the value of the second argument of the <TT>JO</TT> command times 
+<TT>MINMIX</TT><A NAME="19266">&#160;</A>.
+
+<P>
+The net effect of the above two commands is to create a set of <TT>tied-mixture</TT>
+HMMs<A NAME="tex2html47" HREF="footnode_mn.html#foot19267" TARGET="footer"><SUP><SPAN CLASS="arabic">11</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A>where the same set of mixture components is shared across all states of
+all models.  However, the type of the HMM set so created will still be
+<TT>SHARED</TT> and the internal representation will be the same as for
+any other set of parameter tyings.   To obtain the optimised representation 
+of the tied-mixture weights
+described in section&nbsp;<A HREF="node106_ct.html#s:tmix">7.5</A>, the following HHE<SMALL>D</SMALL>
+<TT>HK</TT><A NAME="19268">&#160;</A> command must be issued
+<PRE>
+     HK TIEDHS
+</PRE>
+This will convert the internal representation to the special tied-mixture
+form in which all of the tied mixtures are stored in a global table and
+referenced implicitly instead
+of being referenced explicitly using pointers.
+
+<P>
+Tied-mixture HMMs work best if the information relating to different sources
+such as delta coefficients and energy are separated into distinct data streams.
+This can be done by setting up multiple data stream HMMs from the outset.  
+However, it is simpler to use the 
+<TT>SS</TT><A NAME="19269">&#160;</A>
+command in HHE<SMALL>D</SMALL> to split the data streams of the currently loaded HMM set.
+Thus, for example, the command
+<PRE>
+     SS 4
+</PRE>
+would convert the currently loaded HMMs to use four separate data streams
+rather than one.  When used in the construction of tied-mixture HMMs
+this is analogous to the use of multiple codebooks in discrete density 
+HMMs.
+
+<P>
+The procedure for building a set of tied-mixture HMMs may be summarised
+as follows<A NAME="19199">&#160;</A>
+
+<OL>
+<LI>Choose a <I>codebook</I> size for each data stream and then 
+   decide how many Gaussian components will be needed from an initial set of
+    monophones to approximately fill this codebook.
+    For example, suppose that there are 48 three state monophones.  If
+    codebook sizes of 128 are chosen for streams 1 and 2, and
+    a codebook size of 64 is chosen for stream 3 then single Gaussian
+    monophones would provide enough mixtures in total to fill the codebooks.
+</LI>
+<LI>Train the initial set of monophones.
+</LI>
+<LI>Use HHE<SMALL>D</SMALL> to first split the HMMs into the required number of
+    data streams, tie
+    each individual stream and then convert the tied-mixture HMM set to 
+    have the kind <TT>TIEDHS</TT>.  
+    A typical script to do this for four streams would be
+<PRE>
+    SS 4
+    JO 256 2.0
+    TI st1 {*.state[2-4].stream[1].mix}
+    JO 128 2.0
+    TI st2 {*.state[2-4].stream[2].mix}
+    JO 128 2.0
+    TI st3 {*.state[2-4].stream[3].mix}
+    JO 64 2.0
+    TI st4 {*.state[2-4].stream[4].mix}
+    HK TIEDHS
+</PRE>
+</LI>
+<LI>Re-estimate the models using HER<SMALL>EST</SMALL> in the normal way.
+</LI>
+</OL>
+Once the set of retrained tied-mixture models has been produced, context
+dependent models can be constructed using similar methods to those
+outlined previously.
+
+<P>
+When evaluating probabilities in tied-mixture systems, it is often
+sufficient to sum just the most likely mixture components since for any
+particular input vector, its probability with respect to many of the Gaussian
+components will be very low.<A NAME="19208">&#160;</A>
+HTK tools recognise <TT>TIEDHS</TT>
+HMM sets as being special in the sense that additional optimisations
+are possible. When full tied-mixtures are used, then an additional layer of pruning
+is applied.  At each time frame, the log probability of the current observation
+is computed for each mixture component.  Then only those components which lie within
+a threshold of the most likely component are retained.  This 
+pruning is controlled by the <TT>-c</TT> option in 
+HR<SMALL>EST</SMALL>, HER<SMALL>EST</SMALL> and HV<SMALL>ITE</SMALL>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

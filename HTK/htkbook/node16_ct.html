@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Training Tools</TITLE>
+<META NAME="description" CONTENT="Contents of Training Tools">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node17_mn.html">
+<LINK REL="previous" HREF="node15_mn.html">
+<LINK REL="up" HREF="node14_mn.html">
+<LINK REL="next" HREF="node17_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02232000000000000000">
+Training Tools</A>
+</H2>
+
+<P>
+The second step of system building is to<A NAME="2846">&#160;</A>
+define the topology required for each HMM by writing a prototype definition.
+HTK allows HMMs to be built with any desired topology.
+HMM definitions can be stored externally as simple text files and
+hence it is possible to edit them with any convenient text
+editor. Alternatively, the standard HTK distribution includes
+a number of example HMM prototypes and a script to generate
+the most common topologies automatically.
+With the exception of the transition
+probabilities, all of the HMM parameters given in 
+the prototype definition<A NAME="2847">&#160;</A>
+are ignored.  The purpose of the prototype definition is only
+to specify the overall characteristics and topology of the HMM.  The
+actual parameters will be computed later by the training tools.  
+Sensible values for
+the transition probabilities must be given but the training
+process is very insensitive to these.  An acceptable and  simple strategy
+for choosing these probabilities is to make all of the transitions
+out of any state equally likely.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:sysoview">&#160;</A><IMG
+ WIDTH="457" HEIGHT="455" ALIGN="MIDDLE" BORDER="0"
+ SRC="img101.png"
+ ALT="% latex2html id marker 48679
+$\textstyle \parbox{100mm}{ \begin{center}\setlengt...
+...chapter.\arabic{figctr}  HTK Processing Stages}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+The actual training process takes place in stages and it is
+illustrated in more detail in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  
+Firstly, an initial set of models must be created.  If there is
+some speech data available for which the location of the sub-word (i.e. phone)
+boundaries have been marked, then this can be used as <SPAN  CLASS="textit">bootstrap data</SPAN>.
+In this case, the tools HI<SMALL>NIT</SMALL><A NAME="3009">&#160;</A> 
+and HR<SMALL>EST</SMALL><A NAME="3010">&#160;</A>
+provide <I>isolated word</I> style
+training using the fully labelled bootstrap<A NAME="2858">&#160;</A> data.  Each of the required
+HMMs is generated individually.  HI<SMALL>NIT</SMALL> reads in all of the bootstrap
+training data and <I>cuts out</I> all of the examples of the required
+phone.  It then iteratively computes an initial set of parameter values
+using a <I>segmental k-means</I> procedure<A NAME="2862">&#160;</A>.  On the first cycle, the training data
+is uniformly segmented, each model state is matched with the
+corresponding data segments and then means and variances are estimated.
+If mixture Gaussian models are being trained, then a modified form
+of k-means clustering is used.  On the second and successive cycles,
+the uniform segmentation is replaced by Viterbi alignment.  
+The initial parameter values computed by HI<SMALL>NIT</SMALL> are then further re-estimated
+by HR<SMALL>EST</SMALL>.  Again, the fully labelled bootstrap data is used but this
+time the segmental k-means procedure is replaced by the Baum-Welch re-estimation
+procedure described in the previous chapter.  When no bootstrap data is
+available, a so-called <SPAN  CLASS="textit">flat start</SPAN> can be used.  In this case all
+of the phone models are initialised to be identical and have state means
+and variances equal to the global speech mean and variance.  The tool
+HC<SMALL>OMP</SMALL>V<A NAME="3011">&#160;</A> can be used for this.<A NAME="2868">&#160;</A>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:tsubword">&#160;</A><IMG
+ WIDTH="412" HEIGHT="599" ALIGN="MIDDLE" BORDER="0"
+ SRC="img102.png"
+ ALT="% latex2html id marker 48680
+$\textstyle \parbox{90mm}{ \begin{center}\setlength...
+...chapter.\arabic{figctr}  Training Sub-word HMMs}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+Once an initial set of models has been created, the tool HER<SMALL>EST</SMALL>
+is used to perform <EM>embedded training</EM> using the 
+entire<A NAME="2874">&#160;</A>
+training set.  HER<SMALL>EST</SMALL><A NAME="3012">&#160;</A> performs a single Baum-Welch
+re-estimation of the whole set of HMM phone models simultaneously.  For each
+training utterance, the corresponding phone models are concatenated and then
+the forward-backward algorithm is used to accumulate the statistics of state
+occupation, means, variances, etc., for each HMM in the sequence.  When
+all of the training data has been processed, the accumulated statistics
+are used to compute re-estimates of the HMM parameters.  HER<SMALL>EST</SMALL> is
+the core HTK training tool.  It is designed to process large databases, it has
+facilities for pruning<A NAME="2878">&#160;</A> to reduce computation and it can be run in parallel 
+across a network of machines.
+
+<P>
+The philosophy of system construction in HTK  is that HMMs should be
+<A NAME="2879">&#160;</A>
+refined incrementally.  Thus, a typical progression is to start with a
+simple set of single Gaussian context-independent phone models and then
+iteratively refine them by expanding them to include context-dependency 
+and use multiple mixture component Gaussian distributions.
+The tool HHE<SMALL>D</SMALL><A NAME="3013">&#160;</A> is a 
+HMM definition editor which will clone models<A NAME="2882">&#160;</A>
+into context-dependent sets, apply a variety of parameter tyings
+and increment the number of mixture components in specified distributions.
+The usual process is to modify a set of HMMs in stages using HHE<SMALL>D</SMALL>
+and then 
+re-estimate the parameters of the modified set using HER<SMALL>EST</SMALL>
+after each stage.  
+To improve performance for specific speakers the tools 
+HER<SMALL>EST</SMALL><A NAME="3014">&#160;</A> 
+and HV<SMALL>ITE</SMALL><A NAME="3015">&#160;</A> can be 
+used to adapt HMMs to better model the characteristics of particular 
+speakers using a small amount of training or adaptation data.
+The end result of which is a speaker adapted system.
+
+<P>
+The single biggest problem in building context-dependent 
+HMM systems is always data
+insufficiency.  The more complex the model set, the more data is 
+needed to make robust estimates of its parameters, and since data is
+usually limited, a balance must be struck between complexity and 
+the available data.
+For continuous density systems, this balance is achieved by 
+tying parameters together as mentioned above.  Parameter tying
+allows data to be pooled so that the shared parameters can be robustly
+estimated. 
+In addition to continuous density systems, HTK also supports
+fully tied mixture systems and discrete probability systems.  In these
+cases, the data insufficiency problem is usually addressed by smoothing
+the distributions and the 
+tool HS<SMALL>MOOTH</SMALL><A NAME="3016">&#160;</A> is used for this.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

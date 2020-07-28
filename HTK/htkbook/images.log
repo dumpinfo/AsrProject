@@ -1,0 +1,4116 @@
+This is TeX, Version 3.14159 (Web2C 7.3.1) (format=latex 2002.4.12)  25 JUL 2005 16:51
+**./images.tex
+(./images.tex
+LaTeX2e <2000/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, i
+talian, nohyphenation, loaded.
+
+(/usr/share/texmf/tex/latex/base/book.cls
+Document Class: book 2000/05/19 v1.4b Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/bk10.clo
+File: bk10.clo 2000/05/19 v1.4b Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/share/texmf/tex/latex/base/ifthen.sty
+Package: ifthen 1999/09/10 v1.1b Standard LaTeX ifthen package (DPC)
+) (/usr/share/texmf/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+) (/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 1999/02/16 v1.0l Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+) (/usr/share/texmf/tex/latex/config/graphics.cfg)
+Package graphics Info: Driver file: dvips.def on input line 80.
+(/usr/share/texmf/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+\epsfxsize=\dimen105
+\epsfysize=\dimen106
+) (/usr/share/texmf/tex/latex/html/html.sty
+Package: html 1999/07/19 v1.38 hypertext commands for latex2html (nd, hws, rrm)
+
+\c@lpart=\count88
+\c@lchapter=\count89
+\c@lsection=\count90
+\c@lsubsection=\count91
+\c@lsubsubsection=\count92
+\c@lparagraph=\count93
+\c@lsubparagraph=\count94
+\c@lsubsubparagraph=\count95
+\ptrfile=\write3
+) (/usr/share/texmf/tex/latex/graphics/color.sty
+Package: color 1999/02/16 v1.0i Standard LaTeX Color (DPC)
+(/usr/share/texmf/tex/latex/config/color.cfg)
+Package color Info: Driver file: dvips.def on input line 125.
+(/usr/share/texmf/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+)) (/usr/share/texmf/tex/latex/misc/supertabular.sty
+Package: supertabular 1999/08/07 v4.1d the supertabular environment
+\c@tracingst=\count96
+\ST@wd=\dimen107
+\ST@rightskip=\skip43
+\ST@leftskip=\skip44
+\ST@parfillskip=\skip45
+\ST@pageleft=\dimen108
+\ST@headht=\dimen109
+\ST@tailht=\dimen110
+\ST@pagesofar=\dimen111
+\ST@pboxht=\dimen112
+\ST@lineht=\dimen113
+\ST@stretchht=\dimen114
+\ST@prevht=\dimen115
+\ST@toadd=\dimen116
+\ST@dimen=\dimen117
+\ST@pbox=\box26
+)
+! Illegal parameter number in definition of \href.
+<to be read again> 
+                   }
+l.34 \providecommand{\href}[1]{\ref{#}}
+                                       
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+\c@tabctr=\count97
+\c@figctr=\count98
+! Illegal parameter number in definition of \seeFig.
+<to be read again> 
+                   }
+l.319 ...ommand{\seeFig}[1]{see Fig {\bf \ref{#}}}
+                                                  %
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \fig.
+<to be read again> 
+                   }
+l.320 ...videcommand{\fig}   [1]{figure {\ref{#}}}
+                                                  %
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+(/usr/share/texmf/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+) (/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip46
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks15
+\ex@=\dimen118
+)) (/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen119
+) (/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count99
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count100
+\leftroot@=\count101
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count102
+\DOTSCASE@=\count103
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen120
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count104
+\c@MaxMatrixCols=\count105
+\dotsspace@=\muskip10
+\c@parentequation=\count106
+\dspbrk@lvl=\count107
+\tag@help=\toks16
+\row@=\count108
+\column@=\count109
+\maxfields@=\count110
+\andhelp@=\toks17
+\eqnshift@=\dimen121
+\alignsep@=\dimen122
+\tagshift@=\dimen123
+\tagwidth@=\dimen124
+\totwidth@=\dimen125
+\lineht@=\dimen126
+\@envbody=\toks18
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+) (/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 1996/11/03 v2.2b
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 1997/09/17 v2.2e
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 133.
+))
+\@indexfile=\write4
+\openout4 = `images.idx'.
+
+Writing index file images.idx
+(/usr/share/texmf/tex/latex/base/inputenc.sty
+Package: inputenc 2000/07/01 v0.996 Input encoding file 
+(/usr/share/texmf/tex/latex/base/latin1.def
+File: latin1.def 2000/07/01 v0.996 Input encoding file 
+))
+\sizebox=\box29
+\lthtmlwrite=\write5
+(images.aux (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/fundaments.aux) 
+(/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/htkoview.aux) (/home/cabinet
+1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/exampsys.aux) (/home/cabinet1/jal58/HTK/ht
+k/htk3/htk-3.3/HTKBook/openviron.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.
+3/HTKBook/speechio.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/labe
+ls.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/models.aux) (/home/c
+abinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/train.aux) (/home/cabinet1/jal58/HTK
+/htk/htk3/htk-3.3/HTKBook/adapt.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3
+/HTKBook/refine.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/discmod
+s.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/netdict.aux) (/home/c
+abinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/decode.aux) (/home/cabinet1/jal58/HT
+K/htk/htk3/htk-3.3/HTKBook/hlmfund.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-
+3.3/HTKBook/hlmtutorial.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook
+/hlmfiles.aux
+
+LaTeX Warning: Label `s:HLMinterpmax' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/tools.aux) (/home/c
+abinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/Cluster.aux) (/home/cabinet1/
+jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HBuild.aux) (/home/cabinet1/jal58/HTK
+/htk/htk3/htk-3.3/HTKBook/HTKRef/HCompV.aux) (/home/cabinet1/jal58/HTK/htk/htk3
+/htk-3.3/HTKBook/HTKRef/HCopy.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/H
+TKBook/HTKRef/HDMan.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTK
+Ref/HERest.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HHEd.
+aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HInit.aux) (/hom
+e/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLEd.aux) (/home/cabinet1/
+jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HList.aux) (/home/cabinet1/jal58/HTK/
+htk/htk3/htk-3.3/HTKBook/HTKRef/HLMCopy.aux) (/home/cabinet1/jal58/HTK/htk/htk3
+/htk-3.3/HTKBook/HTKRef/HLRescore.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3
+.3/HTKBook/HTKRef/HLStats.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBo
+ok/HTKRef/HParse.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef
+/HQuant.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HRest.au
+x) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HResults.aux) (/ho
+me/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSGen.aux) (/home/cabinet
+1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSLab.aux) (/home/cabinet1/jal58/HT
+K/htk/htk3/htk-3.3/HTKBook/HTKRef/HSmooth.aux) (/home/cabinet1/jal58/HTK/htk/ht
+k3/htk-3.3/HTKBook/HTKRef/HVite.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3
+/HTKBook/HTKRef/LAdapt.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/
+HTKRef/LBuild.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LF
+oF.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGCopy.aux) (
+/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGList.aux) (/home/cab
+inet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGPrep.aux) (/home/cabinet1/jal
+58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LLink.aux
+
+LaTeX Warning: Label `s:Function' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LMerge.aux) (/home/
+cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LNewMap.aux
+
+LaTeX Warning: Label `s:Function' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LNorm.aux) (/home/c
+abinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LPlex.aux) (/home/cabinet1/ja
+l58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LSubset.aux) (/home/cabinet1/jal58/HTK/
+htk/htk3/htk-3.3/HTKBook/config.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3
+/HTKBook/errors.aux) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/htkslf.
+aux))
+\openout1 = `images.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 709.
+LaTeX Font Info:    ... okay on input line 709.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 709.
+LaTeX Font Info:    ... okay on input line 709.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 709.
+LaTeX Font Info:    ... okay on input line 709.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 709.
+LaTeX Font Info:    ... okay on input line 709.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 709.
+LaTeX Font Info:    ... okay on input line 709.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 709.
+LaTeX Font Info:    ... okay on input line 709.
+(/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/htkbook.aux (/home/cabinet1/
+jal58/HTK/htk/htk3/htk-3.3/HTKBook/fundaments.aux
+
+LaTeX Warning: Label `c:fundaments' multiply defined.
+
+
+LaTeX Warning: Label `f:overview' multiply defined.
+
+
+LaTeX Warning: Label `s:genpHMM' multiply defined.
+
+
+LaTeX Warning: Label `f:messencode' multiply defined.
+
+
+LaTeX Warning: Label `s:isowrdrec' multiply defined.
+
+
+LaTeX Warning: Label `e:2' multiply defined.
+
+
+LaTeX Warning: Label `e:3' multiply defined.
+
+
+LaTeX Warning: Label `f:isoprob' multiply defined.
+
+
+LaTeX Warning: Label `e:4' multiply defined.
+
+
+LaTeX Warning: Label `f:markovgen' multiply defined.
+
+
+LaTeX Warning: Label `e:5' multiply defined.
+
+
+LaTeX Warning: Label `e:6' multiply defined.
+
+
+LaTeX Warning: Label `e:7' multiply defined.
+
+
+LaTeX Warning: Label `f:useforiso' multiply defined.
+
+
+LaTeX Warning: Label `s:outprobspec' multiply defined.
+
+
+LaTeX Warning: Label `e:8' multiply defined.
+
+
+LaTeX Warning: Label `s:bwrest' multiply defined.
+
+
+LaTeX Warning: Label `f:subsmixrep' multiply defined.
+
+
+LaTeX Warning: Label `e:10' multiply defined.
+
+
+LaTeX Warning: Label `e:11' multiply defined.
+
+
+LaTeX Warning: Label `e:12' multiply defined.
+
+
+LaTeX Warning: Label `e:13' multiply defined.
+
+
+LaTeX Warning: Label `e:14' multiply defined.
+
+
+LaTeX Warning: Label `e:15' multiply defined.
+
+
+LaTeX Warning: Label `e:16' multiply defined.
+
+
+LaTeX Warning: Label `e:21' multiply defined.
+
+
+LaTeX Warning: Label `e:25' multiply defined.
+
+
+LaTeX Warning: Label `s:recandvit' multiply defined.
+
+
+LaTeX Warning: Label `e:27' multiply defined.
+
+
+LaTeX Warning: Label `e:30' multiply defined.
+
+
+LaTeX Warning: Label `f:vtrellis' multiply defined.
+
+
+LaTeX Warning: Label `s:consprec' multiply defined.
+
+
+LaTeX Warning: Label `f:netforcsr' multiply defined.
+
+
+LaTeX Warning: Label `f:wlroper' multiply defined.
+
+
+LaTeX Warning: Label `s:spk_adapt' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/htkoview.aux
+
+LaTeX Warning: Label `c:htkoview' multiply defined.
+
+
+LaTeX Warning: Label `f:toolkit' multiply defined.
+
+
+LaTeX Warning: Label `s:softarch' multiply defined.
+
+
+LaTeX Warning: Label `f:softarch' multiply defined.
+
+
+LaTeX Warning: Label `s:genprops' multiply defined.
+
+
+LaTeX Warning: Label `s:toolkit' multiply defined.
+
+
+LaTeX Warning: Label `f:sysoview' multiply defined.
+
+
+LaTeX Warning: Label `f:tsubword' multiply defined.
+
+
+LaTeX Warning: Label `s:whatsnew' multiply defined.
+
+
+LaTeX Warning: Label `s:' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/exampsys.aux
+
+LaTeX Warning: Label `c:exampsys' multiply defined.
+
+
+LaTeX Warning: Label `f:recipe' multiply defined.
+
+
+LaTeX Warning: Label `s:egdataprep' multiply defined.
+
+
+LaTeX Warning: Label `f:dialnet' multiply defined.
+
+
+LaTeX Warning: Label `f:step1' multiply defined.
+
+
+LaTeX Warning: Label `f:step2' multiply defined.
+
+
+LaTeX Warning: Label `f:step3' multiply defined.
+
+
+LaTeX Warning: Label `f:step4' multiply defined.
+
+
+LaTeX Warning: Label `f:step5' multiply defined.
+
+
+LaTeX Warning: Label `s:egcreatmono' multiply defined.
+
+
+LaTeX Warning: Label `f:MMFeg' multiply defined.
+
+
+LaTeX Warning: Label `f:step6' multiply defined.
+
+
+LaTeX Warning: Label `f:egsils' multiply defined.
+
+
+LaTeX Warning: Label `f:step7' multiply defined.
+
+
+LaTeX Warning: Label `f:step8' multiply defined.
+
+
+LaTeX Warning: Label `s:egcreattri' multiply defined.
+
+
+LaTeX Warning: Label `f:egtranstie' multiply defined.
+
+
+LaTeX Warning: Label `f:step9' multiply defined.
+
+
+LaTeX Warning: Label `f:step10' multiply defined.
+
+
+LaTeX Warning: Label `s:egrectest' multiply defined.
+
+
+LaTeX Warning: Label `f:step11' multiply defined.
+
+
+LaTeX Warning: Label `s:egreclive' multiply defined.
+
+
+LaTeX Warning: Label `s:exsyssum' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/openviron.aux
+
+LaTeX Warning: Label `c:openviron' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.shell' multiply defined.
+
+
+LaTeX Warning: Label `s:cmdline' multiply defined.
+
+
+LaTeX Warning: Label `s:script' multiply defined.
+
+
+LaTeX Warning: Label `s:config' multiply defined.
+
+
+LaTeX Warning: Label `f:Config' multiply defined.
+
+
+LaTeX Warning: Label `s:stdopts' multiply defined.
+
+
+LaTeX Warning: Label `s:erep' multiply defined.
+
+
+LaTeX Warning: Label `s:htkstrings' multiply defined.
+
+
+LaTeX Warning: Label `s:memman' multiply defined.
+
+
+LaTeX Warning: Label `s:iopipes' multiply defined.
+
+
+LaTeX Warning: Label `s:byteswap' multiply defined.
+
+
+LaTeX Warning: Label `s:openvsum' multiply defined.
+
+
+LaTeX Warning: Label `t:openvcparms' multiply defined.
+
+
+LaTeX Warning: Label `t:openvars' multiply defined.
+
+
+LaTeX Warning: Label `t:stdopts' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/speechio.aux
+
+LaTeX Warning: Label `c:speechio' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.spio' multiply defined.
+
+
+LaTeX Warning: Label `s:genio' multiply defined.
+
+
+LaTeX Warning: Label `f:Spmods' multiply defined.
+
+
+LaTeX Warning: Label `s:sigproc' multiply defined.
+
+
+LaTeX Warning: Label `f:Blocking' multiply defined.
+
+
+LaTeX Warning: Label `e:preemp' multiply defined.
+
+
+LaTeX Warning: Label `e:ham' multiply defined.
+
+
+LaTeX Warning: Label `e:dither' multiply defined.
+
+
+LaTeX Warning: Label `s:lpcanal' multiply defined.
+
+
+LaTeX Warning: Label `e:allpole' multiply defined.
+
+
+LaTeX Warning: Label `e:autoco' multiply defined.
+
+
+LaTeX Warning: Label `e:kupdate1' multiply defined.
+
+
+LaTeX Warning: Label `e:kupdate2' multiply defined.
+
+
+LaTeX Warning: Label `e:Eupdate' multiply defined.
+
+
+LaTeX Warning: Label `e:aupdate1' multiply defined.
+
+
+LaTeX Warning: Label `e:aupdate2' multiply defined.
+
+
+LaTeX Warning: Label `e:lpcepstra' multiply defined.
+
+
+LaTeX Warning: Label `e:ceplifter' multiply defined.
+
+
+LaTeX Warning: Label `s:fbankanal' multiply defined.
+
+
+LaTeX Warning: Label `e:melscale' multiply defined.
+
+
+LaTeX Warning: Label `f:melfbank' multiply defined.
+
+
+LaTeX Warning: Label `s:vtln' multiply defined.
+
+
+LaTeX Warning: Label `f:vtlnpiecewise' multiply defined.
+
+
+LaTeX Warning: Label `s:cepstrum' multiply defined.
+
+
+LaTeX Warning: Label `e:dct' multiply defined.
+
+
+LaTeX Warning: Label `s:plp' multiply defined.
+
+
+LaTeX Warning: Label `s:energy' multiply defined.
+
+
+LaTeX Warning: Label `e:logenergy' multiply defined.
+
+
+LaTeX Warning: Label `s:delta' multiply defined.
+
+
+LaTeX Warning: Label `e:deltas' multiply defined.
+
+
+LaTeX Warning: Label `e:simdiffs' multiply defined.
+
+
+LaTeX Warning: Label `s:parmstore' multiply defined.
+
+
+LaTeX Warning: Label `f:HTKFormat' multiply defined.
+
+
+LaTeX Warning: Label `s:waveform' multiply defined.
+
+
+LaTeX Warning: Label `s:audioio' multiply defined.
+
+
+LaTeX Warning: Label `f:endpointer' multiply defined.
+
+
+LaTeX Warning: Label `s:streams' multiply defined.
+
+
+LaTeX Warning: Label `f:streams' multiply defined.
+
+
+LaTeX Warning: Label `s:vquant' multiply defined.
+
+
+LaTeX Warning: Label `f:VQUse' multiply defined.
+
+
+LaTeX Warning: Label `s:UseHList' multiply defined.
+
+
+LaTeX Warning: Label `s:UseHCopy' multiply defined.
+
+
+LaTeX Warning: Label `f:coercions' multiply defined.
+
+
+LaTeX Warning: Label `s:v1spcompat' multiply defined.
+
+
+LaTeX Warning: Label `s:spiosum' multiply defined.
+
+
+LaTeX Warning: Label `t:fileform' multiply defined.
+
+
+LaTeX Warning: Label `t:parmkinds' multiply defined.
+
+
+LaTeX Warning: Label `t:qualifiers' multiply defined.
+
+
+LaTeX Warning: Label `t:spiocparms1' multiply defined.
+
+
+LaTeX Warning: Label `t:spiocparms2' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/labels.aux
+
+LaTeX Warning: Label `c:labels' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.labs' multiply defined.
+
+
+LaTeX Warning: Label `s:labstruct' multiply defined.
+
+
+LaTeX Warning: Label `s:labform' multiply defined.
+
+
+LaTeX Warning: Label `s:mlfs' multiply defined.
+
+
+LaTeX Warning: Label `f:labegs' multiply defined.
+
+
+LaTeX Warning: Label `f:dbhier' multiply defined.
+
+
+LaTeX Warning: Label `s:edlab' multiply defined.
+
+
+LaTeX Warning: Label `s:labelsum' multiply defined.
+
+
+LaTeX Warning: Label `t:labelcparms' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/models.aux
+
+LaTeX Warning: Label `c:HMMDefs' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.model' multiply defined.
+
+
+LaTeX Warning: Label `s:HMMparm' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm1' multiply defined.
+
+
+LaTeX Warning: Label `e:cdpdf' multiply defined.
+
+
+LaTeX Warning: Label `e:gnorm' multiply defined.
+
+
+LaTeX Warning: Label `e:ddpdf' multiply defined.
+
+
+LaTeX Warning: Label `s:OneHMM' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm1def' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm2def' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm3def' multiply defined.
+
+
+LaTeX Warning: Label `s:HMMmac' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm4def' multiply defined.
+
+
+LaTeX Warning: Label `f:mac5def' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm5def' multiply defined.
+
+
+LaTeX Warning: Label `f:hierarch' multiply defined.
+
+
+LaTeX Warning: Label `s:hmmsets' multiply defined.
+
+
+LaTeX Warning: Label `f:mac6def' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm6def' multiply defined.
+
+
+LaTeX Warning: Label `f:hsetdef' multiply defined.
+
+
+LaTeX Warning: Label `f:hlisteg' multiply defined.
+
+
+LaTeX Warning: Label `s:tmix' multiply defined.
+
+
+LaTeX Warning: Label `f:tmixeg' multiply defined.
+
+
+LaTeX Warning: Label `e:tmixpdf' multiply defined.
+
+
+LaTeX Warning: Label `s:dischmm' multiply defined.
+
+
+LaTeX Warning: Label `f:tmixpool' multiply defined.
+
+
+LaTeX Warning: Label `f:tmixhmm2' multiply defined.
+
+
+LaTeX Warning: Label `e:dpscale' multiply defined.
+
+
+LaTeX Warning: Label `f:lintran' multiply defined.
+
+
+LaTeX Warning: Label `s:lintran' multiply defined.
+
+
+LaTeX Warning: Label `s:teemods' multiply defined.
+
+
+LaTeX Warning: Label `f:tmixhmm' multiply defined.
+
+
+LaTeX Warning: Label `s:binsave' multiply defined.
+
+
+LaTeX Warning: Label `s:hmmdef' multiply defined.
+
+
+LaTeX Warning: Label `f:dischmm' multiply defined.
+
+
+LaTeX Warning: Label `f:macregtreedef' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/train.aux
+
+LaTeX Warning: Label `c:Training' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.train' multiply defined.
+
+
+LaTeX Warning: Label `s:tstrats' multiply defined.
+
+
+LaTeX Warning: Label `f:isoword' multiply defined.
+
+
+LaTeX Warning: Label `f:subword' multiply defined.
+
+
+LaTeX Warning: Label `s:inithmm' multiply defined.
+
+
+LaTeX Warning: Label `f:vitloop' multiply defined.
+
+
+LaTeX Warning: Label `f:hinitdp' multiply defined.
+
+
+LaTeX Warning: Label `s:flatstart' multiply defined.
+
+
+LaTeX Warning: Label `f:flatst' multiply defined.
+
+
+LaTeX Warning: Label `s:resthmm' multiply defined.
+
+
+LaTeX Warning: Label `f:restloop' multiply defined.
+
+
+LaTeX Warning: Label `s:eresthmm' multiply defined.
+
+
+LaTeX Warning: Label `f:herestdp' multiply defined.
+
+
+LaTeX Warning: Label `f:parher' multiply defined.
+
+
+LaTeX Warning: Label `s:singlepass' multiply defined.
+
+
+LaTeX Warning: Label `s:twomodel' multiply defined.
+
+
+LaTeX Warning: Label `s:bwformulae' multiply defined.
+
+
+LaTeX Warning: Label `e:urjt' multiply defined.
+
+
+LaTeX Warning: Label `e:sigjsm' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/adapt.aux
+
+LaTeX Warning: Label `c:Adapt' multiply defined.
+
+
+LaTeX Warning: Label `f:headapt' multiply defined.
+
+
+LaTeX Warning: Label `s:mllr' multiply defined.
+
+
+LaTeX Warning: Label `s:whatismllr' multiply defined.
+
+
+LaTeX Warning: Label `s:mumllr' multiply defined.
+
+
+LaTeX Warning: Label `e:mtrans' multiply defined.
+
+
+LaTeX Warning: Label `e:decompmtrans' multiply defined.
+
+
+LaTeX Warning: Label `s:vmllr' multiply defined.
+
+
+LaTeX Warning: Label `e:covtrans' multiply defined.
+
+
+LaTeX Warning: Label `e:covlike' multiply defined.
+
+
+LaTeX Warning: Label `s:cmllr' multiply defined.
+
+
+LaTeX Warning: Label `e:mtrans2' multiply defined.
+
+
+LaTeX Warning: Label `e:decompmtrans2' multiply defined.
+
+
+LaTeX Warning: Label `s:whattransform' multiply defined.
+
+
+LaTeX Warning: Label `s:base_classes' multiply defined.
+
+
+LaTeX Warning: Label `fig:globbase' multiply defined.
+
+
+LaTeX Warning: Label `s:reg_classes' multiply defined.
+
+
+LaTeX Warning: Label `f:regtree1' multiply defined.
+
+
+LaTeX Warning: Label `s:tmfs' multiply defined.
+
+
+LaTeX Warning: Label `fig:regtree' multiply defined.
+
+
+LaTeX Warning: Label `s:hieradapt' multiply defined.
+
+
+LaTeX Warning: Label `fig:hiermllr' multiply defined.
+
+
+LaTeX Warning: Label `s:streamadapt' multiply defined.
+
+
+LaTeX Warning: Label `s:adapttrain' multiply defined.
+
+
+LaTeX Warning: Label `s:mapadapt' multiply defined.
+
+
+LaTeX Warning: Label `e:meanmap' multiply defined.
+
+
+LaTeX Warning: Label `s:mllrformulae' multiply defined.
+
+
+LaTeX Warning: Label `s:mtransest' multiply defined.
+
+
+LaTeX Warning: Label `eq:gi_mllr' multiply defined.
+
+
+LaTeX Warning: Label `eq:mllrmeansol' multiply defined.
+
+
+LaTeX Warning: Label `s:vtransest' multiply defined.
+
+
+LaTeX Warning: Label `eq:gi_mllr2' multiply defined.
+
+
+LaTeX Warning: Label `s:cmllrest' multiply defined.
+
+
+LaTeX Warning: Label `eq:gi_mllr3' multiply defined.
+
+
+LaTeX Warning: Label `eq:gi_mllr4' multiply defined.
+
+
+LaTeX Warning: Label `eq:alpha_quad' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/refine.aux
+
+LaTeX Warning: Label `c:Refine' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.hedit' multiply defined.
+
+
+LaTeX Warning: Label `s:usingHHEd' multiply defined.
+
+
+LaTeX Warning: Label `s:mkCDHMMs' multiply defined.
+
+
+LaTeX Warning: Label `s:parmtying' multiply defined.
+
+
+LaTeX Warning: Label `f:itemtree' multiply defined.
+
+
+LaTeX Warning: Label `s:ddclust' multiply defined.
+
+
+LaTeX Warning: Label `f:tiedstate' multiply defined.
+
+
+LaTeX Warning: Label `s:tbclust' multiply defined.
+
+
+LaTeX Warning: Label `f:qstree' multiply defined.
+
+
+LaTeX Warning: Label `s:upmix' multiply defined.
+
+
+LaTeX Warning: Label `s:hhedregtree' multiply defined.
+
+
+LaTeX Warning: Label `s:misedit' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/discmods.aux
+
+LaTeX Warning: Label `c:discmods' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.disc' multiply defined.
+
+
+LaTeX Warning: Label `s:discseq' multiply defined.
+
+
+LaTeX Warning: Label `s:speechvq' multiply defined.
+
+
+LaTeX Warning: Label `f:vqtohmm' multiply defined.
+
+
+LaTeX Warning: Label `s:tiedmix' multiply defined.
+
+
+LaTeX Warning: Label `s:psmooth' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/netdict.aux
+
+LaTeX Warning: Label `c:netdict' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.netdict' multiply defined.
+
+
+LaTeX Warning: Label `s:netuse' multiply defined.
+
+
+LaTeX Warning: Label `f:recsys' multiply defined.
+
+
+LaTeX Warning: Label `s:slfintro' multiply defined.
+
+
+LaTeX Warning: Label `f:wdnet' multiply defined.
+
+
+LaTeX Warning: Label `f:wdnet1' multiply defined.
+
+
+LaTeX Warning: Label `s:usehparse' multiply defined.
+
+
+LaTeX Warning: Label `f:digitnets' multiply defined.
+
+
+LaTeX Warning: Label `s:biglms' multiply defined.
+
+
+LaTeX Warning: Label `s:usehbuild' multiply defined.
+
+
+LaTeX Warning: Label `f:decinet' multiply defined.
+
+
+LaTeX Warning: Label `f:bobig' multiply defined.
+
+
+LaTeX Warning: Label `s:usehsgen' multiply defined.
+
+
+LaTeX Warning: Label `s:usehdman' multiply defined.
+
+
+LaTeX Warning: Label `f:dmaker' multiply defined.
+
+
+LaTeX Warning: Label `s:netexpand' multiply defined.
+
+
+LaTeX Warning: Label `f:mononet' multiply defined.
+
+
+LaTeX Warning: Label `f:wintnet' multiply defined.
+
+
+LaTeX Warning: Label `f:xwrdnet' multiply defined.
+
+
+LaTeX Warning: Label `s:othernets' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/decode.aux
+
+LaTeX Warning: Label `c:decode' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.decode' multiply defined.
+
+
+LaTeX Warning: Label `s:decop' multiply defined.
+
+
+LaTeX Warning: Label `f:recnetlev' multiply defined.
+
+
+LaTeX Warning: Label `s:decorg' multiply defined.
+
+
+LaTeX Warning: Label `f:decflow' multiply defined.
+
+
+LaTeX Warning: Label `s:hvrec' multiply defined.
+
+
+LaTeX Warning: Label `s:receval' multiply defined.
+
+
+LaTeX Warning: Label `e:nistfom' multiply defined.
+
+
+LaTeX Warning: Label `s:falign' multiply defined.
+
+
+LaTeX Warning: Label `f:hvalign' multiply defined.
+
+
+LaTeX Warning: Label `s:recaudio' multiply defined.
+
+
+LaTeX Warning: Label `s:nbest' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/hlmfund.aux
+
+LaTeX Warning: Label `c:hlmfund' multiply defined.
+
+
+LaTeX Warning: Label `f:HLMoperation' multiply defined.
+
+
+LaTeX Warning: Label `s:ngramLMs' multiply defined.
+
+
+LaTeX Warning: Label `cond_prob_model' multiply defined.
+
+
+LaTeX Warning: Label `s:wordngrams' multiply defined.
+
+
+LaTeX Warning: Label `ngram_model' multiply defined.
+
+
+LaTeX Warning: Label `ngramcountdiv' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMequivalenceclasses' multiply defined.
+
+
+LaTeX Warning: Label `equiv_cond_prob_model' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclassngram' multiply defined.
+
+
+LaTeX Warning: Label `classngram-description' multiply defined.
+
+
+LaTeX Warning: Label `equiv_classes' multiply defined.
+
+
+LaTeX Warning: Label `chap2equalToOne' multiply defined.
+
+
+LaTeX Warning: Label `normclass' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclustering' multiply defined.
+
+
+LaTeX Warning: Label `clustering_section' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMexchangealg' multiply defined.
+
+
+LaTeX Warning: Label `KN-clustering' multiply defined.
+
+
+LaTeX Warning: Label `classnorm_totprob' multiply defined.
+
+
+LaTeX Warning: Label `classnorm_logprob' multiply defined.
+
+
+LaTeX Warning: Label `classnorm_breakdown' multiply defined.
+
+
+LaTeX Warning: Label `classnorm_ml' multiply defined.
+
+
+LaTeX Warning: Label `classnorm_Fml' multiply defined.
+
+
+LaTeX Warning: Label `Cstepone' multiply defined.
+
+
+LaTeX Warning: Label `Csteptwo' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMrobustestimates' multiply defined.
+
+
+LaTeX Warning: Label `robust_estimation' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMdiscounts' multiply defined.
+
+
+LaTeX Warning: Label `discounting_and_other_fun_things' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMsmoothingprobs' multiply defined.
+
+
+LaTeX Warning: Label `smoothing_probs' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMperplexity' multiply defined.
+
+
+LaTeX Warning: Label `2-3' multiply defined.
+
+
+LaTeX Warning: Label `2-4' multiply defined.
+
+
+LaTeX Warning: Label `pp_sum_eqn' multiply defined.
+
+
+LaTeX Warning: Label `s:mkngoview' multiply defined.
+
+
+LaTeX Warning: Label `f:WordLM' multiply defined.
+
+
+LaTeX Warning: Label `s:cllmoview' multiply defined.
+
+
+LaTeX Warning: Label `f:ClassLM' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/hlmtutorial.aux
+
+LaTeX Warning: Label `c:hlmtutor' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMdatabaseprep' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMmapoov' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMlanmodgen' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMtestingpp' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMgeneratingcount' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMmodelinterp' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclassModels' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMproblemSolving' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMfileproblems' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMsyntaxproblems' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMwordmapproblems' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMmemoryproblems' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMperpproblems' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/hlmfiles.aux
+
+LaTeX Warning: Label `c:hlmfiles' multiply defined.
+
+
+LaTeX Warning: Label `f:LTool' multiply defined.
+
+
+LaTeX Warning: Label `s:wsandcs' multiply defined.
+
+
+LaTeX Warning: Label `s:dfhdrs' multiply defined.
+
+
+LaTeX Warning: Label `s:wmaps' multiply defined.
+
+
+LaTeX Warning: Label `s:cmaps' multiply defined.
+
+
+LaTeX Warning: Label `s:gramfs' multiply defined.
+
+
+LaTeX Warning: Label `s:FoFs' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMlmfileformats' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMarpamitlm' multiply defined.
+
+
+LaTeX Warning: Label `fg_stats' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMmodifiedarpamitlm' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMbinarylmformat' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclasslmfileformats' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclasscountslmformat' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclassprobslmformat' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclasslmformat' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclassSinglmformat' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMlibtracing' multiply defined.
+
+
+LaTeX Warning: Label `s:LCMapTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LGBaseTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LModelTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LPCalcTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LPMergeTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LUtilTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LWMapTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMconfigParms' multiply defined.
+
+
+LaTeX Warning: Label `t:openvcparmsLM' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMuseintid' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMctconfigParms' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMlmidshort' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMcompact' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMprobshort' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMinterpmax' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMinterpmax' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMintegcheck' multiply defined.
+
+)
+
+LaTeX Warning: Label `c:toolref' multiply defined.
+
+(/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/tools.aux) (/home/cab
+inet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/Cluster.aux
+
+LaTeX Warning: Label `s:Cluster' multiply defined.
+
+
+LaTeX Warning: Label `s:Cluster-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:Cluster-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:Cluster-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HBuild.aux
+
+LaTeX Warning: Label `s:HBuild' multiply defined.
+
+
+LaTeX Warning: Label `s:HBuild-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HBuild-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HBuild-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HCompV.aux
+
+LaTeX Warning: Label `s:HCompV' multiply defined.
+
+
+LaTeX Warning: Label `s:HCompV-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HCompV-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HCompV-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HCopy.aux
+
+LaTeX Warning: Label `s:HCopy' multiply defined.
+
+
+LaTeX Warning: Label `t:validcons' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HDMan.aux
+
+LaTeX Warning: Label `s:HDMan' multiply defined.
+
+
+LaTeX Warning: Label `s:HDMan-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HDMan-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HDMan-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HERest.aux
+
+LaTeX Warning: Label `s:HERest' multiply defined.
+
+
+LaTeX Warning: Label `s:HERest-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HERest-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HERest-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HHEd.aux
+
+LaTeX Warning: Label `s:HHEd' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HInit.aux
+
+LaTeX Warning: Label `s:HInit' multiply defined.
+
+
+LaTeX Warning: Label `s:HInit-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HInit-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HInit-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLEd.aux
+
+LaTeX Warning: Label `s:HLEd' multiply defined.
+
+
+LaTeX Warning: Label `s:HLEd-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HLEd-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HLEd-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HList.aux
+
+LaTeX Warning: Label `s:HList' multiply defined.
+
+
+LaTeX Warning: Label `s:HList-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HList-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HList-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLMCopy.aux
+
+LaTeX Warning: Label `s:HLMCopy' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMCopy-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMCopy-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMCopy-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLRescore.aux
+
+LaTeX Warning: Label `s:HLRescore' multiply defined.
+
+
+LaTeX Warning: Label `s:HLRescore-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HLRescore-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HLRescore-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLStats.aux
+
+LaTeX Warning: Label `s:HLStats' multiply defined.
+
+
+LaTeX Warning: Label `s:HLStats-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HLStats-Bigram Generation' multiply defined.
+
+
+LaTeX Warning: Label `s:HLStats-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HLStats-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HParse.aux
+
+LaTeX Warning: Label `s:HParse' multiply defined.
+
+
+LaTeX Warning: Label `s:HParse-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HParse-Network Definition' multiply defined.
+
+
+LaTeX Warning: Label `s:HParse-Compatibility Mode' multiply defined.
+
+
+LaTeX Warning: Label `s:HParse-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HParse-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HQuant.aux
+
+LaTeX Warning: Label `s:HQuant' multiply defined.
+
+
+LaTeX Warning: Label `s:HQuant-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HQuant-VQ Codebook Format' multiply defined.
+
+
+LaTeX Warning: Label `s:HQuant-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HQuant-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HRest.aux
+
+LaTeX Warning: Label `s:HRest' multiply defined.
+
+
+LaTeX Warning: Label `s:HRest-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HRest-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HRest-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HResults.aux
+
+LaTeX Warning: Label `s:HResults' multiply defined.
+
+
+LaTeX Warning: Label `s:HResults-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HResults-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HResults-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSGen.aux
+
+LaTeX Warning: Label `s:HSGen' multiply defined.
+
+
+LaTeX Warning: Label `s:HSGen-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HSGen-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HSGen-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSLab.aux
+
+LaTeX Warning: Label `s:HSLab' multiply defined.
+
+
+LaTeX Warning: Label `s:HSLab-Function' multiply defined.
+
+
+LaTeX Warning: Label `f:hslab' multiply defined.
+
+
+LaTeX Warning: Label `s:HSLab-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HSLab-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSmooth.aux
+
+LaTeX Warning: Label `s:HSmooth' multiply defined.
+
+
+LaTeX Warning: Label `s:HSmooth-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HSmooth-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HSmooth-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HVite.aux
+
+LaTeX Warning: Label `s:HVite' multiply defined.
+
+
+LaTeX Warning: Label `s:HVite-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HVite-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HVite-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LAdapt.aux
+
+LaTeX Warning: Label `s:LAdapt' multiply defined.
+
+
+LaTeX Warning: Label `s:Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LAdapt-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LAdapt-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LBuild.aux
+
+LaTeX Warning: Label `s:LBuild' multiply defined.
+
+
+LaTeX Warning: Label `s:LBuild-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LBuild-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LBuild-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LFoF.aux
+
+LaTeX Warning: Label `s:LFoF' multiply defined.
+
+
+LaTeX Warning: Label `s:LFoF-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LFoF-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LFoF-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGCopy.aux
+
+LaTeX Warning: Label `s:LGCopy' multiply defined.
+
+
+LaTeX Warning: Label `s:LGCopy-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LGCopy-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LGCopy-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGList.aux
+
+LaTeX Warning: Label `s:LGList' multiply defined.
+
+
+LaTeX Warning: Label `s:LGList-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LGList-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LGList-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGPrep.aux
+
+LaTeX Warning: Label `s:LGPrep' multiply defined.
+
+
+LaTeX Warning: Label `s:LGPrep-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LGPrep-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LGPrep-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LLink.aux
+
+LaTeX Warning: Label `s:LLink' multiply defined.
+
+
+LaTeX Warning: Label `s:Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LLink-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LLink-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LMerge.aux
+
+LaTeX Warning: Label `s:LMerge' multiply defined.
+
+
+LaTeX Warning: Label `s:LMerge-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LMerge-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LMerge-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LNewMap.aux
+
+LaTeX Warning: Label `s:LNewMap' multiply defined.
+
+
+LaTeX Warning: Label `s:Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LNewMap-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LNewMap-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LNorm.aux
+
+LaTeX Warning: Label `s:LNorm' multiply defined.
+
+
+LaTeX Warning: Label `s:LNorm-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LNorm-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LNorm-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LPlex.aux
+
+LaTeX Warning: Label `s:LPlex' multiply defined.
+
+
+LaTeX Warning: Label `s:LPlex-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LPlex-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LPlex-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LSubset.aux
+
+LaTeX Warning: Label `s:LSubset' multiply defined.
+
+
+LaTeX Warning: Label `s:LSubset-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LSubset-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LSubset-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/config.aux
+
+LaTeX Warning: Label `c:confvars' multiply defined.
+
+
+LaTeX Warning: Label `s:coninlib' multiply defined.
+
+
+LaTeX Warning: Label `s:conintools' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/errors.aux
+
+LaTeX Warning: Label `c:errors' multiply defined.
+
+
+LaTeX Warning: Label `s:generr' multiply defined.
+
+
+LaTeX Warning: Label `s:errsum' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/htkslf.aux
+
+LaTeX Warning: Label `c:htkslf' multiply defined.
+
+
+LaTeX Warning: Label `s:slffiles' multiply defined.
+
+
+LaTeX Warning: Label `s:slfformat' multiply defined.
+
+
+LaTeX Warning: Label `s:slfsyntax' multiply defined.
+
+
+LaTeX Warning: Label `s:slffields' multiply defined.
+
+
+LaTeX Warning: Label `s:slfeg' multiply defined.
+
+)) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/fundaments.aux
+
+LaTeX Warning: Label `c:fundaments' multiply defined.
+
+
+LaTeX Warning: Label `f:overview' multiply defined.
+
+
+LaTeX Warning: Label `s:genpHMM' multiply defined.
+
+
+LaTeX Warning: Label `f:messencode' multiply defined.
+
+
+LaTeX Warning: Label `s:isowrdrec' multiply defined.
+
+
+LaTeX Warning: Label `e:2' multiply defined.
+
+
+LaTeX Warning: Label `e:3' multiply defined.
+
+
+LaTeX Warning: Label `f:isoprob' multiply defined.
+
+
+LaTeX Warning: Label `e:4' multiply defined.
+
+
+LaTeX Warning: Label `f:markovgen' multiply defined.
+
+
+LaTeX Warning: Label `e:5' multiply defined.
+
+
+LaTeX Warning: Label `e:6' multiply defined.
+
+
+LaTeX Warning: Label `e:7' multiply defined.
+
+
+LaTeX Warning: Label `f:useforiso' multiply defined.
+
+
+LaTeX Warning: Label `s:outprobspec' multiply defined.
+
+
+LaTeX Warning: Label `e:8' multiply defined.
+
+
+LaTeX Warning: Label `s:bwrest' multiply defined.
+
+
+LaTeX Warning: Label `f:subsmixrep' multiply defined.
+
+
+LaTeX Warning: Label `e:10' multiply defined.
+
+
+LaTeX Warning: Label `e:11' multiply defined.
+
+
+LaTeX Warning: Label `e:12' multiply defined.
+
+
+LaTeX Warning: Label `e:13' multiply defined.
+
+
+LaTeX Warning: Label `e:14' multiply defined.
+
+
+LaTeX Warning: Label `e:15' multiply defined.
+
+
+LaTeX Warning: Label `e:16' multiply defined.
+
+
+LaTeX Warning: Label `e:21' multiply defined.
+
+
+LaTeX Warning: Label `e:25' multiply defined.
+
+
+LaTeX Warning: Label `s:recandvit' multiply defined.
+
+
+LaTeX Warning: Label `e:27' multiply defined.
+
+
+LaTeX Warning: Label `e:30' multiply defined.
+
+
+LaTeX Warning: Label `f:vtrellis' multiply defined.
+
+
+LaTeX Warning: Label `s:consprec' multiply defined.
+
+
+LaTeX Warning: Label `f:netforcsr' multiply defined.
+
+
+LaTeX Warning: Label `f:wlroper' multiply defined.
+
+
+LaTeX Warning: Label `s:spk_adapt' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/htkoview.aux
+
+LaTeX Warning: Label `c:htkoview' multiply defined.
+
+
+LaTeX Warning: Label `f:toolkit' multiply defined.
+
+
+LaTeX Warning: Label `s:softarch' multiply defined.
+
+
+LaTeX Warning: Label `f:softarch' multiply defined.
+
+
+LaTeX Warning: Label `s:genprops' multiply defined.
+
+
+LaTeX Warning: Label `s:toolkit' multiply defined.
+
+
+LaTeX Warning: Label `f:sysoview' multiply defined.
+
+
+LaTeX Warning: Label `f:tsubword' multiply defined.
+
+
+LaTeX Warning: Label `s:whatsnew' multiply defined.
+
+
+LaTeX Warning: Label `s:' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/exampsys.aux
+
+LaTeX Warning: Label `c:exampsys' multiply defined.
+
+
+LaTeX Warning: Label `f:recipe' multiply defined.
+
+
+LaTeX Warning: Label `s:egdataprep' multiply defined.
+
+
+LaTeX Warning: Label `f:dialnet' multiply defined.
+
+
+LaTeX Warning: Label `f:step1' multiply defined.
+
+
+LaTeX Warning: Label `f:step2' multiply defined.
+
+
+LaTeX Warning: Label `f:step3' multiply defined.
+
+
+LaTeX Warning: Label `f:step4' multiply defined.
+
+
+LaTeX Warning: Label `f:step5' multiply defined.
+
+
+LaTeX Warning: Label `s:egcreatmono' multiply defined.
+
+
+LaTeX Warning: Label `f:MMFeg' multiply defined.
+
+
+LaTeX Warning: Label `f:step6' multiply defined.
+
+
+LaTeX Warning: Label `f:egsils' multiply defined.
+
+
+LaTeX Warning: Label `f:step7' multiply defined.
+
+
+LaTeX Warning: Label `f:step8' multiply defined.
+
+
+LaTeX Warning: Label `s:egcreattri' multiply defined.
+
+
+LaTeX Warning: Label `f:egtranstie' multiply defined.
+
+
+LaTeX Warning: Label `f:step9' multiply defined.
+
+
+LaTeX Warning: Label `f:step10' multiply defined.
+
+
+LaTeX Warning: Label `s:egrectest' multiply defined.
+
+
+LaTeX Warning: Label `f:step11' multiply defined.
+
+
+LaTeX Warning: Label `s:egreclive' multiply defined.
+
+
+LaTeX Warning: Label `s:exsyssum' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/openviron.aux
+
+LaTeX Warning: Label `c:openviron' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.shell' multiply defined.
+
+
+LaTeX Warning: Label `s:cmdline' multiply defined.
+
+
+LaTeX Warning: Label `s:script' multiply defined.
+
+
+LaTeX Warning: Label `s:config' multiply defined.
+
+
+LaTeX Warning: Label `f:Config' multiply defined.
+
+
+LaTeX Warning: Label `s:stdopts' multiply defined.
+
+
+LaTeX Warning: Label `s:erep' multiply defined.
+
+
+LaTeX Warning: Label `s:htkstrings' multiply defined.
+
+
+LaTeX Warning: Label `s:memman' multiply defined.
+
+
+LaTeX Warning: Label `s:iopipes' multiply defined.
+
+
+LaTeX Warning: Label `s:byteswap' multiply defined.
+
+
+LaTeX Warning: Label `s:openvsum' multiply defined.
+
+
+LaTeX Warning: Label `t:openvcparms' multiply defined.
+
+
+LaTeX Warning: Label `t:openvars' multiply defined.
+
+
+LaTeX Warning: Label `t:stdopts' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/speechio.aux
+
+LaTeX Warning: Label `c:speechio' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.spio' multiply defined.
+
+
+LaTeX Warning: Label `s:genio' multiply defined.
+
+
+LaTeX Warning: Label `f:Spmods' multiply defined.
+
+
+LaTeX Warning: Label `s:sigproc' multiply defined.
+
+
+LaTeX Warning: Label `f:Blocking' multiply defined.
+
+
+LaTeX Warning: Label `e:preemp' multiply defined.
+
+
+LaTeX Warning: Label `e:ham' multiply defined.
+
+
+LaTeX Warning: Label `e:dither' multiply defined.
+
+
+LaTeX Warning: Label `s:lpcanal' multiply defined.
+
+
+LaTeX Warning: Label `e:allpole' multiply defined.
+
+
+LaTeX Warning: Label `e:autoco' multiply defined.
+
+
+LaTeX Warning: Label `e:kupdate1' multiply defined.
+
+
+LaTeX Warning: Label `e:kupdate2' multiply defined.
+
+
+LaTeX Warning: Label `e:Eupdate' multiply defined.
+
+
+LaTeX Warning: Label `e:aupdate1' multiply defined.
+
+
+LaTeX Warning: Label `e:aupdate2' multiply defined.
+
+
+LaTeX Warning: Label `e:lpcepstra' multiply defined.
+
+
+LaTeX Warning: Label `e:ceplifter' multiply defined.
+
+
+LaTeX Warning: Label `s:fbankanal' multiply defined.
+
+
+LaTeX Warning: Label `e:melscale' multiply defined.
+
+
+LaTeX Warning: Label `f:melfbank' multiply defined.
+
+
+LaTeX Warning: Label `s:vtln' multiply defined.
+
+
+LaTeX Warning: Label `f:vtlnpiecewise' multiply defined.
+
+
+LaTeX Warning: Label `s:cepstrum' multiply defined.
+
+
+LaTeX Warning: Label `e:dct' multiply defined.
+
+
+LaTeX Warning: Label `s:plp' multiply defined.
+
+
+LaTeX Warning: Label `s:energy' multiply defined.
+
+
+LaTeX Warning: Label `e:logenergy' multiply defined.
+
+
+LaTeX Warning: Label `s:delta' multiply defined.
+
+
+LaTeX Warning: Label `e:deltas' multiply defined.
+
+
+LaTeX Warning: Label `e:simdiffs' multiply defined.
+
+
+LaTeX Warning: Label `s:parmstore' multiply defined.
+
+
+LaTeX Warning: Label `f:HTKFormat' multiply defined.
+
+
+LaTeX Warning: Label `s:waveform' multiply defined.
+
+
+LaTeX Warning: Label `s:audioio' multiply defined.
+
+
+LaTeX Warning: Label `f:endpointer' multiply defined.
+
+
+LaTeX Warning: Label `s:streams' multiply defined.
+
+
+LaTeX Warning: Label `f:streams' multiply defined.
+
+
+LaTeX Warning: Label `s:vquant' multiply defined.
+
+
+LaTeX Warning: Label `f:VQUse' multiply defined.
+
+
+LaTeX Warning: Label `s:UseHList' multiply defined.
+
+
+LaTeX Warning: Label `s:UseHCopy' multiply defined.
+
+
+LaTeX Warning: Label `f:coercions' multiply defined.
+
+
+LaTeX Warning: Label `s:v1spcompat' multiply defined.
+
+
+LaTeX Warning: Label `s:spiosum' multiply defined.
+
+
+LaTeX Warning: Label `t:fileform' multiply defined.
+
+
+LaTeX Warning: Label `t:parmkinds' multiply defined.
+
+
+LaTeX Warning: Label `t:qualifiers' multiply defined.
+
+
+LaTeX Warning: Label `t:spiocparms1' multiply defined.
+
+
+LaTeX Warning: Label `t:spiocparms2' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/labels.aux
+
+LaTeX Warning: Label `c:labels' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.labs' multiply defined.
+
+
+LaTeX Warning: Label `s:labstruct' multiply defined.
+
+
+LaTeX Warning: Label `s:labform' multiply defined.
+
+
+LaTeX Warning: Label `s:mlfs' multiply defined.
+
+
+LaTeX Warning: Label `f:labegs' multiply defined.
+
+
+LaTeX Warning: Label `f:dbhier' multiply defined.
+
+
+LaTeX Warning: Label `s:edlab' multiply defined.
+
+
+LaTeX Warning: Label `s:labelsum' multiply defined.
+
+
+LaTeX Warning: Label `t:labelcparms' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/models.aux
+
+LaTeX Warning: Label `c:HMMDefs' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.model' multiply defined.
+
+
+LaTeX Warning: Label `s:HMMparm' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm1' multiply defined.
+
+
+LaTeX Warning: Label `e:cdpdf' multiply defined.
+
+
+LaTeX Warning: Label `e:gnorm' multiply defined.
+
+
+LaTeX Warning: Label `e:ddpdf' multiply defined.
+
+
+LaTeX Warning: Label `s:OneHMM' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm1def' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm2def' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm3def' multiply defined.
+
+
+LaTeX Warning: Label `s:HMMmac' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm4def' multiply defined.
+
+
+LaTeX Warning: Label `f:mac5def' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm5def' multiply defined.
+
+
+LaTeX Warning: Label `f:hierarch' multiply defined.
+
+
+LaTeX Warning: Label `s:hmmsets' multiply defined.
+
+
+LaTeX Warning: Label `f:mac6def' multiply defined.
+
+
+LaTeX Warning: Label `f:hmm6def' multiply defined.
+
+
+LaTeX Warning: Label `f:hsetdef' multiply defined.
+
+
+LaTeX Warning: Label `f:hlisteg' multiply defined.
+
+
+LaTeX Warning: Label `s:tmix' multiply defined.
+
+
+LaTeX Warning: Label `f:tmixeg' multiply defined.
+
+
+LaTeX Warning: Label `e:tmixpdf' multiply defined.
+
+
+LaTeX Warning: Label `s:dischmm' multiply defined.
+
+
+LaTeX Warning: Label `f:tmixpool' multiply defined.
+
+
+LaTeX Warning: Label `f:tmixhmm2' multiply defined.
+
+
+LaTeX Warning: Label `e:dpscale' multiply defined.
+
+
+LaTeX Warning: Label `f:lintran' multiply defined.
+
+
+LaTeX Warning: Label `s:lintran' multiply defined.
+
+
+LaTeX Warning: Label `s:teemods' multiply defined.
+
+
+LaTeX Warning: Label `f:tmixhmm' multiply defined.
+
+
+LaTeX Warning: Label `s:binsave' multiply defined.
+
+
+LaTeX Warning: Label `s:hmmdef' multiply defined.
+
+
+LaTeX Warning: Label `f:dischmm' multiply defined.
+
+
+LaTeX Warning: Label `f:macregtreedef' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/train.aux
+
+LaTeX Warning: Label `c:Training' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.train' multiply defined.
+
+
+LaTeX Warning: Label `s:tstrats' multiply defined.
+
+
+LaTeX Warning: Label `f:isoword' multiply defined.
+
+
+LaTeX Warning: Label `f:subword' multiply defined.
+
+
+LaTeX Warning: Label `s:inithmm' multiply defined.
+
+
+LaTeX Warning: Label `f:vitloop' multiply defined.
+
+
+LaTeX Warning: Label `f:hinitdp' multiply defined.
+
+
+LaTeX Warning: Label `s:flatstart' multiply defined.
+
+
+LaTeX Warning: Label `f:flatst' multiply defined.
+
+
+LaTeX Warning: Label `s:resthmm' multiply defined.
+
+
+LaTeX Warning: Label `f:restloop' multiply defined.
+
+
+LaTeX Warning: Label `s:eresthmm' multiply defined.
+
+
+LaTeX Warning: Label `f:herestdp' multiply defined.
+
+
+LaTeX Warning: Label `f:parher' multiply defined.
+
+
+LaTeX Warning: Label `s:singlepass' multiply defined.
+
+
+LaTeX Warning: Label `s:twomodel' multiply defined.
+
+
+LaTeX Warning: Label `s:bwformulae' multiply defined.
+
+
+LaTeX Warning: Label `e:urjt' multiply defined.
+
+
+LaTeX Warning: Label `e:sigjsm' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/adapt.aux
+
+LaTeX Warning: Label `c:Adapt' multiply defined.
+
+
+LaTeX Warning: Label `f:headapt' multiply defined.
+
+
+LaTeX Warning: Label `s:mllr' multiply defined.
+
+
+LaTeX Warning: Label `s:whatismllr' multiply defined.
+
+
+LaTeX Warning: Label `s:mumllr' multiply defined.
+
+
+LaTeX Warning: Label `e:mtrans' multiply defined.
+
+
+LaTeX Warning: Label `e:decompmtrans' multiply defined.
+
+
+LaTeX Warning: Label `s:vmllr' multiply defined.
+
+
+LaTeX Warning: Label `e:covtrans' multiply defined.
+
+
+LaTeX Warning: Label `e:covlike' multiply defined.
+
+
+LaTeX Warning: Label `s:cmllr' multiply defined.
+
+
+LaTeX Warning: Label `e:mtrans2' multiply defined.
+
+
+LaTeX Warning: Label `e:decompmtrans2' multiply defined.
+
+
+LaTeX Warning: Label `s:whattransform' multiply defined.
+
+
+LaTeX Warning: Label `s:base_classes' multiply defined.
+
+
+LaTeX Warning: Label `fig:globbase' multiply defined.
+
+
+LaTeX Warning: Label `s:reg_classes' multiply defined.
+
+
+LaTeX Warning: Label `f:regtree1' multiply defined.
+
+
+LaTeX Warning: Label `s:tmfs' multiply defined.
+
+
+LaTeX Warning: Label `fig:regtree' multiply defined.
+
+
+LaTeX Warning: Label `s:hieradapt' multiply defined.
+
+
+LaTeX Warning: Label `fig:hiermllr' multiply defined.
+
+
+LaTeX Warning: Label `s:streamadapt' multiply defined.
+
+
+LaTeX Warning: Label `s:adapttrain' multiply defined.
+
+
+LaTeX Warning: Label `s:mapadapt' multiply defined.
+
+
+LaTeX Warning: Label `e:meanmap' multiply defined.
+
+
+LaTeX Warning: Label `s:mllrformulae' multiply defined.
+
+
+LaTeX Warning: Label `s:mtransest' multiply defined.
+
+
+LaTeX Warning: Label `eq:gi_mllr' multiply defined.
+
+
+LaTeX Warning: Label `eq:mllrmeansol' multiply defined.
+
+
+LaTeX Warning: Label `s:vtransest' multiply defined.
+
+
+LaTeX Warning: Label `eq:gi_mllr2' multiply defined.
+
+
+LaTeX Warning: Label `s:cmllrest' multiply defined.
+
+
+LaTeX Warning: Label `eq:gi_mllr3' multiply defined.
+
+
+LaTeX Warning: Label `eq:gi_mllr4' multiply defined.
+
+
+LaTeX Warning: Label `eq:alpha_quad' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/refine.aux
+
+LaTeX Warning: Label `c:Refine' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.hedit' multiply defined.
+
+
+LaTeX Warning: Label `s:usingHHEd' multiply defined.
+
+
+LaTeX Warning: Label `s:mkCDHMMs' multiply defined.
+
+
+LaTeX Warning: Label `s:parmtying' multiply defined.
+
+
+LaTeX Warning: Label `f:itemtree' multiply defined.
+
+
+LaTeX Warning: Label `s:ddclust' multiply defined.
+
+
+LaTeX Warning: Label `f:tiedstate' multiply defined.
+
+
+LaTeX Warning: Label `s:tbclust' multiply defined.
+
+
+LaTeX Warning: Label `f:qstree' multiply defined.
+
+
+LaTeX Warning: Label `s:upmix' multiply defined.
+
+
+LaTeX Warning: Label `s:hhedregtree' multiply defined.
+
+
+LaTeX Warning: Label `s:misedit' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/discmods.aux
+
+LaTeX Warning: Label `c:discmods' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.disc' multiply defined.
+
+
+LaTeX Warning: Label `s:discseq' multiply defined.
+
+
+LaTeX Warning: Label `s:speechvq' multiply defined.
+
+
+LaTeX Warning: Label `f:vqtohmm' multiply defined.
+
+
+LaTeX Warning: Label `s:tiedmix' multiply defined.
+
+
+LaTeX Warning: Label `s:psmooth' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/netdict.aux
+
+LaTeX Warning: Label `c:netdict' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.netdict' multiply defined.
+
+
+LaTeX Warning: Label `s:netuse' multiply defined.
+
+
+LaTeX Warning: Label `f:recsys' multiply defined.
+
+
+LaTeX Warning: Label `s:slfintro' multiply defined.
+
+
+LaTeX Warning: Label `f:wdnet' multiply defined.
+
+
+LaTeX Warning: Label `f:wdnet1' multiply defined.
+
+
+LaTeX Warning: Label `s:usehparse' multiply defined.
+
+
+LaTeX Warning: Label `f:digitnets' multiply defined.
+
+
+LaTeX Warning: Label `s:biglms' multiply defined.
+
+
+LaTeX Warning: Label `s:usehbuild' multiply defined.
+
+
+LaTeX Warning: Label `f:decinet' multiply defined.
+
+
+LaTeX Warning: Label `f:bobig' multiply defined.
+
+
+LaTeX Warning: Label `s:usehsgen' multiply defined.
+
+
+LaTeX Warning: Label `s:usehdman' multiply defined.
+
+
+LaTeX Warning: Label `f:dmaker' multiply defined.
+
+
+LaTeX Warning: Label `s:netexpand' multiply defined.
+
+
+LaTeX Warning: Label `f:mononet' multiply defined.
+
+
+LaTeX Warning: Label `f:wintnet' multiply defined.
+
+
+LaTeX Warning: Label `f:xwrdnet' multiply defined.
+
+
+LaTeX Warning: Label `s:othernets' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/decode.aux
+
+LaTeX Warning: Label `c:decode' multiply defined.
+
+
+LaTeX Warning: Label `f:Tool.decode' multiply defined.
+
+
+LaTeX Warning: Label `s:decop' multiply defined.
+
+
+LaTeX Warning: Label `f:recnetlev' multiply defined.
+
+
+LaTeX Warning: Label `s:decorg' multiply defined.
+
+
+LaTeX Warning: Label `f:decflow' multiply defined.
+
+
+LaTeX Warning: Label `s:hvrec' multiply defined.
+
+
+LaTeX Warning: Label `s:receval' multiply defined.
+
+
+LaTeX Warning: Label `e:nistfom' multiply defined.
+
+
+LaTeX Warning: Label `s:falign' multiply defined.
+
+
+LaTeX Warning: Label `f:hvalign' multiply defined.
+
+
+LaTeX Warning: Label `s:recaudio' multiply defined.
+
+
+LaTeX Warning: Label `s:nbest' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/hlmfund.aux
+
+LaTeX Warning: Label `c:hlmfund' multiply defined.
+
+
+LaTeX Warning: Label `f:HLMoperation' multiply defined.
+
+
+LaTeX Warning: Label `s:ngramLMs' multiply defined.
+
+
+LaTeX Warning: Label `cond_prob_model' multiply defined.
+
+
+LaTeX Warning: Label `s:wordngrams' multiply defined.
+
+
+LaTeX Warning: Label `ngram_model' multiply defined.
+
+
+LaTeX Warning: Label `ngramcountdiv' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMequivalenceclasses' multiply defined.
+
+
+LaTeX Warning: Label `equiv_cond_prob_model' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclassngram' multiply defined.
+
+
+LaTeX Warning: Label `classngram-description' multiply defined.
+
+
+LaTeX Warning: Label `equiv_classes' multiply defined.
+
+
+LaTeX Warning: Label `chap2equalToOne' multiply defined.
+
+
+LaTeX Warning: Label `normclass' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclustering' multiply defined.
+
+
+LaTeX Warning: Label `clustering_section' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMexchangealg' multiply defined.
+
+
+LaTeX Warning: Label `KN-clustering' multiply defined.
+
+
+LaTeX Warning: Label `classnorm_totprob' multiply defined.
+
+
+LaTeX Warning: Label `classnorm_logprob' multiply defined.
+
+
+LaTeX Warning: Label `classnorm_breakdown' multiply defined.
+
+
+LaTeX Warning: Label `classnorm_ml' multiply defined.
+
+
+LaTeX Warning: Label `classnorm_Fml' multiply defined.
+
+
+LaTeX Warning: Label `Cstepone' multiply defined.
+
+
+LaTeX Warning: Label `Csteptwo' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMrobustestimates' multiply defined.
+
+
+LaTeX Warning: Label `robust_estimation' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMdiscounts' multiply defined.
+
+
+LaTeX Warning: Label `discounting_and_other_fun_things' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMsmoothingprobs' multiply defined.
+
+
+LaTeX Warning: Label `smoothing_probs' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMperplexity' multiply defined.
+
+
+LaTeX Warning: Label `2-3' multiply defined.
+
+
+LaTeX Warning: Label `2-4' multiply defined.
+
+
+LaTeX Warning: Label `pp_sum_eqn' multiply defined.
+
+
+LaTeX Warning: Label `s:mkngoview' multiply defined.
+
+
+LaTeX Warning: Label `f:WordLM' multiply defined.
+
+
+LaTeX Warning: Label `s:cllmoview' multiply defined.
+
+
+LaTeX Warning: Label `f:ClassLM' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/hlmtutorial.aux
+
+LaTeX Warning: Label `c:hlmtutor' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMdatabaseprep' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMmapoov' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMlanmodgen' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMtestingpp' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMgeneratingcount' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMmodelinterp' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclassModels' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMproblemSolving' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMfileproblems' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMsyntaxproblems' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMwordmapproblems' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMmemoryproblems' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMperpproblems' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/hlmfiles.aux
+
+LaTeX Warning: Label `c:hlmfiles' multiply defined.
+
+
+LaTeX Warning: Label `f:LTool' multiply defined.
+
+
+LaTeX Warning: Label `s:wsandcs' multiply defined.
+
+
+LaTeX Warning: Label `s:dfhdrs' multiply defined.
+
+
+LaTeX Warning: Label `s:wmaps' multiply defined.
+
+
+LaTeX Warning: Label `s:cmaps' multiply defined.
+
+
+LaTeX Warning: Label `s:gramfs' multiply defined.
+
+
+LaTeX Warning: Label `s:FoFs' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMlmfileformats' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMarpamitlm' multiply defined.
+
+
+LaTeX Warning: Label `fg_stats' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMmodifiedarpamitlm' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMbinarylmformat' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclasslmfileformats' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclasscountslmformat' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclassprobslmformat' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclasslmformat' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMclassSinglmformat' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMlibtracing' multiply defined.
+
+
+LaTeX Warning: Label `s:LCMapTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LGBaseTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LModelTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LPCalcTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LPMergeTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LUtilTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:LWMapTrace' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMconfigParms' multiply defined.
+
+
+LaTeX Warning: Label `t:openvcparmsLM' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMuseintid' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMctconfigParms' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMlmidshort' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMcompact' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMprobshort' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMinterpmax' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMinterpmax' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMintegcheck' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/tools.aux) (/home/c
+abinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/Cluster.aux
+
+LaTeX Warning: Label `s:Cluster' multiply defined.
+
+
+LaTeX Warning: Label `s:Cluster-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:Cluster-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:Cluster-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HBuild.aux
+
+LaTeX Warning: Label `s:HBuild' multiply defined.
+
+
+LaTeX Warning: Label `s:HBuild-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HBuild-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HBuild-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HCompV.aux
+
+LaTeX Warning: Label `s:HCompV' multiply defined.
+
+
+LaTeX Warning: Label `s:HCompV-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HCompV-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HCompV-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HCopy.aux
+
+LaTeX Warning: Label `s:HCopy' multiply defined.
+
+
+LaTeX Warning: Label `t:validcons' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HDMan.aux
+
+LaTeX Warning: Label `s:HDMan' multiply defined.
+
+
+LaTeX Warning: Label `s:HDMan-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HDMan-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HDMan-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HERest.aux
+
+LaTeX Warning: Label `s:HERest' multiply defined.
+
+
+LaTeX Warning: Label `s:HERest-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HERest-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HERest-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HHEd.aux
+
+LaTeX Warning: Label `s:HHEd' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HInit.aux
+
+LaTeX Warning: Label `s:HInit' multiply defined.
+
+
+LaTeX Warning: Label `s:HInit-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HInit-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HInit-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLEd.aux
+
+LaTeX Warning: Label `s:HLEd' multiply defined.
+
+
+LaTeX Warning: Label `s:HLEd-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HLEd-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HLEd-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HList.aux
+
+LaTeX Warning: Label `s:HList' multiply defined.
+
+
+LaTeX Warning: Label `s:HList-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HList-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HList-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLMCopy.aux
+
+LaTeX Warning: Label `s:HLMCopy' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMCopy-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMCopy-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HLMCopy-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLRescore.aux
+
+LaTeX Warning: Label `s:HLRescore' multiply defined.
+
+
+LaTeX Warning: Label `s:HLRescore-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HLRescore-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HLRescore-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HLStats.aux
+
+LaTeX Warning: Label `s:HLStats' multiply defined.
+
+
+LaTeX Warning: Label `s:HLStats-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HLStats-Bigram Generation' multiply defined.
+
+
+LaTeX Warning: Label `s:HLStats-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HLStats-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HParse.aux
+
+LaTeX Warning: Label `s:HParse' multiply defined.
+
+
+LaTeX Warning: Label `s:HParse-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HParse-Network Definition' multiply defined.
+
+
+LaTeX Warning: Label `s:HParse-Compatibility Mode' multiply defined.
+
+
+LaTeX Warning: Label `s:HParse-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HParse-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HQuant.aux
+
+LaTeX Warning: Label `s:HQuant' multiply defined.
+
+
+LaTeX Warning: Label `s:HQuant-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HQuant-VQ Codebook Format' multiply defined.
+
+
+LaTeX Warning: Label `s:HQuant-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HQuant-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HRest.aux
+
+LaTeX Warning: Label `s:HRest' multiply defined.
+
+
+LaTeX Warning: Label `s:HRest-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HRest-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HRest-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HResults.aux
+
+LaTeX Warning: Label `s:HResults' multiply defined.
+
+
+LaTeX Warning: Label `s:HResults-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HResults-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HResults-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSGen.aux
+
+LaTeX Warning: Label `s:HSGen' multiply defined.
+
+
+LaTeX Warning: Label `s:HSGen-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HSGen-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HSGen-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSLab.aux
+
+LaTeX Warning: Label `s:HSLab' multiply defined.
+
+
+LaTeX Warning: Label `s:HSLab-Function' multiply defined.
+
+
+LaTeX Warning: Label `f:hslab' multiply defined.
+
+
+LaTeX Warning: Label `s:HSLab-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HSLab-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HSmooth.aux
+
+LaTeX Warning: Label `s:HSmooth' multiply defined.
+
+
+LaTeX Warning: Label `s:HSmooth-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HSmooth-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HSmooth-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/HVite.aux
+
+LaTeX Warning: Label `s:HVite' multiply defined.
+
+
+LaTeX Warning: Label `s:HVite-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:HVite-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:HVite-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LAdapt.aux
+
+LaTeX Warning: Label `s:LAdapt' multiply defined.
+
+
+LaTeX Warning: Label `s:Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LAdapt-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LAdapt-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LBuild.aux
+
+LaTeX Warning: Label `s:LBuild' multiply defined.
+
+
+LaTeX Warning: Label `s:LBuild-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LBuild-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LBuild-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LFoF.aux
+
+LaTeX Warning: Label `s:LFoF' multiply defined.
+
+
+LaTeX Warning: Label `s:LFoF-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LFoF-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LFoF-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGCopy.aux
+
+LaTeX Warning: Label `s:LGCopy' multiply defined.
+
+
+LaTeX Warning: Label `s:LGCopy-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LGCopy-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LGCopy-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGList.aux
+
+LaTeX Warning: Label `s:LGList' multiply defined.
+
+
+LaTeX Warning: Label `s:LGList-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LGList-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LGList-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LGPrep.aux
+
+LaTeX Warning: Label `s:LGPrep' multiply defined.
+
+
+LaTeX Warning: Label `s:LGPrep-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LGPrep-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LGPrep-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LLink.aux
+
+LaTeX Warning: Label `s:LLink' multiply defined.
+
+
+LaTeX Warning: Label `s:Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LLink-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LLink-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LMerge.aux
+
+LaTeX Warning: Label `s:LMerge' multiply defined.
+
+
+LaTeX Warning: Label `s:LMerge-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LMerge-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LMerge-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LNewMap.aux
+
+LaTeX Warning: Label `s:LNewMap' multiply defined.
+
+
+LaTeX Warning: Label `s:Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LNewMap-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LNewMap-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LNorm.aux
+
+LaTeX Warning: Label `s:LNorm' multiply defined.
+
+
+LaTeX Warning: Label `s:LNorm-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LNorm-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LNorm-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LPlex.aux
+
+LaTeX Warning: Label `s:LPlex' multiply defined.
+
+
+LaTeX Warning: Label `s:LPlex-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LPlex-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LPlex-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/HTKRef/LSubset.aux
+
+LaTeX Warning: Label `s:LSubset' multiply defined.
+
+
+LaTeX Warning: Label `s:LSubset-Function' multiply defined.
+
+
+LaTeX Warning: Label `s:LSubset-Use' multiply defined.
+
+
+LaTeX Warning: Label `s:LSubset-Tracing' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/config.aux
+
+LaTeX Warning: Label `c:confvars' multiply defined.
+
+
+LaTeX Warning: Label `s:coninlib' multiply defined.
+
+
+LaTeX Warning: Label `s:conintools' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/errors.aux
+
+LaTeX Warning: Label `c:errors' multiply defined.
+
+
+LaTeX Warning: Label `s:generr' multiply defined.
+
+
+LaTeX Warning: Label `s:errsum' multiply defined.
+
+) (/home/cabinet1/jal58/HTK/htk/htk3/htk-3.3/HTKBook/htkslf.aux
+
+LaTeX Warning: Label `c:htkslf' multiply defined.
+
+
+LaTeX Warning: Label `s:slffiles' multiply defined.
+
+
+LaTeX Warning: Label `s:slfformat' multiply defined.
+
+
+LaTeX Warning: Label `s:slfsyntax' multiply defined.
+
+
+LaTeX Warning: Label `s:slffields' multiply defined.
+
+
+LaTeX Warning: Label `s:slfeg' multiply defined.
+
+)
+
+latex2htmlLength hsize=349.0pt
+
+latex2htmlLength vsize=676.36243pt
+
+latex2htmlLength hoffset=0.0pt
+
+latex2htmlLength voffset=0.0pt
+
+latex2htmlLength topmargin=0.0pt
+
+latex2htmlLength topskip=0.00003pt
+
+latex2htmlLength headheight=0.0pt
+
+latex2htmlLength headsep=0.0pt
+
+latex2htmlLength parskip=0.0pt plus 1.0pt
+
+latex2htmlLength oddsidemargin=53.0pt
+
+latex2htmlLength evensidemargin=53.0pt
+
+\saveindent=\skip49
+LaTeX Font Info:    Try loading font information for U+msa on input line 744.
+(/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 1995/01/05 v2.2e AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 744.
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 1995/01/05 v2.2e AMS font definitions
+)
+File: HTKFigs//messencode.eps Graphic file (type eps)
+<HTKFigs//messencode.eps>
+l2hSize :tex2html_wrap_inline48336:81.42523pt::81.42523pt::142.76381pt.
+[1
+
+
+
+]
+File: HTKFigs//isoprob.eps Graphic file (type eps)
+<HTKFigs//isoprob.eps>
+l2hSize :tex2html_wrap_inline48364:79.1059pt::79.1059pt::142.76381pt.
+[2
+
+
+]
+File: HTKFigs//markovgen.eps Graphic file (type eps)
+<HTKFigs//markovgen.eps>
+l2hSize :tex2html_wrap_inline48399:106.47804pt::106.47804pt::242.34845pt.
+[3
+
+
+]
+File: HTKFigs//useforiso.eps Graphic file (type eps)
+<HTKFigs//useforiso.eps>
+l2hSize :tex2html_wrap_inline48424:178.26971pt::178.26971pt::239.50317pt.
+[4
+
+
+]
+File: HTKFigs//subsmixrep.eps Graphic file (type eps)
+<HTKFigs//subsmixrep.eps>
+l2hSize :tex2html_wrap_inline48463:87.6532pt::87.6532pt::171.21655pt.
+[5
+
+
+]
+File: HTKFigs//vtrellis.eps Graphic file (type eps)
+<HTKFigs//vtrellis.eps>
+l2hSize :tex2html_wrap_inline48634:127.02954pt::127.02954pt::285.02759pt.
+[6
+
+
+]
+File: HTKFigs//netforcsr.eps Graphic file (type eps)
+<HTKFigs//netforcsr.eps>
+l2hSize :tex2html_wrap_inline48668:101.30289pt::101.30289pt::185.44293pt.
+[7
+
+
+]
+File: HTKFigs//wlroper.eps Graphic file (type eps)
+<HTKFigs//wlroper.eps>
+l2hSize :tex2html_wrap_inline48669:109.38878pt::109.38878pt::285.02759pt.
+[8
+
+
+]
+File: HTKFigs//softarch.eps Graphic file (type eps)
+<HTKFigs//softarch.eps>
+l2hSize :tex2html_wrap_inline48674:114.51303pt::114.51303pt::213.89569pt.
+[9
+
+
+]
+File: HTKFigs//sysoview.eps Graphic file (type eps)
+<HTKFigs//sysoview.eps>
+l2hSize :tex2html_wrap_inline48679:141.08029pt::141.08029pt::285.02759pt.
+[10
+
+
+]
+File: HTKFigs//tsubword.eps Graphic file (type eps)
+<HTKFigs//tsubword.eps>
+l2hSize :tex2html_wrap_inline48680:186.53976pt::186.53976pt::256.57483pt.
+[11
+
+
+]
+File: HTKFigs//dialnet.eps Graphic file (type eps)
+<HTKFigs//dialnet.eps>
+l2hSize :tex2html_wrap_inline48696:124.08871pt::124.08871pt::313.48033pt.
+[12
+
+
+]
+File: HTKFigs//step1.eps Graphic file (type eps)
+<HTKFigs//step1.eps>
+l2hSize :tex2html_wrap_inline48697:87.64626pt::87.64626pt::71.63191pt.
+[13
+
+
+]
+File: HTKFigs//step2.eps Graphic file (type eps)
+<HTKFigs//step2.eps>
+l2hSize :tex2html_wrap_inline48701:108.53117pt::108.53117pt::285.02759pt.
+[14
+
+
+]
+File: HTKFigs//step3.eps Graphic file (type eps)
+<HTKFigs//step3.eps>
+l2hSize :tex2html_wrap_inline48704:116.42561pt::116.42561pt::142.76381pt.
+[15
+
+
+]
+File: HTKFigs//step4.eps Graphic file (type eps)
+<HTKFigs//step4.eps>
+l2hSize :tex2html_wrap_inline48705:132.02385pt::132.02385pt::171.21655pt.
+[16
+
+
+]
+File: HTKFigs//step5.eps Graphic file (type eps)
+<HTKFigs//step5.eps>
+l2hSize :tex2html_wrap_inline48713:94.90805pt::94.90805pt::285.02759pt.
+[17
+
+
+]
+File: HTKFigs//MMFeg.eps Graphic file (type eps)
+<HTKFigs//MMFeg.eps>
+l2hSize :tex2html_wrap_inline48716:91.50388pt::91.50388pt::242.34845pt.
+[18
+
+
+]
+File: HTKFigs//step6.eps Graphic file (type eps)
+<HTKFigs//step6.eps>
+l2hSize :tex2html_wrap_inline48717:121.57556pt::121.57556pt::242.34845pt.
+[19
+
+
+]
+File: HTKFigs//egsils.eps Graphic file (type eps)
+<HTKFigs//egsils.eps>
+l2hSize :tex2html_wrap_inline48719:99.43561pt::99.43561pt::156.99017pt.
+[20
+
+
+]
+File: HTKFigs//step7.eps Graphic file (type eps)
+<HTKFigs//step7.eps>
+l2hSize :tex2html_wrap_inline48720:85.53427pt::85.53427pt::313.48033pt.
+[21
+
+
+]
+File: HTKFigs//step8.eps Graphic file (type eps)
+<HTKFigs//step8.eps>
+l2hSize :tex2html_wrap_inline48722:89.79419pt::89.79419pt::242.34845pt.
+[22
+
+
+]
+File: HTKFigs//egtranstie.eps Graphic file (type eps)
+<HTKFigs//egtranstie.eps>
+l2hSize :tex2html_wrap_inline48725:131.30327pt::131.30327pt::228.12207pt.
+[23
+
+
+]
+File: HTKFigs//step9.eps Graphic file (type eps)
+<HTKFigs//step9.eps>
+l2hSize :tex2html_wrap_inline48726:136.60974pt::136.60974pt::156.99017pt.
+[24
+
+
+]
+File: HTKFigs//step10.eps Graphic file (type eps)
+<HTKFigs//step10.eps>
+l2hSize :tex2html_wrap_inline48728:136.68044pt::136.68044pt::142.76381pt.
+[25
+
+
+]
+File: HTKFigs//step11.eps Graphic file (type eps)
+<HTKFigs//step11.eps>
+l2hSize :tex2html_wrap_inline48737:71.4377pt::71.4377pt::341.93309pt.
+[26
+
+
+]
+File: HTKFigs//Config.eps Graphic file (type eps)
+<HTKFigs//Config.eps>
+l2hSize :tex2html_wrap_inline48750:91.45268pt::91.45268pt::171.21655pt.
+[27
+
+
+]
+File: HTKFigs//Spmods.eps Graphic file (type eps)
+<HTKFigs//Spmods.eps>
+l2hSize :tex2html_wrap_inline48943:113.74493pt::113.74493pt::176.9071pt.
+[28
+
+
+]
+File: HTKFigs//Blocking.eps Graphic file (type eps)
+<HTKFigs//Blocking.eps>
+l2hSize :tex2html_wrap_inline48951:118.80235pt::118.80235pt::142.76381pt.
+[29
+
+
+]
+File: HTKFigs//melfbank.eps Graphic file (type eps)
+<HTKFigs//melfbank.eps>
+l2hSize :tex2html_wrap_inline49046:88.72249pt::88.72249pt::313.48033pt.
+[30
+
+
+]
+File: HTKFigs//vtlnpiecewise.eps Graphic file (type eps)
+<HTKFigs//vtlnpiecewise.eps>
+l2hSize :tex2html_wrap_inline49054:104.90361pt::104.90361pt::171.21655pt.
+[31
+
+
+]
+File: HTKFigs//HTKFormat.eps Graphic file (type eps)
+<HTKFigs//HTKFormat.eps>
+l2hSize :tex2html_wrap_inline49121:96.28133pt::96.28133pt::370.38585pt.
+
+Overfull \hbox (24.38586pt too wide) in paragraph at lines 1157--1158
+[]|[] 
+ []
+
+[32
+
+
+]
+File: HTKFigs//endpointer.eps Graphic file (type eps)
+<HTKFigs//endpointer.eps>
+l2hSize :tex2html_wrap_inline49211:111.38599pt::111.38599pt::341.93309pt.
+[33
+
+
+]
+File: HTKFigs//streams.eps Graphic file (type eps)
+<HTKFigs//streams.eps>
+l2hSize :tex2html_wrap_inline49217:113.07646pt::113.07646pt::285.02759pt.
+[34
+
+
+]
+File: HTKFigs//VQUse.eps Graphic file (type eps)
+<HTKFigs//VQUse.eps>
+l2hSize :tex2html_wrap_inline49219:212.21445pt::212.21445pt::185.44293pt.
+[35
+
+
+]
+File: HTKFigs//coercions.eps Graphic file (type eps)
+<HTKFigs//coercions.eps>
+l2hSize :tex2html_wrap_inline49224:82.68822pt::82.68822pt::285.02759pt.
+[36
+
+
+]
+File: HTKFigs//labegs.eps Graphic file (type eps)
+<HTKFigs//labegs.eps>
+l2hSize :tex2html_wrap_inline49525:181.01883pt::181.01883pt::171.21655pt.
+[37
+
+
+]
+File: HTKFigs//dbhier.eps Graphic file (type eps)
+<HTKFigs//dbhier.eps>
+l2hSize :tex2html_wrap_inline49535:91.61731pt::91.61731pt::228.12207pt.
+[38
+
+
+]
+File: HTKFigs//hmm1.eps Graphic file (type eps)
+<HTKFigs//hmm1.eps>
+l2hSize :tex2html_wrap_inline49599:92.25908pt::92.25908pt::199.66931pt.
+[39
+
+
+]
+Overfull \hbox (13.46664pt too wide) in paragraph at lines 1319--1319
+[] 
+ []
+
+l2hSize :tex2html_wrap_inline49653:192.17224pt::192.17224pt::171.21655pt.
+[40
+
+
+]
+Overfull \hbox (13.46664pt too wide) in paragraph at lines 1368--1368
+[] 
+ []
+
+l2hSize :tex2html_wrap_inline49752:228.17224pt::228.17224pt::171.21655pt.
+[41
+
+
+]
+Overfull \hbox (13.46664pt too wide) in paragraph at lines 1393--1393
+[] 
+ []
+
+l2hSize :tex2html_wrap_inline49818:72.17224pt::72.17224pt::142.76381pt.
+[42
+
+
+]
+Overfull \hbox (13.46664pt too wide) in paragraph at lines 1439--1439
+[] 
+ []
+
+l2hSize :tex2html_wrap_inline49825:198.17224pt::198.17224pt::171.21655pt.
+[43
+
+
+]
+File: HTKFigs//hierarch.eps Graphic file (type eps)
+<HTKFigs//hierarch.eps>
+l2hSize :tex2html_wrap_inline49850:120.17871pt::120.17871pt::341.93309pt.
+[44
+
+
+]
+File: HTKFigs//hsetdef.eps Graphic file (type eps)
+<HTKFigs//hsetdef.eps>
+l2hSize :tex2html_wrap_inline49886:148.2716pt::148.2716pt::341.93309pt.
+[45
+
+
+]
+Overfull \hbox (13.46664pt too wide) in paragraph at lines 1488--1488
+[] 
+ []
+
+l2hSize :tex2html_wrap_inline49887:73.14445pt::73.14445pt::199.66931pt.
+[46
+
+
+]
+File: HTKFigs//tmixeg.eps Graphic file (type eps)
+<HTKFigs//tmixeg.eps>
+l2hSize :tex2html_wrap_inline49899:79.30185pt::79.30185pt::171.21655pt.
+[47
+
+
+]
+File: HTKFigs//isoword.eps Graphic file (type eps)
+<HTKFigs//isoword.eps>
+l2hSize :tex2html_wrap_inline50436:153.73988pt::153.73988pt::176.9071pt.
+[48
+
+
+]
+File: HTKFigs//subword.eps Graphic file (type eps)
+<HTKFigs//subword.eps>
+l2hSize :tex2html_wrap_inline50437:186.53976pt::186.53976pt::256.57483pt.
+[49
+
+
+]
+File: HTKFigs//vitloop.eps Graphic file (type eps)
+<HTKFigs//vitloop.eps>
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
+(Font)              using `OT1/cmr/bx/n' instead on input line 1547.
+
+l2hSize :tex2html_wrap_inline50439:194.69371pt::194.69371pt::171.21655pt.
+[50
+
+
+]
+File: HTKFigs//hinitdp.eps Graphic file (type eps)
+<HTKFigs//hinitdp.eps>
+l2hSize :tex2html_wrap_inline50440:137.37889pt::137.37889pt::256.57483pt.
+[51
+
+
+]
+File: HTKFigs//flatst.eps Graphic file (type eps)
+<HTKFigs//flatst.eps>
+l2hSize :tex2html_wrap_inline50442:84.21063pt::84.21063pt::256.57483pt.
+[52
+
+
+]
+File: HTKFigs//restloop.eps Graphic file (type eps)
+<HTKFigs//restloop.eps>
+l2hSize :tex2html_wrap_inline50444:149.85442pt::149.85442pt::171.21655pt.
+[53
+
+
+]
+File: HTKFigs//herestdp.eps Graphic file (type eps)
+<HTKFigs//herestdp.eps>
+l2hSize :tex2html_wrap_inline50446:135.95113pt::135.95113pt::256.57483pt.
+[54
+
+
+]
+File: HTKFigs//parher.eps Graphic file (type eps)
+<HTKFigs//parher.eps>
+l2hSize :tex2html_wrap_inline50465:119.46043pt::119.46043pt::256.57483pt.
+[55
+
+
+]
+File: HTKFigs//regtree1.eps Graphic file (type eps)
+<HTKFigs//regtree1.eps>
+l2hSize :tex2html_wrap_inline50839:94.31004pt::94.31004pt::156.99017pt.
+[56
+
+
+]
+File: HTKFigs//itemtree.eps Graphic file (type eps)
+<HTKFigs//itemtree.eps>
+l2hSize :tex2html_wrap_inline51126:103.93518pt::103.93518pt::176.9071pt.
+[57
+
+
+]
+File: HTKFigs//tiedstate.eps Graphic file (type eps)
+<HTKFigs//tiedstate.eps>
+l2hSize :tex2html_wrap_inline51138:148.17744pt::148.17744pt::285.02759pt.
+[58
+
+
+]
+File: HTKFigs//qstree.eps Graphic file (type eps)
+<HTKFigs//qstree.eps>
+l2hSize :tex2html_wrap_inline51142:180.37364pt::180.37364pt::285.02759pt.
+[59
+
+
+]
+File: HTKFigs//vqtohmm.eps Graphic file (type eps)
+<HTKFigs//vqtohmm.eps>
+l2hSize :tex2html_wrap_inline51162:132.83815pt::132.83815pt::156.99017pt.
+[60
+
+
+]
+File: HTKFigs//recsys.eps Graphic file (type eps)
+<HTKFigs//recsys.eps>
+l2hSize :tex2html_wrap_inline51198:182.67926pt::182.67926pt::285.02759pt.
+[61
+
+
+]
+File: HTKFigs//wdnet.eps Graphic file (type eps)
+<HTKFigs//wdnet.eps>
+l2hSize :tex2html_wrap_inline51202:71.79573pt::71.79573pt::228.12207pt.
+[62
+
+
+]
+File: HTKFigs//wdnet1.eps Graphic file (type eps)
+<HTKFigs//wdnet1.eps>
+l2hSize :tex2html_wrap_inline51203:63.83812pt::63.83812pt::228.12207pt.
+[63
+
+
+]
+File: HTKFigs//digitnets.eps Graphic file (type eps)
+<HTKFigs//digitnets.eps>
+l2hSize :tex2html_wrap_inline51210:118.4819pt::118.4819pt::341.93309pt.
+[64
+
+
+]
+File: HTKFigs//decinet.eps Graphic file (type eps)
+<HTKFigs//decinet.eps>
+l2hSize :tex2html_wrap_inline51235:55.886pt::55.886pt::176.9071pt.
+[65
+
+
+]
+File: HTKFigs//bobig.eps Graphic file (type eps)
+<HTKFigs//bobig.eps>
+l2hSize :tex2html_wrap_inline51236:121.90045pt::121.90045pt::285.02759pt.
+[66
+
+
+]
+File: HTKFigs//dmaker.eps Graphic file (type eps)
+<HTKFigs//dmaker.eps>
+l2hSize :tex2html_wrap_inline51243:156.42201pt::156.42201pt::313.48033pt.
+[67
+
+
+]
+File: HTKFigs//mononet.eps Graphic file (type eps)
+<HTKFigs//mononet.eps>
+l2hSize :tex2html_wrap_inline51245:66.70433pt::66.70433pt::285.02759pt.
+[68
+
+
+]
+File: HTKFigs//wintnet.eps Graphic file (type eps)
+<HTKFigs//wintnet.eps>
+l2hSize :tex2html_wrap_inline51246:71.73212pt::71.73212pt::285.02759pt.
+[69
+
+
+]
+File: HTKFigs//xwrdnet.eps Graphic file (type eps)
+<HTKFigs//xwrdnet.eps>
+l2hSize :tex2html_wrap_inline51247:88.11212pt::88.11212pt::285.02759pt.
+[70
+
+
+]
+File: HTKFigs//recnetlev.eps Graphic file (type eps)
+<HTKFigs//recnetlev.eps>
+l2hSize :tex2html_wrap_inline51252:111.1528pt::111.1528pt::176.9071pt.
+[71
+
+
+]
+File: HTKFigs//decflow.eps Graphic file (type eps)
+<HTKFigs//decflow.eps>
+l2hSize :tex2html_wrap_inline51266:261.70273pt::261.70273pt::176.9071pt.
+[72
+
+
+]
+File: HTKFigs//hvalign.eps Graphic file (type eps)
+<HTKFigs//hvalign.eps>
+l2hSize :tex2html_wrap_inline51312:73.51642pt::73.51642pt::156.99017pt.
+[73
+
+
+]
+File: HTKFigs//WordLM.eps Graphic file (type eps)
+<HTKFigs//WordLM.eps>
+l2hSize :tex2html_wrap_inline51809:152.98276pt::152.98276pt::185.44293pt.
+[74
+
+
+]
+File: HTKFigs//ClassLM.eps Graphic file (type eps)
+<HTKFigs//ClassLM.eps>
+l2hSize :tex2html_wrap_inline51817:188.8786pt::188.8786pt::313.48033pt.
+[75
+
+
+]
+File: HTKFigs//hslab.eps Graphic file (type eps)
+<HTKFigs//hslab.eps>
+l2hSize :tex2html_wrap_inline53351:146.12224pt::146.12224pt::341.93309pt.
+[76
+
+
+] (images.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3053 strings out of 20887
+ 38634 string characters out of 196274
+ 134651 words of memory out of 350001
+ 5821 multiletter control sequences out of 10000+15000
+ 6120 words of font info for 25 fonts, out of 400000 for 1000
+ 14 hyphenation exceptions out of 10000
+ 32i,8n,26p,260b,599s stack positions out of 3000i,100n,1500p,50000b,4000s
+
+Output written on images.dvi (76 pages, 36128 bytes).

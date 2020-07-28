@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of SCRIBE Label Files</TITLE>
+<META NAME="description" CONTENT="Contents of SCRIBE Label Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node92_mn.html">
+<LINK REL="up" HREF="node89_mn.html">
+<LINK REL="next" HREF="node94_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03324000000000000000">
+SCRIBE Label Files</A>
+</H2>
+
+<P>
+<A NAME="7945">&#160;</A>
+The SCRIBE label file format is a subset of the European SAM label file format.
+SAM label files are text files and each line begins with a label identifying
+the type of information stored on that line.  The HTK SCRIBE format recognises
+just three label types
+<PRE><TT>
+		 LBA 		- acoustic label 
+<BR>
+LBB 		- broad class label 
+<BR>
+UTS 		- utterance 
+</TT></PRE>
+For each of these, the rest of the line is divided into comma separated
+fields.  The LBA and LBB types have 4 fields: start sample, centre sample, end sample
+and label.  HTK expects the centre sample to be blank.  The UTS type has 3 fields:
+start sample, end sample and label.  UTS labels may be multi-word since they can
+refer to a complete utterance.  In order to make such labels usable within HTK tools,
+between word blanks are converted to underscore characters.  The 
+<TT>EX</TT><A NAME="8228">&#160;</A> command
+in the HTK label editor HLE<SMALL>D</SMALL> can then be used to split such
+a compound label into individual word labels if required.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

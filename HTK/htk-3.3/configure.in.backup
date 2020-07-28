@@ -1,0 +1,62 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(HTK,3.2)
+AC_COPYRIGHT(Copyright 2003 University of Cambridge)
+
+dnl Checks for programs.
+AC_PROG_AWK
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_RANLIB
+
+dnl Checks for libraries.
+
+dnl Checks for header files.
+AC_CONFIG_HEADERS
+AC_PATH_X
+AC_HEADER_STDC
+AC_CHECK_HEADERS(fcntl.h limits.h malloc.h sys/ioctl.h sys/time.h unistd.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_TYPE_SIZE_T
+AC_HEADER_TIME
+AC_STRUCT_TM
+
+dnl Checks for library functions.
+AC_PROG_GCC_TRADITIONAL
+AC_FUNC_MEMCMP
+AC_TYPE_SIGNAL
+AC_FUNC_VPRINTF
+AC_CHECK_FUNCS(gettimeofday socket strcspn strspn strstr strtod strtol)
+
+AC_CANONICAL_HOST
+
+# Use -Wall if using gcc
+case "$CC" in
+	 gcc*)
+		CFLAGS="-Wall -Wno-switch $CFLAGS"
+		;;		
+esac
+
+# customise for htk comilpation
+case "$host" in
+		*linux*)
+				CFLAGS="-ansi -D_SVID_SOURCE -DOSS_AUDIO -D'ARCH=\"linux\"' $CFLAGS"
+				LDFLAGS="-L/usr/X11R6/lib $LDFLAGS"
+		;;
+		*sun*)
+				CFLAGS="-ansi -I/usr/openwin/include -O2 -DSOLARIS16_AUDIO -DBSD_COMP -D'ARCH=\"$host_cpu\"' $CFLAGS"
+				LDFLAGS="-L/usr/openwin/lib -ldl -lsocket -lnsl -lintl $LDFLAGS"
+		;;
+		*sgi*)
+				CFLAGS="-O -DSGI_AUDIO  -D'ARCH=\"$host_cpu\"' $CFLAGS"
+				LDFLAGS="-laudio -lmalloc $LDFLAGS"
+		;;
+		*hp*)
+				CFLAGS="+e -O -I/usr/include/X11R5 -I/usr/include/audio -I/opt/audio/include -D_HPUX_SOURCE -Aa -DHPUX_AUDIO -DUSE_TIMER  -D'ARCH=\"$host_cpu\"' $CFLAGS"
+				LDFLAGS="-L/opt/audio/lib -lAlib $LDFLAGS"
+		;;
+esac
+
+AC_OUTPUT(HTKLib/Makefile HTKTools/Makefile HLMLib/Makefile HLMTools/Makefile Makefile)

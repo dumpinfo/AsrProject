@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Variance MLLR (MLLRVAR and MLLRCOV)</TITLE>
+<META NAME="description" CONTENT="Contents of Variance MLLR (MLLRVAR and MLLRCOV)">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node130_mn.html">
+<LINK REL="previous" HREF="node128_mn.html">
+<LINK REL="up" HREF="node127_mn.html">
+<LINK REL="next" HREF="node130_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H3><A NAME="SECTION03611200000000000000">&#160;</A><A NAME="s:vmllr">&#160;</A>
+<BR>
+Variance MLLR (<TT>MLLRVAR</TT> and <TT>MLLRCOV</TT>)
+</H3>
+
+<P>
+There are two standard forms of linear adaptation of the variances. The first
+is of the form
+<!-- MATH
+ \begin{displaymath}
+\hat{{\mbox{\boldmath$\Sigma$}}}_{m} = {\mbox{\boldmath$B$}}_m^T{\mbox{\boldmath$H$}}_m{\mbox{\boldmath$B$}}_m
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="133" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img342.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\Sigma$}}}_{m} = {\mbox{\boldmath$B$}}_m^T{\mbox{\boldmath$H$}}_m{\mbox{\boldmath$B$}}_m
+$">
+</DIV><P></P>
+where <!-- MATH
+ ${\mbox{\boldmath $H$}}_m$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img343.png"
+ ALT="$ {\mbox{\boldmath $H$}}_m$"></SPAN> is the linear transformation to be estimated and
+<!-- MATH
+ ${\mbox{\boldmath $B$}}_m$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img344.png"
+ ALT="$ {\mbox{\boldmath $B$}}_m$"></SPAN> is the inverse of the Choleski factor of <!-- MATH
+ ${\mbox{\boldmath $\Sigma$}}_{m}^{-1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="34" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img345.png"
+ ALT="$ {\mbox{\boldmath $\Sigma$}}_{m}^{-1}$"></SPAN>,
+so
+<!-- MATH
+ \begin{displaymath}
+{\mbox{\boldmath$\Sigma$}}_{m}^{-1} = {\mbox{\boldmath$C$}}_m{\mbox{\boldmath$C$}}_m^T
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="108" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img346.png"
+ ALT="$\displaystyle {\mbox{\boldmath$\Sigma$}}_{m}^{-1} = {\mbox{\boldmath$C$}}_m{\mbox{\boldmath$C$}}_m^T
+$">
+</DIV><P></P>
+and
+<!-- MATH
+ \begin{displaymath}
+{\mbox{\boldmath$B$}}_m = {\mbox{\boldmath$C$}}_m^{-1}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="83" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img347.png"
+ ALT="$\displaystyle {\mbox{\boldmath$B$}}_m = {\mbox{\boldmath$C$}}_m^{-1}
+$">
+</DIV><P></P>
+This form of transform results in an effective full covariance matrix if
+the transform matrix <!-- MATH
+ ${\mbox{\boldmath $H$}}_m$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img343.png"
+ ALT="$ {\mbox{\boldmath $H$}}_m$"></SPAN> is full. This makes likelihood calculations
+highly inefficient. This form of transform is only available with a 
+diagonal transform and in conjunction with estimating an MLLR transform. The
+MLLR transform is used as a parent transform for estimating <!-- MATH
+ ${\mbox{\boldmath $H$}}_m$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img343.png"
+ ALT="$ {\mbox{\boldmath $H$}}_m$"></SPAN>.
+This form of transform is referred to in the code as <TT>MLLRVAR</TT>.
+
+<P>
+An alternative more efficient form of variance transformation is also available.
+Here, the transformation of the covariance matrix is  of the form
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:covtrans">&#160;</A><!-- MATH
+ \begin{equation}
+\hat{{\mbox{\boldmath$\Sigma$}}} = {\mbox{\boldmath$H$}}{\mbox{\boldmath$\Sigma$}}{\mbox{\boldmath$H$}},
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="90" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img348.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\Sigma$}}} = {\mbox{\boldmath$H$}}{\mbox{\boldmath$\Sigma$}}{\mbox{\boldmath$H$}},$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ ${\mbox{\boldmath $H$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img349.png"
+ ALT="$ {\mbox{\boldmath $H$}}$"></SPAN> is the <SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img340.png"
+ ALT="$ n \times n$"></SPAN> covariance transformation matrix.
+This form of transformation, referred to in the code as <TT>MLLRCOV</TT>
+can be efficiently implemented as a transformation of the means and 
+the features.
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:covlike">&#160;</A><!-- MATH
+ \begin{equation}
+{\cal N}({\mbox{\boldmath$o$}};{\mbox{\boldmath$\mu$}},{\mbox{\boldmath$H$}}{\mbox{\boldmath$\Sigma$}}{\mbox{\boldmath$H$}}) =
+       \frac{1}{|{\mbox{\boldmath$H$}}|^2}{\cal N}({\mbox{\boldmath$H$}}^{-1}{\mbox{\boldmath$o$}};{\mbox{\boldmath$H$}}^{-1}{\mbox{\boldmath$\mu$}},{\mbox{\boldmath$\Sigma$}}) = 
+       {|{\mbox{\boldmath$A$}}|^2}{\cal N}({\mbox{\boldmath$A$}}{\mbox{\boldmath$o$}};{\mbox{\boldmath$A$}}{\mbox{\boldmath$\mu$}},{\mbox{\boldmath$\Sigma$}})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="470" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img350.png"
+ ALT="$\displaystyle {\cal N}({\mbox{\boldmath$o$}};{\mbox{\boldmath$\mu$}},{\mbox{\bo...
+...h$o$}};{\mbox{\boldmath$A$}}{\mbox{\boldmath$\mu$}},{\mbox{\boldmath$\Sigma$}})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">4</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ ${\mbox{\boldmath $A$}}={\mbox{\boldmath $H$}}^{-1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="73" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img351.png"
+ ALT="$ {\mbox{\boldmath $A$}}={\mbox{\boldmath $H$}}^{-1}$"></SPAN>.
+Using this form it is possible to estimate and efficiently apply full transformations.
+<TT>MLLRCOV</TT> transformations are normally estimated using <TT>MLLRMEAN</TT> transformations
+as the parent transform.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

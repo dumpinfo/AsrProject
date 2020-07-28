@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of HMM Parameter Estimation</TITLE>
+<META NAME="description" CONTENT="Contents of HMM Parameter Estimation">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node125_mn.html">
+<LINK REL="previous" HREF="node101_mn.html">
+<LINK REL="up" HREF="node42_mn.html">
+<LINK REL="next" HREF="node113_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03500000000000000000">&#160;</A><A NAME="c:Training">&#160;</A>
+<BR>
+HMM Parameter Estimation
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:Tool.train">&#160;</A><IMG
+ WIDTH="366" HEIGHT="321" ALIGN="MIDDLE" BORDER="0"
+ SRC="img253.png"
+ ALT="$\textstyle \parbox{80mm}{ \begin{center}\setlength{\epsfxsize}{80mm}
+\epsfbox{HTKFigs//Tool.train.eps}
+\end{center} }$">
+</DIV>
+
+<P>
+In chapter&nbsp;<A HREF="node101_ct.html#c:HMMDefs">7</A> the various types of HMM were described
+and the way in which they are represented within HTK was explained.
+Defining the structure and overall form of a set of HMMs is the first
+step towards building a recogniser.  The second step is to estimate
+the parameters of the HMMs from examples of the data sequences that
+they are intended to model.  This process of parameter estimation
+<A NAME="14383">&#160;</A> is
+usually called <SPAN  CLASS="textit">training</SPAN>. 
+HTK supplies four basic tools for parameter estimation: HC<SMALL>OMP</SMALL>V,
+HI<SMALL>NIT</SMALL>, HR<SMALL>EST</SMALL> and HER<SMALL>EST</SMALL>.
+HC<SMALL>OMP</SMALL>V and HI<SMALL>NIT</SMALL> are used for initialisation.
+HC<SMALL>OMP</SMALL>V will set the mean and variance of every Gaussian component
+in a HMM definition to be equal to the global mean and variance of the
+speech training data.  This is typically used as an initialisation stage
+for <SPAN  CLASS="textit">flat-start</SPAN> training.
+Alternatively, a more detailed initialisation is
+possible using HI<SMALL>NIT</SMALL> which will compute the parameters of a new
+HMM using a Viterbi style of estimation.  
+
+
+<P>
+HR<SMALL>EST</SMALL> and HER<SMALL>EST</SMALL> are used to refine the 
+parameters of existing HMMs using Baum-Welch Re-estimation.  
+Like HI<SMALL>NIT</SMALL>, HR<SMALL>EST</SMALL> 
+performs <SPAN  CLASS="textit">isolated-unit</SPAN> training whereas
+HER<SMALL>EST</SMALL> operates on complete model sets and performs <SPAN  CLASS="textit">embedded-unit</SPAN>
+training.  In general, whole word HMMs are built using HI<SMALL>NIT</SMALL>
+and HR<SMALL>EST</SMALL>, and continuous speech sub-word based systems
+are built using HER<SMALL>EST</SMALL> initialised by either HC<SMALL>OMP</SMALL>V or
+HI<SMALL>NIT</SMALL> and HR<SMALL>EST</SMALL>.
+
+<P>
+This chapter describes these training tools and their use for 
+estimating the parameters of plain (i.e. untied)
+continuous density HMMs. The use of tying and special cases such as
+tied-mixture HMM sets and discrete probality HMMs are dealt 
+with in later chapters.  The first section of this chapter gives an overview of the
+various training strategies possible with HTK.  This is then followed
+by sections covering initialisation, isolated-unit training, and
+embedded training.  The chapter concludes with a section detailing
+the various formulae used by the training tools.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html2707" HREF="node113_mn.html" TARGET="main"><SMALL>Training Strategies</SMALL></A>
+<LI><A NAME="tex2html2708" HREF="node114_mn.html" TARGET="main"><SMALL>Initialisation using HI<SMALL>NIT</SMALL></SMALL></A>
+<LI><A NAME="tex2html2709" HREF="node115_mn.html" TARGET="main"><SMALL>Flat Starting with HC<SMALL>OMP</SMALL>V</SMALL></A>
+<LI><A NAME="tex2html2710" HREF="node116_mn.html" TARGET="main"><SMALL>Isolated Unit Re-Estimation using HR<SMALL>EST</SMALL></SMALL></A>
+<LI><A NAME="tex2html2711" HREF="node117_mn.html" TARGET="main"><SMALL>Embedded Training using HER<SMALL>EST</SMALL></SMALL></A>
+<LI><A NAME="tex2html2712" HREF="node118_mn.html" TARGET="main"><SMALL>Single-Pass Retraining</SMALL></A>
+<LI><A NAME="tex2html2713" HREF="node119_mn.html" TARGET="main"><SMALL>Two-model Re-Estimation</SMALL></A>
+<LI><A NAME="tex2html2714" HREF="node120_mn.html" TARGET="main"><SMALL>Parameter Re-Estimation Formulae</SMALL></A>
+<UL>
+<LI><A NAME="tex2html2715" HREF="node121_mn.html" TARGET="main"><SMALL>Viterbi Training (HI<SMALL>NIT</SMALL>)</SMALL></A>
+<LI><A NAME="tex2html2716" HREF="node122_mn.html" TARGET="main"><SMALL>Forward/Backward Probabilities</SMALL></A>
+<LI><A NAME="tex2html2717" HREF="node123_mn.html" TARGET="main"><SMALL>Single Model Reestimation(HR<SMALL>EST</SMALL>)</SMALL></A>
+<LI><A NAME="tex2html2718" HREF="node124_mn.html" TARGET="main"><SMALL>Embedded Model Reestimation(HER<SMALL>EST</SMALL>)</SMALL></A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

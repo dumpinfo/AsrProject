@@ -1,0 +1,24 @@
+# Creation of the dictionary and the labels and master label file
+# Edit TIMIT.cfg to 
+#     1. point to installation of TIMIT corpus ($TIMITDIR)
+#     2. point to outout directory where the models will be built ($OUTPUTDIR)
+# make sure perl script installation has ConfigVar.pm in its path.
+# Execute:
+# 
+>~/perl/bin/perl createMLF.pl -config TIMIT.cfg
+#
+# Go to output-dir:
+#
+>cd ~/HTK/samples/TIMIT
+#
+#
+# Computation of Features: 
+#	mfcc.scp is the list file of features file. 
+#	Edit included one or generate a new one
+#
+>HCopy -T 1 -C config.mfcc -S mfcc.scp
+#
+# Computation of Monophone Models
+#
+>mkdir hmm0
+>HCompV -C mono_hmm0.config -f 0.01 -m -S train_mfc.scp -M hmm0 mono_proto

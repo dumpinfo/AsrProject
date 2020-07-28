@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node259_mn.html">
+<LINK REL="previous" HREF="node257_mn.html">
+<LINK REL="up" HREF="node257_mn.html">
+<LINK REL="next" HREF="node259_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05151000000000000000">&#160;</A><A NAME="s:HDMan-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="25916">&#160;</A>
+The HTK tool HDM<SMALL>AN</SMALL> is used to prepare a pronunciation dictionary 
+from one or more sources.  It
+reads in a list of <SPAN  CLASS="textit">editing</SPAN> commands from a
+script file and then outputs an edited and merged copy of 
+one or more dictionaries.
+
+<P>
+Each source pronunciation dictionary consists of comment lines and definition
+lines.  Comment lines start with the <TT>#</TT> character (or optionally any
+one of a set of specified comment chars) and are ignored by HDM<SMALL>AN</SMALL>.
+Each definition line starts with a word and is followed by a sequence of
+symbols (phones) that define the pronunciation.  The words and the phones are
+delimited by spaces or tabs, and the end of line delimits each definition.
+
+<P>
+Dictionaries used by HDM<SMALL>AN</SMALL> are read using the standard HTK string
+conventions (see section&nbsp;<A HREF="node49_ct.html#s:htkstrings">4.6</A>), however, the command <TT>IR</TT>
+can be used in a HDM<SMALL>AN</SMALL> source edit script to switch to using this raw
+format. Note that in the default mode, words and phones should not begin with unmatched quotes (they should be escaped with the backslash). All dictionary entries must already be alphabetically sorted before using HDM<SMALL>AN</SMALL>.
+
+<P>
+Each edit command in the script file must be on a separate line.  Lines in the
+script file starting with a <TT>#</TT> are comment lines and are ignored.  The
+commands supported are listed below.  They can be displayed by HDM<SMALL>AN</SMALL>
+using the <TT>-Q</TT> option.
+
+<P>
+When no edit files are specified, HDM<SMALL>AN</SMALL> simply merges all of
+the input dictionaries and outputs them in sorted order.  All input
+dictionaries must be sorted.  Each input dictionary <TT>xxx</TT> may be
+processed by its own private set of edit commands stored in <TT>xxx.ded</TT>.
+Subsequent to the processing of the input dictionaries by their own
+unique edit scripts, the merged dictionary can be processed by
+commands in <TT>global.ded</TT> (or some other specified 
+global edit file name).
+
+<P>
+Dictionaries are processed on a word by word basis in the order that
+they appear on the command line.  Thus, all of 
+the pronunciations for a given word are loaded into a buffer, then
+all edit commands are applied to these pronunciations.  The result
+is then output and the next word loaded.
+
+<P>
+Where two or more dictionaries give pronunciations for the same word,
+the default behaviour is that only the first set of pronunciations
+encountered are retained and all others are ignored.  An option exists
+to override this so that all pronunciations are concatenated.
+
+<P>
+Dictionary entries can be filtered by a word list such that all entries not in
+the list are ignored. Note that the word identifiers in the word list should
+match exactly (e.g. same case) their corresponding entries in the dictionary.
+
+<P>
+The edit commands provided by HDM<SMALL>AN</SMALL> are as follows
+
+<P>
+
+<DL COMPACT>
+<DT><TT>AS A B ...</TT>
+<DD>Append silence models A, B, etc to 
+      each pronunciation.
+   <DT><TT>CR X A Y B  </TT>
+<DD>Replace phone <TT>Y</TT> in the context of <TT>A_B</TT> 
+             by <TT>X</TT>.  Contexts may include an asterix <TT>*</TT> to denote any 
+             phone or a defined context set 
+            defined using the <TT>DC</TT> command.
+   <DT><TT>DC X A B ...</TT>
+<DD>Define the set <TT>A</TT>, <TT>B</TT>, ...as 
+             the context <TT>X</TT>.
+   <DT><TT>DD X A B ...</TT>
+<DD>Delete the definition for word <TT>X</TT> starting 
+                              with phones <TT>A</TT>, <TT>B</TT>, ....
+   <DT><TT>DP A B C ...</TT>
+<DD>Delete any occurrences of phones <TT>A</TT> or 
+               <TT>B</TT> or <TT>C</TT> ....
+   <DT><TT>DS src</TT>
+<DD>Delete each pronunciation from source <TT>src</TT> 
+           unless it is the only one for the current word.
+   <DT><TT>DW X Y Z ...</TT>
+<DD>Delete words (&amp; definitions) <TT>X</TT>,
+           <TT>Y</TT>, <TT>Z</TT>, ....
+   <DT><TT>FW X Y Z ...</TT>
+<DD>Define  <TT>X</TT>,
+           <TT>Y</TT>, <TT>Z</TT>, ... as function words and 
+            change each phone 
+           in the definition to a function word specific phone. For example,
+           in word <TT>W</TT> phone <TT>A</TT> would become <TT>W.A</TT>.
+   <DT><TT>IR</TT>
+<DD>Set the input mode to raw.
+          In raw mode, words are regarded as arbitrary sequences of printing
+          chars.  In the default mode, words are strings as defined 
+          in section&nbsp;<A HREF="node49_ct.html#s:htkstrings">4.6</A>.
+   <DT><TT>LC [X]</TT>
+<DD>Convert all phones to be left-context dependent. If <TT>X</TT> is given
+          then the 1st phone <TT>a</TT> in each word is changed to <TT>X-a</TT> 
+          otherwise it is unchanged.
+   <DT><TT>LP</TT>
+<DD>Convert all phones to lowercase.
+   <DT><TT>LW</TT>
+<DD>Convert all words to lowercase.
+   <DT><TT>MP X A B ...</TT>
+<DD>Merge any sequence of phones <TT>A</TT> <TT>B</TT> 
+          ... and rename as  <TT>X</TT>.
+   <DT><TT>RC [X]</TT>
+<DD>Convert all phones to be right-context dependent. If 
+          <TT>X</TT> is given  then the last phone <TT>z</TT> in each word is
+          changed to <TT>z+X</TT> otherwise it is unchanged.
+   <DT><TT>RP X A B ...</TT>
+<DD>Replace all occurrences of phones <TT>A</TT> 
+       or <TT>B</TT> ...by <TT>X</TT>.
+   <DT><TT>RS system</TT>
+<DD>Remove stress marking.  Currently the only 
+         stress marking system 
+       supported is that used in the dictionaries produced by 
+       Carnegie Melon University (system = cmu).
+   <DT><TT>RW X A B ...</TT>
+<DD>Replace all occurrences of word <TT>A</TT> 
+       or <TT>B</TT> ...by <TT>X</TT>.
+   <DT><TT>SP X A B ...</TT>
+<DD>Split phone <TT>X</TT> into the sequence 
+      <TT>A</TT> <TT>B</TT> <TT>C</TT> ....
+   <DT><TT>TC [X [Y]</TT>
+<DD>] Convert phones to triphones. If 
+        <TT>X</TT> is given then the first phone <TT>a</TT> is converted to 
+        <TT>X-a+b</TT> otherwise it is unchanged. If <TT>Y</TT> is given
+          then the last phone <TT>z</TT> is converted to <TT>y-z+Y</TT>
+           otherwise if <TT>X</TT> is given
+            then it is changed to  <TT>y-z+X</TT> otherwise it is unchanged.
+   <DT><TT>UP</TT>
+<DD>Convert all phones to uppercase.
+   <DT><TT>UW</TT>
+<DD>Convert all words to uppercase.
+
+<P>
+</DD>
+</DL>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

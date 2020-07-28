@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Database preparation</TITLE>
+<META NAME="description" CONTENT="Contents of Database preparation">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node194_mn.html">
+<LINK REL="previous" HREF="node192_mn.html">
+<LINK REL="up" HREF="node192_mn.html">
+<LINK REL="next" HREF="node194_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04210000000000000000">&#160;</A><A NAME="s:HLMdatabaseprep">&#160;</A>
+<BR>
+Database preparation
+</H1>
+
+<P>
+The first stage of any language model development project is data
+preparation. As mentioned in the introduction, the text data used in
+these example has already been conditioned.  If you examine each file
+you will observe that they contains a sequence of tagged sentences.
+When training a language model you need to include sentence start and
+end labelling because the tools cannot otherwise infer this.  Although
+there is only one sentence per line in these files, this is not a
+restriction of the HTK tools and is purely for clarity - you can
+have the entire input text on a single line if you want.  Notice that
+the default sentence start and sentence end tokens of <TT>&lt;s&gt;</TT> and
+<TT>&lt;/s&gt;</TT> are used - if you were to use different tokens for these
+you would need to pass suitable configuration parameters to the HTK tools.<A NAME="tex2html72" HREF="footnode_mn.html#foot22823" TARGET="footer"><SUP><SPAN CLASS="arabic">15</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>  An
+extremely simple text conditioning tool is supplied in the form of
+LC<SMALL>OND.PL</SMALL> in the <TT>LMTutorial/extras</TT> folder - this only
+segments text into sentences on the basis of punctuation, as well as
+converting to uppercase and stripping most punctuation symbols, and is
+not intended for serious use.  In particular it does not convert
+numbers into words and will not expand abbreviations.  Exactly what
+conditioning you perform on your source text is dependent on the task
+you are building a model for.
+
+<P>
+Once your text has been conditioned, the next step is to use the tool
+LGP<SMALL>REP</SMALL> to scan the input text and produce a
+preliminary set of sorted <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files.  In this tutorial we will
+store all <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files created by LGP<SMALL>REP</SMALL> will be stored in
+the <TT>holmes.0</TT> directory, so create this directory now.  In a
+Unix-type system, for example, the standard command is
+<PRE>
+$ mkdir holmes.0
+</PRE> 
+<P>
+The HTK tools maintain a cumulative word map to which every new
+word is added and assigned a unique id.  This means that you can add
+future <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files without having to rebuild existing ones so long
+as you start from the same word map, thus ensuring that each id
+remains unique.  The side effect of this ability is that
+LGP<SMALL>REP</SMALL> always expects to be given a word map, so to prepare
+the first <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram file (also referred to elsewhere as a `gram' file)
+you must pass an empty word map file.
+
+<P>
+You can prepare an initial, empty word map using the LN<SMALL>EW</SMALL>M<SMALL>AP</SMALL>
+tool.  It needs to be passed the name to be used internally in the word
+map as well as a file name to write it to;  optionally you may also
+change the default character escaping mode and request additional
+fields.  Type the following:
+<PRE>
+$ LNewMap -f WFC Holmes empty.wmap
+</PRE> and you'll see that an initial, empty word map file has been created
+for you in the file <TT>empty.wmap</TT>.  Examine the file and you
+will see that it contains just a header and no words.  It looks like
+this:
+<PRE>
+Name    = Holmes
+SeqNo   = 0
+Entries = 0
+EscMode = RAW
+Fields  = ID,WFC
+\Words\
+</PRE>
+Pay particular attention to the <TT>SeqNo</TT> field since this
+represents the sequence number of the word map.  Each time you add
+words to the word map the sequence number will increase - the tools
+will compare the sequence number in the word map with that in any data
+files they are passed, and if the word map is too old to contain all
+the necessary words then it will be rejected.  The <TT>Name</TT> field
+must also match, although initially you can set this to whatever you
+like.<A NAME="tex2html73" HREF="footnode_mn.html#foot22824" TARGET="footer"><SUP><SPAN CLASS="arabic">15</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A> The other fields specify that no HTK character escaping will be used, and that we wish to store the
+(compulsory) word ID field as well as an optional count field, which
+will reveal how many times each word has been encountered to date.
+The <TT>ID</TT> field is always present which is why you did not need to
+pass it with the <TT>-f</TT> option to LN<SMALL>EW</SMALL>M<SMALL>AP</SMALL>.
+
+<P>
+To clarify, if we were to use the Sherlock Holmes texts together with
+other previously generated <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram databases then the most recent
+word map available must be used instead of the prototype map file
+above. This would ensure that the map saved by LGP<SMALL>REP</SMALL> once the
+new texts have been processed would be suitable for decoding all
+available <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files.
+
+<P>
+We'll now process the text data with the following command:
+<PRE>
+$ LGPrep -T 1 -a 100000 -b 200000 -d holmes.0 -n 4 
+         -s "Sherlock Holmes" empty.wmap train/*.txt
+</PRE> 
+<P>
+The <TT>-a</TT> option sets the maximum number of new words that can
+be encountered in the texts to 100,000 (in fact, this is the default).
+If, during processing, this limit is exceeded then LGP<SMALL>REP</SMALL> will
+terminate with an error and the operation will have to be repeated by
+setting this limit to a larger value.
+
+<P>
+The <TT>-b</TT> option sets the internal <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram buffer size to
+200,000 <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram entries. This setting has a direct effect on the
+overall process size. The memory requirent for the internal buffer can
+be calculated according to <!-- MATH
+ $mem_{bytes} = (n+1)*4*b$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="185" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img608.png"
+ ALT="$ mem_{bytes} = (n+1)*4*b$"></SPAN> where <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN> is the
+<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram size (set with the <TT>-n</TT> option) and <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img609.png"
+ ALT="$ b$"></SPAN> is the buffer
+size.  In the above example, the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram size is set to four which
+will enable us to generate bigram, trigram and four-gram language
+models.  The smaller the buffer then in general the more separate
+files will be written out - each time the buffer fills a new <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram
+file is generated in the output directory, specified by the <TT>-d</TT>
+option.
+
+<P>
+The <TT>-T 1</TT> option switches on tracing at the lowest level.  In
+general you should probably aim to run each tool with at least <TT>-T
+1</TT> since this will give you better feedback about the progress of the
+tool.  Other useful options to pass are <TT>-D</TT> to check the state of
+configuration variables - very useful to check you have things set up
+correctly - and <TT>-A</TT> so that if you save the tool output you will
+be able to see what options it was run with.  It's good practice to
+always pass <TT>-T 1 -A -D</TT> to every HTK tool in fact.  You should
+also note that all HTK tools require the option switches to be
+passed <I>before</I> the compulsory tool parameters - trying to run
+<TT>LGPrep train/*.txt -T 1</TT> will result in an error, for example.
+
+<P>
+Once the operation has completed, the <TT>holmes.0</TT> directory should
+contain the following files:
+<PRE>
+gram.0  gram.1  gram.2  wmap
+</PRE>
+The saved word map file <TT>wmap</TT> has grown to include all newly
+encountered words and the identifiers that the tool has assigned them,
+and at the same time the map sequence count has been incremented by
+one.
+<PRE>
+Name  = Holmes
+SeqNo = 1
+Entries = 18080
+EscMode  = RAW
+Fields  = ID,WFC
+\Words\
+&lt;s&gt;     65536   33669
+IT      65537   8106
+WAS     65538   7595
+...
+</PRE>
+Remember that map sequence count together with the map's name field
+are used to verify the compatibility between the map and any <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram
+files.  The contents of the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files can be inspected using the
+LGL<SMALL>IST</SMALL> tool:  (if not using a Unix type system you may need to
+omit the <TT>| more</TT> and find some other way of viewing the output in
+a more manageable format; try <TT>&gt; file.txt</TT> and viewing the
+resulting file if that works)
+<PRE>
+$ LGList holmes.0/wmap holmes.0/gram.2 | more
+
+4-Gram File holmes.0/gram.2[165674 entries]:
+ Text Source: Sherlock Holmes
+'           IT          IS          NO           : 1
+'CAUSE      I           SAVED       HER          : 1
+'EM         &lt;/s&gt;        &lt;s&gt;         WHO          : 1
+&lt;/s&gt;        &lt;s&gt;         '           IT           : 1
+&lt;/s&gt;        &lt;s&gt;         A           BAND         : 1
+&lt;/s&gt;        &lt;s&gt;         A           BEAUTIFUL    : 1
+&lt;/s&gt;        &lt;s&gt;         A           BIG          : 1
+&lt;/s&gt;        &lt;s&gt;         A           BIT          : 1
+&lt;/s&gt;        &lt;s&gt;         A           BROKEN       : 1
+&lt;/s&gt;        &lt;s&gt;         A           BROWN        : 2
+&lt;/s&gt;        &lt;s&gt;         A           BUZZ         : 1
+&lt;/s&gt;        &lt;s&gt;         A           CAMP         : 1
+...
+</PRE> If you examine the other <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files you will notice that whilst
+the contents of each <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram file are sorted, the files themselves
+are not sequenced - that is, one file does not carry on where the
+previous one left off; each is an independent set of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams.  To
+derive a sequenced set of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files, where no grams are repeated
+between files, the tool LGC<SMALL>OPY</SMALL> must be used on these existing
+gram files.  For the purposes of this tutorial the new set of
+files will be stored in the <TT>holmes.1</TT> directory, so create
+this and then run <TT>LGCopy</TT>:
+<PRE>
+$ mkdir holmes.1
+$ LGCopy -T 1 -b 200000 -d holmes.1 holmes.0/wmap holmes.0/gram.*
+Input file holmes.0/gram.0 added, weight=1.0000
+Input file holmes.0/gram.1 added, weight=1.0000
+Input file holmes.0/gram.2 added, weight=1.0000
+Copying 3 input files to output files with 200000 entries
+ saving 200000 ngrams to file holmes.1/data.0
+ saving 200000 ngrams to file holmes.1/data.1
+ saving 89516 ngrams to file holmes.1/data.2
+489516 out of 489516 ngrams stored in 3 files
+</PRE>
+The resulting <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files, together with the word map, can now be
+used to generate language models for a specific vocabulary list.  Note
+that it is not necessary to sequence the files in this way before
+building a language model, but if you have too many separate
+unsequenced <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files then you may encounter performance problems
+or reach the limit of your filing system to maintain open files - in
+practice, therefore, it is a good idea to always sequence them.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

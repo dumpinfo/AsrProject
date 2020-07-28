@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Vocal Tract Length Normalisation</TITLE>
+<META NAME="description" CONTENT="Contents of Vocal Tract Length Normalisation">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node61_mn.html">
+<LINK REL="previous" HREF="node59_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node61_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03250000000000000000">&#160;</A><A NAME="s:vtln">&#160;</A>
+<BR>
+Vocal Tract Length Normalisation
+</H1>
+
+<P>
+A simple speaker normalisation technique can be implemented by
+modifying the filterbank analysis described in the previous section.
+Vocal tract length normalisation (VTLN) aims to compensate for the
+fact that speakers have vocal tracts of different sizes. VTLN can be
+implemented by warping the frequency axis in the filterbank analysis.
+In HTK simple linear frequency warping is supported. The warping
+factor&nbsp;<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN> is controlled by the configuration variable
+<TT>WARPFREQ</TT><A NAME="6643">&#160;</A>. Here values of
+<!-- MATH
+ $\alpha < 1.0$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img166.png"
+ ALT="$ \alpha &lt; 1.0$"></SPAN> correspond to a compression of the frequency axis. As
+the warping would lead to some filters being placed outside the
+analysis frequency range, the simple linear warping function is
+modified at the upper and lower boundaries. The result is that the
+lower boundary frequency of the analysis
+(<TT>LOFREQ</TT><A NAME="6644">&#160;</A>) and the upper
+boundary frequency (<TT>HIFREQ</TT><A NAME="6645">&#160;</A>)
+are always mapped to themselves. The regions in which the warping
+function deviates from the linear warping with factor&nbsp;<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN> are
+controlled with the two configuration variables
+(<TT>WARPLCUTOFF</TT><A NAME="6646">&#160;</A>) and
+(<TT>WARPUCUTOFF</TT><A NAME="6647">&#160;</A>).
+Figure&nbsp;<A HREF="#_" TARGET="_top">[*]</A> shows the overall shape of the resulting
+piece-wise linear warping functions.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:vtlnpiecewise">&#160;</A><IMG
+ WIDTH="276" HEIGHT="340" ALIGN="MIDDLE" BORDER="0"
+ SRC="img167.png"
+ ALT="% latex2html id marker 49054
+$\textstyle \parbox{60mm}{ \begin{center}\setlength...
+... \thechapter.\arabic{figctr}  Frequency Warping}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+The warping factor&nbsp;<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN> can for example be found using a search
+procedure that compares likelihoods at different warping factors. A
+typical procedure would involve recognising an utterance with
+<!-- MATH
+ $\alpha=1.0$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img168.png"
+ ALT="$ \alpha=1.0$"></SPAN> and then performing forced alignment of the hypothesis
+for all warping factors in the range <SPAN CLASS="MATH"><IMG
+ WIDTH="64" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img169.png"
+ ALT="$ 0.8 - 1.2$"></SPAN>. The factor that
+gives the highest likelihood is selected as the final warping factor.
+Instead of estimating a separate warping factor for each utterance,
+large units can be used by for example estimating only one&nbsp;<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img165.png"
+ ALT="$ \alpha$"></SPAN>
+per speaker. 
+
+<P>
+Vocal tract length normalisation can be applied in testing as well as
+in training the acoustic models.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

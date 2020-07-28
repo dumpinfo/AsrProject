@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of HMM Definition Files</TITLE>
+<META NAME="description" CONTENT="Contents of HMM Definition Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node112_mn.html">
+<LINK REL="previous" HREF="node87_mn.html">
+<LINK REL="up" HREF="node42_mn.html">
+<LINK REL="next" HREF="node102_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03400000000000000000">&#160;</A><A NAME="c:HMMDefs">&#160;</A>
+<BR>
+HMM Definition Files
+</H1>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:Tool.model">&#160;</A><IMG
+ WIDTH="366" HEIGHT="355" ALIGN="MIDDLE" BORDER="0"
+ SRC="img213.png"
+ ALT="$\textstyle \parbox{80mm}{ \begin{center}\setlength{\epsfxsize}{80mm}
+\epsfbox{HTKFigs//Tool.model.eps}
+\end{center} }$">
+</DIV>
+
+<P>
+The principle function of HTK is to manipulate sets of hidden
+Markov  models (HMMs). The definition of a HMM must specify the
+model topology, the transition parameters and the output
+distribution parameters. The HMM observation vectors can be
+divided into multiple independent data streams and each stream can
+have its own weight. In addition, a HMM can have ancillary
+information such as duration parameters.
+HTK supports both continuous mixture densities and discrete
+distributions. HTK also provides a generalised tying mechanism which
+allows parameters to be shared within and between models.  
+
+<P>
+<A NAME="8565">&#160;</A>
+In order to encompass this rich variety of HMM types within
+a single framework, HTK uses a formal language 
+to define HMMs.  The interpretation of this language is handled
+by the library module HM<SMALL>ODEL</SMALL> which is responsible for converting
+between the external and internal representations of HMMs.  In addition,
+it provides all the basic probability function calculations.
+A second module HU<SMALL>TIL</SMALL> provides various additional facilities for
+manipulating HMMs once they have been loaded into memory.
+
+<P>
+The purpose of this chapter is to describe
+the HMM definition language in some detail.  The chapter begins by 
+describing how to write
+individual HMM definitions.  HTK macros are
+then explained and the mechanisms for defining a complete
+model set are presented.  The various flavours of
+HMM are then described and the use of binary files discussed.
+Finally, a formal description of the HTK HMM definition
+language is given.
+
+<P>
+As will be seen, the definition of a large 
+HMM system can involve considerable complexity.  However, in
+practice, HMM systems are built incremently.  The usual 
+starting point is a single HMM definition which is then
+repeatedly cloned and refined using the various HTK tools
+(in particular, HER<SMALL>EST</SMALL> and HHE<SMALL>D</SMALL>).
+Hence, in practice, the HTK user rarely has to 
+generate complex HMM definition files directly.  
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html2545" HREF="node102_mn.html" TARGET="main"><SMALL>The HMM Parameters</SMALL></A>
+<LI><A NAME="tex2html2546" HREF="node103_mn.html" TARGET="main"><SMALL>Basic HMM Definitions</SMALL></A>
+<LI><A NAME="tex2html2547" HREF="node104_mn.html" TARGET="main"><SMALL>Macro Definitions</SMALL></A>
+<LI><A NAME="tex2html2548" HREF="node105_mn.html" TARGET="main"><SMALL>HMM Sets</SMALL></A>
+<LI><A NAME="tex2html2549" HREF="node106_mn.html" TARGET="main"><SMALL>Tied-Mixture Systems</SMALL></A>
+<LI><A NAME="tex2html2550" HREF="node107_mn.html" TARGET="main"><SMALL>Discrete Probability HMMs</SMALL></A>
+<LI><A NAME="tex2html2551" HREF="node108_mn.html" TARGET="main"><SMALL>Input Linear Transforms</SMALL></A>
+<LI><A NAME="tex2html2552" HREF="node109_mn.html" TARGET="main"><SMALL>Tee Models</SMALL></A>
+<LI><A NAME="tex2html2553" HREF="node110_mn.html" TARGET="main"><SMALL>Binary Storage Format</SMALL></A>
+<LI><A NAME="tex2html2554" HREF="node111_mn.html" TARGET="main"><SMALL>The HMM Definition Language</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

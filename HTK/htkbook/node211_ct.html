@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Gram Files</TITLE>
+<META NAME="description" CONTENT="Contents of Gram Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node212_mn.html">
+<LINK REL="previous" HREF="node210_mn.html">
+<LINK REL="up" HREF="node206_mn.html">
+<LINK REL="next" HREF="node212_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04350000000000000000">&#160;</A><A NAME="s:gramfs">&#160;</A>
+<BR>
+Gram Files
+</H1>
+
+<P>
+Statistical language models are estimated by counting the number of
+events in a sample source text.  These event counts are stored in
+<SPAN  CLASS="textit">gram</SPAN> files.  Provided that they share a common word map, gram
+files can be grouped together in arbitrary ways to form the raw data
+pool from which a language model can be constructed.  For example, a
+text source containing 100m words could be processed and stored as two
+gram files. A few months later, a 3rd gram file could be generated
+from a newly acquired text source.  This new gram file could then be
+added to the original two files to build a new language model.  The
+original source text is not needed and the gram files need not be
+changed. <A NAME="23458">&#160;</A>
+
+<P>
+A gram file consists of a header<A NAME="23459">&#160;</A> followed by a
+sorted list of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram counts.<A NAME="23460">&#160;</A> The header
+contains the following items, each written on a separate line
+
+<OL>
+<LI><SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram size ie 2 for bigrams, 3 for trigrams, etc. (<TT>Ngram=N</TT>)
+
+<P>
+</LI>
+<LI>Word map.  Name of word map to be used with this gram 
+      file. (<TT>WMap=wmapname</TT>)
+
+<P>
+</LI>
+<LI>First gram.  The first <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram in the file (<TT>gram1 = w1 w2 w3 ...</TT>)
+
+<P>
+</LI>
+<LI>Sequence number.  If given then the actual word map must have a sequence
+      number which is greater than or equal to this.
+      (<TT>SeqNo=nnn)</TT>
+
+<P>
+</LI>
+<LI>Last gram. The last <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram in the file (<TT>gramN = w1 w2 w3 ...</TT>)
+
+<P>
+</LI>
+<LI>Number of distinct <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams in file.  (<TT>Entries = N</TT>) 
+
+<P>
+</LI>
+<LI>Word map check.  This is an optional field containing a word and its id.
+      It can be included as a double check that the correct word map
+      is being used to interpret this gram file.  The given word is
+      looked up in the word map and if the corresponding id does not
+      match, an error is reported.  (<TT>WMCheck = word id</TT>)
+
+<P>
+</LI>
+<LI>Text source.  This is an optional text string describing the text source 
+      which was used to generate the gram file (<TT>Source=...</TT>).
+
+<P>
+</LI>
+</OL>
+For example, a typical gram file header might be
+<PRE>
+    Ngram = 3
+    WMap = US_Business_News
+    Entries = 50345980
+    WMCheck = XEROX 340987
+    Gram1 = AN ABLE ART
+    GramN = ZEALOUS ZOO OWNERS
+    Source = WSJ Aug 94 to Dec 94
+</PRE>
+
+<P>
+The <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams themselves begin immediately following the line containing
+the keyword <code>\Grams\</code><A NAME="tex2html74" HREF="footnode_mn.html#foot23473" TARGET="footer"><SUP><SPAN CLASS="arabic">16</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A>.  They are
+listed in lexicographic sort order such that for the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram <!-- MATH
+ $\{w_1 w_2
+\ldots w_N\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="104" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img614.png"
+ ALT="$ \{w_1 w_2
+\ldots w_N\}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img615.png"
+ ALT="$ w_1$"></SPAN> varies the least rapidly and <SPAN CLASS="MATH"><IMG
+ WIDTH="28" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img616.png"
+ ALT="$ w_N$"></SPAN> varies the
+most rapidly.  Each <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram consists of a sequence of <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> 3-byte word
+ids followed by a single 1-byte count.  If the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram occurred more
+than 255 times, then it is repeated with the counts being interpreted
+to the base 256.  For example, if a gram file contains the
+sequence<A NAME="23474">&#160;</A>
+<PRE>
+    w1 w2 ... wN c1
+    w1 w2 ... wN c2
+    w1 w2 ... wN c3
+</PRE>
+corresponding to the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram <!-- MATH
+ $\{w_1 w_2 \ldots w_N\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="104" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img614.png"
+ ALT="$ \{w_1 w_2
+\ldots w_N\}$"></SPAN>, the corresponding
+count is<A NAME="23477">&#160;</A><A NAME="23478">&#160;</A>
+<!-- MATH
+ \begin{displaymath}
+c_1 + c_2*256 + c_3*256^2
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="170" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img617.png"
+ ALT="$\displaystyle c_1 + c_2*256 + c_3*256^2
+$">
+</DIV><P></P>
+
+<P>
+When a group of gram files are used as input to a tool, they
+must be organised so that the tool receives <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams as a single stream
+in sort order i.e. as far as the tool is concerned, the net effect
+must be as if there is just a single gram file.  Of course,<A NAME="23479">&#160;</A> a sufficient approach would be to open all input gram
+files in parallel and then scan them as needed to extract the required
+sorted <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram sequence.  However, if two <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram files were organised
+such that the last <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram in one file was ordered before the first
+<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram of the second file, it would be much more efficient to open and
+read the files in sequence. Files such as these are said to be
+<TT>sequenced</TT> and in general, HTK tools are supplied with a mix
+of sequenced and non-sequenced files.  To optimise input in this
+general case, all HTK tools which input gram files start by scanning
+the header fields<A NAME="23481">&#160;</A> <TT>gram1</TT> and 
+<TT>gramN</TT>. This information allows a sequence table to be
+constructed which determines the order in which the constituent gram
+file must be opened and closed.  This sequence table is designed to
+minimise the number of individual gram files which must be kept open
+in parallel. <A NAME="23484">&#160;</A>
+
+<P>
+This gram file sequencing is invisible to the HTK user, but it
+is important to be aware of it.  When a large number of gram files are
+accumulated to form a frequently used database, it may be worth
+copying the gram files using LGC<SMALL>OPY</SMALL>.  This will have the effect of
+transforming the gram files into a fully sequenced set thus ensuring
+that subsequent reading of the data is maximally efficient.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

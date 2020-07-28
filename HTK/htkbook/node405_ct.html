@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node406_mn.html">
+<LINK REL="previous" HREF="node404_mn.html">
+<LINK REL="up" HREF="node404_mn.html">
+<LINK REL="next" HREF="node406_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051321000000000000000">&#160;</A><A NAME="s:LPlex-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="33651">&#160;</A>
+This program computes the perplexity and out of vocabulary (OOV) statistics of
+text data using one or more language models. The perplexity is calculated on
+per-utterance basis. Each utterance in the text data should start with a
+sentence start symbol (<TT>&lt;s&gt;</TT>) and finish with a sentence end (<TT>&lt;/s&gt;</TT>)
+symbol. The default values for the sentence markers can be changed via the
+config parameters <TT>STARTWORD</TT> and <TT>ENDWORD</TT> respectively. Text data can
+be supplied as an HTK Master Label File (MLF) or as plain text (<TT>-t</TT>
+option). Multiple perplexity tests can be performed on the same texts using
+separate <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram components of the model(s). OOV words in the test data can be
+handled in two ways. By default the probability of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams containing words
+not in the lexicon is simply not calculated. This is useful for testing closed
+vocabulary models on texts containing OOVs. If the <TT>-u</TT> option is
+specified, <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams giving the probability of an OOV word conditioned on its
+predecessors are discarded, however, the probability of words in the lexicon
+can be conditioned on context including OOV words. The latter mode of operation
+relies on the presence of the unknown class symbol (<TT>!!UNK</TT>) in the
+language model (the default value can be changed via the config parameter <TT>UNKNOWNNAME</TT>). If multiple models are specified (<TT>-i</TT> option) the
+probability of an <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram will be calculated as a sum of the weighted
+probabilities from each of the models.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

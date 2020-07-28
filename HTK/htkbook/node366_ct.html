@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node367_mn.html">
+<LINK REL="previous" HREF="node365_mn.html">
+<LINK REL="up" HREF="node364_mn.html">
+<LINK REL="next" HREF="node367_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051222000000000000000">&#160;</A><A NAME="s:LAdapt-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+LA<SMALL>DAPT</SMALL> is invoked by the command line
+<PRE>
+   LAdapt [options] -i weight inLMFile outLMFile [texttfile ...]
+</PRE>
+The text data is scanned and a new LM generated. The input language model is
+then loaded and the two models merged. The effect of the weight (0.0-1.0) is to
+control the overall contribution of each model during the merging process. The
+output to outLMFile is an <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram model stored in the user-specified format.
+
+<P>
+The allowable options to LA<SMALL>DAPT</SMALL> are as follows
+
+<DL COMPACT>
+<DT><TT>-a n</TT>
+<DD>Allow upto <TT>n</TT> new words in input text
+        (default 100000).
+
+<P>
+<DT><TT>-b n</TT>
+<DD>Set the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram buffer size to <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>. This controls the size of the
+	buffer used to accumulate <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram statistics whilst scanning the input
+	text.  Larger buffer sizes will result in more efficient operation of
+	the tool with fewer sort operations required (default 2000000).
+
+<P>
+<DT><TT>-c n c</TT>
+<DD>Set the pruning threshold for <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams to <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img641.png"
+ ALT="$ c$"></SPAN>.  Pruning can
+	be applied to the bigram (<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>=2) and longer (<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>&gt;2) components of the
+	newly generated model. The pruning procedure will keep only <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams
+	which have been observed more than <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img641.png"
+ ALT="$ c$"></SPAN> times.
+
+<P>
+<DT><TT>-d s</TT>
+<DD>Set the root <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram data file name to <TT>s</TT>. By default,
+  	<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram statistics from the text data will be accumulated and stored
+  	as <TT>gram.0, gram.1, ...</TT>, etc. Note that a larger buffer size will
+  	result in fewer files.
+
+<P>
+<DT><TT>-f s</TT>
+<DD>Set the output language model format to <TT>s</TT>.
+        Possible options are <TT>text</TT> for the standard ARPA-MIT
+	LM format, <TT>bin</TT> for Entropic <EM>binary</EM> format and 
+        <TT>ultra</TT> for Entropic <EM>ultra</EM> format.
+
+<P>
+<DT><TT>-g</TT>
+<DD>Use existing <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram data files. If this option is specified the
+	tool will use the existing gram files rather than scanning the actual
+	texts. This option is useful when adapting multiple language models
+	from the same text data or when experimenting with different merging
+	weights.
+
+<P>
+<DT><TT>-i w f</TT>
+<DD>Interpolate with model <TT>f</TT> using weight <TT>w</TT>. Note 
+        that at least one model must be specified with this option.
+
+<P>
+<DT><TT>-j n c</TT>
+<DD>Set weighted discounting pruning for <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN> grams to
+        <SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img641.png"
+ ALT="$ c$"></SPAN>. This cannot be applied to unigrams (<SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>=1).
+
+<P>
+<DT><TT>-n n</TT>
+<DD>Produce <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram language model.
+
+<P>
+<DT><TT>-s s</TT>
+<DD>Store <TT>s</TT> in the header of the gram files.
+
+<P>
+<DT><TT>-t</TT>
+<DD>Force Turing-Good discounting if configured otherwise.
+
+<P>
+<DT><TT>-w fn</TT>
+<DD>Load word list from <TT>fn</TT>. The word list will be used to
+	define the target model's vocabulary. If a word list is not specified,
+	the target model's vocabulary will have all words from the source
+	model(s) together with any new words encountered in the text
+	data.
+
+<P>
+<DT><TT>-x</TT>
+<DD>Create a count-based model.
+  
+</DD>
+</DL>
+
+LA<SMALL>DAPT</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

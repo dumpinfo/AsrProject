@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Step 5 - Coding the Data</TITLE>
+<META NAME="description" CONTENT="Contents of Step 5 - Coding the Data">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node29_mn.html">
+<LINK REL="up" HREF="node25_mn.html">
+<LINK REL="next" HREF="node31_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02315000000000000000">
+Step 5 - Coding the Data</A>
+</H2>
+
+<P>
+The final stage of data preparation is to parameterise the raw speech
+waveforms into sequences of feature vectors.  HTK support both 
+FFT-based<A NAME="3579">&#160;</A>
+and LPC-based<A NAME="3580">&#160;</A> analysis.  
+Here Mel Frequency Cepstral Coefficients (MFCCs)<A NAME="3581">&#160;</A>,
+which are derived from FFT-based log spectra, will be used.
+
+<P>
+Coding can be performed using the tool HC<SMALL>OPY</SMALL><A NAME="4001">&#160;</A> 
+configured to<A NAME="3584">&#160;</A>
+automatically convert its input into MFCC vectors.  To do this, a configuration
+file (<TT>config</TT>) is needed which specifies all of the conversion 
+parameters<A NAME="3586">&#160;</A>. 
+Reasonable settings for these are as follows
+<PRE>
+    # Coding parameters
+    TARGETKIND = MFCC_0
+    TARGETRATE = 100000.0
+    SAVECOMPRESSED = T
+    SAVEWITHCRC = T
+    WINDOWSIZE = 250000.0
+    USEHAMMING = T
+    PREEMCOEF = 0.97
+    NUMCHANS = 26
+    CEPLIFTER = 22
+    NUMCEPS = 12
+    ENORMALISE = F
+</PRE>
+Some of these settings are in fact the default setting, but they
+are given explicitly here for completeness.  In brief, they specify
+that the target parameters are to be MFCC using <SPAN CLASS="MATH"><IMG
+ WIDTH="23" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img110.png"
+ ALT="$ C_0$"></SPAN> as the energy
+component, the frame period is 10msec (HTK uses units of 100ns),
+the output should be saved in compressed format, and a crc checksum should
+be added.  The FFT should use a Hamming window and the signal should
+have first order preemphasis applied using a coefficient of 0.97.
+The filterbank should have 26 channels and 12 MFCC coefficients should
+be output. 
+The variable <TT>ENORMALISE</TT> is by default true and performs energy
+normalisation on recorded audio files. It cannot be used with live audio and
+since the target system is for live audio, this variable should be set to
+false.
+
+<P>
+Note that explicitly creating coded data files is not necessary, as coding can
+be done "on-the-fly" from the original waveform files by specifying the
+appropriate configuration file (as above) with the relevant HTK tools. However,
+creating these files reduces the amount of preprocessing required during
+training, which itself can be a time-consuming process.
+
+<P>
+To run HC<SMALL>OPY</SMALL>,  a list of
+each source file and its corresponding output file is needed.  For example,
+the first few lines might look like<A NAME="4002">&#160;</A>
+<PRE>
+    /root/sjy/waves/S0001.wav /root/sjy/train/S0001.mfc
+    /root/sjy/waves/S0002.wav /root/sjy/train/S0002.mfc
+    /root/sjy/waves/S0003.wav /root/sjy/train/S0003.mfc
+    /root/sjy/waves/S0004.wav /root/sjy/train/S0004.mfc
+    (etc.)
+</PRE>
+Files containing lists of files are referred to as script files<A NAME="tex2html10" HREF="footnode_mn.html#foot4003" TARGET="footer"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A>and<A NAME="4004">&#160;</A>
+by convention are given the extension <TT>scp</TT> (although 
+HTK does not demand this).  Script files are specified using the standard
+<TT>-S</TT> option and their contents are read simply as extensions
+to the command line.  Thus, they avoid the need for command lines with
+several thousand arguments<A NAME="tex2html11" HREF="footnode_mn.html#foot3598" TARGET="footer"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A>.
+<A NAME="3599">&#160;</A><A NAME="3600">&#160;</A>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:step5">&#160;</A><IMG
+ WIDTH="457" HEIGHT="308" ALIGN="MIDDLE" BORDER="0"
+ SRC="img111.png"
+ ALT="% latex2html id marker 48713
+$\textstyle \parbox{100mm}{ \begin{center}\setlengt...
+...extbf{ Fig. \thechapter.\arabic{figctr}  Step 5}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+Assuming that the above script is stored in the file <TT>codetr.scp</TT>,
+the training data would be coded by executing
+<PRE>
+    HCopy -T 1 -C config -S codetr.scp
+</PRE>
+This is illustrated in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>. A similar procedure is
+used to code the test data (using <code>TARGETKIND = MFCC_0_D_A</code> in
+config) after which all of the pieces are in place to start training
+the HMMs.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

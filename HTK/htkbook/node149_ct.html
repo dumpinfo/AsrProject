@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Mixture Incrementing</TITLE>
+<META NAME="description" CONTENT="Contents of Mixture Incrementing">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node150_mn.html">
+<LINK REL="previous" HREF="node148_mn.html">
+<LINK REL="up" HREF="node143_mn.html">
+<LINK REL="next" HREF="node150_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03760000000000000000">&#160;</A><A NAME="s:upmix">&#160;</A>
+<BR>
+Mixture Incrementing
+</H1>
+
+<P>
+When building sub-word based continuous density systems, 
+the final system will typically consist of multiple mixture component
+context-dependent HMMs.  However, as indicated previously, the early
+stages of triphone construction, particularly state tying, are best done
+with single Gaussian models.  Indeed, if tree-based clustering is to be
+used there is no option.<A NAME="18664">&#160;</A><A NAME="18665">&#160;</A>
+
+<P>
+In HTK therefore, the conversion from single Gaussian HMMs to multiple
+mixture component HMMs is usually one of the final steps in building
+a system.  The mechanism provided to do this is the HHE<SMALL>D</SMALL> <TT>MU</TT> command
+which will increase the number of components in a mixture by 
+a process called <SPAN  CLASS="textit">mixture splitting</SPAN>.
+This approach to building a multiple
+mixture component system is extremely
+flexible since it allows the number of mixture components to be repeatedly increased
+until the desired level of performance is achieved.<A NAME="18669">&#160;</A>
+
+<P>
+The <TT>MU</TT> command<A NAME="18763">&#160;</A> has the form
+<PRE>
+     MU n itemList
+</PRE>
+where <TT>n</TT> gives the new number of mixture components required and
+<TT>itemList</TT> defines the actual mixture distributions to modify.  This
+command works by repeatedly splitting the mixture with the largest mixture
+weight until the required number of components is obtained.  The actual
+split is performed by copying the mixture, dividing the weights of both
+copies by 2, and finally perturbing the means by plus or minus 0.2 standard
+deviations.
+For example, the command
+<PRE>
+     MU 3 {aa.state[2].mix}
+</PRE>
+would increase the number of mixture components in the output distribution
+for state 2 of model <TT>aa</TT> to 3.   Normally, however,  the number of
+components in all mixture distributions will be increased at the same time.
+Hence, a command of the form is more usual
+<PRE>
+     MU 3 {*.state[2-4].mix}
+</PRE>
+It is usually a good idea to increment mixture components in
+stages, for example, by incrementing by 1 or 2 then re-estimating, then
+incrementing by 1 or 2 again and re-estimating, and so on until the
+required number of components are obtained.  This also allows recognition performance
+to be monitored to find the optimum.
+
+<P>
+One final point with regard to multiple mixture component distributions is that
+all HTK tools ignore mixture components whose weights fall below a threshold value
+called <TT>MINMIX</TT> (defined in <TT>HModel.h</TT>).  Such mixture components
+are called <I>defunct</I>.  Defunct mixture components can be
+prevented by setting the <TT>-w</TT> option in HER<SMALL>EST</SMALL> so that all mixture
+weights are floored to some level above 
+<TT>MINMIX</TT><A NAME="18764">&#160;</A>.  If 
+mixture weights<A NAME="18688">&#160;</A>
+are allowed to fall below <TT>MINMIX</TT> then the corresponding Gaussian
+parameters will not be written out when the model containing that component
+is saved.  It is possible to recover from this, however, since the <TT>MU</TT> command
+will replace defunct mixtures<A NAME="18691">&#160;</A> before performing any requested mixture
+component increment.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

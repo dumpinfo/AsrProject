@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node378_mn.html">
+<LINK REL="previous" HREF="node376_mn.html">
+<LINK REL="up" HREF="node376_mn.html">
+<LINK REL="next" HREF="node378_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051251000000000000000">&#160;</A><A NAME="s:LGCopy-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="32540">&#160;</A>
+This program will copy one or more input gram files to a set of one or
+more output gram files. The input gram files must each be sorted but
+they need not be sequenced. Unless word-to-class mapping is being
+performed, the output files will, however, be sequenced. Hence, given
+a collection of unsequenced gram files, LGC<SMALL>OPY</SMALL> can be used to
+generate an equivalent sequenced set. This is useful for reducing the
+number of parallel input streams that tools such as LB<SMALL>UILD</SMALL>
+must maintain, thereby improving efficiency.
+
+<P>
+As for all tools which can input gram files, the counts in each input
+file can be modified by applying a multiplier factor.  Note, however,
+that since the counts within gram files are stored as integers, use of
+non-integer multiplier factors will lead to the counts being rounded
+in the output gram files.
+
+<P>
+In addition to manipulating the counts, the <TT>-n</TT> option also
+allows the input grams to be truncated by summing the counts of all
+equivalenced grams. For example, if the 3-grams <TT>a x y 5</TT> and
+<TT>b x y 3</TT> were truncated to 2-grams, then <TT>x y 8</TT> would
+be output. Truncation is performed before any of the mapping
+operations described below.
+
+<P>
+LGC<SMALL>OPY</SMALL> also provides options to map gram words to classes
+using a class map file and filter the resulting output.  The most
+common use of this facility is to map out-of-vocabulary (OOV) words
+into the unknown symbol in preparation for building a conventional
+word <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram language model for a specific vocabulary.  However, it can
+also be used to prepare for building a class-based <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram language
+model.
+
+<P>
+Word-to-class mapping is enabled by specifying the class map file with
+the <TT>-w</TT> option. Each <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram word is then replaced by its class
+symbol as defined by the class map. If the <TT>-o</TT> option is also
+specified, only <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams containing class symbols are stored in the 
+internal buffer.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

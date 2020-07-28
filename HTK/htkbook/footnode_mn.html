@@ -1,0 +1,673 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Footnotes</TITLE>
+<META NAME="description" CONTENT="Footnotes">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node424_mn.html">
+<LINK REL="up" HREF="htkbook_mn.html">
+</HEAD>
+
+<BODY bgcolor="#eeeee0" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<DL>
+<DT><SMALL><A NAME="foot1163">... weight</A><A HREF="node6_ct.html#tex2html1" TARGET="contents"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>often 
+referred to as a codebook exponent.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot1253">... probability</A><A HREF="node7_ct.html#tex2html2" TARGET="contents"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Since the output distributions are densities, these are not
+really probabilities but it is a convenient fiction.
+</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot1469">... non-emitting</A><A HREF="node7_ct.html#tex2html3" TARGET="contents"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+To understand equations involving a non-emitting state at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>, the time
+should be thought of as being <!-- MATH
+ $t-\delta t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img64.png"
+ ALT="$ t-\delta t$"></SPAN> if it is an entry state, and <!-- MATH
+ $t+\delta t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="43" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.png"
+ ALT="$ t+\delta t$"></SPAN>
+if it is an exit state.  This becomes important when HMMs are connected together
+in sequence so that transitions across non-emitting states take place
+<SPAN  CLASS="textit">between frames</SPAN>.
+</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot1327">...<I>accumulators</I></A><A HREF="node7_ct.html#tex2html4" TARGET="contents"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+      Note that normally the summations in
+      the denominators of the re-estimation formulae are identical
+      across the parameter sets of a given state and therefore
+      only a single common storage location for the denominators
+      is required and it need only be calculated once. However,
+      HTK supports a generalised parameter tying mechanism
+      which can result in the denominator summations being
+      different.  Hence, in HTK the denominator summations
+      are always stored and calculated individually 
+      for each distinct parameter vector or matrix.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot1475">... operation</A><A HREF="node9_ct.html#tex2html5" TARGET="contents"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+They can even be avoided altogether by using a <SPAN  CLASS="textit">flat start</SPAN>
+as described in section&nbsp;<A HREF="node115_ct.html#s:flatstart">8.3</A>.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot1477">... minor</A><A HREF="node9_ct.html#tex2html6" TARGET="contents"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+In practice, a good deal of extra work is needed to achieve
+efficient operation on large training databases.  For example,
+the HER<SMALL>EST</SMALL> tool includes facilities for
+pruning on both the forward and backward passes and 
+parallel operation on a network of machines.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot1478">... Model</I></A><A HREF="node9_ct.html#tex2html7" TARGET="contents"><SUP><SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">7</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+See ``Token Passing: a Conceptual Model for Connected Speech
+Recognition Systems'', SJ Young, NH Russell and JHS Thornton,
+CUED Technical Report F_INFENG/TR38, Cambridge University, 1989.
+Available by anonymous ftp from <TT>svr-ftp.eng.cam.ac.uk</TT>.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot3422">... dependent</A><A HREF="node24_ct.html#tex2html8" TARGET="contents"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The final stage of the tutorial deals 
+with adapting the speaker dependent models for new speakers</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot3996">...
+used</A><A HREF="node27_ct.html#tex2html9" TARGET="contents"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Available by anonymous ftp from 
+<TT>svr-ftp.eng.cam.ac.uk/pub/comp.speech/dictionaries/beep.tar.gz</TT>.
+Note that items beginning with unmatched quotes, found at the start
+of the dictionary, should be removed.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot4003">... files</A><A HREF="node30_ct.html#tex2html10" TARGET="contents"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Not to be confused with files containing <SPAN  CLASS="textit">edit</SPAN> scripts
+</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot3598">... arguments</A><A HREF="node30_ct.html#tex2html11" TARGET="contents"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Most UNIX shells, especially the C shell, only allow a limited and
+quite small number of arguments.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot4023">...
+together</A><A HREF="node37_ct.html#tex2html12" TARGET="contents"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Note that if the transition matrices had not been tied, the <TT>CO</TT>
+command would be ineffective since all models would be different by
+virtue of their unique transition matrices.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot4030">... file</A><A HREF="node39_ct.html#tex2html13" TARGET="contents"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The HLE<SMALL>D</SMALL> tool may have to be used to insert silences 
+at the start and end of each transcription or alternatively
+HR<SMALL>ESULTS</SMALL> can be used to ignore silences (or any other symbols) using
+the <TT>-e</TT> option</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot4748">...
+is</A><A HREF="node44_ct.html#tex2html14" TARGET="contents"><SUP><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>All of the examples in this book assume the
+UNIX Operating System and the C Shell but the principles apply to
+any OS which supports hierarchical files and command line arguments</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot4952">... element)</A><A HREF="node51_ct.html#tex2html15" TARGET="contents"><SUP><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL> Block sizes typically grow as
+more blocks are allocated</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot4972">... retries</A><A HREF="node52_ct.html#tex2html16" TARGET="contents"><SUP><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL> This does not work if input filters are used.  </SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot6612">... units</A><A HREF="node57_ct.html#tex2html17" TARGET="contents"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+The somewhat bizarre choice of 100nsec units originated in Version 1 of
+HTK when times were represented by integers and this unit was the best
+compromise between precision and range.  Times are now represented by
+doubles and hence the constraints no longer apply.  However, the need for backwards
+compatibility means that 100nsec units have been retained.  The names
+<TT>SOURCERATE</TT> and <TT>TARGETRATE</TT> are also non-ideal, 
+<TT>SOURCEPERIOD</TT> and <TT>TARGETPERIOD</TT> would be better. 
+</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot6614">...
+input</A><A HREF="node57_ct.html#tex2html18" TARGET="contents"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL> This method of applying a zero mean is different to
+HTK Version 1.5 where the mean was calculated and subtracted from the
+whole speech file in one operation. The configuration variable
+<TT>V1COMPAT</TT> can be set to revert to this older behaviour.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot5591">... databases</A><A HREF="node57_ct.html#tex2html19" TARGET="contents"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Many of the
+more recent speech databases use compression. In these cases, the data may be
+regarded as being logically encoded as a sequence of 2-byte integers even if
+the actual storage uses a variable length encoding scheme.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot6622">... function</A><A HREF="node58_ct.html#tex2html20" TARGET="contents"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Note that some textbooks define the denominator of equation&nbsp;<A HREF="node58_ct.html#e:allpole">5.4</A>
+as <!-- MATH
+ $1 - \sum_{i=1}^p a_i z^{-i}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="109" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img138.png"
+ ALT="$ 1 - \sum_{i=1}^p a_i z^{-i}$"></SPAN> so that the filter coefficients are the
+negatives of those computed by HTK.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot6729">... root.</A><A HREF="node62_ct.html#tex2html21" TARGET="contents"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>the degree of
+  compression can be controlled by setting the configuration parameter
+  <TT>COMPRESSFACT</TT><A NAME="6660">&#160;</A> which
+  is the power to which the amplitudes are raised and defaults to
+  0.33)</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot6667">... parameterisation</A><A HREF="node63_ct.html#tex2html22" TARGET="contents"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL> In any
+event, setting the compatibility variable <TT>V1COMPAT</TT> to true in
+HPARM will ensure that the calculation of energy is compatible with
+that computed by the Version 1 tool HC<SMALL>ODE</SMALL>.  </SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot6669">...#tex2html_wrap_inline49093#</A><A HREF="node63_ct.html#tex2html23" TARGET="contents"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">7</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL> Unless <TT>V1COMPAT</TT> is
+set to true.  </SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot5904">... discarded</A><A HREF="node66_ct.html#tex2html24" TARGET="contents"><SUP><SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">8</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Some applications may require the 0'th order cepstral coefficient
+in order to recover the filterbank coefficients from the cepstral
+coefficients.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot8238">... letters</A><A HREF="node99_ct.html#tex2html25" TARGET="contents"><SUP><SPAN CLASS="arabic">6</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Some command names have single 
+letter<A NAME="8073">&#160;</A> alternatives for compatibility with
+earlier versions of HTK.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot8644">...#tex2html_wrap_inline49649#</A><A HREF="node102_ct.html#tex2html26" TARGET="contents"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+No current HTK tool can estimate or use these.
+</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot8724">... element</A><A HREF="node103_ct.html#tex2html27" TARGET="contents"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Covariance matrices are actually stored internally in lower triangular
+form</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot8764">... CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN></A><A HREF="node103_ct.html#tex2html28" TARGET="contents"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+The Choleski storage format is not used by default in HTK Version 2</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot8919">... matrix</A><A HREF="node104_ct.html#tex2html29" TARGET="contents"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Transform matrices are not used by any of the supported HTK tools.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot9222">...
+parameters</A><A HREF="node108_ct.html#tex2html30" TARGET="contents"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>If C0 or normalised log-energy are added
+these will be stripped prior to applying the linear transform</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot9255">... definition</A><A HREF="node110_ct.html#tex2html31" TARGET="contents"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The fact that
+this is possible does not mean that it is recommended practice!</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot9326">... brackets</A><A HREF="node111_ct.html#tex2html32" TARGET="contents"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">7</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+This definition covers the textual version only.  The syntax for
+the binary format
+is identical apart from the way that the lexical items are encoded.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot9484">... states</A><A HREF="node111_ct.html#tex2html33" TARGET="contents"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">8</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Integer numbers are specified as either <SPAN  CLASS="textsf">char</SPAN> or <SPAN  CLASS="textsf">short</SPAN>.
+This has no effect on text-based definitions but for binary format it indicates
+the underlying C type used to represent the number.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot9499">... CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN></I></A><A HREF="node111_ct.html#tex2html34" TARGET="contents"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">9</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>specifically, in equation 
+&nbsp;<A HREF="node102_ct.html#e:gnorm">7.2</A> 
+the GCONST value seen in HMM sets is calculated by multiplying the determinant 
+of the covariance matrix by <!-- MATH
+ ${\mbox{\boldmath $(2 \pi)^n$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img252.png"
+ ALT="$ {\mbox{\boldmath $(2 \pi)^n$}}$"></SPAN></SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot15733">... data</A><A HREF="node128_ct.html#tex2html35" TARGET="contents"><SUP><SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+MLLR can also be used to perform environmental compensation by
+reducing the mismatch due to channel or additive noise effects.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot15821">... data</A><A HREF="node130_ct.html#tex2html36" TARGET="contents"><SUP><SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+MLLR can also be used to perform environmental compensation by
+reducing the mismatch due to channel or additive noise effects.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot16425">... consider</A><A HREF="node136_ct.html#tex2html42" TARGET="contents"><SUP><SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The current code in HHE<SMALL>D</SMALL> for 
+generating decision trees does not support generating trees for multiple 
+streams. However, the code does support adaptation for hand generated 
+trees.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot16459">... using</A><A HREF="node141_ct.html#tex2html43" TARGET="contents"><SUP><SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>In the current implementation of the code this
+form of transform can only be estimated in addition to the <TT>MLLRMEAN</TT> 
+transform</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot16476">... where</A><A HREF="node142_ct.html#tex2html44" TARGET="contents"><SUP><SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>For
+efficiency this transformation is implemented as
+<BR>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{eqnarray}
+\hat{{\mbox{\boldmath $o$}}}_r(t) = {\mbox{\boldmath $A$}}_r{\mbox{\boldmath $o$}}(t) + {\mbox{\boldmath $b$}}_r = {\mbox{\boldmath $W$}}_r{\mbox{\boldmath $\zeta$}}(t)
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="218" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img431.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath $o$}}}_r(t) = {\mbox{\boldmath $A$}}_r{\mbo...
+...\mbox{\boldmath $b$}}_r = {\mbox{\boldmath $W$}}_r{\mbox{\boldmath $\zeta$}}(t)$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">9</SPAN>.<SPAN CLASS="arabic">17</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P></SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot18597">... mapping</A><A HREF="node147_ct.html#tex2html45" TARGET="contents"><SUP><SPAN CLASS="arabic">10</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The physical
+HMM which corresponding to several logical HMMs will be arbitrarily named after
+one of them.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot19109">... likely</A><A HREF="node153_ct.html#tex2html46" TARGET="contents"><SUP><SPAN CLASS="arabic">11</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Remember that discrete probabilities are scaled such that
+32767 is equivalent to a probability of 0.000001 and 0 is 
+equivalent to a probability of 1.0
+</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot19267">...
+HMMs</A><A HREF="node155_ct.html#tex2html47" TARGET="contents"><SUP><SPAN CLASS="arabic">11</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Also called <I>semi-continuous</I> HMMs in the the literature.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot19543">...
+words</A><A HREF="node159_ct.html#tex2html48" TARGET="contents"><SUP><SPAN CLASS="arabic">12</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>More precisely, nodes represent the ends of
+words and arcs represent the transitions between word ends.
+This distinction becomes important when describing
+recognition output since acoustic scores are attached
+to arcs not nodes. </SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot20859">... definitions</A><A HREF="node170_ct.html#tex2html49" TARGET="contents"><SUP><SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+Large HMM sets will often be distributed across a number of MMF files,
+in this case, the <TT>-H</TT> option will be repeated for each file.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot20862">... 10</A><A HREF="node171_ct.html#tex2html50" TARGET="contents"><SUP><SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The default behaviour of HR<SMALL>ESULTS</SMALL> is
+slightly different to the widely used US NIST scoring software which uses
+weights of 3,3 and 4 and a slightly different alignment algorithm. Identical
+behaviour to NIST can be obtained by setting the -n option.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot20863">... words</A><A HREF="node171_ct.html#tex2html51" TARGET="contents"><SUP><SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+All the examples here will assume that each label corresponds to a word
+but in general the labels could stand for any recognition unit such as
+phones, syllables, etc.  HR<SMALL>ESULTS</SMALL> does not care what the labels
+mean but for human consumption, the labels  <TT>SENT</TT> 
+and <TT>WORD</TT>  can be changed using the <TT>-a</TT> and  <TT>-b</TT> 
+options.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot20868">... commandword</A><A HREF="node172_ct.html#tex2html52" TARGET="contents"><SUP><SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+The HLE<SMALL>D</SMALL> <TT>EX</TT> command can be used to compute phone
+level transcriptions when there is only one possible 
+phone transcription
+per word</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot20873">... control</A><A HREF="node173_ct.html#tex2html53" TARGET="contents"><SUP><SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL> The underlying signal number must be
+given, HTK cannot interpret the standard Unix signal names such as
+<TT>SIGINT</TT> </SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21760">...c:fundaments.</A><A HREF="node177_ct.html#tex2html54" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The theory components of this chapter -
+these first four sections - are condensed from portions of
+<SPAN  CLASS="textbf">``Adaptive Statistical Class-based Language Modelling''</SPAN>,
+G.L. Moore; <SPAN  CLASS="textit">Ph.D thesis, Cambridge University</SPAN> 2001</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21291">...
+conditions</A><A HREF="node178_ct.html#tex2html55" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>See section 5 of [Shannon 1948]
+for a more formal definition of ergodicity.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21310">...
+fact.</A><A HREF="node178_ct.html#tex2html56" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Based on the analysis of 170 million words of newspaper
+and broadcast news text.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21311">... text</A><A HREF="node178_ct.html#tex2html57" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>A couple of hundred
+million words, for example.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21343">... class</A><A HREF="node180_ct.html#tex2html58" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Since it
+is assumed that words are placed in the same class because they share
+certain properties.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21707">... bigram</A><A HREF="node180_ct.html#tex2html59" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>By convention
+<I>unigram</I> refers to a 1-gram,
+<I>bigram</I> indicates a 2-gram and <I>trigram</I> is a 3-gram. There is no
+standard term for a 4-gram.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21710">... 1993]</A><A HREF="node182_ct.html#tex2html60" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">7</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>R. Kneser and H. Ney,
+<SPAN  CLASS="textbf">``Improved Clustering Techniques for Class-Based Statistical Language
+Modelling''</SPAN>; <SPAN  CLASS="textit">Proceedings of the European Conference on Speech
+Communication and Technology</SPAN> 1993, pp. 973-976</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21715">...;</A><A HREF="node182_ct.html#tex2html61" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">8</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>That is, <!-- MATH
+ $C(G(w))=\sum_{x:
+G(x)=G(w)}C(x)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="218" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img533.png"
+ ALT="$ C(G(w))=\sum_{x:
+G(x)=G(w)}C(x)$"></SPAN>.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21764">... class.</A><A HREF="node182_ct.html#tex2html62" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">9</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Given this initialisation, the
+first <!-- MATH
+ $(|\mathbb{G}|-1)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img556.png"
+ ALT="$ (\vert\mathbb{G}\vert-1)$"></SPAN> moves will be to place each word into an
+empty class, however, since the class map which maximises
+<!-- MATH
+ $F_{\mathrm{M}_\mathrm{C}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img552.png"
+ ALT="$ F_{\mathrm{M}_\mathrm{C}}$"></SPAN> is the one which places each word into a singleton
+class.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21495">... model.</A><A HREF="node182_ct.html#tex2html63" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">10</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Which will be higher,
+given maximum likelihood estimates.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21737">... probability,</A><A HREF="node184_ct.html#tex2html64" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">11</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>If it did
+then from equation <A HREF="node177_ct.html#cond_prob_model">14.1</A> it follows that the
+probability of any piece of text containing that event would also be
+zero, and would have infinite perplexity.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21738">... 1987]</A><A HREF="node184_ct.html#tex2html65" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">12</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>S.M. Katz,
+<SPAN  CLASS="textbf">``Estimation of Probabilities from Sparse Data for the
+Language Model Component of a Speech Recogniser''</SPAN>; <SPAN  CLASS="textit">IEEE
+Transactions on Acoustic, Speech and Signal Processing</SPAN> 1987, vol. 35
+no. 3 pp. 400-401</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21739">... 1953]</A><A HREF="node185_ct.html#tex2html66" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">13</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>I.J. Good, <SPAN  CLASS="textbf">``The Population Frequencies
+of Species and the Estimation of Population Parameters''</SPAN>;
+<SPAN  CLASS="textit">Biometrika</SPAN> 1953, vol. 40 (3,4) pp. 237-264</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21532">... discounted</A><A HREF="node185_ct.html#tex2html67" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">14</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>It is suggested that ``<SPAN CLASS="MATH"><IMG
+ WIDTH="42" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img577.png"
+ ALT="$ k=5$"></SPAN>
+or so is a good choice''</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21745">...
+discounting,</A><A HREF="node186_ct.html#tex2html68" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">15</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>H. Ney, U. Essen and R. Kneser, <SPAN  CLASS="textbf">``On
+Structuring Probabilistic Dependences in Stochastic Language
+Modelling''</SPAN>; <SPAN  CLASS="textit">Computer Speech and Language</SPAN> 1994, vol.8 no.1
+pp.1-38</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21755">... 1948]</A><A HREF="node189_ct.html#tex2html69" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">16</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>C.E. Shannon, <SPAN  CLASS="textbf">``A Mathematical
+Theory of Communication''</SPAN>; <SPAN  CLASS="textit">The Bell System Technical Journal</SPAN>
+1948, vol. 27 pp. 379-423, 623-656. Available online at
+<TT>http://galaxy.ucsd.edu/new/external/shannon.pdf</TT></SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21758">... HTK.</A><A HREF="node190_ct.html#tex2html70" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">17</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>In fact a very
+simple text conditioning Perl script is included in <TT>LMTutorial/extras/LCond.pl</TT> for demonstration purposes only - it
+converts text to uppercase (so that words are considered equivalent
+irrespective of case) and reads the input punctuation in order to tag
+sentences, stripping most other punctuation.  See the script for more
+details.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot21759">...-grams.</A><A HREF="node190_ct.html#tex2html71" TARGET="contents"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">18</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>LGP<SMALL>REP</SMALL> can also
+perform text modification using supplied rules.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot22823">...
+tools.</A><A HREF="node193_ct.html#tex2html72" TARGET="contents"><SUP><SPAN CLASS="arabic">15</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL><TT>STARTWORD</TT> and <TT>ENDWORD</TT> to be precise.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot22824">...
+like.</A><A HREF="node193_ct.html#tex2html73" TARGET="contents"><SUP><SPAN CLASS="arabic">15</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The exception to this is that differing text may follow
+a <TT>%</TT> character.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot23473">... <code>\Grams\</code></A><A HREF="node211_ct.html#tex2html74" TARGET="contents"><SUP><SPAN CLASS="arabic">16</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>That is, the first byte of the
+binary data immediately follows the newline character</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot24635">...
+further.</A><A HREF="node242_ct.html#tex2html76" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>On a 65,000 word vocabulary test set with 170 million
+words of training text this was found to occur after around 45
+iterations</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot24638">...
+memory,</A><A HREF="node242_ct.html#tex2html77" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>other than a few small local variables taken from the
+stack as functions are called</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot24643">... practice.</A><A HREF="node242_ct.html#tex2html78" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">3</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Note that these schemes are
+approximately similar, since the most frequent words are most likely
+to be encountered sooner in the training text and thus occur higher up
+in the word map</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot24650">... option.</A><A HREF="node242_ct.html#tex2html79" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The author always uses this
+option but has not empirically tested its efficaciousness</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot27588">...
+algorithm</A><A HREF="node305_ct.html#tex2html80" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>This algorithm is significantly different from 
+earlier versions of HTK where K-means clustering was used at every
+iteration and the Viterbi alignment was limited to states</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot27660">... ignored</A><A HREF="node305_ct.html#tex2html81" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Prototypes should either
+have GConst set (the value does
+not matter) to avoid <TT>HTK</TT> trying to compute it or
+variances should be set to a positive value such as 1.0 to
+ensure that GConst is computable</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot28048">... labels</A><A HREF="node309_ct.html#tex2html82" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">7</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>In earlier versions of 
+HTK, HLE<SMALL>D</SMALL> command names consisted of a single letter.  These
+are still supported for backwards compatibility and they are included
+in the command summary produced using the <TT>-Q</TT> option.  
+However, commands
+introduced since version 2.0  have two letter names.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot28348">...TARGETKIND</A><A HREF="node314_ct.html#tex2html83" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">8</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The <TT>TARGETKIND</TT> is equivalent to
+the <TT>HCOERCE</TT> environment variable used in earlier versions
+of HTK</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot29332">... grammar.</A><A HREF="node331_ct.html#tex2html84" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">9</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>The expression between 
+double angle brackets must be a simple list of alternative node names or
+a variable which has such a list as its value</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot29409">... recognition</A><A HREF="node331_ct.html#tex2html85" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">10</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>In HTK V2 it is preferable for
+these context-loop expansions to be done automatically via HN<SMALL>ET</SMALL>,
+to avoid requiring a dictionary entry for every context-dependent
+model</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot29410">... used</A><A HREF="node331_ct.html#tex2html86" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">11</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>If the base-names or left/right context of the context-dependent names in a context-dependent loop are variables,  
+no <TT>$</TT> symbols are used when writing the context-dependent
+nodename.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot29371">... revised</A><A HREF="node332_ct.html#tex2html87" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">12</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>With the added benefit
+of rectifying some residual bugs in the HTK V1.5 implementation</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot29924">... mechanism</A><A HREF="node342_ct.html#tex2html88" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">13</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>Using this option
+      only makes sense if the HMM has skip transitions</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot30321">... transcriptions</A><A HREF="node345_ct.html#tex2html89" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">14</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>
+The choice of ``Sentence'' and ``Word'' here is the usual
+case but is otherwise arbitrary.
+HR<SMALL>ESULTS</SMALL> just compares label sequences.  The sequences
+could be paragraphs, sentences, phrases or words, and the labels
+could be phrases, words, syllables or phones, etc.  Options exist
+to change the output designations `SENT' and `WORD' to whatever
+is appropriate.</SMALL>
+
+</DD>
+<DT><SMALL><A NAME="foot31325">... mode</I></A><A HREF="node357_ct.html#tex2html90" TARGET="contents"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">15</SPAN></SUP></A></SMALL></DT>
+<DD><SMALL>It is not,of course,
+necessary to have multiple processors to use this program since each 
+`parallel' activation can be executed sequentially on a single
+processor</SMALL>
+
+</DD>
+</DL>
+</BODY>
+</HTML>

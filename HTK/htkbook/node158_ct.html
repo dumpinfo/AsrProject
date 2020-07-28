@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of How Networks are Used</TITLE>
+<META NAME="description" CONTENT="Contents of How Networks are Used">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node159_mn.html">
+<LINK REL="previous" HREF="node157_mn.html">
+<LINK REL="up" HREF="node157_mn.html">
+<LINK REL="next" HREF="node159_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03910000000000000000">&#160;</A><A NAME="s:netuse">&#160;</A>
+<BR>
+How Networks are Used
+</H1>
+
+<P>
+Before delving into the details of word networks<A NAME="19510">&#160;</A> and dictionaries, it will
+be helpful to understand their r&#244;le in building a speech recogniser
+using HTK.  Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A> illustrates the overall recognition
+process.  A word network is defined using HTK Standard Lattice Format
+(SLF).  An SLF word network is just a text file and it can be written
+directly with a text editor or a tool can be used to build it. HTK provides 
+two such tools, HB<SMALL>UILD</SMALL> and
+HP<SMALL>ARSE</SMALL>.  These both take as input a textual description and
+output an SLF file. 
+Whatever method is chosen, word network SLF generation 
+is done <SPAN  CLASS="textit">off-line</SPAN>
+and is part of the system build process.
+
+<P>
+An SLF file contains a list of nodes representing words and a
+list of arcs representing the transitions between words.   The transitions
+can have probabilities attached to them and these can be used to indicate
+<SPAN  CLASS="textit">preferences</SPAN> in a grammar network.  They can also be used to
+represent bigram probabilities in a back-off bigram network and 
+HB<SMALL>UILD</SMALL> can generate such a bigram network automatically.
+In addition to an SLF file, a HTK recogniser requires a 
+dictionary to supply pronunciations for each word in the network
+and a set of acoustic HMM phone models. 
+Dictionaries are input via the HTK interface module HD<SMALL>ICT</SMALL>.
+
+<P>
+The dictionary, HMM set and word network are input to the HTK library
+module HN<SMALL>ET</SMALL> whose function is to generate an equivalent network of
+HMMs. Each word in the dictionary may have several pronunciations and in
+this case there will be one branch in the network corresponding to each
+alternative pronunciation. Each pronunciation may consist either of a list
+of phones or a list of HMM names. In the former case, HN<SMALL>ET</SMALL> can
+optionally expand the HMM network to use either word internal triphones or
+cross-word triphones.
+Once the HMM network has been constructed, it can be
+input to the decoder module HR<SMALL>EC</SMALL> and used to recognise
+speech input.  Note that HMM network construction is performed <SPAN  CLASS="textit">on-line</SPAN>
+at recognition time as part of the initialisation process.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:recsys">&#160;</A><IMG
+ WIDTH="457" HEIGHT="587" ALIGN="MIDDLE" BORDER="0"
+ SRC="img456.png"
+ ALT="% latex2html id marker 51198
+$\textstyle \parbox{100mm}{ \begin{center}\setlengt...
+...ic{figctr}  Overview of the Recognition Process}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+For convenience, HTK provides a recognition<A NAME="19526">&#160;</A> tool called HV<SMALL>ITE</SMALL>
+to allow the functions provided by HN<SMALL>ET</SMALL> and HR<SMALL>EC</SMALL>
+to be invoked from the command line. HV<SMALL>ITE</SMALL> is particularly
+useful for running experimental evaluations on test speech stored
+in disk files and for basic testing using live audio input.
+However, application developers
+should note that HV<SMALL>ITE</SMALL> is just a shell containing calls to
+load the word network, dictionary and models; generate the recognition
+network and then repeatedly recognise each input utterance.
+For embedded applications, it may well be appropriate to
+dispense with HV<SMALL>ITE</SMALL> and call the functions in 
+HN<SMALL>ET</SMALL> and HR<SMALL>EC</SMALL> directly from the application.
+The use of HV<SMALL>ITE</SMALL> is explained in the next chapter.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

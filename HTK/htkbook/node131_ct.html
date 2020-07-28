@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Input/Output/Parent Transformations</TITLE>
+<META NAME="description" CONTENT="Contents of Input/Output/Parent Transformations">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node132_mn.html">
+<LINK REL="previous" HREF="node127_mn.html">
+<LINK REL="up" HREF="node126_mn.html">
+<LINK REL="next" HREF="node132_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03612000000000000000">&#160;</A><A NAME="s:whattransform">&#160;</A>
+<BR>
+Input/Output/Parent Transformations
+</H2>
+
+There are three types of linear transform that may be used with 
+the HTKTools.
+
+<UL>
+<LI><I>Input transform</I>: the input transform is used to determine
+the forward-backward probabilities, hence the component posteriors,
+for estimating model and transform parameters. MLLR transforms can be
+iteratively estimated by refining the posteriors using a newly
+estimated transform.
+
+<P>
+</LI>
+<LI><I>Output transform</I>: the output transform is the transform
+that is generated. The form of the transform is specified using the 
+appropriate configuration options.
+
+<P>
+</LI>
+<LI><I>Parent transform</I>: the parent transform determines the 
+model, or features, on which the model set or transform is to be 
+generated. For transform estimation this allows <EM>cascades</EM> of transforms
+to be used to adapt the model parameters. For model estimation this 
+supports <EM>speaker adaptive training</EM>. Note the current implementation 
+only supports adaptive training with CMLLR. Any parent transform can be
+used when generating transforms.
+</LI>
+</UL>
+
+<P>
+There is no difference in the storage of the transform parameters depending
+on whether it is to be a parent transform or an input transform. There is
+also no restrictions on the base classes, or regression classes, that 
+are used for each transform.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

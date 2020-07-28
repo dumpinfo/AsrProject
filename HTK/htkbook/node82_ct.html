@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Vector Quantisation</TITLE>
+<META NAME="description" CONTENT="Contents of Vector Quantisation">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node83_mn.html">
+<LINK REL="previous" HREF="node81_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node83_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION032140000000000000000">&#160;</A><A NAME="s:vquant">&#160;</A>
+<BR>
+Vector Quantisation
+</H1>
+
+<P>
+Although HTK was designed primarily for building continuous density HMM
+systems, it also supports discrete density HMMs.  Discrete HMMs are
+particularly useful for modelling data which is naturally symbolic. They can
+also be used with continuous signals such as speech by quantising each speech
+vector to give a unique VQ symbol for each input frame. The HTK module
+HVQ provides a basic facility for performing this vector
+quantisation<A NAME="6193">&#160;</A>. The VQ table (or codebook) can be
+constructed using the HTK tool HQ<SMALL>UANT</SMALL>.
+
+<P>
+When used with speech, the principle justification for using discrete HMMs is
+the much reduced computation. However, the use of vector quantisation
+introduces errors and it can lead to rather fragile systems.  For this reason,
+the use of continuous density systems is generally preferred.  To facilitate
+the use of continuous density systems when there are computational constraints,
+HTK also allows VQ to be used as the basis for pre-selecting a subset of
+Gaussian<A NAME="6195">&#160;</A> components for evaluation at each time
+frame.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:VQUse">&#160;</A><IMG
+ WIDTH="298" HEIGHT="681" ALIGN="MIDDLE" BORDER="0"
+ SRC="img205.png"
+ ALT="% latex2html id marker 49219
+$\textstyle \parbox{65mm}{ \begin{center}\setlength...
+...pter.\arabic{figctr}  Using Vector Quantisation}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>
+illustrates the different ways that VQ can be used in HTK for a single data
+stream. For multiple streams, the same principles are applied to each stream
+individually. A converted speech waveform or file of parameter vectors can
+have VQ indices attached simply by specifying the name of a VQ table using the
+configuration parameter <TT>VQTABLE</TT><A NAME="7065">&#160;</A> and by
+adding the <TT>_V</TT> qualifier to the target kind.  The effect of this is
+that each <SPAN  CLASS="textit">observation</SPAN> passed to a recogniser can include both a
+conventional parameter vector and a VQ index.  <A NAME="7068">&#160;</A> <A NAME="7069">&#160;</A> For continuous density HMM systems, a
+possible use of this might be to preselect Gaussians for evaluation (but note
+that HTK does not currently support this facility).
+
+<P>
+When used with a discrete HMM system, the
+continuous parameter vectors are ignored and only the VQ 
+indices are used.
+For training and evaluating discrete HMMs, it is convenient to
+store speech data in vector quantised form.  This is done using
+the tool HC<SMALL>OPY</SMALL> to read in and vector quantise each speech file.
+Normally, HC<SMALL>OPY</SMALL> copies the target form directly into the 
+output file.  However, if the configuration parameter <TT>SAVEASVQ</TT>
+is set, then it will
+store only the VQ indices and mark the kind of the newly created
+file as <TT>DISCRETE</TT>.  Discrete files created in this
+way can be read
+directly by HP<SMALL>ARM</SMALL> and the VQ symbols passed directly to
+a tool as indicated by the lower part of Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.
+
+<A NAME="6705">&#160;</A> 
+<A NAME="6706">&#160;</A>
+
+<P>
+<A NAME="6215">&#160;</A>
+HVQ supports three types of distance metric and two organisations of
+VQ codebook.   Each codebook consists of a collection of nodes where each
+node has a mean vector and optionally a covariance matrix or diagonal
+variance vector.  The corresponding distance metric used for  each of these
+is simple Euclidean,  full covariance Mahalanobis or diagonal covariance
+Mahalanobis. The codebook nodes are  arranged in 
+the form of a simple linear table
+or as a  binary tree. In the linear case, the input vector is compared with
+every node in turn and the nearest determines the VQ index.  In the binary
+tree case, each non-terminal node has a left and a right daughter.  Starting
+with the top-most root node,  the input is compared with the left and right
+daughter node and the nearest is selected.  This process is repeated until a
+terminal node is reached. <A NAME="6217">&#160;</A>
+
+<P>
+<A NAME="6218">&#160;</A><A NAME="6219">&#160;</A>
+VQ Tables are stored externally in text files consisting of a header
+followed by a sequence of node entries.  The header consists of the
+following information
+<PRE><TT>
+		 <SPAN  CLASS="textit">magic</SPAN>		  -		 a magic number usually the original parameter kind 
+<BR><SPAN  CLASS="textit">type</SPAN> 		  -		 0 = linear tree, 1 = binary tree 
+<BR><SPAN  CLASS="textit">mode</SPAN> 		  -		 1 = diagonal covariance Mahalanobis 
+<BR>
+2 = full covariance Mahalanobis 
+<BR>
+5 = Euclidean 
+<BR><SPAN  CLASS="textit">numNodes</SPAN> 		 -		  total number of nodes in the codebook 
+<BR><SPAN  CLASS="textit">numS</SPAN>		  -		 number of independent data streams 
+<BR><SPAN  CLASS="textit">sw1,sw2,...</SPAN>		  -		 width of each data stream 
+<BR>
+</TT></PRE>
+Every node has a unique integer identifier and consists of the 
+following
+<PRE><TT>
+		 <SPAN  CLASS="textit">stream</SPAN>		  -		stream number for this node 
+<BR><SPAN  CLASS="textit">vqidx</SPAN>		  -		VQ index for this node (0 if non-terminal) 
+<BR><SPAN  CLASS="textit">nodeId</SPAN>		  -		integer id of this node 
+<BR><SPAN  CLASS="textit">leftId</SPAN>		  -		integer id of left daughter node 
+<BR><SPAN  CLASS="textit">rightId</SPAN>		  -		integer id of right daughter node 
+<BR><SPAN  CLASS="textit">mean</SPAN>		  -		mean vector 
+<BR><SPAN  CLASS="textit">cov</SPAN>		  -		diagonal variance or full covariance 
+<BR>
+</TT></PRE>
+The inclusion of the optional variance vector or covariance matrix depends
+on the mode in the header.  If present they are stored in inverse form.
+In a binary tree, the root id is always 1.  In linear codebooks, the
+left and right daughter node id's are ignored.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

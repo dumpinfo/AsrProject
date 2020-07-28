@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node307_mn.html">
+<LINK REL="previous" HREF="node305_mn.html">
+<LINK REL="up" HREF="node304_mn.html">
+<LINK REL="next" HREF="node307_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05182000000000000000">&#160;</A><A NAME="s:HInit-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HI<SMALL>NIT</SMALL> is invoked via the command line
+<PRE>
+   HInit [options] hmm trainFiles ...
+</PRE>
+This causes the means and variances of the given <TT>hmm</TT> to be
+estimated repeatedly using the data in <TT>trainFiles</TT> 
+until either a maximum iteration limit is reached
+or the estimation converges.
+The HMM definition can be contained within one or more macro
+files loaded via the standard <TT>-H</TT> option.  Otherwise, the 
+definition will be read from a file called <TT>hmm</TT>.
+The list of train files can be stored in a script file if required.
+
+<P>
+The detailed operation of HI<SMALL>NIT</SMALL> is controlled by the following
+command line options
+
+<DL COMPACT>
+<DT><TT>-e f</TT>
+<DD>This sets the convergence factor to the real value <TT>f</TT>.
+      The convergence factor is the relative change between successive
+      values of <!-- MATH
+ $P_{max}({O}|\lambda)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="79" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img639.png"
+ ALT="$ P_{max}({O}\vert\lambda)$"></SPAN> computed as a by-product
+      of the Viterbi alignment stage (default value 0.0001).
+
+<P>
+<DT><TT>-i N</TT>
+<DD>This sets the maximum number of estimation cycles
+      to <TT>N</TT> (default value 20).
+
+<P>
+<DT><TT>-l s</TT>
+<DD>The string <TT>s</TT> must be the name of a
+      segment label.  When this option is used, HI<SMALL>NIT</SMALL> searches
+      through all of the training files and cuts out all segments with
+      the given label.  When this option is not used, HI<SMALL>NIT</SMALL> assumes that
+      each training file is a single token.
+
+<P>
+<DT><TT>-m N</TT>
+<DD>This sets the minimum number of training examples so
+      that if fewer than <TT>N</TT> examples are supplied an error is
+      reported (default value 3).
+
+<P>
+<DT><TT>-n</TT>
+<DD>This flag suppresses the initial uniform
+      segmentation performed by HI<SMALL>NIT</SMALL> allowing it to be used
+      to update the parameters of an existing model.
+
+<P>
+<DT><TT>-o s</TT>
+<DD>The string <TT>s</TT> is used as the name of the output
+      HMM in place of the source name.  This is provided in HI<SMALL>NIT</SMALL>
+      since it is often used to initialise a model from a prototype
+      input definition.  The default is to use the source name.
+
+<P>
+<DT><TT>-u flags</TT>
+<DD>By default, HI<SMALL>NIT</SMALL> updates all 
+      of the HMM parameters,
+      that is, means, variances, mixture weights
+      and transition probabilities. This 
+      option causes just the parameters indicated by the <TT>flags</TT>
+      argument to be updated, this argument is a string containing one
+      or more of the letters <TT>m</TT> (mean), <TT>v</TT> (variance), 
+      <TT>t</TT> (transition) and <TT>w</TT> (mixture weight).  The presence of a
+      letter enables the updating of the corresponding parameter set.
+
+<P>
+<DT><TT>-v f</TT>
+<DD>This sets the minimum variance (i.e. diagonal element of
+      the covariance matrix) to the real value <TT>f</TT> The default value
+      is 0.0.
+
+<P>
+<DT><TT>-w f</TT>
+<DD>Any mixture weight  or discrete observation probability
+      which falls below the global
+            constant <TT>MINMIX</TT> is treated as being zero.
+      When this parameter is  set,  all mixture weights  are floored
+      to <TT>f * MINMIX</TT>.
+
+<P>
+
+  <DT><TT>-B</TT>
+<DD>Output HMM definition files in binary format.
+
+  <DT><TT>-F fmt</TT>
+<DD>Set the source data format to <TT>fmt</TT>.
+
+  <DT><TT>-G fmt</TT>
+<DD>Set the label file format to <TT>fmt</TT>.
+
+  <DT><TT>-H mmf</TT>
+<DD>Load HMM macro model file <TT>mmf</TT>.  This option
+     may be repeated to load multiple MMFs.
+
+  <DT><TT>-I mlf</TT>
+<DD>This loads the master label file <TT>mlf</TT>.  This option
+     may be repeated to load several MLFs.
+
+  <DT><TT>-L dir</TT>
+<DD>Search directory <TT>dir</TT> for label files (default
+     is to search current directory).
+
+  <DT><TT>-M dir</TT>
+<DD>Store output HMM macro model files in the directory <TT>dir</TT>.  
+     If this option is not given, the new HMM definition will overwrite
+     the existing one.
+
+  <DT><TT>-X ext</TT>
+<DD>Set label file extension to <TT>ext</TT> 
+  (default is <TT>lab</TT>).
+
+<P>
+</DD>
+</DL>
+
+HI<SMALL>NIT</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

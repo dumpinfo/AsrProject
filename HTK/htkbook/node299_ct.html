@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of TI macro itemList</TITLE>
+<META NAME="description" CONTENT="Contents of TI macro itemList">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node300_mn.html">
+<LINK REL="previous" HREF="node298_mn.html">
+<LINK REL="up" HREF="node266_mn.html">
+<LINK REL="next" HREF="node300_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H3><A NAME="SECTION051713300000000000000">
+<TT>TI macro itemList</TT></A>
+</H3>
+
+<P>
+Tie the items in <TT>itemList</TT> and assign them to the specified 
+<TT>macro</TT> name.  This command applies to any item type but 
+all of the items in <TT>itemList</TT> must be of the same type.
+The detailed method of tying depends on the item type as follows:
+<DL>
+<DT><STRONG>state(s)</STRONG></DT>
+<DD>the state with the largest total value of <TT>gConst</TT>
+     in stream 1 (indicating broad variances) and the minimum number of
+     defunct mixture weights (see <TT>MU</TT> command) is selected from the
+   item list and all states are tied to this typical state.
+   
+</DD>
+<DT><STRONG>transitions(t)</STRONG></DT>
+<DD>all transition matrices in the item list are
+     tied to the last in the list.
+   
+</DD>
+<DT><STRONG>mixture(m)</STRONG></DT>
+<DD>all mixture components in the item list are tied
+   to the last in the list.
+   
+</DD>
+<DT><STRONG>mean(u)</STRONG></DT>
+<DD>the average vector of all the mean vectors
+   in the item list is calculated and all the means are tied to this
+   average vector.
+   
+</DD>
+<DT><STRONG>variance(v)</STRONG></DT>
+<DD>a vector is constructed for which each element
+   is the maximum of the corresponding elements from the set of 
+   variance vectors to be tied.  All of the variances are then tied
+   to this maximum vector.
+   
+</DD>
+<DT><STRONG>covariance(i)</STRONG></DT>
+<DD>all covariance matrices in the item list are tied
+   to the last in the list.
+   
+</DD>
+<DT><STRONG>xform(x)</STRONG></DT>
+<DD>all transform matrices in the item list are tied
+   to the last in the list.
+   
+</DD>
+<DT><STRONG>duration(d)</STRONG></DT>
+<DD>all duration vectors in the item list are tied
+   to the last in the list.
+   
+</DD>
+<DT><STRONG>stream weights(w)</STRONG></DT>
+<DD>all stream weight vectors in the item 
+   list are tied to the last in the list.
+   
+</DD>
+<DT><STRONG>pdf(p)</STRONG></DT>
+<DD>as noted earlier, pdf's are tied to create tied
+   mixture sets rather than to create a shared pdf.  The procedure
+   for tying pdf's is as follows
+   
+<OL>
+<LI>All mixtures from all pdf's in the item list are collected 
+       together in order of mixture weight.
+</LI>
+<LI>If the number of mixtures exceeds the join size <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img638.png"
+ ALT="$ J$"></SPAN> [see the
+       Join (<TT>JO</TT>) command above], then all but the first <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img638.png"
+ ALT="$ J$"></SPAN> mixtures
+       are discarded.
+</LI>
+<LI>If the number of mixtures is less than <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img638.png"
+ ALT="$ J$"></SPAN>, then the
+       mixture with the largest weight is repeatedly split until
+       there are exactly <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img638.png"
+ ALT="$ J$"></SPAN> mixture components.  The split procedure
+       used is the same as for the MixUp (<TT>MU</TT>) command
+       described above.
+</LI>
+<LI>All pdf's in the item list are made to share all <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img638.png"
+ ALT="$ J$"></SPAN>
+       mixture components.  The weight for each mixture is set
+       proportional to the log likelihood of the mean vector of
+       that mixture with respect to the original pdf.      
+</LI>
+<LI>Finally, all mixture weights below the floor set by the
+       Join command are raised to the floor value and all of the
+       mixture weights are renormalised.
+   
+</LI>
+</OL>
+</DD>
+</DL>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

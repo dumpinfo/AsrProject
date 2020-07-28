@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Base Class Definitions</TITLE>
+<META NAME="description" CONTENT="Contents of Base Class Definitions">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node133_mn.html">
+<LINK REL="previous" HREF="node131_mn.html">
+<LINK REL="up" HREF="node126_mn.html">
+<LINK REL="next" HREF="node133_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03613000000000000000">&#160;</A><A NAME="s:base_classes">&#160;</A>
+<BR>
+Base Class Definitions
+</H2>
+
+The first requirement to allow adaptation is to specify the set of
+the components that share the same transform. This is achieved using a
+baseclass.  The baseclass definition files uses the same syntax for
+defining components as the HHE<SMALL>D</SMALL> command. However, for
+baseclass definitions the components must always be specified.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:globbase">&#160;</A><A NAME="15861">&#160;</A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 9.1:</STRONG>
+Global base class definition</CAPTION>
+<TR><TD><IMG
+ WIDTH="309" HEIGHT="89" BORDER="0"
+ SRC="img355.png"
+ ALT="\begin{figure}\begin{verbatim}&nbsp;b \lq\lq global''
+&lt;MMFIDMASK&gt; CUED_WSJ*
+&lt;PARAMET...
+...SE
+&lt;NUMCLASSES&gt; 1
+&lt;CLASS&gt; 1 {*.state[2-4].mix[1-12]}\end{verbatim}\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+The simplest form of transform uses a global transformation for all
+components.  Figure&nbsp;<A HREF="node132_ct.html#fig:globbase">9.1</A> shows a global transformation
+for a system where there are upto 3 emitting states and upto 12
+Gaussian components per state.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="15868">&#160;</A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 9.2:</STRONG>
+Four base classes definition</CAPTION>
+<TR><TD><IMG
+ WIDTH="376" HEIGHT="147" BORDER="0"
+ SRC="img356.png"
+ ALT="\begin{figure}\begin{verbatim}&nbsp;b \lq\lq baseclass_4.base''
+&lt;MMFIDMASK&gt; CUED_WSJ*
+...
+...2-4].mix[1-12]}
+&lt;CLASS&gt; 4 {four.state[2-4].mix[1-12]}\end{verbatim}\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+These baseclasses may be directly used to determine which components
+share a particular transform. However a more general approach
+is to use a regression class tree.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

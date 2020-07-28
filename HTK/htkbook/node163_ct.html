@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Testing a Word Network using HSGEN</TITLE>
+<META NAME="description" CONTENT="Contents of Testing a Word Network using HSGEN">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node164_mn.html">
+<LINK REL="previous" HREF="node162_mn.html">
+<LINK REL="up" HREF="node157_mn.html">
+<LINK REL="next" HREF="node164_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03960000000000000000">&#160;</A><A NAME="s:usehsgen">&#160;</A>
+<BR>
+Testing a Word Network using HSG<SMALL>EN</SMALL>
+</H1>
+
+<P>
+When designing task grammars, it is useful to be able to check
+that the  language defined by the final word network is as envisaged.
+One simple way to check this is to use the network as a generator by
+randomly traversing it and outputting the name of each word node
+encountered.  HTK provides a very simple tool called 
+HSG<SMALL>EN</SMALL><A NAME="19940">&#160;</A>
+for doing this.
+
+<P>
+As an example if the file <TT>bnet</TT> contained the simple Bit-But
+netword described above and the file <TT>bdic</TT> contained a corresponding
+dictionary then the command
+<PRE>
+    HSGen bnet bdic
+</PRE>
+would generate a random list of examples of the language
+defined by  <TT>bnet</TT>, for example,
+<PRE>
+    start bit but bit bit bit end 
+    start but bit but but end 
+    start bit bit but but end 
+    .... etc
+</PRE>
+This is perhaps not too informative in this case but for more
+complex grammars, this type of output can be quite illuminating.
+
+<P>
+HSG<SMALL>EN</SMALL> will also estimate the empirical entropy
+by recording
+the probability of each sentence generated<A NAME="19713">&#160;</A>.  
+To use this facility, it
+is best to suppress the sentence output and generate a large number
+of examples.  For example, executing
+<PRE>
+    HSGen -s -n 1000 -q bnet bdic
+</PRE>
+where the <TT>-s</TT> option requests statistics, the <TT>-q</TT> option
+suppresses the output and <TT>-n 1000</TT> asks for 1000 sentences
+would generate the following output
+<PRE>
+    Number of Nodes = 4 [0 null], Vocab Size = 4
+    Entropy = 1.156462,  Perplexity = 2.229102
+    1000 Sentences: average len = 5.1, min=3, max=19
+</PRE>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

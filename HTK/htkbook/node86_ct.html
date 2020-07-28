@@ -1,0 +1,504 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Summary</TITLE>
+<META NAME="description" CONTENT="Contents of Summary">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node85_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node87_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION032180000000000000000">&#160;</A><A NAME="s:spiosum">&#160;</A>
+<BR>
+Summary
+</H1>
+
+<P>
+<A NAME="6361">&#160;</A>
+This section summarises the various file formats, parameter kinds, qualifiers
+and configuration parameters used by HTK.  Table&nbsp;<A HREF="#_" TARGET="_top">[*]</A> lists the
+audio speech file formats which can be read by the HW<SMALL>AVE</SMALL> module.
+Table&nbsp;<A HREF="#_" TARGET="_top">[*]</A> lists the basic parameter kinds supported by the
+HP<SMALL>ARM</SMALL> module and Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A> shows the various automatic
+conversions that can be performed by appropriate choice of source and target
+parameter kinds.  Table&nbsp;<A HREF="#_" TARGET="_top">[*]</A> lists the available qualifiers for
+parameter kinds.  The first 6 of these are used to describe the target kind.
+The source kind may already have some of these, HP<SMALL>ARM</SMALL> adds the rest as
+needed.  Note that HP<SMALL>ARM</SMALL> can also delete qualifiers when converting
+from source to target.  The final two qualifiers in Table&nbsp;<A HREF="#_" TARGET="_top">[*]</A>
+are only used in external files to indicate compression and an attached
+checksum.  HP<SMALL>ARM</SMALL> adds these qualifiers to the target form during output
+and only in response to setting the configuration parameters
+<TT>SAVECOMPRESSED</TT> and <TT>SAVEWITHCRC</TT>.  Adding the
+<TT>_C</TT><A NAME="6716">&#160;</A> or
+<TT>_K</TT><A NAME="6717">&#160;</A> qualifiers to the target kind
+simply causes an error. Finally, Tables <A HREF="#_" TARGET="_top">[*]</A> and
+<A HREF="#_" TARGET="_top">[*]</A> lists all of the configuration parameters along with their
+meaning and default values.
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74>Name</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Description</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>HTK</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>The standard HTK file format</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>TIMIT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>As used in the original prototype TIMIT CD-ROM</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>NIST</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>The standard SPHERE format used by the US NIST</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>SCRIBE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Subset of the European SAM standard used in the SCRIBE CD-ROM</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>SDES1</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>The Sound Designer 1 format defined by Digidesign Inc.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>AIFF</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Audio interchange file format</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>SUNAU8</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Subset of 8bit ".au" and ".snd" formats used by Sun and NeXT</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>OGI</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Format used by Oregan Graduate Institute similar to TIMIT</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>WAV</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Microsoft WAVE files used on PCs</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>ESIG</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Entropic Esignal file format</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>AUDIO</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Pseudo format to indicate direct audio input</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>ALIEN</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Pseudo format to indicate unsupported file,  the 
+       alien header size must be set via the environment variable <TT>HDSIZE</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>NOHEAD</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>As for the ALIEN format but header size is zero</TD>
+</TR>
+</TABLE>
+
+  <A NAME="t:fileform">&#160;</A>    
+           <SPAN  CLASS="textbf"> Table. <SPAN CLASS="arabic">5</SPAN>..<SPAN CLASS="arabic">1</SPAN>  Supported File Formats</SPAN>
+
+</DIV>
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74>Kind</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Meaning</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>WAVEFORM</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>scalar samples (usually raw speech data)</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>LPC</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>linear prediction coefficients</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>LPREFC</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>linear prediction reflection coefficients</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>LPCEPSTRA</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>LP derived cepstral coefficients</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>LPDELCEP</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>LP cepstra + delta coef (obsolete)</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>IREFC</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>LPREFC stored as 16bit (short) integers</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>MFCC</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>mel-frequency cepstral coefficients</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>FBANK</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>log filter-bank parameters</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>MELSPEC</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>linear filter-bank parameters</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>USER</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>user defined parameters</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>DISCRETE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>vector quantised codebook symbols</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>ANON</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>matches actual parameter kind</TD>
+</TR>
+</TABLE>
+
+  <A NAME="t:parmkinds">&#160;</A>    
+           <SPAN  CLASS="textbf"> Table. <SPAN CLASS="arabic">5</SPAN>..<SPAN CLASS="arabic">2</SPAN>  Supported Parameter Kinds</SPAN>
+
+</DIV>
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74>Qualifier</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Meaning</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>_A</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Acceleration coefficients appended</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>_C</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>External form is compressed</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>_D</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Delta coefficients appended</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>_E</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Log energy appended</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>_K</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>External form has checksum appended</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>_N</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Absolute log energy suppressed</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>_T</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Third differential coefficients appended</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>_V</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>VQ index appended</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>_Z</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Cepstral mean subtracted</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>_0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=247>Cepstral C0 coefficient appended</TD>
+</TR>
+</TABLE>
+
+  <A NAME="t:qualifiers">&#160;</A>    
+           <SPAN  CLASS="textbf"> Table. <SPAN CLASS="arabic">5</SPAN>..<SPAN CLASS="arabic">3</SPAN>  Parameter Kind Qualifiers</SPAN>
+
+</DIV><A NAME="6440">&#160;</A>
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>Module</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Name</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37>Default</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Description</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HA<SMALL>UDIO</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>LINEIN</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>T</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select line input for audio</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HA<SMALL>UDIO</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>MICIN</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>F</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select microphone input for audio</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HA<SMALL>UDIO</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>LINEOUT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>T</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select line output for audio</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HA<SMALL>UDIO</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>SPEAKEROUT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>F</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select speaker output for audio</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HA<SMALL>UDIO</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>PHONESOUT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>T</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select headphones output for audio</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>SOURCEKIND</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>ANON</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Parameter kind of source</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>SOURCEFORMAT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>HTK</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>File format of source</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>SOURCERATE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>0.0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Sample period of source in 100ns units</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HW<SMALL>AVE</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>NSAMPLES</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Num samples in alien file input via a pipe</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HW<SMALL>AVE</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>HEADERSIZE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Size of header in an alien file</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HW<SMALL>AVE</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>STEREOMODE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select channel: <TT>RIGHT</TT> or <TT>LEFT</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HW<SMALL>AVE</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>BYTEORDER</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Define byte order <TT>VAX</TT> or other</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>NATURALREADORDER</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>F</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Enable natural read order for HTK files</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>NATURALWRITEORDER</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>F</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Enable natural write order for HTK files</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>TARGETKIND</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>ANON</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Parameter kind of target</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>TARGETFORMAT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>HTK</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>File format of target</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>TARGETRATE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>0.0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Sample period of target in 100ns units</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>SAVECOMPRESSED</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>F</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Save the output file in compressed form</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>SAVEWITHCRC</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>T</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Attach a checksum to output parameter file</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>ADDDITHER</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>0.0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Level of noise added to input signal</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>ZMEANSOURCE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>F</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Zero mean source waveform before analysis</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>WINDOWSIZE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>256000.0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Analysis window size in 100ns units</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>USEHAMMING</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>T</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Use a Hamming window</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>PREEMCOEF</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>0.97</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Set pre-emphasis coefficient</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>LPCORDER</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>12</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Order of LPC analysis</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>NUMCHANS</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>20</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Number of filterbank channels</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>LOFREQ</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>-1.0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Low frequency cut-off in fbank analysis</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>HIFREQ</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>-1.0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>High frequency cut-off in fbank analysis</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>USEPOWER</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>F</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Use power not magnitude in fbank analysis</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>NUMCEPS</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>12</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Number of cepstral parameters</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>CEPLIFTER</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>22</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Cepstral liftering coefficient</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>ENORMALISE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>T</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Normalise log energy</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>ESCALE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>0.1</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Scale log energy</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>SILFLOOR</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>50.0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Energy silence floor (dB)</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>DELTAWINDOW</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>2</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Delta window size</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>ACCWINDOW</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>2</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Acceleration window size</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>VQTABLE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>NULL</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Name of VQ table</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>SAVEASVQ</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>F</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Save only the VQ indices</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=34>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><TT>AUDIOSIG</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=37><TT>0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Audio signal number for remote control</TD>
+</TR>
+</TABLE>
+
+  <A NAME="t:spiocparms1">&#160;</A>    
+           <SPAN  CLASS="textbf"> Table. <SPAN CLASS="arabic">5</SPAN>..<SPAN CLASS="arabic">4</SPAN>  Configuration Parameters</SPAN>
+
+</DIV>
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>Module</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74>Name</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40>Default</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Description</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>USESILDET</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>F</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Enable speech/silence detector</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>MEASURESIL</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>T</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Measure background noise level prior to sampling</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>OUTSILWARN</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>T</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Print a warning message to <TT>stdout</TT> before 
+ measuring audio levels</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>SPEECHTHRESH</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>9.0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Threshold for speech above silence level (dB)</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>SILENERGY</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>0.0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Average background noise level (dB)</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>SPCSEQCOUNT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>10</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Window over which speech/silence decision reached</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>SPCGLCHCOUNT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Maximum number of frames marked as silence in window which is
+classified as speech whilst expecting start of speech</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>SILSEQCOUNT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>100</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Number of frames classified as silence needed to mark end of
+utterance</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>SILGLCHCOUNT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>2</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Maximum number of frames marked as silence in window which is
+classified as speech whilst expecting silence</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>SILMARGIN</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>40</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Number of extra frames included before and after start and end of
+speech marks from the speech/silence detector</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>HP<SMALL>ARM</SMALL></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>V1COMPAT</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>F</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Set Version 1.5 compatibility mode</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=31>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=74><TT>TRACE</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=40><TT>0</TT></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Trace setting</TD>
+</TR>
+</TABLE>
+
+  <A NAME="t:spiocparms2">&#160;</A>    
+           <SPAN  CLASS="textbf"> Table. <SPAN CLASS="arabic">5</SPAN>..<SPAN CLASS="arabic">5</SPAN>  Configuration Parameters (cont)</SPAN>
+
+</DIV>
+
+<P>
+
+<P>
+
+  
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

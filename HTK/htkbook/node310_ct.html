@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node311_mn.html">
+<LINK REL="previous" HREF="node309_mn.html">
+<LINK REL="up" HREF="node308_mn.html">
+<LINK REL="next" HREF="node311_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05192000000000000000">&#160;</A><A NAME="s:HLEd-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HLE<SMALL>D</SMALL> is invoked by typing the command line
+<PRE>
+   HLEd [options] edCmdFile labFiles ..
+</PRE>
+This causes HLE<SMALL>D</SMALL> to be applied to each <TT>labFile</TT> in turn
+using the edit commands listed in <TT>edCmdFile</TT>.  The 
+<TT>labFiles</TT> may be master label files.
+The available options are
+
+<P>
+
+<DL COMPACT>
+<DT><TT>-b</TT>
+<DD>Suppress label boundary times in output files.
+
+<P>
+<DT><TT>-d s</TT>
+<DD>Read a dictionary from file <TT>s</TT> and use this
+  for expanding labels when the <TT>EX</TT> command is used.
+
+<P>
+<DT><TT>-i mlf</TT>
+<DD>This specifies that the output transcriptions
+  are written to the master label file <TT>mlf</TT>.
+
+<P>
+<DT><TT>-g t</TT>
+<DD>Set the minimum gap detected by the <TT>FG</TT> to be <TT>t</TT>
+      (default 50000.0 = 5msecs).
+     All gaps of shorter duration than <TT>t</TT> are ignored and not labelled.
+
+<P>
+<DT><TT>-l s</TT>
+<DD>Directory to store output label files (default is current directory).
+      When output is directed to an MLF,  this option can be used to
+      add a path to each output file name.  In particular, setting the option
+      <code>-l '*'</code> will cause a label file named <TT>xxx</TT> to be prefixed
+      by the pattern <code>"*/xxx"</code> in the output MLF file.  This is useful
+      for generating MLFs which are independent of the location of the 
+      corresponding data files.
+
+<P>
+<DT><TT>-m</TT>
+<DD>Strip all labels to monophones on loading.
+
+<P>
+<DT><TT>-n fn</TT>
+<DD>This option causes a list of all new label names
+      created to be output to the file <TT>fn</TT>.
+
+<P>
+
+  <DT><TT>-G fmt</TT>
+<DD>Set the label file format to <TT>fmt</TT>.
+
+  <DT><TT>-I mlf</TT>
+<DD>This loads the master label file <TT>mlf</TT>.  This option
+     may be repeated to load several MLFs.
+
+  <DT><TT>-P fmt</TT>
+<DD>Set the target label format to <TT>fmt</TT>.
+
+  <DT><TT>-X ext</TT>
+<DD>Set label file extension to <TT>ext</TT> 
+  (default is <TT>lab</TT>).
+
+<P>
+</DD>
+</DL>
+
+HLE<SMALL>D</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

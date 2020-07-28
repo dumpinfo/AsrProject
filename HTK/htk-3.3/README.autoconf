@@ -1,0 +1,10 @@
+Notes on updating autoconf setup (i.e. the configure script)
+
+1. Generating a new configure script:
+
+autoconf configure.in > configure
+
+2. Adding/removing autoconfigured files, especially Makefiles
+
+Edit configure.in, change AC_CONFIG_FILES
+

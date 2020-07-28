@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Decoder Operation</TITLE>
+<META NAME="description" CONTENT="Contents of Decoder Operation">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node169_mn.html">
+<LINK REL="previous" HREF="node167_mn.html">
+<LINK REL="up" HREF="node167_mn.html">
+<LINK REL="next" HREF="node169_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION031010000000000000000">&#160;</A><A NAME="s:decop">&#160;</A>
+<BR>
+Decoder Operation
+</H1>
+
+<P>
+<A NAME="20536">&#160;</A>
+As described in Chapter&nbsp;<A HREF="node157_ct.html#c:netdict">12</A> and illustrated by
+Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>, decoding in HTK is controlled by a recognition
+network compiled from a word-level network, a dictionary and a set of
+HMMs.  The recognition network consists of a set of nodes connected
+by arcs.  Each node is either a HMM model instance or a word-end.
+Each model node is itself a network consisting of states connected by
+arcs.  Thus, once fully compiled, a recognition 
+network<A NAME="20539">&#160;</A> ultimately
+consists of HMM states connected by transitions.  However, it can be
+viewed at three different levels: word, model and state.
+Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A> illustrates this hierarchy.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:recnetlev">&#160;</A><IMG
+ WIDTH="285" HEIGHT="360" ALIGN="MIDDLE" BORDER="0"
+ SRC="img474.png"
+ ALT="% latex2html id marker 51252
+$\textstyle \parbox{62mm}{ \begin{center}\setlength...
+...ter.\arabic{figctr}  Recognition Network Levels}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+For an unknown
+input utterance with <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img183.png"
+ ALT="$ T$"></SPAN> frames, every path from the start node to the
+exit node of the network which passes through exactly <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img183.png"
+ ALT="$ T$"></SPAN> emitting HMM
+states is a potential recognition 
+hypothesis<A NAME="20903">&#160;</A>.
+Each of these paths has a log probability which is computed by summing
+the log probability of each individual transition in the path and the
+log probability of each emitting state generating the corresponding
+observation.  Within-HMM transitions are determined from the HMM
+parameters, between-model transitions are constant and word-end
+transitions are determined by the language model likelihoods attached
+to the word level networks.
+
+<P>
+The job of the decoder is to find those paths through the network
+which have the highest log probability.  These paths
+are found using a <SPAN  CLASS="textit">Token Passing</SPAN> algorithm.  A token represents
+a partial path through the network extending from time 0 through to time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>.
+At time 0, a token is placed in every possible start node.  <A NAME="20905">&#160;</A>
+
+<P>
+Each time step,
+tokens are propagated along connecting transitions stopping whenever they
+reach an emitting HMM state.  When there are multiple exits from a node,
+the token is copied so that all possible paths are explored in parallel.
+As the token passes across transitions and through nodes, its log probability
+is incremented by the corresponding transition and emission probabilities.
+A network node can hold at most <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> tokens.  Hence, at the end of each time step,
+all but the <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> best tokens in any node are discarded.
+
+<P>
+As each token passes through the network it must maintain a history
+recording its route.  The amount of detail in this history<A NAME="20548">&#160;</A> depends
+on the required recognition output.  Normally, only word sequences
+are wanted and hence, only transitions out of word-end nodes<A NAME="20549">&#160;</A> need
+be recorded.  However, for some purposes, it is useful to know the
+actual model sequence and the time of each model to model transition.
+Sometimes a description of each path down to the state level
+is required.  All of this information, whatever level of detail is
+required, can conveniently be represented using a lattice structure.
+
+<P>
+Of course, the number of tokens allowed per node and the amount of
+history information requested will have a significant impact on
+the time and memory needed to compute the lattices.  The most
+efficient configuration is <SPAN CLASS="MATH"><IMG
+ WIDTH="48" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img475.png"
+ ALT="$ N=1$"></SPAN> combined with just 
+word level history information and this is sufficient
+for most purposes.
+
+<P>
+A large network will have many nodes and one way to make a significant
+reduction in the computation needed is to only propagate tokens which
+have some chance of being amongst the eventual winners.  This process
+is called <SPAN  CLASS="textit">pruning</SPAN>.  It is implemented at each time step by
+keeping a record of the best token overall and de-activating all
+tokens whose log probabilities fall more than a <SPAN  CLASS="textit">beam-width</SPAN>
+below the best.  For efficiency reasons, it is best to implement primary
+pruning<A NAME="20552">&#160;</A> at the model rather than the state level.  Thus, models
+are deactivated when they have no tokens in any state within the beam and
+they are reactivated whenever active tokens are propagated into them.
+State-level pruning is also implemented by replacing any token by a 
+null (zero probability) token if it falls outside of the beam.
+If the pruning beam-width<A NAME="20553">&#160;</A> is set too small then the most likely
+path might be pruned before its token reaches the end of the utterance.
+This results in a <SPAN  CLASS="textit">search error</SPAN>.  Setting the beam-width is
+thus a compromise between speed and avoiding search errors.
+
+<P>
+When using word loops with bigram probabilities, tokens emitted from
+word-end nodes will have a language model probability added to them
+before entering the following word.  Since the range of language
+model probabilities is relatively small, a narrower beam can be
+applied to word-end nodes without incurring additional 
+search errors<A NAME="20555">&#160;</A>.
+This beam is calculated relative to the best word-end token and
+it is called a <SPAN  CLASS="textit">word-end beam</SPAN>.  In the case, of a recognition
+network with an arbitrary topology, word-end pruning may still be
+beneficial but this can only be justified empirically.
+
+<P>
+Finally, a third type of pruning control is provided.  An upper-bound
+on the allowed use of compute resource can be applied by setting
+an upper-limit on the number of models in the network which can
+be active simultaneously.  When this limit is reached, the pruning
+beam-width is reduced in order to prevent it being exceeded.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

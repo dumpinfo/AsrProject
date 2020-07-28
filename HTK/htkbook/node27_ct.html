@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Step 2 - the Dictionary</TITLE>
+<META NAME="description" CONTENT="Contents of Step 2 - the Dictionary">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node28_mn.html">
+<LINK REL="previous" HREF="node26_mn.html">
+<LINK REL="up" HREF="node25_mn.html">
+<LINK REL="next" HREF="node28_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02312000000000000000">
+Step 2 - the Dictionary</A>
+</H2>
+
+<P>
+The first step in building a dictionary is to create a sorted list of the
+required words. 
+In the telephone dialling task pursued here, it is quite easy to create a list
+of required words by hand. However, if the task were more complex, it would be
+necessary to build a word list from the sample sentences present in the training
+data. Furthermore, to build robust acoustic models, it is necessary to train
+them on a large set of sentences containing many words and preferably
+phonetically balanced. For these reasons, the training data will consist of
+English sentences unrelated to the phone recognition task. Below, a short
+example of creating a word list from sentence prompts will be given. As noted
+above the training sentences given here are extracted from some prompts used
+with the TIMIT database<A NAME="3454">&#160;</A> and for convenience reasons they 
+have been renumbered. For example, the first few items might be as follows
+<BR>
+<BR>
+<BR>
+<PRE>
+    S0001 ONE VALIDATED ACTS OF SCHOOL DISTRICTS
+    S0002 TWO OTHER CASES ALSO WERE UNDER ADVISEMENT
+    S0003 BOTH FIGURES WOULD GO HIGHER IN LATER YEARS
+    S0004 THIS IS NOT A PROGRAM OF SOCIALIZED MEDICINE
+    etc
+</PRE>
+The desired training word list<A NAME="3458">&#160;</A> (<TT>wlist</TT>) could then be
+extracted automatically from these.  Before using HTK, one would need to edit
+the text into a suitable format.  For example, it would be necessary to change
+all white space to newlines and then to use the UNIX utilities <TT>sort</TT>
+and <TT>uniq</TT> to sort the words into a unique alphabetically ordered set,
+with one word per line.  The script <TT>prompts2wlist</TT> from the
+<TT>HTKTutorial</TT> directory can be used for this purpose.
+
+<P>
+The dictionary<A NAME="3464">&#160;</A><A NAME="3465">&#160;</A>  
+itself can be built from a standard source 
+using HDM<SMALL>AN</SMALL><A NAME="3995">&#160;</A>.
+For this example, the British English BEEP pronouncing dictionary will be
+used<A NAME="tex2html9" HREF="footnode_mn.html#foot3996" TARGET="footer"><SUP><SPAN CLASS="arabic">3</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A>.  
+Its phone set will be adopted without modification except that 
+the stress marks will be removed and a short-pause (<TT>sp</TT>) will
+be added to the end of every pronunciation. If the dictionary contains any
+silence markers then the <TT>MP</TT> command will merge the <TT>sil</TT> and 
+<TT>sp</TT> phones into a single <TT>sil</TT>. These changes can be applied 
+using HDM<SMALL>AN</SMALL> and an edit script (stored in <TT>global.ded</TT>)
+containing the three commands
+<PRE>
+   AS sp
+   RS cmu
+   MP sil sil sp
+</PRE>
+where <TT>cmu</TT> refers to a style of stress marking<A NAME="3479">&#160;</A> in which 
+the lexical stress level is
+marked by a single digit appended to the phone name (e.g. <TT>eh2</TT> means
+the phone <TT>eh</TT> with level 2 stress). 
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:step2">&#160;</A><IMG
+ WIDTH="457" HEIGHT="351" ALIGN="MIDDLE" BORDER="0"
+ SRC="img107.png"
+ ALT="% latex2html id marker 48701
+$\textstyle \parbox{100mm}{ \begin{center}\setlengt...
+...extbf{ Fig. \thechapter.\arabic{figctr}  Step 2}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+The command
+<PRE>
+    HDMan -m -w wlist -n monophones1 -l dlog dict beep names
+</PRE>
+will create a new dictionary called <TT>dict</TT> by searching the source
+dictionaries <TT>beep</TT> and <TT>names</TT> to find pronunciations for each
+word in <TT>wlist</TT> (see Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>). Here, the <TT>wlist</TT> in
+question needs only to be a sorted list of the words appearing in the task
+grammar given above.
+
+<P>
+Note that <TT>names</TT> is a manually constructed file containing
+pronunciations for the proper names used in the task grammar. The option
+<TT>-l</TT> instructs HDM<SMALL>AN</SMALL> to output a log file <TT>dlog</TT> which 
+contains various statistics about the constructed dictionary. In particular,
+it indicates if there are words missing. HDM<SMALL>AN</SMALL> can also output a list
+of the phones used, here called <TT>monophones1</TT>. Once training and test
+data has been recorded, an HMM will be estimated for each of these phones.
+
+<P>
+The general format of each dictionary entry<A NAME="3499">&#160;</A> is
+<PRE>
+    WORD [outsym] p1 p2 p3 ....
+</PRE>
+which means that the word <TT>WORD</TT> is pronounced as the sequence of phones
+<TT>p1 p2 p3 ...</TT>.  The string in square brackets specifies the string to
+output when that word is recognised.  If it is omitted then the word itself is
+output.  If it is included but empty, then nothing is output.
+
+<P>
+To see what the dictionary is like, here are a few entries.
+<PRE>
+    A               ah sp
+    A               ax sp
+    A               ey sp
+    CALL            k ao l sp
+    DIAL            d ay ax l sp
+    EIGHT           ey t sp
+    PHONE           f ow n sp
+    SENT-END    []  sil
+    SENT-START  []  sil
+    SEVEN           s eh v n sp
+    TO              t ax sp
+    TO              t uw sp
+    ZERO            z ia r ow sp
+</PRE>
+Notice that function words such as <TT>A</TT> and <TT>TO</TT>
+have multiple pronunciations.
+The entries for <TT>SENT-START</TT> and <TT>SENT-END</TT> have a silence
+model <TT>sil</TT> as their pronunciations and null output symbols.  
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

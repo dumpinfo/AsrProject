@@ -1,0 +1,59 @@
+WARNING: no script file c:/HTK/Dict/BeebDict/beep/myHTKdict.sort.ded
+
+Dictionary Usage Statistics
+---------------------------
+  Dictionary    TotalWords WordsUsed  TotalProns PronsUsed
+myHTKdict.so    237822     237822     257179     257179
+myHTK-tri.di    237822     237822     257179     257179
+
+237822 words required, 0 missing
+
+New Phone Usage Counts
+---------------------
+  1. ah    : 30966
+  2. ax    : 147980
+  3. ey    : 34334
+  4. z     : 92976
+  5. b     : 43853
+  6. oh    : 31879
+  7. m     : 60653
+  8. l     : 111081
+  9. eh    : 55586
+ 10. v     : 22364
+ 11. ih    : 166032
+ 12. s     : 123280
+ 13. iy    : 46414
+ 14. d     : 74328
+ 15. jh    : 13569
+ 16. y     : 14102
+ 17. n     : 143959
+ 18. r     : 109882
+ 19. p     : 53508
+ 20. t     : 131692
+ 21. f     : 30304
+ 22. aa    : 17412
+ 23. k     : 88014
+ 24. hh    : 15324
+ 25. uw    : 15429
+ 26. ae    : 52433
+ 27. ay    : 30537
+ 28. ow    : 27333
+ 29. ng    : 27424
+ 30. sh    : 20429
+ 31. w     : 16978
+ 32. ea    :  3611
+ 33. ia    : 10284
+ 34. g     : 23118
+ 35. th    :  5345
+ 36. ao    : 18041
+ 37. ua    :  2788
+ 38. aw    :  6624
+ 39. zh    :   991
+ 40. er    : 13290
+ 41. ch    :  8540
+ 42. uh    :  7577
+ 43. oy    :  2179
+ 44. dh    :  1716
+ 45. sil   :     3
+
+Dictionary myHTK-tri.dict created

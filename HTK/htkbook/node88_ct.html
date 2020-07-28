@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Label File Structure</TITLE>
+<META NAME="description" CONTENT="Contents of Label File Structure">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node89_mn.html">
+<LINK REL="previous" HREF="node87_mn.html">
+<LINK REL="up" HREF="node87_mn.html">
+<LINK REL="next" HREF="node89_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03310000000000000000">&#160;</A><A NAME="s:labstruct">&#160;</A>
+<BR>
+Label File Structure
+</H1>
+
+<P>
+Most transcriptions are single-alternative and single-level, that is
+to say, the associated speech file is described by a single sequence
+of labelled segments.  Most standard label formats are of this kind.
+Sometimes, however, it is useful to have several levels of labels associated
+with the same basic segment sequence.   For example, in training a HMM
+system it is useful to have both the word level transcriptions and the
+phone level transcriptions <SPAN  CLASS="textit">side-by-side</SPAN>.  <A NAME="7880">&#160;</A>
+
+<P>
+Orthogonal to the requirement for multiple levels of description,
+a transcription may also need to include multiple alternative
+descriptions of the same speech file.  For example, the output
+of a speech recogniser may be in the form of an <SPAN  CLASS="textit">N-best</SPAN> list
+where each word sequence in the list represents one possible interpretation
+of the input.<A NAME="7882">&#160;</A>
+
+<P>
+As an example, Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A> shows a speech file and three
+different ways in which it might be labelled.  In part (a), just a simple
+orthography is given and this single-level single-alternative type of
+transcription is the  commonest case. Part (b) shows a 2-level
+transcription  where the basic level consists of a sequence of phones but
+a higher level of word labels are also provided.  Notice that there is a
+distinction between the basic level and the higher levels, since only the
+basic level has explicit boundary locations marked for every segment. 
+The higher levels do not have explicit boundary information since this
+can always be inferred from the basic level boundaries. Finally, part (c)
+shows the case where knowledge of the contents of the speech file is
+uncertain and three possible word sequences are given.
+
+<P>
+HTK label files support multiple-alternative and multiple-level
+transcriptions.  In addition to start and end times on the basic level, a
+label at  any level may also have a score associated with it.  When a
+transcription is loaded, all but one specific alternative can be discarded by
+setting the configuration variable <TT>TRANSALT</TT><A NAME="8223">&#160;</A> to the required
+alternative <TT>N</TT>, where the first (i.e. normal) alternative is numbered
+1.  Similarly, all but a specified level can be discarded by setting the
+configuration variable 
+<TT>TRANSLEV</TT><A NAME="8224">&#160;</A> to 
+the required level number where again the first (i.e.
+normal) level is numbered 1.
+
+<P>
+All non-HTK formats are limited to
+single-level single-alternative transcriptions.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

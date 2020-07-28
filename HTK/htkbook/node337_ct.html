@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of VQ Codebook Format</TITLE>
+<META NAME="description" CONTENT="Contents of VQ Codebook Format">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node338_mn.html">
+<LINK REL="previous" HREF="node336_mn.html">
+<LINK REL="up" HREF="node335_mn.html">
+<LINK REL="next" HREF="node338_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051152000000000000000">&#160;</A><A NAME="s:HQuant-VQ_Codebook_Format">&#160;</A>
+<BR>
+VQ Codebook Format
+</H2>
+
+<P>
+Externally, a VQ table is stored in a text file consisting of a header
+followed by a sequence of entries representing each tree node.  One tree
+is built for each stream and linear codebooks are represented by a tree
+in which there are only right branches.
+
+<P>
+The header consists of a magic number followed by the covariance kind,
+the number of following nodes, the number of streams and the width
+of each stream.
+<PRE><TT>
+		  header=		 magic type covkind numNodes numS swidth1 swidth2  ...
+</TT></PRE>
+
+where <I CLASS="sans">magic</I> is a magic number which is usually the
+code for the parameter kind of the data.  The <I CLASS="sans">type</I>
+defines the type of codebook
+<PRE><TT>
+		  type=		 linear (0) , binary tree-structured (1)
+</TT></PRE>
+
+The covariance kind determines the type of distance metric to be
+used
+<PRE><TT>
+		  covkind=		 diagonal covariance (1), full covariance (2), euclidean (5)
+</TT></PRE>
+
+Within the file, these covariances are stored in inverse form.
+
+<P>
+Each node entry has the following form
+<PRE><TT>
+		  node-entry=		 stream vqidx nodeId leftId rightId 
+<BR>
+mean-vector <BR>
+</TT></PRE>
+
+<I CLASS="sans">Stream</I> is the stream index for this entry. <I CLASS="sans">Vqidx</I>
+is the VQ index corresponding to this entry.  This is the number that
+appears in vector quantised speech files.  In tree-structured code-books,
+it is zero for non-terminal nodes. Every node has a unique
+integer identifier (distinct from the VQ index) given by <I CLASS="sans">nodeId</I>.
+The left and right daughter of the current node are given by
+<I CLASS="sans">leftId</I> and <I CLASS="sans">rightId</I>.  In a linear codebook, the left identifier
+is always zero.
+
+<P>
+Some examples of VQ tables are given in Chapter&nbsp;<A HREF="node152_ct.html#c:discmods">11</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

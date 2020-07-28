@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Data-Driven Clustering</TITLE>
+<META NAME="description" CONTENT="Contents of Data-Driven Clustering">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node148_mn.html">
+<LINK REL="previous" HREF="node146_mn.html">
+<LINK REL="up" HREF="node143_mn.html">
+<LINK REL="next" HREF="node148_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03740000000000000000">&#160;</A><A NAME="s:ddclust">&#160;</A>
+<BR>
+Data-Driven Clustering
+</H1>
+
+<P>
+In
+section&nbsp;<A HREF="node145_ct.html#s:mkCDHMMs">10.2</A>, a method of triphone construction was described
+which involved cloning all monophones and then re-estimating them using data
+for which monophone labels have been replaced by triphone labels.  
+This will lead to a very large set of models, and relatively little
+training data for each model.  Applying the argument that context will not greatly affect
+the centre states of triphone models, one way to reduce the 
+total number of parameters without 
+significantly altering the models' ability to represent the different
+contextual effects might be to tie all of the centre states across all
+models derived from the same monophone.  This tying could 
+be<A NAME="18540">&#160;</A>
+done by writing an edit script of the form
+<PRE>
+     TI "iyS3" {*-iy+*.state[3]}
+     TI "ihS3" {*-ih+*.state[3]}
+     TI "ehS3" {*-eh+*.state[3]}
+      .... etc
+</PRE>
+Each <TT>TI</TT> command would tie all the centre states of all triphones
+in each phone group. Hence, if there were an average of 100 triphones
+per phone group then the total number of states per group
+would be reduced from
+300 to 201.
+
+<P>
+Explicit tyings such as these can have some positive effect but overall they 
+are not very satisfactory.  Tying all centre states is too severe and worse
+still, the problem of undertraining for the left and right states remains.
+A much better approach is to use clustering to decide which states to
+tie.  HHE<SMALL>D</SMALL> provides two mechanisms for this.  In this section
+a data-driven clustering approach will be described and in
+the next section, an alternative decision tree-based approach is presented.
+
+<P>
+Data-driven clustering is performed by the <A NAME="18545">&#160;</A>
+<TT>TC</TT><A NAME="18752">&#160;</A> and 
+<TT>NC</TT><A NAME="18753">&#160;</A>
+commands.  These both invoke the same top-down hierarchical
+procedure.  Initially all states are placed in individual
+clusters.  The pair of clusters which when combined would form the smallest
+resultant cluster are merged.  This process repeats until either the
+size of the largest
+cluster reaches the threshold set by the <TT>TC</TT> command or
+the total number of clusters has fallen to that
+specified by by the <TT>NC</TT> command.  The size of cluster
+is defined as the greatest distance between any two states.
+The distance metric depends on the type of state distribution.
+For single Gaussians, a weighted Euclidean distance between the means
+is used and for tied-mixture systems a  Euclidean distance between the
+mixture weights is used.  For all other cases, the average probability
+of each component mean with respect to the other state is used.
+The details of the algorithm and these metrics are given in the reference
+section for HHE<SMALL>D</SMALL>.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:tiedstate">&#160;</A><IMG
+ WIDTH="457" HEIGHT="477" ALIGN="MIDDLE" BORDER="0"
+ SRC="img444.png"
+ ALT="% latex2html id marker 51138
+$\textstyle \parbox{100mm}{ \begin{center}\setlengt...
+...hapter.\arabic{figctr}  Data-driven state tying}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+As an example, the following HHE<SMALL>D</SMALL> script would cluster and tie the
+corresponding states of the triphone group for the phone <TT>ih</TT>
+<PRE>
+     TC 100.0 "ihS2" {*-ih+*.state[2]}
+     TC 100.0 "ihS3" {*-ih+*.state[3]}
+     TC 100.0 "ihS4" {*-ih+*.state[4]}
+</PRE>
+In this example, each <TT>TC</TT> command performs clustering on the specified
+set of states, each cluster is  tied and output as a macro.  The macro name
+is generated by appending the cluster index to
+the macro  name given in the command.   The effect of this command 
+is illustrated in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  Note that if a word-internal
+triphone system is being built, it is sensible to include biphones as well
+as triphones in the item list, for example, the first command above would
+be written as
+<PRE>
+     TC 100.0 "ihS2" {(*-ih,ih+*,*-ih+*).state[2]}
+</PRE>
+If the above <TT>TC</TT> commands are repeated for all phones, the resulting  set of
+tied-state models will have far
+fewer parameters in total than the original untied set.  The numeric argument
+immediately following the <TT>TC</TT> command name is the cluster threshold.  Increasing
+this value will allow larger and hence, fewer clusters. The aim, of
+course, is to strike the right balance between compactness and the acoustic
+accuracy of the individual models.  In practice, the use of this command
+requires some experimentation to find a good threshold value. HHE<SMALL>D</SMALL> provides
+extensive trace  output for monitoring clustering operations.  Note in this
+respect that as well as setting tracing from the command line and the
+configuration file, tracing in HHE<SMALL>D</SMALL> can be set by the <TT>TR</TT> command. 
+Thus,  tracing can be controlled at the command level. Further trace
+information can be obtained by including the <TT>SH</TT> command<A NAME="18754">&#160;</A> at strategic
+points in the edit script.  The effect of executing this command is to list
+out all of the parameter tyings currently in force.
+
+<P>
+A potential problem with the use of the <TT>TC</TT> and <TT>NC</TT> commands is
+that <I>outlier</I> states will tend to form their own singleton 
+clusters<A NAME="18574">&#160;</A> for
+which there is then insufficient data to properly train.  One solution to
+this is to use the <TT>RO</TT> command<A NAME="18755">&#160;</A> to 
+remove outliers<A NAME="18577">&#160;</A>.  This commmand has
+the form
+<PRE>
+     RO thresh "statsfile"
+</PRE>
+where <TT>statsfile</TT> is the name of a statistics file<A NAME="18581">&#160;</A> output using the
+<TT>-s</TT> option of HER<SMALL>EST</SMALL>.  This statistics file holds the 
+<EM>occupation counts</EM> for all states of the HMM set being trained.  
+The term <EM>occupation count</EM> refers to the number of frames allocated to a
+particular state and can be used as a measure of how much training data is
+available for estimating the parameters of that state.  
+The <TT>RO</TT> command must be executed <I>before</I> the <TT>TC</TT> or
+<TT>NC</TT> commands used to do the actual clustering. Its effect is to simply
+read in the statistics information from the given file and then to set a flag
+instructing the
+<TT>TC</TT> or <TT>NC</TT> commands to remove any outliers remaining at 
+the conclusion
+of the normal clustering process.  This is done by repeatedly finding the
+cluster with the smallest total occupation count and merging it with its
+nearest neighbour. This process is repeated until all clusters have a total
+occupation count which exceeds <TT>thresh</TT>, thereby ensuring that every
+cluster of states will be properly trained in the subsequent re-estimation
+performed by HER<SMALL>EST</SMALL>.<A NAME="18594">&#160;</A>
+
+<P>
+On completion of the above clustering and tying procedures, many of the models
+may be effectively identical, since acoustically similar triphones may share
+common clusters for all their emitting states.  They are then, in effect,
+so-called <I>generalised triphones</I>.<A NAME="18596">&#160;</A> State tying
+can be further exploited if the HMMs which are effectively equivalent are
+identified and then tied via the physical-logical mapping<A NAME="tex2html45" HREF="footnode_mn.html#foot18597" TARGET="footer"><SUP><SPAN CLASS="arabic">10</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A> facility provided by HMM lists (see section&nbsp;<A HREF="node105_ct.html#s:hmmsets">7.4</A>). The
+effect of this would be to reduce the total number of HMM definitions required.
+HHE<SMALL>D</SMALL> provides a compaction command to do all of this automatically.
+For example, the command
+<PRE>
+     CO newList
+</PRE>
+<A NAME="18756">&#160;</A>will compact<A NAME="18603">&#160;</A> 
+the currently loaded HMM set by identifying equivalent models
+and then tying them via the new HMM list output  to the 
+file <TT>newList</TT>.  Note, however, that for two HMMs to be tied, they
+must be identical in all respects.
+This is one of the reasons why transition parameters are often tied
+across triphone groups otherwise HMMs with identical states would still
+be left distinct due to minor differences in their transition matrices.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of The binary LM format</TITLE>
+<META NAME="description" CONTENT="Contents of The binary LM format">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node215_mn.html">
+<LINK REL="up" HREF="node213_mn.html">
+<LINK REL="next" HREF="node217_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION04373000000000000000">&#160;</A><A NAME="s:HLMbinarylmformat">&#160;</A>
+<A NAME="23555">&#160;</A>
+<BR>
+The binary LM format
+</H2>
+This format is the binary version of modified ARPA-text format. It was
+designed to be a compact, self-contained format which aids the fast
+loading of large language model files. The format is similar to the
+original ARPA-text format with the following modification
+<PRE>
+         &lt;header&gt; = { (ngram &lt;int&gt;=&lt;int&gt;) | (ngram &lt;int&gt;~&lt;int&gt;) }
+</PRE>
+The first alternative in the rule describes a section stored as text,
+the second one describes a section stored in binary. The unigram
+section of a language model file is always stored as text.
+<PRE>
+       &lt;ngramdef&gt; = &lt;txtgram&gt; | &lt;bingram&gt;
+        &lt;txtgram&gt; = &lt;float&gt; { &lt;word&gt; } [ &lt;float&gt; ]
+        &lt;bingram&gt; = &lt;f_type&gt; &lt;f_size&gt; &lt;f_float&gt; { &lt;f_word&gt; } [ &lt;f_float&gt; ]
+</PRE>
+In the above definition, <TT>&lt;f_type&gt;</TT> is a 1-byte flags field, <TT>&lt;f_size&gt;</TT> is a 1-byte unsigned number indicating the total size in
+bytes of the remaining fields, <TT>&lt;f_float&gt;</TT> is a 4-bytes field for
+the <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram probability, <TT>&lt;f_word&gt;</TT> is a numeric word id, and
+the last <TT>&lt;f_float&gt;</TT> is the back-off weight. The numeric word
+identifier is an unsigned integer assigned to each word in the order
+of occurrence of the words in the unigram section. The minimum size of
+this field is 2-bytes as used in vocabulary lists with up to 65,5355
+words. If this number is exceeded the field size is automatically
+extended to accommodate all words.  The size of the fields used to
+store the probability and back-off weight are typically 4 bytes,
+however this may vary on different computer architectures.  The least
+significant bit of the flags field indicates the presence/absence of a
+back-off weight with corresponding values 1/0. The remaining bits of
+the flags field are not used at present.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

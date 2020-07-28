@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Using Discrete Models with Speech</TITLE>
+<META NAME="description" CONTENT="Contents of Using Discrete Models with Speech">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node155_mn.html">
+<LINK REL="previous" HREF="node153_mn.html">
+<LINK REL="up" HREF="node152_mn.html">
+<LINK REL="next" HREF="node155_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03820000000000000000">&#160;</A><A NAME="s:speechvq">&#160;</A>
+<BR>
+Using Discrete Models with Speech
+</H1>
+
+<P>
+As noted in section&nbsp;<A HREF="node82_ct.html#s:vquant">5.14</A>, discrete HMMs can be used to model
+speech by using a vector quantiser to map continuous density vectors into
+discrete symbols.  A vector quantiser depends on a so-called <SPAN  CLASS="textit">codebook</SPAN> 
+which defines a set of partitions of the vector space.  Each partition
+is represented by the mean value of the speech vectors belonging
+to that partition and optionally  a variance representing the spread.
+Each incoming speech vector is then
+matched with each partition and assigned the index corresponding
+to the partition which is closest using a Mahanalobis distance metric.
+
+<P>
+In HTK such a codebook can be built using the tool HQ<SMALL>UANT</SMALL>.  This tool
+takes as input a set of continuous speech vectors, clusters them and uses
+the centroid and optionally the variance of each cluster to define
+the partitions.  HQ<SMALL>UANT</SMALL> can build both linear and tree structured
+codebooks.  To build a linear codebook, all training vectors are initially
+placed in one cluster and the mean calculated.  The mean is then perturbed
+to give two means and the training vectors are partitioned according to
+which mean is nearest to them.  The means are then recalculated and the
+data is repartitioned.  At each cycle, the total distortion (i.e. total
+distance between the cluster members and the mean) is recorded and repartitioning
+continues until there is no significant reduction in distortion.  The whole
+process then repeats by perturbing the mean of the cluster with the highest
+distortion.  This continues until the required number of clusters have been
+found.
+
+<P>
+Since all training vectors are reallocated at every cycle, this is an
+expensive algorithm to compute.  The maximum number of iterations within
+any single cluster increment can be limited using the configuration
+variable <TT>MAXCLUSTITER</TT><A NAME="19260">&#160;</A> 
+and although this can speed-up the computation
+significantly, the overall training process is still computationally expensive.
+Once built, vector quantisation is performed by scanning all codebook
+entries and finding the nearest entry.  Thus, if a large codebook is used,
+the run-time VQ look-up operation can also be expensive.
+
+<P>
+As an alternative to building a linear codebook, a tree-structured codebook
+can be used.  The algorithm for this is essentially the same as above
+except that every cluster is split at each stage so that the first cluster
+is split into two, they are split into four and so on.  At each stage, the
+means are recorded so that when using the codebook for vector quantising
+a fast binary search can be used to find the appropriate leaf cluster.
+Tree-structured codebooks are much faster to build since there is no
+repeated reallocation of vectors and much faster in use since only <!-- MATH
+ $O(\log_2 N)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="74" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img448.png"
+ ALT="$ O(\log_2 N)$"></SPAN>
+distance need to be computed where <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> is the size of the codebook.
+Unfortunately, however, tree-structured codebooks will normally incur higher 
+VQ distortion for a given codebook size.
+
+<P>
+When delta and acceleration coefficients are used, it is usually best
+to split the data into multiple streams (see section&nbsp;<A HREF="node81_ct.html#s:streams">5.13</A>.
+In this case, a separate codebook is built for each stream.
+
+<P>
+As an example, the following invocation of HQ<SMALL>UANT</SMALL> would
+generate a linear codebook in the file <TT>linvq</TT> using
+the data stored in the files listed in <TT>vq.scp</TT>.  
+<PRE>
+   HQuant -C config -s 4 -n 3 64 -n 4 16 -S vq.scp linvq
+</PRE>
+Here the configuration file <TT>config</TT> specifies the <TT>TARGETKIND</TT>
+as being <TT>MFCC_E_D_A</TT> i.e. static coefficients plus deltas plus
+accelerations plus energy.  The <TT>-s</TT> options requests that this
+parameterisation be split into
+4 separate streams.  By default, each individual codebook has 256 entries, however,
+the <TT>-n</TT> option can be used to specify alternative sizes.
+
+<P>
+If a tree-structured codebook was wanted rather than a linear codebook,
+the <TT>-t</TT> option would be set.
+Also the default is to use Euclidean distances both for building the
+codebook and for subsequent coding.  Setting the <TT>-d</TT> option
+causes a diagonal covariance Mahalanobis metric to be used and 
+the <TT>-f</TT> option causes a full covariance Mahalanobis metric
+to be used.
+
+<P>
+<A NAME="19261">&#160;</A>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:vqtohmm">&#160;</A><IMG
+ WIDTH="253" HEIGHT="428" ALIGN="MIDDLE" BORDER="0"
+ SRC="img449.png"
+ ALT="% latex2html id marker 51162
+$\textstyle \parbox{55mm}{ \begin{center}\setlength...
+...Fig. \thechapter.\arabic{figctr}  VQ Processing}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+Once the codebook is built, normal speech vector files can be 
+converted to discrete files using HC<SMALL>OPY</SMALL>.  
+This was explained 
+previously in section&nbsp;<A HREF="node82_ct.html#s:vquant">5.14</A>.  The basic mechanism is to
+add the qualifier <TT>_V</TT> to the 
+<TT>TARGETKIND</TT>.<A NAME="19312">&#160;</A>  This causes
+HP<SMALL>ARM</SMALL> to append a codebook index to each constructed observation
+vector.  If the configuration variable <TT>SAVEASVQ</TT> is set true, then
+the output routines in HP<SMALL>ARM</SMALL> will discard the original vectors
+and just save the VQ indices in a <TT>DISCRETE</TT> file. 
+Alternatively, HTK will regard any speech vector with <TT>_V</TT> set
+as being compatible with discrete HMMs.  Thus, it is not necessary
+to explicitly create a database of discrete training files if
+a set of continuous speech vector parameter files already exists.
+Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A> illustrates this process.
+
+<A NAME="19263">&#160;</A>
+<A NAME="19264">&#160;</A>
+
+<P>
+Once the training data has been configured for discrete HMMs, the 
+rest of the training process is similar to that previously described.
+The normal sequence is to build a set of monophone models and then
+clone them to make triphones.  As in continuous density systems, 
+state tying can be used to improve the
+robustness of the parameter estimates.  However, in the case of discrete HMMs,
+alternative methods based on interpolation are possible.  These are discussed
+in section&nbsp;<A HREF="node156_ct.html#s:psmooth">11.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

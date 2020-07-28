@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Step 4 - Creating the Transcription Files</TITLE>
+<META NAME="description" CONTENT="Contents of Step 4 - Creating the Transcription Files">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node30_mn.html">
+<LINK REL="previous" HREF="node28_mn.html">
+<LINK REL="up" HREF="node25_mn.html">
+<LINK REL="next" HREF="node30_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION02314000000000000000">
+Step 4 - Creating the Transcription Files</A>
+</H2>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:step3">&#160;</A><IMG
+ WIDTH="231" HEIGHT="376" ALIGN="MIDDLE" BORDER="0"
+ SRC="img108.png"
+ ALT="% latex2html id marker 48704
+$\textstyle \parbox{50mm}{ \begin{center}\setlength...
+...extbf{ Fig. \thechapter.\arabic{figctr}  Step 3}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+To train a set of HMMs, every file of training data must have an associated
+phone level transcription.  Since there is no hand labelled data to bootstrap a
+set of models, a flat-start scheme will be used instead.  To do this, two sets
+of phone transcriptions will be needed.  The set used initially will have no
+short-pause (<TT>sp</TT>) models between words.  Then once reasonable phone
+models have been generated, an <TT>sp</TT> model will be inserted between words
+to take care of any pauses introduced by the speaker.<A NAME="3541">&#160;</A>
+
+<P>
+The starting point for both sets of phone transcription is an
+orthographic<A NAME="3542">&#160;</A> transcription in HTK label
+format.  This can be created fairly easily using a text editor or a scripting
+language.
+An example of this is found in the RM Demo at point 0.4. Alternatively, the
+script <TT>prompts2mlf</TT> has been provided in the <TT>HTKTutorial</TT>
+directory.
+The effect should be to convert the prompt utterances exampled above into the
+following form:
+<PRE>
+    #!MLF!#
+    "*/S0001.lab"
+    ONE 
+    VALIDATED 
+    ACTS 
+    OF 
+    SCHOOL 
+    DISTRICTS
+    .
+    "*/S0002.lab"
+    TWO 
+    OTHER 
+    CASES 
+    ALSO 
+    WERE 
+    UNDER 
+    ADVISEMENT
+    .
+    "*/S0003.lab" 
+    BOTH 
+    FIGURES 
+    (etc.)
+</PRE>
+As can be seen, the prompt labels need to be converted into path names, each
+word should be written on a single line and each utterance should be terminated
+by a single period on its own.  The first line of the file just identifies the
+file as a <SPAN  CLASS="textit">Master Label File</SPAN> (MLF).  This is a single file containing a
+complete set of transcriptions.  HTK allows each individual transcription to
+be stored in its own file but it is more efficient to use an MLF.
+<A NAME="3548">&#160;</A><A NAME="3549">&#160;</A>
+
+<P>
+The form of the path name used in the MLF deserves some explanation since it is
+really a <SPAN  CLASS="textit">pattern</SPAN> and not a name.<A NAME="3551">&#160;</A>
+When HTK processes speech files, it expects to find a transcription (or 
+<I>label file</I>) with the same name but a different extension.  Thus, if the file
+<TT>/root/sjy/data/S0001.wav</TT> was being processed, HTK would look for a
+label file called <TT>/root/sjy/data/S0001.lab</TT>.  When MLF files are used,
+HTK scans the file for a pattern which matches the required label file name.
+However, an asterix will match any character string and hence the pattern used
+in the example is in effect path independent.  It therefore allows the same
+transcriptions to be used with different versions of the speech data to be
+stored in different locations.
+
+<P>
+Once the word level MLF has been created, phone level MLFs can be generated
+using the label editor HLE<SMALL>D</SMALL><A NAME="4000">&#160;</A>. For example,
+assuming that the above word level MLF is stored in the file
+<TT>words.mlf</TT>, the command
+<PRE>
+    HLEd -l '*' -d dict -i phones0.mlf mkphones0.led words.mlf
+</PRE>
+will generate a phone level transcription of the following form
+where the <TT>-l</TT> option is needed to generate the path '<code>*</code>' in the 
+output patterns.
+<PRE>
+    #!MLF!#
+    "*/S0001.lab"
+    sil
+    w
+    ah
+    n
+    v
+    ae
+    l
+    ih
+    d
+    .. etc
+</PRE>
+This process is illustrated in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.
+
+<P>
+The HLE<SMALL>D</SMALL> edit script <TT>mkphones0.led</TT> 
+contains the following commands
+<PRE>
+   EX
+   IS sil sil
+   DE sp
+</PRE>
+The expand <TT>EX</TT> command replaces each word in <TT>words.mlf</TT> 
+by the corresponding pronunciation in the dictionary file <TT>dict</TT>.  
+The <TT>IS</TT>
+command inserts a silence model <TT>sil</TT> at the start and end of
+every utterance.  Finally, the delete <TT>DE</TT> command deletes all
+short-pause <TT>sp</TT> labels, which are not wanted in the transcription
+labels at this point.  
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:step4">&#160;</A><IMG
+ WIDTH="276" HEIGHT="426" ALIGN="MIDDLE" BORDER="0"
+ SRC="img109.png"
+ ALT="% latex2html id marker 48705
+$\textstyle \parbox{60mm}{ \begin{center}\setlength...
+...extbf{ Fig. \thechapter.\arabic{figctr}  Step 4}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

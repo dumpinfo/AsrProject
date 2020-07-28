@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node374_mn.html">
+<LINK REL="previous" HREF="node372_mn.html">
+<LINK REL="up" HREF="node372_mn.html">
+<LINK REL="next" HREF="node374_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051241000000000000000">&#160;</A><A NAME="s:LFoF-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="32405">&#160;</A>
+This program will read one or more input gram files and generate a
+<SPAN  CLASS="textit">frequency-of-frequency</SPAN> or <SPAN  CLASS="textit">FoF</SPAN> file. A FoF file is a
+list giving the number of times that an <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram occurs just once, the
+number of times that an <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram occurs just twice, etc. The format of a
+FoF file is described in section&nbsp;<A HREF="node212_ct.html#s:FoFs">16.6</A>.<A NAME="32374">&#160;</A>
+
+<P>
+As for all tools which process gram files, the input gram files must
+each be sorted but they need not be sequenced. The counts in each
+input file can be modified by applying a multiplier factor.  Any <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram
+containing an id which is not in the word map is ignored, thus, the
+supplied word map will typically contain just those word and class ids
+required for the language model under construction (see
+LS<SMALL>UBSET</SMALL>).
+
+<P>
+LF<SMALL>O</SMALL>F also provides an option to generate an estimate
+of the number of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-grams which would be included in the final language
+model for each possible cutoff by setting <TT>LPCALC: TRACE = 2</TT>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

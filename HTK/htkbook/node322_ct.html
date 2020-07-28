@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node323_mn.html">
+<LINK REL="previous" HREF="node321_mn.html">
+<LINK REL="up" HREF="node320_mn.html">
+<LINK REL="next" HREF="node323_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051122000000000000000">&#160;</A><A NAME="s:HLRescore-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HLR<SMALL>ESCORE</SMALL> is invoked via the command line
+<PRE>
+   HLRescore [options] vocabFile LatFiles......
+</PRE>
+
+<P>
+HLR<SMALL>ESCORE</SMALL> reads each of the lattice files and performs te
+requested operation(s) on them. At least one of the following
+operations must be selected: find 1-best (<TT>-f</TT>), write lattices
+(<TT>-w</TT>), calculate statistics (<TT>-c</TT>).
+
+<P>
+The detailed operation of HLR<SMALL>ESCORE</SMALL> is controlled by the following
+command line options
+
+<DL COMPACT>
+<DT><TT>-i mlf</TT>
+<DD>Output transcriptions to master file <TT>mlf</TT>.
+
+<P>
+<DT><TT>-l s</TT>
+<DD>Directory in which to store label/lattice files.
+
+<P>
+<DT><TT>-n lm</TT>
+<DD>Load ARPA-format n-gram language model from file
+  <TT>lm</TT> and expand lattice with this LM. All acoustic scores are
+  unchanged but the LM scores are replaced and lattices nodes (i.e.   contexts) are expanded as required by the structure of the LM.
+
+<P>
+<DT><TT>-o s</TT>
+<DD>Choose how the output labels should be formatted.
+        <TT>s</TT> is a string with certain letters (from <TT>NSCTWM</TT>)
+        indicating binary flags that control formatting options.
+        <TT>N</TT> normalise acoustic scores by dividing by the duration
+        (in frames) of the segment.
+        <TT>S</TT> remove scores from output label.  By default 
+        scores will be set to the total likelihood of the segment.
+        <TT>C</TT> Set the transcription labels to start and end on
+        frame centres. By default start times are set to the start
+        time of the frame and end times are set to the end time of 
+        the frame.
+        <TT>T</TT> Do not include times in output label files.
+        <TT>W</TT> Do not include words in output label files
+        when performing state or model alignment.
+        <TT>M</TT> Do not include model names in output label
+        files.
+
+<P>
+<DT><TT>-t f [a]</TT>
+<DD>Perform lattice pruning after reading lattices with
+  beamwidth <TT>f</TT>. If second argument is given lower beam to
+  limit arcs per second to <TT>a</TT>.
+
+<P>
+<DT><TT>-u f</TT>
+<DD>Perform lattice pruning before writing output
+  lattices. Otherwise like <TT>-t</TT>.
+
+<P>
+<DT><TT>-p f</TT>
+<DD>Set the word insertion log probability to <TT>f</TT> 
+  (default 0.0).
+
+<P>
+<DT><TT>-a f</TT>
+<DD>Set the acoustic model scale factor to <TT>f</TT>.
+  (default value 1.0).
+
+<P>
+<DT><TT>-r f</TT>
+<DD>Set the dictionary pronunciation probability scale 
+        factor to <TT>f</TT>. (default value 1.0).
+
+<P>
+<DT><TT>-s f</TT>
+<DD>Set the grammar scale factor to <TT>f</TT>.
+        This factor post-multiplies the language model likelihoods
+        from the word lattices.  (default value 1.0).
+
+<P>
+<DT><TT>-d</TT>
+<DD>Take pronunciation probabilities from the dictionary
+  instead of from the lattice.
+
+<P>
+<DT><TT>-c</TT>
+<DD>Calculate and output lattice statistics.
+
+<P>
+<DT><TT>-f</TT>
+<DD>Find 1-best transcription (path) in lattice.
+
+<P>
+<DT><TT>-w</TT>
+<DD>Write output lattice after processing.
+
+<P>
+<DT><TT>-q s</TT>
+<DD>Choose how the output lattice should be formatted.
+         <TT>s</TT> is a string with certain letters (from <TT>ABtvaldmn</TT>)
+         indicating binary flags that control formatting options.
+         <TT>A</TT> attach word labels to arcs rather than nodes.
+         <TT>B</TT> output lattices in binary for speed.
+         <TT>t</TT> output node times.
+         <TT>v</TT> output pronunciation information.
+         <TT>a</TT> output acoustic likelihoods.
+         <TT>l</TT> output language model likelihoods.
+         <TT>d</TT> output word alignments (if available).
+         <TT>m</TT> output within word alignment durations.
+         <TT>n</TT> output within word alignment likelihoods.
+
+<P>
+<DT><TT>-y ext</TT>
+<DD>This sets the extension for output label files to
+        <TT>ext</TT> (default <TT>rec</TT>).
+
+<P>
+
+  <DT><TT>-F fmt</TT>
+<DD>Set the source data format to <TT>fmt</TT>.
+
+  <DT><TT>-G fmt</TT>
+<DD>Set the label file format to <TT>fmt</TT>.
+
+  <DT><TT>-H mmf</TT>
+<DD>Load HMM macro model file <TT>mmf</TT>.  This option
+     may be repeated to load multiple MMFs.
+
+  <DT><TT>-I mlf</TT>
+<DD>This loads the master label file <TT>mlf</TT>.  This option
+     may be repeated to load several MLFs.
+
+  <DT><TT>-J dir [ext]</TT>
+<DD>Add directory to the list of possible input
+	transform directories. Only one of the options can specify the
+	extrension to use for the input transforms.
+
+  <DT><TT>-K dir [ext]</TT>
+<DD>Output transform directory and optional extension
+	for output transforms. The default option is that there is no
+	output extension and the current transform directoryis used.
+
+  <DT><TT>-P fmt</TT>
+<DD>Set the target label format to <TT>fmt</TT>.
+
+<P>
+</DD>
+</DL>
+
+HLR<SMALL>ESCORE</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

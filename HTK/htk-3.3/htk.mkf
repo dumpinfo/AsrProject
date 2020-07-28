@@ -1,0 +1,23 @@
+all:
+        if not exist bin.win32 mkdir bin.win32
+	cd HTKLib
+	nmake /nologo /f htk_htklib_nt.mkf all
+	cd ..\HTKTools
+	nmake /nologo /f htk_htktools_nt.mkf all
+	cd ..\HLMLib
+	nmake /nologo /f htk_hlmlib_nt.mkf all
+	cd ..\HLMTools
+	nmake /nologo /f htk_hlmtools_nt.mkf all
+	cd ..
+
+clean:
+        if not exist bin.win32 mkdir bin.win32
+	cd HTKLib
+	nmake /nologo /f htk_htklib_nt.mkf clean
+	cd ..\HTKTools
+	nmake /nologo /f htk_htktools_nt.mkf clean
+	cd ..\HLMLib
+	nmake /nologo /f htk_hlmlib_nt.mkf clean
+	cd ..\HLMTools
+	nmake /nologo /f htk_hlmtools_nt.mkf clean
+	cd ..

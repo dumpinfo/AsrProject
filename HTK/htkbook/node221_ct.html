@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of The class LM single file format</TITLE>
+<META NAME="description" CONTENT="Contents of The class LM single file format">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="previous" HREF="node220_mn.html">
+<LINK REL="up" HREF="node217_mn.html">
+<LINK REL="next" HREF="node222_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION04384000000000000000">&#160;</A><A NAME="s:HLMclassSinglmformat">&#160;</A>
+<A NAME="23630">&#160;</A>
+<BR>
+The class LM single file format
+</H2>
+An alternative to the class language model file described in section
+<A HREF="node220_ct.html#s:HLMclasslmformat">16.8.3</A> is the composite single-file class language
+model file, produced by LL<SMALL>INK</SMALL> <TT>-s</TT> - this does <I>not</I>
+require the two component files to be present since it integrates them
+into a single file.  The format of this resulting file is as follows:
+
+<P>
+<PRE>
+  CLASS MODEL
+  Word|Class &lt;string: counts/probs&gt;
+
+  Derived from: &lt;file&gt;
+  Number of classes: &lt;int&gt;
+  Number of words: &lt;int&gt;
+  Iterations: &lt;int&gt;
+
+  Class n-gram counts follow; word|class component is at end of file.
+</PRE>
+The second line must state either <TT>counts</TT> or <TT>probabilities</TT> as
+appropriate for the relevant component file used when constructing
+this composite file.  The fields are mostly self-explanatory.  The
+<TT>Iterations:</TT> header is for information only and records how many
+iterations had been performed to produce the classmap contained within
+the file, and the <TT>Derived from:</TT> header is similarly also for
+display purposes only.  Any number of headers may be present; the
+header section is terminated by finding a line beginning with the five
+characters making up <TT>Class</TT>.  The colon-terminated headers may be
+in any order.
+
+<P>
+The class-given-classes <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram component of the model then follows
+immediately in any of the formats supported by word <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram language
+models - ie. those described in section <A HREF="node213_ct.html#s:HLMlmfileformats">16.7</A>.  No
+blank lines are expected between the header shown above and the
+included model, although they may be supported by the embedded model.
+
+<P>
+Immediately following the class-given-classes <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram component
+follows the body of the word-given-class probabilities or counts file
+as described in sections <A HREF="node218_ct.html#s:HLMclasscountslmformat">16.8.1</A> and
+<A HREF="node219_ct.html#s:HLMclassprobslmformat">16.8.2</A> above.  That is, the remainder of the
+file consists of lines of the form:
+<PRE>
+  &lt;word&gt; CLASS&lt;int&gt; &lt;float/int&gt;
+</PRE>
+One line is expected for each word as specified in the header at the
+top of the file.  Integer word counts should be provided in the final
+field for each word in the case of a counts file, or word-given-class
+probabilities if a probabilities file - as specified by the second
+line of the overall file.  In the latter case each <TT>&lt;float&gt;</TT>
+specifies the natural logarithm of the probability of the word given
+the class, or -99.9900 if the probability of the word is less than
+<!-- MATH
+ $1.0\times10^{-20}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="83" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img624.png"
+ ALT="$ 1.0\times10^{-20}$"></SPAN>.
+
+<P>
+<TT>CLASS&lt;int&gt;</TT> must be the name of a
+class in the classmap (technically actually the wordmap) used to build
+the class-given-class history <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram component of the language model
+- the file built by LB<SMALL>UILD</SMALL>.  In the current implementation
+these class names are restricted to being of the form <TT>CLASS&lt;int&gt;</TT>, although a modification to the code in LM<SMALL>ODEL.C</SMALL>
+would allow this restriction to be removed.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

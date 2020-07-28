@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of The Command Line</TITLE>
+<META NAME="description" CONTENT="Contents of The Command Line">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node45_mn.html">
+<LINK REL="previous" HREF="node43_mn.html">
+<LINK REL="up" HREF="node43_mn.html">
+<LINK REL="next" HREF="node45_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03110000000000000000">&#160;</A><A NAME="s:cmdline">&#160;</A>
+<BR>
+The Command Line
+</H1>
+
+<P>
+The general form of command line for invoking a tool 
+is<A NAME="tex2html14" HREF="footnode_mn.html#foot4748" TARGET="footer"><SUP><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">1</SPAN></SUP></A><A NAME="4749">&#160;</A><A NAME="4750">&#160;</A>
+<PRE>
+           tool [options] files ...
+</PRE>
+Options always consist of a dash followed by a single letter.  Some options
+are followed by an argument as follows
+<PRE><TT>
+		           <TT>-i</TT> 		  - a switch option 
+<BR><TT>-t 3</TT> 		 - an integer valued option 
+<BR><TT>-a 0.01</TT> 		 - a float valued option 
+<BR><TT>-s hello</TT> 		 - a string valued option 
+</TT></PRE>   
+Option names consisting of a capital letter are common across all tools
+(see section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>).
+Integer arguments<A NAME="4760">&#160;</A> may be given 
+in any of the standard C formats, for example,
+<TT>13</TT>, <TT>0xD</TT> and <TT>015</TT> all represent the same number.
+Typing the name of a tool on its own always causes a short summary of
+the command line options to be printed in place of its normal
+operation.  For example, typing
+<PRE>
+    HERest
+</PRE>
+would result in the following output
+<PRE>
+    USAGE: HERest [options] hmmList dataFiles...
+
+     Option                                   Default
+
+     -c f    Mixture pruning threshold          10.0
+     -d s    dir to find hmm definitions       current
+     -m N    set min examples needed per model   3
+     -o s    extension for new hmm files        as src
+     -p N    set parallel mode to N             off
+     ...
+</PRE>
+The first line shows the names of the required files and the rest
+consists of a listing of each option, its meaning, and its default
+value.
+
+<P>
+The precise naming convention for specifying files depends on the operating
+system being used, but HTK always assumes the existence of a hierarchical
+file system and it maintains a distinction between directory paths
+and file names.
+
+<P>
+In general, a file will be located either in
+the current directory, some subdirectory of the current directory or some
+subdirectory of the root directory.  For example, in the command
+<PRE>
+      HList s1 dir/s2 /users/sjy/speech/s3
+</PRE>
+file <TT>s1</TT> must be in the current directory, <TT>s2</TT> must be in the
+directory <TT>dir</TT> within the current directory and <TT>s3</TT> must be in the
+directory <TT>/users/sjy/speech</TT>.
+
+<P>
+Some tools allow directories to be specified via configuration
+parameters and command line options.  In all cases, the final path
+character (eg / in UNIX) need not (but may be)
+included.  For example, both of the following are acceptable and have
+equivalent effect
+<PRE>
+      HInit -L mymodels/new/  hmmfile data*
+      HInit -L mymodels/new   hmmfile data*
+</PRE>  
+where the <TT>-L</TT> option specifies the directory in which to find the 
+label files associated with the data files. 
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

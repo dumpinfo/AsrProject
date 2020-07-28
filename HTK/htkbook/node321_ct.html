@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node322_mn.html">
+<LINK REL="previous" HREF="node320_mn.html">
+<LINK REL="up" HREF="node320_mn.html">
+<LINK REL="next" HREF="node322_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051121000000000000000">&#160;</A><A NAME="s:HLRescore-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="28746">&#160;</A>
+HLR<SMALL>ESCORE</SMALL> is a general lattice post-processing tool. It reads
+lattices (for example produced by HV<SMALL>ITE</SMALL>) and applies one of
+the following operations on them:
+
+<P>
+
+<UL>
+<LI>finding 1-best path through lattice
+</LI>
+<LI>pruning lattice using forward-bacward scores
+</LI>
+<LI>expanding lattices with new language model
+</LI>
+<LI>calculating various lattice statistics
+</LI>
+</UL>
+
+<P>
+A typical scenario for the use of HLR<SMALL>ESCORE</SMALL> is the application
+of a higher order n-gram to the word lattices generated with HVite and
+a bigram. This would involve the following steps:
+
+<P>
+
+<UL>
+<LI>lattice generation with HVite using a bigram
+</LI>
+<LI>lattice pruning with HLRescore (<TT>-t</TT>)
+</LI>
+<LI>expansion of lattices using a trigram (<TT>-n</TT>)
+</LI>
+<LI>finding 1-best transcription in the expanded lattice
+  (<TT>-f</TT>)
+</LI>
+</UL>
+
+<P>
+Another common use of HLRescore is the tuning of the language
+model scaling factor and the word insertion penalty for use in
+recognition. Instead of having to re-run a decoder many times with
+different parameter settings the decoder is run once to generate
+lattices. HLR<SMALL>ESCORE</SMALL> can be used to find the best transcription
+for a give parameter setting very quickly. These different
+transcriptions can then be scored (using HR<SMALL>ESULTS</SMALL>) and the
+parameter setting that yields the lowest word error rate can be
+selected. 
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

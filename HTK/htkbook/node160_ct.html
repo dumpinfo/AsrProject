@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Building a Word Network with HPARSE</TITLE>
+<META NAME="description" CONTENT="Contents of Building a Word Network with HPARSE">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node161_mn.html">
+<LINK REL="previous" HREF="node159_mn.html">
+<LINK REL="up" HREF="node157_mn.html">
+<LINK REL="next" HREF="node161_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03930000000000000000">&#160;</A><A NAME="s:usehparse">&#160;</A>
+<BR>
+Building a Word Network with HP<SMALL>ARSE</SMALL>
+</H1>
+
+<P>
+Whilst the construction of a word level SLF network file by hand
+is not difficult, it can be somewhat tedious.  In earlier versions
+of HTK, a high level grammar notation based on extended 
+Backus-Naur<A NAME="19569">&#160;</A>
+Form (EBNF<A NAME="19570">&#160;</A>) was used to specify recognition grammars.  This 
+<SPAN  CLASS="textit">HParse</SPAN>
+format was read-in directly by the recogniser and compiled into
+a finite state recognition network at run-time.
+
+<P>
+In HTK 3.3, <SPAN  CLASS="textit">HParse</SPAN> format is still supported but in the form of
+an <SPAN  CLASS="textit">off-line</SPAN> compilation into an SLF word network which can
+subsequently be used to drive a recogniser.  
+
+<P>
+A HParse format<A NAME="19574">&#160;</A> grammar<A NAME="19575">&#160;</A> consists of an 
+extended form of regular expression
+enclosed within parentheses.  Expressions are constructed
+from sequences of words and the  metacharacters
+<DL>
+<DT><STRONG><TT>|</TT></STRONG></DT>
+<DD>denotes alternatives
+</DD>
+<DT><STRONG><TT>[ ]</TT></STRONG></DT>
+<DD>encloses options
+</DD>
+<DT><STRONG><TT>{ }</TT></STRONG></DT>
+<DD>denotes zero or more repetitions
+</DD>
+<DT><STRONG><TT>&lt; &gt;</TT></STRONG></DT>
+<DD>denotes one or more repetitions
+</DD>
+<DT><STRONG><TT>&#171; &#187;</TT></STRONG></DT>
+<DD>denotes context-sensitive loop
+</DD>
+</DL>
+The following examples will illustrate the use of all of these
+except the last which is a special-purpose facility provided
+for constructing context-sensitive loops as found in for example,
+context-dependent phone loops and word-pair grammars.  It is described
+in the reference entry for HP<SMALL>ARSE</SMALL><A NAME="19929">&#160;</A>.
+
+<P>
+As a first example, suppose
+that a simple isolated word single digit recogniser<A NAME="19585">&#160;</A> was required.
+A suitable syntax would be
+<PRE>
+     (
+        one | two | three | four | five |
+        six | seven | eight | nine | zero
+     )
+</PRE>
+This would translate into the network shown in part (a) of
+Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.
+If this HParse format syntax definition
+was stored in a file called <TT>digitsyn</TT>,
+the equivalent SLF word network would be generated in the
+file <TT>digitnet</TT> by typing
+<PRE>
+     HParse digitsyn digitnet
+</PRE>
+
+<P>
+The above digit syntax assumes that each input digit is
+properly end-pointed.  This
+requirement can be removed by adding a silence model
+before and after the digit
+<PRE>
+     (
+        sil (one | two | three | four | five |
+        six | seven | eight | nine | zero) sil
+     )
+</PRE>
+As shown by graph (b) in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>, the allowable sequence of
+models now consists of silence followed by a digit followed by silence. 
+If a sequence of digits needed to be recognised then angle brackets can
+be used to indicate one or more repetitions, the HParse grammar
+<PRE>
+     (
+        sil &lt; one | two | three | four | five |
+        six | seven | eight | nine | zero &gt; sil
+     )
+</PRE>
+would accomplish this.
+Part (c) of Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>
+shows the network that would result in this case.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:digitnets">&#160;</A><IMG
+ WIDTH="547" HEIGHT="383" ALIGN="MIDDLE" BORDER="0"
+ SRC="img459.png"
+ ALT="% latex2html id marker 51210
+$\textstyle \parbox{120mm}{ \begin{center}\setlengt...
+...bic{figctr}  Example Digit Recognition Networks}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+HParse<A NAME="19602">&#160;</A> grammars can define 
+variables to represent sub-expressions.
+Variable names start with a dollar symbol and they are given values
+by definitions of the form
+<PRE>
+   $var = expression ;
+</PRE>
+For example, the above connected digit grammar could be rewritten as
+<PRE>
+     $digit = one | two | three | four | five |
+              six | seven | eight | nine | zero;
+     (
+        sil &lt; $digit &gt; sil
+     )
+</PRE>
+Here <TT>$digit</TT> is a variable whose value is the expression appearing
+on the right hand side of the assignment.  Whenever the name of a variable
+appears within an expression, the corresponding expression is substituted.
+Note however that variables must be defined before use, hence, recursion
+is prohibited.
+
+<P>
+As a final refinement of the digit grammar, the start and end silence
+can be made optional by enclosing them within square brackets thus
+<PRE>
+     $digit = one | two | three | four | five |
+              six | seven | eight | nine | zero;
+     (
+        [sil] &lt; $digit &gt; [sil]
+     )
+</PRE>
+Part (d) of Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>
+shows the network that would result in this last case.
+
+<P>
+HParse format grammars are a convenient way of specifying 
+task grammars<A NAME="19611">&#160;</A> for interactive voice interfaces.  As a final
+example, the following defines a simple grammar for the control
+of a telephone by voice.
+<PRE>
+     $digit  = one | two | three | four | five |
+               six | seven | eight | nine | zero;
+     $number = $digit { [pause] $digit};
+     $scode  = shortcode $digit $digit;
+     $telnum = $scode | $number;
+     $cmd    = dial $telnum | 
+               enter $scode for $number |
+               redial | cancel;
+     $noise  = lipsmack | breath | background;
+     ( &lt; $cmd | $noise &gt; )
+</PRE>
+The dictionary entries for <TT>pause</TT>, <TT>lipsmack</TT>, 
+<TT>breath</TT> and <TT>background</TT> would reference HMMs trained
+to model these types of noise and the corresponding output symbols
+in the dictionary would be null.
+
+<P>
+Finally, it should be noted that when the HParse 
+format<A NAME="19618">&#160;</A> was used in
+earlier versions of HTK, word grammars contained word pronunciations
+embedded within them.  This was done by using the reserved node names
+<TT>WD_BEGIN</TT> and <TT>WD_END</TT> to delimit word boundaries. To
+provide backwards compatiblity, HP<SMALL>ARSE</SMALL> can process these old
+format networks but when doing so it outputs a dictionary as well as a
+word network.  This compatibility mode<A NAME="19622">&#160;</A> is defined fully in the
+reference section, to use it the configuration variable
+<TT>V1COMPAT</TT><A NAME="19930">&#160;</A> must be set 
+true or the <TT>-c</TT> option set.
+
+<P>
+Finally on the topic of word 
+networks<A NAME="19626">&#160;</A>, it is important to note that
+any network containing an unbroken loop of one or more tee-models
+will generate an error.  
+For example, if <TT>sp</TT> is a single state tee-model used to 
+represent short pauses, then the following network would generate an
+error<A NAME="19628">&#160;</A>
+<PRE>
+    ( sil &lt; sp | $digit &gt; sil )
+</PRE>
+the intention here is to recognise a sequence of digits which may
+optionally be separated by short pauses.  However, the syntax allows
+an endless sequence of <TT>sp</TT> models and hence, the recogniser could
+traverse this sequence without ever consuming any input.  The solution to
+problems such as these is to rearrange the network.  For example, the
+above could be written as
+<PRE>
+    ( sil &lt; $digit sp &gt; sil )
+</PRE>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

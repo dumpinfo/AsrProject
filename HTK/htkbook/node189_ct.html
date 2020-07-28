@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Perplexity</TITLE>
+<META NAME="description" CONTENT="Contents of Perplexity">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node190_mn.html">
+<LINK REL="previous" HREF="node183_mn.html">
+<LINK REL="up" HREF="node176_mn.html">
+<LINK REL="next" HREF="node190_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04140000000000000000">&#160;</A><A NAME="s:HLMperplexity">&#160;</A>
+<BR>
+Perplexity
+</H1>
+
+A measure of language model performance based on average probability
+can be developed within the field of information theory
+[Shannon 1948]<A NAME="tex2html69" HREF="footnode_mn.html#foot21755" TARGET="footer"><SUP><SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">16</SPAN></SUP></A>.
+A speaker emitting language can be considered to be a discrete
+information source which is generating a sequence of words <!-- MATH
+ $w_1, w_2,
+\ldots, w_m$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="107" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img591.png"
+ ALT="$ w_1, w_2,
+\ldots, w_m$"></SPAN> from a vocabulary set, <!-- MATH
+ $\mathbb{W}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img496.png"
+ ALT="$ \mathbb{W}$"></SPAN>. The probability of a
+symbol <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ w_i$"></SPAN> is dependent upon the previous symbols <!-- MATH
+ $w_1, \ldots,
+w_{i-1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="91" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img592.png"
+ ALT="$ w_1, \ldots,
+w_{i-1}$"></SPAN>. The information source's inherent per-word entropy <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img593.png"
+ ALT="$ H$"></SPAN>
+represents the amount of non-redundant information provided by each
+new word on average, defined in bits as:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+H = - \lim_{m \to \infty} \frac{1}{m} \sum_{w_1, w_2, \ldots, w_m}\left( P(w_1, w_2, \ldots, w_m)\;
+\log_2 P(w_1, w_2, \ldots, w_m) \right)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="496" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img594.png"
+ ALT="$\displaystyle H = - \lim_{m \to \infty} \frac{1}{m} \sum_{w_1, w_2, \ldots, w_m}\left( P(w_1, w_2, \ldots, w_m)\; \log_2 P(w_1, w_2, \ldots, w_m) \right)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">20</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+This summation is over all possible sequences of words, but if the
+source is ergodic then the summation over all possible word sequences
+can be discarded and the equation becomes equivalent to:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+H = - \lim_{m \to \infty} \frac{1}{m} \log_2 P(w_1, w_2, \ldots, w_m)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="273" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img595.png"
+ ALT="$\displaystyle H = - \lim_{m \to \infty} \frac{1}{m} \log_2 P(w_1, w_2, \ldots, w_m)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">21</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+It is reasonable to assume ergodicity on the basis that we use
+language successfully without having been privy to all words that have
+ever been spoken or written, and we can disambiguate words on the
+basis of only the recent parts of a conversation or piece of text.
+
+<P>
+Having assumed this ergodic property, it follows that given a large
+enough value of <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ m$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img593.png"
+ ALT="$ H$"></SPAN> can be approximated with:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="2-3">&#160;</A><!-- MATH
+ \begin{equation}
+\hat{H} = - \frac{1}{m} \log_2 P(w_1, w_2, \ldots, w_m)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="231" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img596.png"
+ ALT="$\displaystyle \hat{H} = - \frac{1}{m} \log_2 P(w_1, w_2, \ldots, w_m)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">22</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+This last estimate is feasible to evaluate, thus providing the basis
+for a metric suitable for assessing the performance of a language model.
+
+<P>
+Considering a language model as an information source, it follows that
+a language model which took advantage of all possible features of
+language to predict words would also achieve a per-word entropy of
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img593.png"
+ ALT="$ H$"></SPAN>. It therefore makes sense to use a measure related to entropy to
+assess the actual performance of a language model. Perplexity, <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img597.png"
+ ALT="$ PP$"></SPAN>,
+is one such measure that is in standard use, defined such that:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="2-4">&#160;</A><!-- MATH
+ \begin{equation}
+PP = 2^{\hat{H}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="70" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img598.png"
+ ALT="$\displaystyle PP = 2^{\hat{H}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">23</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Substituting equation <A HREF="node189_ct.html#2-3">14.22</A> into equation <A HREF="node189_ct.html#2-4">14.23</A> and
+rearranging obtains:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="pp_sum_eqn">&#160;</A><!-- MATH
+ \begin{equation}
+PP = \hat{P}(w_1, w_2, \ldots, w_m)^{-\frac{1}{m}}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="202" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img599.png"
+ ALT="$\displaystyle PP = \hat{P}(w_1, w_2, \ldots, w_m)^{-\frac{1}{m}}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">14</SPAN>.<SPAN CLASS="arabic">24</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $\hat{P}(w_1, w_2, \ldots, w_m)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="132" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img600.png"
+ ALT="$ \hat{P}(w_1, w_2, \ldots, w_m)$"></SPAN> is the probability estimate assigned to
+the word sequence <SPAN CLASS="MATH"><IMG
+ WIDTH="33" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img601.png"
+ ALT="$ (w_1,$"></SPAN> <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img602.png"
+ ALT="$ w_2,$"></SPAN> <!-- MATH
+ $\ldots, w_m)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="62" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img603.png"
+ ALT="$ \ldots, w_m)$"></SPAN> by a language model.
+
+<P>
+Perplexity can be considered to be a measure of on average how many
+different equally most probable words can follow any given word.
+Lower perplexities represent better language models, although this
+simply means that they `model language better', rather than
+necessarily work better in speech recognition systems - perplexity is
+only loosely correlated with performance in a speech recognition
+system since it has no ability to note the relevance of acoustically
+similar or dissimilar words.
+
+<P>
+In order to calculate perplexity both a language model and some test
+text are required, so a meaningful comparison between two language
+models on the basis of perplexity requires the same test text and word
+vocabulary set to have been used in both cases. The size of the
+vocabulary can easily be seen to be relevant because as its
+cardinality is reduced so the number of possible words given any
+history must monotonically decrease, therefore the probability
+estimates must on average increase and so the perplexity will decrease.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node306_mn.html">
+<LINK REL="previous" HREF="node304_mn.html">
+<LINK REL="up" HREF="node304_mn.html">
+<LINK REL="next" HREF="node306_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05181000000000000000">&#160;</A><A NAME="s:HInit-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="27659">&#160;</A>
+HI<SMALL>NIT</SMALL> is used to provide initial estimates for the parameters
+of a single HMM using a set of observation sequences.
+It works by repeatedly using Viterbi alignment to segment the
+training observations and then recomputing the parameters
+by pooling the vectors in each segment.   For mixture Gaussians, each
+vector in each segment is aligned with the component with the highest
+likelihood.   Each cluster of vectors then determines the parameters
+of the associated mixture component.
+In the absence of an initial model, the process
+is started by performing a uniform 
+segmentation of each training observation and for mixture Gaussians,
+the vectors in each uniform segment are clustered using a modified K-Means 
+algorithm<A NAME="tex2html80" HREF="footnode_mn.html#foot27588" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A>. 
+
+<P>
+HI<SMALL>NIT</SMALL> can be used to provide initial estimates of whole word models
+in which case the observation sequences are realisations of the 
+corresponding vocabulary word.
+Alternatively, HI<SMALL>NIT</SMALL> can be used to generate initial estimates of
+<EM>seed</EM> HMMs for phoneme-based speech recognition.
+In this latter case, the observation sequences will consist
+of segments of continuously spoken training material.  HI<SMALL>NIT</SMALL> will
+<I>cut</I> these out of the training data automatically by simply
+giving it a segment label.
+
+<P>
+In both of the above applications, HI<SMALL>NIT</SMALL> normally takes 
+as input a prototype
+HMM definition which defines the required HMM topology i.e. it has
+the form of the required HMM except that means, variances and mixture
+weights are ignored<A NAME="tex2html81" HREF="footnode_mn.html#foot27660" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">6</SPAN></SUP></A>.  The
+transition matrix of the prototype specifies both the allowed
+transitions and their initial probabilities.  Transitions which
+are assigned zero probability will remain zero and hence denote
+non-allowed transitions.  HI<SMALL>NIT</SMALL> estimates transition probabilities
+by counting the number of times each state is visited during
+the alignment process.
+
+<P>
+HI<SMALL>NIT</SMALL> supports multiple mixtures, multiple streams,
+parameter tying within a single model, full or diagonal
+covariance matrices, tied-mixture models and discrete models.  
+The output of HInit is typically input to HRest.
+
+<P>
+Like all re-estimation tools, HI<SMALL>NIT</SMALL> allows a floor to  be set on
+each individual variance by defining a variance floor macro for each
+data stream (see chapter&nbsp;<A HREF="node112_ct.html#c:Training">8</A>).
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

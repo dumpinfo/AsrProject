@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node339_mn.html">
+<LINK REL="previous" HREF="node337_mn.html">
+<LINK REL="up" HREF="node335_mn.html">
+<LINK REL="next" HREF="node339_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051153000000000000000">&#160;</A><A NAME="s:HQuant-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HQ<SMALL>UANT</SMALL> is invoked via the command line
+
+<P>
+<PRE>
+   HQuant [options] vqFile trainFiles ...
+</PRE>
+where <TT>vqFile</TT> is the name of the output VQ table file.
+The effect of this command
+is to read in training data from each <TT>trainFile</TT>, cluster the
+data and write the final cluster centres into the VQ table file.
+
+<P>
+The list of training files can be stored in a script file if required.
+Furthermore, the data used for training the codebook
+can be limited to that corresponding to a specified label.  This can be
+used, for example, to train phone specific codebooks.  When constructing
+a linear codebook, the maximum number of iterations per cluster can be
+limited by setting the configuration variable <TT>MAXCLUSTITER</TT>.
+The minimum number of samples in any one cluster can be set using the
+ configuration variable <TT>MINCLUSTSIZE</TT>.
+
+<P>
+The detailed operation of HQ<SMALL>UANT</SMALL> is controlled by the following
+command line options
+
+<DL COMPACT>
+<DT><TT>-d</TT>
+<DD>Use a diagonal-covariance Mahalonobis distance metric for
+ clustering (default is to use a Euclidean distance metric).
+
+<P>
+<DT><TT>-f</TT>
+<DD>Use a full-covariance Mahalonobis distance metric for
+ clustering (default is to use a Euclidean distance metric).
+
+<P>
+<DT><TT>-g</TT>
+<DD>Output the global covariance to a codebook.  Normally,
+     covariances are computed individually for each cluster using
+     the data in that cluster.  This option computes a global covariance
+     across all the clusters.
+
+<P>
+<DT><TT>-l s</TT>
+<DD>The string <TT>s</TT> must be the name of a
+      segment label.  When this option is used, HQ<SMALL>UANT</SMALL> searches
+      through all of the training files and uses only the speech
+      frames from segments with the given label.  When this option is not 
+      used, HQ<SMALL>UANT</SMALL> uses all of the data in each training file.
+
+<P>
+<DT><TT>-n S N</TT>
+<DD>Set size of codebook for stream <TT>S</TT> 
+       to <TT>N</TT> (default 256).
+   If tree-structured codebooks are required then <TT>N</TT> 
+   must be a power of 2.
+
+<P>
+<DT><TT>-s N</TT>
+<DD>Set number of streams to <TT>N</TT> (default 1).
+    Unless the <TT>-w</TT> option is used, the width of each stream
+    is set automatically depending on the size and parameter kind of the 
+    training data.
+
+<P>
+<DT><TT>-t</TT>
+<DD>Create tree-structured codebooks (default linear).
+
+<P>
+<DT><TT>-w S N</TT>
+<DD>Set width of stream <TT>S</TT> to <TT>N</TT>.
+  This option overrides the default decomposition that HTK normally
+  uses to divide a parameter file into streams.  If this option is used,
+  it must be repeated for each individual stream.
+
+<P>
+
+  <DT><TT>-F fmt</TT>
+<DD>Set the source data format to <TT>fmt</TT>.
+
+  <DT><TT>-G fmt</TT>
+<DD>Set the label file format to <TT>fmt</TT>.
+
+  <DT><TT>-I mlf</TT>
+<DD>This loads the master label file <TT>mlf</TT>.  This option
+     may be repeated to load several MLFs.
+
+  <DT><TT>-L dir</TT>
+<DD>Search directory <TT>dir</TT> for label files (default
+     is to search current directory).
+
+  <DT><TT>-X ext</TT>
+<DD>Set label file extension to <TT>ext</TT> 
+  (default is <TT>lab</TT>).
+
+</DD>
+</DL>
+
+HQ<SMALL>UANT</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+  
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

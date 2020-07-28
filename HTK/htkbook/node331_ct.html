@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Network Definition</TITLE>
+<META NAME="description" CONTENT="Contents of Network Definition">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node332_mn.html">
+<LINK REL="previous" HREF="node330_mn.html">
+<LINK REL="up" HREF="node329_mn.html">
+<LINK REL="next" HREF="node332_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051142000000000000000">&#160;</A><A NAME="s:HParse-Network_Definition">&#160;</A>
+<BR>
+Network Definition
+</H2>
+
+<P>
+The syntax rules for the textual definition of the network are 
+as follows.  Each node in the network has a <TT>nodename</TT>.
+This node name will normally correspond to a word in the final syntax
+network. Additionally, for use in compatibility mode,
+each node can also have an external name.
+<PRE><TT>
+		        name 		 = 		 char{char} 
+<BR>
+nodename 		 = 		 name [ "%" ( "%" <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> name ) ]
+</TT></PRE>
+
+<P>
+Here <TT>char</TT> represents any character except one of the meta chars 
+<TT>{ } [ ] <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN> <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> = $ ( ) ; <!-- MATH
+ $\backslash$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img655.png"
+ ALT="$ \backslash$"></SPAN> / *</TT>.   The latter may, 
+however, be escaped using a backslash.  The first name in a <TT>nodename</TT>
+represents the name of the node (``internal name''), and the second optional name is
+the ``external'' name.  This is used only in compatibility mode, and is, by default
+the same as the internal name.
+
+<P>
+Network definitions may also contain variables
+<PRE><TT>
+		      variable 		 = 		 $name
+</TT></PRE>
+
+Variables are identified by a leading $ character.  They stand for
+sub-networks and must be defined before they appear in the RHS of a rule
+using the form
+<PRE><TT>
+		      subnet 		 = 		 variable ``='' expr ``;''
+</TT></PRE>
+
+An <TT>expr</TT> consists of a set of alternative sequences representing
+parallel branches of the network. 
+<PRE><TT>
+		      expr 		  = 		 sequence {``<SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN>'' sequence} 
+<BR>
+sequence 		 = 		 factor{factor}
+</TT></PRE>
+
+Each sequence is composed of a sequence of factors where a factor
+is either a node name, a variable representing some sub-network or
+an expression contained within various sorts of brackets.
+
+<P>
+<PRE><TT>
+		   factor 		 = 		 ``('' expr ``)'' 		 <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> 
+<BR>``{'' expr ``}'' 		 <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> 
+<BR>``<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN>'' expr ``<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN>'' 		 <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> 
+<BR>``['' expr ``]'' 		  <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> 
+<BR>``<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img656.png"
+ ALT="$ &#171;$"></SPAN>'' expr ``<SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img657.png"
+ ALT="$ &#187;$"></SPAN>'' 		 <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> 
+<BR>
+nodename 		 <SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$ \vert$"></SPAN> 
+<BR>
+variable 
+</TT></PRE>
+
+<P>
+Ordinary parentheses are used to bracket sub-expressions, curly braces { } denote zero or more repetitions and angle brackets <SPAN CLASS="MATH"><IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img658.png"
+ ALT="$ &lt;&gt;$"></SPAN> denote one or more repetitions.  Square brackets [<SPAN CLASS="MATH"><IMG
+ WIDTH="8" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img659.png"
+ ALT="$ \:$"></SPAN>] are used to enclose optional items.  The double angle brackets are a special feature included for building context dependent loops and are explained further below.
+Finally, the complete network is defined by a list of sub-network
+definitions followed by a single expression within parentheses.
+<PRE><TT>
+		    network 		 = 		 {subnet} ``('' expr ``)''
+</TT></PRE>
+
+Note that C style comments may be placed anywhere in the text of
+the network definition.
+
+<P>
+As an example, the following network defines a syntax for some
+simple edit commands
+<PRE>
+   $dir   = up | down | left | right;
+   $mvcmd = move $dir | top | bottom;      
+   $item  = char | word | line | page;
+   $dlcmd = delete [$item];   /* default is char */
+   $incmd = insert;
+   $encmd = end [insert];
+   $cmd = $mvcmd|$dlcmd|$incmd|$encmd;
+   ({sil} &lt; $cmd {sil} &gt; quit)
+</PRE>
+
+<P>
+Double angle brackets are used to
+construct contextually consistent context-dependent loops such
+as a word-pair grammar.<A NAME="tex2html84" HREF="footnode_mn.html#foot29332" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">9</SPAN></SUP></A>This function can also be used to generate consistent triphone loops 
+for phone recognition<A NAME="tex2html85" HREF="footnode_mn.html#foot29409" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">10</SPAN></SUP></A>.
+The entry and exit conditions to a
+context-dependent loop can be controlled by the invisible
+pseudo-words TLOOP_BEGIN and TLOOP_END.  The right context of TLOOP_BEGIN
+defines the legal loop start nodes, and the left context of TLOOP_END
+defines the legal loop finishers. If TLOOP_BEGIN/TLOOP_END are not
+present then all models are connected to the entry/exit of the loop.
+
+<P>
+A word-pair grammar simply defines the legal
+set of words that can follow each word in the vocabulary.
+To generate a network to represent such a grammar a
+right context-dependent loop could be used.
+The legal sentence set of sentence start and end words are defined as
+above using TLOOP_BEGIN/TLOOP_END.
+
+<P>
+For example, the following lists the legal followers for each
+word in a 7 word vocabulary
+
+<P>
+<PRE><TT>
+		 ENTRY 		 - 		 show, tell, give 
+<BR>
+show 		 - 		 me, all 
+<BR>
+tell 		 - 		 me, all 
+<BR>
+me 		 - 		 all 
+<BR>
+all 		 - 		 names, addresses 
+<BR>
+names 		 - 		 and, names, addresses, show, tell, EXIT 
+<BR>
+addresses 		 - 		 and, names, addresses, show, tell, EXIT 
+<BR>
+and 		 - 		  names, addresses, show, tell
+</TT></PRE>
+
+<P>
+HP<SMALL>ARSE</SMALL> can generate a suitable lattice to represent this word-pair
+grammar by using the following specification:
+<PRE>
+   $TLOOP_BEGIN_FLLWRS = show|tell|give;
+   $TLOOP_END_PREDS    = names|addresses;
+   $show_FLLWRS        = me|all;
+   $tell_FLLWRS        = me|all;
+   $me_FLLWRS          = all;
+   $all_FLLWRS         = names|addresses;
+   $names_FLLWRS       = and|names|addresses|show|tell|TLOOP_END;
+   $addresses_FLLWRS   = and|names|addresses|show|tell|TLOOP_END;
+   $and_FLLWRS         = names|addresses|show|tell;
+     
+   ( sil &lt;&lt; 
+         TLOOP_BEGIN+TLOOP_BEGIN_FLLWRS |
+         TLOOP_END_PREDS-TLOOP_END |
+         show+show_FLLWRS |
+         tell+tell_FLLWRS |
+         me+me_FLLWRS |
+         all+all_FLLWRS |
+         names+names_FLLWRS |
+         addresses+addresses_FLLWRS |
+         and+and_FLLWRS 
+     &gt;&gt; sil )
+</PRE>
+where it is assumed that each utterance begins and ends with <TT>sil</TT>
+model. 
+
+<P>
+In this example, each set of contexts is defined by creating a variable
+whose alternatives are the individual contexts.  The actual context-dependent
+ loop is indicated by the <TT>&#171;  &#187;</TT> brackets.  
+Each element in this loop is a single
+variable name of the form <TT>A-B+C</TT> where <TT>A</TT> represents the left
+context, <TT>C</TT> represents the right context and <TT>B</TT> is the actual word.
+Each of <TT>A</TT>, <TT>B</TT> and <TT>C</TT> can be nodenames or
+variable names but note that this is the only case where variable
+names are expanded automatically and the usual
+<TT>$</TT> symbol is not used<A NAME="tex2html86" HREF="footnode_mn.html#foot29410" TARGET="footer"><SUP><SPAN CLASS="arabic">17</SPAN>.<SPAN CLASS="arabic">11</SPAN></SUP></A>.  Both <TT>A</TT> and <TT>C</TT> are optional, and left and
+right contexts can be mixed in the same triphone loop.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

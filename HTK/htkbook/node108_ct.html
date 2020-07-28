@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Input Linear Transforms</TITLE>
+<META NAME="description" CONTENT="Contents of Input Linear Transforms">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node109_mn.html">
+<LINK REL="previous" HREF="node107_mn.html">
+<LINK REL="up" HREF="node101_mn.html">
+<LINK REL="next" HREF="node109_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03470000000000000000">&#160;</A><A NAME="s:lintran">&#160;</A>
+<BR>
+Input Linear Transforms
+</H1>
+
+<P>
+When reading feature vectors from files HTK will coerce them to the
+<TT>TARGETKIND</TT> specified in the config file. Often the
+<TT>TARGETKIND</TT> will contain certain qualifiers (specifying for
+example delta parameters). In addition to this parameter coercion it
+is possible to apply a linear transform before, or after, appending
+delta, acceleration and third derivative parameters.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="f:lintran">&#160;</A></P>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\framebox[70mm]{
+\begin{minipage}{70mm}
+           \begin{program}
+\mbox{$\sim$\textsf{j ``lintran.mat''}} \\
+\mbox{$<$\textsf{MMFIdMask}$>$} *\\
+\mbox{$<$\textsf{MFCC}$>$} \\
+\mbox{$<$\textsf{PreQual}$>$}\\
+\mbox{$<$\textsf{LinXform}$>$}\\
+\> \mbox{$<$\textsf{VecSize}$>$} 2\\
+\> \mbox{$<$\textsf{BlockInfo}$>$} 1 2\\
+\> \mbox{$<$\textsf{Block}$>$} 1\\
+\> \>   \mbox{$<$\textsf{Xform}$>$} 2 5\\
+\> \>   \> 1.0 0.1 0.2 0.1 0.4\\
+\> \>   \> 0.2 1.0 0.1 0.1 0.1
+\end{program}
+       \end{minipage} }$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="321" HEIGHT="236" ALIGN="MIDDLE" BORDER="0"
+ SRC="img247.png"
+ ALT="\framebox[70mm]{
+\begin{minipage}{70mm}
+\begin{program}
+\mbox{$\sim$\textsf{j ...
+...0 0.1 0.2 0.1 0.4\\
+\&gt; \&gt; \&gt; 0.2 1.0 0.1 0.1 0.1
+\end{program} \end{minipage} }"></SPAN>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+       <BR>
+<BR>
+          <SPAN  CLASS="textbf"> Fig. <SPAN CLASS="arabic">7</SPAN>..<SPAN CLASS="arabic">7</SPAN>  Input Linear Transform</SPAN> 
+    
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<P>
+Figure&nbsp;<A HREF="node108_ct.html#f:lintran">7.16</A>  shows an example linear transform. The
+<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">PreQual</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN> keyword specifies that the linear transform
+is to be applied before the delta and delta-delta
+parameters specified in <TT>TARGETKIND</TT> are added. The default
+mode, no <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">PreQual</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN> keyword, applies the linear transform 
+after the addition of the qualifiers.
+
+<P>
+The linear transform fully supports projection from higher 
+number of features to a smaller number of features. In the 
+example, the parameterised data must consist of 5 <TT>MFCC</TT>
+parameters<A NAME="tex2html30" HREF="footnode_mn.html#foot9222" TARGET="footer"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A>.
+The model sets that are generated using this transform have
+a vector size of 2.
+
+<P>
+By default the linear transform is stored with the HMM. This is
+achieved by adding the <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">InputXform</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN> keyword and specifying the
+transform or macroname. To allow compatibilty with tools only
+supporting the old format models it is possible to specify that no
+linear transform is to be stored with the model. 
+<PRE>
+    # Do not store linear transform
+    HMODEL: SAVEINPUTXFORM = FALSE
+</PRE>
+In addition it is possible to specify the linear transform as a
+HPARM configuration variable, <TT>MATRTRANFN</TT>.
+<PRE>
+    # Specifying an input linear transform
+    HPARM: MATTRANFN = /home/test/lintran.mat
+</PRE>
+When a linear transform is specified in this form it is not necessary
+to have a macroname linked with it. In this case the filename
+will be used as the macroname (having stripped the directory name)
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

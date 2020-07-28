@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Words and Classes</TITLE>
+<META NAME="description" CONTENT="Contents of Words and Classes">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node208_mn.html">
+<LINK REL="previous" HREF="node206_mn.html">
+<LINK REL="up" HREF="node206_mn.html">
+<LINK REL="next" HREF="node208_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION04310000000000000000">&#160;</A><A NAME="s:wsandcs">&#160;</A>
+<BR>
+Words and Classes
+</H1>
+
+<P>
+In the HTK language modelling tools, words and classes are
+represented internally by integer indices in the range 0 to <!-- MATH
+ $2^{24} -
+1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img611.png"
+ ALT="$ 2^{24} -
+1$"></SPAN> (16777215).  This range is chosen to fit exactly into 3 8-bit bytes
+thereby allowing efficient compaction of large lists of <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ n$"></SPAN>-gram counts
+within gram files.
+
+<P>
+These integer indices will be referred to subsequently as
+<SPAN  CLASS="textit">ids</SPAN>.  Class ids are limited to the range 0 to <SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img612.png"
+ ALT="$ 2^{16}-1$"></SPAN> and
+word ids fill the remaining range of <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img613.png"
+ ALT="$ 2^{16}$"></SPAN> to <!-- MATH
+ $2^{24} - 1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="53" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img611.png"
+ ALT="$ 2^{24} -
+1$"></SPAN>.  Thus,
+any id with a zero most significant byte is a <SPAN  CLASS="textit">class id</SPAN> and
+all other ids are
+<SPAN  CLASS="textit">word ids</SPAN>.<A NAME="23369">&#160;</A><A NAME="23370">&#160;</A>
+
+<P>
+In the context of word maps, the term <SPAN  CLASS="textit">word</SPAN> may refer to
+either an orthographic word or the name of a class.  Thus, in its most
+general form, a word map can contain the ids of both orthographic
+words from a source text and class names defined in one or more class
+maps.
+
+<P>
+The mapping of orthographic words to ids is relatively permanent and
+normally takes place when building gram files (using LGP<SMALL>REP</SMALL>).
+Each time a new word is encountered, it is allocated a unique id.
+Once allocated, a word id should never be changed. Class ids, on the
+other hand, are more dynamic since their definition depends on the
+language model being built.  Finally, composite word maps can be
+derived from a collection of word and class maps using the tool
+LS<SMALL>UBSET</SMALL>.  These derived word maps are typically used to define a
+working subset of the name space and this subset can contain both word
+and class ids.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

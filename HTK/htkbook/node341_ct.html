@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Function</TITLE>
+<META NAME="description" CONTENT="Contents of Function">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node342_mn.html">
+<LINK REL="previous" HREF="node340_mn.html">
+<LINK REL="up" HREF="node340_mn.html">
+<LINK REL="next" HREF="node342_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION051161000000000000000">&#160;</A><A NAME="s:HRest-Function">&#160;</A>
+<BR>
+Function
+</H2>
+
+<P>
+<A NAME="29961">&#160;</A>
+HR<SMALL>EST</SMALL> performs basic Baum-Welch re-estimation of the parameters of
+a single HMM using a set of observation sequences.  HR<SMALL>EST</SMALL> can be used
+for normal isolated word training in which the observation sequences
+are realisations of the corresponding vocabulary word.  
+
+<P>
+Alternatively,
+HR<SMALL>EST</SMALL> can be used to generate <SPAN  CLASS="textit">seed</SPAN> HMMs for phoneme-based
+recognition.  In this latter case, the observation sequences will consist
+of segments of continuously spoken training material.  HR<SMALL>EST</SMALL> will
+<SPAN  CLASS="textit">cut</SPAN> these out of the training data automatically by simply
+giving it a segment label.
+
+<P>
+In both of the above applications, HR<SMALL>EST</SMALL> is intended to operate on
+HMMs with initial parameter values estimated by HI<SMALL>NIT</SMALL>.
+
+<P>
+HR<SMALL>EST</SMALL> supports multiple mixture components, multiple streams,
+parameter tying within a single model, full or diagonal
+covariance matrices, tied-mixture models and discrete models.  
+The outputs of HR<SMALL>EST</SMALL> are often further 
+processed by HER<SMALL>EST</SMALL>.
+
+<P>
+Like all re-estimation tools, HR<SMALL>EST</SMALL> allows a floor to  be set on
+each individual variance by defining a variance floor macro for each
+data stream (see chapter&nbsp;<A HREF="node112_ct.html#c:Training">8</A>).  If any diagonal covariance
+component falls below <SPAN CLASS="MATH"><IMG
+ WIDTH="56" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img663.png"
+ ALT="$ 0.00001$"></SPAN>, then the corresponding mixture weight is
+set to zero.  A warning is issued if the number of mixtures is greater
+than one, otherwise an error occurs.  Applying a variance floor via the
+<TT>-v</TT> option or a variance floor macro can be used to prevent this.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

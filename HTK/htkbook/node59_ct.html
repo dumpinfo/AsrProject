@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Filterbank Analysis</TITLE>
+<META NAME="description" CONTENT="Contents of Filterbank Analysis">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node60_mn.html">
+<LINK REL="previous" HREF="node58_mn.html">
+<LINK REL="up" HREF="node55_mn.html">
+<LINK REL="next" HREF="node60_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03240000000000000000">&#160;</A><A NAME="s:fbankanal">&#160;</A>
+<BR>
+Filterbank Analysis
+</H1>
+
+<P>
+The human ear resolves frequencies non-linearly across the audio spectrum and
+empirical evidence suggests that designing a front-end to operate in a similar
+non-linear manner improves recognition performance.  A popular alternative to
+linear prediction based analysis is therefore filterbank analysis since this
+provides a much more straightforward route to obtaining the desired non-linear
+frequency resolution.  However, filterbank amplitudes are highly correlated and
+hence, the use of a cepstral transformation in this case is virtually mandatory
+if the data is to be used in a HMM based recogniser with diagonal covariances.
+<A NAME="5683">&#160;</A> <A NAME="5684">&#160;</A>
+
+<P>
+HTK provides a simple Fourier transform based filterbank designed to
+give approximately equal resolution on a mel-scale.  Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>
+illustrates the general form of this filterbank.    As can be seen,
+the filters used are triangular and they are equally spaced along the mel-scale
+which is defined by
+
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:melscale">&#160;</A><!-- MATH
+ \begin{equation}
+\mbox{Mel}(f) = 2595 \log_{10}(1 + \frac{f}{700})
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH">Mel<IMG
+ WIDTH="183" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img163.png"
+ ALT="$\displaystyle (f) = 2595 \log_{10}(1 + \frac{f}{700})$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>.<SPAN CLASS="arabic">13</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+To implement this filterbank, the window of speech data is
+transformed<A NAME="5691">&#160;</A> using a Fourier transform and the magnitude is
+taken.  The magnitude coefficients are then <SPAN  CLASS="textit">binned</SPAN> by correlating them
+with each triangular filter.  Here binning means that each FFT magnitude
+coefficient is multiplied by the corresponding filter gain and the results
+accumulated.  Thus, each bin holds a weighted sum representing the spectral
+magnitude in that filterbank channel.<A NAME="5693">&#160;</A> As an alternative, the
+Boolean configuration parameter
+<TT>USEPOWER</TT><A NAME="6639">&#160;</A> can be set true to use the
+power rather than the magnitude of the Fourier transform in the binning
+process.  <A NAME="5696">&#160;</A>
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:melfbank">&#160;</A><IMG
+ WIDTH="502" HEIGHT="288" ALIGN="MIDDLE" BORDER="0"
+ SRC="img164.png"
+ ALT="% latex2html id marker 49046
+$\textstyle \parbox{110mm}{ \begin{center}\setlengt...
+...echapter.\arabic{figctr}  Mel-Scale Filter Bank}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+<A NAME="5700">&#160;</A>
+Normally the triangular filters are spread over the whole frequency range from
+zero upto the Nyquist frequency.  However, band-limiting is often useful to
+reject unwanted frequencies or avoid allocating filters to frequency regions in
+which there is no useful signal energy.  For filterbank analysis only, lower
+and upper frequency cut-offs can be set using the configuration parameters
+<TT>LOFREQ</TT><A NAME="6640">&#160;</A> and
+<TT>HIFREQ</TT><A NAME="6641">&#160;</A>. For example,
+<PRE>
+    LOFREQ = 300
+    HIFREQ = 3400
+</PRE>
+might be used for processing telephone speech.  When low and high pass cut-offs
+are set in this way, the specified number of filterbank channels are distributed
+equally on the mel-scale across the resulting pass-band such that the lower cut-off
+of the first filter is at <TT>LOFREQ</TT> and the upper cut-off of the last
+filter is at <TT>HIFREQ</TT>.
+
+<P>
+If mel-scale filterbank parameters are required directly, then the target kind
+should be set to <TT>MELSPEC</TT><A NAME="6642">&#160;</A>.
+Alternatively, log filterbank parameters can be generated by setting the target
+kind to <TT>FBANK</TT>.  
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

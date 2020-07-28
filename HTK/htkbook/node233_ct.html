@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of LM_ID_SHORT</TITLE>
+<META NAME="description" CONTENT="Contents of LM_ID_SHORT">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node234_mn.html">
+<LINK REL="previous" HREF="node232_mn.html">
+<LINK REL="up" HREF="node232_mn.html">
+<LINK REL="next" HREF="node234_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION043111000000000000000">&#160;</A><A NAME="s:HLMlmidshort">&#160;</A>
+<BR>
+LM_ID_SHORT
+</H2>
+<A NAME="23843">&#160;</A>
+
+<P>
+When compiling the HTK language modelling library, setting <TT>LM_ID_SHORT</TT> (for example by passing <TT>-D LM_ID_SHORT</TT> to the C
+compiler) forces the compiler to use an unsigned short for each
+language model ID it stores, as opposed to the default of an unsigned
+int - in most systems this will result in either a 2-byte integer or
+a 4-byte integer respectively.  If you set this then you <I>must</I>
+ensure you also set <TT>LM_ID_SHORT</TT> when compiling the HTK language modelling tools too, otherwise you will encounter a mismatch
+leading to strange results!  (Your compiler may warn of this error,
+however).  For this reason it is safest to set <TT>LM_ID_SHORT</TT> via a
+<TT>#define</TT> in <TT>LModel.h</TT>.  You might want to set this if you
+know how many distinct word ids you require and you do not want to
+waste memory, although on some systems using shorts can actually be
+slower than using a full-size int.
+
+<P>
+Note that the run-time <TT>USEINTID</TT> parameter described in section
+<A HREF="node231_ct.html#s:HLMuseintid">16.10.1</A> above only affects the size of ID fields when
+saving a binary model from <TT>LModel</TT>, so is independent of <TT>LM_ID_SHORT</TT>.  The only restriction is that you cannot load or save a
+model with more ids than can fit into an unsigned short when <TT>LM_ID_SHORT</TT> is set - the tools will abort with an error should you
+try this.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

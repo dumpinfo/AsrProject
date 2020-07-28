@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Use</TITLE>
+<META NAME="description" CONTENT="Contents of Use">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node248_mn.html">
+<LINK REL="previous" HREF="node246_mn.html">
+<LINK REL="up" HREF="node245_mn.html">
+<LINK REL="next" HREF="node248_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION05122000000000000000">&#160;</A><A NAME="s:HBuild-Use">&#160;</A>
+<BR>
+Use
+</H2>
+
+<P>
+HB<SMALL>UILD</SMALL> is invoked by the command line
+<PRE>
+   HBuild [options] wordList outLatFile
+</PRE>
+The <TT>wordList</TT> should contain a list of all the words used
+in the input language model. The options specify the type of input
+language model as well as the source filename. If none of the flags
+specifying input language model type are given a simple word-loop
+is generated using the <TT>wordList</TT> given. After processing the
+input language model, the resulting lattice
+is saved to file <TT>outLatFile</TT>.
+
+<P>
+The operation of HB<SMALL>UILD</SMALL> is controlled by the following
+command line options
+
+<DL COMPACT>
+<DT><TT>-b</TT>
+<DD>Output the lattice in binary format. This increases
+              speed of subsequent loading (default ASCII text lattices).
+
+<P>
+<DT><TT>-m fn</TT>
+<DD>The matrix format bigram in <TT>fn</TT> forms the input
+              language model.
+
+<P>
+<DT><TT>-n fn</TT>
+<DD>The ARPA/MIT-LL format back-off bigram in <TT>fn</TT> 
+              forms the input language model.
+
+<P>
+<DT><TT>-s st en</TT>
+<DD>Set the bigram entry and exit words to <TT>st</TT> 
+        and <TT>en</TT>.  (Default <TT>!ENTER</TT> and <TT>!EXIT</TT>).
+        Note that no words will follow the exit word, or precede
+        the entry word. Both the entry and exit word must be included
+        in the <TT>wordList</TT>. This option is only effective in conjunction
+          with the <TT>-n</TT> option.
+
+<P>
+<DT><TT>-t st en</TT>
+<DD>This option is used with word-loops and word-pair 
+        grammars.
+        An output lattice is produced with an initial word-symbol
+        <TT>st</TT> (before the loop) and a final word-symbol <TT>en</TT>
+        (after the loop). This allows initial and final silences
+        to be specified. (Default is that the initial and final nodes
+        are labelled with <TT>!NULL</TT>). Note that <TT>st</TT> and <TT>en</TT> 
+        shouldn't be included in the <TT>wordList</TT> unless they occur 
+        elsewhere in the network. This is only effective for word-loop and
+          word-pair grammars.
+
+<P>
+<DT><TT>-u s</TT>
+<DD>The unknown word is <TT>s</TT> (default !NULL). This
+         option only has an effect when bigram input language models 
+         are specified. It can be used in conjunction with the <TT>-z</TT>
+         flag to delete the symbol for unknown words from the output
+         lattice.
+
+<P>
+<DT><TT>-w fn</TT>
+<DD>The word-pair grammar in <TT>fn</TT> 
+              forms the input language model. The file must be in
+         the format used for the ARPA Resource Management grammar.
+
+<P>
+<DT><TT>-x fn</TT>
+<DD>The extended HTK lattice in <TT>fn</TT> 
+              forms the input language model. This option is
+              used to expand a multi-level lattice into a single
+              level lattice that can be processed by other HTK tools.
+
+<P>
+<DT><TT>-z</TT>
+<DD>Delete (zap) any references to the unknown word (see <TT>-u</TT> 
+              option) in the output lattice.
+
+<P>
+</DD>
+</DL>
+
+HB<SMALL>UILD</SMALL> also supports the standard options <TT>-A</TT>,
+<TT>-C</TT>,  <TT>-D</TT>, <TT>-S</TT>, <TT>-T</TT>, and <TT>-V</TT> as described
+in section&nbsp;<A HREF="node47_ct.html#s:stdopts">4.4</A>.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

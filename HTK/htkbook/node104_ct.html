@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Macro Definitions</TITLE>
+<META NAME="description" CONTENT="Contents of Macro Definitions">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node105_mn.html">
+<LINK REL="previous" HREF="node103_mn.html">
+<LINK REL="up" HREF="node101_mn.html">
+<LINK REL="next" HREF="node105_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03430000000000000000">&#160;</A><A NAME="s:HMMmac">&#160;</A>
+<BR>
+Macro Definitions
+</H1>
+
+<P>
+So far, basic model definitions have been described in which
+all of the information required to define a HMM has been
+given directly between the  <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">BeginHMM</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$ &lt;$"></SPAN><SPAN  CLASS="textsf">EndHMM</SPAN><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$ &gt;$"></SPAN>
+keywords.  As an alternative, HTK allows the internal
+parts of a definition to be written as separate units, possibly
+in several different files, and then referenced by name wherever they
+are needed.  Such definitions are called <SPAN  CLASS="textit">macros</SPAN>.  
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:mac5def">&#160;</A><IMG
+ WIDTH="251" HEIGHT="238" ALIGN="MIDDLE" BORDER="0"
+ SRC="img234.png"
+ ALT="% latex2html id marker 49818
+$\textstyle \parbox{50mm}{\noindent
+\fbox{ \parbox...
+...ig. \thechapter.\arabic{figctr}  Simple Macro Definitions}
+\end{center}
+}$">
+</DIV> 
+
+<P>
+
+<P>
+HMM (<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">h</SPAN>) and global option macros
+<A NAME="8855">&#160;</A><A NAME="8856">&#160;</A> (<SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">o</SPAN>)
+have already been described.  In fact, these are both rather
+special cases since neither is ever referenced explicitly by
+another definition.  Indeed, the option macro is unusual in that
+since it is global and must be unique, it has no name.
+As an illustration of the use of macros, it may be observed
+that the variance vectors in the HMM definition <SPAN  CLASS="textsf">hmm2</SPAN> given
+in Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A> are all identical.  If this was
+intentional, then the variance vector could be defined as a macro
+as illustrated in Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A>.  
+
+<P>
+A macro definition<A NAME="8861">&#160;</A> consists of a macro type indicator
+followed by a user-defined macro name.  In this case, the indicator is <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">v</SPAN>
+and the name is <SPAN  CLASS="textsf">var</SPAN>. Notice that a global options macro is included
+before the definition for <SPAN  CLASS="textsf">var</SPAN>. HTK must know these before it can
+process any other definitions thus the first macro file specified on the
+command line of any HTK tool must have the global options macro.  Global
+options macro need not be repeated at the head of every definition file, but it
+does no harm to do so.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:hmm5def">&#160;</A><IMG
+ WIDTH="296" HEIGHT="639" ALIGN="MIDDLE" BORDER="0"
+ SRC="img235.png"
+ ALT="% latex2html id marker 49825
+$\textstyle \parbox{60mm}{\noindent
+\fbox{ \parbox...
+...g. \thechapter.\arabic{figctr}  A Definition Using Macros}
+\end{center}
+}$">
+</DIV> 
+
+<P>
+
+<P>
+Once defined,  a macro is used simply by writing the type
+indicator and name exactly as written in the definition.
+Thus, for example, Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A> defines a HMM called
+<SPAN  CLASS="textsf">hmm5</SPAN> which uses the variance macro  <SPAN  CLASS="textsf">var</SPAN> but
+is otherwise identical to the earlier HMM definition <SPAN  CLASS="textsf">hmm2</SPAN>.
+
+<P>
+<A NAME="8899">&#160;</A>
+The definition for <SPAN  CLASS="textsf">hmm5</SPAN> can be understood by substituting
+the textual body of the <SPAN  CLASS="textsf">var</SPAN> macro everywhere that it is
+referenced.  Textually this would make the definition for <SPAN  CLASS="textsf">hmm5</SPAN>
+identical to that for <SPAN  CLASS="textsf">hmm2</SPAN>, and indeed, if input to a recogniser,
+their effects would be similar.  
+However, as will become clear in later chapters,
+the HMM definitions <SPAN  CLASS="textsf">hmm2</SPAN> and  <SPAN  CLASS="textsf">hmm5</SPAN> differ
+in two ways.  Firstly,  if
+any attempt was made to re-estimate the parameters of <SPAN  CLASS="textsf">hmm2</SPAN>,
+the values of the variance vectors would almost certainly
+diverge.  However,
+the variance vectors of <SPAN  CLASS="textsf">hmm5</SPAN> are tied together and are
+guaranteed to remain identical, even after re-estimation.  Thus,
+in general, the use of a macro enforces a <SPAN  CLASS="textit">tying</SPAN> which
+results in the corresponding parameters being shared amongst
+all the HMM structures which reference that macro.
+Secondly, when used in a recognition tool, the computation required
+to decode using HMMs with tied parameters will often be reduced.
+This is particularly true when higher level parts of a HMM definition
+are tied such as whole states.
+
+<P>
+There are many different macro types<A NAME="8909">&#160;</A><A NAME="8910">&#160;</A>.  Some have special
+meanings but the following correspond to
+the various distinct points in the hierarchy of HMM parameters which
+can be tied.  
+<PRE><TT>
+		 <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">s</SPAN> 		  shared state distribution
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">m</SPAN> 		  shared Gaussian mixture component 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">u</SPAN> 		  shared mean vector 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">v</SPAN> 		  shared diagonal variance vector 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">i</SPAN> 		  shared inverse full covariance matrix 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">c</SPAN> 		  shared choleski <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img231.png"
+ ALT="$ L'$"></SPAN> matrix 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">x</SPAN> 		  shared arbitrary transform matrix<A NAME="tex2html29" HREF="footnode_mn.html#foot8919" TARGET="footer"><SUP><SPAN CLASS="arabic">7</SPAN>.<SPAN CLASS="arabic">4</SPAN></SUP></A> 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">t</SPAN> 		  shared transition matrix 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">d</SPAN> 		  shared duration parameters 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">w</SPAN> 		  shared stream weight vector 
+</TT></PRE>
+
+<P>
+Fig&nbsp;<A HREF="#_" TARGET="_top">[*]</A> illustrates these potential
+tie points<A NAME="8925">&#160;</A> graphically for the case of continuous density HMMs.
+In this figure, each solid black circle represents a potential
+tie point, and the associated macro type is indicated alongside it.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:hierarch">&#160;</A><IMG
+ WIDTH="547" HEIGHT="388" ALIGN="MIDDLE" BORDER="0"
+ SRC="img236.png"
+ ALT="% latex2html id marker 49850
+$\textstyle \parbox{120mm}{ \begin{center}\setlengt...
+...figctr}  HMM Hierarchy and Potential Tie Points}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+The tie points for discrete HMMs are identical except that the
+macro types <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">m</SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">v</SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">c</SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">i</SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">u</SPAN> are not
+relevant and are therefore excluded.
+
+<P>
+The macros with special meanings<A NAME="8934">&#160;</A> are as follows
+<PRE><TT>
+		 <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">l</SPAN> 		  logical HMM 		 <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">h</SPAN> 		  physical HMM 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">o</SPAN> 		  global option values 		 <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">p</SPAN> 		  tied mixture 
+<BR><SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">r</SPAN> 		  regression class tree 		 <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">j</SPAN> 		 linear transform
+</TT></PRE>
+The distinction between logical and physical HMMs will be explained
+in the next section and option macros have already been described.
+The <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">p</SPAN> macro is used by the HMM editor HHE<SMALL>D</SMALL>
+for building tied mixture systems (see section&nbsp;<A HREF="node106_ct.html#s:tmix">7.5</A>).
+The <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">l</SPAN> or <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \sim$"></SPAN><SPAN  CLASS="textsf">p</SPAN> macros are special in the sense
+that they are created implicitly in order to represent specific kinds 
+of parameter sharing and they never occur explicitly in HMM definitions.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

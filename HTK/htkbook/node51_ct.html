@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Memory Management</TITLE>
+<META NAME="description" CONTENT="Contents of Memory Management">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node52_mn.html">
+<LINK REL="previous" HREF="node49_mn.html">
+<LINK REL="up" HREF="node43_mn.html">
+<LINK REL="next" HREF="node52_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION03170000000000000000">&#160;</A><A NAME="s:memman">&#160;</A>
+<BR>
+Memory Management
+</H1>
+
+<P>
+Memory management<A NAME="4940">&#160;</A> is a very low level function and is
+mostly invisible to HTK users.  However, some applications require very large
+amounts of memory.  For example, building the models for a large vocabulary
+continuous speech dictation system might require 150MB or more.  Clearly, when
+memory demands become this large, a proper understanding of the impact of
+system design decisions on memory usage is important.  The first step in this
+is to have a basic understanding of memory allocation in HTK.
+
+<P>
+Many HTK tools dynamically construct large and complex data structures in
+memory.  To keep strict control over this and to reduce memory allocation
+overheads to an absolute minimum, HTK performs its own memory
+management. Thus, every time that a module or tool wishes to allocate some
+memory, it does so by calling routines in
+HM<SMALL>EM</SMALL><A NAME="5137">&#160;</A>. At a slightly higher level, math objects
+such as vectors and matrices are allocated by HM<SMALL>ATH</SMALL> but using the
+primitives provided by HM<SMALL>EM</SMALL>.
+
+<P>
+To make memory allocation<A NAME="4945">&#160;</A> and de-allocation very fast,
+tools create specific memory allocators for specific objects or groups of
+objects.  These memory allocators are divided into a sequence of blocks, and
+they are organised as either Stacks<A NAME="4946">&#160;</A>, M-heaps<A NAME="4947">&#160;</A> or
+C-heaps<A NAME="4948">&#160;</A>.  A Stack constrains the pattern of allocation and
+de-allocation requests to be made in a last-allocated first-deallocated order
+but allows objects of any size to be allocated. An M-heap allows an arbitrary
+pattern of allocation and de-allocation requests to be made but all allocated
+objects must be the same size.  Both of these memory allocation disciplines are
+more restricted than the general mechanism supplied by the operating system,
+and as a result, such memory operations are faster and incur no storage
+overhead due to the need to maintain hidden housekeeping information in each
+allocated object.  Finally, a C-heap uses the underlying operating system and
+allows arbitrary allocation patterns, and as a result incurs the associated
+time and space overheads.  The use of C-heaps is avoided wherever possible.
+
+<P>
+Most tools provide one or more trace options which show how
+much memory has been allocated.  The following shows the form of
+the output<A NAME="4949">&#160;</A>
+<PRE>
+  ---------------------- Heap Statistics ------------------------
+  nblk=1, siz= 100000*1, used= 32056, alloc= 100000 : Global Stack[S]
+  nblk=1, siz=   200*28, used=   100, alloc=   5600 : cellHeap[M]
+  nblk=1, siz=  10000*1, used=  3450, alloc=  10000 : mlfHeap[S]
+  nblk=2, siz=   7504*1, used=  9216, alloc=  10346 : nameHeap[S]
+  ---------------------------------------------------------------
+</PRE>
+Each line describes the status of each memory allocator and gives the number of
+blocks allocated, the current block size (number of elements in block <SPAN CLASS="MATH"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img124.png"
+ ALT="$ \times$"></SPAN>
+the number of bytes in each element)<A NAME="tex2html15" HREF="footnode_mn.html#foot4952" TARGET="footer"><SUP><SPAN CLASS="arabic">4</SPAN>.<SPAN CLASS="arabic">2</SPAN></SUP></A>, the total number of bytes in use by the tool and
+the total number of bytes currently allocated to that allocator.  The end of
+each line gives the name of the allocator and its type: Stack[S], M-heap[M] or
+C-heap[M].  The element size for Stacks will always be 1 but will be variable
+in M-heaps.<A NAME="4953">&#160;</A> The documentation for the memory
+intensive HTK tools indicates what each of the main memory allocators are
+used for and this information allows the effects of various system design
+choices to be monitored.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

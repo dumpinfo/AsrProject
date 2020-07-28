@@ -1,0 +1,13 @@
+
+*** Images are not strictly valid within HTML <pre> tags
+Please change your use of {tabbing} to a {tabular} environment.
+
+{eqnarray} does not have 3 columns, inserting blank cell
+couldn't convert character inodot into available encodings
+couldn't convert character sacute into available encodings
+
+ ...set $ACCENT_IMAGES  to get an image 
+
+No number for "LibraryModuleConfigurationVariables"
+
+No number for "ToolSpecificConfigurationVariables"

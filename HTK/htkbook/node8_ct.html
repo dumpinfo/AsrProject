@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Recognition and Viterbi Decoding</TITLE>
+<META NAME="description" CONTENT="Contents of Recognition and Viterbi Decoding">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node9_mn.html">
+<LINK REL="previous" HREF="node7_mn.html">
+<LINK REL="up" HREF="node3_mn.html">
+<LINK REL="next" HREF="node9_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION02150000000000000000">&#160;</A><A NAME="s:recandvit">&#160;</A>
+<BR>
+Recognition and Viterbi Decoding
+</H1>
+
+<P>
+The previous section has described the basic ideas underlying
+HMM parameter re-estimation using the Baum-Welch algorithm.
+In passing, it was noted that the efficient recursive
+algorithm for computing the forward probability also yielded
+as a by-product the total likelihood<A NAME="1339">&#160;</A> 
+<!-- MATH
+ $P({\mbox{\boldmath $O$}}|M)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="64" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img71.png"
+ ALT="$ P({\mbox{\boldmath $O$}}\vert M)$"></SPAN>.  Thus, this
+algorithm could also be used to find the model which yields
+the maximum value of <!-- MATH
+ $P({\mbox{\boldmath $O$}}|M_i)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="68" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img85.png"
+ ALT="$ P({\mbox{\boldmath $O$}}\vert M_i)$"></SPAN>, and hence, it could be used
+for recognition.
+
+<P>
+In practice, however, it is preferable to base recognition
+on the maximum likelihood state sequence since this generalises
+easily to the continuous speech case whereas the use
+of the total probability does not.  This likelihood is 
+computed using essentially the same algorithm as the forward
+probability calculation except that the summation is replaced
+by a maximum operation.  For a given model <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ M$"></SPAN>, 
+let <SPAN CLASS="MATH"><IMG
+ WIDTH="38" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.png"
+ ALT="$ \phi_j(t)$"></SPAN> represent the 
+maximum likelihood of observing speech vectors <!-- MATH
+ ${\mbox{\boldmath $o$}}_1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$ {\mbox{\boldmath $o$}}_1$"></SPAN> to
+<!-- MATH
+ ${\mbox{\boldmath $o$}}_t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$ {\mbox{\boldmath $o$}}_t$"></SPAN> and being in state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> at time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>.
+This partial likelihood can be computed efficiently using
+the following recursion (cf. equation&nbsp;<A HREF="node7_ct.html#e:16">1.16</A>)
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:27">&#160;</A><!-- MATH
+ \begin{equation}
+\phi_j(t) = \max_i \left\{ \phi_i(t-1) a_{ij} \right\}
+                     b_j({\mbox{\boldmath$o$}}_t).
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="236" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img87.png"
+ ALT="$\displaystyle \phi_j(t) = \max_i \left\{ \phi_i(t-1) a_{ij} \right\} b_j({\mbox{\boldmath$o$}}_t).$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">27</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\phi_1(1) = 1
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="70" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img88.png"
+ ALT="$\displaystyle \phi_1(1) = 1$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">28</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\phi_j(1) = a_{1j} b_j({\mbox{\boldmath$o$}}_1)
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="126" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img89.png"
+ ALT="$\displaystyle \phi_j(1) = a_{1j} b_j({\mbox{\boldmath$o$}}_1)$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">29</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+for <SPAN CLASS="MATH"><IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.png"
+ ALT="$ 1&lt;j&lt;N$"></SPAN>.  The maximum likelihood <!-- MATH
+ $\hat{P}(O|M)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="63" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img90.png"
+ ALT="$ \hat{P}(O\vert M)$"></SPAN> is then given by
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><!-- MATH
+ \begin{equation}
+\phi_N(T) = \max_i \left\{ \phi_i(T) a_{iN} \right\}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="183" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.png"
+ ALT="$\displaystyle \phi_N(T) = \max_i \left\{ \phi_i(T) a_{iN} \right\}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">30</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+As for the re-estimation case, the direct computation of likelihoods
+leads to underflow, hence, log likelihoods are used instead.  The
+recursion of equation&nbsp;<A HREF="node8_ct.html#e:27">1.27</A> then becomes
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="e:30">&#160;</A><!-- MATH
+ \begin{equation}
+\psi_j(t) = \max_i \left\{ \psi_i(t-1) + log(a_{ij}) \right\}
+                       + log(b_j({\mbox{\boldmath$o$}}_t)).
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="340" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img92.png"
+ ALT="$\displaystyle \psi_j(t) = \max_i \left\{ \psi_i(t-1) + log(a_{ij}) \right\} + log(b_j({\mbox{\boldmath$o$}}_t)).$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">1</SPAN>.<SPAN CLASS="arabic">31</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+This recursion forms the basis of the so-called Viterbi algorithm.
+As shown in Fig.&nbsp;<A HREF="#_" TARGET="_top">[*]</A>, this algorithm can be visualised
+as finding the best path through a matrix where the vertical
+dimension represents the states of the HMM and
+the horizontal dimension represents the frames of speech (i.e. time).
+Each large dot in the picture represents the log probability
+of observing that frame at that time and each arc between dots
+corresponds to a log transition probability.  The log probability
+of any path is computed simply by summing the log transition probabilities
+and the log output probabilities along that path.  The paths are
+grown from left-to-right column-by-column.  At time <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ t$"></SPAN>, each
+partial path<A NAME="1367">&#160;</A> <!-- MATH
+ $\psi_i(t-1)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="65" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img93.png"
+ ALT="$ \psi_i(t-1)$"></SPAN> is known for all states <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN>, hence
+equation&nbsp;<A HREF="node8_ct.html#e:30">1.31</A> can be used to compute <SPAN CLASS="MATH"><IMG
+ WIDTH="39" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img94.png"
+ ALT="$ \psi_j(t)$"></SPAN>
+thereby extending the partial paths by one time frame.
+
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<A NAME="f:vtrellis">&#160;</A><IMG
+ WIDTH="457" HEIGHT="410" ALIGN="MIDDLE" BORDER="0"
+ SRC="img95.png"
+ ALT="% latex2html id marker 48634
+$\textstyle \parbox{100mm}{ \begin{center}\setlengt...
+...e Viterbi Algorithm for Isolated
+Word Recognition}
+\end{center}\end{center} }$">
+</DIV>
+
+<P>
+
+<P>
+This concept of
+a path<A NAME="1372">&#160;</A> is extremely important and it is generalised below to deal
+with the continuous speech case.
+
+<P>
+This completes the discussion of isolated word recognition using
+HMMs.  There is no HTK tool which implements the above Viterbi
+algorithm directly.  Instead, a tool 
+called HV<SMALL>ITE</SMALL><A NAME="1474">&#160;</A> is provided which
+along with its supporting libraries, HN<SMALL>ET</SMALL> and HR<SMALL>EC</SMALL>, 
+is designed to handle continuous speech.  Since this recogniser is syntax
+directed, it can also perform isolated word recognition as a special case.
+This is discussed in more detail below.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

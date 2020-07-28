@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Viterbi Training (HINIT)</TITLE>
+<META NAME="description" CONTENT="Contents of Viterbi Training (HINIT)">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node122_mn.html">
+<LINK REL="previous" HREF="node120_mn.html">
+<LINK REL="up" HREF="node120_mn.html">
+<LINK REL="next" HREF="node122_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION03581000000000000000">
+Viterbi Training (HI<SMALL>NIT</SMALL>)</A>
+</H2>
+
+<P>
+<A NAME="13895">&#160;</A>
+In this style of model training, a set of training observations
+<!-- MATH
+ ${\mbox{\boldmath $O$}}^r, \;\; 1 \leq r \leq R$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="111" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img269.png"
+ ALT="$ {\mbox{\boldmath $O$}}^r, \;\; 1 \leq r \leq R$"></SPAN> is used to estimate the 
+parameters of a single HMM by iteratively computing Viterbi alignments.
+When used to initialise a new HMM, the Viterbi segmentation is
+replaced by a uniform segmentation (i.e. each training
+observation is divided into <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.png"
+ ALT="$ N$"></SPAN> equal segments) 
+for the first iteration.
+
+<P>
+Apart from the first iteration on a new model, 
+each training sequence <!-- MATH
+ ${\mbox{\boldmath $O$}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="$ {\mbox{\boldmath $O$}}$"></SPAN> is segmented using a state alignment procedure
+which results from maximising
+<!-- MATH
+ \begin{displaymath}
+\phi_N(T) = \max_i \phi_i(T) a_{iN}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="167" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img270.png"
+ ALT="$\displaystyle \phi_N(T) = \max_i \phi_i(T) a_{iN}
+$">
+</DIV><P></P>
+for <SPAN CLASS="MATH"><IMG
+ WIDTH="75" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ 1&lt;i&lt;N$"></SPAN> where
+<!-- MATH
+ \begin{displaymath}
+\phi_j(t) = \left[ \max_i \phi_i(t-1) a_{ij} \right] b_j({\mbox{\boldmath$o$}}_t)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="230" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="img271.png"
+ ALT="$\displaystyle \phi_j(t) = \left[ \max_i \phi_i(t-1) a_{ij} \right] b_j({\mbox{\boldmath$o$}}_t)
+$">
+</DIV><P></P>
+with initial conditions given by 
+<!-- MATH
+ \begin{displaymath}
+\phi_1(1) = 1
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="70" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img88.png"
+ ALT="$\displaystyle \phi_1(1) = 1$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\phi_j(1) = a_{1j} b_j({\mbox{\boldmath$o$}}_1)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="126" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img89.png"
+ ALT="$\displaystyle \phi_j(1) = a_{1j} b_j({\mbox{\boldmath$o$}}_1)$">
+</DIV><P></P>
+for <SPAN CLASS="MATH"><IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img68.png"
+ ALT="$ 1&lt;j&lt;N$"></SPAN>. 
+In this and all subsequent cases, the output  probability <!-- MATH
+ $b_j(\cdot)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="35" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img272.png"
+ ALT="$ b_j(\cdot)$"></SPAN> is as defined in
+equations&nbsp;<A HREF="node102_ct.html#e:cdpdf">7.1</A> and <A HREF="node102_ct.html#e:gnorm">7.2</A> in section&nbsp;<A HREF="node102_ct.html#s:HMMparm">7.1</A>.
+
+<P>
+If <SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img273.png"
+ ALT="$ A_{ij}$"></SPAN> represents the total number of transitions from state <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.png"
+ ALT="$ i$"></SPAN> to state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN>
+in performing the above maximisations, then the transition probabilities can
+be estimated from the relative frequencies
+<!-- MATH
+ \begin{displaymath}
+\hat{a}_{ij} = \frac{A_{ij}}{\sum_{k=2}^{N}A_{ik}}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="116" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img274.png"
+ ALT="$\displaystyle \hat{a}_{ij} = \frac{A_{ij}}{\sum_{k=2}^{N}A_{ik}}
+$">
+</DIV><P></P>
+
+<P>
+The sequence of states which maximises <SPAN CLASS="MATH"><IMG
+ WIDTH="49" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img275.png"
+ ALT="$ \phi_N(T)$"></SPAN> implies an alignment of
+training data observations with states.  Within each state, a further alignment
+of observations to mixture components is made.  The tool HI<SMALL>NIT</SMALL> provides
+two mechanisms for this:  for each state and each stream
+
+<OL>
+<LI>use clustering to allocate each observation <!-- MATH
+ ${\mbox{\boldmath $o$}}_{st}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img219.png"
+ ALT="$ {\mbox{\boldmath $o$}}_{st}$"></SPAN> to one of <SPAN CLASS="MATH"><IMG
+ WIDTH="26" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ M_s$"></SPAN> clusters, or
+</LI>
+<LI>associate each observation <!-- MATH
+ ${\mbox{\boldmath $o$}}_{st}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img219.png"
+ ALT="$ {\mbox{\boldmath $o$}}_{st}$"></SPAN> with the mixture component with the
+       highest probability
+</LI>
+</OL>
+In either case, the net result is that every observation is associated with a single
+unique mixture component.  This association can be
+represented by the indicator function <!-- MATH
+ $\psi^r_{jsm}(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="57" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img276.png"
+ ALT="$ \psi^r_{jsm}(t)$"></SPAN> which is 1
+if <!-- MATH
+ ${\mbox{\boldmath $o$}}^r_{st}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img277.png"
+ ALT="$ {\mbox{\boldmath $o$}}^r_{st}$"></SPAN> is associated with mixture component <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ m$"></SPAN> of stream <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img41.png"
+ ALT="$ s$"></SPAN> of 
+state <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img16.png"
+ ALT="$ j$"></SPAN> and is zero otherwise.
+
+<P>
+The means and variances are then estimated via simple averages
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+\hat{{\mbox{\boldmath$\mu$}}}_{jsm} = \frac{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r}  \psi^r_{jsm}(t)
+{\mbox{\boldmath$o$}}^r_{st}}{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r}  \psi^r_{jsm}(t)
+}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="222" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img278.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\mu$}}}_{jsm} = \frac{
+\sum_{r=1}^R \sum_{t...
+...{\mbox{\boldmath$o$}}^r_{st}}{
+\sum_{r=1}^R \sum_{t=1}^{T_r} \psi^r_{jsm}(t)
+}
+$">
+</DIV><P></P>
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+\hat{{\mbox{\boldmath$\Sigma$}}}_{jsm} = \frac{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r}  \psi^r_{jsm}(t)
+({\mbox{\boldmath$o$}}^r_{st} - \hat{{\mbox{\boldmath$\mu$}}}_{jsm})
+                                        ({\mbox{\boldmath$o$}}^r_{st} - \hat{{\mbox{\boldmath$\mu$}}}_{jsm})'
+                }{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r}  \psi^r_{jsm}(t)
+}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="383" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img279.png"
+ ALT="$\displaystyle \hat{{\mbox{\boldmath$\Sigma$}}}_{jsm} = \frac{
+\sum_{r=1}^R \sum...
+...x{\boldmath$\mu$}}}_{jsm})'
+}{
+\sum_{r=1}^R \sum_{t=1}^{T_r} \psi^r_{jsm}(t)
+}
+$">
+</DIV><P></P>
+
+<P>
+Finally, the mixture  weights are based on the number of
+observations allocated to each component
+<!-- MATH
+ \begin{displaymath}
+{\mbox{\boldmath$c$}}_{jsm} = \frac{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r}  \psi^r_{jsm}(t)
+}{
+                  \sum_{r=1}^R  \sum_{t=1}^{T_r} \sum_{l=1}^{M_s} \psi^r_{jsl}(t)
+ }
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="231" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img280.png"
+ ALT="$\displaystyle {\mbox{\boldmath$c$}}_{jsm} = \frac{
+\sum_{r=1}^R \sum_{t=1}^{T_r...
+...r_{jsm}(t)
+}{
+\sum_{r=1}^R \sum_{t=1}^{T_r} \sum_{l=1}^{M_s} \psi^r_{jsl}(t)
+}
+$">
+</DIV><P></P>
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

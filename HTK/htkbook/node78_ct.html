@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of WAV File Format</TITLE>
+<META NAME="description" CONTENT="Contents of WAV File Format">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node79_mn.html">
+<LINK REL="previous" HREF="node77_mn.html">
+<LINK REL="up" HREF="node68_mn.html">
+<LINK REL="next" HREF="node79_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H2><A NAME="SECTION0321110000000000000000">
+WAV File Format</A>
+</H2>
+
+<P>
+<A NAME="6064">&#160;</A> 
+The WAV file format is a subset of Microsoft's RIFF specification for the
+storage of multimedia files. A RIFF file starts out with a file header followed
+by a sequence of data ``chunks''. A WAV file is often just a RIFF file with a
+single ``WAVE'' chunk which consists of two sub-chunks - a ``fmt'' chunk
+specifying the data format and a ``data'' chunk containing the actual sample
+data. The WAV file header contains the following
+
+<P>
+<PRE><TT>
+		<TT>'RIFF'</TT>		- RIFF file identification (4 bytes) 
+<BR><TT>&lt;length&gt;</TT>		- length field (4 bytes)
+<BR><TT>'WAVE'</TT>		- WAVE chunk identification (4 bytes) 
+<BR><TT>'fmt '</TT>		- format sub-chunk identification  (4 bytes) 
+<BR><TT>flength</TT>		- length of format sub-chunk (4 byte integer) 
+<BR><TT>format</TT>		- format specifier (2 byte integer) 
+<BR><TT>chans</TT>		- number of channels (2 byte integer) 
+<BR><TT>sampsRate</TT>		- sample rate in Hz (4 byte integer) 
+<BR><TT>bpsec</TT>		- bytes per second (4 byte integer) 
+<BR><TT>bpsample</TT>		- bytes per sample (2 byte integer) 
+<BR><TT>bpchan</TT>		- bits per channel (2 byte integer) 
+<BR><TT>'data'</TT>		- data sub-chunk identification  (4 bytes) 
+<BR><TT>dlength</TT>		- length of data sub-chunk (4 byte integer)
+</TT></PRE>
+Support is provided for 8-bit CCITT mu-law, 8-bit CCITT a-law, 8-bit PCM 
+linear and 16-bit PCM linear - all in stereo or mono (use of <TT>STEREOMODE</TT> 
+parameter as per NIST).  The default byte ordering assumed for <TT>WAV</TT> 
+data files is <TT>VAX</TT> (little-endian).
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>

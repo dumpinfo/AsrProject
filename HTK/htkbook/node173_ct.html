@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contents of Recognition using Direct Audio Input</TITLE>
+<META NAME="description" CONTENT="Contents of Recognition using Direct Audio Input">
+<META NAME="keywords" CONTENT="htkbook">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="htkbook.css">
+
+<LINK REL="next" HREF="node174_mn.html">
+<LINK REL="previous" HREF="node172_mn.html">
+<LINK REL="up" HREF="node167_mn.html">
+<LINK REL="next" HREF="node174_mn.html">
+</HEAD>
+ 
+<BODY bgcolor="#ffffff" text="#000000" link="#9944EE" vlink="#0000ff" alink="#00ff00">
+
+<H1><A NAME="SECTION031060000000000000000">&#160;</A><A NAME="s:recaudio">&#160;</A>
+<BR>
+Recognition using Direct Audio Input
+</H1>
+
+<P>
+<A NAME="20781">&#160;</A>
+In all of the preceding discussion, it has been assumed that input was
+from speech files stored on disk.  These files would normally have
+been stored in parameterised form so that little or no conversion
+of the source speech data was required.   When HV<SMALL>ITE</SMALL>
+is invoked with no files listed on the command line, it assumes that
+input is to be taken directly from the audio input.  In this case,
+configuration variables must be used to specify firstly how the
+speech waveform is to be captured and secondly, how the captured
+waveform is to be converted to parameterised form. 
+
+<P>
+Dealing with waveform capture<A NAME="20783">&#160;</A> first, as described in
+section&nbsp;<A HREF="node80_ct.html#s:audioio">5.12</A>, HTK provides two main forms of control over speech
+capture: signals/keypress and an automatic speech/silence
+detector<A NAME="20785">&#160;</A>. To use the speech/silence detector
+alone, the configuration file would contain the following
+<PRE>
+    # Waveform capture
+    SOURCERATE=625.0
+    SOURCEKIND=HAUDIO
+    SOURCEFORMAT=HTK
+    USESILDET=T
+    MEASURESIL=F
+    OUTSILWARN=T
+    ENORMALISE=F
+</PRE>
+
+<P>
+where the source sampling rate is being set to 16kHz.  Notice that the
+<TT>SOURCEKIND</TT><A NAME="20869">&#160;</A> must be set to
+<TT>HAUDIO</TT> and the <TT>SOURCEFORMAT</TT> must be set to 
+<TT>HTK</TT>. Setting the Boolean variable 
+<TT>USESILDET</TT><A NAME="20870">&#160;</A> causes the
+speech/silence detector to be used, and the
+<TT>MEASURESIL</TT><A NAME="20871">&#160;</A>
+<TT>OUTSILWARN</TT><A NAME="20872">&#160;</A> 
+variables result in a measurement being taken of the background silence level
+prior to capturing the first utterance.  To make sure that each input utterance
+is being captured properly, the HV<SMALL>ITE</SMALL> option <TT>-g</TT> can be set to
+cause the captured wave to be output after each recognition attempt. Note that
+for a live audio input system, the configuration variable
+<TT>ENORMALISE</TT> should be explicitly set to <TT>FALSE</TT> both when training models and when performing recognition. Energy normalisation cannot
+be used with live audio input, and the default setting for this variable
+is <TT>TRUE</TT>.
+
+<P>
+As an alternative to using the speech/silence detector, a
+signal<A NAME="20804">&#160;</A> can be used to start and stop
+recording.  For example,
+<PRE>
+    # Waveform capture
+    SOURCERATE=625.0
+    SOURCEKIND=HAUDIO
+    SOURCEFORMAT=HTK
+    AUDIOSIG=2
+</PRE>
+would result in the Unix interrupt signal (usually the Control-C key) being
+used as a start and stop control<A NAME="tex2html53" HREF="footnode_mn.html#foot20873" TARGET="footer"><SUP><SPAN CLASS="arabic">13</SPAN>.<SPAN CLASS="arabic">5</SPAN></SUP></A>. Key-press control of the audio input can be obtained by
+setting <TT>AUDIOSIG</TT> to a negative number.
+
+<P>
+Both of the above can be used together, in this case, audio capture is disabled
+until the specified signal is received.  From then on control is in the hands
+of the speech/silence detector.
+
+<P>
+The captured waveform must be converted to the required 
+target parameter kind.  Thus, the configuration file must define
+all of the parameters needed to control the
+conversion of the waveform to the required target kind.
+This process is described in detail in Chapter&nbsp;<A HREF="node55_ct.html#c:speechio">5</A>.
+As an example, the following parameters would allow conversion
+to Mel-frequency cepstral coefficients with delta and acceleration
+parameters.
+<PRE>
+    # Waveform to MFCC parameters
+    TARGETKIND=MFCC_0_D_A
+    TARGETRATE=100000.0
+    WINDOWSIZE=250000.0
+    ZMEANSOURCE=T
+    USEHAMMING = T
+    PREEMCOEF = 0.97
+    USEPOWER = T
+    NUMCHANS = 26
+    CEPLIFTER = 22
+    NUMCEPS = 12
+</PRE>
+Many of these variable settings are the default settings
+and could be omitted, they are included explicitly here as a reminder
+of the main configuration options available.
+
+<P>
+When HV<SMALL>ITE</SMALL> is executed in direct audio input mode,
+it issues a prompt prior to each input and it is normal to enable
+basic tracing so that the recognition results can be seen.
+A typical terminal output might be
+<PRE>
+    READY[1]&gt;
+    Please speak sentence - measuring levels
+    Level measurement completed
+    DIAL ONE FOUR SEVEN  
+         ==  [258 frames] -97.8668 [Ac=-25031.3 LM=-218.4] (Act=22.3)
+
+    READY[2]&gt;
+    CALL NINE TWO EIGHT  
+         ==  [233 frames] -97.0850 [Ac=-22402.5 LM=-218.4] (Act=21.8)
+
+    etc
+</PRE>
+If required, a transcription of each spoken input can be output 
+to a label file or an MLF in the usual way by setting the <TT>-e</TT> option.  
+However, to do this
+a file name must be synthesised.  This is done by using a counter
+prefixed by the value of the
+HV<SMALL>ITE</SMALL> configuration variable
+<TT>RECOUTPREFIX</TT><A NAME="20874">&#160;</A> and 
+suffixed by the value of <TT>RECOUTSUFFIX</TT>
+<A NAME="20875">&#160;</A>.
+For example, with the settings
+<PRE>
+    RECOUTPREFIX = sjy
+    RECOUTSUFFIX = .rec
+</PRE>
+then the output transcriptions would be stored as 
+<TT>sjy0001.rec</TT>,  <TT>sjy0002.rec</TT> etc.
+
+<P>
+
+<HR>
+<ADDRESS>
+<A HREF=http://htk.eng.cam.ac.uk/docs/docs.shtml TARGET=_top>Back to HTK site</A><BR>See front page for HTK Authors
+</ADDRESS>
+</BODY>
+</HTML>
